@@ -12,6 +12,8 @@ namespace ConsoleApplication1
             Console.WriteLine("Hola Bomberman!");
             //modifica copia de la copia
             Console.WriteLine("modifica copia de la copia");
+            //prueba en clase
+            Console.WriteLine("algo");
             Console.WriteLine("Escriba su mensaje y presione Enter para salir..");
             Console.ReadLine();
         }
