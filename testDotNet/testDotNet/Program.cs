@@ -12,6 +12,12 @@ namespace ConsoleApplication1
             Console.WriteLine("Hola Bomberman!");
             //modifica copia de la copia
             Console.WriteLine("modifica copia de la copia");
+
+            //cambios agregados por Hugo
+            Console.WriteLine("Estoy dibujando a mi clase cuadrado:");
+            Cuadrado uncuadrado = new Cuadrado();
+            uncuadrado.dibujate();
+
             Console.WriteLine("Escriba su mensaje y presione Enter para salir..");
             Console.ReadLine();
         }
