@@ -17,7 +17,9 @@ namespace ConsoleApplication1
             Console.WriteLine("Estoy dibujando a mi clase cuadrado:");
             Cuadrado uncuadrado = new Cuadrado();
             uncuadrado.dibujate();
-
+            //Modificacion de Andy
+            PruebaAndy prueba=new PruebaAndy();
+            prueba.saludoAndy();
             Console.WriteLine("Escriba su mensaje y presione Enter para salir..");
             Console.ReadLine();
         }
