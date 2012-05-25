@@ -17,3 +17,10 @@ testDotNet/testDotNet/obj/x86/Release/testDotNet.csproj.FileListAbsolute.txt
 testDotNet/testDotNet/obj/x86/Release/testDotNet.pdb
 testDotNet/testDotNet/obj/x86/Release/testDotNet.exe
 *.bak
+*.orig
+*.chache
+*.exe
+*.manifest
+*.pdb
+*.txt
+*.suo
