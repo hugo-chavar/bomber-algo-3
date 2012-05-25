@@ -9,7 +9,7 @@ namespace ConsoleApplication1
     {
         public void dibujate()
         {
-            Console.WriteLine("Hola mundo");
+            Console.WriteLine("Chau mundo");
 
         }
     }
