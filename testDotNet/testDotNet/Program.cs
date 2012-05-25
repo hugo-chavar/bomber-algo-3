@@ -24,8 +24,15 @@ namespace ConsoleApplication1
             Rana unarana =new Rana();
             unarana.X = 50;
             unarana.croar();
+            
+            Puteador unPuteador = new Puteador();
+            unPuteador.putear(); // Cambiado por Martín.
+            
             Console.WriteLine("Escriba su mensaje y presione Enter para salir..");            
             Console.ReadLine();
+
+            
+
         }
     }
 }
