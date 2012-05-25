@@ -9,12 +9,8 @@ namespace ConsoleApplication1
     {
         public void dibujate()
         {
-            Console.WriteLine("**********");
-            Console.WriteLine("*        *");
+            Console.WriteLine("Hola mundo");
 
-            Console.WriteLine("*        *");
-            Console.WriteLine("*        *");
-            Console.WriteLine("**********");
         }
     }
 }
