@@ -21,6 +21,9 @@ namespace ConsoleApplication1
             PruebaAndy prueba=new PruebaAndy();
             prueba.saludoAndy();
             Console.WriteLine("Escriba su mensaje y presione Enter para salir..");
+            Rana unarana =new Rana();
+            unarana.croar();
+            
             Console.ReadLine();
         }
     }
