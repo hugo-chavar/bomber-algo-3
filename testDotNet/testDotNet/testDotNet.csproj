@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Puteador.cs" />
     <Compile Include="Rana.cs" />
     <Compile Include="Cuadrado.cs" />
     <Compile Include="Program.cs" />
