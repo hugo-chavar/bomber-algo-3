@@ -20,10 +20,11 @@ namespace ConsoleApplication1
             //Modificacion de Andy
             PruebaAndy prueba=new PruebaAndy();
             prueba.saludoAndy();
-            Console.WriteLine("Escriba su mensaje y presione Enter para salir..");
+
             Rana unarana =new Rana();
+            unarana.X = 50;
             unarana.croar();
-            
+            Console.WriteLine("Escriba su mensaje y presione Enter para salir..");            
             Console.ReadLine();
         }
     }
