@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Bomberman
 {
-    public abstract class Obstaculo:IDañable
+    public abstract class Obstaculo:IDaniable
     {
         protected Punto posicion;
         protected int unidadesDeResistencia;
