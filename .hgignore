@@ -24,3 +24,8 @@ testDotNet/testDotNet/obj/x86/Release/testDotNet.exe
 *.pdb
 *.txt
 *.suo
+*.dll
+Source/Bomberman/bin/**
+Source/TestBomberman/bin/**
+Source/Bomberman/obj/**
+Source/TestBomberman/obj/**
