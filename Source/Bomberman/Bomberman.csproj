@@ -43,7 +43,7 @@
     <Compile Include="BloqueAcero.cs" />
     <Compile Include="BloqueCemento.cs" />
     <Compile Include="BloqueLadrillos.cs" />
-    <Compile Include="IDañable.cs" />
+    <Compile Include="IDaniable.cs" />
     <Compile Include="Obstaculo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Punto.cs" />
