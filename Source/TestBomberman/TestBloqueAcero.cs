@@ -12,7 +12,7 @@ namespace TestBomberman
             {
                 Punto posicion = new Punto(3, 4);
                 BloqueAcero UnObstaculo = new BloqueAcero(posicion);
-                UnObstaculo.daniarConBombaMolotov(3);
+                UnObstaculo.daniarConBombaMolotov();
                 Assert.AreEqual(UnObstaculo.UnidadesDeResistencia, 1); 
             }
 

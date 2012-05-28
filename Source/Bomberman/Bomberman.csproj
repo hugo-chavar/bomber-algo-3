@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="BloqueAcero.cs" />
     <Compile Include="BloqueCemento.cs" />
-    <Compile Include="BloqueLadrillos.cs" />
+    <Compile Include="BloqueComun.cs" />
     <Compile Include="IDaniable.cs" />
     <Compile Include="Obstaculo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
