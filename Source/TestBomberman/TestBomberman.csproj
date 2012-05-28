@@ -41,10 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestBloqueLadrillos.cs" />
+    <Compile Include="TestBloqueComun.cs" />
     <Compile Include="TestBloqueAcero.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestBloqueCemento.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bomberman\Bomberman.csproj">

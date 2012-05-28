@@ -7,6 +7,10 @@ namespace Bomberman
 {
     public abstract class Obstaculo:IDaniable
     {
+        //Deberia ir en la clase bomba pero no la implementamos todavia
+        public const int danioMolotov = 5;
+
+
         protected Punto posicion;
         protected int unidadesDeResistencia;
 
@@ -40,11 +44,11 @@ namespace Bomberman
             else return (unidades);
         
         }
-        public virtual void daniarConBombaMolotov(int unidadesDestruidas)
+        public virtual void daniarConBombaMolotov()
         {
             if (!this.destruido())
             {
-                this.unidadesDeResistencia = calcularUnidadesRestantes(unidadesDestruidas);
+                this.unidadesDeResistencia = calcularUnidadesRestantes(danioMolotov);
             }
         }
 

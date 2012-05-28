@@ -7,7 +7,7 @@
             { }
 
 
-            public override void daniarConBombaMolotov(int unidadesDestruidas)
+            public override void daniarConBombaMolotov()
             {
                 //La Bomba Molotov no daña Al Bloque De Acero
             }
