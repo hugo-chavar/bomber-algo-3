@@ -1,4 +1,4 @@
-﻿namespace Bomberman
+﻿namespace Bomberman.Mapa.Casilla
 {
     public class BloqueComun:Obstaculo
     {

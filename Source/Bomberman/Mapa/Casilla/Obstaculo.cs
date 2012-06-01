@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Bomberman
+namespace Bomberman.Mapa.Casilla
 {
     public abstract class Obstaculo:IDaniable
     {

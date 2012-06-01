@@ -1,5 +1,6 @@
 ﻿using NUnit;
 using NUnit.Framework;
+using Bomberman.Mapa.Casilla;
 using Bomberman;
 
 namespace TestBomberman
