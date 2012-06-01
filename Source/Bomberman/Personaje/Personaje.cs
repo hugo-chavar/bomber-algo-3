@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Bomberman;
 
 namespace Bomberman.Personaje
 {
-    public abstract class Personaje : IMovible, IPosicionable
+    public abstract class Personaje : IMovible
     {
         protected int velocidad;
-        protected Punto posicion;
         
         public void mover()
         {
@@ -20,11 +18,6 @@ namespace Bomberman.Personaje
         {
             //hacer un override de este metodo solo en el personaje que atraviesa obstaculos
             return false;
-        }
-
-        public Punto getPosicion()
-        {
-            return this.posicion;
         }
 
     }
