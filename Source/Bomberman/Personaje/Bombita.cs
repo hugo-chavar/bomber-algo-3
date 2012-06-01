@@ -18,16 +18,23 @@ namespace Bomberman.Personaje
             comible.modificarComedor(this);
         }
 
-        public int Velocidad 
-        { 
-            get { return this.velocidad; }
-            set { this.velocidad = Velocidad; }
-        }
-
 
         public void duplicarVelocidad()
         {
             this.velocidad = this.velocidad*2;
         }
+
+
+
+        public void cambiarLanzadorAToleTole()
+        {
+            // Sin implementar.
+        }
+
+        public void reducirRetardo()
+        {
+            // Sin implementar.
+        }
+
     }
 }

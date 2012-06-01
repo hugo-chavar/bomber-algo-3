@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NUnit.Framework;
-using Bomberman.Personaje;
 using Bomberman.Articulo;
+using Bomberman.Personaje;
+using NUnit.Framework;
+using Bomberman;
+
 
 namespace TestBomberman
 {   [TestFixture]
@@ -15,13 +13,18 @@ namespace TestBomberman
         {
             int velocidad;
             Bombita unBombita = new Bombita();
-            Chala unArticulo = new Chala();
+            Articulo unArticulo = new Chala();
             velocidad = unBombita.Velocidad;
-
             unBombita.comer(unArticulo);
 
             Assert.AreEqual(2*velocidad, unBombita.Velocidad);
-
          }
+
+
+        [Test]
+        public void TestComerArticuloBombaToleToleModificaElLanzadorDeBombita()
+        {
+
+        }
     }
 }

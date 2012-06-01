@@ -10,7 +10,14 @@ namespace Bomberman.Personaje
     {
         protected int velocidad;
         protected Punto posicion;
-        
+
+        public int Velocidad
+        {
+            get { return this.velocidad; }
+            set { this.velocidad = Velocidad; }
+        }
+
+
         public void mover()
         {
             //falta implementar
