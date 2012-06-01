@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Bomberman.Arma;
+﻿using Bomberman.Arma;
 
 
 namespace Bomberman.Personaje
@@ -11,7 +7,18 @@ namespace Bomberman.Personaje
     {
         protected int velocidad;
         protected Punto posicion;
-        protected ILanzador lanzador;
+        protected Lanzador lanzador;
+
+        public Lanzador Lanzador 
+        { 
+            get { return this.lanzador; } //Usado solamente para pruebas!!!
+        }
+
+        public int Velocidad
+        {
+            get { return this.velocidad; }
+            set { this.velocidad = Velocidad; }
+        }
 
         public void LanzarExplosivo(int x,int y,int retardo)
         {
