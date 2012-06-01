@@ -11,5 +11,7 @@ namespace Bomberman.Personaje
         void comer(IComible comible);
         
         void duplicarVelocidad();
+
+        void cambiarLanzadorALanzadorToleTole();
     }
 }

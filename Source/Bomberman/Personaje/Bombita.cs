@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Bomberman.Arma;
 using Bomberman.Articulo;
-using Bomberman.Arma;
 
 namespace Bomberman.Personaje
 {
@@ -28,22 +24,23 @@ namespace Bomberman.Personaje
             this.lanzador = new LanzadorToleTole();
         }
 
+        
         public void comer(IComible comible)
         {
             comible.modificarComedor(this);
         }
-
-        public int Velocidad 
-        { 
-            get { return this.velocidad; }
-            set { this.velocidad = Velocidad; }
-        }
-
-
+        
+        
         public void duplicarVelocidad()
         {
-            this.velocidad = this.velocidad*2;
+            this.velocidad = 2;
         }
+
+        public void cambiarLanzadorALanzadorToleTole()
+        {
+            this.setLanzadorToleTole();
+        }
+
 
     }
 }
