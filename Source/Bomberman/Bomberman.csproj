@@ -40,8 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Armamento.cs" />
     <Compile Include="BloqueAcero.cs" />
     <Compile Include="BloqueComun.cs" />
+    <Compile Include="Bomba.cs" />
+    <Compile Include="BombaMolotov.cs" />
     <Compile Include="IDaniable.cs" />
     <Compile Include="Obstaculo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
