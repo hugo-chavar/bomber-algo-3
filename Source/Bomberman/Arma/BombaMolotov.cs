@@ -10,12 +10,12 @@ namespace Bomberman.Arma
         
         public override void inicializarBomba(int x, int y)
         {                     
-                this.retardo = 1;
-                this.poderDeDestruccion = 5;
-                this.ondaExpansiva = 3;
+                this.Retardo = 1;
+                this.PoderDeDestruccion = 5;
+                this.OndaExpansiva = 3;
                 this.exploto = false;
                 Punto unaPosicion = new Punto(x,y);
-                posicion = unaPosicion;
+                Posicion = unaPosicion;
 
                 
                      
@@ -33,11 +33,11 @@ namespace Bomberman.Arma
 
 
 
-            unPuntoAux.Y = posicion.Y;
-            for (i = -(ondaExpansiva); i < ondaExpansiva+1; i++){
+            unPuntoAux.Y = Posicion.Y;
+            for (i = -(OndaExpansiva); i < OndaExpansiva+1; i++){
             
                 
-             unPuntoAux.X = i + posicion.X;
+             unPuntoAux.X = i + Posicion.X;
             listaDevolucion[j] = unPuntoAux;
                 j = j + 1;
         }
@@ -47,6 +47,16 @@ namespace Bomberman.Arma
 
             return listaDevolucion;
     }
+       
+ 
+
+
+
+
+
+
+
+            
 
 }
-}
+    }
