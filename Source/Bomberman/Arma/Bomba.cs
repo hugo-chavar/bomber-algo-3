@@ -8,23 +8,19 @@ namespace Bomberman.Arma
     public abstract class Bomba: Armamento
     {
 
-        protected int PoderDeDestruccion;
-        protected int Retardo;
+        protected int poderDeDestruccion;
+        protected int retardo;
         protected bool exploto;
-        
-
-
-
 
         public virtual void inicializarBomba(int x, int y) {
         }
         
         public int getRetardo()
-        { return this.Retardo; }
+        { return this.retardo; }
         
         public void cuandoPasaElTiempo(int t)
         {
-            if (t >= Retardo)
+            if (t >= retardo)
             {
 
                 this.explotar();
@@ -45,12 +41,12 @@ namespace Bomberman.Arma
 
         public int getOndaExpansiva()
         {
-            return OndaExpansiva;
+            return ondaExpansiva;
         }
 
         public void modificarRetardo(int porcentaje)
         {
-            this.Retardo = Retardo * porcentaje / 100;
+            this.retardo = retardo * porcentaje / 100;
         }
 
 
