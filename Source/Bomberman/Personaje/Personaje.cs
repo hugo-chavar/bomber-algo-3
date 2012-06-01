@@ -7,6 +7,8 @@ namespace Bomberman.Personaje
 {
     public abstract class Personaje : IMovible
     {
+        protected int velocidad;
+        
         public void mover()
         {
             //falta implementar
@@ -17,5 +19,6 @@ namespace Bomberman.Personaje
             //hacer un override de este metodo solo en el personaje que atraviesa obstaculos
             return false;
         }
+
     }
 }

@@ -41,6 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Arma\Armamento.cs" />
+    <Compile Include="Articulo\Articulo.cs" />
+    <Compile Include="Articulo\Chala.cs" />
+    <Compile Include="Personaje\Bombita.cs" />
+    <Compile Include="Personaje\IComedor.cs" />
+    <Compile Include="Articulo\IComible.cs" />
     <Compile Include="Mapa\Casilla\BloqueAcero.cs" />
     <Compile Include="Mapa\Casilla\BloqueComun.cs" />
     <Compile Include="Arma\Bomba.cs" />
