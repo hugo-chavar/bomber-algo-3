@@ -5,33 +5,36 @@ using System.Text;
 
 namespace Bomberman.Arma
 {
-    public abstract class Bomba: Armamento
+    public abstract class Bomba: Explosivo
     {
 
         protected int poderDeDestruccion;
-        protected int retardo;
+        protected float retardo;
         protected bool exploto;
 
-        public virtual void inicializarBomba(int x, int y) {
+        public Bomba(int x, int y)
+        {
+            this.exploto = false;
+            Punto unaPosicion = new Punto(x, y);
+            posicion = unaPosicion;
         }
-        
-        public int getRetardo()
-        { return this.retardo; }
+
+        //public float getRetardo()
+        //{ return this.retardo; }
+
         
         public void cuandoPasaElTiempo(int t)
         {
-            if (t >= retardo)
+        this.retardo = this.retardo - 1;
+        if (t >= retardo)
             {
-
-                this.explotar();
-            }
+                this.explotar();     
+            }      
         }
 
         public void explotar()
         {
             this.exploto = true; // true = EXPLOTADO , false = ACTIVADA Y NO EXPLOTADA, //
-
-
         }
 
         public bool estaExplotada()
@@ -44,10 +47,13 @@ namespace Bomberman.Arma
             return ondaExpansiva;
         }
 
-        public void modificarRetardo(int porcentaje)
+        //Deberia modificarse en personaje para que a partir de ese momento
+        //cualquier bomba que se cree tenga ese retardo
+        /* public void modificarRetardo(int porcentaje)
         {
             this.retardo = retardo * porcentaje / 100;
         }
+         */ 
 
 
 

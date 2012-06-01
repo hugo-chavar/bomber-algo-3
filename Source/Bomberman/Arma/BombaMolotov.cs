@@ -7,8 +7,18 @@ namespace Bomberman.Arma
 {
     public class BombaMolotov: Bomba
     {
+        private const int TIEMPOEXPLOSION = 1;
+
+        public BombaMolotov(int x, int y, int porcentajeRetardo)
+            :base(x,y)
+        {
+            this.retardo = TIEMPOEXPLOSION * (100 - porcentajeRetardo) / 100;
+            this.poderDeDestruccion = 5;
+            this.ondaExpansiva = 3;
+        }
+
         
-        public override void inicializarBomba(int x, int y)
+        /*public override void inicializarBomba(int x, int y)
         {                     
                 this.retardo = 1;
                 this.poderDeDestruccion = 5;
@@ -16,11 +26,9 @@ namespace Bomberman.Arma
                 this.exploto = false;
                 Punto unaPosicion = new Punto(x,y);
                 posicion = unaPosicion;
-
-                
-                     
+               
         }
-
+*/
 
         public Punto[] calcularCasillerosExplotados (){
             int i;
