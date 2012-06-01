@@ -11,8 +11,6 @@ namespace Bomberman.Mapa.Casilla
         //Deberia ir en la clase bomba pero no la implementamos todavia
         public const int danioMolotov = 5;
 
-
-
         protected int unidadesDeResistencia;
 
         public Obstaculo(Punto Posicion, int Unidades)

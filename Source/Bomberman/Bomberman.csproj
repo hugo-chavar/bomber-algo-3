@@ -40,7 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Arma\Armamento.cs" />
+    <Compile Include="Arma\Explosivo.cs" />
+    <Compile Include="Arma\BombaToleTole.cs" />
+    <Compile Include="Arma\ILanzador.cs" />
+    <Compile Include="Arma\LanzadorMolotov.cs" />
+    <Compile Include="Arma\LanzadorProyectil.cs" />
+    <Compile Include="Arma\LanzadorToleTole.cs" />
+    <Compile Include="Arma\Proyectil.cs" />
     <Compile Include="Articulo\Articulo.cs" />
     <Compile Include="Articulo\Chala.cs" />
     <Compile Include="IPosicionable.cs" />
