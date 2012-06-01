@@ -2,28 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Bomberman.Personaje;
 
 namespace Bomberman.Mapa.Casilla
 {
-    public abstract class Obstaculo:IDaniable
+    public abstract class Obstaculo : Casilla, IDaniable
     {
         //Deberia ir en la clase bomba pero no la implementamos todavia
         public const int danioMolotov = 5;
 
 
-        protected Punto posicion;
+
         protected int unidadesDeResistencia;
 
         public Obstaculo(Punto Posicion, int Unidades)
         {
             this.posicion = Posicion;
             this.unidadesDeResistencia = Unidades;
-        }
-
-        public Punto Posicion
-        {
-            get { return this.posicion;}
-            set { this.posicion = Posicion; }
         }
 
         public int UnidadesDeResistencia
@@ -55,6 +50,11 @@ namespace Bomberman.Mapa.Casilla
         public bool destruido()
         {
             return((this.unidadesDeResistencia)<1);
+        }
+
+        public override bool transitablePor(IMovible movil)
+        {
+            return movil.atraviesaObstaculos();
         }
     }
 }

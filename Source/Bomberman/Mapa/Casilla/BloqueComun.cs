@@ -1,4 +1,6 @@
-﻿namespace Bomberman.Mapa.Casilla
+﻿using Bomberman.Personaje;
+
+namespace Bomberman.Mapa.Casilla
 {
     public class BloqueComun:Obstaculo
     {
@@ -17,6 +19,8 @@
             BloqueComun BloqueLadrillos = new BloqueComun(posicion, 5);
             return (BloqueLadrillos);
         }
+
+
         
     }
 }
