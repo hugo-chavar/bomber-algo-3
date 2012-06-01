@@ -48,12 +48,11 @@
     <Compile Include="IDaniable.cs" />
     <Compile Include="Mapa\Casilla\Casilla.cs" />
     <Compile Include="Mapa\Casilla\Obstaculo.cs" />
+    <Compile Include="Personaje\IMovible.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Punto.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Personaje\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
