@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Bomberman.Articulo;
+using Bomberman.Arma;
 
 namespace Bomberman.Personaje
 {
@@ -18,23 +19,23 @@ namespace Bomberman.Personaje
             comible.modificarComedor(this);
         }
 
-
+        
+        { 
         public void duplicarVelocidad()
         {
-            this.velocidad = this.velocidad*2;
+            this.velocidad = 2;
+            set { this.velocidad = Velocidad; }
         }
-
 
 
         public void cambiarLanzadorAToleTole()
         {
-            // Sin implementar.
+            this.setLanzadorToleTole();
         }
 
         public void reducirRetardo()
         {
             // Sin implementar.
         }
-
     }
 }
