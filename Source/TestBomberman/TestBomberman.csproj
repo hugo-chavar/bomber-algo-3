@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestChala.cs" />
+    <Compile Include="TestArticulo\BombaToleTole.cs" />
+    <Compile Include="TestArticulo\TestBombaToleTole.cs" />
+    <Compile Include="TestArticulo\TestChala.cs" />
     <Compile Include="TestBloqueComun.cs" />
     <Compile Include="TestBloqueAcero.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
