@@ -84,6 +84,10 @@ namespace Bomberman.Arma
                 {
                     this.AvanzarHacia(direccionPersonaje);
                 }
+              if ((explotable.PosicionFinal.X == explotable.Posicion.X) && (explotable.PosicionFinal.Y == explotable.Posicion.Y))
+                {
+                    explotable.Explotar();
+                }
             }
             if (explotable.PosicionFinal.Y == explotable.Posicion.Y)
             {
