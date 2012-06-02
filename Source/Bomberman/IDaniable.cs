@@ -4,6 +4,7 @@
     {
         void DaniarConBombaToleTole();
         void DaniarConBombaMolotov();
+        void DaniarConProyectil();
         //void daniarConProyectil();
     }
 }

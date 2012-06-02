@@ -10,6 +10,8 @@ namespace Bomberman.Mapa.Casilla
     {
         //Deberia ir en la clase bomba pero no la implementamos todavia
         public const int danioMolotov = 5;
+        public const int danioProyectil = 5;
+
 
         protected int unidadesDeResistencia;
 
@@ -46,6 +48,17 @@ namespace Bomberman.Mapa.Casilla
                 this.unidadesDeResistencia = CalcularUnidadesRestantes(danioMolotov);
             }
         }
+
+        public override void DaniarConProyectil()
+        {
+              // idem DaniarConBombaMolotov
+            if (!this.Destruido())
+            {
+                this.unidadesDeResistencia = CalcularUnidadesRestantes(danioProyectil);
+            }
+        }
+
+
 
         //public override void daniarConProyectil();
 
