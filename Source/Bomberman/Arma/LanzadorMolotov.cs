@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Bomberman.Arma
 {
-    public class LanzadorMolotov:ILanzador
+    public class LanzadorMolotov:Lanzador
     {
-        public bool lanzar(int x, int y, int reduccionRetardo)
+        public override bool lanzar(int x, int y, int reduccionRetardo)
         {
             Bomba bomba = new BombaMolotov(x, y,reduccionRetardo);
             //Deberia Modificar el mapa con agregando una bomba a un casillero

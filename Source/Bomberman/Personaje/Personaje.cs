@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Bomberman;
+using Bomberman.Arma;
 
 namespace Bomberman.Personaje
 {
@@ -12,6 +13,12 @@ namespace Bomberman.Personaje
         protected Punto posicion;
         protected Lanzador lanzador;
 
+        public Lanzador Lanzador { get { return this.lanzador; } }
+
+        public void LanzarExplosivo(int x, int y, int retardo)
+        {
+            this.lanzador.lanzar(x, y, retardo);
+        }
 
         public void mover()
         {
