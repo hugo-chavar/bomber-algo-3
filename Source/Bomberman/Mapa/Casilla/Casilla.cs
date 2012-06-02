@@ -10,7 +10,7 @@ namespace Bomberman.Mapa.Casilla
     {
         protected Punto posicion;
 
-        public abstract bool transitablePor(IMovible movil);
+        public abstract bool TransitablePor(IMovible movil);
 
 
         public Punto Posicion
@@ -19,8 +19,8 @@ namespace Bomberman.Mapa.Casilla
             set { this.posicion = Posicion; }
         }
 
-        public abstract void daniarConBombaToleTole();
-        public abstract void daniarConBombaMolotov();
+        public abstract void DaniarConBombaToleTole();
+        public abstract void DaniarConBombaMolotov();
         //public abstract void daniarConProyectil();
     }
 }

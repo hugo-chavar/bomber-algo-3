@@ -13,7 +13,7 @@ namespace TestBomberman.TestArticulo
             Bombita unBombita = new Bombita();
             Articulo unArticulo = new Timer();
             
-            unBombita.comer(unArticulo);
+            unBombita.Comer(unArticulo);
 
             Assert.AreEqual(15, unBombita.ReduccionRetardoBombas);
         }

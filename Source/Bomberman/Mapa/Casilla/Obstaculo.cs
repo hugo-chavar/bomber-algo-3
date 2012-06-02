@@ -25,36 +25,36 @@ namespace Bomberman.Mapa.Casilla
             set { this.unidadesDeResistencia = value;}
         }
 
-        public override void daniarConBombaToleTole()
+        public override void DaniarConBombaToleTole()
         {
             //Deberia daniar a los personajes alli presentes
             this.unidadesDeResistencia = 0;
         }
 
-        private int calcularUnidadesRestantes(int unidadesDestruidas)
+        private int CalcularUnidadesRestantes(int unidadesDestruidas)
         {
             int unidades = this.unidadesDeResistencia - unidadesDestruidas;
             if (unidades < 0) return (0);
             else return (unidades);
         
         }
-        public override void daniarConBombaMolotov()
+        public override void DaniarConBombaMolotov()
         {
             //Deberia daniar a los personajes alli presentes
-            if (!this.destruido())
+            if (!this.Destruido())
             {
-                this.unidadesDeResistencia = calcularUnidadesRestantes(danioMolotov);
+                this.unidadesDeResistencia = CalcularUnidadesRestantes(danioMolotov);
             }
         }
 
         //public override void daniarConProyectil();
 
-        public bool destruido()
+        public bool Destruido()
         {
             return((this.unidadesDeResistencia)<1);
         }
 
-        public override bool transitablePor(IMovible movil)
+        public override bool TransitablePor(IMovible movil)
         {
             return movil.AtraviesaObstaculos();
         }

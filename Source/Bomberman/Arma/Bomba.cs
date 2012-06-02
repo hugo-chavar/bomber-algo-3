@@ -19,14 +19,14 @@ namespace Bomberman.Arma
             posicion = unaPosicion;
         }
 
-        public abstract override void daniar(IDaniable daniable);
+        public abstract override void Daniar(IDaniable daniable);
         
         public void cuandoPasaElTiempo(int t)
         {
         this.retardo = this.retardo - 1;
         if (t >= retardo)
             {
-                base.explotar();     
+                base.Explotar();     
             }      
         }
 

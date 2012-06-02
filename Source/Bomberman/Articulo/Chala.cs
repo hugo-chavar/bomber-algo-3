@@ -8,9 +8,9 @@ namespace Bomberman.Articulo
 {
     public class Chala : Articulo
     {
-        public override void  modificarComedor(IComedor comedor)
+        public override void  ModificarComedor(IComedor comedor)
         {
-            comedor.duplicarVelocidad();
+            comedor.DuplicarVelocidad();
         }
     }
 }

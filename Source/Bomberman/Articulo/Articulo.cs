@@ -9,7 +9,7 @@ namespace Bomberman.Articulo
     public abstract class Articulo : IComible
     {
 
-        public abstract void modificarComedor(IComedor comedor);
+        public abstract void ModificarComedor(IComedor comedor);
 
     }
 }

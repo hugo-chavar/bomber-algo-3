@@ -18,9 +18,9 @@ namespace Bomberman.Arma
             this.ondaExpansiva = 6;
         }
 
-        public override void daniar(IDaniable daniable)
+        public override void Daniar(IDaniable daniable)
         {
-            daniable.daniarConBombaToleTole();        
+            daniable.DaniarConBombaToleTole();        
         }
     }
 }

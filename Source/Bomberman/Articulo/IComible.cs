@@ -8,6 +8,6 @@ namespace Bomberman.Articulo
 {
     public interface IComible
     {
-        void modificarComedor(IComedor comedor);
+        void ModificarComedor(IComedor comedor);
     }
 }

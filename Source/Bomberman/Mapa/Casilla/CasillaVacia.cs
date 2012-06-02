@@ -8,16 +8,16 @@ namespace Bomberman.Mapa.Casilla
 {
     class CasillaVacia : Casilla
     {
-        public override bool transitablePor(IMovible movil)
+        public override bool TransitablePor(IMovible movil)
         {
             return true;
         }
 
-        public override void daniarConBombaToleTole()
+        public override void DaniarConBombaToleTole()
         { 
             //Deberia daniar a los personajes alli presentes
         }
-        public override void daniarConBombaMolotov()
+        public override void DaniarConBombaMolotov()
         {
             //Deberia daniar a los personajes alli presentes
         }

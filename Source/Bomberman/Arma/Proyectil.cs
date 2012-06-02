@@ -31,13 +31,13 @@ namespace Bomberman.Arma
 
     
 
-        public override void daniar(IDaniable daniable)
+        public override void Daniar(IDaniable daniable)
         {
             //daniable.daniarConProyectil();
         }
 
         
-        private Punto calcularZonaImpacto (int direccionPersonaje)
+        private Punto CalcularZonaImpacto (int direccionPersonaje)
         {
             // no es del todo feliz esta resolucion pero al menos por ahora lo dejo //
             switch(direccionPersonaje)
@@ -71,7 +71,7 @@ namespace Bomberman.Arma
             return posicionFinal;
         }
 
-        public void avanzarHacia(int direccion)
+        public void AvanzarHacia(int direccion)
         {
             switch (direccion)
             {
@@ -90,26 +90,26 @@ namespace Bomberman.Arma
             }
         }
 
-        public int despegarProyectil(int direccionPersonaje)
+        public int DespegarProyectil(int direccionPersonaje)
         {
             Punto puntoFinal;
-            puntoFinal = this.calcularZonaImpacto(direccionPersonaje);   //falta chequear que los valores X e Y finales no sean negativos, pero creo que otra clase en un nivel mas arriba deberia implementar eso //
+            puntoFinal = this.CalcularZonaImpacto(direccionPersonaje);   //falta chequear que los valores X e Y finales no sean negativos, pero creo que otra clase en un nivel mas arriba deberia implementar eso //
             if (puntoFinal.X == Posicion.X)
             {
                 while (posicion.Y != puntoFinal.Y)
                 {
-                    this.avanzarHacia(direccionPersonaje);
+                    this.AvanzarHacia(direccionPersonaje);
                 }
             }
             if (puntoFinal.Y == Posicion.Y){
                 while (posicion.X != puntoFinal.X){
-                    this.avanzarHacia(direccionPersonaje);
+                    this.AvanzarHacia(direccionPersonaje);
                 }
             }
 
             if ((puntoFinal.X == Posicion.X) && (puntoFinal.Y == Posicion.Y))
             {
-                this.explotar();
+                this.Explotar();
             }
 
             return 1;

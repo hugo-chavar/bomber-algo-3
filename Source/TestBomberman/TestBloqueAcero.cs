@@ -23,7 +23,7 @@ namespace TestBomberman
         public void TestDaniarConBombaMolotovBloqueDeAceroNoModificaSuEstado()
             {
 
-                unObstaculo.daniarConBombaMolotov();
+                unObstaculo.DaniarConBombaMolotov();
                 Assert.AreEqual(unObstaculo.UnidadesDeResistencia, 1); 
             }
 
@@ -31,8 +31,8 @@ namespace TestBomberman
         public void TestDaniarConBombaToleToleBloqueDeAcero()
         {
 
-            unObstaculo.daniarConBombaToleTole();
-            Assert.AreEqual(true, unObstaculo.destruido());
+            unObstaculo.DaniarConBombaToleTole();
+            Assert.AreEqual(true, unObstaculo.Destruido());
         }
     }
 }

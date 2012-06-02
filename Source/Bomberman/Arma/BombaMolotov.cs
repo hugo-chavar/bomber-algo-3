@@ -18,9 +18,9 @@ namespace Bomberman.Arma
             this.tiempoRestante = retardo;
         }
 
-        public override void daniar(IDaniable daniable)
+        public override void Daniar(IDaniable daniable)
         {
-            daniable.daniarConBombaMolotov();
+            daniable.DaniarConBombaMolotov();
         }
 
         
