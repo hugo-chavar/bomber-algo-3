@@ -12,8 +12,17 @@ namespace Bomberman.Arma
         // Buscar ENUMERADOS: ARRIBA = 1; ABAJO = 0; DERECHA = 2; IZQUIERDA = 3 //
 
     
-        private int alcance = 3 ; // establezco arbitrariamente un alcance de 3 casilleros y explota //
+        private int alcance = 3 ; // establezco arbitrariamente un alcance de 3 casilleros (cuanto avanza el proytectil antes de explotar) y explota //
         private Punto posicionFinal;
+        private int poderDeDestruccion;
+        
+
+         public Proyectil(int x, int y)
+            :base(x,y)
+        {
+            this.poderDeDestruccion = 5;
+            this.ondaExpansiva = 3;
+        }
 
     
 
@@ -22,7 +31,8 @@ namespace Bomberman.Arma
             //daniable.daniarConProyectil();
         }
 
-        public Punto calcularZonaImpacto (int direccionPersonaje)
+        
+        private Punto calcularZonaImpacto (int direccionPersonaje)
         {
             // no es del todo feliz esta resolucion pero al menos por ahora lo dejo //
             switch(direccionPersonaje)
@@ -56,6 +66,51 @@ namespace Bomberman.Arma
             return posicionFinal;
         }
 
-    }
+        public void avanzarHacia(int direccion)
+        {
+            switch (direccion)
+            {
+                case 0:
+                    posicion.Y = posicion.Y - 1;
+                    break;
+                case 1:
+                    posicion.Y = posicion.Y + 1;
+                    break;
+                case 2:
+                    posicion.X = posicion.X + 1;
+                    break;
+                case 3:
+                    posicion.X = posicion.X - 1;
+                    break;
+            }
+        }
+
+        public int despegarProyectil(int direccionPersonaje)
+        {
+            Punto puntoFinal;
+            puntoFinal = this.calcularZonaImpacto(direccionPersonaje);   //falta chequear que los valores X e Y finales no sean negativos, pero creo que otra clase en un nivel mas arriba deberia implementar eso //
+            if (puntoFinal.X == Posicion.X)
+            {
+                while (posicion.Y != puntoFinal.Y)
+                {
+                    this.avanzarHacia(direccionPersonaje);
+                }
+            }
+            if (puntoFinal.Y == Posicion.Y){
+                while (posicion.X != puntoFinal.X){
+                    this.avanzarHacia(direccionPersonaje);
+                }
+            }
+
+            if ((puntoFinal.X == Posicion.X) && (puntoFinal.Y == Posicion.Y))
+            {
+                this.explotar();
+            }
+
+            return 1;
+
+        }
+
+}
 
 }
