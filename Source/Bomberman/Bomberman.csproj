@@ -48,8 +48,9 @@
     <Compile Include="Arma\LanzadorToleTole.cs" />
     <Compile Include="Arma\Proyectil.cs" />
     <Compile Include="Articulo\Articulo.cs" />
-    <Compile Include="Articulo\BombaToleTole.cs" />
+    <Compile Include="Articulo\ArticuloBombaToleTole.cs" />
     <Compile Include="Articulo\Chala.cs" />
+    <Compile Include="Articulo\Timer.cs" />
     <Compile Include="IPosicionable.cs" />
     <Compile Include="Juego\Juego.cs" />
     <Compile Include="Mapa\ITransitable.cs" />

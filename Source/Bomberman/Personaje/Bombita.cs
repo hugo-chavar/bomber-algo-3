@@ -9,12 +9,8 @@ namespace Bomberman.Personaje
 {
     public class Bombita : Personaje , IComedor
     {
-        private int reduccionRetardoBombas;
-
-        public Bombita()
+        public Bombita() :base() 
         {
-            this.reduccionRetardoBombas = 0;
-            this.velocidad = 1;
             this.lanzador = new LanzadorMolotov();
         }
 
@@ -51,9 +47,9 @@ namespace Bomberman.Personaje
             setLanzadorToleTole();
         }
 
-        public void reducirRetardo()
+        public void reducirRetardo(int retardo)
         {
-            throw new NotImplementedException();
+            setReduccionRetardoBombas(retardo);
         }
 
     }
