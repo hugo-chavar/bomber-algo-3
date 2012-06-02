@@ -9,7 +9,6 @@ namespace Bomberman.Arma
     {
 
         protected int poderDeDestruccion;
-        protected float retardo;
         protected float tiempoRestante;
 
         public Bomba(int x, int y)
@@ -21,22 +20,23 @@ namespace Bomberman.Arma
 
         public abstract override void Daniar(IDaniable daniable);
         
-        public void cuandoPasaElTiempo(int t)
+        public void CuandoPasaElTiempo()
         {
-        this.retardo = this.retardo - 1;
-        if (t >= retardo)
+            this.tiempoRestante = this.tiempoRestante - 1;
+            if (0 >= tiempoRestante)
             {
                 base.Explotar();     
             }      
         }
 
-        public void disminuirTiempo()
+        public void DisminuirTiempo()
         {
             (this.tiempoRestante)--;
         }
 
-        public float getRetardo(){
-            return this.retardo;
+        public float GetTiempoRestante()
+        {
+            return this.tiempoRestante;
         }
 
 
