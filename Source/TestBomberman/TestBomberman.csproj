@@ -46,13 +46,15 @@
     <Compile Include="TestArticulo\TestChala.cs" />
     <Compile Include="TestBloqueComun.cs" />
     <Compile Include="TestBloqueAcero.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bomberman\Bomberman.csproj">
       <Project>{F0A3EDDB-4DCE-4E03-B7E4-B50FC421A8CC}</Project>
       <Name>Bomberman</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
