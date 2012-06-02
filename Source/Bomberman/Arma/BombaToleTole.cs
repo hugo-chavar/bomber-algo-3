@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Bomberman.Arma
 {
-    class BombaToleTole:Bomba
+    public class BombaToleTole:Bomba
     {
         private const int TIEMPOEXPLOSION = 5;
         private const int INFINITO = 1000;
@@ -16,6 +16,11 @@ namespace Bomberman.Arma
             this.retardo = TIEMPOEXPLOSION * (100 - porcentajeRetardo) / 100;
             this.poderDeDestruccion = INFINITO;
             this.ondaExpansiva = 6;
+        }
+
+        public override void daniar(IDaniable daniable)
+        {
+            daniable.daniarConBombaToleTole();        
         }
     }
 }

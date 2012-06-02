@@ -46,6 +46,7 @@
     <Compile Include="Arma\LanzadorMolotov.cs" />
     <Compile Include="Arma\LanzadorProyectil.cs" />
     <Compile Include="Arma\LanzadorToleTole.cs" />
+    <Compile Include="Arma\ManejadorExplosiones.cs" />
     <Compile Include="Arma\Proyectil.cs" />
     <Compile Include="Articulo\Articulo.cs" />
     <Compile Include="Articulo\ArticuloBombaToleTole.cs" />
@@ -67,7 +68,6 @@
     <Compile Include="Mapa\Casilla\CasillaVacia.cs" />
     <Compile Include="Mapa\Casilla\Obstaculo.cs" />
     <Compile Include="Personaje\IMovible.cs" />
-    <Compile Include="Arma\Lanzador.cs" />
     <Compile Include="Personaje\Personaje.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Punto.cs" />

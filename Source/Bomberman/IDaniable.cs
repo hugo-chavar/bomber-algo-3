@@ -4,6 +4,6 @@
     {
         void daniarConBombaToleTole();
         void daniarConBombaMolotov();
-        //public void daniarConProyectil(int unidadesDestruidas);
+        //void daniarConProyectil();
     }
 }

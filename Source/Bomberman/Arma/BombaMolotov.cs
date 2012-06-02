@@ -17,6 +17,11 @@ namespace Bomberman.Arma
             this.ondaExpansiva = 3;
         }
 
+        public override void daniar(IDaniable daniable)
+        {
+            daniable.daniarConBombaMolotov();
+        }
+
         
         /*public override void inicializarBomba(int x, int y)
         {                     
@@ -30,31 +35,32 @@ namespace Bomberman.Arma
         }
 */
 
-        public Punto[] calcularCasillerosExplotados (){
-            int i;
-            int j = 1;
-            Punto[] listaDevolucion = new Punto[15];
+        //  lo llevo a el manejador
+/*       public Punto[] calcularCasillerosExplotados (){
+             int i;
+             int j = 1;
+             Punto[] listaDevolucion = new Punto[15];
       
 
 
-            Punto unPuntoAux = new Punto(1,1);
+             Punto unPuntoAux = new Punto(1,1);
 
 
 
-            unPuntoAux.Y = posicion.Y;
-            for (i = -(ondaExpansiva); i < ondaExpansiva+1; i++){
+             unPuntoAux.Y = posicion.Y;
+             for (i = -(ondaExpansiva); i < ondaExpansiva+1; i++){
             
                 
-             unPuntoAux.X = i + posicion.X;
-            listaDevolucion[j] = unPuntoAux;
-                j = j + 1;
-        }
+              unPuntoAux.X = i + posicion.X;
+             listaDevolucion[j] = unPuntoAux;
+                 j = j + 1;
+         }
             
 
             
 
-            return listaDevolucion;
+             return listaDevolucion;
+     }
+ */
     }
-
-}
 }

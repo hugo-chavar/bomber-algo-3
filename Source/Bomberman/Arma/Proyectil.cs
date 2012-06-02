@@ -5,7 +5,11 @@ using System.Text;
 
 namespace Bomberman.Arma
 {
-    class Proyectil:Explosivo
+    public class Proyectil:Explosivo
     {
+        public override void daniar(IDaniable daniable)
+        {
+            //daniable.daniarConProyectil();
+        }
     }
 }

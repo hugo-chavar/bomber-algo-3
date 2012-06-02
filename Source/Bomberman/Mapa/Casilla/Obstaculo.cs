@@ -6,7 +6,7 @@ using Bomberman.Personaje;
 
 namespace Bomberman.Mapa.Casilla
 {
-    public abstract class Obstaculo : Casilla, IDaniable
+    public abstract class Obstaculo : Casilla
     {
         //Deberia ir en la clase bomba pero no la implementamos todavia
         public const int danioMolotov = 5;
@@ -25,8 +25,9 @@ namespace Bomberman.Mapa.Casilla
             set { this.unidadesDeResistencia = value;}
         }
 
-        public void daniarConBombaToleTole()
+        public override void daniarConBombaToleTole()
         {
+            //Deberia daniar a los personajes alli presentes
             this.unidadesDeResistencia = 0;
         }
 
@@ -37,13 +38,16 @@ namespace Bomberman.Mapa.Casilla
             else return (unidades);
         
         }
-        public virtual void daniarConBombaMolotov()
+        public override void daniarConBombaMolotov()
         {
+            //Deberia daniar a los personajes alli presentes
             if (!this.destruido())
             {
                 this.unidadesDeResistencia = calcularUnidadesRestantes(danioMolotov);
             }
         }
+
+        //public override void daniarConProyectil();
 
         public bool destruido()
         {

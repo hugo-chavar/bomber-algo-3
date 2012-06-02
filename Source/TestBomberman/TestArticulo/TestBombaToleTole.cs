@@ -13,7 +13,7 @@ namespace TestBomberman.TestArticulo
         {
             Bombita unBombita = new Bombita();
             Articulo unArticulo = new ArticuloBombaToleTole();
-            Lanzador unLanzador = new LanzadorToleTole();
+            ILanzador unLanzador = new LanzadorToleTole();
 
             unBombita.comer(unArticulo);
 
