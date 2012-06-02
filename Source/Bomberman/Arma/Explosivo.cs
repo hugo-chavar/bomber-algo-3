@@ -35,7 +35,7 @@ namespace Bomberman.Arma
             //getMapa().QuitarPosicionable(bomba);
         }
 
-        public bool EstaExplotada()
+        public bool EstaExplotado()
         {
             return this.exploto;
         }

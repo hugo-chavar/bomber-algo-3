@@ -13,7 +13,7 @@ namespace Bomberman.Arma
         public BombaToleTole(int x, int y, int porcentajeRetardo)
             :base(x,y)
         {
-            this.retardo = TIEMPOEXPLOSION * (100 - porcentajeRetardo) / 100;
+            this.tiempoRestante = TIEMPOEXPLOSION * (100 - porcentajeRetardo) / 100;
             this.poderDeDestruccion = INFINITO;
             this.ondaExpansiva = 6;
         }

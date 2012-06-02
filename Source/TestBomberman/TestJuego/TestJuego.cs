@@ -13,6 +13,7 @@ namespace TestBomberman.TestJuego
         {
             this.unJuego = Juego.Instancia();
         }
+
         [Test]
         public void DosReferenciasAJuedoDebenSerElMismoObjeto()
         {
