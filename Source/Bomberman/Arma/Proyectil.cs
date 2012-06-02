@@ -22,6 +22,11 @@ namespace Bomberman.Arma
         {
             this.poderDeDestruccion = 5;
             this.ondaExpansiva = 3;
+            Punto PosicionFinal = new Punto(0, 0);
+            Punto PosicionInicial = new Punto(x, y);
+            posicionFinal = PosicionFinal;
+            posicion = PosicionInicial;
+
         }
 
     
