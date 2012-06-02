@@ -52,7 +52,7 @@ namespace Bomberman.Mapa.Casilla
 
         public override bool transitablePor(IMovible movil)
         {
-            return movil.atraviesaObstaculos();
+            return movil.AtraviesaObstaculos();
         }
     }
 }

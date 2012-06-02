@@ -7,7 +7,7 @@ namespace Bomberman.Personaje
 {
     public interface IMovible
     {
-        void mover();
-        bool atraviesaObstaculos();
+        void Mover();
+        bool AtraviesaObstaculos();
     }
 }

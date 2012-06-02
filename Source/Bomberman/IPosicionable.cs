@@ -7,6 +7,11 @@ namespace Bomberman
 {
     public interface IPosicionable
     {
-        Punto getPosicion();
+        //declaro la propiedad posicion
+        Punto Posicion
+        {
+            get;
+        }
+
     }
 }
