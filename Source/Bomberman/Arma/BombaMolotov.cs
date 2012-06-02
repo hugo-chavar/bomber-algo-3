@@ -15,6 +15,7 @@ namespace Bomberman.Arma
             this.retardo = TIEMPOEXPLOSION * (100 - porcentajeRetardo) / 100;
             this.poderDeDestruccion = 5;
             this.ondaExpansiva = 3;
+            this.tiempoRestante = retardo;
         }
 
         public override void daniar(IDaniable daniable)

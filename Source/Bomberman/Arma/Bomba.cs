@@ -10,6 +10,7 @@ namespace Bomberman.Arma
 
         protected int poderDeDestruccion;
         protected float retardo;
+        protected float tiempoRestante;
 
         public Bomba(int x, int y)
             :base()
@@ -28,6 +29,21 @@ namespace Bomberman.Arma
                 base.explotar();     
             }      
         }
+
+        public void disminuirTiempo()
+        {
+            (this.tiempoRestante)--;
+        }
+
+        public float getRetardo(){
+            return this.retardo;
+        }
+
+
+            
+
+
+        
 
         //public float getRetardo()
         //{ return this.retardo; }
