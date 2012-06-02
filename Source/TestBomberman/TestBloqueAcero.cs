@@ -8,22 +8,31 @@ namespace TestBomberman
     [TestFixture]
     public class TestBloqueAcero
     {
+        private BloqueAcero unObstaculo;
+        private Punto posicion;
+
+        [TestFixtureSetUp]
+        public void TestSetup()
+        {
+            posicion = new Punto(3, 4);
+            unObstaculo = new BloqueAcero(posicion);
+        }
+
+        
         [Test]
         public void TestDaniarConBombaMolotovBloqueDeAceroNoModificaSuEstado()
             {
-                Punto posicion = new Punto(3, 4);
-                BloqueAcero UnObstaculo = new BloqueAcero(posicion);
-                UnObstaculo.daniarConBombaMolotov();
-                Assert.AreEqual(UnObstaculo.UnidadesDeResistencia, 1); 
+
+                unObstaculo.daniarConBombaMolotov();
+                Assert.AreEqual(unObstaculo.UnidadesDeResistencia, 1); 
             }
 
         [Test]
         public void TestDaniarConBombaToleToleBloqueDeAcero()
         {
-            Punto posicion = new Punto(3, 4);
-            BloqueAcero UnObstaculo = new BloqueAcero(posicion);
-            UnObstaculo.daniarConBombaToleTole();
-            Assert.AreEqual(true, UnObstaculo.destruido());
+
+            unObstaculo.daniarConBombaToleTole();
+            Assert.AreEqual(true, unObstaculo.destruido());
         }
     }
 }
