@@ -5,7 +5,11 @@ using System.Text;
 
 namespace Bomberman.Juego
 {
-    class Juego
+    public class Juego
     {
+        private static Juego instanciaDeJuego;
+
+
+
     }
 }

@@ -38,7 +38,7 @@ namespace Bomberman.Personaje
         }
 
        
-        public void mover()
+        public void Mover()
         {
             //falta implementar
             if (this.direccion == "Arriba")
@@ -47,15 +47,15 @@ namespace Bomberman.Personaje
             }
         }
 
-        public bool atraviesaObstaculos()
+        public bool AtraviesaObstaculos()
         {
             //hacer un override de este metodo solo en el personaje que atraviesa obstaculos
             return false;
         }
 
-        public Punto getPosicion()
+        public Punto Posicion
         {
-            return this.posicion;
+            get { return this.posicion; }
         }
 
     }
