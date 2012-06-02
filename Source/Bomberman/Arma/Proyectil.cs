@@ -18,7 +18,7 @@ namespace Bomberman.Arma
         
 
          public Proyectil(int x, int y)
-            :base(x,y)
+
         {
             this.poderDeDestruccion = 5;
             this.ondaExpansiva = 3;
