@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Bomberman.Mapa
 {
-    class Mapa : ITransitable
+    public class Mapa : ITransitable
     {
     }
 }
