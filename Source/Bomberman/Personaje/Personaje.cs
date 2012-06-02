@@ -12,8 +12,23 @@ namespace Bomberman.Personaje
         protected int velocidad;
         protected Punto posicion;
         protected Lanzador lanzador;
+        protected int reduccionRetardoBombas;
 
-        public Lanzador Lanzador { get { return this.lanzador; } }
+        public Personaje()
+        {
+            this.reduccionRetardoBombas = 0;
+            this.velocidad = 1;
+        }
+
+        public Lanzador Lanzador 
+        { 
+            get { return this.lanzador; } 
+        }
+
+        public int ReduccionRetardoBombas
+        { 
+            get { return this.reduccionRetardoBombas;}  
+        }
 
         public void LanzarExplosivo(int x, int y, int retardo)
         {

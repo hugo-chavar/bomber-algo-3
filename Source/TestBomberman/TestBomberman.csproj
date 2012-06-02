@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestArticulo\BombaToleTole.cs" />
+    <Compile Include="TestArticulo\TestTimer.cs" />
     <Compile Include="TestArticulo\TestBombaToleTole.cs" />
     <Compile Include="TestArticulo\TestChala.cs" />
     <Compile Include="TestBloqueComun.cs" />
