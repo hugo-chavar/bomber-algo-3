@@ -6,9 +6,9 @@ namespace Bomberman.Articulo
     {
         const int PORCENTAJEDERETRASO = 15;
 
-        public override void modificarComedor(IComedor comedor)
+        public override void ModificarComedor(IComedor comedor)
         {
-            comedor.reducirRetardo(PORCENTAJEDERETRASO);
+            comedor.ReducirRetardo(PORCENTAJEDERETRASO);
         }
     }
 }

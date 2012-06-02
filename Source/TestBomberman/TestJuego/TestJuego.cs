@@ -1,5 +1,4 @@
-﻿using NUnit;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Bomberman.Juego;
 
 namespace TestBomberman.TestJuego

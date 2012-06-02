@@ -8,11 +8,11 @@ namespace Bomberman.Personaje
 {
     public interface IComedor
     {
-        void comer(IComible comible);
+        void Comer(IComible comible);
 
-        void duplicarVelocidad();
-        void cambiarLanzadorAToleTole();
+        void DuplicarVelocidad();
+        void CambiarLanzadorAToleTole();
 
-        void reducirRetardo(int retardo);
+        void ReducirRetardo(int retardo);
     }
 }

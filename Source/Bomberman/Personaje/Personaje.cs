@@ -34,7 +34,7 @@ namespace Bomberman.Personaje
 
         public void LanzarExplosivo(int x, int y, int retardo)
         {
-            this.lanzador.lanzar(x, y, retardo);
+            this.lanzador.Lanzar(x, y, retardo);
         }
 
        

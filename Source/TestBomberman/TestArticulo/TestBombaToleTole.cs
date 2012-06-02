@@ -15,7 +15,7 @@ namespace TestBomberman.TestArticulo
             Articulo unArticulo = new ArticuloBombaToleTole();
             ILanzador unLanzador = new LanzadorToleTole();
 
-            unBombita.comer(unArticulo);
+            unBombita.Comer(unArticulo);
 
             Assert.IsInstanceOf( typeof(LanzadorToleTole), unBombita.Lanzador);
 

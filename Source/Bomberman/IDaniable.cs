@@ -2,8 +2,8 @@
 {
     public interface IDaniable
     {
-        void daniarConBombaToleTole();
-        void daniarConBombaMolotov();
+        void DaniarConBombaToleTole();
+        void DaniarConBombaMolotov();
         //void daniarConProyectil();
     }
 }

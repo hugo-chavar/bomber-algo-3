@@ -14,19 +14,19 @@ namespace Bomberman.Personaje
             this.lanzador = new LanzadorMolotov();
         }
 
-        public void setReduccionRetardoBombas(int PorcentajeRetardo)
+        public void SetReduccionRetardoBombas(int PorcentajeRetardo)
         {
             this.reduccionRetardoBombas = PorcentajeRetardo;
         }
 
-        public void setLanzadorToleTole()
+        public void SetLanzadorToleTole()
         {
             this.lanzador = new LanzadorToleTole();
         }
 
-        public void comer(IComible comible)
+        public void Comer(IComible comible)
         {
-            comible.modificarComedor(this);
+            comible.ModificarComedor(this);
         }
 
         public int Velocidad
@@ -36,20 +36,20 @@ namespace Bomberman.Personaje
         }
 
 
-        public void duplicarVelocidad()
+        public void DuplicarVelocidad()
         {
             this.velocidad = this.velocidad * 2;
         }
 
 
-        public void cambiarLanzadorAToleTole()
+        public void CambiarLanzadorAToleTole()
         {
-            setLanzadorToleTole();
+            SetLanzadorToleTole();
         }
 
-        public void reducirRetardo(int retardo)
+        public void ReducirRetardo(int retardo)
         {
-            setReduccionRetardoBombas(retardo);
+            SetReduccionRetardoBombas(retardo);
         }
 
     }

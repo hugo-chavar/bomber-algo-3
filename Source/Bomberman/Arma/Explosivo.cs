@@ -28,18 +28,18 @@ namespace Bomberman.Arma
             set { this.posicion = value; }
         }
 
-        public virtual void explotar()
+        public virtual void Explotar()
         {
             ManejadorExplosiones manejador = new ManejadorExplosiones(this);
             this.exploto = true; // true = EXPLOTADO , false = ACTIVADA Y NO EXPLOTADA, //
             //getMapa().QuitarPosicionable(bomba);
         }
 
-        public bool estaExplotada()
+        public bool EstaExplotada()
         {
             return this.exploto;
         }
 
-        public abstract void daniar(IDaniable daniable);
+        public abstract void Daniar(IDaniable daniable);
     }
 }

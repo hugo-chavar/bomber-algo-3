@@ -15,7 +15,7 @@ namespace TestBomberman.TestArticulo
             Bombita unBombita = new Bombita();
             Articulo unArticulo = new Chala();
             velocidad = unBombita.Velocidad;
-            unBombita.comer(unArticulo);
+            unBombita.Comer(unArticulo);
 
             Assert.AreEqual(2*velocidad, unBombita.Velocidad);
          }

@@ -9,9 +9,9 @@ namespace Bomberman.Articulo
     public class ArticuloBombaToleTole : Articulo
     {
 
-        public override void modificarComedor(IComedor comedor)
+        public override void ModificarComedor(IComedor comedor)
         {
-            comedor.cambiarLanzadorAToleTole();
+            comedor.CambiarLanzadorAToleTole();
         }
     }
 }
