@@ -12,7 +12,7 @@ namespace Bomberman.Personaje
     {
         protected int velocidad;
         protected Punto posicion;
-        protected Lanzador lanzador;
+        protected ILanzador lanzador;
         protected String direccion;
         protected int reduccionRetardoBombas;
 
@@ -22,7 +22,7 @@ namespace Bomberman.Personaje
             this.velocidad = 1;
         }
 
-        public Lanzador Lanzador 
+        public ILanzador Lanzador 
         { 
             get { return this.lanzador; } 
         }

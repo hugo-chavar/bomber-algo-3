@@ -5,13 +5,13 @@ using System.Text;
 
 namespace Bomberman.Arma
 {
-    public class LanzadorToleTole:Lanzador
+    public class LanzadorToleTole:ILanzador
     {
-        public override bool lanzar(int x, int y, int reduccionRetardo)
+        public bool lanzar(int x, int y, int reduccionRetardo)
         {
             Bomba bomba = new BombaToleTole(x, y, reduccionRetardo);
             //Deberia Modificar el mapa con agregando una bomba a un casillero
-            //Juego.getInstacia().Nivel.Mapa.ColocarPosicionable(bomba);
+            //getMapa().ColocarPosicionable(bomba);
             return (true);//Las bombas se ponen en la posicion dl personaje
         }
     }
