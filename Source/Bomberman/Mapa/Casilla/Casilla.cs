@@ -21,6 +21,7 @@ namespace Bomberman.Mapa.Casilla
 
         public abstract void DaniarConBombaToleTole();
         public abstract void DaniarConBombaMolotov();
+        public abstract void DaniarConProyectil();
         //public abstract void daniarConProyectil();
     }
 }

@@ -33,7 +33,9 @@ namespace Bomberman.Arma
 
         public override void Daniar(IDaniable daniable)
         {
-            //daniable.daniarConProyectil();
+            daniable.DaniarConProyectil();
+
+                                                                        // cuando explota genera el mismo danio que la tole tole //
         }
 
         
