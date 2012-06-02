@@ -12,9 +12,10 @@ namespace Bomberman.Arma
         // Buscar ENUMERADOS: ARRIBA = 1; ABAJO = 0; DERECHA = 2; IZQUIERDA = 3 //
 
     
-        private int alcance = 3 ; // establezco arbitrariamente un alcance de 3 casilleros (cuanto avanza el proytectil antes de explotar) y explota //
+         // establezco arbitrariamente un alcance de 3 casilleros (cuanto avanza el proytectil antes de explotar) y explota //
         private Punto posicionFinal;
         private int poderDeDestruccion;
+        private int alcance = 3;
         
 
          public Proyectil(int x, int y)
@@ -37,9 +38,35 @@ namespace Bomberman.Arma
 
                                                                         // cuando explota genera el mismo danio que la tole tole //
         }
+        public int Alcance
+        {
+            get { return this.alcance; }
+            set { this.alcance = value; }
+        }
+
+         public Punto PosicionFinal
+        {
+            get { return this.posicionFinal; }
+            set { this.posicionFinal = value; }
+        }
 
         
-        private Punto CalcularZonaImpacto (int direccionPersonaje)
+         public Punto PosicionInicial
+        {
+            get { return this.posicion; }
+            set { this.PosicionInicial = value; }
+        }
+
+        public void lanzarMisil(int direccionPersonaje)
+        {
+            ManejadorProyectil unManejador = new ManejadorProyectil(this,direccionPersonaje);
+            unManejador.lanzarMisil();
+
+        }
+        
+
+
+       /* private Punto CalcularZonaImpacto (int direccionPersonaje)
         {
             // no es del todo feliz esta resolucion pero al menos por ahora lo dejo //
             switch(direccionPersonaje)
@@ -70,7 +97,7 @@ namespace Bomberman.Arma
         
 
              }
-            return posicionFinal;
+            return posicionFinal;  
         }
 
         public void AvanzarHacia(int direccion)
@@ -116,8 +143,8 @@ namespace Bomberman.Arma
 
             return 1;
 
-        }
-
+        }*/
+     
 }
 
 }
