@@ -60,12 +60,16 @@ namespace Bomberman.Mapa
             
         }
 
+        public bool existeCasillaEnPosicion(Punto pos)
+        {
+            return this.tablero.ContainsKey(pos);
+        }
 
         public Casilla.Casilla obtenerCasilla(Punto pos)
         {
 
             Casilla.Casilla unaCasilla;
-            if (this.tablero.ContainsKey(pos))
+            if (this.existeCasillaEnPosicion(pos))
             {
                 unaCasilla = this.tablero[pos];
             }
