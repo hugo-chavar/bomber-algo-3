@@ -9,9 +9,36 @@ namespace TestBomberman.TestMapa
     [TestFixture]
     class TestMapa
     {
-        private Mapa unMapa;
+        private const int ANCHOMAPA = 5;
+        private const int ALTOMAPA = 5;
 
-        [TestFixtureSetUp]
+        private Mapa unMapa;
+        private Casilla unaCasilla;
+        private Punto pos;
+        private FabricaDeCasillas unaFabricaDeCasillas;
+
+        [Test]
+        public void CrearUnMapaFuncionaBien()
+        { 
+            unMapa = new Mapa(ANCHOMAPA, ALTOMAPA);
+            Casilla[,] unTablero = new Casilla[ANCHOMAPA,ALTOMAPA];
+            Assert.AreEqual(unMapa.Tablero, unTablero);
+            Assert.AreEqual(unMapa.DimensionHorizontal, ANCHOMAPA);
+            Assert.AreEqual(unMapa.DimensionVertical, ALTOMAPA);
+        }
+
+        [Test]
+        public void AgregarCasillaFuncionaBien()
+        {
+            pos = new Punto(2, 3);
+            unMapa = new Mapa(ANCHOMAPA, ALTOMAPA);
+            unaFabricaDeCasillas = new FabricaDeCasillas();
+            unaCasilla = unaFabricaDeCasillas.FabricarPasillo(pos);
+            unMapa.agregarCasilla(unaCasilla);
+            Assert.AreEqual(unMapa.Tablero[pos.X,pos.Y] , unaCasilla);
+        }
+
+        /*[TestFixtureSetUp]
         public void TestSetup()
         {
             //creo un mapa 5x5 con esta distribucion (P = Pasillo, * = BloqueAcero):
@@ -21,7 +48,7 @@ namespace TestBomberman.TestMapa
              *      P P P P P
              *      P * P * P
              *      P P P P P
-             */
+             //Esta parte deberia estar comentada!
             
             Punto unaPosicion;
             Casilla unaCasilla;
@@ -32,7 +59,7 @@ namespace TestBomberman.TestMapa
             unaCasilla = unaFabricaDeCasillas.FabricarCasillaConBloqueAcero(unaPosicion);
             this.unMapa.agregarCasilla(unaCasilla);
 
-            /* int i,j;
+            /*int i,j;
              * for (i=0;i<5;i++)
                 for (j = 0; j < 5; j++)
                 {
@@ -49,9 +76,7 @@ namespace TestBomberman.TestMapa
                     }
 
                     this.unMapa.agregarCasilla(unaCasilla);
-                }*/
-
-        }
-
+                }
+            }*/
     }
 }
