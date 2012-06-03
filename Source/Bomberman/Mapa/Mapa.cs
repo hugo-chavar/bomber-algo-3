@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Bomberman.Mapa.Casilla;
 
 namespace Bomberman.Mapa
 {
@@ -20,5 +21,10 @@ namespace Bomberman.Mapa
         }
 
 
+
+        public void agregarCasillaVacia(Punto unaPosicion)
+        {
+            this.tablero[unaPosicion.X, unaPosicion.Y] = new CasillaVacia(unaPosicion);
+        }
     }
 }
