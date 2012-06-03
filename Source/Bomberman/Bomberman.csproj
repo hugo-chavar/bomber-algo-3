@@ -55,6 +55,7 @@
     <Compile Include="Articulo\Timer.cs" />
     <Compile Include="IPosicionable.cs" />
     <Compile Include="Juego\Juego.cs" />
+    <Compile Include="Mapa\Casilla\FabricaDeCasillas.cs" />
     <Compile Include="Mapa\ITransitable.cs" />
     <Compile Include="Mapa\Mapa.cs" />
     <Compile Include="Personaje\Bombita.cs" />
@@ -68,7 +69,7 @@
     <Compile Include="Arma\BombaMolotov.cs" />
     <Compile Include="IDaniable.cs" />
     <Compile Include="Mapa\Casilla\Casilla.cs" />
-    <Compile Include="Mapa\Casilla\CasillaVacia.cs" />
+    <Compile Include="Mapa\Casilla\Pasillo.cs" />
     <Compile Include="Mapa\Casilla\Obstaculo.cs" />
     <Compile Include="Personaje\IMovible.cs" />
     <Compile Include="Personaje\LosLopezReggae.cs" />

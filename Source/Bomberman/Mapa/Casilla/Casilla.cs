@@ -7,18 +7,38 @@ using Bomberman;
 
 namespace Bomberman.Mapa.Casilla
 {
-    public abstract class Casilla:IDaniable
+    public class Casilla //: IDaniable
     {
-        protected Punto posicion;
-        protected Articulo.Articulo articuloContenido;
-        protected List<Personaje.Personaje> personajesEnCasilla;
+        private Punto posicion;
+        private Articulo.Articulo articuloContenido;
+        private List<Personaje.Personaje> personajesEnCasilla;
+        //defino el patron State para determinar si hay un obstaculo o la casilla esta libre
+        private Obstaculo estado;
+        private Punto pos;
 
-        public abstract bool TransitablePor(IMovible movil);
+        public Casilla(Punto pos)
+        {
+            // TODO: Complete member initialization
+            this.pos = pos;
+        }
+
+        //metodo que utiliza el patron State
+        public bool PermiteTransitarUn(IMovible movil)
+        {
+            return this.Estado.TransitablePor(movil);
+        }
 
         public Punto Posicion
         {
             get { return this.posicion; }
             set { this.posicion = value; }
+        }
+
+
+        public Obstaculo Estado
+        {
+            get { return this.estado; }
+            set { this.estado = value; }
         }
 
         public Articulo.Articulo ArticuloContenido
@@ -27,16 +47,14 @@ namespace Bomberman.Mapa.Casilla
             set { this.articuloContenido = value; }
         }
 
-
-
-        public abstract void DaniarConBombaToleTole();
-        public abstract void DaniarConBombaMolotov();
-        public abstract void DaniarConProyectil();
-        //public abstract void daniarConProyectil();
-
         public void agregarArticulo(Articulo.Articulo unArticulo)
         {
             this.ArticuloContenido = unArticulo;
         }
+
+        //public abstract void DaniarConBombaToleTole();
+        //public abstract void DaniarConBombaMolotov();
+        //public abstract void DaniarConProyectil();
+
     }
 }

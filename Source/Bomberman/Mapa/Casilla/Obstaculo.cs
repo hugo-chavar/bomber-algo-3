@@ -6,7 +6,7 @@ using Bomberman.Personaje;
 
 namespace Bomberman.Mapa.Casilla
 {
-    public abstract class Obstaculo : Casilla
+    public abstract class Obstaculo
     {
         //Deberia ir en la clase bomba pero no la implementamos todavia
         public const int DANIOMOLOTOV = 5;
@@ -15,9 +15,16 @@ namespace Bomberman.Mapa.Casilla
 
         protected int unidadesDeResistencia;
 
-        public Obstaculo(Punto posicion, int unidades)
+
+        public Obstaculo()
         {
-            this.Posicion = posicion;
+            this.UnidadesDeResistencia = 0;
+        }
+
+
+        public Obstaculo(int unidades)
+        {
+            //this.Posicion = posicion;
             this.UnidadesDeResistencia = unidades;
         }
 
@@ -27,7 +34,8 @@ namespace Bomberman.Mapa.Casilla
             set { this.unidadesDeResistencia = value; }
         }
 
-        public override void DaniarConBombaToleTole()
+        
+        public virtual void DaniarConBombaToleTole() 
         {
             //Deberia daniar a los personajes alli presentes
             this.UnidadesDeResistencia = 0;
@@ -40,7 +48,9 @@ namespace Bomberman.Mapa.Casilla
             else return (unidades);
         
         }
-        public override void DaniarConBombaMolotov()
+
+        //por ahora dejo esto virtual para que funcione, ARREGLAR LOS HARCODEOS!!
+        public virtual void DaniarConBombaMolotov()
         {
             //Deberia daniar a los personajes alli presentes
             if (!this.Destruido())
@@ -49,7 +59,8 @@ namespace Bomberman.Mapa.Casilla
             }
         }
 
-        public override void DaniarConProyectil()
+        //por ahora dejo esto virtual para que funcione, ARREGLAR LOS HARCODEOS!!
+        public virtual void DaniarConProyectil()
         {
               // idem DaniarConBombaMolotov
             if (!this.Destruido())
@@ -58,16 +69,12 @@ namespace Bomberman.Mapa.Casilla
             }
         }
 
-
-
-        //public override void daniarConProyectil();
-
         public bool Destruido()
         {
             return((this.UnidadesDeResistencia)<1);
         }
 
-        public override bool TransitablePor(IMovible movil)
+        public virtual bool TransitablePor(IMovible movil)
         {
             return movil.AtraviesaObstaculos();
         }

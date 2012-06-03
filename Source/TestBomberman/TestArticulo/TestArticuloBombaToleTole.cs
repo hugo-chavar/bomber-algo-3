@@ -18,7 +18,8 @@ namespace TestBomberman.TestArticulo
         public void TestSetup()
         {
             pos = new Punto(3, 4);
-            c = new CasillaVacia(pos);
+            FabricaDeCasillas f = new FabricaDeCasillas();
+            c = f.FabricarPasillo(pos);
             unBombita = new Bombita(pos);
         }
         

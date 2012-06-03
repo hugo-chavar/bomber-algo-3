@@ -22,9 +22,9 @@ namespace Bomberman.Mapa
 
 
 
-        public void agregarCasillaVacia(Punto unaPosicion)
+        public void agregarCasilla(Casilla.Casilla unaCasilla)
         {
-            this.tablero[unaPosicion.X, unaPosicion.Y] = new CasillaVacia(unaPosicion);
+            this.tablero[unaCasilla.Posicion.X, unaCasilla.Posicion.Y] = unaCasilla;
         }
     }
 }

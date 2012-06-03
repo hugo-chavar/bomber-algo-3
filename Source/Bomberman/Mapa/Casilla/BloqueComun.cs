@@ -5,8 +5,8 @@ namespace Bomberman.Mapa.Casilla
     public class BloqueComun:Obstaculo
     {
         private BloqueComun(Punto Posicion, int UnidadesResistencia)
-            : base(Posicion, UnidadesResistencia)
-        { }
+            : base(UnidadesResistencia) // Saque la posicion de ak
+        { } //: base(Posicion, UnidadesResistencia) // Nota: los obstaculos ya no necesitan posicion, son un State de Casilla
 
         public static BloqueComun CrearBloqueCemento(Punto posicion)
         { 
