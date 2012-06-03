@@ -31,5 +31,10 @@ namespace Bomberman.Mapa.Casilla
             
         }
 
+        public override bool PuedeContenerArticulos()
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

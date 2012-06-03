@@ -73,5 +73,8 @@ namespace Bomberman.Mapa.Casilla
         {
             return movil.AtraviesaObstaculos();
         }
+
+        public abstract bool PuedeContenerArticulos();
+
     }
 }
