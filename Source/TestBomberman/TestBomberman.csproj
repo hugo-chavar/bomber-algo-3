@@ -53,6 +53,7 @@
     <Compile Include="TestBloqueComun.cs" />
     <Compile Include="TestBloqueAcero.cs" />
     <Compile Include="TestJuego\TestJuego.cs" />
+    <Compile Include="TestPersonaje\TestPersonaje.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bomberman\Bomberman.csproj">
