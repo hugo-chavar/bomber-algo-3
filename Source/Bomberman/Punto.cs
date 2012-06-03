@@ -21,5 +21,14 @@
             get { return (this.y); }
             set { this.y = value; }
         }
+        public void AumentarXEn(int aumentoX)
+        {
+            this.X = X + aumentoX;
+        }
+        public void AumentarYEn(int aumentoY)
+        {
+            this.Y = Y + aumentoY;
+        }
+
     }
 }
