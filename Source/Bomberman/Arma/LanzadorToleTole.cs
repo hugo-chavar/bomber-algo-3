@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Bomberman.Arma
 {
-    public class LanzadorToleTole:ILanzador
+    public class LanzadorToleTole : ILanzador
     {
         public bool Lanzar(int x, int y, int reduccionRetardo)
         {

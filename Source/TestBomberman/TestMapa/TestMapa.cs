@@ -22,7 +22,7 @@ namespace TestBomberman.TestMapa
                 for (j = 0; j < 5; j++)
                 {
                     unaPosicion = new Punto(i, j);
-                    this.unMapa.agregarCasillaVacia(unaPosicion);
+                   // this.unMapa.agregarCasillaVacia(unaPosicion);
                 }
 
         }

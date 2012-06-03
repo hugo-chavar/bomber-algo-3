@@ -12,20 +12,21 @@ namespace TestBomberman.TestMapa
     {
         private Punto unaPosicion;
 
-        private CasillaVacia unaCasillaVacia;
+        private Casilla unaCasillaVacia;
         
         [TestFixtureSetUp]
         public void TestSetup()
         {
             unaPosicion = new Punto(2, 3);
-            this.unaCasillaVacia = new CasillaVacia(unaPosicion);
+            FabricaDeCasillas f = new FabricaDeCasillas();
+            this.unaCasillaVacia = f.FabricarPasillo(unaPosicion);
         }
 
         [Test]
         public void esTransitablePorUnPersonaje()
         {
             Personaje unPersonaje = new Bombita(unaPosicion);
-            Assert.IsTrue(this.unaCasillaVacia.TransitablePor(unPersonaje));
+            Assert.IsTrue(this.unaCasillaVacia.PermiteTransitarUn(unPersonaje));
         }
     }
 }
