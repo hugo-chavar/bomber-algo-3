@@ -14,12 +14,12 @@ namespace Bomberman.Mapa.Casilla
         private List<IMovible> transitandoEnCasilla;
         //defino el patron State para determinar si hay un obstaculo o la casilla esta libre
         private Obstaculo estado;
-        private Punto pos;
 
         public Casilla(Punto pos)
         {
             // TODO: Complete member initialization
-            this.pos = pos;
+            this.Posicion = pos;
+            transitandoEnCasilla = new List<IMovible>();
         }
 
         //metodo que utiliza el patron State
@@ -31,6 +31,7 @@ namespace Bomberman.Mapa.Casilla
         public void Transitar(IMovible movil)
         {
             this.transitandoEnCasilla.Add(movil);
+            ((IPosicionable)movil).Posicion = this.Posicion; // ESTE CASTEO QUEDA HORRIBLE!
         }
 
         public Punto Posicion

@@ -14,12 +14,15 @@ namespace TestBomberman.TestPersonaje
         {
             FabricaDeCasillas unaFabricaDeCasillas = new FabricaDeCasillas();
             Punto posicionOrigen = new Punto(2, 3);
-            //Casilla origen = unaFabricaDeCasillas.FabricarPasillo(posicionOrigen);
+            Casilla origen = unaFabricaDeCasillas.FabricarPasillo(posicionOrigen);
             Punto posicionDestino = new Punto(3, 3);
             Casilla destino = unaFabricaDeCasillas.FabricarPasillo(posicionDestino);
             Personaje unPersonaje = new Bombita(posicionOrigen);
+            
             destino.Transitar(unPersonaje);
-            Assert.AreEqual(posicionDestino, unPersonaje.Posicion);
+            
+            Assert.AreEqual(posicionDestino.X, unPersonaje.Posicion.X);
+            Assert.AreEqual(posicionDestino.Y, unPersonaje.Posicion.Y);
         }
 
     }

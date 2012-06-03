@@ -11,6 +11,7 @@ namespace Bomberman
         Punto Posicion
         {
             get;
+            set;
         }
 
     }
