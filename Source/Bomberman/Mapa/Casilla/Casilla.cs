@@ -11,7 +11,7 @@ namespace Bomberman.Mapa.Casilla
     {
         private Punto posicion;
         private Articulo.Articulo articuloContenido;
-        private List<Personaje.Personaje> personajesEnCasilla;
+        private List<IMovible> transitandoEnCasilla;
         //defino el patron State para determinar si hay un obstaculo o la casilla esta libre
         private Obstaculo estado;
         private Punto pos;
@@ -26,6 +26,11 @@ namespace Bomberman.Mapa.Casilla
         public bool PermiteTransitarUn(IMovible movil)
         {
             return this.Estado.TransitablePor(movil);
+        }
+
+        public void Transitar(IMovible movil)
+        {
+            this.transitandoEnCasilla.Add(movil);
         }
 
         public Punto Posicion
