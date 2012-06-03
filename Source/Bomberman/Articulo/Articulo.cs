@@ -10,11 +10,6 @@ namespace Bomberman.Articulo
     {   
         protected bool estaOculto;
 
-        public Articulo()
-        {
-            estaOculto = true;
-        }
-
         public abstract void ModificarComedor(IComedor comedor);
 
         public bool EstaOculto
@@ -22,6 +17,7 @@ namespace Bomberman.Articulo
             set { this.estaOculto = EstaOculto; }
             get { return this.estaOculto; }
         }
+
 
     }
 }

@@ -43,7 +43,8 @@ namespace Bomberman.Juego
         //constructor
         public Juego()
         {
-            this.Protagonista = new Personaje.Bombita();
+            Punto unPunto = new Punto ( 0 , 0 );
+            this.Protagonista = new Personaje.Bombita(unPunto);
             this.JuegoPausado = false;
             this.CantDeVidas = 3;
             this.Ambiente = new Mapa.Mapa(10,20);

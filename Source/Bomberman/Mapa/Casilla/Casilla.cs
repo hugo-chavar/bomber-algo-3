@@ -31,5 +31,10 @@ namespace Bomberman.Mapa.Casilla
         public abstract void DaniarConBombaMolotov();
         public abstract void DaniarConProyectil();
         //public abstract void daniarConProyectil();
+
+        public void agregarArticulo(Articulo.Articulo unArticulo)
+        {
+            this.ArticuloContenido = unArticulo;
+        }
     }
 }

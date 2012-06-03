@@ -39,7 +39,8 @@ namespace TestBomberman
         [Test]
         public void noEsTransitablePorUnPersonajeNoAlado()
         {
-            Personaje unPersonaje = new Bombita();
+            Punto unPunto = new Punto(0, 0);
+            Personaje unPersonaje = new Bombita(unPunto);
             Assert.IsFalse(this.unObstaculo.TransitablePor(unPersonaje));
         }
     }

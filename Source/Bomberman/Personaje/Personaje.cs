@@ -16,10 +16,11 @@ namespace Bomberman.Personaje
         protected String direccion;
         protected int reduccionRetardoBombas;
 
-        public Personaje()
+        public Personaje(Punto unPunto)
         {
             this.reduccionRetardoBombas = 0;
             this.velocidad = 1;
+            this.Posicion = unPunto;
         }
 
         public ILanzador Lanzador 
@@ -56,6 +57,7 @@ namespace Bomberman.Personaje
         public Punto Posicion
         {
             get { return this.posicion; }
+            set { this.posicion = Posicion; }
         }
 
     }

@@ -9,7 +9,7 @@ namespace Bomberman.Personaje
 {
     public class Bombita : Personaje , IComedor
     {
-        public Bombita() :base() 
+        public Bombita(Punto unPunto) :base(unPunto) 
         {
             this.lanzador = new LanzadorMolotov();
         }

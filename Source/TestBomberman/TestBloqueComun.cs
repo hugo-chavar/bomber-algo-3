@@ -69,7 +69,8 @@ namespace TestBomberman
         public void obstaculoDeCementoNoEsTransitablePorUnPersonajeNoAlado()
         {
             BloqueComun obstaculoCemento = BloqueComun.CrearBloqueCemento(posicion);
-            Personaje unPersonaje = new Bombita();
+            Punto unPunto = new Punto(0, 0);
+            Personaje unPersonaje = new Bombita(unPunto);
             Assert.IsFalse(obstaculoCemento.TransitablePor(unPersonaje));
         }
 
@@ -77,7 +78,8 @@ namespace TestBomberman
         public void obstaculoDeLadrilloNoEsTransitablePorUnPersonajeNoAlado()
         {
             BloqueComun obstaculoLadrillo = BloqueComun.CrearBloqueLadrillos(posicion);
-            Personaje unPersonaje = new Bombita();
+            Punto unPunto = new Punto(0, 0);
+            Personaje unPersonaje = new Bombita(unPunto);
             Assert.IsFalse(obstaculoLadrillo.TransitablePor(unPersonaje));
         }
     }

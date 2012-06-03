@@ -10,6 +10,8 @@ namespace TestBomberman.TestMapa
     [TestFixture]
     class TestCasillaVacia
     {
+        private Punto unaPosicion;
+
         private CasillaVacia unaCasillaVacia;
         
         [TestFixtureSetUp]
@@ -22,7 +24,7 @@ namespace TestBomberman.TestMapa
         [Test]
         public void esTransitablePorUnPersonaje()
         {
-            Personaje unPersonaje = new Bombita();
+            Personaje unPersonaje = new Bombita(unaPosicion);
             Assert.IsTrue(this.unaCasillaVacia.TransitablePor(unPersonaje));
         }
     }
