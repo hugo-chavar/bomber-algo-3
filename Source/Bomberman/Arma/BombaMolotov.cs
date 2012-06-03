@@ -9,8 +9,8 @@ namespace Bomberman.Arma
     {
         private const int TIEMPOEXPLOSION = 1;
 
-        public BombaMolotov(int x, int y, int porcentajeRetardo)
-            :base(x,y)
+        public BombaMolotov(Punto posicion, int porcentajeRetardo)
+            :base(posicion)
         {
             this.TiempoRestante = (TIEMPOEXPLOSION * (100 - porcentajeRetardo) / 100);
             this.PoderDeDestruccion = 5;

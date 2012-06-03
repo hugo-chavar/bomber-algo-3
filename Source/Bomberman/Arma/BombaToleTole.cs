@@ -10,8 +10,8 @@ namespace Bomberman.Arma
         private const int TIEMPOEXPLOSION = 5;
         private const int INFINITO = 1000;
 
-        public BombaToleTole(int x, int y, int porcentajeRetardo)
-            :base(x,y)
+        public BombaToleTole(Punto posicion, int porcentajeRetardo)
+            :base(posicion)
         {
             this.TiempoRestante = TIEMPOEXPLOSION * ((100 - porcentajeRetardo) / 100);
             this.PoderDeDestruccion = INFINITO;

@@ -7,6 +7,6 @@ namespace Bomberman.Arma
 {
     public interface ILanzador
     {
-        bool Lanzar(int x, int y, int reduccionRetardo);
+        bool Lanzar(Punto posicion, int reduccionRetardo);
     }
 }

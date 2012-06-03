@@ -15,10 +15,9 @@ namespace Bomberman.Arma
             set { this.tiempoRestante = value; }
         }   
         
-        public Bomba(int x, int y)
+        public Bomba(Punto unaPosicion)
             :base()
         {
-            Punto unaPosicion = new Punto(x, y);
             posicion = unaPosicion;
         }
 
