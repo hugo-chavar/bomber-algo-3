@@ -39,22 +39,22 @@ namespace Bomberman.Arma
                 case 0:
 
                     explotable.PosicionFinal.X = explotable.Posicion.X;
-                    explotable.PosicionFinal.Y = explotable.Posicion.Y - explotable.Alcance;
+                    explotable.PosicionFinal.AumentarYEn(-(explotable.Alcance));
                     break;
                 case 1:
 
                     explotable.PosicionFinal.X = explotable.Posicion.X;
-                    explotable.PosicionFinal.Y = explotable.Posicion.Y + explotable.Alcance;
+                    explotable.PosicionFinal.AumentarYEn(explotable.Alcance);
                     break;
                 case 3:
 
-                    explotable.PosicionFinal.X = explotable.Posicion.X - explotable.Alcance;
+                    explotable.PosicionFinal.AumentarXEn(-(explotable.Alcance));
                     explotable.PosicionFinal.Y = explotable.Posicion.Y;
                     break;
 
                 case 4:
 
-                    explotable.PosicionFinal.X = explotable.Posicion.X + explotable.Alcance;
+                    explotable.PosicionFinal.AumentarXEn(explotable.Alcance);
                     explotable.PosicionFinal.Y = explotable.Posicion.Y;
 
                     break;
@@ -70,16 +70,16 @@ namespace Bomberman.Arma
             switch (direccion)
             {
                 case 0:
-                    explotable.PosicionInicial.Y = explotable.PosicionInicial.Y - 1;
+                    explotable.PosicionInicial.AumentarYEn(-1);
                     break;
                 case 1:
-                    explotable.PosicionInicial.Y = explotable.PosicionInicial.Y + 1;
+                    explotable.PosicionInicial.AumentarYEn(1);
                     break;
                 case 2:
-                    explotable.PosicionInicial.X = explotable.PosicionInicial.X - 1;
+                    explotable.PosicionInicial.AumentarXEn(-1);
                     break;
                 case 3:
-                    explotable.PosicionInicial.X = explotable.PosicionInicial.X + 1;
+                    explotable.PosicionInicial.AumentarXEn(1);
                     break;
             }
         }
