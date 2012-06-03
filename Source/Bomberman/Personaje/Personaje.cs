@@ -8,13 +8,14 @@ using Bomberman.Arma;
 
 namespace Bomberman.Personaje
 {
-    public abstract class Personaje : IMovible, IPosicionable
+    public abstract class Personaje : IMovible, IPosicionable, IComedor
     {
         protected int velocidad;
         protected Punto posicion;
         protected ILanzador lanzador;
         protected String direccion;
         protected int reduccionRetardoBombas;
+        protected int unidadesDeResistencia;
 
         public Personaje(Punto unPunto)
         {
@@ -59,6 +60,15 @@ namespace Bomberman.Personaje
             get { return this.posicion; }
             set { this.posicion = Posicion; }
         }
+
+
+        public abstract void Comer(Articulo.IComible comible);
+
+        public abstract void DuplicarVelocidad();
+
+        public abstract void CambiarLanzadorAToleTole();
+
+        public abstract void ReducirRetardo(int retardo);
 
     }
 }

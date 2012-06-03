@@ -7,11 +7,14 @@ using Bomberman.Arma;
 
 namespace Bomberman.Personaje
 {
-    public class Bombita : Personaje , IComedor
+    public class Bombita : Personaje , IComible 
     {
+        private const int VIDABOMBITA = 1;
+
         public Bombita(Punto unPunto) :base(unPunto) 
         {
             this.lanzador = new LanzadorMolotov();
+            this.unidadesDeResistencia = VIDABOMBITA;
         }
 
         public void SetReduccionRetardoBombas(int PorcentajeRetardo)
@@ -24,7 +27,7 @@ namespace Bomberman.Personaje
             this.lanzador = new LanzadorToleTole();
         }
 
-        public void Comer(IComible comible)
+        public override void Comer(IComible comible)
         {
             comible.ModificarComedor(this);
         }
@@ -36,21 +39,26 @@ namespace Bomberman.Personaje
         }
 
 
-        public void DuplicarVelocidad()
+        public override void DuplicarVelocidad()
         {
             this.velocidad = this.velocidad * 2;
         }
 
 
-        public void CambiarLanzadorAToleTole()
+        public override void CambiarLanzadorAToleTole()
         {
             SetLanzadorToleTole();
         }
 
-        public void ReducirRetardo(int retardo)
+        public override void ReducirRetardo(int retardo)
         {
             SetReduccionRetardoBombas(retardo);
         }
 
+
+        public void ModificarComedor(IComedor comedor)
+        {
+            // ACA TENEMOS QUE MATAR A BOMBITA!
+        }
     }
 }

@@ -12,6 +12,7 @@ namespace Bomberman.Articulo
         public override void ModificarComedor(IComedor comedor)
         {
             comedor.CambiarLanzadorAToleTole();
+            this.EstaOculto = true;
         }
     }
 }

@@ -9,6 +9,7 @@ namespace Bomberman.Articulo
         public override void ModificarComedor(IComedor comedor)
         {
             comedor.ReducirRetardo(PORCENTAJEDERETRASO);
+            this.EstaOculto = true;
         }
     }
 }
