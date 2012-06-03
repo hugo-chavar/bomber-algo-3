@@ -62,6 +62,7 @@
     <Compile Include="Mapa\Mapa.cs" />
     <Compile Include="Personaje\Bombita.cs" />
     <Compile Include="Personaje\Cecilio.cs" />
+    <Compile Include="Personaje\ManejadorDeMovimiento.cs" />
     <Compile Include="Personaje\Enemigo.cs" />
     <Compile Include="Personaje\IComedor.cs" />
     <Compile Include="Articulo\IComible.cs" />
