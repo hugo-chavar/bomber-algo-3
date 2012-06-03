@@ -47,7 +47,7 @@
     <Compile Include="TestArma\TestBombaMolotov.cs" />
     <Compile Include="TestArma\TestBombaToleTole.cs" />
     <Compile Include="TestArticulo\TestTimer.cs" />
-    <Compile Include="TestArticulo\TestBombaToleTole.cs" />
+    <Compile Include="TestArticulo\TestArticuloBombaToleTole.cs" />
     <Compile Include="TestArticulo\TestChala.cs" />
     <Compile Include="TestBloqueComun.cs" />
     <Compile Include="TestBloqueAcero.cs" />

@@ -23,7 +23,7 @@ namespace TestBomberman.TestArticulo
         }
 
         [Test]
-        public void TestComerChalaDuplicaVelocidadDelComedor()
+        public void TestComerTimerReduceElRetardoDeBombas()
         {
             Articulo unArticulo = new Timer();
             c.agregarArticulo(unArticulo);

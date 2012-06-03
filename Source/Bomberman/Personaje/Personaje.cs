@@ -17,21 +17,43 @@ namespace Bomberman.Personaje
         protected int reduccionRetardoBombas;
         protected int unidadesDeResistencia;
 
+        protected const int VELOCIDAD = 1;
+
         public Personaje(Punto unPunto)
         {
             this.reduccionRetardoBombas = 0;
-            this.velocidad = 1;
+            this.velocidad = VELOCIDAD;
             this.Posicion = unPunto;
+        }
+
+        public int Velocidad
+        {
+            get { return this.velocidad; }
+            set { this.velocidad = value; }
         }
 
         public ILanzador Lanzador 
         { 
-            get { return this.lanzador; } 
+            get { return this.lanzador; }
+            set { this.lanzador = value; }
         }
 
         public int ReduccionRetardoBombas
         { 
-            get { return this.reduccionRetardoBombas;}  
+            get { return this.reduccionRetardoBombas;}
+            set { this.reduccionRetardoBombas = value; }
+        }
+
+        public int UnidadesDeResistencia
+        {
+            get { return this.unidadesDeResistencia; }
+            set { this.unidadesDeResistencia = value; }
+        }
+
+        public Punto Posicion
+        {
+            get { return this.posicion; }
+            set { this.posicion = value; }
         }
 
         public void LanzarExplosivo(int x, int y, int retardo)
@@ -39,7 +61,8 @@ namespace Bomberman.Personaje
             this.lanzador.Lanzar(x, y, retardo);
         }
 
-       
+
+      
         public void Mover()
         {
             //falta implementar
@@ -49,17 +72,11 @@ namespace Bomberman.Personaje
             }
         }
 
-        public bool AtraviesaObstaculos()
+        public virtual bool AtraviesaObstaculos()
         {
-            //hacer un override de este metodo solo en el personaje que atraviesa obstaculos
             return false;
         }
 
-        public Punto Posicion
-        {
-            get { return this.posicion; }
-            set { this.posicion = Posicion; }
-        }
 
 
         public abstract void Comer(Articulo.IComible comible);

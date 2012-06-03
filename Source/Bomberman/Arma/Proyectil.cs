@@ -5,20 +5,35 @@ using System.Text;
 
 namespace Bomberman.Arma
 {
-    public class Proyectil:Explosivo{
-
-        
-
+    public class Proyectil : Explosivo
+    {
         // Buscar ENUMERADOS: ARRIBA = 1; ABAJO = 0; DERECHA = 2; IZQUIERDA = 3 //
+        // establezco arbitrariamente un alcance de 3 casilleros (cuanto avanza el proytectil antes de explotar) y explota //
 
-    
-         // establezco arbitrariamente un alcance de 3 casilleros (cuanto avanza el proytectil antes de explotar) y explota //
         private Punto posicionFinal;
         private int poderDeDestruccion;
         private int alcance = 3;
         
+        public int Alcance
+        {
+            get { return this.alcance; }
+            set { this.alcance = value; }
+        }
 
-         public Proyectil(int x, int y)
+        public Punto PosicionInicial
+        {
+            get { return this.posicion; }
+            set { this.PosicionInicial = value; }
+        }
+
+        public Punto PosicionFinal
+        {
+            get { return this.posicionFinal; }
+            set { this.posicionFinal = value; }
+        }
+
+        
+        public Proyectil(int x, int y) // FIJARSE SI NO SERIA MEJOR PASARLE UNA POSICION EN VEZ DE LOS VALORES X e Y!!!
 
         {
             this.poderDeDestruccion = 5;
@@ -38,29 +53,11 @@ namespace Bomberman.Arma
 
                                                                         // cuando explota genera el mismo danio que la tole tole //
         }
-        public int Alcance
-        {
-            get { return this.alcance; }
-            set { this.alcance = value; }
-        }
 
-         public Punto PosicionFinal
-        {
-            get { return this.posicionFinal; }
-            set { this.posicionFinal = value; }
-        }
-
-        
-         public Punto PosicionInicial
-        {
-            get { return this.posicion; }
-            set { this.PosicionInicial = value; }
-        }
-
-        public void lanzarMisil(int direccionPersonaje)
+        public void LanzarMisil(int direccionPersonaje)
         {
             ManejadorProyectil unManejador = new ManejadorProyectil(this,direccionPersonaje);
-            unManejador.lanzarMisil();
+            unManejador.LanzarMisil();
 
         }
         

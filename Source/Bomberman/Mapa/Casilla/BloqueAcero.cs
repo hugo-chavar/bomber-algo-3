@@ -4,7 +4,7 @@ namespace Bomberman.Mapa.Casilla
     public class BloqueAcero :Obstaculo
     {
             public BloqueAcero(Punto Posicion)
-                : base(Posicion, 1)
+                : base(Posicion, 1)// Que es ese 1? es medio hardcodeado, alguien que vea como armar una constante interna para arreglarlo.
             { }
 
 

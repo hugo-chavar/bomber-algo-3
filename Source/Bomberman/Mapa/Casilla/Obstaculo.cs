@@ -9,33 +9,33 @@ namespace Bomberman.Mapa.Casilla
     public abstract class Obstaculo : Casilla
     {
         //Deberia ir en la clase bomba pero no la implementamos todavia
-        public const int danioMolotov = 5;
-        public const int danioProyectil = 5;
+        public const int DANIOMOLOTOV = 5;
+        public const int DANIOPROYECTIL = 5;
 
 
         protected int unidadesDeResistencia;
 
-        public Obstaculo(Punto Posicion, int Unidades)
+        public Obstaculo(Punto posicion, int unidades)
         {
-            this.posicion = Posicion;
-            this.unidadesDeResistencia = Unidades;
+            this.Posicion = posicion;
+            this.UnidadesDeResistencia = unidades;
         }
 
         public int UnidadesDeResistencia
         {
-            get { return (this.unidadesDeResistencia);}
-            set { this.unidadesDeResistencia = value;}
+            get { return this.unidadesDeResistencia; }
+            set { this.unidadesDeResistencia = value; }
         }
 
         public override void DaniarConBombaToleTole()
         {
             //Deberia daniar a los personajes alli presentes
-            this.unidadesDeResistencia = 0;
+            this.UnidadesDeResistencia = 0;
         }
 
         private int CalcularUnidadesRestantes(int unidadesDestruidas)
         {
-            int unidades = this.unidadesDeResistencia - unidadesDestruidas;
+            int unidades = (this.UnidadesDeResistencia - unidadesDestruidas);
             if (unidades < 0) return (0);
             else return (unidades);
         
@@ -45,7 +45,7 @@ namespace Bomberman.Mapa.Casilla
             //Deberia daniar a los personajes alli presentes
             if (!this.Destruido())
             {
-                this.unidadesDeResistencia = CalcularUnidadesRestantes(danioMolotov);
+                this.UnidadesDeResistencia = CalcularUnidadesRestantes(DANIOMOLOTOV);
             }
         }
 
@@ -54,7 +54,7 @@ namespace Bomberman.Mapa.Casilla
               // idem DaniarConBombaMolotov
             if (!this.Destruido())
             {
-                this.unidadesDeResistencia = CalcularUnidadesRestantes(danioProyectil);
+                this.UnidadesDeResistencia = CalcularUnidadesRestantes(DANIOPROYECTIL);
             }
         }
 
@@ -64,7 +64,7 @@ namespace Bomberman.Mapa.Casilla
 
         public bool Destruido()
         {
-            return((this.unidadesDeResistencia)<1);
+            return((this.UnidadesDeResistencia)<1);
         }
 
         public override bool TransitablePor(IMovible movil)

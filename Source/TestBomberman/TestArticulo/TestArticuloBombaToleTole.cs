@@ -7,7 +7,7 @@ using NUnit.Framework;
 
 namespace TestBomberman.TestArticulo
 {
-    class TestBombaToleTole
+    class TestArticuloBombaToleTole
     {
         private Punto pos;
         private Casilla c;

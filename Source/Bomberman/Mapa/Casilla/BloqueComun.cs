@@ -10,13 +10,13 @@ namespace Bomberman.Mapa.Casilla
 
         public static BloqueComun CrearBloqueCemento(Punto posicion)
         { 
-            BloqueComun BloqueCemento= new BloqueComun(posicion,10);
+            BloqueComun BloqueCemento = new BloqueComun(posicion, 10); // Meter constante para la "vida" del bloque
             return (BloqueCemento);
         }
 
         public static BloqueComun CrearBloqueLadrillos(Punto posicion)
         {
-            BloqueComun BloqueLadrillos = new BloqueComun(posicion, 5);
+            BloqueComun BloqueLadrillos = new BloqueComun(posicion, 5); // Meter constante para la "vida" del bloque
             return (BloqueLadrillos);
         }
 

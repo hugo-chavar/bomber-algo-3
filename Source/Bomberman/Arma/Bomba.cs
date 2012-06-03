@@ -11,6 +11,18 @@ namespace Bomberman.Arma
         protected int poderDeDestruccion;
         protected float tiempoRestante;
 
+        public int PoderDeDestruccion
+        {
+            get { return this.poderDeDestruccion; }
+            set { this.poderDeDestruccion = value; }
+        }
+
+        public float TiempoRestante
+        {
+            get { return this.tiempoRestante; }
+            set { this.tiempoRestante = value; }
+        }   
+        
         public Bomba(int x, int y)
             :base()
         {
@@ -22,8 +34,8 @@ namespace Bomberman.Arma
         
         public void CuandoPasaElTiempo()
         {
-            this.tiempoRestante = this.tiempoRestante - 1;
-            if (0 >= tiempoRestante)
+            this.DisminuirTiempo();
+            if (0 >= this.TiempoRestante)
             {
                 base.Explotar();     
             }      
@@ -31,13 +43,10 @@ namespace Bomberman.Arma
 
         public void DisminuirTiempo()
         {
-            (this.tiempoRestante)--;
+            this.TiempoRestante = (this.TiempoRestante - 1);
         }
 
-        public float GetTiempoRestante()
-        {
-            return this.tiempoRestante;
-        }
+
 
 
             

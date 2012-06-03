@@ -11,12 +11,22 @@ namespace Bomberman.Arma
         private Proyectil explotable;
         private int direccionPersonaje;
 
-
-
-        public ManejadorProyectil(Proyectil Explotable, int direccionPersonaje)
+        public int DireccionPersonaje
         {
-            this.explotable = Explotable;
-            this.direccionPersonaje = direccionPersonaje;
+            get { return this.direccionPersonaje; }
+            set { this.direccionPersonaje = DireccionPersonaje; }
+        }
+
+        public Proyectil Explotable
+        {
+            get { return this.explotable; }
+            set { this.explotable = value; }
+        }
+
+        public ManejadorProyectil(Proyectil explotable, int direccionPersonaje)
+        {
+            this.Explotable = explotable;
+            this.DireccionPersonaje = direccionPersonaje;
         }
 
         private Punto CalcularZonaImpacto(int direccionPersonaje)
@@ -74,7 +84,7 @@ namespace Bomberman.Arma
             }
         }
 
-        public int lanzarMisil ()
+        public int LanzarMisil ()
         {
             Punto puntoFinal;
             puntoFinal = this.CalcularZonaImpacto(direccionPersonaje);   //falta chequear que los valores X e Y finales no sean negativos, pero creo que otra clase en un nivel mas arriba deberia implementar eso //

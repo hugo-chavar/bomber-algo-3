@@ -19,25 +19,25 @@ namespace Bomberman.Juego
         public int CantDeVidas
         {
             get { return cantDeVidas; }
-            set { this.cantDeVidas = CantDeVidas; }
+            set { this.cantDeVidas = value; }
         }
 
         public bool JuegoPausado
         {
             get { return juegoPausado; }
-            set { this.juegoPausado = JuegoPausado; }
+            set { this.juegoPausado = value; }
         }
 
         public Personaje.Personaje Protagonista
         {
             get { return protagonista; }
-            set { this.protagonista = Protagonista; }
+            set { this.protagonista = value; }
         }
 
         public Mapa.Mapa Ambiente
         {
             get { return ambiente; }
-            set { this.ambiente = Ambiente; }
+            set { this.ambiente = value; }
         }
 
         //constructor

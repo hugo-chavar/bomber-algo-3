@@ -5,8 +5,13 @@ using System.Text;
 
 namespace Bomberman.Arma
 {
-    public class LanzadorProyectil
+    public class LanzadorProyectil : ILanzador
     {
-        
+
+        public bool Lanzar(int x, int y, int reduccionRetardo)
+        {
+            // ACA HAY QUE IMPLEMENTAR EL LANZAR DEL PROYECTIL!
+            return (true);//HARDCODEO PARA QUE ME FUNCIONE! ESTO ESTA MAL!
+        }
     }
 }
