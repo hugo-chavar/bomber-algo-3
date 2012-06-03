@@ -17,9 +17,9 @@ namespace TestBomberman.TestArticulo
         [TestFixtureSetUp]
         public void TestSetup()
         {
-            Punto pos = new Punto(3, 4);
-            Casilla c = new CasillaVacia(pos);
-            Bombita unBombita = new Bombita(pos);
+            pos = new Punto(3, 4);
+            c = new CasillaVacia(pos);
+            unBombita = new Bombita(pos);
         }
         
         [Test]
