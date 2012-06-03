@@ -12,9 +12,9 @@ namespace Bomberman.Arma
         public BombaMolotov(int x, int y, int porcentajeRetardo)
             :base(x,y)
         {
-            this.tiempoRestante = TIEMPOEXPLOSION * (100 - porcentajeRetardo) / 100;
-            this.poderDeDestruccion = 5;
-            this.ondaExpansiva = 3;
+            this.TiempoRestante = (TIEMPOEXPLOSION * (100 - porcentajeRetardo) / 100);
+            this.PoderDeDestruccion = 5;
+            this.OndaExpansiva = 3;
         }
 
         public override void Daniar(IDaniable daniable)

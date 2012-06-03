@@ -17,42 +17,27 @@ namespace Bomberman.Personaje
             this.unidadesDeResistencia = VIDABOMBITA;
         }
 
-        public void SetReduccionRetardoBombas(int PorcentajeRetardo)
-        {
-            this.reduccionRetardoBombas = PorcentajeRetardo;
-        }
-
-        public void SetLanzadorToleTole()
-        {
-            this.lanzador = new LanzadorToleTole();
-        }
 
         public override void Comer(IComible comible)
         {
             comible.ModificarComedor(this);
         }
 
-        public int Velocidad
-        {
-            get { return this.velocidad; }
-            set { this.velocidad = Velocidad; }
-        }
-
 
         public override void DuplicarVelocidad()
         {
-            this.velocidad = this.velocidad * 2;
+            this.Velocidad = (this.Velocidad * 2);
         }
 
 
         public override void CambiarLanzadorAToleTole()
         {
-            SetLanzadorToleTole();
+            this.lanzador = new LanzadorToleTole();
         }
 
         public override void ReducirRetardo(int retardo)
         {
-            SetReduccionRetardoBombas(retardo);
+            this.ReduccionRetardoBombas = retardo;
         }
 
 

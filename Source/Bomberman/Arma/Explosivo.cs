@@ -18,8 +18,8 @@ namespace Bomberman.Arma
 
         public int OndaExpansiva
         {
-            get{return this.ondaExpansiva;}
-            set{this.ondaExpansiva=value;}
+            get{ return this.ondaExpansiva; }
+            set { this.ondaExpansiva = value; }
         }
 
         public Punto Posicion

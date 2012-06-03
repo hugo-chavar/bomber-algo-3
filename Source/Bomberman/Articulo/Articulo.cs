@@ -14,8 +14,8 @@ namespace Bomberman.Articulo
 
         public bool EstaOculto
         {
-            set { this.estaOculto = EstaOculto; }
             get { return this.estaOculto; }
+            set { this.estaOculto = value; }        
         }
 
 

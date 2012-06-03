@@ -18,13 +18,13 @@ namespace Bomberman.Mapa.Casilla
         public Punto Posicion
         {
             get { return this.posicion; }
-            set { this.posicion = Posicion; }
+            set { this.posicion = value; }
         }
 
         public Articulo.Articulo ArticuloContenido
         {
             get { return this.articuloContenido; }
-            set { this.articuloContenido = ArticuloContenido; }
+            set { this.articuloContenido = value; }
         }
 
 
