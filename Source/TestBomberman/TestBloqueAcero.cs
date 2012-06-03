@@ -17,7 +17,6 @@ namespace TestBomberman
             posicion = new Punto(3, 4);
             unObstaculo = new BloqueAcero(posicion);
         }
-
         
         [Test]
         public void TestDaniarConBombaMolotovBloqueDeAceroNoModificaSuEstado()
@@ -32,7 +31,8 @@ namespace TestBomberman
         {
 
             unObstaculo.DaniarConBombaToleTole();
-            Assert.AreEqual(true, unObstaculo.Destruido());
+            //Assert.AreEqual(true, unObstaculo.Destruido()); Andy: hice este cambio, miralo y eliminá esta linea
+            Assert.IsTrue(unObstaculo.Destruido());
         }
     }
 }

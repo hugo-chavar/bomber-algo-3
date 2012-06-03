@@ -6,8 +6,15 @@ using Bomberman.Personaje;
 
 namespace Bomberman.Mapa.Casilla
 {
-    class CasillaVacia : Casilla
+    public class CasillaVacia : Casilla
     {
+        private Punto unaPosicion;
+
+        public CasillaVacia(Punto unaPosicion)
+        {
+            // TODO: Complete member initialization
+            this.unaPosicion = unaPosicion;
+        }
         public override bool TransitablePor(IMovible movil)
         {
             return true;

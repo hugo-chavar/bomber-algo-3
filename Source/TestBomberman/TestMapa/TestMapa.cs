@@ -18,6 +18,7 @@ namespace TestBomberman.TestMapa
             Punto unaPosicion = new Punto(2, 3);
 
 
+
         }
 
     }
