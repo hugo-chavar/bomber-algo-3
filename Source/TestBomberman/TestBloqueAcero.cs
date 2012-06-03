@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using Bomberman.Mapa.Casilla;
 using Bomberman;
+using Bomberman.Personaje;
 
 namespace TestBomberman
 {
@@ -33,6 +34,13 @@ namespace TestBomberman
             unObstaculo.DaniarConBombaToleTole();
             //Assert.AreEqual(true, unObstaculo.Destruido()); Andy: hice este cambio, miralo y eliminá esta linea
             Assert.IsTrue(unObstaculo.Destruido());
+        }
+
+        [Test]
+        public void noEsTransitablePorUnPersonajeNoAlado()
+        {
+            Personaje unPersonaje = new Bombita();
+            Assert.IsFalse(this.unObstaculo.TransitablePor(unPersonaje));
         }
     }
 }

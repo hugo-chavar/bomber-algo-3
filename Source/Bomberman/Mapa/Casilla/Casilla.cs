@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Bomberman.Personaje;
+using Bomberman;
 
 namespace Bomberman.Mapa.Casilla
 {
     public abstract class Casilla:IDaniable
     {
         protected Punto posicion;
+        protected Articulo.Articulo articuloContenido;
 
         public abstract bool TransitablePor(IMovible movil);
 
@@ -17,6 +19,12 @@ namespace Bomberman.Mapa.Casilla
         {
             get { return this.posicion; }
             set { this.posicion = Posicion; }
+        }
+
+        public Articulo.Articulo ArticuloContenido
+        {
+            get { return this.articuloContenido; }
+            set { this.articuloContenido = ArticuloContenido; }
         }
 
         public abstract void DaniarConBombaToleTole();

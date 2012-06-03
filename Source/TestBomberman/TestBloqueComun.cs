@@ -2,66 +2,74 @@
 using NUnit.Framework;
 using Bomberman.Mapa.Casilla;
 using Bomberman;
+using Bomberman.Personaje;
 
 namespace TestBomberman
 {   [TestFixture]
     class TestBloqueComun
     {
+        private BloqueComun obstaculoLadrillo;
+        private BloqueComun obstaculoCemento;
+        private Punto posicion;
+
+        [TestFixtureSetUp]
+        public void TestSetup()
+        {
+            posicion = new Punto(3, 4);
+            obstaculoLadrillo = BloqueComun.CrearBloqueLadrillos(posicion);
+            obstaculoCemento = BloqueComun.CrearBloqueCemento(posicion);
+        }
+            
         [Test]
         public void TestDaniarConBombaMolotovBloqueLadrillosModificaUnidades()
         {
-            Punto posicion = new Punto(3, 4);
-            BloqueComun UnObstaculo = BloqueComun.CrearBloqueLadrillos(posicion);
-            UnObstaculo.DaniarConBombaMolotov();
-            Assert.AreEqual(UnObstaculo.UnidadesDeResistencia, 0);
+            obstaculoLadrillo.DaniarConBombaMolotov();
+            Assert.AreEqual(obstaculoLadrillo.UnidadesDeResistencia, 0);
         }
 
         [Test]
         public void TestDaniarConBombaToleToleBloqueLadrillos()
         {
-            Punto posicion = new Punto(3, 4);
-            BloqueComun UnObstaculo = BloqueComun.CrearBloqueLadrillos(posicion);
-            UnObstaculo.DaniarConBombaToleTole();
-            Assert.AreEqual(true, UnObstaculo.Destruido());
+            obstaculoLadrillo.DaniarConBombaToleTole();
+            Assert.AreEqual(true, obstaculoLadrillo.Destruido());
         }
 
         [Test]
         public void TestDaniarConBombaMolotovBloqueLadrillosLoDestruye()
         {
-            Punto posicion = new Punto(3, 4);
-            BloqueComun UnObstaculo = BloqueComun.CrearBloqueLadrillos(posicion);
-            UnObstaculo.DaniarConBombaMolotov();
-            Assert.AreEqual(UnObstaculo.Destruido(),true);
+            obstaculoLadrillo.DaniarConBombaMolotov();
+            Assert.AreEqual(obstaculoLadrillo.Destruido(), true);
         }
 
         [Test]
         public void TestDaniarConBombaMolotovBloqueCementoModificaUnidades()
         {
-            Punto posicion = new Punto(3, 4);
-            BloqueComun UnObstaculo = BloqueComun.CrearBloqueCemento(posicion);
-            UnObstaculo.DaniarConBombaMolotov();
-            Assert.AreEqual(UnObstaculo.UnidadesDeResistencia, 5);
+            BloqueComun otroObstaculo = BloqueComun.CrearBloqueCemento(posicion);
+            otroObstaculo.DaniarConBombaMolotov();
+            Assert.AreEqual(otroObstaculo.UnidadesDeResistencia, 5);
         }
 
         [Test]
         public void TestDaniarConBombaToleToleBloqueCemento()
         {
-            Punto posicion = new Punto(3, 4);
-            BloqueComun UnObstaculo = BloqueComun.CrearBloqueCemento(posicion);
-            UnObstaculo.DaniarConBombaToleTole();
-            Assert.AreEqual(true, UnObstaculo.Destruido());
+            obstaculoCemento.DaniarConBombaToleTole();
+            Assert.AreEqual(true, obstaculoCemento.Destruido());
         }
 
         [Test]
         public void TestDaniarConBombaMolotovBloqueCementoLoDestruye()
         {
-            Punto posicion = new Punto(3, 4);
-            BloqueComun UnObstaculo = BloqueComun.CrearBloqueCemento(posicion);
-            UnObstaculo.DaniarConBombaMolotov();
-            UnObstaculo.DaniarConBombaMolotov();
-            Assert.AreEqual(UnObstaculo.Destruido(), true);
+            obstaculoCemento.DaniarConBombaMolotov();
+            obstaculoCemento.DaniarConBombaMolotov();
+            Assert.AreEqual(obstaculoCemento.Destruido(), true);
         }
 
+        [Test]
+        public void noEsTransitablePorUnPersonajeNoAlado()
+        {
+            Personaje unPersonaje = new Bombita();
+            Assert.IsFalse(this.obstaculoCemento.TransitablePor(unPersonaje));
+        }
 
     }
 }
