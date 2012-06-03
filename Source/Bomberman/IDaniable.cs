@@ -3,8 +3,7 @@
     public interface IDaniable
     {
         void DaniarConBombaToleTole();
-        void DaniarConBombaMolotov();
-        void DaniarConProyectil();
-        //void daniarConProyectil();
+        void DaniarConBombaMolotov(int UnidadesDaniadas);
+        void DaniarConProyectil(int UnidadesDaniadas);
     }
 }

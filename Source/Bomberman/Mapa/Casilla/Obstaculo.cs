@@ -6,13 +6,8 @@ using Bomberman.Personaje;
 
 namespace Bomberman.Mapa.Casilla
 {
-    public abstract class Obstaculo
+    public abstract class Obstaculo:IDaniable
     {
-        //Deberia ir en la clase bomba pero no la implementamos todavia
-        public const int DANIOMOLOTOV = 5;
-        public const int DANIOPROYECTIL = 5;
-
-
         protected int unidadesDeResistencia;
 
 
@@ -50,22 +45,22 @@ namespace Bomberman.Mapa.Casilla
         }
 
         //por ahora dejo esto virtual para que funcione, ARREGLAR LOS HARCODEOS!!
-        public virtual void DaniarConBombaMolotov()
+        public virtual void DaniarConBombaMolotov(int UnidadesDaniadas)
         {
             //Deberia daniar a los personajes alli presentes
             if (!this.Destruido())
             {
-                this.UnidadesDeResistencia = CalcularUnidadesRestantes(DANIOMOLOTOV);
+                this.UnidadesDeResistencia = CalcularUnidadesRestantes(UnidadesDaniadas);
             }
         }
 
         //por ahora dejo esto virtual para que funcione, ARREGLAR LOS HARCODEOS!!
-        public virtual void DaniarConProyectil()
+        public virtual void DaniarConProyectil(int UnidadesDaniadas)
         {
               // idem DaniarConBombaMolotov
             if (!this.Destruido())
             {
-                this.UnidadesDeResistencia = CalcularUnidadesRestantes(DANIOPROYECTIL);
+                this.UnidadesDeResistencia = CalcularUnidadesRestantes(UnidadesDaniadas);
             }
         }
 

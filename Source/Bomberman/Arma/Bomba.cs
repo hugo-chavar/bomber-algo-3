@@ -7,15 +7,7 @@ namespace Bomberman.Arma
 {
     public abstract class Bomba: Explosivo
     {
-
-        protected int poderDeDestruccion;
         protected float tiempoRestante;
-
-        public int PoderDeDestruccion
-        {
-            get { return this.poderDeDestruccion; }
-            set { this.poderDeDestruccion = value; }
-        }
 
         public float TiempoRestante
         {

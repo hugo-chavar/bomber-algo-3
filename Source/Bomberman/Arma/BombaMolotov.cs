@@ -19,7 +19,7 @@ namespace Bomberman.Arma
 
         public override void Daniar(IDaniable daniable)
         {
-            daniable.DaniarConBombaMolotov();
+            daniable.DaniarConBombaMolotov(this.PoderDeDestruccion);
         }
 
         

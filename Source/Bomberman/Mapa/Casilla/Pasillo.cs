@@ -22,15 +22,14 @@ namespace Bomberman.Mapa.Casilla
         { 
             //Deberia daniar a los personajes alli presentes
         }
-        public override void DaniarConBombaMolotov()
+        public override void DaniarConBombaMolotov(int UnidadesDaniadas)
         {
             //Deberia daniar a los personajes alli presentes
         }
-        public override void DaniarConProyectil()
+        public override void DaniarConProyectil(int UnidadesDaniadas)
         {
             
         }
 
-        //public abstract void daniarConProyectil();
     }
 }

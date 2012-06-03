@@ -20,7 +20,7 @@ namespace TestBomberman
         public void TestDaniarConBombaMolotovBloqueLadrillosModificaUnidades()
         {
             BloqueComun obstaculoLadrillo = BloqueComun.CrearBloqueLadrillos(posicion);
-            obstaculoLadrillo.DaniarConBombaMolotov();
+            obstaculoLadrillo.DaniarConBombaMolotov(5);
             Assert.AreEqual(obstaculoLadrillo.UnidadesDeResistencia, 0);
         }
 
@@ -36,7 +36,7 @@ namespace TestBomberman
         public void TestDaniarConBombaMolotovBloqueLadrillosLoDestruye()
         {
             BloqueComun obstaculoLadrillo = BloqueComun.CrearBloqueLadrillos(posicion);
-            obstaculoLadrillo.DaniarConBombaMolotov();
+            obstaculoLadrillo.DaniarConBombaMolotov(5);
             Assert.IsTrue(obstaculoLadrillo.Destruido());
         }
 
@@ -44,7 +44,7 @@ namespace TestBomberman
         public void TestDaniarConBombaMolotovBloqueCementoModificaUnidades()
         {
             BloqueComun obstaculoCemento = BloqueComun.CrearBloqueCemento(posicion);
-            obstaculoCemento.DaniarConBombaMolotov();
+            obstaculoCemento.DaniarConBombaMolotov(5);
             Assert.AreEqual(obstaculoCemento.UnidadesDeResistencia, 5);
         }
 
@@ -60,8 +60,8 @@ namespace TestBomberman
         public void TestDaniarConBombaMolotovBloqueCementoLoDestruye()
         {
             BloqueComun obstaculoCemento = BloqueComun.CrearBloqueCemento(posicion);
-            obstaculoCemento.DaniarConBombaMolotov();
-            obstaculoCemento.DaniarConBombaMolotov();
+            obstaculoCemento.DaniarConBombaMolotov(5);
+            obstaculoCemento.DaniarConBombaMolotov(5);
             Assert.IsTrue(obstaculoCemento.Destruido());
         }
 

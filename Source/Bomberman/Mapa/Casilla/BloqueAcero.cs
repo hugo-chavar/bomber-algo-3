@@ -8,7 +8,7 @@ namespace Bomberman.Mapa.Casilla
         { } // : base(Posicion, 1)// Nota: los obstaculos ya no necesitan posicion, son un State de Casilla
 
 
-            public override void DaniarConBombaMolotov()
+            public override void DaniarConBombaMolotov(int UnidadesDaniadas)
             {
                 //La Bomba Molotov no dania Al Bloque De Acero
                 //Deberia daniar a los personajes alli presentes

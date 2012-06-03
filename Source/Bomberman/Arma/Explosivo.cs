@@ -10,6 +10,7 @@ namespace Bomberman.Arma
         protected int ondaExpansiva;
         protected Punto posicion;
         protected bool exploto;
+        protected int poderDeDestruccion;
 
         public Explosivo()
         {
@@ -26,6 +27,12 @@ namespace Bomberman.Arma
         {
             get { return this.posicion; }
             set { this.posicion = value; }
+        }
+
+        public int PoderDeDestruccion
+        {
+            get { return this.poderDeDestruccion; }
+            set { this.poderDeDestruccion = value; }
         }
 
         public virtual void Explotar()

@@ -11,7 +11,6 @@ namespace Bomberman.Arma
         // establezco arbitrariamente un alcance de 3 casilleros (cuanto avanza el proytectil antes de explotar) y explota //
 
         private Punto posicionFinal;
-        private int poderDeDestruccion;
         private int alcance = 3;
         
         public int Alcance
@@ -49,7 +48,7 @@ namespace Bomberman.Arma
 
         public override void Daniar(IDaniable daniable)
         {
-            daniable.DaniarConProyectil();
+            daniable.DaniarConProyectil(this.PoderDeDestruccion);
 
                                                                         // cuando explota genera el mismo danio que la tole tole //
         }

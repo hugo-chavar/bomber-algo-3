@@ -22,7 +22,7 @@ namespace TestBomberman
         [Test]
         public void TestDaniarConBombaMolotovBloqueDeAceroNoModificaSuEstado()
             {
-                unObstaculo.DaniarConBombaMolotov();
+                unObstaculo.DaniarConBombaMolotov(5);
                 Assert.AreEqual(unObstaculo.UnidadesDeResistencia, 1); 
             }
 
