@@ -35,7 +35,7 @@ namespace TestBomberman.TestMapa
             unaFabricaDeCasillas = new FabricaDeCasillas();
             unaCasilla = unaFabricaDeCasillas.FabricarPasillo(pos);
             unMapa.agregarCasilla(unaCasilla);
-            Assert.AreEqual(unMapa.Tablero[pos.X,pos.Y] , unaCasilla);
+            Assert.AreSame(unMapa.obtenerCasilla(pos) , unaCasilla);
         }
 
         /*[TestFixtureSetUp]

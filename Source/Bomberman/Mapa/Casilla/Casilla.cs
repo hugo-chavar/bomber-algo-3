@@ -14,12 +14,11 @@ namespace Bomberman.Mapa.Casilla
         private List<IMovible> transitandoEnCasilla;
         //defino el patron State para determinar si hay un obstaculo o la casilla esta libre
         private Obstaculo estado;
-        private Punto pos;
 
         public Casilla(Punto pos)
         {
             // TODO: Complete member initialization
-            this.pos = pos;
+            this.posicion = pos;
         }
 
         //metodo que utiliza el patron State
@@ -60,6 +59,14 @@ namespace Bomberman.Mapa.Casilla
         //public abstract void DaniarConBombaToleTole();
         //public abstract void DaniarConBombaMolotov();
         //public abstract void DaniarConProyectil();
+
+       /* public override bool Equals(Object obj)
+        {
+            //Check for null and compare run-time types.
+            if (obj == null || this.GetType() != obj.GetType()) return false;
+            Punto p = (Punto)obj;
+            return (x == p.x) && (y == p.y);
+        }*/
 
     }
 }
