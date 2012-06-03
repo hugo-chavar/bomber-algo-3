@@ -14,8 +14,9 @@ namespace TestBomberman.TestJuego
         {
             this.unJuego = Juego.Instancia();
         }
+
         [Test]
-        public void DosReferenciasAJuedoDebenSerElMismoObjeto()
+        public void DosReferenciasAJuegoDebenSerElMismoObjeto()
         {
             //verifico que funcione el Singleton
             Juego otroJuego = Juego.Instancia();

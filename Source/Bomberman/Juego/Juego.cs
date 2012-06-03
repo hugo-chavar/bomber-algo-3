@@ -46,7 +46,7 @@ namespace Bomberman.Juego
             this.Protagonista = new Personaje.Bombita();
             this.JuegoPausado = false;
             this.CantDeVidas = 3;
-            this.Ambiente = new Mapa.Mapa();
+            this.Ambiente = new Mapa.Mapa(10,20);
 
         }
         
