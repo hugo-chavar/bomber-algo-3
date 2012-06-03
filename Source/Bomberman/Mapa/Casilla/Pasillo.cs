@@ -8,8 +8,6 @@ namespace Bomberman.Mapa.Casilla
 {
     public class Pasillo : Obstaculo
     {
-        private Punto unaPosicion;
-
         public Pasillo()
         {
             // TODO: Complete member initialization
