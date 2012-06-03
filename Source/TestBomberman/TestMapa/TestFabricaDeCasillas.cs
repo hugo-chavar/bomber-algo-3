@@ -21,9 +21,9 @@ namespace TestBomberman.TestMapa
         [TestFixtureSetUp]
         public void TestSetUp()
         {
-        unPunto = new Punto (2,3);
-        unaCasilla = new Casilla(unPunto);
-        unaFabricaDeCasillas = new FabricaDeCasillas();
+            unPunto = new Punto (2,3);
+            unaCasilla = new Casilla(unPunto);
+            unaFabricaDeCasillas = new FabricaDeCasillas();
         }
 
         [Test]
