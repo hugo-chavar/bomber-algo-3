@@ -20,8 +20,6 @@ namespace Bomberman.Mapa
 
         }
 
-
-
         public void agregarCasilla(Casilla.Casilla unaCasilla)
         {
             this.tablero[unaCasilla.Posicion.X, unaCasilla.Posicion.Y] = unaCasilla;
