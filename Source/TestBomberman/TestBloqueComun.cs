@@ -8,7 +8,6 @@ namespace TestBomberman
 {   [TestFixture]
     class TestBloqueComun
     {
-        private BloqueComun obstaculoCemento;
         private Punto posicion;
 
         [TestFixtureSetUp]
