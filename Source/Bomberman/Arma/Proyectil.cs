@@ -32,15 +32,14 @@ namespace Bomberman.Arma
         }
 
         
-        public Proyectil(int x, int y) // FIJARSE SI NO SERIA MEJOR PASARLE UNA POSICION EN VEZ DE LOS VALORES X e Y!!!
+        public Proyectil(Punto posicionInicial) // FIJARSE SI NO SERIA MEJOR PASARLE UNA POSICION EN VEZ DE LOS VALORES X e Y!!!
 
         {
             this.poderDeDestruccion = 5;
             this.ondaExpansiva = 3;
             Punto PosicionFinal = new Punto(0, 0);
-            Punto PosicionInicial = new Punto(x, y);
             posicionFinal = PosicionFinal;
-            posicion = PosicionInicial;
+            posicion = posicionInicial;
 
         }
 

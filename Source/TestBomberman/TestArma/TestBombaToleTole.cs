@@ -9,17 +9,25 @@ namespace TestBomberman.TestArma
     [TestFixture]
     class TestBombaToleTole
     {
+        private Punto posicion;
+
+        [TestFixtureSetUp]
+        public void TestSetup()
+        {
+            posicion = new Punto(3, 4);
+        }
+
             [Test]
-            public void testBombaToleToleEstaExplotadaAlSerCreadaDebeDevolverFalse()
+            public void TestBombaToleToleEstaExplotadaAlSerCreadaDebeDevolverFalse()
             {
-                Bomba bomba = new BombaToleTole(2, 3, 0);
+                Bomba bomba = new BombaToleTole(posicion, 0);
                 Assert.AreEqual(bomba.EstaExplotado(), false);
             }
 
             [Test]
-            public void testBombaToleToleEstaExplotadaAlPasar4SegundosDebeDevolverFalse()
+            public void TestBombaToleToleEstaExplotadaAlPasar4SegundosDebeDevolverFalse()
             {
-                Bomba bomba = new BombaToleTole(2, 3, 0);
+                Bomba bomba = new BombaToleTole(posicion, 0);
                 bomba.CuandoPasaElTiempo();
                 bomba.CuandoPasaElTiempo();
                 bomba.CuandoPasaElTiempo();
@@ -28,9 +36,9 @@ namespace TestBomberman.TestArma
             }
 
             [Test]
-            public void testBombaMolotovEstaExplotadaAl5SegundosDebeDevolverTrue()
+            public void TestBombaMolotovEstaExplotadaAl5SegundosDebeDevolverTrue()
             {
-                Bomba bomba = new BombaToleTole(2, 3, 0);
+                Bomba bomba = new BombaToleTole(posicion, 0);
                 bomba.CuandoPasaElTiempo();
                 bomba.CuandoPasaElTiempo();
                 bomba.CuandoPasaElTiempo();
@@ -38,6 +46,8 @@ namespace TestBomberman.TestArma
                 bomba.CuandoPasaElTiempo();
                 Assert.AreEqual(bomba.EstaExplotado(), true);
             }
+
+
         
     }
 }

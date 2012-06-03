@@ -9,28 +9,36 @@ namespace TestBomberman.TestArma
     [TestFixture]
     class TestBombaMolotov
     {
-        //No logro que me funcione bien el setup
-       /* private Bomba bomba;
+        private Punto posicion;
 
         [TestFixtureSetUp]
         public void TestSetup()
         {
-            bomba = new BombaMolotov(2, 3, 0);
+            posicion = new Punto(3, 4);
         }
-        */
+
         [Test]
-        public void testBombaMolotovEstaExplotadaAlSerPlantadaDebeDevolverFalse()
+        public void TestBombaMolotovEstaExplotadaAlSerPlantadaDebeDevolverFalse()
         {
-            Bomba bomba = new BombaMolotov(2, 3, 0);
+            Bomba bomba = new BombaMolotov(posicion, 0);
             Assert.AreEqual(bomba.EstaExplotado(), false);
         }
 
         [Test]
-        public void testBombaMolotovEstaExplotadaAlPasarUnTiempoDebeDevolverTrue()
+        public void TestBombaMolotovEstaExplotadaAlPasarUnTiempoDebeDevolverTrue()
         {
-            Bomba bomba = new BombaMolotov(2, 3, 0);
+            Bomba bomba = new BombaMolotov(posicion, 0);
             bomba.CuandoPasaElTiempo();
             Assert.AreEqual(bomba.EstaExplotado(), true);
+        }
+
+        [Test]
+        public void TestDaniarObstaculoConBombaMolotov()
+        { 
+           Bomba bomba = new BombaMolotov(posicion, 0);
+           Obstaculo obstaculo= BloqueComun.CrearBloqueCemento(posicion);
+           bomba.Daniar(obstaculo);
+           Assert.AreEqual(obstaculo.UnidadesDeResistencia, 5);
         }
     }
 }
