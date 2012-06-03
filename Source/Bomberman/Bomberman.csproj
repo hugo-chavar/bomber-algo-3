@@ -53,6 +53,7 @@
     <Compile Include="Articulo\ArticuloBombaToleTole.cs" />
     <Compile Include="Articulo\Chala.cs" />
     <Compile Include="Articulo\Timer.cs" />
+    <Compile Include="Excepciones\EstadoNuloException.cs" />
     <Compile Include="IPosicionable.cs" />
     <Compile Include="Juego\Juego.cs" />
     <Compile Include="Mapa\Casilla\FabricaDeCasillas.cs" />

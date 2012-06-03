@@ -22,16 +22,22 @@ namespace TestBomberman.TestMapa
              *      P * P * P
              *      P P P P P
              */
-            int i,j;
+            
             Punto unaPosicion;
             Casilla unaCasilla;
             this.unMapa = new Mapa(5,5);
             FabricaDeCasillas unaFabricaDeCasillas = new FabricaDeCasillas();
-            for (i=0;i<5;i++)
+
+            unaPosicion = new Punto(0, 0);
+            unaCasilla = unaFabricaDeCasillas.FabricarCasillaConBloqueAcero(unaPosicion);
+            this.unMapa.agregarCasilla(unaCasilla);
+
+            /* int i,j;
+             * for (i=0;i<5;i++)
                 for (j = 0; j < 5; j++)
                 {
                     unaPosicion = new Punto(i, j);
-                    if ((i & 1) == 0 || (j & 1) == 0)
+                    if ((i & 1) == 0 && (j & 1) == 0)
                     {
                         //ambos son numeros pares
                         unaCasilla = unaFabricaDeCasillas.FabricarCasillaConBloqueAcero(unaPosicion);
@@ -43,7 +49,7 @@ namespace TestBomberman.TestMapa
                     }
 
                     this.unMapa.agregarCasilla(unaCasilla);
-                }
+                }*/
 
         }
 
