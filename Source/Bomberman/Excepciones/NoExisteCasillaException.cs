@@ -5,8 +5,7 @@ using System.Text;
 
 namespace Bomberman.Excepciones
 {
-    public class EstadoNuloException : Exception
+    public class NoExisteCasillaException : Exception
     {
-
     }
 }

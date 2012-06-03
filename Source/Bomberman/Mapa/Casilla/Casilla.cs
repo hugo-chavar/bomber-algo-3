@@ -18,7 +18,7 @@ namespace Bomberman.Mapa.Casilla
         public Casilla(Punto pos)
         {
             // TODO: Complete member initialization
-            this.Posicion = pos;
+            this.posicion = pos;
             transitandoEnCasilla = new List<IMovible>();
         }
 
@@ -65,6 +65,14 @@ namespace Bomberman.Mapa.Casilla
         //public abstract void DaniarConBombaToleTole();
         //public abstract void DaniarConBombaMolotov();
         //public abstract void DaniarConProyectil();
+
+       /* public override bool Equals(Object obj)
+        {
+            //Check for null and compare run-time types.
+            if (obj == null || this.GetType() != obj.GetType()) return false;
+            Punto p = (Punto)obj;
+            return (x == p.x) && (y == p.y);
+        }*/
 
     }
 }
