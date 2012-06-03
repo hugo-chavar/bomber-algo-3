@@ -66,10 +66,10 @@ namespace Bomberman.Arma
                     explotable.PosicionInicial.Y = explotable.PosicionInicial.Y + 1;
                     break;
                 case 2:
-                    explotable.PosicionInicial.X = explotable.PosicionInicial.X + 1;
+                    explotable.PosicionInicial.X = explotable.PosicionInicial.X - 1;
                     break;
                 case 3:
-                    explotable.PosicionInicial.X = explotable.PosicionInicial.X - 1;
+                    explotable.PosicionInicial.X = explotable.PosicionInicial.X + 1;
                     break;
             }
         }
