@@ -11,9 +11,9 @@ namespace Bomberman.Mapa.Casilla
     {
         protected Punto posicion;
         protected Articulo.Articulo articuloContenido;
+        protected List<Personaje.Personaje> personajesEnCasilla;
 
         public abstract bool TransitablePor(IMovible movil);
-
 
         public Punto Posicion
         {
@@ -26,6 +26,8 @@ namespace Bomberman.Mapa.Casilla
             get { return this.articuloContenido; }
             set { this.articuloContenido = ArticuloContenido; }
         }
+
+
 
         public abstract void DaniarConBombaToleTole();
         public abstract void DaniarConBombaMolotov();
