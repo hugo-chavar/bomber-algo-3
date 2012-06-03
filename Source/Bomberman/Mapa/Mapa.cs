@@ -12,17 +12,33 @@ namespace Bomberman.Mapa
         private int dimensionHorizontal;
         private int dimensionVertical;
 
+        public Casilla.Casilla[,] Tablero
+        {
+            get { return this.tablero; }
+            set { this.tablero = value; }
+        }
+
+        public int DimensionHorizontal
+        {
+            get { return this.dimensionHorizontal; }
+        }
+
+        public int DimensionVertical
+        {
+            get { return this.dimensionVertical; }
+        }
+
         public Mapa(int tamanioHorizontal, int tamanioVertical)
         {
             this.dimensionHorizontal = tamanioHorizontal;
             this.dimensionVertical = tamanioVertical;
-            tablero = new Casilla.Casilla[this.dimensionHorizontal, this.dimensionVertical];
+            this.Tablero = (new Casilla.Casilla[this.dimensionHorizontal, this.dimensionVertical]);
 
         }
 
         public void agregarCasilla(Casilla.Casilla unaCasilla)
         {
-            this.tablero[unaCasilla.Posicion.X, unaCasilla.Posicion.Y] = unaCasilla;
+            (tablero[(unaCasilla.Posicion.X), (unaCasilla.Posicion.Y)]) = (unaCasilla);
         }
     }
 }
