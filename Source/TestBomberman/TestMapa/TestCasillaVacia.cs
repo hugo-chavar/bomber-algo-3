@@ -17,7 +17,7 @@ namespace TestBomberman.TestMapa
         [TestFixtureSetUp]
         public void TestSetup()
         {
-            Punto unaPosicion = new Punto(2, 3);
+            unaPosicion = new Punto(2, 3);
             this.unaCasillaVacia = new CasillaVacia(unaPosicion);
         }
 
