@@ -14,6 +14,10 @@ namespace Bomberman.Juego
         private Mapa.Mapa ambiente;
         //declaracion del Singleton
         private static Juego instanciaDeJuego;
+        //Constantes
+        private const int VIDAS = 3;
+        private const int ANCHOMAPA = 10;
+        private const int ALTOMAPA = 20;
 
         //propiedades
         public int CantDeVidas
@@ -46,8 +50,8 @@ namespace Bomberman.Juego
             Punto unPunto = new Punto ( 0 , 0 );
             this.Protagonista = new Personaje.Bombita(unPunto);
             this.JuegoPausado = false;
-            this.CantDeVidas = 3;
-            this.Ambiente = new Mapa.Mapa(10,20);
+            this.CantDeVidas = VIDAS;
+            this.Ambiente = new Mapa.Mapa(ANCHOMAPA,ALTOMAPA);
 
         }
         
