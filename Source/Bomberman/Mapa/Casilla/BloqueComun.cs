@@ -5,8 +5,8 @@ namespace Bomberman.Mapa.Casilla
     public class BloqueComun:Obstaculo
     {
 
-        private const resistenciaLadrillos = 5;
-        private const resistenciaCemento = 10;
+        private const int resistenciaLadrillos = 5;
+        private const int resistenciaCemento = 10;
 
         private BloqueComun(Punto Posicion, int UnidadesResistencia)
             : base(UnidadesResistencia) // Saque la posicion de ak
