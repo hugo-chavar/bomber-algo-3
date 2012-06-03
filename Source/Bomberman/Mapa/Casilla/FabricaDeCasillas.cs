@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Bomberman.Excepciones;
 
 namespace Bomberman.Mapa.Casilla
 {
@@ -18,6 +19,8 @@ namespace Bomberman.Mapa.Casilla
         {
             Casilla unaCasilla = new Casilla(pos);
             unaCasilla.Estado = new BloqueAcero(pos);
+            if (unaCasilla.Estado == null)
+                throw new EstadoNuloException();
             return unaCasilla;
         }
 
@@ -25,6 +28,8 @@ namespace Bomberman.Mapa.Casilla
         {
             Casilla unaCasilla = new Casilla(pos);
             unaCasilla.Estado = BloqueComun.CrearBloqueLadrillos(pos);
+            if (unaCasilla.Estado == null)
+                throw new EstadoNuloException();
             return unaCasilla;
         }
 
@@ -32,6 +37,8 @@ namespace Bomberman.Mapa.Casilla
         {
             Casilla unaCasilla = new Casilla(pos);
             unaCasilla.Estado = BloqueComun.CrearBloqueCemento(pos);
+            if (unaCasilla.Estado == null)
+                throw new EstadoNuloException();
             return unaCasilla;
         }
     }
