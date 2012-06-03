@@ -3,27 +3,62 @@ using NUnit.Framework;
 using Bomberman.Mapa.Casilla;
 using Bomberman;
 using Bomberman.Personaje;
+using System.Collections.Generic;
 
 namespace TestBomberman.TestPersonaje
 {
     [TestFixture]
     class TestPersonaje
     {
-        [Test]
-        public void moverPersonajeloDejaEnLaCasillaDestinoSiAmbasSonTransitables()
+        private FabricaDeCasillas unaFabricaDeCasillas;
+        private Punto posicionOrigen;
+        private Casilla origen;
+        private Punto posicionDestino;
+        private Casilla destino;
+        private Personaje unPersonaje;
+
+        [TestFixtureSetUp]
+        public void TestSetup()
         {
-            FabricaDeCasillas unaFabricaDeCasillas = new FabricaDeCasillas();
-            Punto posicionOrigen = new Punto(2, 3);
-            Casilla origen = unaFabricaDeCasillas.FabricarPasillo(posicionOrigen);
-            Punto posicionDestino = new Punto(3, 3);
-            Casilla destino = unaFabricaDeCasillas.FabricarPasillo(posicionDestino);
-            Personaje unPersonaje = new Bombita(posicionOrigen);
-            
-            destino.Transitar(unPersonaje);
-            
-            Assert.AreEqual(posicionDestino.X, unPersonaje.Posicion.X);
-            Assert.AreEqual(posicionDestino.Y, unPersonaje.Posicion.Y);
+            this.unaFabricaDeCasillas = new FabricaDeCasillas();
+            this.posicionOrigen = new Punto(2, 3);
+            this.origen = unaFabricaDeCasillas.FabricarPasillo(posicionOrigen);
+            this.posicionDestino = new Punto(3, 3);
+            this.destino = unaFabricaDeCasillas.FabricarPasillo(posicionDestino);
+            this.unPersonaje = new Bombita(posicionOrigen);
         }
 
+        [Test]
+        public void MoverPersonajeloDejaEnLaCasillaDestinoSiAmbasSonTransitables()
+        {
+            destino.Transitar(unPersonaje);
+
+            Assert.AreEqual(posicionDestino, unPersonaje.Posicion);
+            destino.Dejar(unPersonaje); // Lo agrego porque sino no me sacaba los personajes de la lista de la casilla Destino (CHEQUEAR SI EL SETUP ESTA BIEN!!!)
+        }
+
+        [Test]
+        public void MoverPersonajeloSacaDeLaCasillaOrigen()
+        {
+            origen.Dejar(unPersonaje);
+            destino.Transitar(unPersonaje);
+            List<IMovible> unaListaVacia = new List<IMovible>();
+            
+            Assert.AreEqual(unaListaVacia, origen.TransitandoEnCasilla);
+            destino.Dejar(unPersonaje); // Lo agrego porque sino no me sacaba los personajes de la lista de la casilla Destino (CHEQUEAR SI EL SETUP ESTA BIEN!!!)
+        }
+
+        [Test]
+        public void MoverPersonajeMeLoAgregaEnLaListaDeMovibles()
+        {
+            destino.Transitar(unPersonaje);
+            List<IMovible> unaLista = new List<IMovible>();
+            unaLista.Add(unPersonaje);
+
+            Assert.AreEqual(unaLista[0], destino.TransitandoEnCasilla[0]);
+            Assert.AreEqual((unaLista).Count, (destino.TransitandoEnCasilla).Count);
+            destino.Dejar(unPersonaje); // Lo agrego porque sino no me sacaba los personajes de la lista de la casilla Destino (CHEQUEAR SI EL SETUP ESTA BIEN!!!)
+        }
+        
     }
 }
