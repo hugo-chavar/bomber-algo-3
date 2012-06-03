@@ -29,6 +29,13 @@
         {
             this.Y = Y + aumentoY;
         }
-
-    }
+        public bool EsPuntoValido()
+        {
+            if ((this.X >= 0) && (this.Y >= 0))
+            {
+                return true;
+            }
+            return false;
+            }
+        }
 }
