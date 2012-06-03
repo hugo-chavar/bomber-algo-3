@@ -14,6 +14,7 @@ namespace TestBomberman.TestMapa
         [TestFixtureSetUp]
         public void TestSetup()
         {
+            //creo un mapa con
             int i,j;
             Punto unaPosicion;
             this.unMapa = new Mapa(5,5);
@@ -21,6 +22,7 @@ namespace TestBomberman.TestMapa
                 for (j = 0; j < 5; j++)
                 {
                     unaPosicion = new Punto(i, j);
+                    this.unMapa.agregarCasillaVacia(unaPosicion);
                 }
 
         }
