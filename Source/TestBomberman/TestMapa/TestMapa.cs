@@ -17,7 +17,7 @@ namespace TestBomberman.TestMapa
         private Punto pos;
         private FabricaDeCasillas unaFabricaDeCasillas;
 
-        [Test]
+        /*[Test]
         public void CrearUnMapaFuncionaBien()
         { 
             unMapa = new Mapa(ANCHOMAPA, ALTOMAPA);
@@ -25,6 +25,14 @@ namespace TestBomberman.TestMapa
             Assert.AreEqual(unMapa.Tablero, unTablero);
             Assert.AreEqual(unMapa.DimensionHorizontal, ANCHOMAPA);
             Assert.AreEqual(unMapa.DimensionVertical, ALTOMAPA);
+        }*/
+
+        [Test]
+        public void NuevoMapaNoContieneCasillas()
+        {
+            unMapa = new Mapa(ANCHOMAPA, ALTOMAPA);
+            Punto unaPos = new Punto(0, 0);
+            Assert.IsFalse(unMapa.existeCasillaEnPosicion(unaPos));
         }
 
         [Test]
