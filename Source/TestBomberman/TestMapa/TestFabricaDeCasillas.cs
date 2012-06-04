@@ -16,34 +16,32 @@ namespace TestBomberman.TestMapa
         
         private Casilla unaCasilla;
         private Punto unPunto;
-        private FabricaDeCasillas unaFabricaDeCasillas;
         
         [TestFixtureSetUp]
         public void TestSetUp()
         {
             unPunto = new Punto (2,3);
             unaCasilla = new Casilla(unPunto);
-            unaFabricaDeCasillas = new FabricaDeCasillas();
         }
 
         [Test]
         public void TestFabricarPasilloDevuelveCasillaEnEstadoPasillo()
         {
-            unaCasilla = unaFabricaDeCasillas.FabricarPasillo(unPunto);
+            unaCasilla = FabricaDeCasillas.FabricarPasillo(unPunto);
             Assert.IsInstanceOf(typeof (Pasillo) , unaCasilla.Estado);
         }
 
         [Test]
         public void TestFabricarCasillaConBloqueDeAceroDevuelveCasillaEnEstadoBloqueAcero()
         {
-            unaCasilla = unaFabricaDeCasillas.FabricarCasillaConBloqueAcero(unPunto);
+            unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueAcero(unPunto);
             Assert.IsInstanceOf(typeof(BloqueAcero), unaCasilla.Estado);
         }
         
         [Test]
         public void TestFabricarCasillaConBloqueDeLadrillosDevuelveCasillaEnEstadoBloqueLadrillos()
         {
-            unaCasilla = unaFabricaDeCasillas.FabricarCasillaConBloqueLadrillos(unPunto);
+            unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(unPunto);
             Assert.IsInstanceOf(typeof(BloqueComun), unaCasilla.Estado);
             Assert.AreEqual(unaCasilla.Estado.UnidadesDeResistencia, RESISTENCIALADRILLO);
         }
@@ -51,7 +49,7 @@ namespace TestBomberman.TestMapa
         [Test]
         public void TestFabricarCasillaConBloqueDeCemento()
         {
-            unaCasilla = unaFabricaDeCasillas.FabricarCasillaConBloqueCemento(unPunto);
+            unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueCemento(unPunto);
             Assert.IsInstanceOf(typeof(BloqueComun), unaCasilla.Estado);
             Assert.AreEqual(unaCasilla.Estado.UnidadesDeResistencia, RESISTENCIACEMENTO);
         }      
