@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Bomberman.Arma;
 using Bomberman.Mapa.Casilla;
 using Bomberman.Excepciones;
 
@@ -142,5 +144,46 @@ namespace Bomberman.Mapa
             return unaCasilla.PermiteTransitarUn(movil);
         }
 
+        //Por el momento atrapo solo la excepcion.Hay qu solucionarlo de otr Forma
+        public void ManejarExplosion(Explosivo explosivo)
+        {
+            ArrayList puntosAfectados = CalcularCasillerosExplotados(explosivo);
+            for (int i = 0; i < (puntosAfectados.Count); i++)
+            {
+                try
+                {
+                    Casilla.Casilla casillaAux = this.ObtenerCasilla((Punto)puntosAfectados[i]);
+                    explosivo.Daniar(casillaAux.Estado);
+                    for (int j = 0; j < casillaAux.TransitandoEnCasilla.Count; j++)
+                        explosivo.Daniar(casillaAux.TransitandoEnCasilla[j]);
+                }
+                catch (NoExisteCasillaException)
+                {}
+            }
+        }
+
+        //Volver a mirar Este Metodo. Soluciono asi Para ver si Funcionan Tests
+        private ArrayList CalcularCasillerosExplotados(Explosivo explosivo)
+        {
+            ArrayList listaDevolucion = new ArrayList();
+            Punto unPuntoAux = new Punto(explosivo.Posicion.X - explosivo.OndaExpansiva, explosivo.Posicion.Y);
+
+            for (int i = 0; i <= 2*explosivo.OndaExpansiva; i++)
+            {
+                unPuntoAux.PosicionDerecha(1);
+                listaDevolucion.Add(unPuntoAux);
+            }
+
+            unPuntoAux.X = explosivo.Posicion.X;
+            unPuntoAux.Y = explosivo.Posicion.Y - explosivo.OndaExpansiva;
+            for (int i = 0; i <= 2*explosivo.OndaExpansiva; i++)
+            {
+                unPuntoAux.PosicionSuperior(1);
+                if (unPuntoAux != explosivo.Posicion)
+                listaDevolucion.Add(unPuntoAux);
+            }
+
+            return listaDevolucion;
+        }
     }
 }
