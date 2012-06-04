@@ -22,6 +22,11 @@ namespace Bomberman.Mapa.Casilla
             transitandoEnCasilla = new List<IMovible>();
         }
 
+        public List<IMovible> TransitandoEnCasilla
+        {
+            get { return this.transitandoEnCasilla; }
+        }
+
         //metodo que utiliza el patron State
         public bool PermiteTransitarUn(IMovible movil)
         {
@@ -32,6 +37,11 @@ namespace Bomberman.Mapa.Casilla
         {
             this.transitandoEnCasilla.Add(movil);
             ((IPosicionable)movil).Posicion = this.Posicion; // ESTE CASTEO QUEDA HORRIBLE!
+        }
+
+        public void Dejar(IMovible movil)
+        {
+            this.transitandoEnCasilla.Remove(movil);
         }
 
         public Punto Posicion
