@@ -10,7 +10,6 @@ namespace TestBomberman.TestPersonaje
     [TestFixture]
     class TestPersonajeII
     {
-        private FabricaDeCasillas unaFabricaDeCasillas;
         private Punto posicionOrigen;
         private Casilla origen;
         private Punto posicionDestino;
@@ -22,11 +21,11 @@ namespace TestBomberman.TestPersonaje
         [TestFixtureSetUp]
         public void TestSetup()
         {
-            this.unaFabricaDeCasillas = new FabricaDeCasillas();
+      
             this.posicionOrigen = new Punto(1, 1);
-            this.origen = unaFabricaDeCasillas.FabricarPasillo(posicionOrigen);
-            this.posicionDestino = new Punto(2, 1);
-            this.destino = unaFabricaDeCasillas.FabricarPasillo(posicionDestino);
+            this.origen = FabricaDeCasillas.FabricarPasillo(posicionOrigen);
+                        this.posicionDestino = new Punto(2, 1);
+            this.destino = FabricaDeCasillas.FabricarPasillo(posicionDestino);
             this.unPersonaje = new Bombita(posicionOrigen);
             this.unMapa = new Mapa(3, 3);
             this.unMapa.agregarCasilla(origen);
