@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Bomberman.Excepciones
 {
-    public class PosicionNulaException : Exception
+    public class PuntoFueraDeRangoEnMapaException : Exception
     {
     }
 }

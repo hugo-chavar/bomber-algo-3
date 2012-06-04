@@ -56,6 +56,7 @@
     <Compile Include="Excepciones\EstadoNuloException.cs" />
     <Compile Include="Excepciones\NoExisteCasillaException.cs" />
     <Compile Include="Excepciones\PosicionNulaException.cs" />
+    <Compile Include="Excepciones\PuntoFueraDeRangoEnMapaException.cs" />
     <Compile Include="IPosicionable.cs" />
     <Compile Include="Juego\Juego.cs" />
     <Compile Include="Mapa\Casilla\FabricaDeCasillas.cs" />
