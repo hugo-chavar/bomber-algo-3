@@ -21,15 +21,17 @@ namespace Bomberman.Arma
         {
             ArrayList listaDevolucion = new ArrayList();
             Punto unPuntoAux = new Punto(1, this.explosivo.Posicion.Y);
-            for (int i = -(this.explosivo.OndaExpansiva); i < this.explosivo.OndaExpansiva + 1; i++)
+
+            for (int i = -(this.explosivo.OndaExpansiva); i <= this.explosivo.OndaExpansiva; i++)
             {
-                unPuntoAux.X = i + this.explosivo.Posicion.X;
+                unPuntoAux.PosicionDerecha(1);
                 listaDevolucion.Add(unPuntoAux);
             }
+
             unPuntoAux.X = this.explosivo.Posicion.X;
-            for (int i = -(this.explosivo.OndaExpansiva); i < this.explosivo.OndaExpansiva + 1; i++)
+            for (int i = -(this.explosivo.OndaExpansiva); i <= this.explosivo.OndaExpansiva; i++)
             {
-                unPuntoAux.Y = i + this.explosivo.Posicion.Y;
+                unPuntoAux.PosicionSuperior(1);
                 if (unPuntoAux != this.explosivo.Posicion)
                 listaDevolucion.Add(unPuntoAux);
             }

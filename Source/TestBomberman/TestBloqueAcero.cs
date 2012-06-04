@@ -10,20 +10,18 @@ namespace TestBomberman
     public class TestBloqueAcero
     {
         private BloqueAcero unObstaculo;
-        private Punto posicion;
 
         [TestFixtureSetUp]
         public void TestSetup()
         {
-            posicion = new Punto(3, 4);
-            unObstaculo = new BloqueAcero(posicion);
+            unObstaculo = new BloqueAcero();
         }
         
         [Test]
         public void TestDaniarConBombaMolotovBloqueDeAceroNoModificaSuEstado()
             {
                 unObstaculo.DaniarConBombaMolotov(5);
-                Assert.AreEqual(unObstaculo.UnidadesDeResistencia, 1); 
+                Assert.AreEqual(unObstaculo.UnidadesDeResistencia,10); 
             }
 
         [Test]
@@ -31,7 +29,6 @@ namespace TestBomberman
         {
 
             unObstaculo.DaniarConBombaToleTole();
-            //Assert.AreEqual(true, unObstaculo.Destruido()); Andy: hice este cambio, miralo y eliminá esta linea
             Assert.IsTrue(unObstaculo.Destruido());
         }
 

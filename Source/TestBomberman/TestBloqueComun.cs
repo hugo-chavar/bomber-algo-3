@@ -9,18 +9,10 @@ namespace TestBomberman
     [TestFixture]
     class TestBloqueComun
     {
-        private Punto posicion;
-
-        [TestFixtureSetUp]
-        public void TestSetup()
-        {
-            posicion = new Punto(3, 4);
-        }
-            
         [Test]
         public void TestDaniarConBombaMolotovBloqueLadrillosModificaUnidades()
         {
-            BloqueComun obstaculoLadrillo = BloqueComun.CrearBloqueLadrillos(posicion);
+            BloqueComun obstaculoLadrillo = BloqueComun.CrearBloqueLadrillos();
             obstaculoLadrillo.DaniarConBombaMolotov(5);
             Assert.AreEqual(obstaculoLadrillo.UnidadesDeResistencia, 0);
         }
@@ -28,7 +20,7 @@ namespace TestBomberman
         [Test]
         public void TestDaniarConBombaToleToleBloqueLadrillos()
         {
-            BloqueComun obstaculoLadrillo = BloqueComun.CrearBloqueLadrillos(posicion);
+            BloqueComun obstaculoLadrillo = BloqueComun.CrearBloqueLadrillos();
             obstaculoLadrillo.DaniarConBombaToleTole();
             Assert.IsTrue(obstaculoLadrillo.Destruido());
         }
@@ -36,7 +28,7 @@ namespace TestBomberman
         [Test]
         public void TestDaniarConBombaMolotovBloqueLadrillosLoDestruye()
         {
-            BloqueComun obstaculoLadrillo = BloqueComun.CrearBloqueLadrillos(posicion);
+            BloqueComun obstaculoLadrillo = BloqueComun.CrearBloqueLadrillos();
             obstaculoLadrillo.DaniarConBombaMolotov(5);
             Assert.IsTrue(obstaculoLadrillo.Destruido());
         }
@@ -44,7 +36,7 @@ namespace TestBomberman
         [Test]
         public void TestDaniarConBombaMolotovBloqueCementoModificaUnidades()
         {
-            BloqueComun obstaculoCemento = BloqueComun.CrearBloqueCemento(posicion);
+            BloqueComun obstaculoCemento = BloqueComun.CrearBloqueCemento();
             obstaculoCemento.DaniarConBombaMolotov(5);
             Assert.AreEqual(obstaculoCemento.UnidadesDeResistencia, 5);
         }
@@ -52,7 +44,7 @@ namespace TestBomberman
         [Test]
         public void TestDaniarConBombaToleToleBloqueCemento()
         {
-            BloqueComun obstaculoCemento = BloqueComun.CrearBloqueCemento(posicion);
+            BloqueComun obstaculoCemento = BloqueComun.CrearBloqueCemento();
             obstaculoCemento.DaniarConBombaToleTole();
             Assert.IsTrue(obstaculoCemento.Destruido());
         }
@@ -60,7 +52,7 @@ namespace TestBomberman
         [Test]
         public void TestDaniarConBombaMolotovBloqueCementoLoDestruye()
         {
-            BloqueComun obstaculoCemento = BloqueComun.CrearBloqueCemento(posicion);
+            BloqueComun obstaculoCemento = BloqueComun.CrearBloqueCemento();
             obstaculoCemento.DaniarConBombaMolotov(5);
             obstaculoCemento.DaniarConBombaMolotov(5);
             Assert.IsTrue(obstaculoCemento.Destruido());
@@ -69,7 +61,7 @@ namespace TestBomberman
         [Test]
         public void obstaculoDeCementoNoEsTransitablePorUnPersonajeNoAlado()
         {
-            BloqueComun obstaculoCemento = BloqueComun.CrearBloqueCemento(posicion);
+            BloqueComun obstaculoCemento = BloqueComun.CrearBloqueCemento();
             Punto unPunto = new Punto(0, 0);
             Personaje unPersonaje = new Bombita(unPunto);
             Assert.IsFalse(obstaculoCemento.TransitablePor(unPersonaje));
@@ -78,7 +70,7 @@ namespace TestBomberman
         [Test]
         public void obstaculoDeLadrilloNoEsTransitablePorUnPersonajeNoAlado()
         {
-            BloqueComun obstaculoLadrillo = BloqueComun.CrearBloqueLadrillos(posicion);
+            BloqueComun obstaculoLadrillo = BloqueComun.CrearBloqueLadrillos();
             Punto unPunto = new Punto(0, 0);
             Personaje unPersonaje = new Bombita(unPunto);
             Assert.IsFalse(obstaculoLadrillo.TransitablePor(unPersonaje));
