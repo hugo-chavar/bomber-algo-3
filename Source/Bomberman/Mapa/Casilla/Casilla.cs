@@ -36,7 +36,8 @@ namespace Bomberman.Mapa.Casilla
         public void Transitar(IMovible movil)
         {
             this.transitandoEnCasilla.Add(movil);
-            ((IPosicionable)movil).Posicion = this.Posicion; // ESTE CASTEO QUEDA HORRIBLE!
+            //((IPosicionable)movil).Posicion = this.Posicion; // ESTE CASTEO QUEDA HORRIBLE!
+            movil.Posicion = this.Posicion; // Casteo resuelto, ahora IMovible implementa IPosicionable, y saque de Personaje el IPosicionable
         }
 
         public void Dejar(IMovible movil)

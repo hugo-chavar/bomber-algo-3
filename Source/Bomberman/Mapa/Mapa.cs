@@ -37,7 +37,7 @@ namespace Bomberman.Mapa
 
         }
 
-        public void agregarCasilla(Casilla.Casilla unaCasilla)
+        public void AgregarCasilla(Casilla.Casilla unaCasilla)
         {
             if (unaCasilla == null )
             {
@@ -51,7 +51,15 @@ namespace Bomberman.Mapa
             {
                 throw new PuntoFueraDeRangoEnMapaException();
             }
-            this.tablero.Add(unaCasilla.Posicion, unaCasilla);
+            try
+            {
+                this.tablero.Add(unaCasilla.Posicion, unaCasilla);
+            }
+            catch (System.ArgumentException)
+            {
+                throw new CasillaYaIngresadaException();
+            }
+            
         }
 
         private bool PosicionDentroRango(Punto punto)
