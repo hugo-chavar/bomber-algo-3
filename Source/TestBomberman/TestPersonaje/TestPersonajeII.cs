@@ -37,9 +37,20 @@ namespace TestBomberman.TestPersonaje
         [Test]
         public void CuandoManejadorMueveAPersonajeUnoYLoConsigue()
         {
-            manejador.MoverPersonaje(2);
+            unPersonaje.Posicion = manejador.MoverPersonaje(2);
+            destino.TransitandoEnCasilla.Add(unPersonaje);
+
+
             Assert.AreEqual(unPersonaje.Posicion.X, posicionDestino.X);
+            Assert.AreEqual(unPersonaje.Posicion.Y, 1);
+            Assert.AreEqual(destino.TransitandoEnCasilla.Count, 1);
+
+
+
+ 
         }
+
+
     }
 
 }
