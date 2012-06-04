@@ -37,6 +37,44 @@
             }
             return false;
             }
+        
+        public override bool Equals(object obj)
+        {
+            if (obj == null || this.GetType() != obj.GetType())
+            {
+                return false;
+            }
+            Punto p = (Punto)obj;
+            return (this.x == p.x && this.y == p.y);
         }
+
+        public override int GetHashCode()
+        {
+            int hash = 7;
+            hash = (hash * 13) + this.x.GetHashCode();
+            hash = (hash * 13) + this.y.GetHashCode();
+            return hash;
+        }
+
+        public Punto PosicionSuperior()
+        {
+            return new Punto(this.X, this.Y + 1);
+        }
+
+        public Punto PosicionInferior()
+        {
+            return new Punto(this.X, this.Y - 1);
+        }
+
+        public Punto PosicionDerecha()
+        {
+            return new Punto(this.X + 1, this.Y);
+        }
+
+        public Punto PosicionIzquierda()
+        {
+            return new Punto(this.X - 1, this.Y);
+        }
+    }
 
 }

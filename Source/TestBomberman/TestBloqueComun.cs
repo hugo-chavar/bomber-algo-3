@@ -5,7 +5,8 @@ using Bomberman;
 using Bomberman.Personaje;
 
 namespace TestBomberman
-{   [TestFixture]
+{   
+    [TestFixture]
     class TestBloqueComun
     {
         private Punto posicion;

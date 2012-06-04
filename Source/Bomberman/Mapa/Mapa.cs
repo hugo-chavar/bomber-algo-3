@@ -84,28 +84,50 @@ namespace Bomberman.Mapa
 
         public bool PermitidoMoverHaciaArribaA(Personaje.IMovible movil)
         {
+            Punto posicionSuperior = movil.Posicion.PosicionSuperior();
+            if (!this.ExisteCasillaEnPosicion(posicionSuperior))//(posicionSuperior.Equals(movil.Posicion))
+            {
+                return false;
+            }
             Casilla.Casilla unaCasilla;
-            unaCasilla = this.ObtenerCasilla(movil.Posicion);
-            //Punto posicionSuperior = movil.Posicion.PosicionSuperior();
-
-
-
-            return false;
+            unaCasilla = this.ObtenerCasilla(posicionSuperior);
+            return unaCasilla.PermiteTransitarUn(movil);
         }
 
         public bool PermitidoMoverHaciaAbajoA(Personaje.IMovible movil)
         {
-            return false;
+            Punto posicionInferior = movil.Posicion.PosicionInferior();
+            if (!this.ExisteCasillaEnPosicion(posicionInferior))
+            {
+                return false;
+            }
+            Casilla.Casilla unaCasilla;
+            unaCasilla = this.ObtenerCasilla(posicionInferior);
+            return unaCasilla.PermiteTransitarUn(movil);
         }
 
         public bool PermitidoMoverHaciaIzquierdaA(Personaje.IMovible movil)
         {
-            return false;
+            Punto posicionIzquierda = movil.Posicion.PosicionIzquierda();
+            if (!this.ExisteCasillaEnPosicion(posicionIzquierda))
+            {
+                return false;
+            }
+            Casilla.Casilla unaCasilla;
+            unaCasilla = this.ObtenerCasilla(posicionIzquierda);
+            return unaCasilla.PermiteTransitarUn(movil);
         }
 
         public bool PermitidoMoverHaciaDerechaA(Personaje.IMovible movil)
         {
-            return false;
+            Punto posicionDerecha = movil.Posicion.PosicionDerecha();
+            if (!this.ExisteCasillaEnPosicion(posicionDerecha))
+            {
+                return false;
+            }
+            Casilla.Casilla unaCasilla;
+            unaCasilla = this.ObtenerCasilla(posicionDerecha);
+            return unaCasilla.PermiteTransitarUn(movil);
         }
 
     }
