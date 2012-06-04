@@ -155,6 +155,18 @@ namespace TestBomberman.TestMapa
         }
 
         [Test]
+        public void ExisteCasillaEnPosicionDevuelveTrueSiVoyAArribaYEsaPosicionExisteEnMapa()
+        {
+            
+            movil = new Bombita(this.pos);
+            this.pos = new Punto(0, 0);
+            this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
+            this.unaCasilla.Transitar(movil);
+            this.unMapa.agregarCasilla(unaCasilla);
+            Assert.IsTrue(unMapa.PermitidoMoverHaciaArribaA(movil));
+        }
+
+        /*[Test]
         public void PosicionDeArribaTienePasilloBombitaPuedeMoverseHaciaArriba()
         {
             movil = new Bombita(this.pos);
@@ -163,6 +175,7 @@ namespace TestBomberman.TestMapa
             this.unaCasilla.Transitar(movil);
             this.unMapa.agregarCasilla(unaCasilla);
             Assert.IsTrue(unMapa.PermitidoMoverHaciaArribaA(movil));
-        }
+        }*/
+
     }
 }

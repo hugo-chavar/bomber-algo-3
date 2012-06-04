@@ -55,6 +55,7 @@
     <Compile Include="TestJuego\TestJuego.cs" />
     <Compile Include="TestPersonaje\TestPersonajeII.cs" />
     <Compile Include="TestPersonaje\TestPersonaje.cs" />
+    <Compile Include="TestPunto.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bomberman\Bomberman.csproj">
