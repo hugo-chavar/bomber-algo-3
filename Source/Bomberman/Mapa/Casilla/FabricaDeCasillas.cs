@@ -12,6 +12,8 @@ namespace Bomberman.Mapa.Casilla
         {
             Casilla unaCasilla = new Casilla(pos);
             unaCasilla.Estado = new Pasillo();
+            if (unaCasilla.Estado == null)
+                throw new EstadoNuloException();
             return unaCasilla;
         }
         

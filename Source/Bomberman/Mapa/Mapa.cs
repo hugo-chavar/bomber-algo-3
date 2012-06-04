@@ -62,6 +62,8 @@ namespace Bomberman.Mapa
 
         public bool existeCasillaEnPosicion(Punto pos)
         {
+           // if (pos == null)
+             //   throw new EstadoNuloException();
             return this.tablero.ContainsKey(pos);
         }
 
