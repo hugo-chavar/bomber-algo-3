@@ -49,7 +49,7 @@ namespace Bomberman.Mapa
                 }
                 else
                 {
-                    throw new EstadoNuloException();
+                    throw new PosicionNulaException();
                 }
                 
             }
@@ -62,8 +62,8 @@ namespace Bomberman.Mapa
 
         public bool existeCasillaEnPosicion(Punto pos)
         {
-           // if (pos == null)
-             //   throw new EstadoNuloException();
+            if (pos == null)
+                throw new PosicionNulaException();
             return this.tablero.ContainsKey(pos);
         }
 

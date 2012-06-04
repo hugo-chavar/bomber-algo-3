@@ -15,7 +15,7 @@ namespace TestBomberman.TestMapa
         private Mapa unMapa;
         private Casilla unaCasilla;
         private Punto pos;
-        private FabricaDeCasillas fabricaDeCasillas;
+        //private FabricaDeCasillas fabricaDeCasillas;
 
         /*[Test]
         public void CrearUnMapaFuncionaBien()
@@ -32,11 +32,10 @@ namespace TestBomberman.TestMapa
         {
             Mapa otroMapa = new Mapa(ANCHOMAPA, ALTOMAPA);
             //Punto unaPos = new Punto(3, 2);
-            //pos = new Punto(4, 2);
-            Casilla otraCasilla = FabricaDeCasillas.FabricarCasillaConBloqueCemento(new Punto(4, 2));//new Casilla(pos);//
-           // otroMapa.agregarCasilla(unaCasilla);
-            //Assert.IsFalse(otroMapa.existeCasillaEnPosicion(unaPos));
-            Assert.IsFalse(false);
+            pos = new Punto(4, 2);
+            Casilla otraCasilla = FabricaDeCasillas.FabricarCasillaConBloqueCemento(pos);//new Casilla(pos);//
+            otroMapa.agregarCasilla(otraCasilla);
+            Assert.IsTrue(otroMapa.existeCasillaEnPosicion(pos));
         }
 
         [Test]
@@ -45,6 +44,7 @@ namespace TestBomberman.TestMapa
             unMapa = new Mapa(ANCHOMAPA, ALTOMAPA);
             Punto unaPos = new Punto(0, 0);
             Assert.IsFalse(unMapa.existeCasillaEnPosicion(unaPos));
+            
         }
 
         /*[Test]
