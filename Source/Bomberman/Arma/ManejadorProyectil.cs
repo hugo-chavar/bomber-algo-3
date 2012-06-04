@@ -10,6 +10,8 @@ namespace Bomberman.Arma
 
         private Proyectil explotable;
         private int direccionPersonaje;
+        private bool misilActivado;
+        
 
         public int DireccionPersonaje
         {
@@ -27,9 +29,10 @@ namespace Bomberman.Arma
         {
             this.Explotable = explotable;
             this.DireccionPersonaje = direccionPersonaje;
+            this.misilActivado = false;
         }
 
-        private Punto CalcularZonaImpacto(int direccionPersonaje)
+        private Punto CalcularZonaImpacto()
         {
 
 
@@ -65,55 +68,52 @@ namespace Bomberman.Arma
             return explotable.PosicionFinal;
         }
 
-        public void AvanzarHacia(int direccion)
+        public void AvanzarHacia()
         {
-            switch (direccion)
+            if (misilActivado)
             {
-                case 0:
-                    explotable.PosicionInicial.PosicionSuperior(-1);
-                    break;
-                case 1:
-                    explotable.PosicionInicial.PosicionSuperior(1);
-                    break;
-                case 3:
-                    explotable.PosicionInicial.PosicionDerecha(-1);
-                    break;
-                case 4:
-                    explotable.PosicionInicial.PosicionDerecha(1);
-                    break;
+                switch (this.direccionPersonaje)
+                {
+                    case 0:
+                        explotable.PosicionInicial.PosicionSuperior(-1);
+                        break;
+                    case 1:
+                        explotable.PosicionInicial.PosicionSuperior(1);
+                        break;
+                    case 3:
+                        explotable.PosicionInicial.PosicionDerecha(-1);
+                        break;
+                    case 4:
+                        explotable.PosicionInicial.PosicionDerecha(1);
+                        break;
+                }
             }
         }
 
-        public int LanzarMisil ()
+        public void LanzarMisil()
         {
             Punto puntoFinal;
-            puntoFinal = this.CalcularZonaImpacto(direccionPersonaje);   //falta chequear que los valores X e Y finales no sean negativos, pero creo que otra clase en un nivel mas arriba deberia implementar eso //
-            if (explotable.PosicionFinal.X == explotable.Posicion.X)
+            puntoFinal = this.CalcularZonaImpacto();   
+            if (puntoFinal.EsPuntoValido())
             {
-                while (explotable.Posicion.Y != explotable.PosicionFinal.Y)
-                {
-                    this.AvanzarHacia(direccionPersonaje);
-                }
-              if ((explotable.PosicionFinal.X == explotable.Posicion.X) && (explotable.PosicionFinal.Y == explotable.Posicion.Y))
-                {
-                    explotable.Explotar();
-                }
-            }
-            if (explotable.PosicionFinal.Y == explotable.Posicion.Y)
-            {
-                while (explotable.Posicion.X != explotable.PosicionFinal.X)
-                {
-                    this.AvanzarHacia(direccionPersonaje);
-                }
-            }
+                misilActivado = true;
 
-            if ((explotable.PosicionFinal.X == explotable.Posicion.X) && (explotable.PosicionFinal.Y == explotable.Posicion.Y))
-            {
-                explotable.Explotar();
-            }
+             }
+        }
 
-            return 1;
+        public void RealizarExplosion(Explosivo unExplosivo)
+        {
+            misilActivado = false;
+            unExplosivo.Explotar();
+
 
         }
-    }
+
+        public bool EstaLanzado()
+        {
+            return this.misilActivado;
+        }
+
+
+}
 }

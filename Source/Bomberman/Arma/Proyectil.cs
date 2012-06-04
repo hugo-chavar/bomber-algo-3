@@ -12,7 +12,10 @@ namespace Bomberman.Arma
 
         private Punto posicionFinal;
         private int alcance = 3;
-        
+        private int tiempoRestante;
+        private ManejadorProyectil unManejador;
+
+
         public int Alcance
         {
             get { return this.alcance; }
@@ -40,6 +43,8 @@ namespace Bomberman.Arma
             Punto PosicionFinal = new Punto(0, 0);
             posicionFinal = PosicionFinal;
             posicion = posicionInicial;
+            tiempoRestante = 3;
+
 
         }
 
@@ -54,91 +59,41 @@ namespace Bomberman.Arma
 
         public void LanzarMisil(int direccionPersonaje)
         {
-            ManejadorProyectil unManejador = new ManejadorProyectil(this,direccionPersonaje);
-            unManejador.LanzarMisil();
+            if ( unManejador == null )
+            {
+                unManejador = new ManejadorProyectil(this, direccionPersonaje);
+                unManejador.LanzarMisil();
+ 
+            }
 
         }
+
+        public void CuandoPasaElTiempo()
+        {
+            this.DisminuirTiempo(tiempoRestante);
+            if (tiempoRestante > 1)
+            {
+                unManejador.AvanzarHacia();
+            }
+            if (tiempoRestante == 0)
+            {
+                unManejador.RealizarExplosion(this);
+            }
+
+            
+        }
+
+        public void DisminuirTiempo(int tiempo)
+        {
+            tiempo = tiempo - 1;
+
+        }
+
+
         
 
 
-       /* private Punto CalcularZonaImpacto (int direccionPersonaje)
-        {
-            // no es del todo feliz esta resolucion pero al menos por ahora lo dejo //
-            switch(direccionPersonaje)
-            {
-                case 0:
-                    
-                   posicionFinal.X = this.Posicion.X;
-                   posicionFinal.Y = this.Posicion.Y - alcance;
-                   break;
-                case 1:
-                    
-                   posicionFinal.X = this.Posicion.X;
-                   posicionFinal.Y = this.Posicion.Y + alcance;
-                   break;
-                case 3:
-                    
-                   posicionFinal.X = this.Posicion.X - alcance;
-                   posicionFinal.Y = this.Posicion.Y;
-                   break;       
-                
-                case 4:
-                    
-                   posicionFinal.X = this.Posicion.X + alcance;
-                   posicionFinal.Y = this.Posicion.Y;
 
-                    break;
-
-        
-
-             }
-            return posicionFinal;  
-        }
-
-        public void AvanzarHacia(int direccion)
-        {
-            switch (direccion)
-            {
-                case 0:
-                    posicion.Y = posicion.Y - 1;
-                    break;
-                case 1:
-                    posicion.Y = posicion.Y + 1;
-                    break;
-                case 2:
-                    posicion.X = posicion.X + 1;
-                    break;
-                case 3:
-                    posicion.X = posicion.X - 1;
-                    break;
-            }
-        }
-
-        public int DespegarProyectil(int direccionPersonaje)
-        {
-            Punto puntoFinal;
-            puntoFinal = this.CalcularZonaImpacto(direccionPersonaje);   //falta chequear que los valores X e Y finales no sean negativos, pero creo que otra clase en un nivel mas arriba deberia implementar eso //
-            if (puntoFinal.X == Posicion.X)
-            {
-                while (posicion.Y != puntoFinal.Y)
-                {
-                    this.AvanzarHacia(direccionPersonaje);
-                }
-            }
-            if (puntoFinal.Y == Posicion.Y){
-                while (posicion.X != puntoFinal.X){
-                    this.AvanzarHacia(direccionPersonaje);
-                }
-            }
-
-            if ((puntoFinal.X == Posicion.X) && (puntoFinal.Y == Posicion.Y))
-            {
-                this.Explotar();
-            }
-
-            return 1;
-
-        }*/
      
 }
 

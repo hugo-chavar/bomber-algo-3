@@ -40,5 +40,6 @@ namespace Bomberman.Personaje
             this.ReduccionRetardoBombas = retardo;
         }
 
+
     }
 }

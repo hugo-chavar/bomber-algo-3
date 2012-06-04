@@ -25,10 +25,18 @@ namespace TestBomberman.TestArma
         [Test]
         public void TestParaConfirmarExplosionDeProyectil()
         {
-            unManejador.LanzarMisil();
-            Assert.AreEqual(true, unProyectil.EstaExplotado());
+            unProyectil.LanzarMisil(1);
+            unProyectil.CuandoPasaElTiempo();
+            unProyectil.CuandoPasaElTiempo();
+            unProyectil.CuandoPasaElTiempo();
+            unProyectil.CuandoPasaElTiempo();
+            Assert.AreEqual(unProyectil.EstaExplotado(), false);
+                                    
 
         }
+
+
+
 
 
     }

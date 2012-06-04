@@ -59,6 +59,13 @@ namespace TestBomberman.TestPersonaje
             Assert.AreEqual((unaLista).Count, (destino.TransitandoEnCasilla).Count);
             destino.Dejar(unPersonaje); // Lo agrego porque sino no me sacaba los personajes de la lista de la casilla Destino (CHEQUEAR SI EL SETUP ESTA BIEN!!!)
         }
+
+        [Test]
+        public void MePermiteMoverPersonaje()
+        {
+
+        }
+
         
     }
 }
