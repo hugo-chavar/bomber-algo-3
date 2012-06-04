@@ -36,18 +36,6 @@ namespace Bomberman.Arma
         {
             this.TiempoRestante = (this.TiempoRestante - 1);
         }
-
-
-
-
-            
-
-
-        
-
-        //public float getRetardo()
-        //{ return this.retardo; }
-       
 }
 
 }

@@ -8,19 +8,19 @@ namespace Bomberman.Mapa.Casilla
         private const int RESISTENCIALADRILLO = 5;
         private const int RESISTENCIACEMENTO = 10;
 
-        private BloqueComun(Punto Posicion, int UnidadesResistencia)
-            : base(UnidadesResistencia) // Saque la posicion de ak
-        { } //: base(Posicion, UnidadesResistencia) // Nota: los obstaculos ya no necesitan posicion, son un State de Casilla
+        private BloqueComun(int UnidadesResistencia)
+            : base(UnidadesResistencia)
+        { }
 
-        public static BloqueComun CrearBloqueCemento(Punto posicion)
+        public static BloqueComun CrearBloqueCemento()
         { 
-            BloqueComun BloqueCemento = new BloqueComun(posicion, RESISTENCIACEMENTO); 
+            BloqueComun BloqueCemento = new BloqueComun(RESISTENCIACEMENTO); 
             return (BloqueCemento);
         }
 
-        public static BloqueComun CrearBloqueLadrillos(Punto posicion)
+        public static BloqueComun CrearBloqueLadrillos()
         {
-            BloqueComun BloqueLadrillos = new BloqueComun(posicion, RESISTENCIALADRILLO); 
+            BloqueComun BloqueLadrillos = new BloqueComun(RESISTENCIALADRILLO); 
             return (BloqueLadrillos);
         }
 

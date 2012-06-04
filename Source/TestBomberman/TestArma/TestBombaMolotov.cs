@@ -36,7 +36,7 @@ namespace TestBomberman.TestArma
         public void TestDaniarObstaculoConBombaMolotov()
         { 
            Bomba bomba = new BombaMolotov(posicion, 0);
-           Obstaculo obstaculo= BloqueComun.CrearBloqueCemento(posicion);
+           Obstaculo obstaculo= BloqueComun.CrearBloqueCemento();
            bomba.Daniar(obstaculo);
            Assert.AreEqual(obstaculo.UnidadesDeResistencia, 5);
         }

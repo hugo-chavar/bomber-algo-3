@@ -20,7 +20,7 @@ namespace Bomberman.Mapa.Casilla
         public static Casilla FabricarCasillaConBloqueAcero(Punto pos)
         {
             Casilla unaCasilla = new Casilla(pos);
-            unaCasilla.Estado = new BloqueAcero(pos);
+            unaCasilla.Estado = new BloqueAcero();
             if (unaCasilla.Estado == null)
                 throw new EstadoNuloException();
             return unaCasilla;
@@ -29,7 +29,7 @@ namespace Bomberman.Mapa.Casilla
         public static Casilla FabricarCasillaConBloqueLadrillos(Punto pos)
         {
             Casilla unaCasilla = new Casilla(pos);
-            unaCasilla.Estado = BloqueComun.CrearBloqueLadrillos(pos);
+            unaCasilla.Estado = BloqueComun.CrearBloqueLadrillos();
             if (unaCasilla.Estado == null)
                 throw new EstadoNuloException();
             return unaCasilla;
@@ -38,7 +38,7 @@ namespace Bomberman.Mapa.Casilla
         public static Casilla FabricarCasillaConBloqueCemento(Punto pos)
         {
             Casilla unaCasilla = new Casilla(pos);
-            unaCasilla.Estado = BloqueComun.CrearBloqueCemento(pos);
+            unaCasilla.Estado = BloqueComun.CrearBloqueCemento();
             if (unaCasilla.Estado == null)
                 throw new EstadoNuloException();
             return unaCasilla;

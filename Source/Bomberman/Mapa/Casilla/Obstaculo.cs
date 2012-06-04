@@ -10,16 +10,13 @@ namespace Bomberman.Mapa.Casilla
     {
         protected int unidadesDeResistencia;
 
-
         public Obstaculo()
         {
             this.UnidadesDeResistencia = 0;
         }
 
-
         public Obstaculo(int unidades)
         {
-            //this.Posicion = posicion;
             this.UnidadesDeResistencia = unidades;
         }
 
@@ -29,7 +26,6 @@ namespace Bomberman.Mapa.Casilla
             set { this.unidadesDeResistencia = value; }
         }
 
-        
         public virtual void DaniarConBombaToleTole() 
         {
             //Deberia daniar a los personajes alli presentes
@@ -41,23 +37,21 @@ namespace Bomberman.Mapa.Casilla
             int unidades = (this.UnidadesDeResistencia - unidadesDestruidas);
             if (unidades < 0) return (0);
             else return (unidades);
-        
         }
 
-        //por ahora dejo esto virtual para que funcione, ARREGLAR LOS HARCODEOS!!
         public virtual void DaniarConBombaMolotov(int UnidadesDaniadas)
         {
             //Deberia daniar a los personajes alli presentes
-            if (!this.Destruido())
-            {
-                this.UnidadesDeResistencia = CalcularUnidadesRestantes(UnidadesDaniadas);
-            }
+            this.DaniarSiNoEstaDestruido(UnidadesDaniadas);
         }
 
-        //por ahora dejo esto virtual para que funcione, ARREGLAR LOS HARCODEOS!!
         public virtual void DaniarConProyectil(int UnidadesDaniadas)
         {
-              // idem DaniarConBombaMolotov
+             this.DaniarSiNoEstaDestruido(UnidadesDaniadas);
+        }
+
+        private void DaniarSiNoEstaDestruido(int UnidadesDaniadas)
+        {
             if (!this.Destruido())
             {
                 this.UnidadesDeResistencia = CalcularUnidadesRestantes(UnidadesDaniadas);
