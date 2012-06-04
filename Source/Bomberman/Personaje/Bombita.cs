@@ -7,7 +7,7 @@ using Bomberman.Arma;
 
 namespace Bomberman.Personaje
 {
-    public class Bombita : Personaje , IComible 
+    public class Bombita : Personaje
     {
         private const int VIDABOMBITA = 1;
 
@@ -40,10 +40,5 @@ namespace Bomberman.Personaje
             this.ReduccionRetardoBombas = retardo;
         }
 
-
-        public void ModificarComedor(IComedor comedor)
-        {
-            // ACA TENEMOS QUE MATAR A BOMBITA!
-        }
     }
 }
