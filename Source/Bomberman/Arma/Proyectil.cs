@@ -25,7 +25,7 @@ namespace Bomberman.Arma
         public Punto PosicionInicial
         {
             get { return this.posicion; }
-            set { this.PosicionInicial = value; }
+            set { this.posicion = value; }
         }
 
         public Punto PosicionFinal
@@ -67,13 +67,19 @@ namespace Bomberman.Arma
             }
 
         }
+        public int TiempoRestante()
+        {
+            return tiempoRestante;
+        }
+
 
         public void CuandoPasaElTiempo()
         {
-            this.DisminuirTiempo(tiempoRestante);
-            if (tiempoRestante > 1)
+
+            if (tiempoRestante > 0)
             {
-                unManejador.AvanzarHacia();
+               this.DisminuirTiempo();
+               unManejador.AvanzarHacia(this);
             }
             if (tiempoRestante == 0)
             {
@@ -83,10 +89,10 @@ namespace Bomberman.Arma
             
         }
 
-        public void DisminuirTiempo(int tiempo)
+        public void DisminuirTiempo()
         {
-            tiempo = tiempo - 1;
-
+            tiempoRestante = tiempoRestante - 1;
+            
         }
 
 
