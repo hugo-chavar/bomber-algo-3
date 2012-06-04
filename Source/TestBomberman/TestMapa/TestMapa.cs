@@ -53,8 +53,6 @@ namespace TestBomberman.TestMapa
 
         }
 
-
-        
         [Test]
         public void AgregarUnaCasillaNulaLanzaNoExisteCasillaException()
         {
@@ -118,23 +116,20 @@ namespace TestBomberman.TestMapa
         [Test]
         public void UnMapaCreadoTieneElAnchoIndicadoEnElConstructor()
         { 
-            //unMapa = new Mapa(ANCHOMAPA, ALTOMAPA);
             Assert.AreEqual(unMapa.DimensionHorizontal, ANCHOMAPA);
         }
 
         [Test]
         public void UnMapaCreadoTieneElAltoIndicadoEnElConstructor()
         {
-            //Mapa otroMapa = new Mapa(ANCHOMAPA, ALTOMAPA);
             Assert.AreEqual(unMapa.DimensionVertical, ALTOMAPA);
         }
 
         [Test]
         public void NuevoMapaContieneCasillaAgregada()
         {
-            //Mapa otroMapa = new Mapa(ANCHOMAPA, ALTOMAPA);
             Punto unaPos = new Punto(4, 2);
-            Casilla otraCasilla = FabricaDeCasillas.FabricarCasillaConBloqueCemento(unaPos);//new Casilla(pos);//
+            Casilla otraCasilla = FabricaDeCasillas.FabricarCasillaConBloqueCemento(unaPos);
             otroMapa.AgregarCasilla(otraCasilla);
             Assert.IsTrue(otroMapa.ExisteCasillaEnPosicion(unaPos));
         }
@@ -142,10 +137,8 @@ namespace TestBomberman.TestMapa
         [Test]
         public void NuevoMapaNoContieneCasillas()
         {
-            //Mapa otroMapa = new Mapa(ANCHOMAPA, ALTOMAPA);
             Punto unaPos = new Punto(0, 0);
             Assert.IsFalse(otroMapa.ExisteCasillaEnPosicion(unaPos));
-            
         }
 
         [Test]
@@ -156,8 +149,6 @@ namespace TestBomberman.TestMapa
             otroMapa.AgregarCasilla(unaCasilla);
             Assert.AreSame(otroMapa.ObtenerCasilla(unaPos), unaCasilla);
         }
-
-
 
         [Test]
         public void ExisteCasillaEnPosicionDevuelveTrueSiPreguntoPorLaPosDeArribaYEsaPosicionExisteEnMapa()
@@ -201,7 +192,7 @@ namespace TestBomberman.TestMapa
         [Test]
         public void ExisteCasillaEnPosicionDevuelveFalseSiPreguntoPorLaPosDeArribaYEsaPosicionNoExisteEnMapa()
         {
-            //La posicion existe porque en fixtureSetup unMapa es creado de 5x5 con casillas en todas sus posiciones [0..4][0..4]
+            //La posicion NO existe porque en fixtureSetup unMapa es creado de 5x5 con casillas en todas sus posiciones [0..4][0..4]
             this.pos = new Punto(4, 4);
             //Casilla unaCasilla = FabricaDeCasillas.FabricarPasillo(this.pos);
             //this.unMapa.agregarCasilla(unaCasilla);
@@ -213,7 +204,7 @@ namespace TestBomberman.TestMapa
         [Test]
         public void ExisteCasillaEnPosicionDevuelveFalseSiPreguntoPorLaPosDeAbajoYEsaPosicionExisteEnMapa()
         {
-            //La posicion existe porque en fixtureSetup unMapa es creado de 5x5 con casillas en todas sus posiciones [0..4][0..4]
+            //La posicion NO existe porque en fixtureSetup unMapa es creado de 5x5 con casillas en todas sus posiciones [0..4][0..4]
             this.pos = new Punto(3, 0);
             Punto posInf = this.pos.PosicionInferior();
             Assert.IsFalse(unMapa.ExisteCasillaEnPosicion(posInf));
@@ -222,7 +213,7 @@ namespace TestBomberman.TestMapa
         [Test]
         public void ExisteCasillaEnPosicionDevuelveFalseSiPreguntoPorLaPosDeLaDerechaYEsaPosicionNoExisteEnMapa()
         {
-            //La posicion existe porque en fixtureSetup unMapa es creado de 5x5 con casillas en todas sus posiciones [0..4][0..4]
+            //La posicion NO existe porque en fixtureSetup unMapa es creado de 5x5 con casillas en todas sus posiciones [0..4][0..4]
             this.pos = new Punto(4, 2);
             Punto posDer = this.pos.PosicionDerecha();
             Assert.IsFalse(unMapa.ExisteCasillaEnPosicion(posDer));
@@ -231,7 +222,7 @@ namespace TestBomberman.TestMapa
         [Test]
         public void ExisteCasillaEnPosicionDevuelveFalseSiPreguntoPorLaPosDeLaIzquierdaYEsaPosicionNoExisteEnMapa()
         {
-            //La posicion existe porque en fixtureSetup unMapa es creado de 5x5 con casillas en todas sus posiciones [0..4][0..4]
+            //La posicion NO existe porque en fixtureSetup unMapa es creado de 5x5 con casillas en todas sus posiciones [0..4][0..4]
             this.pos = new Punto(0, 3);
             Punto posIzq = this.pos.PosicionIzquierda();
             Assert.IsFalse(unMapa.ExisteCasillaEnPosicion(posIzq));
@@ -249,7 +240,7 @@ namespace TestBomberman.TestMapa
             }
             catch (CasillaYaIngresadaException)
             {
-                Assert.Pass("Exception correcta fue lanzda.");
+                Assert.Pass("Exception correcta fue lanzada.");
             }
             catch (System.Exception)
             {
@@ -265,7 +256,6 @@ namespace TestBomberman.TestMapa
             try
             {
                 this.otroMapa.AgregarCasilla(unaCasilla);
-                //Assert.Pass("Casilla agregada correctamente.");
             }
             catch (System.Exception)
             {
@@ -276,8 +266,9 @@ namespace TestBomberman.TestMapa
         [Test]
         public void PosicionDeArribaTienePasilloBombitaPuedeMoverseHaciaArriba()
         {
-            movil = new Bombita(this.pos);
+            //ver mapa en el FixtureSetup
             this.pos = new Punto(0, 0);
+            movil = new Bombita(this.pos);
             this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
             this.unaCasilla.Transitar(movil);
             Assert.IsTrue(unMapa.PermitidoMoverHaciaArribaA(movil));
@@ -286,21 +277,78 @@ namespace TestBomberman.TestMapa
         [Test]
         public void PosicionDeLaDerechaTienePasilloBombitaPuedeMoverseHaciaLaDerecha()
         {
-            movil = new Bombita(this.pos);
+            //ver mapa en el FixtureSetup
             this.pos = new Punto(0, 0);
+            movil = new Bombita(this.pos);
             this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
             this.unaCasilla.Transitar(movil);
             Assert.IsTrue(unMapa.PermitidoMoverHaciaArribaA(movil));
         }
+
+        [Test]
+        public void PosicionDeAbajoTienePasilloBombitaPuedeMoverseHaciaAbajo()
+        {
+            //ver mapa en el FixtureSetup
+            this.pos = new Punto(2, 3);
+            movil = new Bombita(this.pos);
+            this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
+            this.unaCasilla.Transitar(movil);
+            Assert.IsTrue(unMapa.PermitidoMoverHaciaAbajoA(movil));
+        }
+
+        [Test]
+        public void PosicionDeLaIzquierdaTienePasilloBombitaPuedeMoverseHaciaLaIzquierda()
+        {
+            //ver mapa en el FixtureSetup
+            this.pos = new Punto(3, 0);
+            movil = new Bombita(this.pos);
+            this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
+            this.unaCasilla.Transitar(movil);
+            Assert.IsTrue(unMapa.PermitidoMoverHaciaIzquierdaA(movil));
+        }
+
         [Test]
         public void PosicionDeAbajoNoExisteBombitaNoPuedeMoverseHaciaAbajo()
         {
-            this.pos = new Punto(0, 0);
+            this.pos = new Punto(2, 0);
             movil = new Bombita(this.pos);
             
             this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
             this.unaCasilla.Transitar(movil);
             Assert.IsFalse(unMapa.PermitidoMoverHaciaAbajoA(movil));
+        }
+
+        [Test]
+        public void PosicionDeArribaNoExisteBombitaNoPuedeMoverseHaciaArriba()
+        {
+            this.pos = new Punto(3, 4);
+            movil = new Bombita(this.pos);
+
+            this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
+            this.unaCasilla.Transitar(movil);
+            Assert.IsFalse(unMapa.PermitidoMoverHaciaArribaA(movil));
+        }
+
+        [Test]
+        public void PosicionDeLaDerechaNoExisteBombitaNoPuedeMoverseHaciaLaDerecha()
+        {
+            this.pos = new Punto(4, 3);
+            movil = new Bombita(this.pos);
+
+            this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
+            this.unaCasilla.Transitar(movil);
+            Assert.IsFalse(unMapa.PermitidoMoverHaciaDerechaA(movil));
+        }
+
+        [Test]
+        public void PosicionDeLaIzquierdaNoExisteBombitaNoPuedeMoverseHaciaLaIzquierda()
+        {
+            this.pos = new Punto(0, 4);
+            movil = new Bombita(this.pos);
+
+            this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
+            this.unaCasilla.Transitar(movil);
+            Assert.IsFalse(unMapa.PermitidoMoverHaciaIzquierdaA(movil));
         }
 
         [Test]
@@ -313,6 +361,90 @@ namespace TestBomberman.TestMapa
             this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
             this.unaCasilla.Transitar(movil);
             Assert.IsFalse(unMapa.PermitidoMoverHaciaAbajoA(movil));
+        }
+
+        [Test]
+        public void PosicionDeArribaEsUnObstaculoBombitaNoPuedeMoverseHaciaArriba()
+        {
+            //ver mapa en el FixtureSetup
+            this.pos = new Punto(1, 2);
+            movil = new Bombita(this.pos);
+
+            this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
+            this.unaCasilla.Transitar(movil);
+            Assert.IsFalse(unMapa.PermitidoMoverHaciaArribaA(movil));
+        }
+
+        [Test]
+        public void PosicionDeLaDerechaEsUnObstaculoBombitaNoPuedeMoverseHaciaLaDerecha()
+        {
+            //ver mapa en el FixtureSetup
+            this.pos = new Punto(2, 1);
+            movil = new Bombita(this.pos);
+
+            this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
+            this.unaCasilla.Transitar(movil);
+            Assert.IsFalse(unMapa.PermitidoMoverHaciaDerechaA(movil));
+        }
+
+        [Test]
+        public void PosicionDeLaIzquierdaEsUnObstaculoBombitaNoPuedeMoverseHaciaLaIzquierda()
+        {
+            //ver mapa en el FixtureSetup
+            this.pos = new Punto(2, 3);
+            movil = new Bombita(this.pos);
+
+            this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
+            this.unaCasilla.Transitar(movil);
+            Assert.IsFalse(unMapa.PermitidoMoverHaciaIzquierdaA(movil));
+        }
+
+        [Test]
+        public void PosicionDeAbajoEsUnObstaculoUnoDeLosLopezReggaeAladoPuedeMoverseHaciaAbajo()
+        {
+            //ver mapa en el FixtureSetup
+            this.pos = new Punto(1, 2);
+            movil = new LosLopezReggaeAlado(this.pos);
+
+            this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
+            this.unaCasilla.Transitar(movil);
+            Assert.IsTrue(unMapa.PermitidoMoverHaciaAbajoA(movil));
+        }
+
+        [Test]
+        public void PosicionDeArribaEsUnObstaculoUnoDeLosLopezReggaeAladoPuedeMoverseHaciaArriba()
+        {
+            //ver mapa en el FixtureSetup
+            this.pos = new Punto(1, 2);
+            movil = new LosLopezReggaeAlado(this.pos);
+
+            this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
+            this.unaCasilla.Transitar(movil);
+            Assert.IsTrue(unMapa.PermitidoMoverHaciaArribaA(movil));
+        }
+
+        [Test]
+        public void PosicionDeLaDerechaEsUnObstaculoUnoDeLosLopezReggaeAladoPuedeMoverseHaciaLaDerecha()
+        {
+            //ver mapa en el FixtureSetup
+            this.pos = new Punto(2, 1);
+            movil = new LosLopezReggaeAlado(this.pos);
+
+            this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
+            this.unaCasilla.Transitar(movil);
+            Assert.IsTrue(unMapa.PermitidoMoverHaciaDerechaA(movil));
+        }
+
+        [Test]
+        public void PosicionDeLaIzquierdaEsUnObstaculoUnoDeLosLopezReggaeAladoPuedeMoverseHaciaLaIzquierda()
+        {
+            //ver mapa en el FixtureSetup
+            this.pos = new Punto(2, 3);
+            movil = new LosLopezReggaeAlado(this.pos);
+
+            this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
+            this.unaCasilla.Transitar(movil);
+            Assert.IsTrue(unMapa.PermitidoMoverHaciaIzquierdaA(movil));
         }
     }
 }
