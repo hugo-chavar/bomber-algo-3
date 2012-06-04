@@ -27,8 +27,8 @@ namespace Bomberman.Arma
 
         public ManejadorProyectil(Proyectil explotable, int direccionPersonaje)
         {
-            this.Explotable = explotable;
-            this.DireccionPersonaje = direccionPersonaje;
+            this.explotable = explotable;
+            this.direccionPersonaje = direccionPersonaje;
             this.misilActivado = false;
         }
 
@@ -66,7 +66,7 @@ namespace Bomberman.Arma
             return explotable.PosicionFinal;
         }
 
-        public void AvanzarHacia()
+        public void AvanzarHacia(Proyectil explotable)
         {
             if (misilActivado)
             {
@@ -86,6 +86,7 @@ namespace Bomberman.Arma
                         break;
                 }
             }
+
         }
 
         public void LanzarMisil()
