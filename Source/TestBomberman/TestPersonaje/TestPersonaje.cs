@@ -22,9 +22,9 @@ namespace TestBomberman.TestPersonaje
         {
             this.unaFabricaDeCasillas = new FabricaDeCasillas();
             this.posicionOrigen = new Punto(2, 3);
-            this.origen = unaFabricaDeCasillas.FabricarPasillo(posicionOrigen);
+            this.origen = FabricaDeCasillas.FabricarPasillo(posicionOrigen);
             this.posicionDestino = new Punto(3, 3);
-            this.destino = unaFabricaDeCasillas.FabricarPasillo(posicionDestino);
+            this.destino = FabricaDeCasillas.FabricarPasillo(posicionDestino);
             this.unPersonaje = new Bombita(posicionOrigen);
         }
 

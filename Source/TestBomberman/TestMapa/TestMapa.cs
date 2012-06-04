@@ -32,8 +32,8 @@ namespace TestBomberman.TestMapa
         {
             Mapa otroMapa = new Mapa(ANCHOMAPA, ALTOMAPA);
             //Punto unaPos = new Punto(3, 2);
-            pos = new Punto(4, 2);
-            Casilla otraCasilla = new Casilla(pos);//fabricaDeCasillas.FabricarCasillaConBloqueAcero(pos);
+            //pos = new Punto(4, 2);
+            Casilla otraCasilla = FabricaDeCasillas.FabricarCasillaConBloqueCemento(new Punto(4, 2));//new Casilla(pos);//
            // otroMapa.agregarCasilla(unaCasilla);
             //Assert.IsFalse(otroMapa.existeCasillaEnPosicion(unaPos));
             Assert.IsFalse(false);

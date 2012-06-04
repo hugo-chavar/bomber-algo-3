@@ -18,8 +18,8 @@ namespace TestBomberman.TestMapa
         public void TestSetup()
         {
             unaPosicion = new Punto(2, 3);
-            FabricaDeCasillas f = new FabricaDeCasillas();
-            this.unaCasillaVacia = f.FabricarPasillo(unaPosicion);
+           // FabricaDeCasillas f = new FabricaDeCasillas();
+            this.unaCasillaVacia = FabricaDeCasillas.FabricarPasillo(unaPosicion);
         }
 
         [Test]
