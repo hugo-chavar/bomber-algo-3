@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F0A3EDDB-4DCE-4E03-B7E4-B50FC421A8CC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bomberman</RootNamespace>
+    <AssemblyName>Bomberman</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Arma\ManejadorProyectil.cs" />
+    <Compile Include="Arma\Explosivo.cs" />
+    <Compile Include="Arma\BombaToleTole.cs" />
+    <Compile Include="Arma\ILanzador.cs" />
+    <Compile Include="Arma\LanzadorMolotov.cs" />
+    <Compile Include="Arma\LanzadorProyectil.cs" />
+    <Compile Include="Arma\LanzadorToleTole.cs" />
+    <Compile Include="Arma\ManejadorExplosiones.cs" />
+    <Compile Include="Arma\Proyectil.cs" />
+    <Compile Include="Articulo\Articulo.cs" />
+    <Compile Include="Articulo\ArticuloBombaToleTole.cs" />
+    <Compile Include="Articulo\Chala.cs" />
+    <Compile Include="Articulo\Timer.cs" />
+    <Compile Include="Excepciones\EstadoNuloException.cs" />
+    <Compile Include="Excepciones\NoExisteCasillaException.cs" />
+    <Compile Include="Excepciones\PosicionNulaException.cs" />
+    <Compile Include="Excepciones\PuntoFueraDeRangoEnMapaException.cs" />
+    <Compile Include="IPosicionable.cs" />
+    <Compile Include="Juego\Juego.cs" />
+    <Compile Include="Mapa\Casilla\FabricaDeCasillas.cs" />
+    <Compile Include="Mapa\ITransitable.cs" />
+    <Compile Include="Mapa\Mapa.cs" />
+    <Compile Include="Personaje\Bombita.cs" />
+    <Compile Include="Personaje\Cecilio.cs" />
+    <Compile Include="Personaje\ManejadorDeMovimiento.cs" />
+    <Compile Include="Personaje\Enemigo.cs" />
+    <Compile Include="Personaje\IComedor.cs" />
+    <Compile Include="Articulo\IComible.cs" />
+    <Compile Include="Mapa\Casilla\BloqueAcero.cs" />
+    <Compile Include="Mapa\Casilla\BloqueComun.cs" />
+    <Compile Include="Arma\Bomba.cs" />
+    <Compile Include="Arma\BombaMolotov.cs" />
+    <Compile Include="IDaniable.cs" />
+    <Compile Include="Mapa\Casilla\Casilla.cs" />
+    <Compile Include="Mapa\Casilla\Pasillo.cs" />
+    <Compile Include="Mapa\Casilla\Obstaculo.cs" />
+    <Compile Include="Personaje\IMovible.cs" />
+    <Compile Include="Personaje\LosLopezReggae.cs" />
+    <Compile Include="Personaje\LosLopezReggaeAlado.cs" />
+    <Compile Include="Personaje\Personaje.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Punto.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
