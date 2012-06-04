@@ -38,14 +38,14 @@ namespace TestBomberman.TestMapa
                 for (j = 0; j < ANCHOMAPA; j++)
                 {
                     unaPosicion = new Punto(i, j);
-                    if ((i & 1) == 0 && (j & 1) == 0)
+                    if ((i & 1) == 1 && (j & 1) == 1)
                     {
-                        //ambos son numeros pares
+                        //ambos son numeros impares
                         unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueAcero(unaPosicion);
                     }
                     else
                     {
-                        //uno de los dos es impar
+                        //uno de los dos es par
                         unaCasilla = FabricaDeCasillas.FabricarPasillo(unaPosicion);
                     }
                     this.unMapa.AgregarCasilla(unaCasilla);
@@ -58,7 +58,6 @@ namespace TestBomberman.TestMapa
         [Test]
         public void AgregarUnaCasillaNulaLanzaNoExisteCasillaException()
         {
-            //unMapa = new Mapa(ANCHOMAPA, ALTOMAPA);
             Casilla otraCasilla = null;
             try
             {
@@ -78,7 +77,6 @@ namespace TestBomberman.TestMapa
         [Test]
         public void AgregarUnaCasillaConPosicionNulaLanzaPosicionNulaException()
         {
-            //unMapa = new Mapa(ANCHOMAPA, ALTOMAPA);
             pos = null;
             Casilla otraCasilla = new Casilla(pos);
             try
@@ -286,10 +284,20 @@ namespace TestBomberman.TestMapa
         }
 
         [Test]
-        public void PosicionDeAbajoNoExisteBombitaNoPuedeMoverseHaciaAbajo()
+        public void PosicionDeLaDerechaTienePasilloBombitaPuedeMoverseHaciaLaDerecha()
         {
             movil = new Bombita(this.pos);
             this.pos = new Punto(0, 0);
+            this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
+            this.unaCasilla.Transitar(movil);
+            Assert.IsTrue(unMapa.PermitidoMoverHaciaArribaA(movil));
+        }
+        [Test]
+        public void PosicionDeAbajoNoExisteBombitaNoPuedeMoverseHaciaAbajo()
+        {
+            this.pos = new Punto(0, 0);
+            movil = new Bombita(this.pos);
+            
             this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
             this.unaCasilla.Transitar(movil);
             Assert.IsFalse(unMapa.PermitidoMoverHaciaAbajoA(movil));
@@ -299,8 +307,9 @@ namespace TestBomberman.TestMapa
         public void PosicionDeAbajoEsUnObstaculoBombitaNoPuedeMoverseHaciaAbajo()
         {
             //ver mapa en el FixtureSetup
+            this.pos = new Punto(1, 2);
             movil = new Bombita(this.pos);
-            this.pos = new Punto(1,2);
+            
             this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
             this.unaCasilla.Transitar(movil);
             Assert.IsFalse(unMapa.PermitidoMoverHaciaAbajoA(movil));
