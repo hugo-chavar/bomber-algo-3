@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Bomberman.Arma
 {
-    class ManejadorProyectil
+    public class ManejadorProyectil
     {
 
         private Proyectil explotable;
@@ -75,10 +75,10 @@ namespace Bomberman.Arma
                 case 1:
                     explotable.PosicionInicial.PosicionSuperior(1);
                     break;
-                case 2:
+                case 3:
                     explotable.PosicionInicial.PosicionDerecha(-1);
                     break;
-                case 3:
+                case 4:
                     explotable.PosicionInicial.PosicionDerecha(1);
                     break;
             }
