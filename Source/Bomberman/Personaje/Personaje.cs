@@ -8,7 +8,7 @@ using Bomberman.Arma;
 
 namespace Bomberman.Personaje
 {
-    public abstract class Personaje : IMovible, IPosicionable, IComedor
+    public abstract class Personaje : IMovible, IComedor
     {
         protected int velocidad;
         protected Punto posicion;

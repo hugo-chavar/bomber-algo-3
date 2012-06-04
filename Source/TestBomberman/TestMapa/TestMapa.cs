@@ -4,6 +4,7 @@ using Bomberman;
 using Bomberman.Mapa;
 using Bomberman.Mapa.Casilla;
 using Bomberman.Excepciones;
+using Bomberman.Personaje;
 
 namespace TestBomberman.TestMapa
 {
@@ -12,11 +13,10 @@ namespace TestBomberman.TestMapa
     {
         private const int ANCHOMAPA = 5;
         private const int ALTOMAPA = 5;
-
         private Mapa unMapa;
         private Casilla unaCasilla;
         private Punto pos;
-        //private FabricaDeCasillas fabricaDeCasillas;
+        private IMovible movil;
 
         [Test]
         public void AgregarUnaCasillaNulaLanzaNoExisteCasillaException()
@@ -98,7 +98,7 @@ namespace TestBomberman.TestMapa
             pos = new Punto(4, 2);
             Casilla otraCasilla = FabricaDeCasillas.FabricarCasillaConBloqueCemento(pos);//new Casilla(pos);//
             otroMapa.agregarCasilla(otraCasilla);
-            Assert.IsTrue(otroMapa.existeCasillaEnPosicion(pos));
+            Assert.IsTrue(otroMapa.ExisteCasillaEnPosicion(pos));
         }
 
         [Test]
@@ -106,19 +106,19 @@ namespace TestBomberman.TestMapa
         {
             unMapa = new Mapa(ANCHOMAPA, ALTOMAPA);
             Punto unaPos = new Punto(0, 0);
-            Assert.IsFalse(unMapa.existeCasillaEnPosicion(unaPos));
+            Assert.IsFalse(unMapa.ExisteCasillaEnPosicion(unaPos));
             
         }
 
         [Test]
         public void AgregarCasillaDejaLaCasillaEnLaPosicionCorrecta()
         {
-            pos = new Punto(2, 3);
-            unMapa = new Mapa(ANCHOMAPA, ALTOMAPA);
+            this.pos = new Punto(2, 3);
+            this.unMapa = new Mapa(ANCHOMAPA, ALTOMAPA);
            // unaFabricaDeCasillas = new FabricaDeCasillas();
-            unaCasilla = FabricaDeCasillas.FabricarPasillo(pos);
-            unMapa.agregarCasilla(unaCasilla);
-            Assert.AreSame(unMapa.obtenerCasilla(pos) , unaCasilla);
+            this.unaCasilla = FabricaDeCasillas.FabricarPasillo(pos);
+            this.unMapa.agregarCasilla(unaCasilla);
+            Assert.AreSame(unMapa.ObtenerCasilla(pos) , unaCasilla);
         }
         
         [TestFixtureSetUp]
@@ -130,20 +130,13 @@ namespace TestBomberman.TestMapa
              //      P P P P P
              //      P * P * P
              //      P P P P P
-
             
             Punto unaPosicion;
             Casilla unaCasilla;
             this.unMapa = new Mapa(5,5);
-           // FabricaDeCasillas unaFabricaDeCasillas = new FabricaDeCasillas();
-
-            /*unaPosicion = new Punto(0, 0);
-            unaCasilla = unaFabricaDeCasillas.FabricarCasillaConBloqueAcero(unaPosicion);
-            this.unMapa.agregarCasilla(unaCasilla);*/
-
             int i,j;
-             for (i=0;i<5;i++)
-                for (j = 0; j < 5; j++)
+            for ( i = 0 ; i < 5 ; i++)
+                for ( j = 0; j < 5; j++)
                 {
                     unaPosicion = new Punto(i, j);
                     if ((i & 1) == 0 && (j & 1) == 0)
@@ -156,9 +149,33 @@ namespace TestBomberman.TestMapa
                         //uno de los dos es impar
                         unaCasilla = FabricaDeCasillas.FabricarPasillo(unaPosicion);
                     }
-
                     this.unMapa.agregarCasilla(unaCasilla);
                 }
-            }
+
+        }
+
+        [Test]
+        public void ExisteCasillaEnPosicionDevuelveTrueSiVoyAArribaYEsaPosicionExisteEnMapa()
+        {
+            
+            movil = new Bombita(this.pos);
+            this.pos = new Punto(0, 0);
+            this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
+            this.unaCasilla.Transitar(movil);
+            this.unMapa.agregarCasilla(unaCasilla);
+            Assert.IsTrue(unMapa.PermitidoMoverHaciaArribaA(movil));
+        }
+
+        /*[Test]
+        public void PosicionDeArribaTienePasilloBombitaPuedeMoverseHaciaArriba()
+        {
+            movil = new Bombita(this.pos);
+            this.pos = new Punto(0, 0);
+            this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
+            this.unaCasilla.Transitar(movil);
+            this.unMapa.agregarCasilla(unaCasilla);
+            Assert.IsTrue(unMapa.PermitidoMoverHaciaArribaA(movil));
+        }*/
+
     }
 }
