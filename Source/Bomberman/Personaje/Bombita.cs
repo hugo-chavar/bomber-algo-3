@@ -26,7 +26,7 @@ namespace Bomberman.Personaje
 
         public override void DuplicarVelocidad()
         {
-            this.Velocidad = (this.Velocidad * 2);
+            this.movimiento.MultiplicarVelocidadPor(2);
         }
 
 

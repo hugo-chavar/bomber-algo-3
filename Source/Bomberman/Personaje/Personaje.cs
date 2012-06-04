@@ -10,26 +10,23 @@ namespace Bomberman.Personaje
 {
     public abstract class Personaje : IMovible, IComedor
     {
-        protected int velocidad;
+        protected Movimiento movimiento;
         protected Punto posicion;
         protected ILanzador lanzador;
-        protected String direccion;
         protected int reduccionRetardoBombas;
         protected int unidadesDeResistencia;
-
-        protected const int VELOCIDAD = 1;
 
         public Personaje(Punto unPunto)
         {
             this.reduccionRetardoBombas = 0;
-            this.velocidad = VELOCIDAD;
+            this.movimiento = new Movimiento();
             this.Posicion = unPunto;
         }
 
-        public int Velocidad
+        public Movimiento Movimiento
         {
-            get { return this.velocidad; }
-            set { this.velocidad = value; }
+            get { return this.movimiento; }
+            set { this.movimiento = value; }
         }
 
         public ILanzador Lanzador 
@@ -61,15 +58,13 @@ namespace Bomberman.Personaje
             this.lanzador.Lanzar(posicion, retardo);
         }
 
-
-      
         public void Mover()
         {
             //falta implementar
-            if (this.direccion == "Arriba")
+            /*if (this.direccion == "Arriba")
             {
 
-            }
+            }*/
         }
 
         public virtual bool AtraviesaObstaculos()

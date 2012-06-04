@@ -81,6 +81,7 @@
     <Compile Include="Personaje\LosLopezReggae.cs" />
     <Compile Include="Personaje\LosLopezReggaeAlado.cs" />
     <Compile Include="Personaje\Personaje.cs" />
+    <Compile Include="Personaje\Movimiento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Punto.cs" />
   </ItemGroup>

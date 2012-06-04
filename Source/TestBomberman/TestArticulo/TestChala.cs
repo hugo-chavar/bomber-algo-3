@@ -24,11 +24,11 @@ namespace TestBomberman.TestArticulo
         [Test]
         public void TestComerChalaDuplicaVelocidadDelComedor()
         {
-            int velocidad = unBombita.Velocidad;
+            int velocidad = unBombita.Movimiento.Velocidad;
             Articulo unArticulo = new Chala();
             unBombita.Comer(unArticulo);
 
-            Assert.AreEqual(2*velocidad, unBombita.Velocidad);
+            Assert.AreEqual(2*velocidad, unBombita.Movimiento.Velocidad);
          }
 
 

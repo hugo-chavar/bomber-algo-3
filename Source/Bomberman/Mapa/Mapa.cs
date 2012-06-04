@@ -12,6 +12,10 @@ namespace Bomberman.Mapa
         private Dictionary<Punto, Casilla.Casilla> tablero;
         private int dimensionHorizontal;
         private int dimensionVertical;
+        public const int ARRIBA = 8;
+        public const int ABAJO = 2;
+        public const int IZQUIERDA = 4;
+        public const int DERECHA = 6;
 
         public Dictionary<Punto, Casilla.Casilla> Tablero
         {

@@ -95,7 +95,6 @@ namespace TestBomberman.TestMapa
         [Test]
         public void AgregarUnaCasillaConPosicionFueraDeRangoLanzaPuntoFueraDeRangoEnMapaException()
         {
-            //unMapa = new Mapa(ANCHOMAPA, ALTOMAPA);
             pos = new Punto(ANCHOMAPA + 1, ALTOMAPA - 1);
             Casilla otraCasilla = new Casilla(pos);
             try
