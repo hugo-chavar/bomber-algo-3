@@ -41,23 +41,24 @@ namespace Bomberman.Mapa
 
         public void agregarCasilla(Casilla.Casilla unaCasilla)
         {
-            if (unaCasilla != null )
-            {
-                if (unaCasilla.Posicion != null)
-                {
-                    this.tablero.Add(unaCasilla.Posicion, unaCasilla);
-                }
-                else
-                {
-                    throw new PosicionNulaException();
-                }
-                
-            }
-            else
+            if (unaCasilla == null )
             {
                 throw new NoExisteCasillaException();
             }
-            
+            if (unaCasilla.Posicion == null)
+            {
+                throw new PosicionNulaException();
+            }
+            if (!PosicionDentroRango(unaCasilla.Posicion))
+            {
+                throw new PuntoFueraDeRangoEnMapaException();
+            }
+            this.tablero.Add(unaCasilla.Posicion, unaCasilla);
+        }
+
+        private bool PosicionDentroRango(Punto punto)
+        {
+            return (punto.X<this.DimensionHorizontal && punto.Y < this.DimensionVertical);
         }
 
         public bool existeCasillaEnPosicion(Punto pos)

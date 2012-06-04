@@ -3,6 +3,7 @@ using NUnit.Framework;
 using Bomberman;
 using Bomberman.Mapa;
 using Bomberman.Mapa.Casilla;
+using Bomberman.Excepciones;
 
 namespace TestBomberman.TestMapa
 {
@@ -17,21 +18,83 @@ namespace TestBomberman.TestMapa
         private Punto pos;
         //private FabricaDeCasillas fabricaDeCasillas;
 
-        /*[Test]
-        public void CrearUnMapaFuncionaBien()
+        [Test]
+        public void AgregarUnaCasillaNulaLanzaNoExisteCasillaException()
+        {
+            unMapa = new Mapa(ANCHOMAPA, ALTOMAPA);
+            Casilla otraCasilla = null;
+            try
+            {
+                unMapa.agregarCasilla(otraCasilla);
+                Assert.Fail();
+            }
+            catch (NoExisteCasillaException)
+            {
+            }
+            catch (System.Exception)
+            {
+                Assert.Fail();
+            }
+        }
+
+        [Test]
+        public void AgregarUnaCasillaConPosicionNulaLanzaPosicionNulaException()
+        {
+            unMapa = new Mapa(ANCHOMAPA, ALTOMAPA);
+            pos = null;
+            Casilla otraCasilla = new Casilla(pos);
+            try
+            {
+                unMapa.agregarCasilla(otraCasilla);
+                Assert.Fail();
+            }
+            catch (PosicionNulaException)
+            {
+            }
+            catch (System.Exception)
+            {
+                Assert.Fail();
+            }
+        }
+
+        [Test]
+        public void AgregarUnaCasillaConPosicionFueraDeRangoLanzaPuntoFueraDeRangoEnMapaException()
+        {
+            unMapa = new Mapa(ANCHOMAPA, ALTOMAPA);
+            pos = new Punto(7, 2);
+            Casilla otraCasilla = new Casilla(pos);
+            try
+            {
+                unMapa.agregarCasilla(otraCasilla);
+                Assert.Fail();
+            }
+            catch (PuntoFueraDeRangoEnMapaException)
+            {
+            }
+            catch (System.Exception)
+            {
+                Assert.Fail();
+            }
+        }
+
+        [Test]
+        public void UnMapaCreadoTieneElAnchoIndicadoEnElConstructor()
         { 
             unMapa = new Mapa(ANCHOMAPA, ALTOMAPA);
-            Casilla[,] unTablero = new Casilla[ANCHOMAPA,ALTOMAPA];
-            Assert.AreEqual(unMapa.Tablero, unTablero);
             Assert.AreEqual(unMapa.DimensionHorizontal, ANCHOMAPA);
+        }
+
+        [Test]
+        public void UnMapaCreadoTieneElAltoIndicadoEnElConstructor()
+        {
+            unMapa = new Mapa(ANCHOMAPA, ALTOMAPA);
             Assert.AreEqual(unMapa.DimensionVertical, ALTOMAPA);
-        }*/
+        }
 
         [Test]
         public void NuevoMapaContieneCasillaAgregada()
         {
             Mapa otroMapa = new Mapa(ANCHOMAPA, ALTOMAPA);
-            //Punto unaPos = new Punto(3, 2);
             pos = new Punto(4, 2);
             Casilla otraCasilla = FabricaDeCasillas.FabricarCasillaConBloqueCemento(pos);//new Casilla(pos);//
             otroMapa.agregarCasilla(otraCasilla);
@@ -47,17 +110,17 @@ namespace TestBomberman.TestMapa
             
         }
 
-        /*[Test]
+        [Test]
         public void AgregarCasillaDejaLaCasillaEnLaPosicionCorrecta()
         {
             pos = new Punto(2, 3);
             unMapa = new Mapa(ANCHOMAPA, ALTOMAPA);
            // unaFabricaDeCasillas = new FabricaDeCasillas();
-            unaCasilla = unaFabricaDeCasillas.FabricarPasillo(pos);
+            unaCasilla = FabricaDeCasillas.FabricarPasillo(pos);
             unMapa.agregarCasilla(unaCasilla);
             Assert.AreSame(unMapa.obtenerCasilla(pos) , unaCasilla);
-        }*/
-        /*
+        }
+        
         [TestFixtureSetUp]
         public void TestSetup()
         {
@@ -72,11 +135,11 @@ namespace TestBomberman.TestMapa
             Punto unaPosicion;
             Casilla unaCasilla;
             this.unMapa = new Mapa(5,5);
-            FabricaDeCasillas unaFabricaDeCasillas = new FabricaDeCasillas();
+           // FabricaDeCasillas unaFabricaDeCasillas = new FabricaDeCasillas();
 
-            unaPosicion = new Punto(0, 0);
+            /*unaPosicion = new Punto(0, 0);
             unaCasilla = unaFabricaDeCasillas.FabricarCasillaConBloqueAcero(unaPosicion);
-            this.unMapa.agregarCasilla(unaCasilla);
+            this.unMapa.agregarCasilla(unaCasilla);*/
 
             int i,j;
              for (i=0;i<5;i++)
@@ -86,16 +149,16 @@ namespace TestBomberman.TestMapa
                     if ((i & 1) == 0 && (j & 1) == 0)
                     {
                         //ambos son numeros pares
-                        unaCasilla = unaFabricaDeCasillas.FabricarCasillaConBloqueAcero(unaPosicion);
+                        unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueAcero(unaPosicion);
                     }
                     else
                     { 
                         //uno de los dos es impar
-                        unaCasilla = unaFabricaDeCasillas.FabricarPasillo(unaPosicion);
+                        unaCasilla = FabricaDeCasillas.FabricarPasillo(unaPosicion);
                     }
 
                     this.unMapa.agregarCasilla(unaCasilla);
                 }
-            }*/
+            }
     }
 }
