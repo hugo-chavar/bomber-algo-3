@@ -67,6 +67,19 @@ namespace Bomberman.Juego
             return instanciaDeJuego;
         }
 
+        public void PausarJuego()
+        {
+            this.JuegoPausado = true; 
+        }
 
+        public void DesPausarJuego()
+        {
+            this.JuegoPausado = false;
+        }
+
+        public void PerderVida()
+        {
+            this.CantDeVidas = (this.CantDeVidas-1);
+        }
     }
 }

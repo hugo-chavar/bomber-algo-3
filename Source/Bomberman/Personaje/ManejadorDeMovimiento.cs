@@ -2,18 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Bomberman;
 
 namespace Bomberman.Personaje
 {
-    class ManejadorDeMovimiento
+    public class ManejadorDeMovimiento
     {
         private Personaje personajeInterno;
+        private Mapa.Mapa unMapa;
 
         // Definir ENUM: 1: arriba, 2 : abajo, 3 : Derecha, 4 : Izquierda //
 
-        public ManejadorDeMovimiento(Personaje personaje)
+        public ManejadorDeMovimiento(Personaje personaje, Mapa.Mapa unMapa)
         {
             this.personajeInterno = personaje;
+            this.unMapa = unMapa;
+
         }
 
         public Punto MoverPersonaje(int MOV){
@@ -22,15 +26,16 @@ namespace Bomberman.Personaje
                 {
                   return personajeInterno.Posicion;
                 }
-            Bomberman.Mapa.Casilla.Casilla casilleroDestino = Juego.Juego.Instancia().Ambiente.obtenerCasilla(posicionDestino);
-            Bomberman.Mapa.Casilla.Casilla casilleroOrigen =  Juego.Juego.Instancia().Ambiente.obtenerCasilla(personajeInterno.Posicion);
+                Bomberman.Mapa.Casilla.Casilla casilleroDestino = unMapa.obtenerCasilla(posicionDestino);
+                Bomberman.Mapa.Casilla.Casilla casilleroOrigen = unMapa.obtenerCasilla(personajeInterno.Posicion);
              if (casilleroDestino.PermiteTransitarUn(personajeInterno))
             {
                 // casilleroOrigen.Destransitar(personajeInterno) falta Destransitar //
                 personajeInterno.Posicion = posicionDestino;
                 casilleroDestino.Transitar(personajeInterno);
-            }
                 return posicionDestino;
+            }
+             return personajeInterno.Posicion;
             }
         
 
@@ -40,22 +45,22 @@ namespace Bomberman.Personaje
             {
                 case 0:                  // Arriba //
                     {
-                        Posicion.AumentarYEn(1);
+                        Posicion.PosicionSuperior(1);
                         break;
                     }
                 case 1:             // Abajo //
                     {
-                        Posicion.AumentarYEn(-1);
+                        Posicion.PosicionSuperior(-1);
                         break;
                     }
                 case 2:             // Derecha //
                     {
-                        Posicion.AumentarXEn(1);
+                        Posicion.PosicionDerecha(1);
                         break;
                     }
                 case 3:             // Izquierda //
                     {
-                        Posicion.AumentarXEn(-1);
+                        Posicion.PosicionDerecha(-1);
                         break;
                     }
             }
