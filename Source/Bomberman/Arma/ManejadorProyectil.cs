@@ -34,8 +34,6 @@ namespace Bomberman.Arma
 
         private Punto CalcularZonaImpacto()
         {
-
-
             // no es del todo feliz esta resolucion pero al menos por ahora lo dejo //
             switch (direccionPersonaje)
             {

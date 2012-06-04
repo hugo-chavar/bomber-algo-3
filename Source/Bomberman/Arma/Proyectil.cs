@@ -35,7 +35,7 @@ namespace Bomberman.Arma
         }
 
         
-        public Proyectil(Punto posicionInicial) // FIJARSE SI NO SERIA MEJOR PASARLE UNA POSICION EN VEZ DE LOS VALORES X e Y!!!
+        public Proyectil(Punto posicionInicial)
 
         {
             this.poderDeDestruccion = 5;
@@ -54,7 +54,7 @@ namespace Bomberman.Arma
         {
             daniable.DaniarConProyectil(this.PoderDeDestruccion);
 
-                                                                        // cuando explota genera el mismo danio que la tole tole //
+            // cuando explota genera el mismo danio que la Molotov //
         }
 
         public void LanzarMisil(int direccionPersonaje)
