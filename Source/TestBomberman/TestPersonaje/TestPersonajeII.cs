@@ -5,6 +5,7 @@ using Bomberman;
 using Bomberman.Personaje;
 using System.Collections.Generic;
 using Bomberman.Mapa;
+
 namespace TestBomberman.TestPersonaje
 {
     [TestFixture]

@@ -26,8 +26,8 @@ namespace Bomberman.Personaje
                 {
                   return personajeInterno.Posicion;
                 }
-                Bomberman.Mapa.Casilla.Casilla casilleroDestino = unMapa.obtenerCasilla(posicionDestino);
-                Bomberman.Mapa.Casilla.Casilla casilleroOrigen = unMapa.obtenerCasilla(personajeInterno.Posicion);
+                Bomberman.Mapa.Casilla.Casilla casilleroDestino = unMapa.ObtenerCasilla(posicionDestino);
+                Bomberman.Mapa.Casilla.Casilla casilleroOrigen = unMapa.ObtenerCasilla(personajeInterno.Posicion);
              if (casilleroDestino.PermiteTransitarUn(personajeInterno))
             {
                 // casilleroOrigen.Destransitar(personajeInterno) falta Destransitar //
