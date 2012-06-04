@@ -48,7 +48,7 @@ namespace TestBomberman.TestMapa
                         //uno de los dos es impar
                         unaCasilla = FabricaDeCasillas.FabricarPasillo(unaPosicion);
                     }
-                    this.unMapa.agregarCasilla(unaCasilla);
+                    this.unMapa.AgregarCasilla(unaCasilla);
                 }
 
         }
@@ -62,11 +62,12 @@ namespace TestBomberman.TestMapa
             Casilla otraCasilla = null;
             try
             {
-                otroMapa.agregarCasilla(otraCasilla);
+                otroMapa.AgregarCasilla(otraCasilla);
                 Assert.Fail();
             }
             catch (NoExisteCasillaException)
             {
+                Assert.Pass("Exception correcta fue lanzda.");
             }
             catch (System.Exception)
             {
@@ -82,11 +83,12 @@ namespace TestBomberman.TestMapa
             Casilla otraCasilla = new Casilla(pos);
             try
             {
-                otroMapa.agregarCasilla(otraCasilla);
+                otroMapa.AgregarCasilla(otraCasilla);
                 Assert.Fail();
             }
             catch (PosicionNulaException)
             {
+                Assert.Pass("Exception correcta fue lanzda.");
             }
             catch (System.Exception)
             {
@@ -102,11 +104,12 @@ namespace TestBomberman.TestMapa
             Casilla otraCasilla = new Casilla(pos);
             try
             {
-                otroMapa.agregarCasilla(otraCasilla);
+                otroMapa.AgregarCasilla(otraCasilla);
                 Assert.Fail();
             }
             catch (PuntoFueraDeRangoEnMapaException)
             {
+                Assert.Pass("Exception correcta fue lanzda.");
             }
             catch (System.Exception)
             {
@@ -134,7 +137,7 @@ namespace TestBomberman.TestMapa
             //Mapa otroMapa = new Mapa(ANCHOMAPA, ALTOMAPA);
             Punto unaPos = new Punto(4, 2);
             Casilla otraCasilla = FabricaDeCasillas.FabricarCasillaConBloqueCemento(unaPos);//new Casilla(pos);//
-            otroMapa.agregarCasilla(otraCasilla);
+            otroMapa.AgregarCasilla(otraCasilla);
             Assert.IsTrue(otroMapa.ExisteCasillaEnPosicion(unaPos));
         }
 
@@ -152,7 +155,7 @@ namespace TestBomberman.TestMapa
         {
             Punto unaPos = new Punto(2, 2);
             Casilla unaCasilla = FabricaDeCasillas.FabricarPasillo(unaPos);
-            otroMapa.agregarCasilla(unaCasilla);
+            otroMapa.AgregarCasilla(unaCasilla);
             Assert.AreSame(otroMapa.ObtenerCasilla(unaPos), unaCasilla);
         }
 
@@ -235,16 +238,72 @@ namespace TestBomberman.TestMapa
             Punto posIzq = this.pos.PosicionIzquierda();
             Assert.IsFalse(unMapa.ExisteCasillaEnPosicion(posIzq));
         }
-        /*[Test]
+
+        [Test]
+        public void AgregarCasillaLanzaCasillaYaIngresadaExceptionSiYaFueAgregadaAnteriorMente()
+        {
+            this.pos = new Punto(0, 0);
+            this.unaCasilla = FabricaDeCasillas.FabricarPasillo(this.pos);
+            try
+            {
+                this.unMapa.AgregarCasilla(unaCasilla);
+                Assert.Fail();
+            }
+            catch (CasillaYaIngresadaException)
+            {
+                Assert.Pass("Exception correcta fue lanzda.");
+            }
+            catch (System.Exception)
+            {
+                Assert.Fail();
+            }
+        }
+
+        [Test]
+        public void AgregarCasillaNoAgregadaAnteriorMenteNoLanzaNingunaExcepcion()
+        {
+            this.pos = new Punto(4, 4);
+            this.unaCasilla = FabricaDeCasillas.FabricarPasillo(this.pos);
+            try
+            {
+                this.otroMapa.AgregarCasilla(unaCasilla);
+                //Assert.Pass("Casilla agregada correctamente.");
+            }
+            catch (System.Exception)
+            {
+                Assert.Fail();
+            }
+        }
+
+        [Test]
         public void PosicionDeArribaTienePasilloBombitaPuedeMoverseHaciaArriba()
         {
             movil = new Bombita(this.pos);
             this.pos = new Punto(0, 0);
             this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
             this.unaCasilla.Transitar(movil);
-            this.unMapa.agregarCasilla(unaCasilla);
             Assert.IsTrue(unMapa.PermitidoMoverHaciaArribaA(movil));
-        }*/
+        }
 
+        [Test]
+        public void PosicionDeAbajoNoExisteBombitaNoPuedeMoverseHaciaAbajo()
+        {
+            movil = new Bombita(this.pos);
+            this.pos = new Punto(0, 0);
+            this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
+            this.unaCasilla.Transitar(movil);
+            Assert.IsFalse(unMapa.PermitidoMoverHaciaAbajoA(movil));
+        }
+
+        [Test]
+        public void PosicionDeAbajoEsUnObstaculoBombitaNoPuedeMoverseHaciaAbajo()
+        {
+            //ver mapa en el FixtureSetup
+            movil = new Bombita(this.pos);
+            this.pos = new Punto(1,2);
+            this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
+            this.unaCasilla.Transitar(movil);
+            Assert.IsFalse(unMapa.PermitidoMoverHaciaAbajoA(movil));
+        }
     }
 }

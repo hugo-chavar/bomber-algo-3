@@ -29,8 +29,8 @@ namespace TestBomberman.TestPersonaje
             this.destino = FabricaDeCasillas.FabricarPasillo(posicionDestino);
             this.unPersonaje = new Bombita(posicionOrigen);
             this.unMapa = new Mapa(3, 3);
-            this.unMapa.agregarCasilla(origen);
-            this.unMapa.agregarCasilla(destino);
+            this.unMapa.AgregarCasilla(origen);
+            this.unMapa.AgregarCasilla(destino);
             this.manejador = new ManejadorDeMovimiento(unPersonaje, unMapa);
                         
         }
