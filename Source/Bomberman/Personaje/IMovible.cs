@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Bomberman.Personaje
 {
-    public interface IMovible
+    public interface IMovible : IPosicionable
     {
         void Mover();
         bool AtraviesaObstaculos();

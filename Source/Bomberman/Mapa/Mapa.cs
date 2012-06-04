@@ -9,7 +9,6 @@ namespace Bomberman.Mapa
 {
     public class Mapa : ITransitable
     {
-        //private Casilla.Casilla[,] tablero;
         private Dictionary<Punto, Casilla.Casilla> tablero;
         private int dimensionHorizontal;
         private int dimensionVertical;
@@ -34,7 +33,6 @@ namespace Bomberman.Mapa
         {
             this.dimensionHorizontal = tamanioHorizontal;
             this.dimensionVertical = tamanioVertical;
-            //this.Tablero = (new Casilla.Casilla[this.dimensionHorizontal, this.dimensionVertical]);
             this.tablero = new Dictionary<Punto, Casilla.Casilla>();
 
         }
@@ -58,21 +56,21 @@ namespace Bomberman.Mapa
 
         private bool PosicionDentroRango(Punto punto)
         {
-            return (punto.X<this.DimensionHorizontal && punto.Y < this.DimensionVertical);
+            return (punto.X < this.DimensionHorizontal && punto.Y < this.DimensionVertical);
         }
 
-        public bool existeCasillaEnPosicion(Punto pos)
+        public bool ExisteCasillaEnPosicion(Punto pos)
         {
             if (pos == null)
                 throw new PosicionNulaException();
             return this.tablero.ContainsKey(pos);
         }
 
-        public Casilla.Casilla obtenerCasilla(Punto pos)
+        public Casilla.Casilla ObtenerCasilla(Punto pos)
         {
 
             Casilla.Casilla unaCasilla;
-            if (this.existeCasillaEnPosicion(pos))
+            if (this.ExisteCasillaEnPosicion(pos))
             {
                 unaCasilla = this.tablero[pos];
             }
@@ -83,5 +81,32 @@ namespace Bomberman.Mapa
             return unaCasilla;
 
         }
+
+        public bool PermitidoMoverHaciaArribaA(Personaje.IMovible movil)
+        {
+            Casilla.Casilla unaCasilla;
+            unaCasilla = this.ObtenerCasilla(movil.Posicion);
+            //Punto posicionSuperior = movil.Posicion.PosicionSuperior();
+
+
+
+            return false;
+        }
+
+        public bool PermitidoMoverHaciaAbajoA(Personaje.IMovible movil)
+        {
+            return false;
+        }
+
+        public bool PermitidoMoverHaciaIzquierdaA(Personaje.IMovible movil)
+        {
+            return false;
+        }
+
+        public bool PermitidoMoverHaciaDerechaA(Personaje.IMovible movil)
+        {
+            return false;
+        }
+
     }
 }

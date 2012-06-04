@@ -10,8 +10,7 @@ namespace Bomberman.Mapa.Casilla
     {
         public Pasillo()
         {
-            // TODO: Complete member initialization
-            //this.unaPosicion = unaPosicion;
+
         }
         public override bool TransitablePor(IMovible movil)
         {
@@ -33,7 +32,6 @@ namespace Bomberman.Mapa.Casilla
 
         public override bool PuedeContenerArticulos()
         {
-            //throw new NotImplementedException();
             return true;
         }
 
