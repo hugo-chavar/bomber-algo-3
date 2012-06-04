@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Bomberman.Personaje;
+using Bomberman.Arma;
 using Bomberman;
 
 namespace Bomberman.Mapa.Casilla
@@ -14,6 +15,7 @@ namespace Bomberman.Mapa.Casilla
         private List<IMovible> transitandoEnCasilla;
         //defino el patron State para determinar si hay un obstaculo o la casilla esta libre
         private Obstaculo estado;
+        private Explosivo explosivo;
 
         public Casilla(Punto pos)
         {
@@ -84,6 +86,16 @@ namespace Bomberman.Mapa.Casilla
             Punto p = (Punto)obj;
             return (x == p.x) && (y == p.y);
         }*/
+
+        public void PlantarExplosivo(Explosivo unExplosivo)
+        {
+            this.explosivo = unExplosivo;
+        }
+
+        public void QuitarExplosivo()
+        {
+            this.explosivo = null;
+        }
 
     }
 }
