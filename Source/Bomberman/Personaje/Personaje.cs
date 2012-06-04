@@ -87,5 +87,15 @@ namespace Bomberman.Personaje
 
         public abstract void ReducirRetardo(int retardo);
 
+        public void DaniarConBombaToleTole()
+        {
+        }
+        public void DaniarConBombaMolotov(int UnidadesDaniadas)
+        { 
+        }
+        public void DaniarConProyectil(int UnidadesDaniadas)
+        { 
+        }
+
     }
 }

@@ -10,9 +10,8 @@ namespace Bomberman.Arma
         public bool Lanzar(Punto posicion, int reduccionRetardo)
         {
             Bomba bomba = new BombaToleTole(posicion, reduccionRetardo);
-            //Deberia Modificar el mapa con agregando una bomba a un casillero
-            //getMapa().ColocarPosicionable(bomba);
-            return (true);//Las bombas se ponen en la posicion dl personaje
+            Juego.Juego.Instancia().Ambiente.ObtenerCasilla(posicion).PlantarExplosivo(bomba);
+            return (true);//Las bombas se ponen en la posicion del personaje
         }
     }
 }

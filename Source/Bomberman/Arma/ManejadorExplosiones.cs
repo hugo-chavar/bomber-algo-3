@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Linq;
 using System.Text;
+using Bomberman.Juego;
 using Bomberman.Mapa;
 using Bomberman.Mapa.Casilla;
 
@@ -16,7 +17,6 @@ namespace Bomberman.Arma
             this.explosivo = explotable;
         }
 
-        //Ver de mejorar logica subdiviendo en metodos
         private ArrayList CalcularCasillerosExplotados()
         {
             ArrayList listaDevolucion = new ArrayList();
@@ -42,11 +42,13 @@ namespace Bomberman.Arma
         public void ManejarExplosion()
         {
             ArrayList puntosAfectados = this.CalcularCasillerosExplotados();
-            for (int i = 1; i < (puntosAfectados.Count) + 1; i++)
+            Mapa.Mapa mapa = Juego.Juego.Instancia().Ambiente;
+            for (int i = 1; i <= (puntosAfectados.Count); i++)
             {
-                //Casilla casillero= Juego.Instancia.Mapa.Posicion(puntosAfectados[i]);
-                //this.explosivo.daniar(casillero);
-
+                Casilla casillaAux = mapa.ObtenerCasilla((Punto)puntosAfectados[i]);
+                this.explosivo.Daniar(casillaAux.Estado);
+                for (int j = 1; j <= casillaAux.TransitandoEnCasilla.Count; j++)
+                    this.explosivo.Daniar(casillaAux.TransitandoEnCasilla[j]);
             }
         
         }

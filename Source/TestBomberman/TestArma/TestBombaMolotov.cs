@@ -1,5 +1,6 @@
 ﻿using Bomberman.Arma;
 using Bomberman.Mapa;
+using Bomberman.Juego;
 using NUnit.Framework;
 using Bomberman.Mapa.Casilla;
 using Bomberman;
@@ -10,11 +11,15 @@ namespace TestBomberman.TestArma
     class TestBombaMolotov
     {
         private Punto posicion;
+        private Juego juego;
 
         [TestFixtureSetUp]
         public void TestSetup()
         {
+            juego = new Juego();
             posicion = new Punto(3, 4);
+            Casilla unaCasilla = FabricaDeCasillas.FabricarPasillo(posicion);
+            juego.Ambiente.AgregarCasilla(unaCasilla);
         }
 
         [Test]
@@ -28,6 +33,7 @@ namespace TestBomberman.TestArma
         public void TestBombaMolotovEstaExplotadaAlPasarUnTiempoDebeDevolverTrue()
         {
             Bomba bomba = new BombaMolotov(posicion, 0);
+            juego.Ambiente.ObtenerCasilla(posicion).PlantarExplosivo(bomba);
             bomba.CuandoPasaElTiempo();
             Assert.AreEqual(bomba.EstaExplotado(), true);
         }

@@ -36,7 +36,7 @@ namespace TestBomberman.TestArma
             }
 
             [Test]
-            public void TestBombaMolotovEstaExplotadaAl5SegundosDebeDevolverTrue()
+            public void TestBombaToleToleEstaExplotadaAl5SegundosDebeDevolverTrue()
             {
                 Bomba bomba = new BombaToleTole(posicion, 0);
                 bomba.CuandoPasaElTiempo();
