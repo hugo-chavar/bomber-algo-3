@@ -115,7 +115,6 @@ namespace TestBomberman.TestMapa
         {
             this.pos = new Punto(2, 3);
             this.unMapa = new Mapa(ANCHOMAPA, ALTOMAPA);
-           // unaFabricaDeCasillas = new FabricaDeCasillas();
             this.unaCasilla = FabricaDeCasillas.FabricarPasillo(pos);
             this.unMapa.agregarCasilla(unaCasilla);
             Assert.AreSame(unMapa.ObtenerCasilla(pos) , unaCasilla);
@@ -157,15 +156,22 @@ namespace TestBomberman.TestMapa
         [Test]
         public void ExisteCasillaEnPosicionDevuelveTrueSiVoyAArribaYEsaPosicionExisteEnMapa()
         {
-            
-            movil = new Bombita(this.pos);
             this.pos = new Punto(0, 0);
-            this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
-            this.unaCasilla.Transitar(movil);
+            Casilla unaCasilla = FabricaDeCasillas.FabricarPasillo(this.pos);
             this.unMapa.agregarCasilla(unaCasilla);
-            Assert.IsTrue(unMapa.PermitidoMoverHaciaArribaA(movil));
+            Assert.IsTrue(this.unMapa.ExisteCasillaEnPosicion(this.pos));
+            //Punto otra = this.pos.PosicionSuperior();
+            //Assert.IsTrue(unMapa.ExisteCasillaEnPosicion(otra));
         }
 
+        /*[Test]
+        public void ExisteCasillaEnPosicionDevuelveTrueSiVoyAAbajoYEsaPosicionExisteEnMapa()
+        {
+            this.pos = new Punto(0, 1);
+            Punto otra = this.pos.PosicionInferior();
+            Assert.IsTrue(unMapa.ExisteCasillaEnPosicion(otra));
+        }
+        */
         /*[Test]
         public void PosicionDeArribaTienePasilloBombitaPuedeMoverseHaciaArriba()
         {
