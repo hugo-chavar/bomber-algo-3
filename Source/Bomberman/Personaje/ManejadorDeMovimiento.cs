@@ -45,22 +45,22 @@ namespace Bomberman.Personaje
             {
                 case 0:                  // Arriba //
                     {
-                        Posicion.AumentarYEn(1);
+                        Posicion.PosicionSuperior(1);
                         break;
                     }
                 case 1:             // Abajo //
                     {
-                        Posicion.AumentarYEn(-1);
+                        Posicion.PosicionSuperior(-1);
                         break;
                     }
                 case 2:             // Derecha //
                     {
-                        Posicion.AumentarXEn(1);
+                        Posicion.PosicionDerecha(1);
                         break;
                     }
                 case 3:             // Izquierda //
                     {
-                        Posicion.AumentarXEn(-1);
+                        Posicion.PosicionDerecha(-1);
                         break;
                     }
             }

@@ -21,17 +21,17 @@
             get { return (this.y); }
             set { this.y = value; }
         }
-        public void AumentarXEn(int aumentoX)
+        public void PosicionDerecha(int aumentoX)
         {
-            this.X = X + aumentoX;
+            this.x = this.x + aumentoX;
         }
-        public void AumentarYEn(int aumentoY)
+        public void PosicionSuperior(int aumentoY)
         {
-            this.Y = Y + aumentoY;
+            this.y = this.y + aumentoY;
         }
         public bool EsPuntoValido()
         {
-            if ((this.X >= 0) && (this.Y >= 0))
+            if ((this.x >= 0) && (this.y >= 0))
             {
                 return true;
             }
