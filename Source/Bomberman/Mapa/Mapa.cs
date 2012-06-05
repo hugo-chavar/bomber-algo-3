@@ -158,7 +158,9 @@ namespace Bomberman.Mapa
                 {
                     //Casilla.Casilla casillaAux = this.ObtenerCasilla((Punto)puntosAfectados[i]);
                     Casilla.Casilla casillaAux = this.ObtenerCasilla(puntosAfectados[i]);
-                    explosivo.Daniar(casillaAux.Estado);
+                    explosivo.Daniar(casillaAux.Estado); 
+                    if (casillaAux.Estado.Destruido())
+                        casillaAux.Estado = new Pasillo();
                     for (int j = 0; j < casillaAux.TransitandoEnCasilla.Count; j++)
                         explosivo.Daniar(casillaAux.TransitandoEnCasilla[j]);
                 }

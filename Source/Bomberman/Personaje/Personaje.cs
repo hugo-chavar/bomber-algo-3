@@ -72,6 +72,12 @@ namespace Bomberman.Personaje
             return false;
         }
 
+        public bool Destruido()
+        {
+            return ((this.unidadesDeResistencia) < 1);
+        }
+
+
 
 
         public abstract void Comer(Articulo.IComible comible);
