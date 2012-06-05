@@ -144,8 +144,83 @@ namespace Bomberman.Mapa
             return unaCasilla.PermiteTransitarUn(movil);
         }
 
+        public void Mover(Personaje.IMovible movil)
+        {
+            switch (movil.Movimiento.Direccion)
+            {
+                case ARRIBA:
+                    {
+                        if (PermitidoMoverHaciaArribaA(movil))
+                            MoverHaciaArribaA(movil);
+                        break;
+                    }
+                case ABAJO:
+                    {
+                        if (PermitidoMoverHaciaAbajoA(movil))
+                            MoverHaciaAbajoA(movil);
+                        break;
 
+                    }
+                case IZQUIERDA:
+                    {
+                        if (PermitidoMoverHaciaIzquierdaA(movil))
+                            MoverHaciaIzquierdaA(movil);
+                        break;
+                    }
+                case DERECHA:
+                    {
+                        if (PermitidoMoverHaciaDerechaA(movil))
+                            MoverHaciaDerechaA(movil);
+                        break;
 
+                    }
+            }
+        }
+
+        private void MoverHaciaDerechaA(Personaje.IMovible movil)
+        {
+            Punto posicionDerecha = movil.Posicion.PosicionDerecha();
+            Casilla.Casilla unaCasilla;
+            unaCasilla = this.ObtenerCasilla(posicionDerecha);
+            unaCasilla.Transitar(movil);
+            Casilla.Casilla otraCasilla;
+            otraCasilla = this.ObtenerCasilla(movil.Posicion);
+            otraCasilla.Dejar(movil);
+        }
+
+        private void MoverHaciaIzquierdaA(Personaje.IMovible movil)
+        {
+            Punto posicionIzquierda = movil.Posicion.PosicionIzquierda();
+            Casilla.Casilla unaCasilla;
+            unaCasilla = this.ObtenerCasilla(posicionIzquierda);
+            unaCasilla.Transitar(movil);
+            Casilla.Casilla otraCasilla;
+            otraCasilla = this.ObtenerCasilla(movil.Posicion);
+            otraCasilla.Dejar(movil);
+        }
+
+        private void MoverHaciaAbajoA(Personaje.IMovible movil)
+        {
+            Punto posicionAbajo = movil.Posicion.PosicionInferior();
+            Casilla.Casilla unaCasilla;
+            unaCasilla = this.ObtenerCasilla(posicionAbajo);
+            unaCasilla.Transitar(movil);
+            Casilla.Casilla otraCasilla;
+            otraCasilla = this.ObtenerCasilla(movil.Posicion);
+            otraCasilla.Dejar(movil);
+        }
+
+        private void MoverHaciaArribaA(Personaje.IMovible movil)
+        {
+            Punto posicionSuperior = movil.Posicion.PosicionSuperior();
+            Casilla.Casilla unaCasilla;
+            unaCasilla = this.ObtenerCasilla(posicionSuperior);
+            unaCasilla.Transitar(movil);
+            Casilla.Casilla otraCasilla;
+            otraCasilla = this.ObtenerCasilla(movil.Posicion);
+            otraCasilla.Dejar(movil);
+        }
+        
         //Por el momento atrapo solo la excepcion.Hay qu solucionarlo de otr Forma
         //Quien esta haciendo esto? soy Hugo, modifico el casteo fiero y dejo comentado las lineas que saco
         public void ManejarExplosion(Explosivo explosivo)
