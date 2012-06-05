@@ -65,7 +65,7 @@ namespace TestBomberman.TestMapa
             }
             catch (NoExisteCasillaException)
             {
-                Assert.Pass("Exception correcta fue lanzda.");
+                Assert.Pass("Exception correcta fue lanzada.");
             }
             catch (System.Exception)
             {
@@ -85,7 +85,7 @@ namespace TestBomberman.TestMapa
             }
             catch (PosicionNulaException)
             {
-                Assert.Pass("Exception correcta fue lanzda.");
+                Assert.Pass("Exception correcta fue lanzada.");
             }
             catch (System.Exception)
             {
@@ -105,7 +105,87 @@ namespace TestBomberman.TestMapa
             }
             catch (PuntoFueraDeRangoEnMapaException)
             {
-                Assert.Pass("Exception correcta fue lanzda.");
+                Assert.Pass("Exception correcta fue lanzada.");
+            }
+            catch (System.Exception)
+            {
+                Assert.Fail();
+            }
+        }
+
+        [Test]
+        public void AgregarUnMovilConPosicionFueraDeRangoLanzaPuntoFueraDeRangoEnMapaException()
+        {
+            pos = new Punto(ANCHOMAPA + 1, ALTOMAPA - 1);
+            IMovible movil = new Cecilio(pos);
+            try
+            {
+                otroMapa.AgregarPersonaje(movil);
+                Assert.Fail();
+            }
+            catch (PuntoFueraDeRangoEnMapaException)
+            {
+                Assert.Pass("Exception correcta fue lanzada.");
+            }
+            catch (System.Exception)
+            {
+                Assert.Fail();
+            }
+        }
+
+        [Test]
+        public void AgregarUnMovilNuloLanzaNoPuedeAgregarMovilNuloException()
+        {
+            pos = new Punto(0, 0);
+            IMovible movil = null;
+            try
+            {
+                otroMapa.AgregarPersonaje(movil);
+                Assert.Fail();
+            }
+            catch (NoPuedeAgregarMovilNuloException)
+            {
+                Assert.Pass("Exception correcta fue lanzada.");
+            }
+            catch (System.Exception)
+            {
+                Assert.Fail();
+            }
+        }
+
+        [Test]
+        public void AgregarUnMovilConPosicionNulaLanzaPosicionNulaException()
+        {
+            pos = null;
+            IMovible movil = new LosLopezReggae(pos);
+            try
+            {
+                otroMapa.AgregarPersonaje(movil);
+                Assert.Fail();
+            }
+            catch (PosicionNulaException)
+            {
+                Assert.Pass("Exception correcta fue lanzada.");
+            }
+            catch (System.Exception)
+            {
+                Assert.Fail();
+            }
+        }
+
+        [Test]
+        public void AgregarUnMovilEnUnaCasillaDentroDelRangoNoCreadaEnElMapaLanzaNoExisteCasillaException()
+        {
+            pos = new Punto(3, 4);
+            IMovible movil = new LosLopezReggaeAlado(pos);
+            try
+            {
+                otroMapa.AgregarPersonaje(movil);
+                Assert.Fail();
+            }
+            catch (NoExisteCasillaException)
+            {
+                Assert.Pass("Exception correcta fue lanzada.");
             }
             catch (System.Exception)
             {
@@ -155,9 +235,6 @@ namespace TestBomberman.TestMapa
         {
             //La posicion existe porque en fixtureSetup unMapa es creado de 5x5 con casillas en todas sus posiciones [0..4][0..4]
             this.pos = new Punto(0, 0);
-            //Casilla unaCasilla = FabricaDeCasillas.FabricarPasillo(this.pos);
-            //this.unMapa.agregarCasilla(unaCasilla);
-            //Assert.IsTrue(this.unMapa.ExisteCasillaEnPosicion(this.pos));
             Punto posSup = this.pos.PosicionSuperior();
             Assert.IsTrue(unMapa.ExisteCasillaEnPosicion(posSup));
         }
