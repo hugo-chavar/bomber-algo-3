@@ -25,6 +25,12 @@ namespace Bomberman.Personaje
             get { return this.velocidad; }
         }
 
+        public int Direccion
+        {
+            set { this.direccion = value; }
+            get { return this.direccion; }
+        }
+
         public void MultiplicarVelocidadPor(int num)
         {
             this.velocidad = num * (this.velocidad);
