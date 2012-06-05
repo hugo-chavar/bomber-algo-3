@@ -14,6 +14,7 @@ namespace Bomberman.Arma
             Bomba bomba = new BombaMolotov(posicion,reduccionRetardo);
             Juego.Juego.Instancia().Ambiente.ObtenerCasilla(posicion).PlantarExplosivo(bomba);
             return (true);//Las bombas se ponen en la posicion del personaje
+            // QUE ES ESE TRUE?
         }
     }
 }

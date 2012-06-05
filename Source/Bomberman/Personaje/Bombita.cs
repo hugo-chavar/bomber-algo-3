@@ -7,7 +7,7 @@ using Bomberman.Arma;
 
 namespace Bomberman.Personaje
 {
-    public class Bombita : Personaje
+    public class Bombita : Personaje, IComedor
     {
         private const int VIDABOMBITA = 1;
 
@@ -18,24 +18,24 @@ namespace Bomberman.Personaje
         }
 
 
-        public override void Comer(IComible comible)
+        public void Comer(IComible comible)
         {
             comible.ModificarComedor(this);
         }
 
 
-        public override void DuplicarVelocidad()
+        public void DuplicarVelocidad()
         {
             this.movimiento.MultiplicarVelocidadPor(2);
         }
 
 
-        public override void CambiarLanzadorAToleTole()
+        public void CambiarLanzadorAToleTole()
         {
             this.lanzador = new LanzadorToleTole();
         }
 
-        public override void ReducirRetardo(int retardo)
+        public void ReducirRetardo(int retardo)
         {
             this.ReduccionRetardoBombas = retardo;
         }

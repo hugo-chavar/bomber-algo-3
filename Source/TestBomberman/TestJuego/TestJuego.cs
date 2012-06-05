@@ -65,23 +65,28 @@ namespace TestBomberman.TestJuego
         }
 
         [Test]
-        public void PausarJuegoFuncionaOK() // buuuuaaaaaaaa!! nos van a bochar por los nombres de los tests
+        public void AlPausarJuegoSePausaCorrectamente()
         {
             unJuego.PausarJuego();
-            Assert.AreEqual(unJuego.JuegoPausado, true);//wtf!!! usar Assert.IsTrue(unJuego.JuegoPausado);
+            Assert.IsTrue(unJuego.JuegoPausado);
         }
 
         [Test]
-        public void DesPausarJuegoFuncionaOK() // no pegamos una con los nombres che!
+        public void AlDesPausarJuegoSeDesPausaCorrectamente()
         {
             unJuego.PausarJuego();
             unJuego.DesPausarJuego();
-            Assert.AreEqual(unJuego.JuegoPausado, false); //aijuna!!! usar Assert.IsFalse(unJuego.JuegoPausado);
+            Assert.IsFalse(unJuego.JuegoPausado);
         }
 
         [Test]
-        public void PerderVidaFuncionaOK() // che!! porque usan estos nombres!!! usar algo así PerderVidaDescuentaUnaVidaAlJuegoActual()!!!!!
+        public void PerderVidaDescuentaUnaVidaAlJuegoActual() 
         {
+            /* VERIFICAR ACA! 
+             * CUANDO CORRO LAS TEST LA PRIMER VEZ FUNCIONA TODO BIEN, 
+             * LA CORRO DOS VECES Y SIGUE DESCONTANDO VIDAS!
+             */
+            
             unJuego.PerderVida();
             Assert.AreEqual(2, unJuego.CantDeVidas);
         }

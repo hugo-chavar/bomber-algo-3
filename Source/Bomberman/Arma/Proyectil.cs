@@ -10,8 +10,12 @@ namespace Bomberman.Arma
         // Buscar ENUMERADOS: ARRIBA = 1; ABAJO = 0; DERECHA = 2; IZQUIERDA = 3 //
         // establezco arbitrariamente un alcance de 3 casilleros (cuanto avanza el proytectil antes de explotar) y explota //
 
+        private const int ALCANCEPROYECTIL = 3;
+        private const int PODERDEDESTRUCCIONPROYECTIL = 5;
+        private const int ONDAEXPANSIVAMOLOTOV = 3;
+
         private Punto posicionFinal;
-        private int alcance = 3;
+        private int alcance = ALCANCEPROYECTIL;
         private int tiempoRestante;
         private ManejadorProyectil unManejador;
 
@@ -34,8 +38,8 @@ namespace Bomberman.Arma
         public Proyectil(Punto posicionInicial)
 
         {
-            this.poderDeDestruccion = 5;
-            this.ondaExpansiva = 3;
+            this.poderDeDestruccion = PODERDEDESTRUCCIONPROYECTIL;
+            this.ondaExpansiva = ONDAEXPANSIVAMOLOTOV;
             Punto PosicionFinal = new Punto(0, 0);
             posicionFinal = PosicionFinal;
             posicion = posicionInicial;

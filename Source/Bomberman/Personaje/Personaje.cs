@@ -8,7 +8,7 @@ using Bomberman.Arma;
 
 namespace Bomberman.Personaje
 {
-    public abstract class Personaje : IMovible, IComedor
+    public abstract class Personaje : IMovible
     {
         protected Movimiento movimiento;
         protected Punto posicion;
@@ -75,14 +75,6 @@ namespace Bomberman.Personaje
 
 
 
-
-        public abstract void Comer(Articulo.IComible comible);
-
-        public abstract void DuplicarVelocidad();
-
-        public abstract void CambiarLanzadorAToleTole();
-
-        public abstract void ReducirRetardo(int retardo);
 
         public void DaniarConBombaToleTole()
         {
