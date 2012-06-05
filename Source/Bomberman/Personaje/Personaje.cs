@@ -60,11 +60,7 @@ namespace Bomberman.Personaje
 
         public void Mover()
         {
-            //falta implementar
-            /*if (this.direccion == "Arriba")
-            {
-
-            }*/
+            Juego.Juego.Instancia().Ambiente.Mover(this);
         }
 
         public virtual bool AtraviesaObstaculos()

@@ -9,5 +9,10 @@ namespace Bomberman.Personaje
     {
         void Mover();
         bool AtraviesaObstaculos();
+        Movimiento Movimiento
+        {
+            get;
+            set;
+        }
     }
 }
