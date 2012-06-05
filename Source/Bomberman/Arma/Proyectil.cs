@@ -22,11 +22,7 @@ namespace Bomberman.Arma
             set { this.alcance = value; }
         }
 
-        public Punto PosicionInicial
-        {
-            get { return this.posicion; }
-            set { this.posicion = value; }
-        }
+
 
         public Punto PosicionFinal
         {

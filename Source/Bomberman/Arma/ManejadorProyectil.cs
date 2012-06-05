@@ -74,16 +74,16 @@ namespace Bomberman.Arma
                 switch (this.direccionPersonaje)
                 {
                     case 0:
-                        proyectil.PosicionInicial = proyectil.PosicionInicial.PosicionInferior();
+                        proyectil.Posicion = proyectil.Posicion.PosicionInferior();
                         break;
                     case 1:
-                        proyectil.PosicionInicial= proyectil.PosicionInicial.PosicionSuperior();
+                        proyectil.Posicion= proyectil.Posicion.PosicionSuperior();
                         break;
                     case 3:
-                        proyectil.PosicionInicial= proyectil.PosicionInicial.PosicionIzquierda();
+                        proyectil.Posicion= proyectil.Posicion.PosicionIzquierda();
                         break;
                     case 4:
-                        proyectil.PosicionInicial= proyectil.PosicionInicial.PosicionDerecha();
+                        proyectil.Posicion= proyectil.Posicion.PosicionDerecha();
                         break;
                 }
             }
