@@ -5,6 +5,7 @@ using Bomberman.Mapa;
 using Bomberman.Mapa.Casilla;
 using Bomberman.Excepciones;
 using Bomberman.Personaje;
+using Bomberman.Arma;
 
 namespace TestBomberman.TestMapa
 {
@@ -445,5 +446,25 @@ namespace TestBomberman.TestMapa
             this.unaCasilla.Transitar(movil);
             Assert.IsTrue(unMapa.PermitidoMoverHaciaIzquierdaA(movil));
         }
+
+        [Test]
+        public void BombaToleToleExplotaAlcanzandoAUnBloqueDeCementoDevuelveTrueSiElBloqueQuedaDestruido()
+        {
+            Punto puntoObstaculo = new Punto(1, 1);
+            Punto puntoToleTole = new Punto(3, 1);
+            unaCasilla = unMapa.ObtenerCasilla(puntoObstaculo);
+            Casilla otraCasilla = unMapa.ObtenerCasilla(puntoToleTole);
+            BombaToleTole unaBomba = new BombaToleTole(puntoToleTole, 100);
+            otraCasilla.PlantarExplosivo(unaBomba);
+
+            unMapa.ManejarExplosion(unaBomba);
+
+            Assert.IsTrue(unaCasilla.Estado.Destruido());
+
+
+        }
+
+
+
     }
 }
