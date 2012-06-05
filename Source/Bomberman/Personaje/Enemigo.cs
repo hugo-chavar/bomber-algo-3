@@ -13,12 +13,23 @@ namespace Bomberman.Personaje
             // Agregar metodos de construccion del enemigo.
         }
 
+
+        /*
+         * Implemento la clase IComible, aunque con metodos vacios, 
+         * porque el enemigo no puede "levantar" un articulo y comerlo,
+         * pero para intentar simplificar que despues vos le pones
+         * personaje.Comer(articulo) de la casilla y si es enemigo
+         * no hace nada... no se si esta bien, pero se me ocurrio que 
+         * asi iba a simplificar... si no esta bien alguien que me diga
+         * como podriamos hacerlo!
+         */
+
         public override void Comer(Articulo.IComible comible)
         {
-            this.Comer(comible); // esto es una llamada recursiva??? verificar!!!!!
+            // No hace nada, no puede comer un Articulo por ser enemigo
         }
 
-        public override void DuplicarVelocidad() // ver que esta clase no debe e
+        public override void DuplicarVelocidad() 
         {
             // No hace nada, no puede comer un Articulo por ser enemigo
         }
