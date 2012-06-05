@@ -52,6 +52,9 @@ namespace Bomberman.Juego
             this.JuegoPausado = false;
             this.CantDeVidas = VIDAS;
             this.Ambiente = new Mapa.Mapa(ANCHOMAPA,ALTOMAPA);
+            //aca se carga el template del mapa
+            //luego se agrega a bombita al mapa
+            //luego se agregan los enemigos
 
         }
         

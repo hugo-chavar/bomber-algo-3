@@ -99,7 +99,7 @@ namespace Bomberman.Mapa
         public bool PermitidoMoverHaciaArribaA(Personaje.IMovible movil)
         {
             Punto posicionSuperior = movil.Posicion.PosicionSuperior();
-            if (!this.ExisteCasillaEnPosicion(posicionSuperior))//(posicionSuperior.Equals(movil.Posicion))
+            if (!this.ExisteCasillaEnPosicion(posicionSuperior))
             {
                 return false;
             }
@@ -145,27 +145,32 @@ namespace Bomberman.Mapa
         }
 
         //Por el momento atrapo solo la excepcion.Hay qu solucionarlo de otr Forma
+        //Quien esta haciendo esto? soy Hugo, modifico el casteo fiero y dejo comentado las lineas que saco
         public void ManejarExplosion(Explosivo explosivo)
         {
-            ArrayList puntosAfectados = CalcularCasillerosExplotados(explosivo);
+            //ArrayList puntosAfectados = CalcularCasillerosExplotados(explosivo);
+            List<Punto> puntosAfectados = CalcularCasillerosExplotados(explosivo);
             for (int i = 0; i < (puntosAfectados.Count); i++)
             {
                 try
                 {
-                    Casilla.Casilla casillaAux = this.ObtenerCasilla((Punto)puntosAfectados[i]);
+                    //Casilla.Casilla casillaAux = this.ObtenerCasilla((Punto)puntosAfectados[i]);
+                    Casilla.Casilla casillaAux = this.ObtenerCasilla(puntosAfectados[i]);
                     explosivo.Daniar(casillaAux.Estado);
                     for (int j = 0; j < casillaAux.TransitandoEnCasilla.Count; j++)
                         explosivo.Daniar(casillaAux.TransitandoEnCasilla[j]);
                 }
                 catch (NoExisteCasillaException)
-                {}
+                {
+                    //simplemente se ignora donde no hay casillas
+                }
             }
         }
 
         //Volver a mirar Este Metodo. Soluciono asi Para ver si Funcionan Tests
-        private ArrayList CalcularCasillerosExplotados(Explosivo explosivo)
+        private List<Punto> CalcularCasillerosExplotados(Explosivo explosivo)
         {
-            ArrayList listaDevolucion = new ArrayList();
+            List<Punto> listaDevolucion = new List<Punto>();
             Punto unPuntoAux = new Punto(explosivo.Posicion.X - explosivo.OndaExpansiva, explosivo.Posicion.Y);
 
             for (int i = 0; i <= 2*explosivo.OndaExpansiva; i++)
