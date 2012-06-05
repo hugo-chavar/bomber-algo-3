@@ -203,11 +203,11 @@ namespace TestBomberman.TestJuego
         }
 
         [Test]
-        public void UnLopezReggaeAladoAtraviezaObstaculos()
+        public void UnLopezReggaeAladoAtraviesaObstaculos()
         {
             IMovible otroMovil = new LosLopezReggaeAlado(new Punto(0, 0));
             this.unMapa.AgregarPersonaje(otroMovil); // testear todos los exceptions
-            Punto posOriginal = otroMovil.Posicion.Clonar();
+            //Punto posOriginal = otroMovil.Posicion.Clonar();
             otroMovil.Movimiento.CambiarAArriba();
             otroMovil.Mover();//fue a 0,1
             otroMovil.Movimiento.CambiarADerecha();
@@ -222,5 +222,48 @@ namespace TestBomberman.TestJuego
             Assert.IsTrue(otroMovil.Posicion.Equals(posFinal));
         }
 
+        [Test]
+        public void UnLopezReggaeAladoNoAtraviesaElLimiteIzquierdoDelMapa()
+        {
+            IMovible otroMovil = new LosLopezReggaeAlado(new Punto(0, 0));
+            this.unMapa.AgregarPersonaje(otroMovil); // testear todos los exceptions
+            Punto posOriginal = otroMovil.Posicion.Clonar();
+            otroMovil.Movimiento.CambiarAIzquierda();
+            otroMovil.Mover();//choca con el limite izquierdo
+            Assert.IsTrue(otroMovil.Posicion.Equals(posOriginal));
+        }
+
+        [Test]
+        public void UnLopezReggaeAladoNoAtraviesaElLimiteDerechoDelMapa()
+        {
+            IMovible otroMovil = new LosLopezReggaeAlado(new Punto(4, 0));
+            this.unMapa.AgregarPersonaje(otroMovil); // testear todos los exceptions
+            Punto posOriginal = otroMovil.Posicion.Clonar();
+            otroMovil.Movimiento.CambiarADerecha();
+            otroMovil.Mover();//choca con el limite derecho
+            Assert.IsTrue(otroMovil.Posicion.Equals(posOriginal));
+        }
+
+        [Test]
+        public void UnLopezReggaeAladoNoAtraviesaElLimiteSuperiorDelMapa()
+        {
+            IMovible otroMovil = new LosLopezReggaeAlado(new Punto(4, 4));
+            this.unMapa.AgregarPersonaje(otroMovil); // testear todos los exceptions
+            Punto posOriginal = otroMovil.Posicion.Clonar();
+            otroMovil.Movimiento.CambiarAArriba();
+            otroMovil.Mover();//choca con el limite superior
+            Assert.IsTrue(otroMovil.Posicion.Equals(posOriginal));
+        }
+
+        [Test]
+        public void UnLopezReggaeAladoNoAtraviesaElLimiteInferiorDelMapa()
+        {
+            IMovible otroMovil = new LosLopezReggaeAlado(new Punto(3, 0));
+            this.unMapa.AgregarPersonaje(otroMovil); 
+            Punto posOriginal = otroMovil.Posicion.Clonar();
+            otroMovil.Movimiento.CambiarAAbajo();
+            otroMovil.Mover();//choca con el limite inferior
+            Assert.IsTrue(otroMovil.Posicion.Equals(posOriginal));
+        }
     }
 }
