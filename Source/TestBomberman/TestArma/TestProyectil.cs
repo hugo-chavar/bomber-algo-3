@@ -82,9 +82,11 @@ namespace TestBomberman.TestArma
             unProyectil.CuandoPasaElTiempo();
             unProyectil.CuandoPasaElTiempo();
  
+ 
 
             Assert.AreEqual(unProyectil.TiempoRestante(), 0);
             Assert.AreEqual(unProyectil.Posicion.Y, 4);
+            Assert.AreEqual(unProyectil.EstaExplotado(), true);
 
         }
 
