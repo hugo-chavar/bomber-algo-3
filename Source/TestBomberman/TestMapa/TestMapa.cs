@@ -527,21 +527,32 @@ namespace TestBomberman.TestMapa
         [Test]
         public void BombaToleToleExplotaAlcanzandoAUnBloqueDeCementoDevuelveTrueSiElBloqueQuedaDestruido()
         {
-            Punto puntoObstaculo = new Punto(1, 1);
-            Punto puntoToleTole = new Punto(2, 1);
-            unaCasilla = unMapa.ObtenerCasilla(puntoObstaculo);
-            Casilla otraCasilla = unMapa.ObtenerCasilla(puntoToleTole);
-            BombaToleTole unaBomba = new BombaToleTole(puntoToleTole, 100);
-            otraCasilla.PlantarExplosivo(unaBomba);
+            this.pos = new Punto(1, 2);
+            Punto pToleTole = new Punto(0, 3);
+            movil = new Bombita(this.pos);
 
+
+            this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
+            this.unaCasilla.Transitar(movil);
+            Assert.IsFalse(unMapa.PermitidoMoverHaciaArribaA(movil));
+
+
+            BombaToleTole unaBomba = new BombaToleTole(pToleTole, 0);
+            Casilla casillaBomba = unMapa.ObtenerCasilla(pToleTole);
+
+            casillaBomba.PlantarExplosivo(unaBomba);
             unMapa.ManejarExplosion(unaBomba);
+            Assert.IsTrue(unMapa.PermitidoMoverHaciaArribaA(movil));
+
+
+
             //A esta hora no se me ocurre mucho.. puede ser porque los bloques son de acero que no se estan rompiendo?
             // probe con bloques de ladrillo y tampoco rompe, probe poner mas cerca la bomba y tampoco la rompre
             //pero nombre del test dice bloque de cemento ¿? cambialo arriba .. en el setup
             //otra es mirar bien el manejarexplosion
             //vas por el buen camino.. debe ser una boludez..pero hay que encontrarla!!
 
-            Assert.IsTrue(unaCasilla.Estado.Destruido());
+            
 
 
         }
