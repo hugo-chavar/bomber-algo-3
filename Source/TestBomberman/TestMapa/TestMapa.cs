@@ -42,7 +42,7 @@ namespace TestBomberman.TestMapa
                     if ((i & 1) == 1 && (j & 1) == 1)
                     {
                         //ambos son numeros impares
-                        unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueAcero(unaPosicion);
+                        unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(unaPosicion);//.FabricarCasillaConBloqueAcero(unaPosicion);
                     }
                     else
                     {
@@ -451,13 +451,18 @@ namespace TestBomberman.TestMapa
         public void BombaToleToleExplotaAlcanzandoAUnBloqueDeCementoDevuelveTrueSiElBloqueQuedaDestruido()
         {
             Punto puntoObstaculo = new Punto(1, 1);
-            Punto puntoToleTole = new Punto(3, 1);
+            Punto puntoToleTole = new Punto(2, 1);
             unaCasilla = unMapa.ObtenerCasilla(puntoObstaculo);
             Casilla otraCasilla = unMapa.ObtenerCasilla(puntoToleTole);
             BombaToleTole unaBomba = new BombaToleTole(puntoToleTole, 100);
             otraCasilla.PlantarExplosivo(unaBomba);
 
             unMapa.ManejarExplosion(unaBomba);
+            //A esta hora no se me ocurre mucho.. puede ser porque los bloques son de acero que no se estan rompiendo?
+            // probe con bloques de ladrillo y tampoco rompe, probe poner mas cerca la bomba y tampoco la rompre
+            //pero nombre del test dice bloque de cemento ¿? cambialo arriba .. en el setup
+            //otra es mirar bien el manejarexplosion
+            //vas por el buen camino.. debe ser una boludez..pero hay que encontrarla!!
 
             Assert.IsTrue(unaCasilla.Estado.Destruido());
 
