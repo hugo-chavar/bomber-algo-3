@@ -39,6 +39,8 @@ namespace TestBomberman.TestArma
         [Test]
         public void TestParaConfirmarQueElMisilNoAvanzaCuandoNoPasaElTiempo()
         {
+            unPuntoInicial = new Punto(1, 1);
+            unProyectil = new Proyectil(unPuntoInicial);
             unProyectil.LanzarMisil(1);
 
             Assert.AreEqual(unProyectil.Posicion.X, unPuntoInicial.X);
@@ -73,6 +75,8 @@ namespace TestBomberman.TestArma
         [Test]
         public void TestParaConfirmarQueLaBombaExplotaCuandoPasaElTiempoSuficiente()
         {
+            Punto unPuntoMas = new Punto(1, 1);
+            unProyectil = new Proyectil(unPuntoMas);
             unProyectil.LanzarMisil(1);
             unProyectil.CuandoPasaElTiempo();
             unProyectil.CuandoPasaElTiempo();
@@ -84,7 +88,69 @@ namespace TestBomberman.TestArma
 
         }
 
+        [Test]
+        public void TestParaProbarNuevaPosicionAlBajarElMisilALaDerecha()
+        {
+            unPuntoInicial = new Punto(1, 1);
+            unProyectil = new Proyectil(unPuntoInicial);
+            unProyectil.LanzarMisil(4);
+            unProyectil.CuandoPasaElTiempo();
+            unProyectil.CuandoPasaElTiempo();
+            Punto unPuntoDestino = new Punto(3, 1);
 
+
+            Assert.AreEqual(unProyectil.Posicion.Y, unPuntoDestino.Y);
+            Assert.AreEqual(unProyectil.Posicion.X, unPuntoDestino.X);
+
+
+        }
+
+        [Test]
+        public void TestParaProbarNuevaPosicionAlBajarElMisilALaIzquierda()
+        {
+            unPuntoInicial = new Punto(4, 4);
+            unProyectil = new Proyectil(unPuntoInicial);
+            unProyectil.LanzarMisil(3);
+            unProyectil.CuandoPasaElTiempo();
+            unProyectil.CuandoPasaElTiempo();
+            Punto unPuntoDestino = new Punto(2, 4);
+
+
+            Assert.AreEqual(unProyectil.Posicion.Y, unPuntoDestino.Y);
+            Assert.AreEqual(unProyectil.Posicion.X, unPuntoDestino.X);
+
+
+        }
+        [Test]
+        
+        public void TestParaProbarNuevaPosicionAlBajarElMisilAAbajo()
+        {
+            unPuntoInicial = new Punto(4, 4);
+            unProyectil = new Proyectil(unPuntoInicial);
+            unProyectil.LanzarMisil(0);
+            unProyectil.CuandoPasaElTiempo();
+            unProyectil.CuandoPasaElTiempo();
+            Punto unPuntoDestino = new Punto(4, 2);
+
+
+            Assert.AreEqual(unProyectil.Posicion.Y, unPuntoDestino.Y);
+            Assert.AreEqual(unProyectil.Posicion.X, unPuntoDestino.X);
+
+
+        }
+
+        [Test]
+        public void TestParaProbarQueElMisilNoSeActivaNiSeMueveSiElPuntoNoEsValido()
+        {
+            unPuntoInicial = new Punto(1, 2);
+            unProyectil = new Proyectil(unPuntoInicial);
+            unProyectil.LanzarMisil(0);
+            unProyectil.CuandoPasaElTiempo();
+
+            Assert.AreEqual(unProyectil.Posicion.X, unPuntoInicial.X);
+            Assert.AreEqual(unProyectil.Posicion.Y, unPuntoInicial.Y);
+
+        }
 
     }
 

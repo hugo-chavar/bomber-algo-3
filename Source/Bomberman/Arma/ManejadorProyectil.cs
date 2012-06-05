@@ -16,7 +16,7 @@ namespace Bomberman.Arma
         public int DireccionPersonaje
         {
             get { return this.direccionPersonaje; }
-            set { this.direccionPersonaje = DireccionPersonaje; }
+            set { this.direccionPersonaje = value; }
         }
 
         public Proyectil Explotable
@@ -40,22 +40,23 @@ namespace Bomberman.Arma
                 case 0:
 
                     explotable.PosicionFinal.X = explotable.Posicion.X;
-                    explotable.PosicionFinal.PosicionSuperior(-(explotable.Alcance));
+                    explotable.PosicionFinal.Y = explotable.Posicion.Y - explotable.Alcance;
+
                     break;
                 case 1:
 
                     explotable.PosicionFinal.X = explotable.Posicion.X;
-                    explotable.PosicionFinal.PosicionSuperior(explotable.Alcance);
+                    explotable.PosicionFinal.Y = explotable.Posicion.Y + explotable.Alcance;
                     break;
                 case 3:
 
-                    explotable.PosicionFinal.PosicionDerecha(-(explotable.Alcance));
+                    explotable.PosicionFinal.X = explotable.Posicion.X - explotable.Alcance;
                     explotable.PosicionFinal.Y = explotable.Posicion.Y;
                     break;
 
                 case 4:
 
-                    explotable.PosicionFinal.PosicionDerecha(explotable.Alcance);
+                    explotable.PosicionFinal.X = explotable.Posicion.X + explotable.Alcance;
                     explotable.PosicionFinal.Y = explotable.Posicion.Y;
 
                     break;
@@ -66,23 +67,23 @@ namespace Bomberman.Arma
             return explotable.PosicionFinal;
         }
 
-        public void AvanzarHacia(Proyectil explotable)
+        public void AvanzarHacia(Proyectil proyectil)
         {
             if (misilActivado)
             {
                 switch (this.direccionPersonaje)
                 {
                     case 0:
-                        explotable.PosicionInicial.PosicionSuperior(-1);
+                        proyectil.PosicionInicial = proyectil.PosicionInicial.PosicionInferior();
                         break;
                     case 1:
-                        explotable.PosicionInicial.PosicionSuperior(1);
+                        proyectil.PosicionInicial= proyectil.PosicionInicial.PosicionSuperior();
                         break;
                     case 3:
-                        explotable.PosicionInicial.PosicionDerecha(-1);
+                        proyectil.PosicionInicial= proyectil.PosicionInicial.PosicionIzquierda();
                         break;
                     case 4:
-                        explotable.PosicionInicial.PosicionDerecha(1);
+                        proyectil.PosicionInicial= proyectil.PosicionInicial.PosicionDerecha();
                         break;
                 }
             }
