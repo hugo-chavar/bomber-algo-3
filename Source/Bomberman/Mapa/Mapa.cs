@@ -144,6 +144,8 @@ namespace Bomberman.Mapa
             return unaCasilla.PermiteTransitarUn(movil);
         }
 
+
+
         //Por el momento atrapo solo la excepcion.Hay qu solucionarlo de otr Forma
         //Quien esta haciendo esto? soy Hugo, modifico el casteo fiero y dejo comentado las lineas que saco
         public void ManejarExplosion(Explosivo explosivo)
@@ -168,6 +170,7 @@ namespace Bomberman.Mapa
         }
 
         //Volver a mirar Este Metodo. Soluciono asi Para ver si Funcionan Tests
+        //Este metodo podria tener codigo que explica lo que hace porque no se entiende
         private List<Punto> CalcularCasillerosExplotados(Explosivo explosivo)
         {
             List<Punto> listaDevolucion = new List<Punto>();
@@ -185,7 +188,7 @@ namespace Bomberman.Mapa
             {
                 unPuntoAux.PosicionSuperior(1);
                 if (unPuntoAux != explosivo.Posicion)
-                listaDevolucion.Add(unPuntoAux);
+                    listaDevolucion.Add(unPuntoAux);
             }
 
             return listaDevolucion;
