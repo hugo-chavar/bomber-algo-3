@@ -56,6 +56,12 @@
             return hash;
         }
 
+        public Punto Clonar()
+        {
+            return new Punto(this.X, this.Y);
+        }
+
+
         public Punto PosicionSuperior()
         {
             return new Punto(this.X, this.Y + 1);

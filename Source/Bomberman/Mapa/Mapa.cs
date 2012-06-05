@@ -68,6 +68,29 @@ namespace Bomberman.Mapa
             
         }
 
+        public void AgregarPersonaje(Personaje.IMovible movil)
+        {
+            if (movil == null)
+            {
+                throw new NoPuedeAgregarMovilNuloException();
+            }
+            if (movil.Posicion == null)
+            {
+                throw new PosicionNulaException();
+            }
+            if (!PosicionDentroRango(movil.Posicion))
+            {
+                throw new PuntoFueraDeRangoEnMapaException();
+            }
+            if (!ExisteCasillaEnPosicion(movil.Posicion))
+            {
+                throw new NoExisteCasillaException();
+            }
+
+            Casilla.Casilla unaCasilla = ObtenerCasilla(movil.Posicion);
+            unaCasilla.Transitar(movil);
+        }
+
         private bool PosicionDentroRango(Punto punto)
         {
             return (punto.X < this.DimensionHorizontal && punto.Y < this.DimensionVertical);
@@ -182,6 +205,7 @@ namespace Bomberman.Mapa
             Punto posicionDerecha = movil.Posicion.PosicionDerecha();
             Casilla.Casilla unaCasilla;
             unaCasilla = this.ObtenerCasilla(posicionDerecha);
+            movil.Posicion = posicionDerecha;
             unaCasilla.Transitar(movil);
             Casilla.Casilla otraCasilla;
             otraCasilla = this.ObtenerCasilla(movil.Posicion);
@@ -193,6 +217,7 @@ namespace Bomberman.Mapa
             Punto posicionIzquierda = movil.Posicion.PosicionIzquierda();
             Casilla.Casilla unaCasilla;
             unaCasilla = this.ObtenerCasilla(posicionIzquierda);
+            movil.Posicion = posicionIzquierda;
             unaCasilla.Transitar(movil);
             Casilla.Casilla otraCasilla;
             otraCasilla = this.ObtenerCasilla(movil.Posicion);
@@ -204,6 +229,7 @@ namespace Bomberman.Mapa
             Punto posicionAbajo = movil.Posicion.PosicionInferior();
             Casilla.Casilla unaCasilla;
             unaCasilla = this.ObtenerCasilla(posicionAbajo);
+            movil.Posicion = posicionAbajo;
             unaCasilla.Transitar(movil);
             Casilla.Casilla otraCasilla;
             otraCasilla = this.ObtenerCasilla(movil.Posicion);
@@ -215,6 +241,7 @@ namespace Bomberman.Mapa
             Punto posicionSuperior = movil.Posicion.PosicionSuperior();
             Casilla.Casilla unaCasilla;
             unaCasilla = this.ObtenerCasilla(posicionSuperior);
+            movil.Posicion = posicionSuperior;
             unaCasilla.Transitar(movil);
             Casilla.Casilla otraCasilla;
             otraCasilla = this.ObtenerCasilla(movil.Posicion);
