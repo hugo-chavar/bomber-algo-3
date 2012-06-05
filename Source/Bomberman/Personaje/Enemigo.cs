@@ -15,10 +15,10 @@ namespace Bomberman.Personaje
 
         public override void Comer(Articulo.IComible comible)
         {
-            this.Comer(comible);
+            this.Comer(comible); // esto es una llamada recursiva??? verificar!!!!!
         }
 
-        public override void DuplicarVelocidad()
+        public override void DuplicarVelocidad() // ver que esta clase no debe e
         {
             // No hace nada, no puede comer un Articulo por ser enemigo
         }

@@ -13,7 +13,7 @@ namespace Bomberman.Personaje
         public LosLopezReggae(Punto unPunto)
             : base(unPunto)
         {
-            this.DuplicarVelocidad();
+            this.DuplicarVelocidad(); //para que esta esta linea???? .. al parecer no hace nada de nada
             this.Lanzador = new LanzadorProyectil();
             this.UnidadesDeResistencia = VIDALOSLOPEZREGGAE;
         }
