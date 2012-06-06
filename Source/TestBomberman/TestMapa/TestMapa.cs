@@ -528,14 +528,6 @@ namespace TestBomberman.TestMapa
             
             this.pos = new Punto(1, 1);
             Punto pToleTole = new Punto(1, 2);
-
-
-
-            
-
-
-
-
             BombaToleTole unaBomba = new BombaToleTole(pToleTole, 0);
             Casilla casillaBomba = unMapa.ObtenerCasilla(pToleTole);
             casillaBomba.PlantarExplosivo(unaBomba);

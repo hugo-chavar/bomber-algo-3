@@ -91,8 +91,6 @@ namespace TestBomberman.TestArma
             Assert.AreEqual(obstaculo.UnidadesDeResistencia, 5);
         }
 
-
-
         [Test]
 
         public void TestCuandoExplotaUnaBombaMolotovYTieneUnCasilleroASuIzquierdaConBloqueLadrilloYLoDestruye()
