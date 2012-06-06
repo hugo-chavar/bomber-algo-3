@@ -18,28 +18,9 @@ namespace Bomberman.Personaje
         }
 
 
-        public void Comer(IComible comible)
+        public override void Comer(IComible comible)
         {
             comible.ModificarComedor(this);
         }
-
-
-        public void DuplicarVelocidad()
-        {
-            this.movimiento.MultiplicarVelocidadPor(2);
-        }
-
-
-        public void CambiarLanzadorAToleTole()
-        {
-            this.lanzador = new LanzadorToleTole();
-        }
-
-        public void ReducirRetardo(int retardo)
-        {
-            this.ReduccionRetardoBombas = retardo;
-        }
-
-
     }
 }

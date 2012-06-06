@@ -104,5 +104,24 @@ namespace Bomberman.Personaje
             }
         }
 
+
+        public abstract void Comer(Articulo.IComible comible);
+
+        public void DuplicarVelocidad()
+        {
+            this.movimiento.MultiplicarVelocidadPor(2);
+        }
+
+        public void CambiarLanzadorAToleTole()
+        {
+            this.lanzador = new LanzadorToleTole();
+        }
+
+        public void ReducirRetardo(int retardo)
+        {
+            this.ReduccionRetardoBombas = retardo;
+        }
+
+        
     }
 }

@@ -15,7 +15,7 @@ namespace TestBomberman.TestArma
         Punto unPuntoFinal;
         Proyectil otroProyectil;
 
-        [TestFixtureSetUp]
+        [SetUp]
         public void TestSetup()
         {
             unPuntoInicial = new Punto(1,1);

@@ -12,5 +12,11 @@ namespace Bomberman.Personaje
         { 
             // Agregar metodos de construccion del enemigo.
         }
+
+        public override void Comer(Articulo.IComible comible)
+        {
+            //Al intentar comer un articulo, este no hace nada porque no puede comer articulos!
+        }
+
     }
 }
