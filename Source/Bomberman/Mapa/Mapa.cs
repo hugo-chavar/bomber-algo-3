@@ -91,12 +91,12 @@ namespace Bomberman.Mapa
             unaCasilla.Transitar(movil);
         }
 
-        private bool PosicionDentroRango(Punto punto)
+        public bool PosicionDentroRango(Punto punto)
         {
             return (punto.X < this.DimensionHorizontal && punto.Y < this.DimensionVertical);
         }
 
-        public bool ExisteCasillaEnPosicion(Punto pos)
+        public bool ExisteCasillaEnPosicion(Punto pos)    // Hice publico este metodo para poder usarlo desde ManejadorProyectil  //
         {
             if (pos == null)
                 throw new PosicionNulaException();
@@ -273,29 +273,74 @@ namespace Bomberman.Mapa
             }
         }
 
-        //Volver a mirar Este Metodo. Soluciono asi Para ver si Funcionan Tests
-        //Este metodo podria tener codigo que explica lo que hace porque no se entiende
-        private List<Punto> CalcularCasillerosExplotados(Explosivo explosivo)
+            // Problema arreglado: solo falta refactorizar la repeticion de codigo 
+            //Este metodo podria tener codigo que explica lo que hace porque no se entiende
+      public List<Punto> CalcularCasillerosExplotados(Explosivo explosivo)
         {
             List<Punto> listaDevolucion = new List<Punto>();
-            Punto unPuntoAux = new Punto(explosivo.Posicion.X - explosivo.OndaExpansiva, explosivo.Posicion.Y);
-
-            for (int i = 0; i <= 2*explosivo.OndaExpansiva; i++)
-            {
-                unPuntoAux.PosicionDerecha(1);
-                listaDevolucion.Add(unPuntoAux);
-            }
-
-            unPuntoAux.X = explosivo.Posicion.X;
-            unPuntoAux.Y = explosivo.Posicion.Y - explosivo.OndaExpansiva;
-            for (int i = 0; i <= 2*explosivo.OndaExpansiva; i++)
-            {
-                unPuntoAux.PosicionSuperior(1);
-                if (unPuntoAux != explosivo.Posicion)
-                    listaDevolucion.Add(unPuntoAux);
-            }
-
+            listaDevolucion.Add(explosivo.Posicion);
+            this.AgregarCasillerosAbajo(listaDevolucion, explosivo.OndaExpansiva, explosivo.Posicion);
+            this.AgregarCasillerosArriba(listaDevolucion, explosivo.OndaExpansiva, explosivo.Posicion);
+            this.AgregarCasillerosAIzquierda(listaDevolucion, explosivo.OndaExpansiva, explosivo.Posicion);
+            this.AgregarCasillerosADerecha(listaDevolucion, explosivo.OndaExpansiva, explosivo.Posicion);
             return listaDevolucion;
         }
-    }
+
+        private void AgregarCasillerosAIzquierda(List<Punto> Lista,int expansion, Punto punto)
+        { 
+            int i=1;
+            Punto unPuntoAux=new Punto(punto.X-1,punto.Y);
+            while (unPuntoAux.EsPuntoValido() && i <= expansion)
+            {
+                
+                Lista.Add(unPuntoAux);
+                i++;
+                unPuntoAux = new Punto(punto.X - i, punto.Y);
+                
+            }
+        }
+
+        private void AgregarCasillerosADerecha(List<Punto> Lista, int expansion, Punto punto)
+        {
+            int i = 1;
+            Punto unPuntoAux = new Punto(punto.X + 1, punto.Y);
+            while ((this.PosicionDentroRango(unPuntoAux)) && (i <= expansion))
+            {
+               
+                Lista.Add(unPuntoAux);
+                i++;
+                unPuntoAux = new Punto(punto.X + i, punto.Y);
+                
+            }
+        }
+
+        private void AgregarCasillerosArriba(List<Punto> Lista, int expansion, Punto punto)
+        {
+            int i = 1;
+            Punto unPuntoAux = new Punto(punto.X, punto.Y+1);
+            while ((this.PosicionDentroRango(unPuntoAux)) && (i <= expansion))
+            {
+                
+                Lista.Add(unPuntoAux);
+                i++;
+                unPuntoAux = new Punto(punto.X, punto.Y + i);
+            }
+        }
+
+        private void AgregarCasillerosAbajo(List<Punto> Lista, int expansion, Punto punto)
+        {
+            int i = 1;
+            Punto unPuntoAux = new Punto(punto.X, punto.Y - 1);
+            while ((unPuntoAux.EsPuntoValido()) && (i <= expansion))
+            {
+
+                Lista.Add(unPuntoAux);
+                i++;
+                unPuntoAux = new Punto(punto.X, punto.Y - i);
+
+            }
+        }
+
+
+}
 }
