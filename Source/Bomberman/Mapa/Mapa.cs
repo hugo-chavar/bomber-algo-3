@@ -93,7 +93,7 @@ namespace Bomberman.Mapa
 
         public bool PosicionDentroRango(Punto punto)
         {
-            return (punto.X < this.DimensionHorizontal && punto.Y < this.DimensionVertical);
+            return (punto.X < this.DimensionHorizontal && punto.Y < this.DimensionVertical && punto.X >= 0 && punto.Y >= 0);
         }
 
         public bool ExisteCasillaEnPosicion(Punto pos)

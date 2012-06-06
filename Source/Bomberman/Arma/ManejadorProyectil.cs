@@ -123,7 +123,7 @@ namespace Bomberman.Arma
 
         public bool EstaEnRango(Punto unPunto)
         {
-            return ((Juego.Juego.Instancia().Ambiente.PosicionDentroRango(unPunto)) && (unPunto.EsPuntoValido()));
+            return ((Juego.Juego.Instancia().Ambiente.PosicionDentroRango(unPunto))); //Hugo dice: saqué esto && (unPunto.EsPuntoValido()), meti el codigo necesario en el otro metodo Ambiente.PosicionDentroRango(unPunto)
 
         }
 
