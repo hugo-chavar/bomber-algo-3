@@ -21,6 +21,7 @@ namespace Bomberman.Personaje
         public override void Comer(IComible comible)
         {
             comible.ModificarComedor(this);
+            comible.Ocultar();
         }
     }
 }

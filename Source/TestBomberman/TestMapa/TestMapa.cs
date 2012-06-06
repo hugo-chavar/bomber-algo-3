@@ -555,7 +555,7 @@ namespace TestBomberman.TestMapa
 
         }
 
-
+        /********************************* TESTEO DE ARTICULOS CON MAPA *********************************/
 
         [Test]
         public void AgregarTimerMeDejaAgregarEnBloqueCemento()
@@ -691,7 +691,7 @@ namespace TestBomberman.TestMapa
 
 
         [Test]
-        public void CuandoBombitaSeParaArribaDeUnPasilloConAtributoComeElItem()
+        public void CuandoBombitaSeParaArribaDeUnPasilloConChalaComeElItemYLoModificaCorrectamente()
         {
             Punto posDestino = new Punto(1, 1);
             Punto posOrigen = new Punto(0, 1);
@@ -705,8 +705,291 @@ namespace TestBomberman.TestMapa
             destino.Transitar(unBombita);
             
             Assert.AreEqual(2*velocidad,unBombita.Movimiento.Velocidad);
-            
         }
 
+        [Test]
+        public void CuandoBombitaSeParaArribaDeUnPasilloConTimerComeElItemYLoModificaCorrectamente()
+        {
+            Punto posDestino = new Punto(1, 1);
+            Punto posOrigen = new Punto(0, 1);
+            Casilla destino = FabricaDeCasillas.FabricarPasillo(posDestino);
+            Casilla origen = FabricaDeCasillas.FabricarPasillo(posOrigen);
+            Articulo unArticulo = new Timer();
+            destino.ArticuloContenido = unArticulo;
+            Personaje unBombita = new Bombita(posOrigen);
+            int retardo = 15;
+
+            destino.Transitar(unBombita);
+
+            Assert.AreEqual(retardo, unBombita.ReduccionRetardoBombas);
+        }
+
+        [Test]
+        public void CuandoBombitaSeParaArribaDeUnPasilloConArticuloBombaToleToleComeElItemYLoModificaCorrectamente()
+        {
+            Punto posDestino = new Punto(1, 1);
+            Punto posOrigen = new Punto(0, 1);
+            Casilla destino = FabricaDeCasillas.FabricarPasillo(posDestino);
+            Casilla origen = FabricaDeCasillas.FabricarPasillo(posOrigen);
+            Articulo unArticulo = new ArticuloBombaToleTole();
+            destino.ArticuloContenido = unArticulo;
+            Personaje unBombita = new Bombita(posOrigen);
+            
+            destino.Transitar(unBombita);
+
+            Assert.IsInstanceOf(typeof (LanzadorToleTole), unBombita.Lanzador);
+        }
+
+        [Test]
+        public void CuandoBombitaSeParaArribaDeUnPasilloConChalaComeElItemYLoOculta()
+        {
+            Punto posDestino = new Punto(1, 1);
+            Punto posOrigen = new Punto(0, 1);
+            Casilla destino = FabricaDeCasillas.FabricarPasillo(posDestino);
+            Casilla origen = FabricaDeCasillas.FabricarPasillo(posOrigen);
+            Articulo unArticulo = new Chala();
+            destino.ArticuloContenido = unArticulo;
+            Personaje unBombita = new Bombita(posOrigen);
+            int velocidad = unBombita.Movimiento.Velocidad;
+
+            destino.Transitar(unBombita);
+
+            Assert.IsTrue(destino.ArticuloContenido.EstaOculto);
+        }
+
+        [Test]
+        public void CuandoBombitaSeParaArribaDeUnPasilloConTimerComeElItemYLoOculta()
+        {
+            Punto posDestino = new Punto(1, 1);
+            Punto posOrigen = new Punto(0, 1);
+            Casilla destino = FabricaDeCasillas.FabricarPasillo(posDestino);
+            Casilla origen = FabricaDeCasillas.FabricarPasillo(posOrigen);
+            Articulo unArticulo = new Timer();
+            destino.ArticuloContenido = unArticulo;
+            Personaje unBombita = new Bombita(posOrigen);
+            
+            destino.Transitar(unBombita);
+
+            Assert.IsTrue(destino.ArticuloContenido.EstaOculto);
+        }
+
+        [Test]
+        public void CuandoBombitaSeParaArribaDeUnPasilloConArticuloBombaToleToleComeElItemYLoOculta()
+        {
+            Punto posDestino = new Punto(1, 1);
+            Punto posOrigen = new Punto(0, 1);
+            Casilla destino = FabricaDeCasillas.FabricarPasillo(posDestino);
+            Casilla origen = FabricaDeCasillas.FabricarPasillo(posOrigen);
+            Articulo unArticulo = new ArticuloBombaToleTole();
+            destino.ArticuloContenido = unArticulo;
+            Personaje unBombita = new Bombita(posOrigen);
+
+            destino.Transitar(unBombita);
+
+            Assert.IsTrue(destino.ArticuloContenido.EstaOculto);
+        }
+
+        [Test]
+        public void CuandoBombitaSeParaArribaDeUnPasilloConChalaOcultaNOComeElItem()
+        {
+            Punto posDestino = new Punto(1, 1);
+            Punto posOrigen = new Punto(0, 1);
+            Casilla destino = FabricaDeCasillas.FabricarPasillo(posDestino);
+            Casilla origen = FabricaDeCasillas.FabricarPasillo(posOrigen);
+            Articulo unArticulo = new Chala();
+            unArticulo.EstaOculto = true;
+            destino.ArticuloContenido = unArticulo;
+            Personaje unBombita = new Bombita(posOrigen);
+            int velocidad = unBombita.Movimiento.Velocidad;
+
+            destino.Transitar(unBombita);
+
+            Assert.AreEqual(velocidad, unBombita.Movimiento.Velocidad);
+        }
+
+        [Test]
+        public void CuandoBombitaSeParaArribaDeUnPasilloConTimerOcultoNOComeElItem()
+        {
+            Punto posDestino = new Punto(1, 1);
+            Punto posOrigen = new Punto(0, 1);
+            Casilla destino = FabricaDeCasillas.FabricarPasillo(posDestino);
+            Casilla origen = FabricaDeCasillas.FabricarPasillo(posOrigen);
+            Articulo unArticulo = new Timer();
+            unArticulo.EstaOculto = true;
+            destino.ArticuloContenido = unArticulo;
+            Personaje unBombita = new Bombita(posOrigen);
+            int retardo = 0;
+
+            destino.Transitar(unBombita);
+
+            Assert.AreEqual(retardo, unBombita.ReduccionRetardoBombas);
+        }
+
+        [Test]
+        public void CuandoBombitaSeParaArribaDeUnPasilloConArticuloBombaToleToleOcultoNOComeElItem()
+        {
+            Punto posDestino = new Punto(1, 1);
+            Punto posOrigen = new Punto(0, 1);
+            Casilla destino = FabricaDeCasillas.FabricarPasillo(posDestino);
+            Casilla origen = FabricaDeCasillas.FabricarPasillo(posOrigen);
+            Articulo unArticulo = new ArticuloBombaToleTole();
+            unArticulo.EstaOculto = true;
+            destino.ArticuloContenido = unArticulo;
+            Personaje unBombita = new Bombita(posOrigen);
+
+            destino.Transitar(unBombita);
+
+            Assert.IsInstanceOf(typeof(LanzadorMolotov), unBombita.Lanzador);
+        }
+
+        [Test]
+        public void CuandoCecilioSeParaArribaDeUnPasilloConChalaNOComeElItem()
+        {
+            Punto posDestino = new Punto(1, 1);
+            Punto posOrigen = new Punto(0, 1);
+            Casilla destino = FabricaDeCasillas.FabricarPasillo(posDestino);
+            Casilla origen = FabricaDeCasillas.FabricarPasillo(posOrigen);
+            Articulo unArticulo = new Chala();
+            destino.ArticuloContenido = unArticulo;
+            Personaje unEnemigo = new Cecilio(posOrigen);
+            int velocidad = unEnemigo.Movimiento.Velocidad;
+
+            destino.Transitar(unEnemigo);
+
+            Assert.AreEqual(velocidad, unEnemigo.Movimiento.Velocidad);
+        }
+
+        [Test]
+        public void CuandoCecilioSeParaArribaDeUnPasilloConTimerNOComeElItem()
+        {
+            Punto posDestino = new Punto(1, 1);
+            Punto posOrigen = new Punto(0, 1);
+            Casilla destino = FabricaDeCasillas.FabricarPasillo(posDestino);
+            Casilla origen = FabricaDeCasillas.FabricarPasillo(posOrigen);
+            Articulo unArticulo = new Timer();
+            destino.ArticuloContenido = unArticulo;
+            Personaje unEnemigo = new Cecilio(posOrigen);
+            int retardo = 0;
+
+            destino.Transitar(unEnemigo);
+
+            Assert.AreEqual(retardo, unEnemigo.ReduccionRetardoBombas);
+        }
+
+        [Test]
+        public void CuandoCecilioSeParaArribaDeUnPasilloConArticuloBombaToleToleNOComeElItem()
+        {
+            Punto posDestino = new Punto(1, 1);
+            Punto posOrigen = new Punto(0, 1);
+            Casilla destino = FabricaDeCasillas.FabricarPasillo(posDestino);
+            Casilla origen = FabricaDeCasillas.FabricarPasillo(posOrigen);
+            Articulo unArticulo = new ArticuloBombaToleTole();
+            destino.ArticuloContenido = unArticulo;
+            Personaje unEnemigo = new Cecilio(posOrigen);
+
+            destino.Transitar(unEnemigo);
+
+            Assert.IsInstanceOf(typeof(LanzadorMolotov), unEnemigo.Lanzador);
+        }
+
+        [Test]
+        public void CuandoLosLopezReggaeSeParaArribaDeUnPasilloConChalaNOComeElItem()
+        {
+            Punto posDestino = new Punto(1, 1);
+            Punto posOrigen = new Punto(0, 1);
+            Casilla destino = FabricaDeCasillas.FabricarPasillo(posDestino);
+            Casilla origen = FabricaDeCasillas.FabricarPasillo(posOrigen);
+            Articulo unArticulo = new Chala();
+            destino.ArticuloContenido = unArticulo;
+            Personaje unEnemigo = new LosLopezReggae(posOrigen);
+            int velocidad = unEnemigo.Movimiento.Velocidad;
+
+            destino.Transitar(unEnemigo);
+
+            Assert.AreEqual(velocidad, unEnemigo.Movimiento.Velocidad);
+        }
+
+        [Test]
+        public void CuandoLosLopezReggaeSeParaArribaDeUnPasilloConTimerNOComeElItem()
+        {
+            Punto posDestino = new Punto(1, 1);
+            Punto posOrigen = new Punto(0, 1);
+            Casilla destino = FabricaDeCasillas.FabricarPasillo(posDestino);
+            Casilla origen = FabricaDeCasillas.FabricarPasillo(posOrigen);
+            Articulo unArticulo = new Timer();
+            destino.ArticuloContenido = unArticulo;
+            Personaje unEnemigo = new LosLopezReggae(posOrigen);
+            int retardo = 0;
+
+            destino.Transitar(unEnemigo);
+
+            Assert.AreEqual(retardo, unEnemigo.ReduccionRetardoBombas);
+        }
+
+        [Test]
+        public void CuandoLosLopezReggaeSeParaArribaDeUnPasilloConArticuloBombaToleToleNOComeElItem()
+        {
+            Punto posDestino = new Punto(1, 1);
+            Punto posOrigen = new Punto(0, 1);
+            Casilla destino = FabricaDeCasillas.FabricarPasillo(posDestino);
+            Casilla origen = FabricaDeCasillas.FabricarPasillo(posOrigen);
+            Articulo unArticulo = new ArticuloBombaToleTole();
+            destino.ArticuloContenido = unArticulo;
+            Personaje unEnemigo = new LosLopezReggae(posOrigen);
+
+            destino.Transitar(unEnemigo);
+
+            Assert.IsInstanceOf(typeof(LanzadorProyectil), unEnemigo.Lanzador);
+        }
+
+        [Test]
+        public void CuandoLosLopezReggaeAladoSeParaArribaDeUnPasilloConChalaNOComeElItem()
+        {
+            Punto posDestino = new Punto(1, 1);
+            Punto posOrigen = new Punto(0, 1);
+            Casilla destino = FabricaDeCasillas.FabricarPasillo(posDestino);
+            Casilla origen = FabricaDeCasillas.FabricarPasillo(posOrigen);
+            Articulo unArticulo = new Chala();
+            destino.ArticuloContenido = unArticulo;
+            Personaje unEnemigo = new LosLopezReggaeAlado(posOrigen);
+            int velocidad = unEnemigo.Movimiento.Velocidad;
+
+            destino.Transitar(unEnemigo);
+
+            Assert.AreEqual(velocidad, unEnemigo.Movimiento.Velocidad);
+        }
+
+        [Test]
+        public void CuandoLosLopezReggaeAladoSeParaArribaDeUnPasilloConTimerNOComeElItem()
+        {
+            Punto posDestino = new Punto(1, 1);
+            Punto posOrigen = new Punto(0, 1);
+            Casilla destino = FabricaDeCasillas.FabricarPasillo(posDestino);
+            Casilla origen = FabricaDeCasillas.FabricarPasillo(posOrigen);
+            Articulo unArticulo = new Timer();
+            destino.ArticuloContenido = unArticulo;
+            Personaje unEnemigo = new LosLopezReggaeAlado(posOrigen);
+            int retardo = 0;
+
+            destino.Transitar(unEnemigo);
+
+            Assert.AreEqual(retardo, unEnemigo.ReduccionRetardoBombas);
+        }
+
+        [Test]
+        public void CuandoLosLopezReggaeAladoSeParaArribaDeUnPasilloConArticuloBombaToleToleNOComeElItem()
+        {
+            Punto posDestino = new Punto(1, 1);
+            Punto posOrigen = new Punto(0, 1);
+            Casilla destino = FabricaDeCasillas.FabricarPasillo(posDestino);
+            Casilla origen = FabricaDeCasillas.FabricarPasillo(posOrigen);
+            Articulo unArticulo = new ArticuloBombaToleTole();
+            destino.ArticuloContenido = unArticulo;
+            Personaje unEnemigo = new LosLopezReggaeAlado(posOrigen);
+
+            destino.Transitar(unEnemigo);
+
+            Assert.IsInstanceOf(typeof(LanzadorMolotov), unEnemigo.Lanzador);
+        }
     }
 }
