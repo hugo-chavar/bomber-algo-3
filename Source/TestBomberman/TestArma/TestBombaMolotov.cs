@@ -16,7 +16,8 @@ namespace TestBomberman.TestArma
         private Juego juego;
         private Mapa unMapa;
         private const int ANCHOMAPA = 5;
-        private BombaMolotov unaBomba;
+        private Casilla unaCasilla2;
+        
 
 
 
@@ -27,11 +28,8 @@ namespace TestBomberman.TestArma
             posicion = new Punto(3, 4);
             Casilla unaCasilla = FabricaDeCasillas.FabricarPasillo(posicion);
             juego.Ambiente.AgregarCasilla(unaCasilla);
-        }
 
-        public void TestSetupMapa()
-        {
-             //creo un mapa 5x5 con esta distribucion (P = Pasillo, * = BloqueAcero):
+            //creo un mapa 5x5 con esta distribucion (P = Pasillo, * = BloqueAcero):
             //      P P P P P
             //      P * P * P
             //      P P P P P
@@ -39,7 +37,7 @@ namespace TestBomberman.TestArma
             //      P P P P P
 
             Punto unaPosicion;
-            Casilla unaCasilla;
+            
             this.unMapa = new Mapa(ANCHOMAPA, ANCHOMAPA);
 
             int i, j;
@@ -50,18 +48,20 @@ namespace TestBomberman.TestArma
                     if ((i & 1) == 1 && (j & 1) == 1)
                     {
                         //ambos son numeros impares
-                        unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(unaPosicion);//.FabricarCasillaConBloqueAcero(unaPosicion);
+                        unaCasilla2 = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(unaPosicion);//.FabricarCasillaConBloqueAcero(unaPosicion);
                     }
                     else
                     {
                         //uno de los dos es par
-                        unaCasilla = FabricaDeCasillas.FabricarPasillo(unaPosicion);
+                        unaCasilla2 = FabricaDeCasillas.FabricarPasillo(unaPosicion);
                     }
-                    this.unMapa.AgregarCasilla(unaCasilla);
-                }
-        
+                    this.unMapa.AgregarCasilla(unaCasilla2);
+                  }
+       
+
 
         }
+
         
 
 
@@ -91,22 +91,20 @@ namespace TestBomberman.TestArma
             Assert.AreEqual(obstaculo.UnidadesDeResistencia, 5);
         }
 
-///////////////////// Integradores  ///////////////////////////
+
 
         [Test]
 
-        public void TestCuandoExplotaUnaBombaMolotovYContieneASuIzquierdaUnBloqueLadrilloYLoDestruye()
+        public void TestCuandoExplotaUnaBombaMolotovYTieneUnCasilleroASuIzquierdaConBloqueLadrilloYLoDestruye()
         {
             Punto posicion = new Punto(4,1);
             Punto puntoCasillaDaniada = new Punto(3,1);
-            BombaMolotov unaBomba = new BombaMolotov(posicion,0);
+            Bomba unaBomba = new BombaMolotov(posicion, 0);
 
             Casilla unaCasillaBomba = unMapa.ObtenerCasilla(posicion);
             unaCasillaBomba.PlantarExplosivo(unaBomba);
 
-            unaBomba.CuandoPasaElTiempo();
-            unaBomba.CuandoPasaElTiempo();
-            unaBomba.CuandoPasaElTiempo();
+            unMapa.ManejarExplosion(unaBomba);
 
             Casilla unaCasillaDaniada = unMapa.ObtenerCasilla(puntoCasillaDaniada);
 
@@ -116,6 +114,67 @@ namespace TestBomberman.TestArma
 
 
         }
+       [Test]
+        public void TestCuandoExplotaUnaBombaMolotovYTieneUnCasilleroASuDerechaConBloqueLadrilloYLoDestruye()
+        {
+            Punto posicion = new Punto(0, 1);
+            Punto puntoCasillaDaniada = new Punto(1, 1);
+            Bomba unaBomba = new BombaMolotov(posicion, 0);
+
+            Casilla unaCasillaBomba = unMapa.ObtenerCasilla(posicion);
+            unaCasillaBomba.PlantarExplosivo(unaBomba);
+
+            unMapa.ManejarExplosion(unaBomba);
+
+            Casilla unaCasillaDaniada = unMapa.ObtenerCasilla(puntoCasillaDaniada);
+
+            Assert.IsInstanceOf(typeof(Pasillo), unaCasillaDaniada.Estado);
+
+
+
+
+        }
+        [Test]
+        public void TestCuandoExplotaUnaBombaMolotovYTieneUnCasilleroArribaConBloqueLadrilloYLoDestruye()
+        {
+            Punto posicion = new Punto(1, 2);
+            Punto puntoCasillaDaniada = new Punto(1, 3);
+            Bomba unaBomba = new BombaMolotov(posicion, 0);
+
+            Casilla unaCasillaBomba = unMapa.ObtenerCasilla(posicion);
+            unaCasillaBomba.PlantarExplosivo(unaBomba);
+
+            unMapa.ManejarExplosion(unaBomba);
+
+            Casilla unaCasillaDaniada = unMapa.ObtenerCasilla(puntoCasillaDaniada);
+
+            Assert.IsInstanceOf(typeof(Pasillo), unaCasillaDaniada.Estado);
+
+
+
+
+        }
+                [Test]
+                public void TestCuandoExplotaUnaBombaMolotovYTieneUnCasilleroAbajoConBloqueLadrilloYLoDestruye()
+        {
+            Punto posicion = new Punto(3, 4);
+            Punto puntoCasillaDaniada = new Punto(3, 3);
+            Bomba unaBomba = new BombaMolotov(posicion, 0);
+
+            Casilla unaCasillaBomba = unMapa.ObtenerCasilla(posicion);
+            unaCasillaBomba.PlantarExplosivo(unaBomba);
+
+            unMapa.ManejarExplosion(unaBomba);
+
+            Casilla unaCasillaDaniada = unMapa.ObtenerCasilla(puntoCasillaDaniada);
+
+            Assert.IsInstanceOf(typeof(Pasillo), unaCasillaDaniada.Estado);
+
+
+
+
+        }
+
 
 
 
