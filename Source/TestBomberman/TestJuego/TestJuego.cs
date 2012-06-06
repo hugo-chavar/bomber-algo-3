@@ -270,5 +270,18 @@ namespace TestBomberman.TestJuego
             otroMovil.Mover();//choca con el limite inferior
             Assert.IsTrue(otroMovil.Posicion.Equals(posOriginal));
         }
+
+
+        /*
+        public void BombitaConVelocidadNormalCambiaDePosicionEnUnaUnidadDentroDelMapaAlMoversePorPasillo()
+        {
+            this.movil = new Bombita(new Punto(0, 0));
+            Punto posOriginal = this.movil.Posicion.Clonar();
+            this.unMapa.AgregarPersonaje(this.movil); // testear todos los exceptions
+            this.movil.Movimiento.CambiarADerecha();
+            this.movil.Mover();
+            Punto pos = new Punto(1, 0);
+            Assert.IsTrue(pos.Equals(this.movil.Posicion));
+        }*/
     }
 }

@@ -15,7 +15,7 @@ namespace Bomberman.Mapa.Casilla
                 //Deberia daniar a los personajes alli presentes
             }
 
-            public override bool PuedeContenerArticulos()
+            public override bool PuedeContenerSalida()
             {
                 return false;
             }
