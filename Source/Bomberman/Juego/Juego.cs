@@ -13,7 +13,7 @@ namespace Bomberman.Juego
         private bool juegoPausado;
         private Personaje.Personaje protagonista;
         private Mapa.Mapa ambiente;
-        private List<IDependienteDelTiempo> esperaParaExplotar;
+
                 //declaracion del Singleton
         private static Juego instanciaDeJuego;
         //Constantes
@@ -28,10 +28,7 @@ namespace Bomberman.Juego
             set { this.cantDeVidas = value; }
         }
 
-        public List<IDependienteDelTiempo> EsperaParaExplotar
-        {
-            get { return esperaParaExplotar; }
-        }
+
 
 
 
@@ -61,7 +58,7 @@ namespace Bomberman.Juego
             this.JuegoPausado = false;
             this.CantDeVidas = VIDAS;
             this.Ambiente = new Mapa.Mapa(ANCHOMAPA,ALTOMAPA);
-            this.esperaParaExplotar = new List<IDependienteDelTiempo>() ;
+
 
             //aca se carga el template del mapa
             //luego se agrega a bombita al mapa
@@ -96,18 +93,5 @@ namespace Bomberman.Juego
             this.CantDeVidas = (this.CantDeVidas-1);
         }
 
-        public void CuandoPasaElTiempo()
-        {
-            if (this.esperaParaExplotar.Count > 0)
-            {
-               int i;
-
-               for (i = 0; i < (esperaParaExplotar.Count); i++)
-               {
-                   esperaParaExplotar[i].CuandoPasaElTiempo();
-
-               }
-            }
-        }
   }
 }

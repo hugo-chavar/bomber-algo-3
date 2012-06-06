@@ -18,6 +18,8 @@ namespace Bomberman.Mapa
         public const int ABAJO = 2;
         public const int IZQUIERDA = 4;
         public const int DERECHA = 6;
+        private List<IDependienteDelTiempo> esperaParaExplotar;
+
 
         public Dictionary<Punto, Casilla.Casilla> Tablero
         {
@@ -30,6 +32,11 @@ namespace Bomberman.Mapa
             get { return this.dimensionHorizontal; }
         }
 
+        public List<IDependienteDelTiempo> EsperaParaExplotar
+        {
+            get { return esperaParaExplotar; }
+        }
+
         public int DimensionVertical
         {
             get { return this.dimensionVertical; }
@@ -40,6 +47,8 @@ namespace Bomberman.Mapa
             this.dimensionHorizontal = tamanioHorizontal;
             this.dimensionVertical = tamanioVertical;
             this.tablero = new Dictionary<Punto, Casilla.Casilla>();
+            this.esperaParaExplotar = new List<IDependienteDelTiempo>();
+
 
         }
 
@@ -338,6 +347,21 @@ namespace Bomberman.Mapa
                 i++;
                 unPuntoAux = new Punto(punto.X, punto.Y - i);
 
+            }
+        }
+
+
+        public void CuandoPasaElTiempo()
+        {
+            if (this.esperaParaExplotar.Count > 0)
+            {
+                int i;
+
+                for (i = 0; i < (esperaParaExplotar.Count); i++)
+                {
+                    esperaParaExplotar[i].CuandoPasaElTiempo();
+
+                }
             }
         }
 
