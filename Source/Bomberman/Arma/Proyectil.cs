@@ -81,7 +81,7 @@ namespace Bomberman.Arma
                this.DisminuirTiempo();
                unManejador.AvanzarHacia(this);
             }
-            if (tiempoRestante == 0)
+            if ((tiempoRestante == 0) && (unManejador.EstaLanzado()))
             {
                 base.Explotar();
             }

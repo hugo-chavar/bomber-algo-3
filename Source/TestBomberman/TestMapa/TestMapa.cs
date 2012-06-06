@@ -527,22 +527,27 @@ namespace TestBomberman.TestMapa
         [Test]
         public void BombaToleToleExplotaAlcanzandoAUnBloqueDeCementoDevuelveTrueSiElBloqueQuedaDestruido()
         {
-            this.pos = new Punto(1, 2);
-            Punto pToleTole = new Punto(0, 3);
-            movil = new Bombita(this.pos);
+            
+            this.pos = new Punto(1, 1);
+            Punto pToleTole = new Punto(1, 2);
 
 
-            this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
-            this.unaCasilla.Transitar(movil);
-            Assert.IsFalse(unMapa.PermitidoMoverHaciaArribaA(movil));
+
+            
+
+
 
 
             BombaToleTole unaBomba = new BombaToleTole(pToleTole, 0);
             Casilla casillaBomba = unMapa.ObtenerCasilla(pToleTole);
-
             casillaBomba.PlantarExplosivo(unaBomba);
             unMapa.ManejarExplosion(unaBomba);
-            Assert.IsTrue(unMapa.PermitidoMoverHaciaArribaA(movil));
+
+            Casilla unaCasillaNueva = unMapa.ObtenerCasilla(this.pos);
+
+            Assert.IsInstanceOf(typeof (Pasillo), unaCasillaNueva.Estado);
+            TestSetup();
+
 
 
 
