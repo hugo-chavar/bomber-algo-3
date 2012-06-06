@@ -994,5 +994,7 @@ namespace TestBomberman.TestMapa
 
             Assert.IsInstanceOf(typeof(LanzadorMolotov), unEnemigo.Lanzador);
         }
+
+        
     }
 }
