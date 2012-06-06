@@ -376,11 +376,6 @@ namespace TestBomberman.TestJuego
             Assert.IsTrue(bomba1.EstaExplotado());
             Assert.IsTrue(bomba2.EstaExplotado());
  
-
-
-
-
-
         }
         
 
