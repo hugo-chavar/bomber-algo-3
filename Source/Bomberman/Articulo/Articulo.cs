@@ -7,7 +7,7 @@ using Bomberman.Personaje;
 namespace Bomberman.Articulo
 {
     public abstract class Articulo : IComible
-    {   
+    {
         protected bool estaOculto;
 
         public abstract void ModificarComedor(IComedor comedor);
@@ -18,6 +18,10 @@ namespace Bomberman.Articulo
             set { this.estaOculto = value; }        
         }
 
-
+        public void Ocultar()
+        {
+            this.EstaOculto = true;
+        }
+        
     }
 }

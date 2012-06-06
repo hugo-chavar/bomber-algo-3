@@ -45,7 +45,7 @@ namespace Bomberman.Mapa.Casilla
         {
             this.transitandoEnCasilla.Add(movil);
             movil.Posicion = this.Posicion;
-            if (this.ArticuloContenido != null)
+            if ((this.ArticuloContenido != null) && (!this.ArticuloContenido.EstaOculto))
             {
                 movil.Comer(this.ArticuloContenido);
             }
