@@ -74,17 +74,34 @@ namespace Bomberman.Personaje
             return ((this.unidadesDeResistencia) < 1);
         }
 
-
-
-
-        public void DaniarConBombaToleTole()
+        private int CalcularUnidadesRestantes(int unidadesDestruidas)
         {
+            int unidades = (this.UnidadesDeResistencia - unidadesDestruidas);
+            if (unidades < 0) return (0);
+            else return (unidades);
         }
-        public void DaniarConBombaMolotov(int UnidadesDaniadas)
-        { 
+
+        public virtual void DaniarConBombaMolotov(int UnidadesDaniadas)
+        {
+            this.DaniarSiNoEstaDestruido(UnidadesDaniadas);
         }
-        public void DaniarConProyectil(int UnidadesDaniadas)
-        { 
+
+        public virtual void DaniarConBombaToleTole()
+        {
+            this.UnidadesDeResistencia = 0;
+        }
+
+        public virtual void DaniarConProyectil(int UnidadesDaniadas)
+        {
+            this.DaniarSiNoEstaDestruido(UnidadesDaniadas);
+        }
+
+        private void DaniarSiNoEstaDestruido(int UnidadesDaniadas)
+        {
+            if (!this.Destruido())
+            {
+                this.UnidadesDeResistencia = CalcularUnidadesRestantes(UnidadesDaniadas);
+            }
         }
 
     }
