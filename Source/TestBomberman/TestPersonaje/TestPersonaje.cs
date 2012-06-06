@@ -56,7 +56,7 @@ namespace TestBomberman.TestPersonaje
             unaLista.Add(unPersonaje);
 
             Assert.AreEqual(unaLista[0], destino.TransitandoEnCasilla[0]);
-            Assert.AreEqual((unaLista).Count, (destino.TransitandoEnCasilla).Count);
+            Assert.AreEqual((unaLista).Count, (destino.TransitandoEnCasilla).Count); //Hugo dice: Si hay dos Asserts Hacer 2 tests diferentes uno para cada Assert
             destino.Dejar(unPersonaje); // Lo agrego porque sino no me sacaba los personajes de la lista de la casilla Destino (CHEQUEAR SI EL SETUP ESTA BIEN!!!)
         }
 
