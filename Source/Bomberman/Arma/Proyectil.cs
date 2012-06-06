@@ -73,7 +73,7 @@ namespace Bomberman.Arma
         }
 
 
-        public void CuandoPasaElTiempo()
+        public override void  CuandoPasaElTiempo()
         {
 
             if (tiempoRestante > 0)

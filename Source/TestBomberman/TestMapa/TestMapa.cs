@@ -531,7 +531,10 @@ namespace TestBomberman.TestMapa
             BombaToleTole unaBomba = new BombaToleTole(pToleTole, 0);
             Casilla casillaBomba = unMapa.ObtenerCasilla(pToleTole);
             casillaBomba.PlantarExplosivo(unaBomba);
+
+
             unMapa.ManejarExplosion(unaBomba);
+
 
             Casilla unaCasillaNueva = unMapa.ObtenerCasilla(this.pos);
 

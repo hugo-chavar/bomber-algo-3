@@ -23,7 +23,7 @@ namespace Bomberman.Arma
 
         public abstract override void Daniar(IDaniable daniable);
         
-        public void CuandoPasaElTiempo()
+        public override void CuandoPasaElTiempo()
         {
             this.DisminuirTiempo();
             if (0 >= this.TiempoRestante)

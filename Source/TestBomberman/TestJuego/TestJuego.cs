@@ -359,6 +359,31 @@ namespace TestBomberman.TestJuego
 
         }
 
-        
+        [Test]
+        public void TestCuandoHagoExplotar2BombasAlMismoTiempoATravesDeJuego()
+        {
+            Punto posicionBomba1 = new Punto(0,0);
+            Punto posicionBomba2 = new Punto (0,1);
+
+            BombaMolotov bomba1 = new BombaMolotov(posicionBomba1, 0);
+            BombaMolotov bomba2 = new BombaMolotov(posicionBomba2, 0);
+
+            Casilla casillaBomba1 = Juego.Instancia().Ambiente.ObtenerCasilla(posicionBomba1);
+            Casilla casillaBomba2 = Juego.Instancia().Ambiente.ObtenerCasilla(posicionBomba2);
+
+            casillaBomba1.PlantarExplosivo(bomba1);
+            casillaBomba2.PlantarExplosivo(bomba2);
+
+            Juego.Instancia().CuandoPasaElTiempo();
+
+            Assert.IsTrue(bomba1.EstaExplotado());
+            Assert.IsTrue(bomba2.EstaExplotado());
+ 
+
+
+
+
+
+        }        
     }
 }
