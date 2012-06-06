@@ -16,6 +16,38 @@ namespace TestBomberman
         }
 
         [Test]
+        public void EqualsDevuelveTrueSiElPuntoEsComparadoConOtroQuePoseeLasMismasCoordenadas()
+        {
+            Punto otroPunto = new Punto(3, 4);
+
+            Assert.IsTrue(this.posicion.Equals(otroPunto));
+        }
+
+        [Test]
+        public void EqualsDevuelveFalseSiElPuntoEsComparadoConOtroQuePoseeDifiereEnAlMenosUnaCoordenada()
+        {
+            Punto otroPunto = new Punto(3, 5);
+
+            Assert.IsFalse(this.posicion.Equals(otroPunto));
+        }
+
+        [Test]
+        public void ClonarDevuelveUnNuevoPuntoConCordenadasIgualesAlPuntoClonado()
+        {
+            Punto otroPunto = this.posicion.Clonar();
+
+            Assert.IsTrue(this.posicion.Equals(otroPunto));
+        }
+
+        [Test]
+        public void ClonarDevuelveUnNuevoPuntoYLasReferenciasNoSonIgules()
+        {
+            Punto otroPunto = this.posicion.Clonar();
+
+            Assert.AreNotSame(this.posicion, otroPunto);
+        }
+
+        [Test]
         public void PosicionSuperiorDevuelveUnaNuevaPosicionConCoordenadaYAumentadaEn1()
         {
             Punto posicionSuperior = this.posicion.PosicionSuperior();
