@@ -60,6 +60,7 @@ namespace Bomberman.Personaje
 
         public void Mover()
         {
+            if (!(this.Destruido()))                //Resolucion para que los personajes no sean zombies ! 
             Juego.Juego.Instancia().Ambiente.Mover(this);
         }
 
