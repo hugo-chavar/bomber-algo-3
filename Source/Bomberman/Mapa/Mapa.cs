@@ -250,6 +250,7 @@ namespace Bomberman.Mapa
         
         //Por el momento atrapo solo la excepcion.Hay qu solucionarlo de otr Forma
         //Hugo dice:Andy esto es lo que vos decias que no va a lanzar la excepcion no?
+        //Andy:Claro porque ya esta probado que sea un posicion valida del mapa al hacer la lista de explotados
         public void ManejarExplosion(Explosivo explosivo)
         {
             List<Punto> puntosAfectados = CalcularCasillerosExplotados(explosivo);
