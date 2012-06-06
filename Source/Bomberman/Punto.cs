@@ -21,15 +21,15 @@
             get { return (this.y); }
             set { this.y = value; }
         }
-        public void PosicionDerecha(int aumentoX)
+       /* public void PosicionDerecha(int aumentoX) Hugo dice: Comento esto para demostrar que no se esta usando en ningun lado.. solo nos perjudicaría en el test de cobertura
         {
             this.x = this.x + aumentoX;
         }
         public void PosicionSuperior(int aumentoY)
         {
             this.y = this.y + aumentoY;
-        }
-        public bool EsPuntoValido()
+        }*/
+        public bool EsPuntoValido() //Hugo dice: si leyeron lo que escribí en la clase mapa, esto hay que volarlo
         {
             if ((this.x >= 0) && (this.y >= 0))
             {

@@ -96,7 +96,7 @@ namespace Bomberman.Mapa
             return (punto.X < this.DimensionHorizontal && punto.Y < this.DimensionVertical);
         }
 
-        public bool ExisteCasillaEnPosicion(Punto pos)    // Hice publico este metodo para poder usarlo desde ManejadorProyectil  //
+        public bool ExisteCasillaEnPosicion(Punto pos)
         {
             if (pos == null)
                 throw new PosicionNulaException();
@@ -249,16 +249,14 @@ namespace Bomberman.Mapa
         }
         
         //Por el momento atrapo solo la excepcion.Hay qu solucionarlo de otr Forma
-        //Quien esta haciendo esto? soy Hugo, modifico el casteo fiero y dejo comentado las lineas que saco
+        //Hugo dice:Andy esto es lo que vos decias que no va a lanzar la excepcion no?
         public void ManejarExplosion(Explosivo explosivo)
         {
-            //ArrayList puntosAfectados = CalcularCasillerosExplotados(explosivo);
             List<Punto> puntosAfectados = CalcularCasillerosExplotados(explosivo);
             for (int i = 0; i < (puntosAfectados.Count); i++)
             {
                 try
                 {
-                    //Casilla.Casilla casillaAux = this.ObtenerCasilla((Punto)puntosAfectados[i]);
                     Casilla.Casilla casillaAux = this.ObtenerCasilla(puntosAfectados[i]);
                     explosivo.Daniar(casillaAux.Estado); 
                     if (casillaAux.Estado.Destruido())
@@ -274,7 +272,6 @@ namespace Bomberman.Mapa
         }
 
             // Problema arreglado: solo falta refactorizar la repeticion de codigo 
-            //Este metodo podria tener codigo que explica lo que hace porque no se entiende
       public List<Punto> CalcularCasillerosExplotados(Explosivo explosivo)
         {
             List<Punto> listaDevolucion = new List<Punto>();
@@ -290,7 +287,7 @@ namespace Bomberman.Mapa
         { 
             int i=1;
             Punto unPuntoAux=new Punto(punto.X-1,punto.Y);
-            while (unPuntoAux.EsPuntoValido() && i <= expansion)
+            while (unPuntoAux.EsPuntoValido() && i <= expansion) // Hugo dice: en lugar de unPuntoAux.EsPuntoValido() deberia ir this.PosicionDentroRango(unPuntoAux), ver explicacion abajo
             {
                 
                 Lista.Add(unPuntoAux);
@@ -331,9 +328,9 @@ namespace Bomberman.Mapa
         {
             int i = 1;
             Punto unPuntoAux = new Punto(punto.X, punto.Y - 1);
-            while ((unPuntoAux.EsPuntoValido()) && (i <= expansion))
-            {
-
+            while ((unPuntoAux.EsPuntoValido()) && (i <= expansion)) // Hugo dice: en lugar de unPuntoAux.EsPuntoValido() deberia ir this.PosicionDentroRango(unPuntoAux)
+            {                                                         // porque no esta chequeando los margenes derecho e izquierdo
+                                                                       //además se deberia eliminar el metodo EsPuntoValido() de la clase punto porque no la usamos en ningun lado mas
                 Lista.Add(unPuntoAux);
                 i++;
                 unPuntoAux = new Punto(punto.X, punto.Y - i);
