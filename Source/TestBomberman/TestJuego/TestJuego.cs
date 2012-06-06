@@ -5,6 +5,7 @@ using Bomberman.Mapa.Casilla;
 using Bomberman.Personaje;
 using Bomberman.Arma;
 using Bomberman;
+using Bomberman.Articulo;
 
 namespace TestBomberman.TestJuego
 {
@@ -83,11 +84,7 @@ namespace TestBomberman.TestJuego
         [Test]
         public void PerderVidaDescuentaUnaVidaAlJuegoActual() 
         {
-            /* VERIFICAR ACA! 
-             * CUANDO CORRO LAS TEST LA PRIMER VEZ FUNCIONA TODO BIEN, 
-             * LA CORRO DOS VECES Y SIGUE DESCONTANDO VIDAS!
-             */
-            unJuego = new Juego();
+            Juego unJuego = new Juego();
             unJuego.PerderVida();
             Assert.AreEqual(2, unJuego.CantDeVidas);
         }
@@ -384,6 +381,72 @@ namespace TestBomberman.TestJuego
 
 
 
-        }        
+        }
+        
+
+        /*Empiezo a probar explosiones con articulos!*/
+
+        [Test]
+        public void ExplotoUnObstaculoQueContieneUnCasilleroYLuegoLoComeBombita()
+        {
+            int AnchoYLargo = 4;
+            int i, j;
+            Mapa unMapa = new Mapa(AnchoYLargo, AnchoYLargo);
+            Punto posInicio = new Punto(0, 0);
+            Punto posFinal = new Punto (1, 1);
+            Personaje unBombita = new Bombita(posInicio);
+            Punto unaPosicion;
+            Casilla unaCasilla;
+
+            // Inicializo el mapa, lo pongo temporalmente hasta no ver si la prueba corre igual con la inicializacion del setup!!!!
+            for (i = 0; i < AnchoYLargo; i++)
+                for (j = 0; j < AnchoYLargo; j++)
+                {
+                    unaPosicion = new Punto(i, j);
+                    if ((i & 1) == 1 && (j & 1) == 1)
+                    {
+                        //ambos son numeros impares
+                        unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(unaPosicion);//.FabricarCasillaConBloqueAcero(unaPosicion);
+                    }
+                    else
+                    {
+                        //uno de los dos es par
+                        unaCasilla = FabricaDeCasillas.FabricarPasillo(unaPosicion);
+                    }
+                    unMapa.AgregarCasilla(unaCasilla);
+                }
+
+            //Agrego articulo
+            Punto posicionCasillaArt = new Punto(1, 1);
+            Casilla CasillaConArticulo = unMapa.ObtenerCasilla(posicionCasillaArt);
+            Articulo unArticulo = new Chala();
+            CasillaConArticulo.agregarArticulo(unArticulo);
+            //unMapa.AgregarCasilla(CasillaConArticulo);
+
+            //Verifico si agrego correctamente el articulo en el bloque.
+            Assert.IsInstanceOf(typeof(BloqueComun), unMapa.ObtenerCasilla(posicionCasillaArt).Estado);
+            Assert.IsInstanceOf(typeof(Chala), unMapa.ObtenerCasilla(posicionCasillaArt).ArticuloContenido);
+            
+            
+            
+            //Muevo a bombita para dejarlo cerca de un Bloque y explotarlo.
+            this.unMapa.AgregarPersonaje(unBombita);
+            int velocidad = unBombita.Movimiento.Velocidad;
+            unBombita.Movimiento.CambiarAArriba();
+            unBombita.Mover();//fue a 0,1
+            unBombita.LanzarExplosivo(unBombita.Posicion, unBombita.ReduccionRetardoBombas);
+            unBombita.Mover();//fue a 0,2
+            unBombita.Movimiento.CambiarADerecha();
+            unBombita.Mover(); //fue a 1,2
+            
+            //ACA TENGO QUE HACER PASAR EL TIEMPO Y NO SE COMO LO MANEJA EL JUEGO!!!
+            
+            unBombita.Movimiento.CambiarAAbajo();
+            unBombita.Mover(); //fue a 1,1
+
+            Assert.AreEqual(posFinal.X, unBombita.Posicion.X);
+            Assert.AreEqual(posFinal.Y, unBombita.Posicion.Y);
+            Assert.AreEqual(2*velocidad, unBombita.Movimiento.Velocidad);
+        }
     }
 }
