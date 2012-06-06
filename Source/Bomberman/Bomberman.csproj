@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Arma\IdependienteDelTiempo.cs" />
+    <Compile Include="Arma\IDependienteDelTiempo.cs" />
     <Compile Include="Arma\ManejadorProyectil.cs" />
     <Compile Include="Arma\Explosivo.cs" />
     <Compile Include="Arma\BombaToleTole.cs" />

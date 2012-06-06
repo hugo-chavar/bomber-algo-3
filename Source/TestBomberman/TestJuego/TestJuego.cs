@@ -387,18 +387,22 @@ namespace TestBomberman.TestJuego
         /*Empiezo a probar explosiones con articulos!*/
 
         [Test]
-        public void ExplotoUnObstaculoQueContieneUnCasilleroYLuegoLoComeBombita()
+        public void ExplotoUnObstaculoQueContieneUnCasilleroYLuegoLoComeBombita() // TEST SUPER INTEGRAL; POR AHORA NO ANDA; PINCHA EN EL EXPLOTAR!!!!
         {
-            int AnchoYLargo = 4;
-            int i, j;
+            int AnchoYLargo = 5;
+            
+            Juego unJuego = new Juego();
             Mapa unMapa = new Mapa(AnchoYLargo, AnchoYLargo);
             Punto posInicio = new Punto(0, 0);
             Punto posFinal = new Punto (1, 1);
             Personaje unBombita = new Bombita(posInicio);
+
+            
             Punto unaPosicion;
             Casilla unaCasilla;
-
-            // Inicializo el mapa, lo pongo temporalmente hasta no ver si la prueba corre igual con la inicializacion del setup!!!!
+            int i, j;
+            
+            // Inicializo el mapa con ladrillos!!!
             for (i = 0; i < AnchoYLargo; i++)
                 for (j = 0; j < AnchoYLargo; j++)
                 {
@@ -416,30 +420,44 @@ namespace TestBomberman.TestJuego
                     unMapa.AgregarCasilla(unaCasilla);
                 }
 
+            unJuego.Ambiente = unMapa;
+
             //Agrego articulo
             Punto posicionCasillaArt = new Punto(1, 1);
-            Casilla CasillaConArticulo = unMapa.ObtenerCasilla(posicionCasillaArt);
+            Casilla CasillaConArticulo = unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt);
             Articulo unArticulo = new Chala();
             CasillaConArticulo.agregarArticulo(unArticulo);
-            //unMapa.AgregarCasilla(CasillaConArticulo);
-
+            
             //Verifico si agrego correctamente el articulo en el bloque.
-            Assert.IsInstanceOf(typeof(BloqueComun), unMapa.ObtenerCasilla(posicionCasillaArt).Estado);
-            Assert.IsInstanceOf(typeof(Chala), unMapa.ObtenerCasilla(posicionCasillaArt).ArticuloContenido);
+            Assert.IsInstanceOf(typeof(BloqueComun), unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt).Estado);
+            Assert.IsInstanceOf(typeof(Chala), unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt).ArticuloContenido);
             
             
             
             //Muevo a bombita para dejarlo cerca de un Bloque y explotarlo.
-            this.unMapa.AgregarPersonaje(unBombita);
+            unJuego.Ambiente.AgregarPersonaje(unBombita);
             int velocidad = unBombita.Movimiento.Velocidad;
+
             unBombita.Movimiento.CambiarAArriba();
             unBombita.Mover();//fue a 0,1
+
             unBombita.LanzarExplosivo(unBombita.Posicion, unBombita.ReduccionRetardoBombas);
             unBombita.Mover();//fue a 0,2
+
             unBombita.Movimiento.CambiarADerecha();
+
             unBombita.Mover(); //fue a 1,2
-            
-            //ACA TENGO QUE HACER PASAR EL TIEMPO Y NO SE COMO LO MANEJA EL JUEGO!!!
+                     
+            unJuego.CuandoPasaElTiempo();
+            unJuego.CuandoPasaElTiempo();
+            unJuego.CuandoPasaElTiempo();
+            unJuego.CuandoPasaElTiempo();
+            unJuego.CuandoPasaElTiempo();
+            unJuego.CuandoPasaElTiempo();
+            unJuego.CuandoPasaElTiempo();
+
+            //Verifico que se haya destruido correctamente!
+            Assert.IsInstanceOf(typeof(Pasillo), unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt).Estado);
             
             unBombita.Movimiento.CambiarAAbajo();
             unBombita.Mover(); //fue a 1,1
