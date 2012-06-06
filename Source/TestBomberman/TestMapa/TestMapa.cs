@@ -271,9 +271,6 @@ namespace TestBomberman.TestMapa
         {
             //La posicion NO existe porque en fixtureSetup unMapa es creado de 5x5 con casillas en todas sus posiciones [0..4][0..4]
             this.pos = new Punto(4, 4);
-            //Casilla unaCasilla = FabricaDeCasillas.FabricarPasillo(this.pos);
-            //this.unMapa.agregarCasilla(unaCasilla);
-            //Assert.IsTrue(this.unMapa.ExisteCasillaEnPosicion(this.pos));
             Punto posSup = this.pos.PosicionSuperior();
             Assert.IsFalse(unMapa.ExisteCasillaEnPosicion(posSup));
         }
