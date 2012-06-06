@@ -3,6 +3,7 @@ using Bomberman.Juego;
 using Bomberman.Mapa;
 using Bomberman.Mapa.Casilla;
 using Bomberman.Personaje;
+using Bomberman.Arma;
 using Bomberman;
 
 namespace TestBomberman.TestJuego
@@ -283,5 +284,63 @@ namespace TestBomberman.TestJuego
             Punto pos = new Punto(1, 0);
             Assert.IsTrue(pos.Equals(this.movil.Posicion));
         }*/
+
+        [Test]
+        public void TestCuandoExplotaUnaBombaToleToleYTieneUnCasilleroAbajoConCecilioLoDestruye()
+        {
+            Punto posicionBomba = new Punto(2, 3);
+            Punto posicionCecilio = new Punto(2, 2);
+            Cecilio cecilio=new Cecilio(posicionCecilio);
+
+            Casilla casillaCecilio= unMapa.ObtenerCasilla(posicionCecilio);
+            Casilla casillaBomba = unMapa.ObtenerCasilla(posicionBomba);
+
+            Bomba unaBomba = new BombaToleTole(posicionBomba, 0);
+            casillaCecilio.Transitar(cecilio);
+
+            casillaBomba.PlantarExplosivo(unaBomba);
+            unaBomba.Explotar();
+            Assert.AreEqual(cecilio.UnidadesDeResistencia,0);
+
+        }
+
+        [Test]
+        public void TestCuandoExplotaUnaBombaMolotovYTieneUnCasilleroAbajoConCecilioLoDestruye()
+        {
+            Punto posicionBomba = new Punto(2, 3);
+            Punto posicionCecilio = new Punto(2, 2);
+            Cecilio cecilio = new Cecilio(posicionCecilio);
+
+            Casilla casillaCecilio = unMapa.ObtenerCasilla(posicionCecilio);
+            Casilla casillaBomba = unMapa.ObtenerCasilla(posicionBomba);
+
+            Bomba unaBomba = new BombaMolotov(posicionBomba, 0);
+            casillaCecilio.Transitar(cecilio);
+
+            casillaBomba.PlantarExplosivo(unaBomba);
+            unaBomba.Explotar();
+            Assert.AreEqual(cecilio.UnidadesDeResistencia, 0);
+
+        }
+
+        [Test]
+        public void TestCuandoExplotaUnaBombaMolotovYTieneUnCasilleroAbajoLopezReggaeLoDania()
+        {
+            Punto posicionBomba = new Punto(2, 3);
+            Punto posicionLopezReggae = new Punto(2, 2);
+            LosLopezReggae lopezReggae = new LosLopezReggae(posicionLopezReggae);
+
+            Casilla casillaLopez = unMapa.ObtenerCasilla(posicionLopezReggae);
+            Casilla casillaBomba = unMapa.ObtenerCasilla(posicionBomba);
+
+            Bomba unaBomba = new BombaMolotov(posicionBomba, 0);
+            casillaLopez.Transitar(lopezReggae);
+            casillaBomba.PlantarExplosivo(unaBomba);
+            unaBomba.Explotar();
+            Assert.AreEqual(lopezReggae.UnidadesDeResistencia, 5);
+
+        }
+
+        
     }
 }
