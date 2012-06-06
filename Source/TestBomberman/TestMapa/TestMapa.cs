@@ -539,6 +539,7 @@ namespace TestBomberman.TestMapa
             //TestSetup(); 
             // VER ESTO! ESTOY FORZANDO EL SETUP PARA NO CAMBIAR OTROS TESTS!
             //Andy:Problema Solucionado, habia que poner Setup y No TestFixtureSetup
+            // Martin: CRACK!
 
 
 
@@ -553,6 +554,8 @@ namespace TestBomberman.TestMapa
 
 
         }
+
+
 
         [Test]
         public void AgregarTimerMeDejaAgregarEnBloqueCemento()
@@ -684,6 +687,25 @@ namespace TestBomberman.TestMapa
             unaCasilla.agregarArticulo(unArticulo);
 
             Assert.IsNull(unaCasilla.ArticuloContenido);
+        }
+
+
+        [Test]
+        public void CuandoBombitaSeParaArribaDeUnPasilloConAtributoComeElItem()
+        {
+            Punto posDestino = new Punto(1, 1);
+            Punto posOrigen = new Punto(0, 1);
+            Casilla destino = FabricaDeCasillas.FabricarPasillo(posDestino);
+            Casilla origen = FabricaDeCasillas.FabricarPasillo(posOrigen);
+            Articulo unArticulo = new Chala();
+            destino.ArticuloContenido = unArticulo;
+            Personaje unBombita = new Bombita(posOrigen);
+            int velocidad = unBombita.Movimiento.Velocidad;
+
+            destino.Transitar(unBombita);
+            
+            Assert.AreEqual(2*velocidad,unBombita.Movimiento.Velocidad);
+            
         }
 
     }

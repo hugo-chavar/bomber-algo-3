@@ -20,7 +20,7 @@ namespace TestBomberman.TestJuego
         //private Casilla unaCasilla;
         private IMovible movil;
 
-        [TestFixtureSetUp]
+        [SetUp]
         public void TestSetup()
         {
             //creo un mapa 5x5 con esta distribucion (P = Pasillo, * = BloqueAcero):
@@ -87,7 +87,7 @@ namespace TestBomberman.TestJuego
              * CUANDO CORRO LAS TEST LA PRIMER VEZ FUNCIONA TODO BIEN, 
              * LA CORRO DOS VECES Y SIGUE DESCONTANDO VIDAS!
              */
-            
+            unJuego = new Juego();
             unJuego.PerderVida();
             Assert.AreEqual(2, unJuego.CantDeVidas);
         }

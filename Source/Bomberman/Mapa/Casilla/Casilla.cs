@@ -44,7 +44,11 @@ namespace Bomberman.Mapa.Casilla
         public void Transitar(IMovible movil)
         {
             this.transitandoEnCasilla.Add(movil);
-            movil.Posicion = this.Posicion; 
+            movil.Posicion = this.Posicion;
+            if (this.ArticuloContenido != null)
+            {
+                movil.Comer(this.ArticuloContenido);
+            }
         }
 
         public void Dejar(IMovible movil)

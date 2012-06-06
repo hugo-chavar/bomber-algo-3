@@ -11,7 +11,7 @@ namespace TestBomberman.TestArma
     {
         private Punto posicion;
 
-        [TestFixtureSetUp]
+        [SetUp]
         public void TestSetup()
         {
             posicion = new Punto(3, 4);

@@ -14,7 +14,7 @@ namespace TestBomberman.TestArticulo
         private Bombita unBombita;
 
         
-        [TestFixtureSetUp]
+        [SetUp]
         public void TestSetup()
         {
             pos = new Punto(3, 4);

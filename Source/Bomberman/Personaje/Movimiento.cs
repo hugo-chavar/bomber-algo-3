@@ -17,7 +17,7 @@ namespace Bomberman.Personaje
             Random direccionRandom = new Random();
             //direccion puede ser 2,4,6,8 y obienen su significado de la flecha del numPad en el teclado
             this.direccion = 2 * (direccionRandom.Next(4) + 1);
-            this.velocidad = VELOCIDADINICIAL;
+            this.Velocidad = VELOCIDADINICIAL;
         }
 
         public int Velocidad

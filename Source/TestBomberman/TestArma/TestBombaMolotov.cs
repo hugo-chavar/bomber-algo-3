@@ -21,7 +21,7 @@ namespace TestBomberman.TestArma
 
 
 
-        [TestFixtureSetUp]
+        [SetUp]
         public void TestSetup()
         {
             juego = new Juego();
@@ -106,7 +106,7 @@ namespace TestBomberman.TestArma
 
             Casilla unaCasillaDaniada = unMapa.ObtenerCasilla(puntoCasillaDaniada);
 
-             Assert.IsInstanceOf(typeof (Pasillo), unaCasillaDaniada.Estado);
+            Assert.IsInstanceOf(typeof (Pasillo), unaCasillaDaniada.Estado);
 
 
 
