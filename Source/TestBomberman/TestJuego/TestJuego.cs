@@ -371,13 +371,96 @@ namespace TestBomberman.TestJuego
             casillaBomba1.PlantarExplosivo(bomba1);
             casillaBomba2.PlantarExplosivo(bomba2);
 
-            Juego.Instancia().CuandoPasaElTiempo();
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
 
             Assert.IsTrue(bomba1.EstaExplotado());
             Assert.IsTrue(bomba2.EstaExplotado());
  
         }
         
+        /*METO TESTS DE EZE ACA!!!!!*/
+
+        
+        
+
+        [Test]
+        public void TestCuandoPlanto1BombaToleTole1MolotovAlMismoTiempoATravesDeJuegoYSoloExplotaLaMolotov()
+        {
+            Punto posicionBomba1 = new Punto(0, 0);
+            Punto posicionBomba2 = new Punto(0, 1);
+
+            BombaMolotov bomba1 = new BombaMolotov(posicionBomba1, 0);
+            BombaToleTole bomba2 = new BombaToleTole(posicionBomba2, 0);
+
+            Casilla casillaBomba1 = Juego.Instancia().Ambiente.ObtenerCasilla(posicionBomba1);
+            Casilla casillaBomba2 = Juego.Instancia().Ambiente.ObtenerCasilla(posicionBomba2);
+
+            casillaBomba1.PlantarExplosivo(bomba1);
+            casillaBomba2.PlantarExplosivo(bomba2);
+
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+
+            Assert.IsTrue(bomba1.EstaExplotado());
+            Assert.IsFalse(bomba2.EstaExplotado());
+          }
+
+        [Test]
+        public void TestCuandoPlanto1BombaToleTole1MolotovAlMismoTiempoATravesDeJuegoYExplotanLas2()
+        {
+            Punto posicionBomba1 = new Punto(0, 0);
+            Punto posicionBomba2 = new Punto(0, 1);
+
+            BombaMolotov bomba1 = new BombaMolotov(posicionBomba1, 0);
+            BombaToleTole bomba2 = new BombaToleTole(posicionBomba2, 0);
+
+            Casilla casillaBomba1 = Juego.Instancia().Ambiente.ObtenerCasilla(posicionBomba1);
+            Casilla casillaBomba2 = Juego.Instancia().Ambiente.ObtenerCasilla(posicionBomba2);
+
+            casillaBomba1.PlantarExplosivo(bomba1);
+            casillaBomba2.PlantarExplosivo(bomba2);
+
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+
+            Assert.IsTrue(bomba1.EstaExplotado());
+            Assert.IsTrue(bomba2.EstaExplotado());
+            Assert.AreEqual(Juego.Instancia().Ambiente.EsperaParaExplotar.Count, 2);
+
+        }
+
+        [Test]
+        public void TestAgregadoEnLista()
+        {
+            Punto posicionBombita1 = new Punto(0, 0);
+            Punto posicionBombita2 = new Punto(2, 0);
+            BombaMolotov unaBomba = new BombaMolotov(posicionBombita1, 0);
+            Bombita movil = new Bombita(posicionBombita1);
+
+            Casilla casillaBomba1 = Juego.Instancia().Ambiente.ObtenerCasilla(posicionBombita1);
+
+    
+
+
+            movil.LanzarExplosivo();
+            movil.Movimiento.CambiarAArriba();
+            movil.Mover();
+            movil.LanzarExplosivo();
+            
+
+
+
+            Assert.AreEqual(Juego.Instancia().Ambiente.EsperaParaExplotar.Count, 2);
+
+
+
+
+
+
+        }       
+    
 
         /*Empiezo a probar explosiones con articulos!*/
 
@@ -436,20 +519,16 @@ namespace TestBomberman.TestJuego
             unBombita.Movimiento.CambiarAArriba();
             unBombita.Mover();//fue a 0,1
 
-            unBombita.LanzarExplosivo(unBombita.Posicion, unBombita.ReduccionRetardoBombas);
+            unBombita.LanzarExplosivo();
             unBombita.Mover();//fue a 0,2
 
             unBombita.Movimiento.CambiarADerecha();
 
             unBombita.Mover(); //fue a 1,2
-                     
-            unJuego.CuandoPasaElTiempo();
-            unJuego.CuandoPasaElTiempo();
-            unJuego.CuandoPasaElTiempo();
-            unJuego.CuandoPasaElTiempo();
-            unJuego.CuandoPasaElTiempo();
-            unJuego.CuandoPasaElTiempo();
-            unJuego.CuandoPasaElTiempo();
+
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
 
             //Verifico que se haya destruido correctamente!
             Assert.IsInstanceOf(typeof(Pasillo), unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt).Estado);
