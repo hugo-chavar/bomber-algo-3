@@ -9,6 +9,7 @@ using Bomberman.Mapa;
 
 namespace Bomberman.Arma
 {
+    //Andy: Deberia tener un metodo manejar proyectil o varios que sean llamados en el manejador creado en el lanzador
     public class ManejadorProyectil
     {
         public const int ARRIBA = 8;

@@ -53,9 +53,9 @@ namespace Bomberman.Personaje
             set { this.posicion = value; }
         }
 
-        public void LanzarExplosivo(Punto posicion, int retardo)
+        public bool LanzarExplosivo(Punto posicion, int retardo)
         {
-            this.lanzador.Lanzar(posicion, retardo);
+            return(this.lanzador.Lanzar(posicion, retardo));
         }
 
         public void Mover()

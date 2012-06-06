@@ -254,9 +254,10 @@ namespace Bomberman.Mapa
         public void ManejarExplosion(Explosivo explosivo)
         {
             List<Punto> puntosAfectados = CalcularCasillerosExplotados(explosivo);
-            for (int i = 0; i < (puntosAfectados.Count); i++)
+            try
             {
-                try
+                this.ObtenerCasilla(explosivo.Posicion).QuitarExplosivo(explosivo);
+                for (int i = 0; i < (puntosAfectados.Count); i++)
                 {
                     Casilla.Casilla casillaAux = this.ObtenerCasilla(puntosAfectados[i]);
                     explosivo.Daniar(casillaAux.Estado); 
@@ -265,11 +266,12 @@ namespace Bomberman.Mapa
                     for (int j = 0; j < casillaAux.TransitandoEnCasilla.Count; j++)
                         explosivo.Daniar(casillaAux.TransitandoEnCasilla[j]);
                 }
-                catch (NoExisteCasillaException)
+            }
+            catch (NoExisteCasillaException)
                 {
                     //simplemente se ignora donde no hay casillas
+                
                 }
-            }
         }
 
             // Problema arreglado: solo falta refactorizar la repeticion de codigo 
