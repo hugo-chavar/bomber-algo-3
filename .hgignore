@@ -29,3 +29,4 @@ Source/Bomberman/bin/**
 Source/TestBomberman/bin/**
 Source/Bomberman/obj/**
 Source/TestBomberman/obj/**
+Source/Bomberman/Personaje/ManejadorDeMovimiento.cs
