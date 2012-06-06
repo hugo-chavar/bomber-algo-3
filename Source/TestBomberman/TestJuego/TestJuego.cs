@@ -144,7 +144,7 @@ namespace TestBomberman.TestJuego
         public void BombitaAvanzaPorTodoElMapaYNoCambiaDePosCuandoChocaConElLimiteDerechoDelMapa()
         {
             IMovible otroMovil = new Bombita(new Punto(0, 0));
-            this.unMapa.AgregarPersonaje(otroMovil); // testear todos los exceptions
+            this.unMapa.AgregarPersonaje(otroMovil);
             //Punto posOriginal = otroMovil.Posicion.Clonar();
             otroMovil.Movimiento.CambiarAArriba();
             otroMovil.Mover();//fue a 0,1
@@ -168,7 +168,7 @@ namespace TestBomberman.TestJuego
         {
             IMovible otroMovil = new Bombita(new Punto(0, 2));
             Punto posOriginal = otroMovil.Posicion.Clonar();
-            this.unMapa.AgregarPersonaje(otroMovil); // testear todos los exceptions
+            this.unMapa.AgregarPersonaje(otroMovil);
             otroMovil.Movimiento.CambiarAIzquierda();
             otroMovil.Mover(); //choca con el limite izquierdo
             Assert.IsTrue(otroMovil.Posicion.Equals(posOriginal));
@@ -179,7 +179,7 @@ namespace TestBomberman.TestJuego
         {
             IMovible otroMovil = new Bombita(new Punto(3, 0));
             Punto posOriginal = otroMovil.Posicion.Clonar();
-            this.unMapa.AgregarPersonaje(otroMovil); // testear todos los exceptions
+            this.unMapa.AgregarPersonaje(otroMovil);
             otroMovil.Movimiento.CambiarAAbajo();
             otroMovil.Mover(); //choca con el limite inferior
             Assert.IsTrue(otroMovil.Posicion.Equals(posOriginal));
@@ -190,7 +190,7 @@ namespace TestBomberman.TestJuego
         {
             IMovible otroMovil = new Bombita(new Punto(2, 4));
             Punto posOriginal = otroMovil.Posicion.Clonar();
-            this.unMapa.AgregarPersonaje(otroMovil); // testear todos los exceptions
+            this.unMapa.AgregarPersonaje(otroMovil); 
             otroMovil.Movimiento.CambiarAArriba();
             otroMovil.Mover(); //choca con el limite superior
             Assert.IsTrue(otroMovil.Posicion.Equals(posOriginal));
@@ -201,7 +201,7 @@ namespace TestBomberman.TestJuego
         {
             IMovible otroMovil = new LosLopezReggaeAlado(new Punto(1, 0));
             Punto posOriginal = otroMovil.Posicion.Clonar();
-            this.unMapa.AgregarPersonaje(otroMovil); // testear todos los exceptions
+            this.unMapa.AgregarPersonaje(otroMovil); 
             otroMovil.Movimiento.CambiarAArriba();
             otroMovil.Mover(); //se mueve donde hay un bloque de acero
             Assert.IsFalse(otroMovil.Posicion.Equals(posOriginal));
@@ -211,7 +211,7 @@ namespace TestBomberman.TestJuego
         public void UnLopezReggaeAladoAtraviesaObstaculos()
         {
             IMovible otroMovil = new LosLopezReggaeAlado(new Punto(0, 0));
-            this.unMapa.AgregarPersonaje(otroMovil); // testear todos los exceptions
+            this.unMapa.AgregarPersonaje(otroMovil); 
             //Punto posOriginal = otroMovil.Posicion.Clonar();
             otroMovil.Movimiento.CambiarAArriba();
             otroMovil.Mover();//fue a 0,1
@@ -231,7 +231,7 @@ namespace TestBomberman.TestJuego
         public void UnLopezReggaeAladoNoAtraviesaElLimiteIzquierdoDelMapa()
         {
             IMovible otroMovil = new LosLopezReggaeAlado(new Punto(0, 0));
-            this.unMapa.AgregarPersonaje(otroMovil); // testear todos los exceptions
+            this.unMapa.AgregarPersonaje(otroMovil); 
             Punto posOriginal = otroMovil.Posicion.Clonar();
             otroMovil.Movimiento.CambiarAIzquierda();
             otroMovil.Mover();//choca con el limite izquierdo
@@ -242,7 +242,7 @@ namespace TestBomberman.TestJuego
         public void UnLopezReggaeAladoNoAtraviesaElLimiteDerechoDelMapa()
         {
             IMovible otroMovil = new LosLopezReggaeAlado(new Punto(4, 0));
-            this.unMapa.AgregarPersonaje(otroMovil); // testear todos los exceptions
+            this.unMapa.AgregarPersonaje(otroMovil);
             Punto posOriginal = otroMovil.Posicion.Clonar();
             otroMovil.Movimiento.CambiarADerecha();
             otroMovil.Mover();//choca con el limite derecho
@@ -253,7 +253,7 @@ namespace TestBomberman.TestJuego
         public void UnLopezReggaeAladoNoAtraviesaElLimiteSuperiorDelMapa()
         {
             IMovible otroMovil = new LosLopezReggaeAlado(new Punto(4, 4));
-            this.unMapa.AgregarPersonaje(otroMovil); // testear todos los exceptions
+            this.unMapa.AgregarPersonaje(otroMovil);
             Punto posOriginal = otroMovil.Posicion.Clonar();
             otroMovil.Movimiento.CambiarAArriba();
             otroMovil.Mover();//choca con el limite superior
