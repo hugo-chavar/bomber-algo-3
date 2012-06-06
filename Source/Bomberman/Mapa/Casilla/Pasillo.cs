@@ -30,9 +30,14 @@ namespace Bomberman.Mapa.Casilla
             
         }
 
-        public override bool PuedeContenerArticulos()
+        public override bool PuedeContenerSalida()
         {
             return true;
+        }
+
+        public override bool PuedeAgregarArticulo()
+        {
+            return false;
         }
 
     }
