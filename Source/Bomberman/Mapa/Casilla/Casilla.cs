@@ -67,7 +67,7 @@ namespace Bomberman.Mapa.Casilla
 
         public void agregarArticulo(Articulo.Articulo unArticulo)
         {
-            if ((this.estado == null) | (this.estado.PuedeContenerArticulos()))   
+            if ((this.estado == null) | (this.estado.PuedeAgregarArticulo()))   
             {
             this.ArticuloContenido = unArticulo;
             }
