@@ -57,9 +57,9 @@ namespace TestBomberman.TestJuego
         public void TestBombitaPlantaUnaBombaMolotovYNoPuedePlantarOtraEnElMismoLugar()
         {
             Personaje bombita = this.unJuego.Protagonista;
-            bombita.LanzarExplosivo(bombita.Posicion,0);
+            bombita.LanzarExplosivo();
 
-            Assert.IsFalse(bombita.LanzarExplosivo(bombita.Posicion, 0));
+            Assert.IsFalse(bombita.LanzarExplosivo());
         }
     }
 }
