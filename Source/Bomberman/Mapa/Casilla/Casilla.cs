@@ -98,7 +98,7 @@ namespace Bomberman.Mapa.Casilla
 
         public void PlantarExplosivo(Explosivo unExplosivo)
         {
-            Juego.Juego.Instancia().EsperaParaExplotar.Add(unExplosivo);
+            Juego.Juego.Instancia().Ambiente.EsperaParaExplotar.Add(unExplosivo);
             this.explosivo=unExplosivo;
         }
 
