@@ -290,7 +290,7 @@ namespace Bomberman.Mapa
         { 
             int i=1;
             Punto unPuntoAux=new Punto(punto.X-1,punto.Y);
-            while (unPuntoAux.EsPuntoValido() && i <= expansion) // Hugo dice: en lugar de unPuntoAux.EsPuntoValido() deberia ir this.PosicionDentroRango(unPuntoAux), ver explicacion abajo
+            while (this.PosicionDentroRango(unPuntoAux) && i <= expansion) // Hugo dice: en lugar de unPuntoAux.EsPuntoValido() deberia ir this.PosicionDentroRango(unPuntoAux), ver explicacion abajo
             {
                 
                 Lista.Add(unPuntoAux);
@@ -331,7 +331,7 @@ namespace Bomberman.Mapa
         {
             int i = 1;
             Punto unPuntoAux = new Punto(punto.X, punto.Y - 1);
-            while ((unPuntoAux.EsPuntoValido()) && (i <= expansion)) // Hugo dice: en lugar de unPuntoAux.EsPuntoValido() deberia ir this.PosicionDentroRango(unPuntoAux)
+            while (this.PosicionDentroRango(unPuntoAux) && (i <= expansion)) // Hugo dice: en lugar de unPuntoAux.EsPuntoValido() deberia ir this.PosicionDentroRango(unPuntoAux)
             {                                                         // porque no esta chequeando los margenes derecho e izquierdo
                                                                        //además se deberia eliminar el metodo EsPuntoValido() de la clase punto porque no la usamos en ningun lado mas
                 Lista.Add(unPuntoAux);

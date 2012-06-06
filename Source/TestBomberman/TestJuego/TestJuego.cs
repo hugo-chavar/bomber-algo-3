@@ -341,6 +341,24 @@ namespace TestBomberman.TestJuego
 
         }
 
+        [Test]
+        public void TestCuandoExplotaUnaBombaMolotovYTieneUnCasilleroAbajoLopezReggaeAladoLoDania()
+        {
+            Punto posicionBomba = new Punto(2, 3);
+            Punto posicionAlado = new Punto(2, 2);
+            LosLopezReggaeAlado alado = new LosLopezReggaeAlado(posicionAlado);
+
+            Casilla casillaAlado = unMapa.ObtenerCasilla(posicionAlado);
+            Casilla casillaBomba = unMapa.ObtenerCasilla(posicionBomba);
+
+            Bomba unaBomba = new BombaMolotov(posicionBomba, 0);
+            casillaAlado.Transitar(alado);
+            casillaBomba.PlantarExplosivo(unaBomba);
+            unaBomba.Explotar();
+            Assert.AreEqual(alado.UnidadesDeResistencia, 0);
+
+        }
+
         
     }
 }
