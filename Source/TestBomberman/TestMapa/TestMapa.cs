@@ -21,7 +21,7 @@ namespace TestBomberman.TestMapa
         private Punto pos;
         private IMovible movil;
 
-        [TestFixtureSetUp]
+        [SetUp]
         public void TestSetup()
         {
             //creo un mapa 5x5 con esta distribucion (P = Pasillo, * = BloqueAcero):
@@ -536,8 +536,9 @@ namespace TestBomberman.TestMapa
             Casilla unaCasillaNueva = unMapa.ObtenerCasilla(this.pos);
 
             Assert.IsInstanceOf(typeof (Pasillo), unaCasillaNueva.Estado);
-            TestSetup(); 
+            //TestSetup(); 
             // VER ESTO! ESTOY FORZANDO EL SETUP PARA NO CAMBIAR OTROS TESTS!
+            //Andy:Problema Solucionado, habia que poner Setup y No TestFixtureSetup
 
 
 

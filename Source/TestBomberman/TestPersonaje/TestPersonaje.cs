@@ -17,7 +17,7 @@ namespace TestBomberman.TestPersonaje
         private Casilla destino;
         private Personaje unPersonaje;
 
-        [TestFixtureSetUp]
+        [SetUp]
         public void TestSetup()
         {
             this.unaFabricaDeCasillas = new FabricaDeCasillas();
