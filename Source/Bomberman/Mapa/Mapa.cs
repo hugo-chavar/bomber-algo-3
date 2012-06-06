@@ -183,26 +183,42 @@ namespace Bomberman.Mapa
                 case ARRIBA:
                     {
                         if (PermitidoMoverHaciaArribaA(movil))
-                            MoverHaciaArribaA(movil);
+                            {
+                                Casilla.Casilla unaCasilla = ObtenerCasilla(movil.Posicion);
+                                unaCasilla.Dejar(movil);
+                                MoverHaciaArribaA(movil); 
+                            }
                         break;
                     }
                 case ABAJO:
                     {
                         if (PermitidoMoverHaciaAbajoA(movil))
-                            MoverHaciaAbajoA(movil);
+                            {
+                                Casilla.Casilla unaCasilla = ObtenerCasilla(movil.Posicion);
+                                unaCasilla.Dejar(movil);
+                                MoverHaciaAbajoA(movil);
+                            }
                         break;
 
                     }
                 case IZQUIERDA:
                     {
                         if (PermitidoMoverHaciaIzquierdaA(movil))
+                        {
+                            Casilla.Casilla unaCasilla = ObtenerCasilla(movil.Posicion);
+                            unaCasilla.Dejar(movil);
                             MoverHaciaIzquierdaA(movil);
+                        } 
                         break;
                     }
                 case DERECHA:
                     {
                         if (PermitidoMoverHaciaDerechaA(movil))
+                        {
+                            Casilla.Casilla unaCasilla = ObtenerCasilla(movil.Posicion);
+                            unaCasilla.Dejar(movil);
                             MoverHaciaDerechaA(movil);
+                        } 
                         break;
 
                     }
