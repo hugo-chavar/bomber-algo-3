@@ -16,7 +16,7 @@ namespace TestBomberman.TestArma
         Proyectil otroProyectil;
 
         [TestFixtureSetUp]
-        public void testSetUp()
+        public void TestSetup()
         {
             unPuntoInicial = new Punto(1,1);
             unProyectil = new Proyectil(unPuntoInicial);
@@ -81,13 +81,15 @@ namespace TestBomberman.TestArma
             unProyectil.CuandoPasaElTiempo();
             unProyectil.CuandoPasaElTiempo();
             unProyectil.CuandoPasaElTiempo();
- 
- 
+
+            /* VERIFICAR ACA! 
+             * CUANDO CORRO LAS TEST LA PRIMER VEZ FUNCIONA TODO BIEN, 
+             * LA CORRO DOS VECES Y NO CORRE!!!
+             */
 
             Assert.AreEqual(unProyectil.TiempoRestante(), 0);
             Assert.AreEqual(unProyectil.Posicion.Y, 5);
             Assert.AreEqual(unProyectil.EstaExplotado(), true);
-
         }
 
         [Test]

@@ -6,6 +6,7 @@ using Bomberman.Mapa.Casilla;
 using Bomberman.Excepciones;
 using Bomberman.Personaje;
 using Bomberman.Arma;
+using Bomberman.Articulo;
 
 namespace TestBomberman.TestMapa
 {
@@ -543,7 +544,8 @@ namespace TestBomberman.TestMapa
             Casilla unaCasillaNueva = unMapa.ObtenerCasilla(this.pos);
 
             Assert.IsInstanceOf(typeof (Pasillo), unaCasillaNueva.Estado);
-            TestSetup();
+            TestSetup(); 
+            // VER ESTO! ESTOY FORZANDO EL SETUP PARA NO CAMBIAR OTROS TESTS!
 
 
 
@@ -559,7 +561,137 @@ namespace TestBomberman.TestMapa
 
         }
 
+        [Test]
+        public void AgregarTimerMeDejaAgregarEnBloqueCemento()
+        {
+            Punto unPunto = new Punto(1,1);
+            Casilla unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueCemento(unPunto);
+            Articulo unArticulo = new Timer();
+            unaCasilla.agregarArticulo(unArticulo);
 
+            Assert.AreEqual(unArticulo,unaCasilla.ArticuloContenido);
+        }
+
+        [Test]
+        public void AgregarArticuloBombaToleToleMeDejaAgregarEnBloqueCemento()
+        {
+            Punto unPunto = new Punto(1, 1);
+            Casilla unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueCemento(unPunto);
+            Articulo unArticulo = new ArticuloBombaToleTole();
+            unaCasilla.agregarArticulo(unArticulo);
+
+            Assert.AreEqual(unArticulo, unaCasilla.ArticuloContenido);
+        }
+
+        [Test]
+        public void AgregarChalaMeDejaAgregarEnBloqueCemento()
+        {
+            Punto unPunto = new Punto(1, 1);
+            Casilla unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueCemento(unPunto);
+            Articulo unArticulo = new Chala();
+            unaCasilla.agregarArticulo(unArticulo);
+
+            Assert.AreEqual(unArticulo, unaCasilla.ArticuloContenido);
+        }
+
+        [Test]
+        public void AgregarTimerMeDejaAgregarEnBloqueLadrillos()
+        {
+            Punto unPunto = new Punto(1, 1);
+            Casilla unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(unPunto);
+            Articulo unArticulo = new Timer();
+            unaCasilla.agregarArticulo(unArticulo);
+
+            Assert.AreEqual(unArticulo, unaCasilla.ArticuloContenido);
+        }
+
+        [Test]
+        public void AgregarArticuloBombaToleToleMeDejaAgregarEnBloqueLadrillos()
+        {
+            Punto unPunto = new Punto(1, 1);
+            Casilla unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(unPunto);
+            Articulo unArticulo = new ArticuloBombaToleTole();
+            unaCasilla.agregarArticulo(unArticulo);
+
+            Assert.AreEqual(unArticulo, unaCasilla.ArticuloContenido);
+        }
+
+        [Test]
+        public void AgregarChalaMeDejaAgregarEnBloqueLadrillos()
+        {
+            Punto unPunto = new Punto(1, 1);
+            Casilla unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(unPunto);
+            Articulo unArticulo = new Chala();
+            unaCasilla.agregarArticulo(unArticulo);
+
+            Assert.AreEqual(unArticulo, unaCasilla.ArticuloContenido);
+        }
+
+        [Test]
+        public void AgregarTimerMeDejaAgregarEnBloqueAcero()
+        {
+            Punto unPunto = new Punto(1, 1);
+            Casilla unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueAcero(unPunto);
+            Articulo unArticulo = new Timer();
+            unaCasilla.agregarArticulo(unArticulo);
+
+            Assert.AreEqual(unArticulo, unaCasilla.ArticuloContenido);
+        }
+
+        [Test]
+        public void AgregarArticuloBombaToleToleMeDejaAgregarEnBloqueAcero()
+        {
+            Punto unPunto = new Punto(1, 1);
+            Casilla unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueAcero(unPunto);
+            Articulo unArticulo = new ArticuloBombaToleTole();
+            unaCasilla.agregarArticulo(unArticulo);
+
+            Assert.AreEqual(unArticulo, unaCasilla.ArticuloContenido);
+        }
+
+        [Test]
+        public void AgregarChalaMeDejaAgregarEnBloqueAcero()
+        {
+            Punto unPunto = new Punto(1, 1);
+            Casilla unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueAcero(unPunto);
+            Articulo unArticulo = new Chala();
+            unaCasilla.agregarArticulo(unArticulo);
+
+            Assert.AreEqual(unArticulo, unaCasilla.ArticuloContenido);
+        }
+
+        [Test]
+        public void AgregarTimerNoMeDejaAgregarEnPasillo()
+        {
+            Punto unPunto = new Punto(1, 1);
+            Casilla unaCasilla = FabricaDeCasillas.FabricarPasillo(unPunto);
+            Articulo unArticulo = new Timer();
+            unaCasilla.agregarArticulo(unArticulo);
+
+            Assert.IsNull(unaCasilla.ArticuloContenido);
+        }
+
+        [Test]
+        public void AgregarArticuloBombaToleToleNoMeDejaAgregarEnPasillo()
+        {
+            Punto unPunto = new Punto(1, 1);
+            Casilla unaCasilla = FabricaDeCasillas.FabricarPasillo(unPunto);
+            Articulo unArticulo = new ArticuloBombaToleTole();
+            unaCasilla.agregarArticulo(unArticulo);
+
+            Assert.IsNull(unaCasilla.ArticuloContenido);
+        }
+
+        [Test]
+        public void AgregarChalaNoMeDejaAgregarEnPasillo()
+        {
+            Punto unPunto = new Punto(1, 1);
+            Casilla unaCasilla = FabricaDeCasillas.FabricarPasillo(unPunto);
+            Articulo unArticulo = new Chala();
+            unaCasilla.agregarArticulo(unArticulo);
+
+            Assert.IsNull(unaCasilla.ArticuloContenido);
+        }
 
     }
 }

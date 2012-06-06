@@ -24,7 +24,7 @@ namespace Bomberman.Mapa.Casilla
             return (BloqueLadrillos);
         }
 
-        public override bool PuedeContenerArticulos()
+        public override bool PuedeContenerSalida()
         {
             return true;
         }
