@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Bomberman.Arma
 {
-    public abstract class Explosivo
+    public abstract class Explosivo:IDependienteDelTiempo
     {
         protected int ondaExpansiva;
         protected Punto posicion;
@@ -38,7 +38,9 @@ namespace Bomberman.Arma
         public virtual void Explotar()
         {
             Juego.Juego.Instancia().Ambiente.ManejarExplosion(this);
-            this.exploto = true; // true = EXPLOTADO , false = ACTIVADA Y NO EXPLOTADA, //
+            this.exploto = true;
+  
+            // true = EXPLOTADO , false = ACTIVADA Y NO EXPLOTADA, //
         }
 
         public bool EstaExplotado()
@@ -47,5 +49,8 @@ namespace Bomberman.Arma
         }
 
         public abstract void Daniar(IDaniable daniable);
+
+        public abstract void CuandoPasaElTiempo();
+
     }
 }
