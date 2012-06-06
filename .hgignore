@@ -30,3 +30,4 @@ Source/TestBomberman/bin/**
 Source/Bomberman/obj/**
 Source/TestBomberman/obj/**
 Source/Bomberman/Personaje/ManejadorDeMovimiento.cs
+Source/Bomberman/Arma/ManejadorExplosiones.cs
