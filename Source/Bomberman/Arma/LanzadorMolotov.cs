@@ -8,10 +8,15 @@ using Bomberman.Personaje;
 
 namespace Bomberman.Arma
 {
-    public class LanzadorMolotov:ILanzador
+    public class LanzadorMolotov:Lanzador
     {
 
+        private const int ALCANCELANZAMIENTO = 0;
 
+        public LanzadorMolotov()
+        {
+            this.Alcance = ALCANCELANZAMIENTO;
+        }
         public override bool Lanzar(Punto posicion, int reduccionRetardo)
         {
             Casilla casilla = Juego.Juego.Instancia().Ambiente.ObtenerCasilla(posicion);

@@ -66,8 +66,9 @@ namespace TestBomberman
         [Test]
         public void PosicionInferriorDevuelveUnaNuevaPosicionConCoordenadaYDisminuidaEn1()
         {
-            Punto posicionInferior = this.posicion.PosicionInferior();
-
+            //Punto posicionInferior = this.posicion.PosicionInferior();
+            Punto p = new Punto(3, 4);
+            Punto posicionInferior = p.PosicionInferior();
             Assert.IsTrue(posicionInferior.Equals(new Punto(3, 3)));
         }
 
@@ -82,8 +83,9 @@ namespace TestBomberman
         [Test]
         public void PosicionIzquierdaDevuelveUnaNuevaPosicionConCoordenadaXDisminuidaEn1()
         {
-            Punto posicionIzquierda = this.posicion.PosicionIzquierda();
-
+            
+            Punto p = new Punto(3, 4);
+            Punto posicionIzquierda = p.PosicionIzquierda();
             Assert.IsTrue(posicionIzquierda.Equals(new Punto(2, 4)));
         }
 
