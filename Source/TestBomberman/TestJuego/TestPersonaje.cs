@@ -189,6 +189,138 @@ namespace TestBomberman.TestJuego
 
 
 
+        [Test]
+        public void TestCuandoLopezReggaePlantaUnaMolotovDestruyendoABombitaYSafa()
+        {
+            Punto pBombita = new Punto(1, 0);
+            Punto pReggaeAlado = new Punto(0, 0);
+
+
+            Bombita bombita = new Bombita(pBombita);
+            LosLopezReggaeAlado lRA = new LosLopezReggaeAlado(pReggaeAlado);
+            Juego.Instancia().Ambiente.AgregarPersonaje(bombita);
+            Juego.Instancia().Ambiente.AgregarPersonaje(lRA);
+
+            lRA.LanzarExplosivo();
+            lRA.Movimiento.CambiarAArriba();
+            lRA.Mover();
+            lRA.Mover();
+            lRA.Mover();
+            lRA.Mover(); 
+ 
+
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            //escapa el alado
+
+            Assert.IsFalse(lRA.Destruido());
+            Assert.IsTrue(bombita.Destruido());
+
+
+        }       // falta pruebas de LopezReggae haciendo lio con el proytectil
+
+
+        [Test]
+        public void TestCuandoBombmitaPlantaUnaToleToleDestruyendoACecilioYAlBloqueDeAcero()
+        {
+            Punto pBombita = new Punto(1, 0);
+            Punto pCecil = new Punto(0, 0);
+            Punto pBloqueAcero = new Punto (1,1);
+
+            Bombita bombita = new Bombita(pBombita);
+            Cecilio unCecil = new Cecilio(pCecil);
+            Juego.Instancia().Ambiente.AgregarPersonaje(bombita);
+            Juego.Instancia().Ambiente.AgregarPersonaje(unCecil);
+            bombita.CambiarLanzadorAToleTole(); // harcodeo el lanzador para ver internamente lo que ocurre al cambiar el lanzador
+            bombita.LanzarExplosivo();
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+
+
+            Assert.IsTrue(unCecil.Destruido());
+            Assert.IsTrue(bombita.Destruido());
+            Assert.IsInstanceOf(typeof(Pasillo), Juego.Instancia().Ambiente.ObtenerCasilla(pBloqueAcero).Estado);
+
+        }
+
+        [Test]
+        public void TestCuandoBombmitaPlantaUnaToleToleDestruyendoACecilioUbicadoDetrasDeUnBloqueDeAcero()
+        {
+            Punto pBombita = new Punto(1, 0);
+            Punto pCecil = new Punto(1, 2);         //Cecil ubicado detras del bloque
+            Punto pBloqueAcero = new Punto(1, 1);
+
+            Bombita bombita = new Bombita(pBombita);
+            Cecilio unCecil = new Cecilio(pCecil);
+            Juego.Instancia().Ambiente.AgregarPersonaje(bombita);
+            Juego.Instancia().Ambiente.AgregarPersonaje(unCecil);
+            bombita.CambiarLanzadorAToleTole(); // harcodeo el lanzador para ver internamente lo que ocurre al cambiar el lanzador
+            bombita.LanzarExplosivo();
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+
+
+            Assert.IsTrue(unCecil.Destruido());
+            Assert.IsTrue(bombita.Destruido());
+            Assert.IsInstanceOf(typeof(Pasillo), Juego.Instancia().Ambiente.ObtenerCasilla(pBloqueAcero).Estado);
+
+        }
+
+        [Test]
+        public void TestCuandoBombmitaPlantaUnaToleToleDestruyendoATodosLosPersonajesYObstaculosDentroDeSuAlcance()
+        {
+            Punto pBombita = new Punto(1, 0);
+            Punto pLopezReggae = new Punto(1, 2);
+            Punto pLopezReggaeAlado = new Punto(2, 0);
+            Punto pCecil = new Punto(1, 3);
+        
+            Punto pBloqueAcero = new Punto(1, 1);
+
+            Bombita bombita = new Bombita(pBombita);
+            Cecilio unCecil = new Cecilio(pCecil);
+            LosLopezReggae lRG = new LosLopezReggae(pLopezReggae);
+            LosLopezReggaeAlado lRGA = new LosLopezReggaeAlado(pLopezReggaeAlado);
+
+            Juego.Instancia().Ambiente.AgregarPersonaje(bombita);
+            Juego.Instancia().Ambiente.AgregarPersonaje(lRG);
+            Juego.Instancia().Ambiente.AgregarPersonaje(lRGA);
+            Juego.Instancia().Ambiente.AgregarPersonaje(unCecil);
+
+
+            bombita.CambiarLanzadorAToleTole(); // harcodeo el lanzador para ver internamente lo que ocurre al cambiar el lanzador
+            bombita.LanzarExplosivo();
+
+
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+
+
+            Assert.IsTrue(unCecil.Destruido());
+            Assert.IsTrue(bombita.Destruido());
+            Assert.IsTrue(lRGA.Destruido());
+            Assert.IsTrue(lRG.Destruido());
+            Assert.IsInstanceOf(typeof(Pasillo), Juego.Instancia().Ambiente.ObtenerCasilla(pBloqueAcero).Estado);
+
+        }
+
+        
+
+
+
+
+
+
+
+
+        // faltaria agregar con proyectil y toletoleee //
     }
 }
 
