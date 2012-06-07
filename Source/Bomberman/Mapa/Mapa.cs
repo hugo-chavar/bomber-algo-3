@@ -59,13 +59,13 @@ namespace Bomberman.Mapa
 
         public bool NivelTerminado
         {
-            get { return this.NivelTerminado; }
+            get { return this.nivelTerminado; }
             set { this.nivelTerminado = value; }
         }
 
         public bool NivelGanado
         {
-            get { return this.NivelGanado; }
+            get { return this.nivelGanado; }
             set { this.nivelGanado = value; }
         }
 
