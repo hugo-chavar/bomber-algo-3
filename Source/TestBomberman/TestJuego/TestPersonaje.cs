@@ -671,7 +671,6 @@ namespace TestBomberman.TestJuego
             unBombita.Mover();//1,1
             unJuego.Ambiente.CuandoPasaElTiempo();
 
-            //EL ERROR ESTA EN LAS PROPERTIES NivelGanado y NivelTerminado!!!
             Assert.IsFalse(unJuego.Ambiente.NivelGanado);
             Assert.IsFalse(unJuego.Ambiente.NivelTerminado);
 
