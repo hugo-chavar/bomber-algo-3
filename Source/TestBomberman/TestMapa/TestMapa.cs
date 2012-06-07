@@ -7,6 +7,7 @@ using Bomberman.Excepciones;
 using Bomberman.Personaje;
 using Bomberman.Arma;
 using Bomberman.Articulo;
+using Bomberman.Juego;
 
 namespace TestBomberman.TestMapa
 {
@@ -20,6 +21,7 @@ namespace TestBomberman.TestMapa
         private Casilla unaCasilla;
         private Punto pos;
         private IMovible movil;
+        private Juego unjuego;
 
         [SetUp]
         public void TestSetup()
@@ -52,6 +54,7 @@ namespace TestBomberman.TestMapa
                     }
                     this.unMapa.AgregarCasilla(unaCasilla);
                 }
+
 
         }
 
@@ -196,7 +199,7 @@ namespace TestBomberman.TestMapa
 
         [Test]
         public void UnMapaCreadoTieneElAnchoIndicadoEnElConstructor()
-        { 
+        {
             Assert.AreEqual(unMapa.DimensionHorizontal, ANCHOMAPA);
         }
 
@@ -387,7 +390,7 @@ namespace TestBomberman.TestMapa
         {
             this.pos = new Punto(2, 0);
             movil = new Bombita(this.pos);
-            
+
             this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
             this.unaCasilla.Transitar(movil);
             Assert.IsFalse(unMapa.PermitidoMoverHaciaAbajoA(movil));
@@ -432,7 +435,7 @@ namespace TestBomberman.TestMapa
             //ver mapa en el FixtureSetup
             this.pos = new Punto(1, 2);
             movil = new Bombita(this.pos);
-            
+
             this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
             this.unaCasilla.Transitar(movil);
             Assert.IsFalse(unMapa.PermitidoMoverHaciaAbajoA(movil));
@@ -525,7 +528,7 @@ namespace TestBomberman.TestMapa
         [Test]
         public void BombaToleToleExplotaAlcanzandoAUnBloqueDeCementoDevuelveTrueSiElBloqueQuedaDestruido()
         {
-            
+
             this.pos = new Punto(1, 1);
             Punto pToleTole = new Punto(1, 2);
             BombaToleTole unaBomba = new BombaToleTole(pToleTole, 0);
@@ -538,7 +541,7 @@ namespace TestBomberman.TestMapa
 
             Casilla unaCasillaNueva = unMapa.ObtenerCasilla(this.pos);
 
-            Assert.IsInstanceOf(typeof (Pasillo), unaCasillaNueva.Estado);
+            Assert.IsInstanceOf(typeof(Pasillo), unaCasillaNueva.Estado);
             //TestSetup(); 
             // VER ESTO! ESTOY FORZANDO EL SETUP PARA NO CAMBIAR OTROS TESTS!
             //Andy:Problema Solucionado, habia que poner Setup y No TestFixtureSetup
@@ -553,7 +556,7 @@ namespace TestBomberman.TestMapa
             //otra es mirar bien el manejarexplosion
             //vas por el buen camino.. debe ser una boludez..pero hay que encontrarla!!
 
-            
+
 
 
         }
@@ -563,12 +566,12 @@ namespace TestBomberman.TestMapa
         [Test]
         public void AgregarTimerMeDejaAgregarEnBloqueCemento()
         {
-            Punto unPunto = new Punto(1,1);
+            Punto unPunto = new Punto(1, 1);
             Casilla unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueCemento(unPunto);
             Articulo unArticulo = new Timer();
             unaCasilla.agregarArticulo(unArticulo);
 
-            Assert.AreEqual(unArticulo,unaCasilla.ArticuloContenido);
+            Assert.AreEqual(unArticulo, unaCasilla.ArticuloContenido);
         }
 
         [Test]
@@ -706,8 +709,8 @@ namespace TestBomberman.TestMapa
             int velocidad = unBombita.Movimiento.Velocidad;
 
             destino.Transitar(unBombita);
-            
-            Assert.AreEqual(2*velocidad,unBombita.Movimiento.Velocidad);
+
+            Assert.AreEqual(2 * velocidad, unBombita.Movimiento.Velocidad);
         }
 
         [Test]
@@ -737,10 +740,10 @@ namespace TestBomberman.TestMapa
             Articulo unArticulo = new ArticuloBombaToleTole();
             destino.ArticuloContenido = unArticulo;
             Personaje unBombita = new Bombita(posOrigen);
-            
+
             destino.Transitar(unBombita);
 
-            Assert.IsInstanceOf(typeof (LanzadorToleTole), unBombita.Lanzador);
+            Assert.IsInstanceOf(typeof(LanzadorToleTole), unBombita.Lanzador);
         }
 
         [Test]
@@ -770,7 +773,7 @@ namespace TestBomberman.TestMapa
             Articulo unArticulo = new Timer();
             destino.ArticuloContenido = unArticulo;
             Personaje unBombita = new Bombita(posOrigen);
-            
+
             destino.Transitar(unBombita);
 
             Assert.IsTrue(destino.ArticuloContenido.EstaOculto);
@@ -995,6 +998,88 @@ namespace TestBomberman.TestMapa
             Assert.IsInstanceOf(typeof(LanzadorMolotov), unEnemigo.Lanzador);
         }
 
+        [Test]
+        public void CuandoGeneroUnMapaNuevoLaCantidadDePersonajesVivosEs0()
+        {
+            Mapa unMapa = new Mapa(5, 5); // harcodeo aca pues el tamaño del mapa para este metodo no es relevante
+            Assert.AreEqual(unMapa.CantidadPersonajesVivos, 0);
+        }
+
+        [Test]
+        public void CuandoGeneroUnMapaNuevoYAgregoPersonajesElCantidadPersonajesVivosAumenta()
+        {
+            Assert.AreEqual(unMapa.CantidadPersonajesVivos, 0);
+            Punto pBombita = new Punto(0,0);
+            Punto pCecilio = new Punto(0, 1);
+
+            Cecilio unCecilio = new Cecilio(pCecilio);
+            Bombita unBombita = new Bombita(pBombita);
+
+            unMapa.AgregarPersonaje(unCecilio);
+            unMapa.AgregarPersonaje(unBombita);
+
+            Assert.AreEqual(unMapa.CantidadPersonajesVivos, 2);
+            
+        }
+
+        [Test]
+        public void CuandoGeneroUnMapaNuevoAgrego2PersonajesYElimino1ConToleTole()
+        {
+
+
+            this.unjuego = Juego.Instancia();
+            unjuego.Ambiente = unMapa;
+            
+            Assert.AreEqual(unMapa.CantidadPersonajesVivos, 0);
+            Punto pBombita = new Punto(0, 0);
+            Punto pCecilio = new Punto(0, 1);
+
+            Cecilio unCecilio = new Cecilio(pCecilio);
+            Bombita unBombita = new Bombita(pBombita);
+
+            unMapa.AgregarPersonaje(unCecilio);
+            unMapa.AgregarPersonaje(unBombita);
+
+            Assert.AreEqual(unMapa.CantidadPersonajesVivos, 2);
+
+            unCecilio.DaniarConBombaToleTole();
+            Assert.IsTrue(unCecilio.Destruido());
+            Assert.AreEqual(unMapa.CantidadPersonajesVivos, 1);
+
+
+
+        }
+
+        [Test]
+        public void CuandoGeneroUnMapaNuevoAgrego2PersonajesYEliminoLos2ConMolotov()
+        {
+
+
+            this.unjuego = Juego.Instancia();
+            unjuego.Ambiente = unMapa;
+
+            Assert.AreEqual(unMapa.CantidadPersonajesVivos, 0);
+            Punto pBombita = new Punto(0, 0);
+            Punto pCecilio = new Punto(0, 1);
+
+            Cecilio unCecilio = new Cecilio(pCecilio);
+            Bombita unBombita = new Bombita(pBombita);
+
+            unMapa.AgregarPersonaje(unCecilio);
+            unMapa.AgregarPersonaje(unBombita);
+
+            Assert.AreEqual(unMapa.CantidadPersonajesVivos, 2);
+
+            unCecilio.DaniarConBombaMolotov(5);
+            unBombita.DaniarConBombaMolotov(5);
+            Assert.IsTrue(unCecilio.Destruido());
+            Assert.AreEqual(unMapa.CantidadPersonajesVivos, 0);
+
+
+
+        }
+
         
+
     }
 }
