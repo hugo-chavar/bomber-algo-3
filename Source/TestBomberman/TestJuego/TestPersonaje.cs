@@ -61,6 +61,53 @@ namespace TestBomberman.TestJuego
 
             Assert.IsFalse(bombita.LanzarExplosivo());
         }
+
+        [Test]
+        public void TestCuandoBombmitaPlantaUnaMolotovDestruyendoACecilio()
+        {
+            Punto pBombita = new Punto(1, 0);
+            Punto pCecil = new Punto(0, 0);
+
+
+            Bombita bombita = new Bombita(pBombita);
+            Cecilio unCecil = new Cecilio(pCecil);
+            Juego.Instancia().Ambiente.AgregarPersonaje(bombita);
+            Juego.Instancia().Ambiente.AgregarPersonaje(unCecil);
+
+            bombita.LanzarExplosivo();
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+
+            Assert.IsTrue(unCecil.Destruido());
+            Assert.IsTrue(bombita.Destruido());
+        }
+
+        [Test]
+        public void TestCuandoBombmitaPlanta2MolotovDestruyendoALosLopezRaggae()
+        {
+            Punto pBombita = new Punto(1, 0);
+            Punto pLopezRaggae = new Punto(0, 0);
+
+
+            Bombita bombita = new Bombita(pBombita);
+            Cecilio unLR = new Cecilio(pLopezRaggae);
+            Juego.Instancia().Ambiente.AgregarPersonaje(bombita);
+            Juego.Instancia().Ambiente.AgregarPersonaje(unLR);
+
+            bombita.LanzarExplosivo();
+            bombita.Movimiento.CambiarADerecha();
+            bombita.Mover();  // pos Bombita = (2,0)
+            bombita.Movimiento.CambiarAArriba();
+            bombita.Mover(); // pos Bombita = (2,1) tiene que safar de la explosion para no morir
+
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Assert.IsFalse(unLR.UnidadesDeResistencia == 0); //le quedan 5 puntos de vida
+            Assert.IsFalse(bombita.Destruido()); //safo bombitaaa
+
+
+
+        }
+
+
     }
 }
 
