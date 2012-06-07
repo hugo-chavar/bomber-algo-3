@@ -77,11 +77,20 @@ namespace Bomberman.Mapa.Casilla
 
         public void agregarArticulo(Articulo.Articulo unArticulo)
         {
-            if ((this.estado == null) | (this.estado.PuedeAgregarArticulo()))   
+            if ((this.Estado != null) & (this.estado.PuedeAgregarArticulo()))   
             {
             this.ArticuloContenido = unArticulo;
             }
 
+        }
+
+        public void agregarSalida()
+        { 
+            if ((this.Estado != null) & (this.estado.PuedeContenerSalida()) & (Juego.Juego.Instancia().Ambiente.PosicionSalida == null))
+            {
+                this.ArticuloContenido = new Articulo.Salida();
+                Juego.Juego.Instancia().Ambiente.PosicionSalida = this.Posicion;
+            }
         }
 
         //public abstract void DaniarConBombaToleTole();
