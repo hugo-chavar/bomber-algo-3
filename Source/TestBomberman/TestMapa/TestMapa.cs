@@ -26,7 +26,7 @@ namespace TestBomberman.TestMapa
         [SetUp]
         public void TestSetup()
         {
-            //creo un mapa 5x5 con esta distribucion (P = Pasillo, * = BloqueAcero):
+            //creo un mapa 5x5 con esta distribucion (P = Pasillo, * = Obstaculo):
             //      P P P P P
             //      P * P * P
             //      P P P P P

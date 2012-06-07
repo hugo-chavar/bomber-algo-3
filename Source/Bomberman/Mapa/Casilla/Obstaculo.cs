@@ -73,6 +73,11 @@ namespace Bomberman.Mapa.Casilla
             return true;
         }
 
+        public virtual bool PermiteDejarExplosivos()
+        {
+            return false;
+        }
+
         public abstract bool PuedeContenerSalida();
 
     }
