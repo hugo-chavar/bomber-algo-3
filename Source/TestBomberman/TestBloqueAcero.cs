@@ -11,7 +11,7 @@ namespace TestBomberman
     {
         private BloqueAcero unObstaculo;
 
-        [TestFixtureSetUp]
+        [SetUp]
         public void TestSetup()
         {
             unObstaculo = new BloqueAcero();

@@ -8,25 +8,31 @@ using Bomberman;
 
 namespace Bomberman.Mapa.Casilla
 {
-    public class Casilla //: IDaniable
+    public class Casilla
     {
         private Punto posicion;
         private Articulo.Articulo articuloContenido;
         private List<IMovible> transitandoEnCasilla;
+
         //defino el patron State para determinar si hay un obstaculo o la casilla esta libre
         private Obstaculo estado;
         private Explosivo explosivo;
 
         public Casilla(Punto pos)
         {
-            // TODO: Complete member initialization
             this.posicion = pos;
             transitandoEnCasilla = new List<IMovible>();
+            explosivo = null;
         }
 
         public List<IMovible> TransitandoEnCasilla
         {
             get { return this.transitandoEnCasilla; }
+        }
+
+        public Explosivo Explosivo
+        {
+            get { return this.explosivo; }
         }
 
         //metodo que utiliza el patron State
@@ -38,7 +44,11 @@ namespace Bomberman.Mapa.Casilla
         public void Transitar(IMovible movil)
         {
             this.transitandoEnCasilla.Add(movil);
-            movil.Posicion = this.Posicion; 
+            movil.Posicion = this.Posicion;
+            if ((this.ArticuloContenido != null) && (!this.ArticuloContenido.EstaOculto))
+            {
+                movil.Comer(this.ArticuloContenido);
+            }
         }
 
         public void Dejar(IMovible movil)
@@ -67,11 +77,20 @@ namespace Bomberman.Mapa.Casilla
 
         public void agregarArticulo(Articulo.Articulo unArticulo)
         {
-            if ((this.estado == null) | (this.estado.PuedeAgregarArticulo()))   
+            if ((this.Estado != null) & (this.estado.PuedeAgregarArticulo()))   
             {
             this.ArticuloContenido = unArticulo;
             }
 
+        }
+
+        public void agregarSalida()
+        { 
+            if ((this.Estado != null) & (this.estado.PuedeContenerSalida()) & (Juego.Juego.Instancia().Ambiente.PosicionSalida == null))
+            {
+                this.ArticuloContenido = new Articulo.Salida();
+                Juego.Juego.Instancia().Ambiente.PosicionSalida = this.Posicion;
+            }
         }
 
         //public abstract void DaniarConBombaToleTole();
@@ -88,13 +107,14 @@ namespace Bomberman.Mapa.Casilla
 
         public void PlantarExplosivo(Explosivo unExplosivo)
         {
-            this.explosivo = unExplosivo;
+            Juego.Juego.Instancia().Ambiente.EsperaParaExplotar.Add(unExplosivo);
+            this.explosivo=unExplosivo;
         }
 
-        public void QuitarExplosivo()
+        public void QuitarExplosivo(Explosivo unExplosivo)
         {
-            this.explosivo = null;
+            if(this.explosivo==unExplosivo)
+                this.explosivo = null;
         }
-
     }
 }

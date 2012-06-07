@@ -16,30 +16,17 @@ namespace Bomberman.Personaje
             this.lanzador = new LanzadorMolotov();
             this.unidadesDeResistencia = VIDABOMBITA;
         }
-
-
-        public void Comer(IComible comible)
+        
+        public override void Comer(IComible comible)
         {
             comible.ModificarComedor(this);
+            comible.Ocultar();
         }
 
 
-        public void DuplicarVelocidad()
+        public override void PartidaGanada()
         {
-            this.movimiento.MultiplicarVelocidadPor(2);
+            Juego.Juego.Instancia().Ambiente.FinalizarNivel();
         }
-
-
-        public void CambiarLanzadorAToleTole()
-        {
-            this.lanzador = new LanzadorToleTole();
-        }
-
-        public void ReducirRetardo(int retardo)
-        {
-            this.ReduccionRetardoBombas = retardo;
-        }
-
-
     }
 }

@@ -18,6 +18,12 @@ namespace Bomberman.Mapa
         public const int ABAJO = 2;
         public const int IZQUIERDA = 4;
         public const int DERECHA = 6;
+        public const int CANTIDADJUGADORES = 1;
+        private List<IDependienteDelTiempo> esperaParaExplotar;
+        private int cantidadPersonajesVivos;
+        private bool nivelTerminado;
+        private bool nivelGanado;
+        private Punto posicionSalida;
 
         public Dictionary<Punto, Casilla.Casilla> Tablero
         {
@@ -25,9 +31,20 @@ namespace Bomberman.Mapa
             set { this.tablero = value; }
         }
 
+        public int CantidadPersonajesVivos
+        {
+            get { return this.cantidadPersonajesVivos; }
+            set { this.cantidadPersonajesVivos = value; }
+        }
+
         public int DimensionHorizontal
         {
             get { return this.dimensionHorizontal; }
+        }
+
+        public List<IDependienteDelTiempo> EsperaParaExplotar
+        {
+            get { return esperaParaExplotar; }
         }
 
         public int DimensionVertical
@@ -35,12 +52,38 @@ namespace Bomberman.Mapa
             get { return this.dimensionVertical; }
         }
 
+        public int ObtenerCantidadPersonajes()
+        {
+            return CANTIDADJUGADORES;
+        }
+
+        public bool NivelTerminado
+        {
+            get { return this.NivelTerminado; }
+            set { this.nivelTerminado = value; }
+        }
+
+        public bool NivelGanado
+        {
+            get { return this.NivelGanado; }
+            set { this.nivelGanado = value; }
+        }
+
+        public Punto PosicionSalida
+        {
+            get { return this.posicionSalida; }
+            set { this.posicionSalida = value; }
+        }
+
         public Mapa(int tamanioHorizontal, int tamanioVertical)
         {
             this.dimensionHorizontal = tamanioHorizontal;
             this.dimensionVertical = tamanioVertical;
             this.tablero = new Dictionary<Punto, Casilla.Casilla>();
-
+            this.esperaParaExplotar = new List<IDependienteDelTiempo>();
+            this.cantidadPersonajesVivos = 0;
+            this.NivelGanado = false;
+            this.NivelTerminado = false;
         }
 
         public void AgregarCasilla(Casilla.Casilla unaCasilla)
@@ -86,15 +129,18 @@ namespace Bomberman.Mapa
             {
                 throw new NoExisteCasillaException();
             }
-
+            // CHEQUEAR QUE LA CASILLA SEA TRANSITABLE!
             Casilla.Casilla unaCasilla = ObtenerCasilla(movil.Posicion);
             unaCasilla.Transitar(movil);
+            (this.cantidadPersonajesVivos)++;
+
         }
 
         public bool PosicionDentroRango(Punto punto)
         {
             return (punto.X < this.DimensionHorizontal && punto.Y < this.DimensionVertical && punto.X >= 0 && punto.Y >= 0);
         }
+
 
         public bool ExisteCasillaEnPosicion(Punto pos)
         {
@@ -116,7 +162,6 @@ namespace Bomberman.Mapa
                 throw new NoExisteCasillaException();
             }
             return unaCasilla;
-
         }
 
         public bool PermitidoMoverHaciaArribaA(Personaje.IMovible movil)
@@ -174,28 +219,43 @@ namespace Bomberman.Mapa
                 case ARRIBA:
                     {
                         if (PermitidoMoverHaciaArribaA(movil))
-                            MoverHaciaArribaA(movil);
+                            {
+                                Casilla.Casilla unaCasilla = ObtenerCasilla(movil.Posicion);
+                                unaCasilla.Dejar(movil);
+                                MoverHaciaArribaA(movil); 
+                            }
                         break;
                     }
                 case ABAJO:
                     {
                         if (PermitidoMoverHaciaAbajoA(movil))
-                            MoverHaciaAbajoA(movil);
+                            {
+                                Casilla.Casilla unaCasilla = ObtenerCasilla(movil.Posicion);
+                                unaCasilla.Dejar(movil);
+                                MoverHaciaAbajoA(movil);
+                            }
                         break;
 
                     }
                 case IZQUIERDA:
                     {
                         if (PermitidoMoverHaciaIzquierdaA(movil))
+                        {
+                            Casilla.Casilla unaCasilla = ObtenerCasilla(movil.Posicion);
+                            unaCasilla.Dejar(movil);
                             MoverHaciaIzquierdaA(movil);
+                        } 
                         break;
                     }
                 case DERECHA:
                     {
                         if (PermitidoMoverHaciaDerechaA(movil))
+                        {
+                            Casilla.Casilla unaCasilla = ObtenerCasilla(movil.Posicion);
+                            unaCasilla.Dejar(movil);
                             MoverHaciaDerechaA(movil);
+                        } 
                         break;
-
                     }
             }
         }
@@ -207,9 +267,6 @@ namespace Bomberman.Mapa
             unaCasilla = this.ObtenerCasilla(posicionDerecha);
             movil.Posicion = posicionDerecha;
             unaCasilla.Transitar(movil);
-            Casilla.Casilla otraCasilla;
-            otraCasilla = this.ObtenerCasilla(movil.Posicion);
-            otraCasilla.Dejar(movil);
         }
 
         private void MoverHaciaIzquierdaA(Personaje.IMovible movil)
@@ -219,9 +276,6 @@ namespace Bomberman.Mapa
             unaCasilla = this.ObtenerCasilla(posicionIzquierda);
             movil.Posicion = posicionIzquierda;
             unaCasilla.Transitar(movil);
-            Casilla.Casilla otraCasilla;
-            otraCasilla = this.ObtenerCasilla(movil.Posicion);
-            otraCasilla.Dejar(movil);
         }
 
         private void MoverHaciaAbajoA(Personaje.IMovible movil)
@@ -231,9 +285,6 @@ namespace Bomberman.Mapa
             unaCasilla = this.ObtenerCasilla(posicionAbajo);
             movil.Posicion = posicionAbajo;
             unaCasilla.Transitar(movil);
-            Casilla.Casilla otraCasilla;
-            otraCasilla = this.ObtenerCasilla(movil.Posicion);
-            otraCasilla.Dejar(movil);
         }
 
         private void MoverHaciaArribaA(Personaje.IMovible movil)
@@ -243,19 +294,18 @@ namespace Bomberman.Mapa
             unaCasilla = this.ObtenerCasilla(posicionSuperior);
             movil.Posicion = posicionSuperior;
             unaCasilla.Transitar(movil);
-            Casilla.Casilla otraCasilla;
-            otraCasilla = this.ObtenerCasilla(movil.Posicion);
-            otraCasilla.Dejar(movil);
         }
         
         //Por el momento atrapo solo la excepcion.Hay qu solucionarlo de otr Forma
         //Hugo dice:Andy esto es lo que vos decias que no va a lanzar la excepcion no?
+        //Andy:Claro porque ya esta probado que sea un posicion valida del mapa al hacer la lista de explotados
         public void ManejarExplosion(Explosivo explosivo)
         {
             List<Punto> puntosAfectados = CalcularCasillerosExplotados(explosivo);
-            for (int i = 0; i < (puntosAfectados.Count); i++)
+            try
             {
-                try
+                this.ObtenerCasilla(explosivo.Posicion).QuitarExplosivo(explosivo);
+                for (int i = 0; i < (puntosAfectados.Count); i++)
                 {
                     Casilla.Casilla casillaAux = this.ObtenerCasilla(puntosAfectados[i]);
                     explosivo.Daniar(casillaAux.Estado); 
@@ -264,14 +314,13 @@ namespace Bomberman.Mapa
                     for (int j = 0; j < casillaAux.TransitandoEnCasilla.Count; j++)
                         explosivo.Daniar(casillaAux.TransitandoEnCasilla[j]);
                 }
-                catch (NoExisteCasillaException)
+            }
+            catch (NoExisteCasillaException)
                 {
                     //simplemente se ignora donde no hay casillas
                 }
-            }
         }
-
-            // Problema arreglado: solo falta refactorizar la repeticion de codigo 
+ 
       public List<Punto> CalcularCasillerosExplotados(Explosivo explosivo)
         {
             List<Punto> listaDevolucion = new List<Punto>();
@@ -287,7 +336,7 @@ namespace Bomberman.Mapa
         { 
             int i=1;
             Punto unPuntoAux=new Punto(punto.X-1,punto.Y);
-            while (unPuntoAux.EsPuntoValido() && i <= expansion) // Hugo dice: en lugar de unPuntoAux.EsPuntoValido() deberia ir this.PosicionDentroRango(unPuntoAux), ver explicacion abajo
+            while (this.PosicionDentroRango(unPuntoAux) && i <= expansion)
             {
                 
                 Lista.Add(unPuntoAux);
@@ -328,16 +377,42 @@ namespace Bomberman.Mapa
         {
             int i = 1;
             Punto unPuntoAux = new Punto(punto.X, punto.Y - 1);
-            while ((unPuntoAux.EsPuntoValido()) && (i <= expansion)) // Hugo dice: en lugar de unPuntoAux.EsPuntoValido() deberia ir this.PosicionDentroRango(unPuntoAux)
-            {                                                         // porque no esta chequeando los margenes derecho e izquierdo
-                                                                       //además se deberia eliminar el metodo EsPuntoValido() de la clase punto porque no la usamos en ningun lado mas
+            while (this.PosicionDentroRango(unPuntoAux) && (i <= expansion)) 
+            {
                 Lista.Add(unPuntoAux);
                 i++;
                 unPuntoAux = new Punto(punto.X, punto.Y - i);
-
             }
         }
+        
+        public void CuandoPasaElTiempo()
+        {
+            if (this.esperaParaExplotar.Count > 0)
+            {
+                int i = 0;
 
+                for (i = 0; i < (esperaParaExplotar.Count); i++)
+                {
+                    esperaParaExplotar[i].CuandoPasaElTiempo();
+                }
+                for (i = 0; i < (esperaParaExplotar.Count); i++)
+                {
+                    if (((Explosivo)esperaParaExplotar[i]).EstaExplotado())
+                        this.esperaParaExplotar.RemoveAt(i);
+                }
 
-}
+           }
+        }
+
+        public void DecrementarCantidadDePersonajesVivos()
+        {
+            (this.cantidadPersonajesVivos) = this.cantidadPersonajesVivos - 1;
+        }
+
+        internal void FinalizarNivel()
+        {
+            this.NivelTerminado = true;
+            this.NivelGanado = true;
+        }
+    }
 }

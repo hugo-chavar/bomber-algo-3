@@ -9,6 +9,7 @@ using Bomberman.Mapa;
 
 namespace Bomberman.Arma
 {
+    //Andy: Deberia tener un metodo manejar proyectil o varios que sean llamados en el manejador creado en el lanzador
     public class ManejadorProyectil
     {
         public const int ARRIBA = 8;
@@ -46,31 +47,24 @@ namespace Bomberman.Arma
             switch (direccionPersonaje)
             {
                 case ABAJO:
-
                     explotable.PosicionFinal.X = explotable.Posicion.X;
                     explotable.PosicionFinal.Y = explotable.Posicion.Y - explotable.Alcance;
-
                     break;
-                case ARRIBA:
 
+                case ARRIBA:
                     explotable.PosicionFinal.X = explotable.Posicion.X;
                     explotable.PosicionFinal.Y = explotable.Posicion.Y + explotable.Alcance;
                     break;
-                case IZQUIERDA:
 
+                case IZQUIERDA:
                     explotable.PosicionFinal.X = explotable.Posicion.X - explotable.Alcance;
                     explotable.PosicionFinal.Y = explotable.Posicion.Y;
                     break;
 
                 case DERECHA:
-
                     explotable.PosicionFinal.X = explotable.Posicion.X + explotable.Alcance;
                     explotable.PosicionFinal.Y = explotable.Posicion.Y;
-
                     break;
-
-
-
             }
             return explotable.PosicionFinal;
         }
@@ -84,12 +78,15 @@ namespace Bomberman.Arma
                     case ABAJO:
                         proyectil.Posicion = proyectil.Posicion.PosicionInferior();
                         break;
+
                     case ARRIBA:
                         proyectil.Posicion= proyectil.Posicion.PosicionSuperior();
                         break;
+
                     case IZQUIERDA:
                         proyectil.Posicion= proyectil.Posicion.PosicionIzquierda();
                         break;
+
                     case DERECHA:
                         proyectil.Posicion= proyectil.Posicion.PosicionDerecha();
                         break;
@@ -103,18 +100,16 @@ namespace Bomberman.Arma
             Punto puntoFinal;
             puntoFinal = this.CalcularZonaImpacto();   
             if (EstaEnRango(puntoFinal))   
-            //if (puntoFinal.EsPuntoValido())
             {
                 misilActivado = true;
-
-             }
+            }
         }
 
         public void RealizarExplosion(Explosivo unExplosivo)
         {
             misilActivado = false;
             unExplosivo.Explotar();
-         }
+        }
 
         public bool EstaLanzado()
         {
@@ -123,7 +118,7 @@ namespace Bomberman.Arma
 
         public bool EstaEnRango(Punto unPunto)
         {
-            return ((Juego.Juego.Instancia().Ambiente.PosicionDentroRango(unPunto))); //Hugo dice: saqué esto && (unPunto.EsPuntoValido()), meti el codigo necesario en el otro metodo Ambiente.PosicionDentroRango(unPunto)
+            return ((Juego.Juego.Instancia().Ambiente.PosicionDentroRango(unPunto)));
 
         }
 

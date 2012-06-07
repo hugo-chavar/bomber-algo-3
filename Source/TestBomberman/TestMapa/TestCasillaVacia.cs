@@ -14,7 +14,7 @@ namespace TestBomberman.TestMapa
 
         private Casilla unaCasillaVacia;
         
-        [TestFixtureSetUp]
+        [SetUp]
         public void TestSetup()
         {
             unaPosicion = new Punto(2, 3);

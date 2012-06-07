@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Bomberman;
+using Bomberman.Arma;
 
 namespace Bomberman.Juego
 {
@@ -12,8 +13,10 @@ namespace Bomberman.Juego
         private bool juegoPausado;
         private Personaje.Personaje protagonista;
         private Mapa.Mapa ambiente;
+
         //declaracion del Singleton
         private static Juego instanciaDeJuego;
+        
         //Constantes
         private const int VIDAS = 3;
         private const int ANCHOMAPA = 10;
@@ -52,6 +55,8 @@ namespace Bomberman.Juego
             this.JuegoPausado = false;
             this.CantDeVidas = VIDAS;
             this.Ambiente = new Mapa.Mapa(ANCHOMAPA,ALTOMAPA);
+
+
             //aca se carga el template del mapa
             //luego se agrega a bombita al mapa
             //luego se agregan los enemigos
@@ -83,6 +88,11 @@ namespace Bomberman.Juego
         public void PerderVida()
         {
             this.CantDeVidas = (this.CantDeVidas-1);
+            if (this.CantDeVidas == 0)
+            {
+                this.Ambiente.NivelTerminado = true;
+                this.Ambiente.NivelGanado = false;
+            }
         }
     }
 }

@@ -6,7 +6,5 @@
         void DaniarConBombaMolotov(int UnidadesDaniadas);
         void DaniarConProyectil(int UnidadesDaniadas);
         bool Destruido();
-
-
     }
 }

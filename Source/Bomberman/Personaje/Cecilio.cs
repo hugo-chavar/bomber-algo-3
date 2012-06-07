@@ -16,5 +16,6 @@ namespace Bomberman.Personaje
             this.Lanzador = new LanzadorMolotov();
             this.UnidadesDeResistencia = VIDACECILIO;
         }
+
     }
 }

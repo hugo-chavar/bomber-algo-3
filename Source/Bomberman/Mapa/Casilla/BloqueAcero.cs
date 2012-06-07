@@ -1,25 +1,23 @@
 ﻿using Bomberman;
 namespace Bomberman.Mapa.Casilla
 {
-    public class BloqueAcero :Obstaculo
+    public class BloqueAcero : Obstaculo
     {
         //Determino resistencia para el acero por si en el fututo se agrega un tipo de bomba que danie acero y no lo destruya
-        private const int RESISTENCIAACERO= 10;
+        private const int RESISTENCIAACERO = 10;
         public BloqueAcero()
             : base(RESISTENCIAACERO)
-            { }
+        { }
 
-            public override void DaniarConBombaMolotov(int UnidadesDaniadas)
-            {
-                //La Bomba Molotov no dania Al Bloque De Acero
-                //Deberia daniar a los personajes alli presentes
-            }
+        public override void DaniarConBombaMolotov(int UnidadesDaniadas)
+        {            //La Bomba Molotov no dania Al Bloque De Acero
+        }
 
-            public override bool PuedeContenerSalida()
-            {
-                return false;
-            }
+        public override bool PuedeContenerSalida()
+        {
+            return false;
+        }
 
-            //public abstract void daniarConProyectil();
+        //public abstract void daniarConProyectil();
      }
 }

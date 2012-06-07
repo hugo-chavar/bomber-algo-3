@@ -13,6 +13,5 @@ namespace Bomberman
             get;
             set;
         }
-
     }
 }
