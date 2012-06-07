@@ -41,6 +41,11 @@ namespace Bomberman.Mapa.Casilla
             return this.Estado.TransitablePor(movil);
         }
 
+        public bool PermiteExplosivos()
+        {
+            return this.Estado.PermiteDejarExplosivos();
+        }
+
         public void Transitar(IMovible movil)
         {
             this.transitandoEnCasilla.Add(movil);
@@ -96,14 +101,6 @@ namespace Bomberman.Mapa.Casilla
         //public abstract void DaniarConBombaToleTole();
         //public abstract void DaniarConBombaMolotov();
         //public abstract void DaniarConProyectil();
-
-       /* public override bool Equals(Object obj)
-        {
-            //Check for null and compare run-time types.
-            if (obj == null || this.GetType() != obj.GetType()) return false;
-            Punto p = (Punto)obj;
-            return (x == p.x) && (y == p.y);
-        }*/
 
         public void PlantarExplosivo(Explosivo unExplosivo)
         {

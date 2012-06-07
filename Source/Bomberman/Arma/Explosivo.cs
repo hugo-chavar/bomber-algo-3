@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Bomberman.Personaje;
 
 namespace Bomberman.Arma
 {
-    public abstract class Explosivo:IDependienteDelTiempo
+    public abstract class Explosivo : IDependienteDelTiempo 
     {
         protected int ondaExpansiva;
         protected Punto posicion;

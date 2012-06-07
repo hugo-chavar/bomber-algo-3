@@ -130,6 +130,7 @@ namespace Bomberman.Mapa
                 throw new NoExisteCasillaException();
             }
             // CHEQUEAR QUE LA CASILLA SEA TRANSITABLE!
+            //No hace falta chequear si es transitable, eso lo hace le personaje al moverse
             Casilla.Casilla unaCasilla = ObtenerCasilla(movil.Posicion);
             unaCasilla.Transitar(movil);
             (this.cantidadPersonajesVivos)++;
@@ -296,9 +297,6 @@ namespace Bomberman.Mapa
             unaCasilla.Transitar(movil);
         }
         
-        //Por el momento atrapo solo la excepcion.Hay qu solucionarlo de otr Forma
-        //Hugo dice:Andy esto es lo que vos decias que no va a lanzar la excepcion no?
-        //Andy:Claro porque ya esta probado que sea un posicion valida del mapa al hacer la lista de explotados
         public void ManejarExplosion(Explosivo explosivo)
         {
             List<Punto> puntosAfectados = CalcularCasillerosExplotados(explosivo);
