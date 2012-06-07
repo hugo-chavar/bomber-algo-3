@@ -61,17 +61,44 @@ namespace TestBomberman.TestSalida
         [Test]
         public void TestPuedoAgregarSalidaEnUnBloqueLadrilloPuesEstaPermitido()
         {
-            // agrego articulo
+            Mapa otroMapa = new Mapa(5,5);
+            Punto unaPosicion = new Punto(0, 0);
+            Casilla unaCasilla = new Casilla(unaPosicion);
 
+            // Inicializo otra vez el mapa porque falla el SetUp.
+            int i, j;
+            for (i = 0; i < ANCHOMAPA; i++)
+                for (j = 0; j < ANCHOMAPA; j++)
+                {
+                    Punto otraPosicion = new Punto(i, j);
+                    if ((i & 1) == 1 && (j & 1) == 1)
+                    {
+                        //ambos son numeros impares
+                        unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(otraPosicion);//.FabricarCasillaConBloqueAcero(unaPosicion);
+                    }
+                    else
+                    {
+                        //uno de los dos es par
+                        unaCasilla = FabricaDeCasillas.FabricarPasillo(otraPosicion);
+                    }
+
+                    otroMapa.AgregarCasilla(unaCasilla);
+                }
+
+            Juego.Instancia().Ambiente = otroMapa;
             Punto pUnaSalida = new Punto (1,1);
-
 
             Casilla unaCasillaDeSalida = unMapa.ObtenerCasilla(pUnaSalida);
 
+            Assert.IsNotNull(unaCasillaDeSalida.Estado);
+            Assert.IsTrue(unaCasillaDeSalida.Estado.PuedeContenerSalida());
+            Assert.IsNull(Juego.Instancia().Ambiente.PosicionSalida);
+            Assert.IsTrue(unaCasillaDeSalida.Estado.PuedeAgregarArticulo());
+            
+            // agrego articulo
             unaCasillaDeSalida.agregarSalida();
 
-
-
+            
             Assert.IsInstanceOf(typeof(Salida), unaCasillaDeSalida.ArticuloContenido);
 
 
@@ -95,6 +122,8 @@ namespace TestBomberman.TestSalida
 
 
         }
+
+        
         [Test]
         public void TestCuando()
         {
@@ -121,7 +150,8 @@ namespace TestBomberman.TestSalida
 
                    otroMapa.AgregarCasilla(unaCasilla);
                 }
-
+            
+            Juego.Instancia().Ambiente = otroMapa;
 
             Punto pUnaSalida = new Punto(3, 3);
             Punto pUnCecilio = new Punto(2, 1);
@@ -147,7 +177,6 @@ namespace TestBomberman.TestSalida
 
 
         }
-
 
 
 
