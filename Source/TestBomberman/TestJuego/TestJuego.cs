@@ -626,7 +626,6 @@ namespace TestBomberman.TestJuego
         public void AgarroUnArticuloBombaToleToleConBombitaYDestruyoUnBloqueDeAcero()
         {
             Punto posInicio = new Punto(0, 0);
-            Punto posInicioCecilio = new Punto (4,4);
             Personaje unBombita = new Bombita(posInicio);
                         
             //Agrego articulo
@@ -658,7 +657,53 @@ namespace TestBomberman.TestJuego
 
             Assert.AreEqual(puntoFinal, unBombita.Posicion);
 
-    }
+        }
+
+        [Test]
+        public void BombitaAgarraUnArticuloBombaToleToleYAniquilaACecilio()
+        {
+            Punto posInicio = new Punto(0, 0);
+            Punto posInicioCecilio = new Punto(4, 4);
+            Personaje unBombita = new Bombita(posInicio);
+            Personaje unEnemigo = new Cecilio(posInicioCecilio);
+
+            //Agrego articulo
+
+            Punto posicionCasillaArt = new Punto(1, 0);
+            Casilla CasillaConArticulo = this.unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt);
+            Articulo unArticulo = new ArticuloBombaToleTole();
+            CasillaConArticulo.ArticuloContenido = unArticulo; //Hardcodeo un articulo en el pasillo para agarrarlo con bombita.
+
+            unJuego.Ambiente.AgregarPersonaje(unBombita);
+            unJuego.Ambiente.AgregarPersonaje(unEnemigo);
+
+            unBombita.Movimiento.CambiarADerecha();
+            unBombita.Mover(); // 1,0, como articulo.
+            unBombita.Mover(); // 2,0.
+            unBombita.Movimiento.CambiarAArriba();
+            unBombita.Mover(); // 2,1
+            unBombita.Mover(); // 2,2
+
+            unBombita.LanzarExplosivo();
+            unBombita.Mover(); // 2,3
+            unBombita.Mover(); // 2,4
+            unBombita.Movimiento.CambiarAIzquierda();
+            unBombita.Mover(); // 1,4
+
+            unEnemigo.Movimiento.CambiarAAbajo(); //4,4
+            unEnemigo.Mover(); // 4,3
+            unEnemigo.Mover(); // 4,2
+            unEnemigo.Movimiento.CambiarAIzquierda();
+            unEnemigo.Mover(); // 3,2
+
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
+
+            Assert.IsTrue(unEnemigo.Destruido());
+        }
     }
 
 }

@@ -95,7 +95,7 @@ namespace Bomberman.Mapa
             {
                 throw new NoExisteCasillaException();
             }
-
+            // CHEQUEAR QUE LA CASILLA SEA TRANSITABLE!
             Casilla.Casilla unaCasilla = ObtenerCasilla(movil.Posicion);
             unaCasilla.Transitar(movil);
         }
@@ -232,9 +232,6 @@ namespace Bomberman.Mapa
             unaCasilla = this.ObtenerCasilla(posicionDerecha);
             movil.Posicion = posicionDerecha;
             unaCasilla.Transitar(movil);
-            Casilla.Casilla otraCasilla;
-            otraCasilla = this.ObtenerCasilla(movil.Posicion);
-            otraCasilla.Dejar(movil);
         }
 
         private void MoverHaciaIzquierdaA(Personaje.IMovible movil)
@@ -244,9 +241,6 @@ namespace Bomberman.Mapa
             unaCasilla = this.ObtenerCasilla(posicionIzquierda);
             movil.Posicion = posicionIzquierda;
             unaCasilla.Transitar(movil);
-            Casilla.Casilla otraCasilla;
-            otraCasilla = this.ObtenerCasilla(movil.Posicion);
-            otraCasilla.Dejar(movil);
         }
 
         private void MoverHaciaAbajoA(Personaje.IMovible movil)
@@ -256,9 +250,6 @@ namespace Bomberman.Mapa
             unaCasilla = this.ObtenerCasilla(posicionAbajo);
             movil.Posicion = posicionAbajo;
             unaCasilla.Transitar(movil);
-            Casilla.Casilla otraCasilla;
-            otraCasilla = this.ObtenerCasilla(movil.Posicion);
-            otraCasilla.Dejar(movil);
         }
 
         private void MoverHaciaArribaA(Personaje.IMovible movil)
@@ -268,9 +259,6 @@ namespace Bomberman.Mapa
             unaCasilla = this.ObtenerCasilla(posicionSuperior);
             movil.Posicion = posicionSuperior;
             unaCasilla.Transitar(movil);
-            Casilla.Casilla otraCasilla;
-            otraCasilla = this.ObtenerCasilla(movil.Posicion);
-            otraCasilla.Dejar(movil);
         }
         
         //Por el momento atrapo solo la excepcion.Hay qu solucionarlo de otr Forma
@@ -376,7 +364,7 @@ namespace Bomberman.Mapa
                 for (i = 0; i < (esperaParaExplotar.Count); i++)
                 {
                     esperaParaExplotar[i].CuandoPasaElTiempo();
-                 }
+                }
                 for (i = 0; i < (esperaParaExplotar.Count); i++)
                 {
                     if (((Explosivo)esperaParaExplotar[i]).EstaExplotado())
