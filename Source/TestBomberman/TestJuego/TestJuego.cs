@@ -429,7 +429,7 @@ namespace TestBomberman.TestJuego
 
             Assert.IsTrue(bomba1.EstaExplotado());
             Assert.IsTrue(bomba2.EstaExplotado());
-            Assert.AreEqual(Juego.Instancia().Ambiente.EsperaParaExplotar.Count, 2);
+            Assert.AreEqual(Juego.Instancia().Ambiente.EsperaParaExplotar.Count, 0);
 
         }
 
