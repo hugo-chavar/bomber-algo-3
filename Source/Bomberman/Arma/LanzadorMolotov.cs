@@ -17,6 +17,7 @@ namespace Bomberman.Arma
         {
             this.Alcance = ALCANCELANZAMIENTO;
         }
+
         public override bool Lanzar(Punto posicion, int reduccionRetardo)
         {
             Casilla casilla = Juego.Juego.Instancia().Ambiente.ObtenerCasilla(posicion);
