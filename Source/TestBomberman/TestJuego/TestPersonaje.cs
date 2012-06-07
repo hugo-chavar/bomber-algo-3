@@ -622,9 +622,61 @@ namespace TestBomberman.TestJuego
 
             Assert.IsTrue(unEnemigo.Destruido());
         }
+        
+        
+        
+        [Test]
+        public void BombitaIntentaSalirDelJuegoPeroNoPuedePorqueLeQuedaUnEnemigo()
+        {
+            Punto posInicio = new Punto(0, 0);
+            Punto posLRA = new Punto(4, 4);
+            Personaje unBombita = new Bombita(posInicio);
+            Personaje unEnemigo = new LosLopezReggaeAlado(posLRA);
 
+            IniciarMapaParaTestsIntegradores();
 
+            //Agrego articulo
+            Punto posicionCasillaArt = new Punto(1, 0);
+            Casilla CasillaConArticulo = this.unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt);
+            Articulo unArticulo = new ArticuloBombaToleTole();
+            CasillaConArticulo.ArticuloContenido = unArticulo; //Hardcodeo un articulo en el pasillo para agarrarlo con bombita.
 
+            Punto posSalida = new Punto(1, 1);
+            Casilla casillaConSalida = this.unJuego.Ambiente.ObtenerCasilla(posSalida);
+            casillaConSalida.agregarSalida();
+            
+            unJuego.Ambiente.AgregarPersonaje(unBombita);
+            unJuego.Ambiente.AgregarPersonaje(unEnemigo);
+
+            unBombita.Movimiento.CambiarADerecha();
+            unBombita.Mover(); // 1,0, como articulo.
+            unBombita.Mover(); // 2,0.
+            unBombita.Movimiento.CambiarAArriba();
+            unBombita.Mover(); // 2,1
+
+            unBombita.LanzarExplosivo();
+            unBombita.Mover(); // 2,2
+            unBombita.Movimiento.CambiarAIzquierda();
+            unBombita.Mover(); // 1,2
+
+            unEnemigo.Movimiento.CambiarAAbajo(); //4,4
+
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
+
+            unBombita.Movimiento.CambiarAAbajo();
+            unBombita.Mover();//1,1
+            unJuego.Ambiente.CuandoPasaElTiempo();
+
+            //EL ERROR ESTA EN LAS PROPERTIES NivelGanado y NivelTerminado!!!
+            Assert.IsFalse(unJuego.Ambiente.NivelGanado);
+            Assert.IsFalse(unJuego.Ambiente.NivelTerminado);
+
+        }
+        
 
 
        
