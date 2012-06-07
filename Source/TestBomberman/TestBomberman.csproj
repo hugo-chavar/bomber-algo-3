@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TestArma\TestProyectil.cs" />
+    <Compile Include="TestJuego\TestPersonaje.cs" />
     <Compile Include="TestMapa\TestCasillaVacia.cs" />
     <Compile Include="TestMapa\TestFabricaDeCasillas.cs" />
     <Compile Include="TestMapa\TestMapa.cs" />

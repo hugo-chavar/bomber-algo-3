@@ -18,5 +18,6 @@ namespace Bomberman.Personaje
             this.Lanzador = new LanzadorProyectil();
             this.UnidadesDeResistencia = VIDALOSLOPEZREGGAE;
         }
+
     }
 }

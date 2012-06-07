@@ -53,13 +53,14 @@ namespace Bomberman.Personaje
             set { this.posicion = value; }
         }
 
-        public void LanzarExplosivo(Punto posicion, int retardo)
+        public bool LanzarExplosivo()
         {
-            this.lanzador.Lanzar(posicion, retardo);
+            return (this.lanzador.Lanzar(this.Posicion, this.reduccionRetardoBombas));
         }
 
         public void Mover()
         {
+            if (!(this.Destruido()))                //Resolucion para que los personajes no sean zombies ! 
             Juego.Juego.Instancia().Ambiente.Mover(this);
         }
 
@@ -74,20 +75,61 @@ namespace Bomberman.Personaje
         }
 
         public void Apuntar()
+        private int CalcularUnidadesRestantes(int unidadesDestruidas)
+        {
         {
             this.Lanzador.Sentido.Direccion = this.Movimiento.Direccion;
             this.Lanzador.PosicionDeTiro = this.Posicion;
         }
+            int unidades = (this.UnidadesDeResistencia - unidadesDestruidas);
+            if (unidades < 0) return (0);
+            else return (unidades);
+        }
 
-        public void DaniarConBombaToleTole()
+        public virtual void DaniarConBombaMolotov(int UnidadesDaniadas)
         {
+            this.DaniarSiNoEstaDestruido(UnidadesDaniadas);
         }
-        public void DaniarConBombaMolotov(int UnidadesDaniadas)
-        { 
-        }
-        public void DaniarConProyectil(int UnidadesDaniadas)
-        { 
+        public virtual void DaniarConBombaToleTole()
+        {
+            this.UnidadesDeResistencia = 0;
+            Juego.Juego.Instancia().Ambiente.DecrementarCantidadDePersonajesVivos();
         }
 
+        public virtual void DaniarConProyectil(int UnidadesDaniadas)
+        {
+            this.DaniarSiNoEstaDestruido(UnidadesDaniadas);
+        }
+
+        private void DaniarSiNoEstaDestruido(int UnidadesDaniadas)
+        {
+            if (!this.Destruido())
+            {
+                this.UnidadesDeResistencia = CalcularUnidadesRestantes(UnidadesDaniadas);
+                if (this.UnidadesDeResistencia == 0)
+                {
+                    Juego.Juego.Instancia().Ambiente.DecrementarCantidadDePersonajesVivos();
+                }
+            }
+        }
+        
+        public abstract void Comer(Articulo.IComible comible);
+
+        public void DuplicarVelocidad()
+        {
+            this.movimiento.MultiplicarVelocidadPor(2);
+        }
+
+        public void CambiarLanzadorAToleTole()
+        {
+            this.lanzador = new LanzadorToleTole();
+        }
+
+        public void ReducirRetardo(int retardo)
+        {
+            this.ReduccionRetardoBombas = retardo;
+        }
+
+        public abstract void PartidaGanada();
     }
 }

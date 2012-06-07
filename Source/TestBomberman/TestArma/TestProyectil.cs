@@ -15,7 +15,7 @@ namespace TestBomberman.TestArma
         Punto unPuntoFinal;
         Proyectil otroProyectil;
 
-        [TestFixtureSetUp]
+        [SetUp]
         public void TestSetup()
         {
             unPuntoInicial = new Punto(1,1);
@@ -23,8 +23,6 @@ namespace TestBomberman.TestArma
             otroProyectil = new Proyectil(unPuntoInicial);
             unManejador = new ManejadorProyectil(unProyectil, 1);
             unPuntoFinal = new Punto(1, 4);
-
-
         }
 
         [Test]
@@ -32,8 +30,6 @@ namespace TestBomberman.TestArma
         {
             unManejador.LanzarMisil();
             Assert.AreEqual(unManejador.EstaLanzado(), true);
-                                    
-
         }
 
         [Test]
@@ -54,11 +50,9 @@ namespace TestBomberman.TestArma
             unProyectil.CuandoPasaElTiempo();
             unProyectil.CuandoPasaElTiempo();
             Punto unPuntoDestino = new Punto(1, 3);
-
-
+            
             Assert.AreEqual(unProyectil.Posicion.Y, unPuntoDestino.Y);
             Assert.AreEqual(unProyectil.Posicion.X, unPuntoDestino.X);
-
         }
 
         [Test]
@@ -68,7 +62,6 @@ namespace TestBomberman.TestArma
             otroProyectil.CuandoPasaElTiempo();
 
             Assert.AreEqual(otroProyectil.TiempoRestante(), 2);
-
             Assert.AreEqual(otroProyectil.EstaExplotado(), false);
         }
 
@@ -101,12 +94,9 @@ namespace TestBomberman.TestArma
             unProyectil.CuandoPasaElTiempo();
             unProyectil.CuandoPasaElTiempo();
             Punto unPuntoDestino = new Punto(3, 1);
-
-
+            
             Assert.AreEqual(unProyectil.Posicion.Y, unPuntoDestino.Y);
             Assert.AreEqual(unProyectil.Posicion.X, unPuntoDestino.X);
-
-
         }
 
         [Test]
@@ -118,13 +108,11 @@ namespace TestBomberman.TestArma
             unProyectil.CuandoPasaElTiempo();
             unProyectil.CuandoPasaElTiempo();
             Punto unPuntoDestino = new Punto(2, 4);
-
-
+            
             Assert.AreEqual(unProyectil.Posicion.Y, unPuntoDestino.Y);
             Assert.AreEqual(unProyectil.Posicion.X, unPuntoDestino.X);
-
-
         }
+
         [Test]
         
         public void TestParaProbarNuevaPosicionAlBajarElMisilAAbajo()
@@ -135,12 +123,9 @@ namespace TestBomberman.TestArma
             unProyectil.CuandoPasaElTiempo();
             unProyectil.CuandoPasaElTiempo();
             Punto unPuntoDestino = new Punto(4, 2);
-
-
+            
             Assert.AreEqual(unProyectil.Posicion.Y, unPuntoDestino.Y);
             Assert.AreEqual(unProyectil.Posicion.X, unPuntoDestino.X);
-
-
         }
 
         [Test]
@@ -153,9 +138,6 @@ namespace TestBomberman.TestArma
 
             Assert.AreEqual(unProyectil.Posicion.X, unPuntoInicial.X);
             Assert.AreEqual(unProyectil.Posicion.Y, unPuntoInicial.Y);
-
         }
-
     }
-
 }

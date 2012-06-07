@@ -10,7 +10,8 @@ namespace TestBomberman.TestPersonaje
     class TestMovimiento
     {
         private Movimiento unMovimiento;
-        [TestFixtureSetUp]
+        
+        [SetUp]
         public void TestSetup()
         {
             this.unMovimiento = new Movimiento();

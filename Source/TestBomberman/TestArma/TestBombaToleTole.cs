@@ -11,43 +11,40 @@ namespace TestBomberman.TestArma
     {
         private Punto posicion;
 
-        [TestFixtureSetUp]
+        [SetUp]
         public void TestSetup()
         {
             posicion = new Punto(3, 4);
         }
 
-            [Test]
-            public void TestBombaToleToleEstaExplotadaAlSerCreadaDebeDevolverFalse()
-            {
-                Bomba bomba = new BombaToleTole(posicion, 0);
-                Assert.AreEqual(bomba.EstaExplotado(), false);
-            }
+        [Test]
+        public void TestBombaToleToleEstaExplotadaAlSerCreadaDebeDevolverFalse()
+        {
+            Bomba bomba = new BombaToleTole(posicion, 0);
+            Assert.AreEqual(bomba.EstaExplotado(), false);
+        }
 
-            [Test]
-            public void TestBombaToleToleEstaExplotadaAlPasar4SegundosDebeDevolverFalse()
-            {
-                Bomba bomba = new BombaToleTole(posicion, 0);
-                bomba.CuandoPasaElTiempo();
-                bomba.CuandoPasaElTiempo();
-                bomba.CuandoPasaElTiempo();
-                bomba.CuandoPasaElTiempo();
-                Assert.AreEqual(bomba.EstaExplotado(), false);
-            }
+        [Test]
+        public void TestBombaToleToleEstaExplotadaAlPasar4SegundosDebeDevolverFalse()
+        {
+            Bomba bomba = new BombaToleTole(posicion, 0);
+            bomba.CuandoPasaElTiempo();
+            bomba.CuandoPasaElTiempo();
+            bomba.CuandoPasaElTiempo();
+            bomba.CuandoPasaElTiempo();
+            Assert.AreEqual(bomba.EstaExplotado(), false);
+        }
 
-            [Test]
-            public void TestBombaToleToleEstaExplotadaAl5SegundosDebeDevolverTrue()
-            {
-                Bomba bomba = new BombaToleTole(posicion, 0);
-                bomba.CuandoPasaElTiempo();
-                bomba.CuandoPasaElTiempo();
-                bomba.CuandoPasaElTiempo();
-                bomba.CuandoPasaElTiempo();
-                bomba.CuandoPasaElTiempo();
-                Assert.AreEqual(bomba.EstaExplotado(), true);
-            }
-
-
-        
+        [Test]
+        public void TestBombaToleToleEstaExplotadaAl5SegundosDebeDevolverTrue()
+        {
+            Bomba bomba = new BombaToleTole(posicion, 0);
+            bomba.CuandoPasaElTiempo();
+            bomba.CuandoPasaElTiempo();
+            bomba.CuandoPasaElTiempo();
+            bomba.CuandoPasaElTiempo();
+            bomba.CuandoPasaElTiempo();
+            Assert.AreEqual(bomba.EstaExplotado(), true);
+        }
     }
 }

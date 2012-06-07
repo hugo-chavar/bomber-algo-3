@@ -9,5 +9,7 @@ namespace Bomberman.Articulo
     public interface IComible
     {
         void ModificarComedor(IComedor comedor);
+
+        void Ocultar();
     }
 }

@@ -17,7 +17,7 @@ namespace TestBomberman.TestPersonaje
         private Casilla destino;
         private Personaje unPersonaje;
 
-        [TestFixtureSetUp]
+        [SetUp]
         public void TestSetup()
         {
             this.unaFabricaDeCasillas = new FabricaDeCasillas();
@@ -34,7 +34,6 @@ namespace TestBomberman.TestPersonaje
             destino.Transitar(unPersonaje);
 
             Assert.AreEqual(posicionDestino, unPersonaje.Posicion);
-            destino.Dejar(unPersonaje); // Lo agrego porque sino no me sacaba los personajes de la lista de la casilla Destino (CHEQUEAR SI EL SETUP ESTA BIEN!!!)
         }
 
         [Test]
@@ -45,7 +44,6 @@ namespace TestBomberman.TestPersonaje
             List<IMovible> unaListaVacia = new List<IMovible>();
             
             Assert.AreEqual(unaListaVacia, origen.TransitandoEnCasilla);
-            destino.Dejar(unPersonaje); // Lo agrego porque sino no me sacaba los personajes de la lista de la casilla Destino (CHEQUEAR SI EL SETUP ESTA BIEN!!!)
         }
 
         [Test]
@@ -55,15 +53,14 @@ namespace TestBomberman.TestPersonaje
             List<IMovible> unaLista = new List<IMovible>();
             unaLista.Add(unPersonaje);
 
-            Assert.AreEqual(unaLista[0], destino.TransitandoEnCasilla[0]);
-            Assert.AreEqual((unaLista).Count, (destino.TransitandoEnCasilla).Count); //Hugo dice: Si hay dos Asserts Hacer 2 tests diferentes uno para cada Assert
-            destino.Dejar(unPersonaje); // Lo agrego porque sino no me sacaba los personajes de la lista de la casilla Destino (CHEQUEAR SI EL SETUP ESTA BIEN!!!)
+            Assert.AreEqual(unaLista, destino.TransitandoEnCasilla);
         }
 
         [Test]
         public void MePermiteMoverPersonaje()
         {
-
+            //Martin: PONGO ESTO PARA QUE EL QUE HIZO ESTA PRUEBA NO SE OLVIDE QUE NO HIZO NADA ACA ADENTRO!
+            Assert.IsTrue(false);
         }
 
         

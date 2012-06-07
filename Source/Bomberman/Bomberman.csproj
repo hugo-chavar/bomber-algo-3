@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Arma\IDependienteDelTiempo.cs" />
     <Compile Include="Arma\ManejadorProyectil.cs" />
     <Compile Include="Arma\Explosivo.cs" />
     <Compile Include="Arma\BombaToleTole.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="Articulo\Articulo.cs" />
     <Compile Include="Articulo\ArticuloBombaToleTole.cs" />
     <Compile Include="Articulo\Chala.cs" />
+    <Compile Include="Articulo\Salida.cs" />
     <Compile Include="Articulo\Timer.cs" />
     <Compile Include="Excepciones\CasillaYaIngresadaException.cs" />
     <Compile Include="Excepciones\EstadoNuloException.cs" />
