@@ -120,15 +120,15 @@ namespace TestBomberman.TestSalida
 
         }
 
-        
+
         [Test]
         public void TestCuandoEnOtroMapaAgrego2PersonajesEliminoAlUnicoEnemigoYSeActivaLaSalida()
         {
             // agrego articulo
             Punto unaPosicion;
             Casilla unaCasilla;
-            Mapa otroMapa= new Mapa(ANCHOMAPA, ANCHOMAPA);
- 
+            Mapa otroMapa = new Mapa(ANCHOMAPA, ANCHOMAPA);
+
             int i, j;
             for (i = 0; i < ANCHOMAPA; i++)
                 for (j = 0; j < ANCHOMAPA; j++)
@@ -145,15 +145,17 @@ namespace TestBomberman.TestSalida
                         unaCasilla = FabricaDeCasillas.FabricarPasillo(unaPosicion);
                     }
 
-                   otroMapa.AgregarCasilla(unaCasilla);
+                    otroMapa.AgregarCasilla(unaCasilla);
                 }
-            
+
             Juego.Instancia().Ambiente = otroMapa;
 
             Punto pUnaSalida = new Punto(3, 3);
             Punto pUnCecilio = new Punto(2, 1);
             Punto pUnaBombaMolotov = new Punto(2, 0);
-            Punto pBombita = new Punto(4,4);
+            Punto pBombita = new Punto(4, 4);
+            Juego.Instancia().Ambiente.ObtenerCasilla(pUnaSalida).agregarSalida();
+            Assert.IsInstanceOf(typeof(Salida), Juego.Instancia().Ambiente.ObtenerCasilla(pUnaSalida).ArticuloContenido);
 
             Cecilio unCecil = new Cecilio(pUnCecilio);
             Bombita unBombita = new Bombita(pBombita);
@@ -164,16 +166,80 @@ namespace TestBomberman.TestSalida
 
             Casilla casillaBomba = otroMapa.ObtenerCasilla(pUnaBombaMolotov);
             casillaBomba.PlantarExplosivo(unaBomba);
-  
-            Casilla casillaS = otroMapa.ObtenerCasilla(pUnaSalida);
-            casillaS.agregarSalida();
 
-            Assert.IsInstanceOf(typeof(Salida), casillaS.ArticuloContenido);
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+
+
+            Assert.IsTrue(Juego.Instancia().Ambiente.CantidadPersonajesVivos == 1);
+            Assert.IsTrue(Juego.Instancia().Ambiente.ObtenerCasilla(pUnaSalida).ArticuloContenido.EstaActivo );
+
+        }
+
+        [Test]
+        public void TestCuandoEnOtroMapaAgrego3PersonajesEliminoSoloUnEnemigoYNoSeActivaLaSalida()
+        {
+            // agrego articulo
+            Punto unaPosicion;
+            Casilla unaCasilla;
+            Mapa otroMapa = new Mapa(ANCHOMAPA, ANCHOMAPA);
+
+            int i, j;
+            for (i = 0; i < ANCHOMAPA; i++)
+                for (j = 0; j < ANCHOMAPA; j++)
+                {
+                    unaPosicion = new Punto(i, j);
+                    if ((i & 1) == 1 && (j & 1) == 1)
+                    {
+                        //ambos son numeros impares
+                        unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(unaPosicion);//.FabricarCasillaConBloqueAcero(unaPosicion);
+                    }
+                    else
+                    {
+                        //uno de los dos es par
+                        unaCasilla = FabricaDeCasillas.FabricarPasillo(unaPosicion);
+                    }
+
+                    otroMapa.AgregarCasilla(unaCasilla);
+                }
+
+            Juego.Instancia().Ambiente = otroMapa;
+
+            Punto pUnaSalida = new Punto(3, 3);
+            Punto pUnCecilio = new Punto(2, 1);
+            Punto pUnaBombaMolotov = new Punto(2, 0);
+            Punto pBombita = new Punto(4, 4);
+            Punto pLopez = new Punto(4, 3);
+
+            Juego.Instancia().Ambiente.ObtenerCasilla(pUnaSalida).agregarSalida();
+            Assert.IsInstanceOf(typeof(Salida), Juego.Instancia().Ambiente.ObtenerCasilla(pUnaSalida).ArticuloContenido);
+
+            Cecilio unCecil = new Cecilio(pUnCecilio);
+            Bombita unBombita = new Bombita(pBombita);
+            BombaMolotov unaBomba = new BombaMolotov(pUnaBombaMolotov, 0);
+            LosLopezReggae lopez = new LosLopezReggae(pLopez);
+
+
+
+            otroMapa.AgregarPersonaje(unBombita);
+            otroMapa.AgregarPersonaje(unCecil);
+            otroMapa.AgregarPersonaje(lopez);
+
+
+            Casilla casillaBomba = otroMapa.ObtenerCasilla(pUnaBombaMolotov);
+            casillaBomba.PlantarExplosivo(unaBomba);
+
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+
+
+            Assert.IsTrue(Juego.Instancia().Ambiente.CantidadPersonajesVivos == 2);
+            Assert.IsFalse(Juego.Instancia().Ambiente.ObtenerCasilla(pUnaSalida).ArticuloContenido.EstaActivo);
+
+        }
             
 
 
 
-        }
+
 
 
 
