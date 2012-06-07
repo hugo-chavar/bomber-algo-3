@@ -295,8 +295,7 @@ namespace Bomberman.Mapa
                     //simplemente se ignora donde no hay casillas
                 }
         }
-
-            // Problema arreglado: solo falta refactorizar la repeticion de codigo 
+ 
       public List<Punto> CalcularCasillerosExplotados(Explosivo explosivo)
         {
             List<Punto> listaDevolucion = new List<Punto>();

@@ -22,5 +22,6 @@ namespace Bomberman.Personaje
             comible.ModificarComedor(this);
             comible.Ocultar();
         }
+
     }
 }

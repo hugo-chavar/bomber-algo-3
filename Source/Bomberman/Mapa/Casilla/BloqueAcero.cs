@@ -10,9 +10,7 @@ namespace Bomberman.Mapa.Casilla
         { }
 
         public override void DaniarConBombaMolotov(int UnidadesDaniadas)
-        {
-            //La Bomba Molotov no dania Al Bloque De Acero
-            //Deberia daniar a los personajes alli presentes
+        {            //La Bomba Molotov no dania Al Bloque De Acero
         }
 
         public override bool PuedeContenerSalida()
