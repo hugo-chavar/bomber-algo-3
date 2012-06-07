@@ -22,6 +22,5 @@ namespace Bomberman.Articulo
         {
             this.EstaOculto = true;
         }
-        
     }
 }

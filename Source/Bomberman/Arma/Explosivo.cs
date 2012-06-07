@@ -37,12 +37,8 @@ namespace Bomberman.Arma
 
         public virtual void Explotar()
         {
-      
-
             Juego.Juego.Instancia().Ambiente.ManejarExplosion(this);
-            this.exploto = true;
-
-            // true = EXPLOTADO , false = ACTIVADA Y NO EXPLOTADA, //
+            this.exploto = true;  // true = EXPLOTADO , false = ACTIVADA Y NO EXPLOTADA, //
         }
 
         public bool EstaExplotado()

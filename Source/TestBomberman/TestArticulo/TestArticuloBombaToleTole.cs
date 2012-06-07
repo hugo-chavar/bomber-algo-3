@@ -12,8 +12,7 @@ namespace TestBomberman.TestArticulo
         private Punto pos;
         private Casilla c;
         private Bombita unBombita;
-
-
+        
         [SetUp]
         public void TestSetup()
         {
@@ -31,7 +30,6 @@ namespace TestBomberman.TestArticulo
             unBombita.Comer(unArticulo);
 
             Assert.IsInstanceOf( typeof(LanzadorToleTole), unBombita.Lanzador);
-
         }
     }
 }

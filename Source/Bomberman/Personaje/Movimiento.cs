@@ -56,6 +56,5 @@ namespace Bomberman.Personaje
         {
             this.direccion = Mapa.Mapa.ABAJO;
         }
-
     }
 }

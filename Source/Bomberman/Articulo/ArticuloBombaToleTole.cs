@@ -8,7 +8,6 @@ namespace Bomberman.Articulo
 {
     public class ArticuloBombaToleTole : Articulo
     {
-
         public override void ModificarComedor(IComedor comedor)
         {
             comedor.CambiarLanzadorAToleTole();

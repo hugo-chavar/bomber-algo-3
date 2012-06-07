@@ -36,6 +36,6 @@ namespace Bomberman.Arma
         {
             this.TiempoRestante = (this.TiempoRestante - 1);
         }
-}
+    }
 
 }

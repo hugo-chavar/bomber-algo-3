@@ -103,8 +103,7 @@ namespace Bomberman.Personaje
                 this.UnidadesDeResistencia = CalcularUnidadesRestantes(UnidadesDaniadas);
             }
         }
-
-
+        
         public abstract void Comer(Articulo.IComible comible);
 
         public void DuplicarVelocidad()
@@ -121,7 +120,5 @@ namespace Bomberman.Personaje
         {
             this.ReduccionRetardoBombas = retardo;
         }
-
-        
     }
 }

@@ -18,9 +18,6 @@ namespace TestBomberman.TestArma
         private const int ANCHOMAPA = 5;
         private Casilla unaCasilla2;
         
-
-
-
         [SetUp]
         public void TestSetup()
         {
@@ -57,14 +54,7 @@ namespace TestBomberman.TestArma
                     }
                     this.unMapa.AgregarCasilla(unaCasilla2);
                   }
-       
-
-
         }
-
-        
-
-
 
         [Test]
         public void TestBombaMolotovEstaExplotadaAlSerPlantadaDebeDevolverFalse()
@@ -92,7 +82,6 @@ namespace TestBomberman.TestArma
         }
 
         [Test]
-
         public void TestCuandoExplotaUnaBombaMolotovYTieneUnCasilleroASuIzquierdaConBloqueLadrilloYLoDestruye()
         {
             Punto posicion = new Punto(4,1);
@@ -106,13 +95,10 @@ namespace TestBomberman.TestArma
 
             Casilla unaCasillaDaniada = unMapa.ObtenerCasilla(puntoCasillaDaniada);
 
-            Assert.IsInstanceOf(typeof (Pasillo), unaCasillaDaniada.Estado);
-
-
-
-
+            Assert.IsInstanceOf(typeof(Pasillo), unaCasillaDaniada.Estado);
         }
-       [Test]
+
+        [Test]
         public void TestCuandoExplotaUnaBombaMolotovYTieneUnCasilleroASuDerechaConBloqueLadrilloYLoDestruye()
         {
             Punto posicion = new Punto(0, 1);
@@ -127,11 +113,8 @@ namespace TestBomberman.TestArma
             Casilla unaCasillaDaniada = unMapa.ObtenerCasilla(puntoCasillaDaniada);
 
             Assert.IsInstanceOf(typeof(Pasillo), unaCasillaDaniada.Estado);
-
-
-
-
         }
+
         [Test]
         public void TestCuandoExplotaUnaBombaMolotovYTieneUnCasilleroArribaConBloqueLadrilloYLoDestruye()
         {
@@ -147,13 +130,10 @@ namespace TestBomberman.TestArma
             Casilla unaCasillaDaniada = unMapa.ObtenerCasilla(puntoCasillaDaniada);
 
             Assert.IsInstanceOf(typeof(Pasillo), unaCasillaDaniada.Estado);
-
-
-
-
         }
-                [Test]
-                public void TestCuandoExplotaUnaBombaMolotovYTieneUnCasilleroAbajoConBloqueLadrilloYLoDestruye()
+        
+        [Test]
+        public void TestCuandoExplotaUnaBombaMolotovYTieneUnCasilleroAbajoConBloqueLadrilloYLoDestruye()
         {
             Punto posicion = new Punto(3, 4);
             Punto puntoCasillaDaniada = new Punto(3, 3);
@@ -167,14 +147,6 @@ namespace TestBomberman.TestArma
             Casilla unaCasillaDaniada = unMapa.ObtenerCasilla(puntoCasillaDaniada);
 
             Assert.IsInstanceOf(typeof(Pasillo), unaCasillaDaniada.Estado);
-
-
-
-
         }
-
-
-
-
     }
 }

@@ -15,9 +15,9 @@ namespace Bomberman.Arma
             {
                 Bomba bomba = new BombaToleTole(posicion, reduccionRetardo);
                 casilla.PlantarExplosivo(bomba);
-                return (true);//Las bombas se ponen en la posicion del personaje
+                return (true); //Las bombas se ponen en la posicion del personaje
             }
-            return (false);//casilla ya ocupada Con Bomba
+            return (false); //Casilla ya ocupada Con Bomba
         }
     }
 }

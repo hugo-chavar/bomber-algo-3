@@ -16,8 +16,7 @@ namespace Bomberman.Personaje
             this.lanzador = new LanzadorMolotov();
             this.unidadesDeResistencia = VIDABOMBITA;
         }
-
-
+        
         public override void Comer(IComible comible)
         {
             comible.ModificarComedor(this);
