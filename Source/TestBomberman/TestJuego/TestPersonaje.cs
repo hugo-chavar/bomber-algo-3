@@ -669,8 +669,7 @@ namespace TestBomberman.TestJuego
 
             unBombita.Movimiento.CambiarAAbajo();
             unBombita.Mover();//1,1
-            unJuego.Ambiente.CuandoPasaElTiempo();
-
+            
             Assert.IsFalse(unJuego.Ambiente.NivelGanado);
             Assert.IsFalse(unJuego.Ambiente.NivelTerminado);
 
@@ -723,8 +722,7 @@ namespace TestBomberman.TestJuego
 
             unBombita.Movimiento.CambiarAAbajo();
             unBombita.Mover();//1,1
-            unJuego.Ambiente.CuandoPasaElTiempo();
-
+            
             Assert.IsTrue(unJuego.Ambiente.NivelGanado);
             Assert.IsTrue(unJuego.Ambiente.NivelTerminado);
 
