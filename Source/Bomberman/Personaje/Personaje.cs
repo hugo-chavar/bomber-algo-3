@@ -101,6 +101,10 @@ namespace Bomberman.Personaje
             if (!this.Destruido())
             {
                 this.UnidadesDeResistencia = CalcularUnidadesRestantes(UnidadesDaniadas);
+                if (this.UnidadesDeResistencia == 0)
+                {
+                    Juego.Juego.Instancia().Ambiente.DecrementarCantidadDePersonajesVivos();
+                }
             }
         }
         
