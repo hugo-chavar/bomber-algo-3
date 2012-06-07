@@ -75,12 +75,14 @@ namespace Bomberman.Personaje
         }
 
         public void Apuntar()
-        private int CalcularUnidadesRestantes(int unidadesDestruidas)
-        {
+
         {
             this.Lanzador.Sentido.Direccion = this.Movimiento.Direccion;
             this.Lanzador.PosicionDeTiro = this.Posicion;
         }
+        
+        private int CalcularUnidadesRestantes(int unidadesDestruidas)
+        {
             int unidades = (this.UnidadesDeResistencia - unidadesDestruidas);
             if (unidades < 0) return (0);
             else return (unidades);
