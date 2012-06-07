@@ -23,6 +23,7 @@ namespace Bomberman.Mapa
         private int cantidadPersonajesVivos;
         private bool nivelTerminado;
         private bool nivelGanado;
+        private Punto posicionSalida;
 
         public Dictionary<Punto, Casilla.Casilla> Tablero
         {
@@ -66,6 +67,12 @@ namespace Bomberman.Mapa
         {
             get { return this.NivelGanado; }
             set { this.nivelGanado = value; }
+        }
+
+        public Punto PosicionSalida
+        {
+            get { return this.posicionSalida; }
+            set { this.posicionSalida = value; }
         }
 
         public Mapa(int tamanioHorizontal, int tamanioVertical)
