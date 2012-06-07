@@ -90,10 +90,7 @@ namespace TestBomberman.TestSalida
 
             Casilla unaCasillaDeSalida = unMapa.ObtenerCasilla(pUnaSalida);
 
-            Assert.IsNotNull(unaCasillaDeSalida.Estado);
-            Assert.IsTrue(unaCasillaDeSalida.Estado.PuedeContenerSalida());
-            Assert.IsNull(Juego.Instancia().Ambiente.PosicionSalida);
-            Assert.IsTrue(unaCasillaDeSalida.Estado.PuedeAgregarArticulo());
+
             
             // agrego articulo
             unaCasillaDeSalida.agregarSalida();
@@ -125,7 +122,7 @@ namespace TestBomberman.TestSalida
 
         
         [Test]
-        public void TestCuando()
+        public void TestCuandoEnOtroMapaAgrego2PersonajesEliminoAlUnicoEnemigoYSeActivaLaSalida()
         {
             // agrego articulo
             Punto unaPosicion;
