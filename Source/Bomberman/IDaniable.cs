@@ -1,6 +1,7 @@
-﻿namespace Bomberman
+﻿using Bomberman.Personaje;
+namespace Bomberman
 {
-    public interface IDaniable
+    public interface IDaniable// : IMovible
     {
         void DaniarConBombaToleTole();
         void DaniarConBombaMolotov(int UnidadesDaniadas);
