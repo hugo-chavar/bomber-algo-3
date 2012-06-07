@@ -9,6 +9,7 @@ namespace Bomberman.Articulo
     public abstract class Articulo : IComible
     {
         protected bool estaOculto;
+        protected bool estaActivo;
 
         public abstract void ModificarComedor(IComedor comedor);
 
@@ -18,9 +19,20 @@ namespace Bomberman.Articulo
             set { this.estaOculto = value; }        
         }
 
+        public bool EstaActivo
+        {
+            get { return this.estaActivo; }
+            set { this.estaActivo = value; }
+        }
+
         public void Ocultar()
         {
             this.EstaOculto = true;
+        }
+
+        public void Activar()
+        {
+            this.EstaActivo = true;
         }
     }
 }

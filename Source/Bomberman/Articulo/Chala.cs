@@ -8,6 +8,11 @@ namespace Bomberman.Articulo
 {
     public class Chala : Articulo
     {
+        public Chala()
+        {
+            this.Activar();
+        }
+
         public override void  ModificarComedor(IComedor comedor)
         {
             comedor.DuplicarVelocidad();

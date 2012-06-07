@@ -404,6 +404,21 @@ namespace Bomberman.Mapa
            }
         }
 
+        public bool ChequearCantidadPersonajesVivos()
+        {
+            return (this.CantidadPersonajesVivos == CANTIDADJUGADORES);
+        }
+
+        public void ActivarSalida()
+        {
+            if (this.PosicionSalida != null)
+            {
+                Casilla.Casilla unaCasilla = new Casilla.Casilla(this.PosicionSalida);
+                unaCasilla = this.ObtenerCasilla(this.PosicionSalida);
+                unaCasilla.ArticuloContenido.Activar();
+            }
+        }
+
         public void DecrementarCantidadDePersonajesVivos()
         {
             (this.cantidadPersonajesVivos) = this.cantidadPersonajesVivos - 1;

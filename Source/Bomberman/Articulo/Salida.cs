@@ -7,9 +7,14 @@ namespace Bomberman.Articulo
 {
     class Salida : Articulo
     {
+        public Salida()
+        {
+            this.estaActivo = false;
+        }
+        
         public override void ModificarComedor(Personaje.IComedor comedor)
         {
-            if (Juego.Juego.Instancia().Ambiente.CantidadPersonajesVivos == Juego.Juego.Instancia().Ambiente.ObtenerCantidadPersonajes())
+            if (this.EstaActivo)
             {
                 comedor.PartidaGanada();
             }
