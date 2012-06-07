@@ -382,7 +382,7 @@ namespace Bomberman.Mapa
 
         public void DecrementarCantidadDePersonajesVivos()
         {
-            (this.cantidadPersonajesVivos)--;
+            (this.cantidadPersonajesVivos) = this.cantidadPersonajesVivos - 1;
         }
   }
 }
