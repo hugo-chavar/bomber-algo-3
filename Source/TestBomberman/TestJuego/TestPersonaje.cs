@@ -5,6 +5,7 @@ using Bomberman.Mapa.Casilla;
 using Bomberman.Personaje;
 using Bomberman.Arma;
 using Bomberman;
+using Bomberman.Articulo;
 
 
 namespace TestBomberman.TestJuego
@@ -286,16 +287,347 @@ namespace TestBomberman.TestJuego
             Assert.IsInstanceOf(typeof(Pasillo), Juego.Instancia().Ambiente.ObtenerCasilla(pBloqueAcero).Estado);
         }
 
-        
-
-
-
-
-
-
-
 
         // faltaria agregar con proyectil y toletoleee //
+
+
+
+        /*Empiezo a probar explosiones con articulos!*/
+
+        public void IniciarMapaParaTestsIntegradores() // Metodo que voy a llamar al principio de cada test, uso un setup distinto al original.
+        {
+            int AnchoYLargo = 5;
+
+            Mapa unMapa = new Mapa(AnchoYLargo, AnchoYLargo);
+            Punto unaPosicion;
+            Casilla unaCasilla;
+            int i, j;
+
+            // Inicializo el mapa con ladrillos!!!
+            for (i = 0; i < AnchoYLargo; i++)
+                for (j = 0; j < AnchoYLargo; j++)
+                {
+                    unaPosicion = new Punto(i, j);
+                    if ((i & 1) == 1 && (j & 1) == 1)
+                    {
+                        //ambos son numeros impares
+                        unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(unaPosicion);
+                    }
+                    else
+                    {
+                        //uno de los dos es par
+                        unaCasilla = FabricaDeCasillas.FabricarPasillo(unaPosicion);
+                    }
+                    unMapa.AgregarCasilla(unaCasilla);
+                }
+
+            this.unJuego.Ambiente = unMapa;
+        }
+
+        [Test]
+        public void ExplotoUnObstaculoQueContieneUnaChalaYLuegoLoComeBombita()
+        {
+            int AnchoYLargo = 5;
+
+            Mapa unMapa = new Mapa(AnchoYLargo, AnchoYLargo);
+            Punto posInicio = new Punto(0, 0);
+            Punto posFinal = new Punto(1, 1);
+            Personaje unBombita = new Bombita(posInicio);
+
+            //Inicio Mapa.
+            IniciarMapaParaTestsIntegradores();
+
+            //Agrego articulo
+            Punto posicionCasillaArt = new Punto(1, 1);
+            Casilla CasillaConArticulo = this.unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt);
+            Articulo unArticulo = new Chala();
+            CasillaConArticulo.agregarArticulo(unArticulo);
+
+            //Muevo a bombita para dejarlo cerca de un Bloque y explotarlo.
+            this.unJuego.Ambiente.AgregarPersonaje(unBombita);
+            int velocidad = unBombita.Movimiento.Velocidad;
+
+            unBombita.Movimiento.CambiarAArriba();
+            unBombita.Mover();//fue a 0,1
+            unBombita.LanzarExplosivo();
+
+            //Pongo a bombita lejos de la explosion
+            unBombita.Mover();//fue a 0,2
+            unBombita.Movimiento.CambiarADerecha();
+            unBombita.Mover(); //fue a 1,2
+
+            this.unJuego.Ambiente.CuandoPasaElTiempo();
+            this.unJuego.Ambiente.CuandoPasaElTiempo();
+            this.unJuego.Ambiente.CuandoPasaElTiempo();
+
+            unBombita.Movimiento.CambiarAAbajo();
+            unBombita.Mover(); //fue a 1,1; come item.
+
+            Assert.AreEqual(2 * velocidad, unBombita.Movimiento.Velocidad);
+        }
+
+        [Test]
+        public void ExplotoUnObstaculoQueContieneUnArticuloBombaToleToleYLuegoLoComeBombita()
+        {
+            int AnchoYLargo = 5;
+
+            Mapa unMapa = new Mapa(AnchoYLargo, AnchoYLargo);
+            Punto posInicio = new Punto(0, 0);
+            Punto posFinal = new Punto(1, 1);
+            Personaje unBombita = new Bombita(posInicio);
+
+            //Inicio Mapa.
+            IniciarMapaParaTestsIntegradores();
+
+            //Agrego articulo
+            Punto posicionCasillaArt = new Punto(1, 1);
+            Casilla CasillaConArticulo = this.unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt);
+            Articulo unArticulo = new ArticuloBombaToleTole();
+            CasillaConArticulo.agregarArticulo(unArticulo);
+
+            //Muevo a bombita para dejarlo cerca de un Bloque y explotarlo.
+            this.unJuego.Ambiente.AgregarPersonaje(unBombita);
+            int velocidad = unBombita.Movimiento.Velocidad;
+
+            unBombita.Movimiento.CambiarAArriba();
+            unBombita.Mover();//fue a 0,1
+            unBombita.LanzarExplosivo();
+
+            //Pongo a bombita lejos de la explosion
+            unBombita.Mover();//fue a 0,2
+            unBombita.Movimiento.CambiarADerecha();
+            unBombita.Mover(); //fue a 1,2
+
+            this.unJuego.Ambiente.CuandoPasaElTiempo();
+            this.unJuego.Ambiente.CuandoPasaElTiempo();
+            this.unJuego.Ambiente.CuandoPasaElTiempo();
+
+            unBombita.Movimiento.CambiarAAbajo();
+            unBombita.Mover(); //fue a 1,1; come item.
+
+            Assert.IsInstanceOf(typeof(LanzadorToleTole), unBombita.Lanzador);
+        }
+
+        [Test]
+        public void ExplotoUnObstaculoQueContieneUnTimerYLuegoLoComeBombita()
+        {
+            int AnchoYLargo = 5;
+
+            Mapa unMapa = new Mapa(AnchoYLargo, AnchoYLargo);
+            Punto posInicio = new Punto(0, 0);
+            Punto posFinal = new Punto(1, 1);
+            Personaje unBombita = new Bombita(posInicio);
+
+            //Inicio Mapa.
+            IniciarMapaParaTestsIntegradores();//Inicio con bloques de ladrillo.
+
+            //Agrego articulo
+            Punto posicionCasillaArt = new Punto(1, 1);
+            Casilla CasillaConArticulo = this.unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt);
+            Articulo unArticulo = new Timer();
+            CasillaConArticulo.agregarArticulo(unArticulo);
+
+            //Muevo a bombita para dejarlo cerca de un Bloque y explotarlo.
+            this.unJuego.Ambiente.AgregarPersonaje(unBombita);
+            int velocidad = unBombita.Movimiento.Velocidad;
+
+            unBombita.Movimiento.CambiarAArriba();
+            unBombita.Mover();//fue a 0,1
+            unBombita.LanzarExplosivo();
+
+            //Pongo a bombita lejos de la explosion
+            unBombita.Mover();//fue a 0,2
+            unBombita.Movimiento.CambiarADerecha();
+            unBombita.Mover(); //fue a 1,2
+
+            this.unJuego.Ambiente.CuandoPasaElTiempo();
+            this.unJuego.Ambiente.CuandoPasaElTiempo();
+            this.unJuego.Ambiente.CuandoPasaElTiempo();
+
+            unBombita.Movimiento.CambiarAAbajo();
+            unBombita.Mover(); //fue a 1,1; come item.
+
+            int retardo = 15;
+
+            Assert.AreEqual(retardo, unBombita.ReduccionRetardoBombas);
+        }
+
+        [Test]
+        public void AgarroUnArticuloBombaToleToleConBombitaYDestruyoUnBloqueDeAcero()
+        {
+            Punto posInicio = new Punto(0, 0);
+            Personaje unBombita = new Bombita(posInicio);
+
+            //Agrego articulo
+
+            Punto posicionCasillaArt = new Punto(1, 0);
+            Casilla CasillaConArticulo = this.unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt);
+            Articulo unArticulo = new ArticuloBombaToleTole();
+            CasillaConArticulo.ArticuloContenido = unArticulo; //Hardcodeo un articulo en el pasillo para agarrarlo con bombita.
+
+            unJuego.Ambiente.AgregarPersonaje(unBombita);
+
+            unBombita.Movimiento.CambiarADerecha();
+            unBombita.Mover(); // 1,0, como articulo.
+            unBombita.LanzarExplosivo(); // lanzo tole tole
+            unBombita.Mover(); // 2,0.
+            unBombita.Movimiento.CambiarAArriba();
+            unBombita.Mover(); // 2,1.
+
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo(); //explota tole tole
+
+            unBombita.Movimiento.CambiarAIzquierda();
+            unBombita.Mover(); // 1,1
+
+            Punto puntoFinal = new Punto(1, 1);
+
+            Assert.AreEqual(puntoFinal, unBombita.Posicion);
+        }
+
+        [Test]
+        public void BombitaAgarraUnArticuloBombaToleToleYAniquilaACecilio()
+        {
+            Punto posInicio = new Punto(0, 0);
+            Punto posInicioCecilio = new Punto(4, 4);
+            Personaje unBombita = new Bombita(posInicio);
+            Personaje unEnemigo = new Cecilio(posInicioCecilio);
+
+            //Agrego articulo
+            Punto posicionCasillaArt = new Punto(1, 0);
+            Casilla CasillaConArticulo = this.unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt);
+            Articulo unArticulo = new ArticuloBombaToleTole();
+            CasillaConArticulo.ArticuloContenido = unArticulo; //Hardcodeo un articulo en el pasillo para agarrarlo con bombita.
+
+            unJuego.Ambiente.AgregarPersonaje(unBombita);
+            unJuego.Ambiente.AgregarPersonaje(unEnemigo);
+
+            unBombita.Movimiento.CambiarADerecha();
+            unBombita.Mover(); // 1,0, como articulo.
+            unBombita.Mover(); // 2,0.
+            unBombita.Movimiento.CambiarAArriba();
+            unBombita.Mover(); // 2,1
+            unBombita.Mover(); // 2,2
+
+            unBombita.LanzarExplosivo();
+            unBombita.Mover(); // 2,3
+            unBombita.Mover(); // 2,4
+            unBombita.Movimiento.CambiarAIzquierda();
+            unBombita.Mover(); // 1,4
+
+            unEnemigo.Movimiento.CambiarAAbajo(); //4,4
+            unEnemigo.Mover(); // 4,3
+            unEnemigo.Mover(); // 4,2
+            unEnemigo.Movimiento.CambiarAIzquierda();
+            unEnemigo.Mover(); // 3,2
+
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
+
+            Assert.IsTrue(unEnemigo.Destruido());
+        }
+
+        [Test]
+        public void BombitaAgarraUnArticuloBombaToleToleYAniquilaALosLopezReggae()
+        {
+            Punto posInicio = new Punto(0, 0);
+            Punto posLR = new Punto(4, 4);
+            Personaje unBombita = new Bombita(posInicio);
+            Personaje unEnemigo = new LosLopezReggae(posLR);
+
+            //Agrego articulo
+            Punto posicionCasillaArt = new Punto(1, 0);
+            Casilla CasillaConArticulo = this.unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt);
+            Articulo unArticulo = new ArticuloBombaToleTole();
+            CasillaConArticulo.ArticuloContenido = unArticulo; //Hardcodeo un articulo en el pasillo para agarrarlo con bombita.
+
+            unJuego.Ambiente.AgregarPersonaje(unBombita);
+            unJuego.Ambiente.AgregarPersonaje(unEnemigo);
+
+            unBombita.Movimiento.CambiarADerecha();
+            unBombita.Mover(); // 1,0, como articulo.
+            unBombita.Mover(); // 2,0.
+            unBombita.Movimiento.CambiarAArriba();
+            unBombita.Mover(); // 2,1
+            unBombita.Mover(); // 2,2
+
+            unBombita.LanzarExplosivo();
+            unBombita.Mover(); // 2,3
+            unBombita.Mover(); // 2,4
+            unBombita.Movimiento.CambiarAIzquierda();
+            unBombita.Mover(); // 1,4
+
+            unEnemigo.Movimiento.CambiarAAbajo(); //4,4
+            unEnemigo.Mover(); // 4,3
+            unEnemigo.Mover(); // 4,2
+            unEnemigo.Movimiento.CambiarAIzquierda();
+            unEnemigo.Mover(); // 3,2
+
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
+
+            Assert.IsTrue(unEnemigo.Destruido());
+        }
+
+        [Test]
+        public void BombitaAgarraUnArticuloBombaToleToleYAniquilaALosLopezReggaeAlado()
+        {
+            Punto posInicio = new Punto(0, 0);
+            Punto posLRA = new Punto(4, 4);
+            Personaje unBombita = new Bombita(posInicio);
+            Personaje unEnemigo = new LosLopezReggaeAlado(posLRA);
+
+            //Agrego articulo
+            Punto posicionCasillaArt = new Punto(1, 0);
+            Casilla CasillaConArticulo = this.unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt);
+            Articulo unArticulo = new ArticuloBombaToleTole();
+            CasillaConArticulo.ArticuloContenido = unArticulo; //Hardcodeo un articulo en el pasillo para agarrarlo con bombita.
+
+            unJuego.Ambiente.AgregarPersonaje(unBombita);
+            unJuego.Ambiente.AgregarPersonaje(unEnemigo);
+
+            unBombita.Movimiento.CambiarADerecha();
+            unBombita.Mover(); // 1,0, como articulo.
+            unBombita.Mover(); // 2,0.
+            unBombita.Movimiento.CambiarAArriba();
+            unBombita.Mover(); // 2,1
+            unBombita.Mover(); // 2,2
+
+            unBombita.LanzarExplosivo();
+            unBombita.Mover(); // 2,3
+            unBombita.Mover(); // 2,4
+            unBombita.Movimiento.CambiarAIzquierda();
+            unBombita.Mover(); // 1,4
+
+            unEnemigo.Movimiento.CambiarAAbajo(); //4,4
+            unEnemigo.Mover(); // 4,3
+            unEnemigo.Mover(); // 4,2
+            unEnemigo.Movimiento.CambiarAIzquierda();
+            unEnemigo.Mover(); // 3,2
+
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
+
+            Assert.IsTrue(unEnemigo.Destruido());
+        }
+
+
+
+
+
+       
     }
 }
 
