@@ -9,7 +9,14 @@ namespace Bomberman.Arma
 {
     public class LanzadorToleTole : Lanzador
     {
-                
+
+        private const int ALCANCELANZAMIENTO = 0;
+
+        public LanzadorToleTole()
+        {
+            this.Alcance = ALCANCELANZAMIENTO;
+        }
+        
         public override bool Lanzar(Punto posicion, int reduccionRetardo)
         {
             Casilla casilla = Juego.Juego.Instancia().Ambiente.ObtenerCasilla(posicion);
