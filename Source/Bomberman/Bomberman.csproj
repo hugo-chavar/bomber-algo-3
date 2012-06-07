@@ -44,7 +44,7 @@
     <Compile Include="Arma\ManejadorProyectil.cs" />
     <Compile Include="Arma\Explosivo.cs" />
     <Compile Include="Arma\BombaToleTole.cs" />
-    <Compile Include="Arma\ILanzador.cs" />
+    <Compile Include="Arma\Lanzador.cs" />
     <Compile Include="Arma\LanzadorMolotov.cs" />
     <Compile Include="Arma\LanzadorProyectil.cs" />
     <Compile Include="Arma\LanzadorToleTole.cs" />

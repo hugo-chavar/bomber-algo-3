@@ -7,7 +7,7 @@ using Bomberman.Mapa.Casilla;
 
 namespace Bomberman.Arma
 {
-    public class LanzadorToleTole : ILanzador
+    public class LanzadorToleTole : Lanzador
     {
                 
         public override bool Lanzar(Punto posicion, int reduccionRetardo)

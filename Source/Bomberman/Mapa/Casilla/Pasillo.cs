@@ -39,5 +39,10 @@ namespace Bomberman.Mapa.Casilla
             return false;
         }
 
+        public override bool PermiteDejarExplosivos()
+        {
+            return true;
+        }
+
     }
 }
