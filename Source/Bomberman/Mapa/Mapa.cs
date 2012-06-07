@@ -18,11 +18,11 @@ namespace Bomberman.Mapa
         public const int ABAJO = 2;
         public const int IZQUIERDA = 4;
         public const int DERECHA = 6;
-        private const int CANTIDADJUGADORES = 1;
+        public const int CANTIDADJUGADORES = 1;
         private List<IDependienteDelTiempo> esperaParaExplotar;
         private int cantidadPersonajesVivos;
-
-
+        private bool nivelTerminado;
+        private bool nivelGanado;
 
         public Dictionary<Punto, Casilla.Casilla> Tablero
         {
@@ -51,6 +51,23 @@ namespace Bomberman.Mapa
             get { return this.dimensionVertical; }
         }
 
+        public int ObtenerCantidadPersonajes()
+        {
+            return CANTIDADJUGADORES;
+        }
+
+        public bool NivelTerminado
+        {
+            get { return this.NivelTerminado; }
+            set { this.nivelTerminado = value; }
+        }
+
+        public bool NivelGanado
+        {
+            get { return this.NivelGanado; }
+            set { this.nivelGanado = value; }
+        }
+
         public Mapa(int tamanioHorizontal, int tamanioVertical)
         {
             this.dimensionHorizontal = tamanioHorizontal;
@@ -58,7 +75,8 @@ namespace Bomberman.Mapa
             this.tablero = new Dictionary<Punto, Casilla.Casilla>();
             this.esperaParaExplotar = new List<IDependienteDelTiempo>();
             this.cantidadPersonajesVivos = 0;
-
+            this.NivelGanado = false;
+            this.NivelTerminado = false;
         }
 
         public void AgregarCasilla(Casilla.Casilla unaCasilla)
@@ -383,5 +401,11 @@ namespace Bomberman.Mapa
         {
             (this.cantidadPersonajesVivos) = this.cantidadPersonajesVivos - 1;
         }
-  }
+
+        internal void FinalizarNivel()
+        {
+            this.NivelTerminado = true;
+            this.NivelGanado = true;
+        }
+    }
 }
