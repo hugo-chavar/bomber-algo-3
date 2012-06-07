@@ -45,25 +45,38 @@
             return new Punto(this.X, this.Y);
         }
 
+        //si el delta es positivo, devuelve posicion que esta delta lugares hacia arriba
+        //si el delta es negativo, devuelve posicion que esta delta lugares hacia abajo
+        public Punto MoverPosicionesEnSentidoVertical(int delta)
+        {
+            return new Punto(this.X, this.Y + delta);
+        }
+
+        //si el delta es positivo, devuelve posicion que esta delta lugares hacia la derecha
+        //si el delta es negativo, devuelve posicion que esta delta lugares hacia la izquierda
+        public Punto MoverPosicionesEnSentidoHorizontal(int delta)
+        {
+            return new Punto(this.X + delta, this.Y);
+        }
 
         public Punto PosicionSuperior()
         {
-            return new Punto(this.X, this.Y + 1);
+            return this.MoverPosicionesEnSentidoVertical(1);
         }
 
         public Punto PosicionInferior()
         {
-            return new Punto(this.X, this.Y - 1);
+            return this.MoverPosicionesEnSentidoVertical(-1);
         }
 
         public Punto PosicionDerecha()
         {
-            return new Punto(this.X + 1, this.Y);
+            return this.MoverPosicionesEnSentidoHorizontal(1);
         }
 
         public Punto PosicionIzquierda()
         {
-            return new Punto(this.X - 1, this.Y);
+            return this.MoverPosicionesEnSentidoHorizontal(-1);
         }
     }
 

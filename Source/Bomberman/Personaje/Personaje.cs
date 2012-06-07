@@ -12,7 +12,7 @@ namespace Bomberman.Personaje
     {
         protected Movimiento movimiento;
         protected Punto posicion;
-        protected ILanzador lanzador;
+        protected Lanzador lanzador;
         protected int reduccionRetardoBombas;
         protected int unidadesDeResistencia;
 
@@ -29,7 +29,7 @@ namespace Bomberman.Personaje
             set { this.movimiento = value; }
         }
 
-        public ILanzador Lanzador 
+        public Lanzador Lanzador 
         { 
             get { return this.lanzador; }
             set { this.lanzador = value; }
@@ -79,13 +79,21 @@ namespace Bomberman.Personaje
         {
             this.Lanzador.Sentido.Direccion = this.Movimiento.Direccion;
             this.Lanzador.PosicionDeTiro = this.Posicion;
+            this.Lanzador.CalcularPosicionDeImpacto();
+        }
+
+        public void Disparar()
+        {
+
         }
         
         private int CalcularUnidadesRestantes(int unidadesDestruidas)
         {
             int unidades = (this.UnidadesDeResistencia - unidadesDestruidas);
-            if (unidades < 0) return (0);
-            else return (unidades);
+            if (unidades < 0)
+                return (0);
+            else 
+                return (unidades);
         }
 
         public virtual void DaniarConBombaMolotov(int UnidadesDaniadas)
