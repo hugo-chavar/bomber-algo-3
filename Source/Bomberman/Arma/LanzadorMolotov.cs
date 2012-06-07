@@ -4,12 +4,15 @@ using System.Linq;
 using System.Text;
 using Bomberman.Juego;
 using Bomberman.Mapa.Casilla;
+using Bomberman.Personaje;
 
 namespace Bomberman.Arma
 {
     public class LanzadorMolotov:ILanzador
     {
-        public bool Lanzar(Punto posicion, int reduccionRetardo)
+
+
+        public override bool Lanzar(Punto posicion, int reduccionRetardo)
         {
             Bomba bomba = new BombaMolotov(posicion,reduccionRetardo);
             Juego.Juego.Instancia().Ambiente.ObtenerCasilla(posicion).PlantarExplosivo(bomba);

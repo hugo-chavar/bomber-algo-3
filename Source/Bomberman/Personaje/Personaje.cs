@@ -73,8 +73,11 @@ namespace Bomberman.Personaje
             return ((this.unidadesDeResistencia) < 1);
         }
 
-
-
+        public void Apuntar()
+        {
+            this.Lanzador.Sentido.Direccion = this.Movimiento.Direccion;
+            this.Lanzador.PosicionDeTiro = this.Posicion;
+        }
 
         public void DaniarConBombaToleTole()
         {

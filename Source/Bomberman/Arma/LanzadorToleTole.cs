@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Bomberman.Personaje;
 
 namespace Bomberman.Arma
 {
     public class LanzadorToleTole : ILanzador
     {
-        public bool Lanzar(Punto posicion, int reduccionRetardo)
+                
+        public override bool Lanzar(Punto posicion, int reduccionRetardo)
         {
             Bomba bomba = new BombaToleTole(posicion, reduccionRetardo);
             Juego.Juego.Instancia().Ambiente.ObtenerCasilla(posicion).PlantarExplosivo(bomba);
