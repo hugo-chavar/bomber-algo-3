@@ -125,5 +125,7 @@ namespace Bomberman.Personaje
         {
             this.ReduccionRetardoBombas = retardo;
         }
+
+        public abstract void PartidaGanada();
     }
 }

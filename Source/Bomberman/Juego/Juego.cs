@@ -88,6 +88,11 @@ namespace Bomberman.Juego
         public void PerderVida()
         {
             this.CantDeVidas = (this.CantDeVidas-1);
+            if (this.CantDeVidas == 0)
+            {
+                this.Ambiente.NivelTerminado = true;
+                this.Ambiente.NivelGanado = false;
+            }
         }
     }
 }

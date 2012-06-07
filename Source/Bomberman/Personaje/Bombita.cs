@@ -23,5 +23,10 @@ namespace Bomberman.Personaje
             comible.Ocultar();
         }
 
+
+        public override void PartidaGanada()
+        {
+            Juego.Juego.Instancia().Ambiente.FinalizarNivel();
+        }
     }
 }
