@@ -10,6 +10,13 @@ namespace Bomberman.Arma
     public class LanzadorProyectil : Lanzador
     {
 
+        private const int ALCANCELANZAMIENTO = 3;
+
+        public LanzadorProyectil()
+        {
+            this.Alcance = ALCANCELANZAMIENTO;
+        }
+        
         public override bool Lanzar(Punto posicion, int reduccionRetardo)
         {
             //chequear si Posicion valida???
