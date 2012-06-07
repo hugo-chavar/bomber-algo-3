@@ -372,6 +372,7 @@ namespace TestBomberman.TestJuego
             casillaBomba2.PlantarExplosivo(bomba2);
 
             Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+    
 
             Assert.IsTrue(bomba1.EstaExplotado());
             Assert.IsTrue(bomba2.EstaExplotado());
@@ -419,6 +420,7 @@ namespace TestBomberman.TestJuego
             casillaBomba1.PlantarExplosivo(bomba1);
             casillaBomba2.PlantarExplosivo(bomba2);
 
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
             Juego.Instancia().Ambiente.CuandoPasaElTiempo();
             Juego.Instancia().Ambiente.CuandoPasaElTiempo();
             Juego.Instancia().Ambiente.CuandoPasaElTiempo();

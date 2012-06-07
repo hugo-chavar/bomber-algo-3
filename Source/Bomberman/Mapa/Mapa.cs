@@ -371,14 +371,20 @@ namespace Bomberman.Mapa
         {
             if (this.esperaParaExplotar.Count > 0)
             {
-                int i;
+                int i = 0;
 
                 for (i = 0; i < (esperaParaExplotar.Count); i++)
                 {
                     esperaParaExplotar[i].CuandoPasaElTiempo();
+                 }
 
+                for (i = 0; i < (esperaParaExplotar.Count); i++)
+                {
+                    if (((Explosivo)esperaParaExplotar[i]).EstaExplotado())
+                        this.esperaParaExplotar.RemoveAt(i);
                 }
-            }
+
+           }
         }
 
 
