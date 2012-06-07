@@ -13,13 +13,13 @@ namespace Bomberman.Mapa.Casilla
         private Punto posicion;
         private Articulo.Articulo articuloContenido;
         private List<IMovible> transitandoEnCasilla;
+
         //defino el patron State para determinar si hay un obstaculo o la casilla esta libre
         private Obstaculo estado;
         private Explosivo explosivo;
 
         public Casilla(Punto pos)
         {
-            // TODO: Complete member initialization
             this.posicion = pos;
             transitandoEnCasilla = new List<IMovible>();
             explosivo = null;
@@ -107,6 +107,5 @@ namespace Bomberman.Mapa.Casilla
             if(this.explosivo==unExplosivo)
                 this.explosivo = null;
         }
-
     }
 }

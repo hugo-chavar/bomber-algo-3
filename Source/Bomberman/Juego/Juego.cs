@@ -14,8 +14,9 @@ namespace Bomberman.Juego
         private Personaje.Personaje protagonista;
         private Mapa.Mapa ambiente;
 
-                //declaracion del Singleton
+        //declaracion del Singleton
         private static Juego instanciaDeJuego;
+        
         //Constantes
         private const int VIDAS = 3;
         private const int ANCHOMAPA = 10;
@@ -27,10 +28,6 @@ namespace Bomberman.Juego
             get { return cantDeVidas; }
             set { this.cantDeVidas = value; }
         }
-
-
-
-
 
         public bool JuegoPausado
         {
@@ -92,6 +89,5 @@ namespace Bomberman.Juego
         {
             this.CantDeVidas = (this.CantDeVidas-1);
         }
-
-  }
+    }
 }

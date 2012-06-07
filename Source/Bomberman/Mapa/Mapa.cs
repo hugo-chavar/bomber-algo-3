@@ -48,8 +48,6 @@ namespace Bomberman.Mapa
             this.dimensionVertical = tamanioVertical;
             this.tablero = new Dictionary<Punto, Casilla.Casilla>();
             this.esperaParaExplotar = new List<IDependienteDelTiempo>();
-
-
         }
 
         public void AgregarCasilla(Casilla.Casilla unaCasilla)
@@ -125,7 +123,6 @@ namespace Bomberman.Mapa
                 throw new NoExisteCasillaException();
             }
             return unaCasilla;
-
         }
 
         public bool PermitidoMoverHaciaArribaA(Personaje.IMovible movil)
@@ -220,7 +217,6 @@ namespace Bomberman.Mapa
                             MoverHaciaDerechaA(movil);
                         } 
                         break;
-
                     }
             }
         }
@@ -283,7 +279,6 @@ namespace Bomberman.Mapa
             catch (NoExisteCasillaException)
                 {
                     //simplemente se ignora donde no hay casillas
-                
                 }
         }
 
@@ -303,7 +298,7 @@ namespace Bomberman.Mapa
         { 
             int i=1;
             Punto unPuntoAux=new Punto(punto.X-1,punto.Y);
-            while (this.PosicionDentroRango(unPuntoAux) && i <= expansion) // Hugo dice: en lugar de unPuntoAux.EsPuntoValido() deberia ir this.PosicionDentroRango(unPuntoAux), ver explicacion abajo
+            while (this.PosicionDentroRango(unPuntoAux) && i <= expansion)
             {
                 
                 Lista.Add(unPuntoAux);
@@ -344,17 +339,14 @@ namespace Bomberman.Mapa
         {
             int i = 1;
             Punto unPuntoAux = new Punto(punto.X, punto.Y - 1);
-            while (this.PosicionDentroRango(unPuntoAux) && (i <= expansion)) // Hugo dice: en lugar de unPuntoAux.EsPuntoValido() deberia ir this.PosicionDentroRango(unPuntoAux)
-            {                                                         // porque no esta chequeando los margenes derecho e izquierdo
-                                                                       //además se deberia eliminar el metodo EsPuntoValido() de la clase punto porque no la usamos en ningun lado mas
+            while (this.PosicionDentroRango(unPuntoAux) && (i <= expansion)) 
+            {
                 Lista.Add(unPuntoAux);
                 i++;
                 unPuntoAux = new Punto(punto.X, punto.Y - i);
-
             }
         }
-
-
+        
         public void CuandoPasaElTiempo()
         {
             if (this.esperaParaExplotar.Count > 0)
@@ -371,11 +363,7 @@ namespace Bomberman.Mapa
                         this.esperaParaExplotar.RemoveAt(i);
                 }
 
-
-
            }
         }
-
-
-}
+    }
 }

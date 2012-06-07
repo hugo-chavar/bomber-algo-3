@@ -25,16 +25,13 @@ namespace Bomberman.Arma
             get { return this.alcance; }
             set { this.alcance = value; }
         }
-
-
-
+        
         public Punto PosicionFinal
         {
             get { return this.posicionFinal; }
             set { this.posicionFinal = value; }
         }
-
-        
+                
         public Proyectil(Punto posicionInicial)
 
         {
@@ -44,12 +41,8 @@ namespace Bomberman.Arma
             posicionFinal = PosicionFinal;
             posicion = posicionInicial;
             tiempoRestante = 3;
-
-
         }
-
-    
-
+          
         public override void Daniar(IDaniable daniable)
         {
             daniable.DaniarConProyectil(this.PoderDeDestruccion);
@@ -59,48 +52,35 @@ namespace Bomberman.Arma
 
         public void LanzarMisil(int direccionPersonaje)
         {
-            if ( unManejador == null )
+            if (unManejador == null)
             {
                 unManejador = new ManejadorProyectil(this, direccionPersonaje);
                 unManejador.LanzarMisil();
- 
             }
-
         }
+
         public int TiempoRestante()
         {
             return this.tiempoRestante;
         }
-
 
         public override void  CuandoPasaElTiempo()
         {
 
             if (tiempoRestante > 0)
             {
-               this.DisminuirTiempo();
-               unManejador.AvanzarHacia(this);
+                this.DisminuirTiempo();
+                unManejador.AvanzarHacia(this);
             }
             if ((tiempoRestante == 0) && (unManejador.EstaLanzado()))
             {
                 base.Explotar();
             }
-
-            
         }
 
         public void DisminuirTiempo()
         {
             this.tiempoRestante = this.tiempoRestante - 1;
-            
         }
-
-
-        
-
-
-
-     
-}
-
+    }
 }

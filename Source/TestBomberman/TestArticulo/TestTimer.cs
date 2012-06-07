@@ -12,7 +12,6 @@ namespace TestBomberman.TestArticulo
         private Punto pos;
         private Casilla c;
         private Bombita unBombita;
-
         
         [SetUp]
         public void TestSetup()
@@ -32,5 +31,4 @@ namespace TestBomberman.TestArticulo
             Assert.AreEqual(15, unBombita.ReduccionRetardoBombas);
         }
     }
-
 }

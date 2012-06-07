@@ -30,7 +30,5 @@ namespace TestBomberman.TestArticulo
 
             Assert.AreEqual(2*velocidad, unBombita.Movimiento.Velocidad);
          }
-
-
     }
 }

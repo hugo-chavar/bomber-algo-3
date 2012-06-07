@@ -4,7 +4,6 @@ namespace Bomberman.Mapa.Casilla
 {
     public class BloqueComun:Obstaculo
     {
-
         private const int RESISTENCIALADRILLO = 5;
         private const int RESISTENCIACEMENTO = 10;
 
@@ -28,8 +27,5 @@ namespace Bomberman.Mapa.Casilla
         {
             return true;
         }
-
-
-        
     }
 }

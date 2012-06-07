@@ -67,8 +67,7 @@ namespace TestBomberman.TestJuego
         {
             Punto pBombita = new Punto(1, 0);
             Punto pCecil = new Punto(0, 0);
-
-
+            
             Bombita bombita = new Bombita(pBombita);
             Cecilio unCecil = new Cecilio(pCecil);
             Juego.Instancia().Ambiente.AgregarPersonaje(bombita);
@@ -86,8 +85,7 @@ namespace TestBomberman.TestJuego
         {
             Punto pBombita = new Punto(1, 0);
             Punto pLopezRaggae = new Punto(0, 0);
-
-
+            
             Bombita bombita = new Bombita(pBombita);
             LosLopezReggae unLR = new LosLopezReggae(pLopezRaggae);
             Juego.Instancia().Ambiente.AgregarPersonaje(bombita);
@@ -106,22 +104,18 @@ namespace TestBomberman.TestJuego
             bombita.Movimiento.CambiarAAbajo();
             bombita.Mover();
             bombita.LanzarExplosivo();
-
-
+            
             Juego.Instancia().Ambiente.CuandoPasaElTiempo();
             Assert.IsTrue(unLR.UnidadesDeResistencia == 0); //le quedan 0 puntos de vida
             Assert.IsTrue(bombita.Destruido()); //esta vez no safo
-
-
-
         }
+
         [Test]
         public void TestCuandoBombmitaPlantaUnaMolotovDestruyendoAUnLosLopezRaggaeAlado()
         {
             Punto pBombita = new Punto(1, 0);
             Punto pLopezRaggaeAlado = new Punto(0, 0);
-
-
+            
             Bombita bombita = new Bombita(pBombita);
             LosLopezReggaeAlado unLRA = new LosLopezReggaeAlado(pLopezRaggaeAlado);
             Juego.Instancia().Ambiente.AgregarPersonaje(bombita);
@@ -136,16 +130,14 @@ namespace TestBomberman.TestJuego
             Juego.Instancia().Ambiente.CuandoPasaElTiempo();
             Assert.IsTrue(unLRA.UnidadesDeResistencia == 0); //chau chau Adios loslopezreggae 
             Assert.IsFalse(bombita.Destruido()); //safo bombitaaa
-
-
         }
+
         [Test]
         public void TestCuandoCecilioPlantaUnaMolotovDestruyendoABombitaYASiMismo()
         {
             Punto pBombita = new Punto(1, 0);
             Punto pCecil = new Punto(0, 0);
-
-
+            
             Bombita bombita = new Bombita(pBombita);
             Cecilio unCecil = new Cecilio(pCecil);
             Juego.Instancia().Ambiente.AgregarPersonaje(bombita);
@@ -156,15 +148,13 @@ namespace TestBomberman.TestJuego
 
             Assert.IsTrue(unCecil.Destruido());
             Assert.IsTrue(bombita.Destruido());
-
-
         }
+
         [Test]
         public void TestCuandoCecilioPlantaUnaMolotovDestruyendoABombitaYSafa()
         {
             Punto pBombita = new Punto(1, 0);
             Punto pCecil = new Punto(0, 0);
-
 
             Bombita bombita = new Bombita(pBombita);
             Cecilio unCecil = new Cecilio(pCecil);
@@ -183,18 +173,13 @@ namespace TestBomberman.TestJuego
 
             Assert.IsFalse(unCecil.Destruido()); 
             Assert.IsTrue(bombita.Destruido());
-
-
         }
-
-
-
+        
         [Test]
         public void TestCuandoLopezReggaePlantaUnaMolotovDestruyendoABombitaYSafa()
         {
             Punto pBombita = new Punto(1, 0);
             Punto pReggaeAlado = new Punto(0, 0);
-
 
             Bombita bombita = new Bombita(pBombita);
             LosLopezReggaeAlado lRA = new LosLopezReggaeAlado(pReggaeAlado);
@@ -208,7 +193,6 @@ namespace TestBomberman.TestJuego
             lRA.Mover();
             lRA.Mover(); 
  
-
             Juego.Instancia().Ambiente.CuandoPasaElTiempo();
             //escapa el alado
 
@@ -217,7 +201,6 @@ namespace TestBomberman.TestJuego
 
 
         }       // falta pruebas de LopezReggae haciendo lio con el proytectil
-
 
         [Test]
         public void TestCuandoBombmitaPlantaUnaToleToleDestruyendoACecilioYAlBloqueDeAcero()
@@ -237,12 +220,10 @@ namespace TestBomberman.TestJuego
             Juego.Instancia().Ambiente.CuandoPasaElTiempo();
             Juego.Instancia().Ambiente.CuandoPasaElTiempo();
             Juego.Instancia().Ambiente.CuandoPasaElTiempo();
-
-
+            
             Assert.IsTrue(unCecil.Destruido());
             Assert.IsTrue(bombita.Destruido());
             Assert.IsInstanceOf(typeof(Pasillo), Juego.Instancia().Ambiente.ObtenerCasilla(pBloqueAcero).Estado);
-
         }
 
         [Test]
@@ -264,11 +245,9 @@ namespace TestBomberman.TestJuego
             Juego.Instancia().Ambiente.CuandoPasaElTiempo();
             Juego.Instancia().Ambiente.CuandoPasaElTiempo();
 
-
             Assert.IsTrue(unCecil.Destruido());
             Assert.IsTrue(bombita.Destruido());
             Assert.IsInstanceOf(typeof(Pasillo), Juego.Instancia().Ambiente.ObtenerCasilla(pBloqueAcero).Estado);
-
         }
 
         [Test]
@@ -291,24 +270,20 @@ namespace TestBomberman.TestJuego
             Juego.Instancia().Ambiente.AgregarPersonaje(lRGA);
             Juego.Instancia().Ambiente.AgregarPersonaje(unCecil);
 
-
             bombita.CambiarLanzadorAToleTole(); // harcodeo el lanzador para ver internamente lo que ocurre al cambiar el lanzador
             bombita.LanzarExplosivo();
 
-
             Juego.Instancia().Ambiente.CuandoPasaElTiempo();
             Juego.Instancia().Ambiente.CuandoPasaElTiempo();
             Juego.Instancia().Ambiente.CuandoPasaElTiempo();
             Juego.Instancia().Ambiente.CuandoPasaElTiempo();
             Juego.Instancia().Ambiente.CuandoPasaElTiempo();
-
 
             Assert.IsTrue(unCecil.Destruido());
             Assert.IsTrue(bombita.Destruido());
             Assert.IsTrue(lRGA.Destruido());
             Assert.IsTrue(lRG.Destruido());
             Assert.IsInstanceOf(typeof(Pasillo), Juego.Instancia().Ambiente.ObtenerCasilla(pBloqueAcero).Estado);
-
         }
 
         
