@@ -32,7 +32,7 @@ namespace Bomberman.Arma
             }      
         }
 
-        public void DisminuirTiempo()
+        private void DisminuirTiempo()
         {
             this.TiempoRestante = (this.TiempoRestante - 1);
         }

@@ -8,7 +8,7 @@ using Bomberman;
 
 namespace Bomberman.Mapa.Casilla
 {
-    public class Casilla //: IDaniable
+    public class Casilla
     {
         private Punto posicion;
         private Articulo.Articulo articuloContenido;
