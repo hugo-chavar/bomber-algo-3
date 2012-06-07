@@ -18,13 +18,22 @@ namespace Bomberman.Mapa
         public const int ABAJO = 2;
         public const int IZQUIERDA = 4;
         public const int DERECHA = 6;
+        private const int CANTIDADJUGADORES = 1;
         private List<IDependienteDelTiempo> esperaParaExplotar;
+        private int cantidadPersonajesVivos;
+
 
 
         public Dictionary<Punto, Casilla.Casilla> Tablero
         {
             get { return this.tablero; }
             set { this.tablero = value; }
+        }
+
+        public int CantidadPersonajesVivos
+        {
+            get { return this.cantidadPersonajesVivos; }
+            set { this.cantidadPersonajesVivos = value; }
         }
 
         public int DimensionHorizontal
@@ -48,6 +57,8 @@ namespace Bomberman.Mapa
             this.dimensionVertical = tamanioVertical;
             this.tablero = new Dictionary<Punto, Casilla.Casilla>();
             this.esperaParaExplotar = new List<IDependienteDelTiempo>();
+            this.cantidadPersonajesVivos = 0;
+
         }
 
         public void AgregarCasilla(Casilla.Casilla unaCasilla)
@@ -96,12 +107,15 @@ namespace Bomberman.Mapa
             // CHEQUEAR QUE LA CASILLA SEA TRANSITABLE!
             Casilla.Casilla unaCasilla = ObtenerCasilla(movil.Posicion);
             unaCasilla.Transitar(movil);
+            (this.cantidadPersonajesVivos)++;
+
         }
 
         public bool PosicionDentroRango(Punto punto)
         {
             return (punto.X < this.DimensionHorizontal && punto.Y < this.DimensionVertical && punto.X >= 0 && punto.Y >= 0);
         }
+
 
         public bool ExisteCasillaEnPosicion(Punto pos)
         {
@@ -365,5 +379,10 @@ namespace Bomberman.Mapa
 
            }
         }
-    }
+
+        public void DecrementarCantidadDePersonajesVivos()
+        {
+            (this.cantidadPersonajesVivos)--;
+        }
+  }
 }
