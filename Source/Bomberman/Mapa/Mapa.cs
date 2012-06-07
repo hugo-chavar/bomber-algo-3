@@ -402,6 +402,12 @@ namespace Bomberman.Mapa
                 }
 
            }
+            if (ChequearCantidadPersonajesVivos())
+            {
+                ActivarSalida();
+            }
+
+
         }
 
         public bool ChequearCantidadPersonajesVivos()

@@ -86,7 +86,7 @@ namespace Bomberman.Mapa.Casilla
 
         public void agregarSalida()
         { 
-            if ((this.Estado != null) & (this.estado.PuedeContenerSalida()) & (Juego.Juego.Instancia().Ambiente.PosicionSalida == null))
+            if ((this.Estado != null) & (this.estado.PuedeContenerSalida()) & (Juego.Juego.Instancia().Ambiente.PosicionSalida == null) & (this.estado.PuedeAgregarArticulo())) 
             {
                 this.ArticuloContenido = new Articulo.Salida();
                 Juego.Juego.Instancia().Ambiente.PosicionSalida = this.Posicion;

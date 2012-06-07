@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Bomberman.Articulo
 {
-    class Salida : Articulo
+    public class Salida : Articulo
     {
         public Salida()
         {
