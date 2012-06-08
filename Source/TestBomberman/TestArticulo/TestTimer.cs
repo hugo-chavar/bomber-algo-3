@@ -28,7 +28,8 @@ namespace TestBomberman.TestArticulo
             c.agregarArticulo(unArticulo);
             unBombita.Comer(unArticulo);
 
-            Assert.AreEqual(15, unBombita.ReduccionRetardoBombas);
+            //Assert.AreEqual(15, unBombita.ReduccionRetardoBombas); cambio debido al nuevo Lanzador
+            Assert.AreEqual(15, unBombita.Lanzador.RetardoExplosion);
         }
     }
 }

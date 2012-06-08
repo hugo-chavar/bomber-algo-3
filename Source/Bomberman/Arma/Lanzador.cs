@@ -14,7 +14,7 @@ namespace Bomberman.Arma
         protected Punto posicionDeImpacto;
         protected int alcance;
 
-        public abstract bool Lanzar(Punto posicion, int reduccionRetardo);
+        public abstract void Disparar(); //Lanzar(Punto posicion, int reduccionRetardo)--- reemplazo de metodo
 
         public int Alcance
         {

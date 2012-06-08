@@ -17,7 +17,7 @@ namespace Bomberman.Arma
             this.Alcance = ALCANCELANZAMIENTO;
         }
         
-        public override bool Lanzar(Punto posicion, int reduccionRetardo)
+        /*public override bool Lanzar(Punto posicion, int reduccionRetardo) //Hugo dice: dejo comentado esto a efectos didácticos lo reemplacé por Disparar()
         {
             Casilla casilla = Juego.Juego.Instancia().Ambiente.ObtenerCasilla(posicion);
             if (casilla.Explosivo == null)
@@ -27,6 +27,10 @@ namespace Bomberman.Arma
                 return (true); //Las bombas se ponen en la posicion del personaje
             }
             return (false); //Casilla ya ocupada Con Bomba
+        }*/ 
+        public override void Disparar()
+        {
+            Juego.Juego.Instancia().Ambiente.ObtenerCasilla(this.posicionDeImpacto).PlantarExplosivo(new BombaToleTole(this.posicionDeImpacto, this.RetardoExplosion));
         }
     }
 }
