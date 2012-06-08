@@ -15,6 +15,7 @@ namespace Bomberman.Arma
         public LanzadorProyectil()
         {
             this.Alcance = ALCANCELANZAMIENTO;
+            this.sentido = new Movimiento();
         }
         
         //public override bool Lanzar(Punto posicion, int reduccionRetardo)
@@ -29,7 +30,7 @@ namespace Bomberman.Arma
 
         public override void Disparar()
         {
-            Proyectil proyectil = new Proyectil(this.posicionDeImpacto);
+            Juego.Juego.Instancia().Ambiente.ObtenerCasilla(this.posicionDeImpacto).PlantarExplosivo(new Proyectil(this.posicionDeImpacto));
         }
 
 
