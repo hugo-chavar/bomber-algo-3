@@ -15,6 +15,7 @@ namespace Bomberman.Arma
         public LanzadorToleTole()
         {
             this.Alcance = ALCANCELANZAMIENTO;
+            this.sentido = new Movimiento();
         }
         
         /*public override bool Lanzar(Punto posicion, int reduccionRetardo) //Hugo dice: dejo comentado esto a efectos didácticos lo reemplacé por Disparar()
