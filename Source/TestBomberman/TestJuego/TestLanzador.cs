@@ -95,7 +95,7 @@ namespace TestBomberman.TestJuego
             Juego.Instancia().Ambiente.CuandoPasaElTiempo();
 
             Assert.IsTrue(unCecil.Destruido());
-            //Assert.IsTrue(bombita.Destruido());
+            Assert.IsTrue(bombita.Destruido());
         }
 
         [Test]

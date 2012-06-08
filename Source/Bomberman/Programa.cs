@@ -61,7 +61,13 @@ namespace Bomberman
             unJuego.Ambiente.AgregarPersonaje(bombita);
             unJuego.Ambiente.AgregarPersonaje(unCecil);
 
+            Punto pBloqueAcero = new Punto(1, 1);
+            bombita.CambiarLanzadorAToleTole(); // harcodeo el lanzador para ver internamente lo que ocurre al cambiar el lanzador
             bombita.LanzarExplosivo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
             unJuego.Ambiente.CuandoPasaElTiempo();
 
             if (unCecil.Destruido())
