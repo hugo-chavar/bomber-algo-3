@@ -44,13 +44,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Arma\IDependienteDelTiempo.cs" />
-    <Compile Include="Arma\ManejadorProyectil.cs" />
     <Compile Include="Arma\Explosivo.cs" />
     <Compile Include="Arma\BombaToleTole.cs" />
     <Compile Include="Arma\Lanzador.cs" />
     <Compile Include="Arma\LanzadorMolotov.cs" />
     <Compile Include="Arma\LanzadorProyectil.cs" />
     <Compile Include="Arma\LanzadorToleTole.cs" />
+    <Compile Include="Arma\ManejadorProyectil.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Arma\Proyectil.cs" />
     <Compile Include="Articulo\Articulo.cs" />
     <Compile Include="Articulo\ArticuloBombaToleTole.cs" />

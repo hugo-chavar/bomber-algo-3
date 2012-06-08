@@ -55,14 +55,6 @@ namespace TestBomberman.TestPersonaje
 
             Assert.AreEqual(unaLista, destino.TransitandoEnCasilla);
         }
-
-        [Test]
-        public void MePermiteMoverPersonaje()
-        {
-            //Martin: PONGO ESTO PARA QUE EL QUE HIZO ESTA PRUEBA NO SE OLVIDE QUE NO HIZO NADA ACA ADENTRO!
-            Assert.IsTrue(false);
-        }
-
         
     }
 }
