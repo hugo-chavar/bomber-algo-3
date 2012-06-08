@@ -436,7 +436,7 @@ namespace Bomberman.Mapa
 
         public bool PermitidoLanzarExplosivoAPos(Punto pos)
         {
-            return (ExisteCasillaEnPosicion(pos) && ObtenerCasilla(pos).PermiteExplosivos());
+            return (ExisteCasillaEnPosicion(pos) && ObtenerCasilla(pos).PermiteExplosivos() && !ObtenerCasilla(pos).TieneUnExplosivo());
         }
     }
 }

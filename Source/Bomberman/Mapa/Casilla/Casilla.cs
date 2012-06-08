@@ -46,6 +46,11 @@ namespace Bomberman.Mapa.Casilla
             return this.Estado.PermiteDejarExplosivos();
         }
 
+        public bool TieneUnExplosivo()
+        {
+            return (this.explosivo != null);
+        }
+
         public void Transitar(IMovible movil)
         {
             this.transitandoEnCasilla.Add(movil);
@@ -108,7 +113,7 @@ namespace Bomberman.Mapa.Casilla
             this.explosivo=unExplosivo;
         }
 
-        public void QuitarExplosivo(Explosivo unExplosivo)
+        public void QuitarExplosivo(Explosivo unExplosivo) //Hugo dice: metodo raro, voy ver para que se usa cuando pueda
         {
             if(this.explosivo==unExplosivo)
                 this.explosivo = null;

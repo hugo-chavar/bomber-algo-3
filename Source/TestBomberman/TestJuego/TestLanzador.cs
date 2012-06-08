@@ -11,9 +11,10 @@ using Bomberman.Articulo;
 namespace TestBomberman.TestJuego
 {
     [TestFixture]
-    class TestPersonaje
+    class TestLanzador
     {
         private Juego unJuego;
+        //private Mapa unMapa;
 
         private const int ANCHOMAPA = 5;
         private const int ALTOMAPA = 5;
@@ -55,16 +56,32 @@ namespace TestBomberman.TestJuego
         }
 
         [Test]
-        public void TestBombitaPlantaUnaBombaMolotovYNoPuedePlantarOtraEnElMismoLugar()
+        public void BombitaPlantaUnaBombaYElJuegoDetectaQueLaCasillaTieneUnExplosivo()
         {
             Personaje bombita = this.unJuego.Protagonista;
+            //Bombita tiene un Lanzador de Molotov por defecto
             bombita.LanzarExplosivo();
 
-            Assert.IsFalse(bombita.LanzarExplosivo());
+            //Assert.IsFalse(bombita.LanzarExplosivo());
+            Assert.IsTrue(this.unJuego.Ambiente.ObtenerCasilla(new Punto(0,0)).TieneUnExplosivo());
         }
 
+
+        //[Test]
+        //Hugo dice: el LanzarExlosivo ya no devuelve boolean, ahora se puede modificar esto para que chequee q si a Bombita tenía una bomba limitada
+        //le queda una bomba menos de las que tenia
+        //para eso se debe guardar en algun lado (en el Lanzador!!) las cantidades restantes
+        //public void TestBombitaPlantaUnaBombaMolotovYNoPuedePlantarOtraEnElMismoLugar()
+        //{
+        //    Personaje bombita = this.unJuego.Protagonista;
+        //    bombita.LanzarExplosivo();
+
+        //    Assert.IsFalse(bombita.LanzarExplosivo());
+
+        //}
+
         [Test]
-        public void TestCuandoBombmitaPlantaUnaMolotovDestruyendoACecilio()
+        public void TestCuandoBombitaPlantaUnaMolotovDestruyendoACecilio()
         {
             Punto pBombita = new Punto(1, 0);
             Punto pCecil = new Punto(0, 0);
@@ -78,11 +95,11 @@ namespace TestBomberman.TestJuego
             Juego.Instancia().Ambiente.CuandoPasaElTiempo();
 
             Assert.IsTrue(unCecil.Destruido());
-            Assert.IsTrue(bombita.Destruido());
+            //Assert.IsTrue(bombita.Destruido());
         }
 
         [Test]
-        public void TestCuandoBombmitaPlanta2MolotovDestruyendoALosLopezRaggae()
+        public void TestCuandoBombitaPlanta2MolotovDestruyendoALosLopezRaggae()
         {
             Punto pBombita = new Punto(1, 0);
             Punto pLopezRaggae = new Punto(0, 0);
@@ -112,7 +129,7 @@ namespace TestBomberman.TestJuego
         }
 
         [Test]
-        public void TestCuandoBombmitaPlantaUnaMolotovDestruyendoAUnLosLopezRaggaeAlado()
+        public void TestCuandoBombitaPlantaUnaMolotovDestruyendoAUnLosLopezRaggaeAlado()
         {
             Punto pBombita = new Punto(1, 0);
             Punto pLopezRaggaeAlado = new Punto(0, 0);
@@ -449,7 +466,7 @@ namespace TestBomberman.TestJuego
 
             int retardo = 15;
 
-            Assert.AreEqual(retardo, unBombita.ReduccionRetardoBombas);
+            Assert.AreEqual(retardo, unBombita.Lanzador.RetardoExplosion);
         }
 
         [Test]

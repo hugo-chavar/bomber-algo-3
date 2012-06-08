@@ -727,7 +727,7 @@ namespace TestBomberman.TestMapa
 
             destino.Transitar(unBombita);
 
-            Assert.AreEqual(retardo, unBombita.ReduccionRetardoBombas);
+            Assert.AreEqual(retardo, unBombita.Lanzador.RetardoExplosion);
         }
 
         [Test]
@@ -828,7 +828,7 @@ namespace TestBomberman.TestMapa
 
             destino.Transitar(unBombita);
 
-            Assert.AreEqual(retardo, unBombita.ReduccionRetardoBombas);
+            Assert.AreEqual(retardo, unBombita.Lanzador.RetardoExplosion);
         }
 
         [Test]
@@ -879,7 +879,7 @@ namespace TestBomberman.TestMapa
 
             destino.Transitar(unEnemigo);
 
-            Assert.AreEqual(retardo, unEnemigo.ReduccionRetardoBombas);
+            Assert.AreEqual(retardo, unEnemigo.Lanzador.RetardoExplosion);
         }
 
         [Test]
@@ -929,7 +929,7 @@ namespace TestBomberman.TestMapa
 
             destino.Transitar(unEnemigo);
 
-            Assert.AreEqual(retardo, unEnemigo.ReduccionRetardoBombas);
+            Assert.AreEqual(retardo, unEnemigo.Lanzador.RetardoExplosion);
         }
 
         [Test]
@@ -979,7 +979,7 @@ namespace TestBomberman.TestMapa
 
             destino.Transitar(unEnemigo);
 
-            Assert.AreEqual(retardo, unEnemigo.ReduccionRetardoBombas);
+            Assert.AreEqual(retardo, unEnemigo.Lanzador.RetardoExplosion);
         }
 
         [Test]

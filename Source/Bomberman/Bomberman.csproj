@@ -6,7 +6,7 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{F0A3EDDB-4DCE-4E03-B7E4-B50FC421A8CC}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Bomberman</RootNamespace>
     <AssemblyName>Bomberman</AssemblyName>
@@ -29,6 +29,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Bomberman.Programa</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -54,6 +57,7 @@
     <Compile Include="Articulo\Chala.cs" />
     <Compile Include="Articulo\Salida.cs" />
     <Compile Include="Articulo\Timer.cs" />
+    <Compile Include="Programa.cs" />
     <Compile Include="Excepciones\CasillaYaIngresadaException.cs" />
     <Compile Include="Excepciones\EstadoNuloException.cs" />
     <Compile Include="Excepciones\NoExisteCasillaException.cs" />

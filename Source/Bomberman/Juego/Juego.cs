@@ -50,15 +50,12 @@ namespace Bomberman.Juego
         //constructor
         public Juego()
         {
-            Punto unPunto = new Punto ( 0 , 0 );
-            this.Protagonista = new Personaje.Bombita(unPunto);
             this.JuegoPausado = false;
             this.CantDeVidas = VIDAS;
             this.Ambiente = new Mapa.Mapa(ANCHOMAPA,ALTOMAPA);
-
+            this.protagonista = new Personaje.Bombita(new Punto(0, 0));
 
             //aca se carga el template del mapa
-            //luego se agrega a bombita al mapa
             //luego se agregan los enemigos
 
         }
@@ -69,6 +66,7 @@ namespace Bomberman.Juego
             if (instanciaDeJuego == null)
             {
                 instanciaDeJuego = new Juego();
+                
                 //aca van las inicializaciones que van por
                 //afuera del constructor
             }

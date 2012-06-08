@@ -13,12 +13,12 @@ namespace Bomberman.Personaje
         protected Movimiento movimiento;
         protected Punto posicion;
         protected Lanzador lanzador;
-        protected int reduccionRetardoBombas;
+        //protected int reduccionRetardoBombas;
         protected int unidadesDeResistencia;
 
         public Personaje(Punto unPunto)
         {
-            this.reduccionRetardoBombas = 0;
+            //this.reduccionRetardoBombas = 0;
             this.movimiento = new Movimiento();
             this.Posicion = unPunto;
         }
@@ -35,11 +35,11 @@ namespace Bomberman.Personaje
             set { this.lanzador = value; }
         }
 
-        public int ReduccionRetardoBombas
-        { 
-            get { return this.reduccionRetardoBombas;}
-            set { this.reduccionRetardoBombas = value; }
-        }
+        //public int ReduccionRetardoBombas
+        //{ 
+        //    get { return this.reduccionRetardoBombas;}
+        //    set { this.reduccionRetardoBombas = value; }
+        //}
 
         public int UnidadesDeResistencia
         {
@@ -53,15 +53,41 @@ namespace Bomberman.Personaje
             set { this.posicion = value; }
         }
 
+        public void Apuntar()
+        {
+            this.Lanzador.Sentido.Direccion = this.Movimiento.Direccion;
+            this.Lanzador.PosicionDeTiro = this.Posicion.Clonar();
+            this.Lanzador.CalcularPosicionDeImpacto();
+        }
+
         public bool LanzarExplosivo()
         {
-            return (this.lanzador.Lanzar(this.Posicion, this.reduccionRetardoBombas));
+            //return (this.lanzador.Lanzar(this.Posicion, this.reduccionRetardoBombas)); nuevo lanzador dejo esto por un tiempo
+            //Apuntar();
+            //this.Lanzador.Disparar();
+            //el explosivo fue lanzado
+           // return true;
+
+            //Impedimos que los que atraviesan obstaculos pongan bombas sobre el
+            if (Juego.Juego.Instancia().Ambiente.ObtenerCasilla(this.Posicion).PermiteExplosivos())
+            {
+                //ahora uso el lanzador para disparar
+                Apuntar();
+                this.Lanzador.Disparar();
+                //el explosivo fue lanzado
+                return true;
+            }
+            else
+            {
+                //el explosivo no fue lanzado
+                return false;
+            }
         }
 
         public void Mover()
         {
             if (!(this.Destruido()))                //Resolucion para que los personajes no sean zombies ! 
-            Juego.Juego.Instancia().Ambiente.Mover(this);
+                Juego.Juego.Instancia().Ambiente.Mover(this);
         }
 
         public virtual bool AtraviesaObstaculos()
@@ -74,21 +100,9 @@ namespace Bomberman.Personaje
             return ((this.unidadesDeResistencia) < 1);
         }
 
-        public void Apuntar()
-
-        {
-            this.Lanzador.Sentido.Direccion = this.Movimiento.Direccion;
-            this.Lanzador.PosicionDeTiro = this.Posicion;
-            this.Lanzador.CalcularPosicionDeImpacto();
-        }
-
         public void Disparar()
         {
-            //Impedimos que los que atraviesan obstaculos pongan bombas sobre el
-            if (Juego.Juego.Instancia().Ambiente.ObtenerCasilla(this.Posicion).PermiteExplosivos())
-            {
-                //ahora uso el lanzador para disparar
-            }
+
         }
         
         private int CalcularUnidadesRestantes(int unidadesDestruidas)
@@ -141,7 +155,7 @@ namespace Bomberman.Personaje
 
         public void ReducirRetardo(int retardo)
         {
-            this.ReduccionRetardoBombas = retardo;
+            this.Lanzador.RetardoExplosion = retardo;
         }
 
         public abstract void PartidaGanada();
