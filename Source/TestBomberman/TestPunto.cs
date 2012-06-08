@@ -48,6 +48,14 @@ namespace TestBomberman
         }
 
         [Test]
+        public void GetHashCodeDevuelveUnNumeroDistintoParaDosPuntosDistintos()
+        {
+            Punto pa = new Punto(3, 4);
+            Punto pb = new Punto(2, 4);
+            Assert.AreNotEqual(pa.GetHashCode(), pb.GetHashCode());
+        }
+
+        [Test]
         public void ClonarDevuelveUnNuevoPuntoConCordenadasIgualesAlPuntoClonado()
         {
             Punto otroPunto = this.posicion.Clonar();

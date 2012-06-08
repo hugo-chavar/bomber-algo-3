@@ -13,7 +13,6 @@ namespace Bomberman.Arma
         protected int retardoExplosion;
         protected Punto posicionDeImpacto;
         protected int alcance;
-        protected int alcanceDelUltimoLanzamiento;
 
         public abstract bool Lanzar(Punto posicion, int reduccionRetardo);
 
@@ -43,73 +42,68 @@ namespace Bomberman.Arma
 
         public void CalcularPosicionDeImpactoHaciaArriba()
         {
-            this.posicionDeImpacto = this.posicionDeTiro.MoverPosicionesEnSentidoVertical(this.alcanceDelUltimoLanzamiento);
-            bool posicionCalculada = false;
-            while (!this.posicionDeImpacto.Equals(this.posicionDeTiro) ||
-                    !Juego.Juego.Instancia().Ambiente.ExisteCasillaEnPosicion(this.posicionDeImpacto) || posicionCalculada)
+            //sabemos que la posicion en la que esta es un pasillo y puede dejar la bomba alli
+            this.posicionDeImpacto = this.posicionDeTiro.Clonar();
+            //voy hasta el alcance del lanzamiento o hasta un obstaculo o fin de mapa
+            int i = this.Alcance;
+            Punto posAux = this.posicionDeTiro.PosicionSuperior();
+            while (i > 0 && Juego.Juego.Instancia().Ambiente.PermitidoLanzarExplosivoAPos(posAux))
             {
-                this.alcanceDelUltimoLanzamiento--;
-                this.posicionDeImpacto = this.posicionDeTiro.MoverPosicionesEnSentidoVertical(this.alcanceDelUltimoLanzamiento);
-                if (Juego.Juego.Instancia().Ambiente.ExisteCasillaEnPosicion(this.posicionDeImpacto) &&
-                    Juego.Juego.Instancia().Ambiente.ObtenerCasilla(this.posicionDeImpacto).PermiteExplosivos())
-                        
-                        posicionCalculada = true;
+                this.posicionDeImpacto = posAux;
+                posAux = this.posicionDeImpacto.PosicionSuperior();
+                i--;
             }
         }
 
         public void CalcularPosicionDeImpactoHaciaAbajo()
         {
-            this.posicionDeImpacto = this.posicionDeTiro.MoverPosicionesEnSentidoVertical(this.alcanceDelUltimoLanzamiento * -1);
-            bool posicionCalculada = false;
-            while (!this.posicionDeImpacto.Equals(this.posicionDeTiro) ||
-                    !Juego.Juego.Instancia().Ambiente.ExisteCasillaEnPosicion(this.posicionDeImpacto) || posicionCalculada)
+            //sabemos que la posicion en la que esta es un pasillo y puede dejar la bomba alli
+            this.posicionDeImpacto = this.posicionDeTiro.Clonar();
+            //voy hasta el alcance del lanzamiento o hasta un obstaculo o fin de mapa
+            int i = this.Alcance;
+            Punto posAux = this.posicionDeTiro.PosicionInferior();
+            while (i > 0 && Juego.Juego.Instancia().Ambiente.PermitidoLanzarExplosivoAPos(posAux))
             {
-                this.alcanceDelUltimoLanzamiento--;
-                this.posicionDeImpacto = this.posicionDeTiro.MoverPosicionesEnSentidoVertical(this.alcanceDelUltimoLanzamiento * -1);
-                if (Juego.Juego.Instancia().Ambiente.ExisteCasillaEnPosicion(this.posicionDeImpacto) &&
-                    Juego.Juego.Instancia().Ambiente.ObtenerCasilla(this.posicionDeImpacto).PermiteExplosivos())
-
-                    posicionCalculada = true;
+                this.posicionDeImpacto = posAux;
+                posAux = this.posicionDeImpacto.PosicionInferior();
+                i--;
             }
         }
 
         public void CalcularPosicionDeImpactoHaciaLaIzquierda()
         {
-            this.posicionDeImpacto = this.posicionDeTiro.MoverPosicionesEnSentidoHorizontal(this.alcanceDelUltimoLanzamiento * -1);
-            bool posicionCalculada = false;
-            while (!this.posicionDeImpacto.Equals(this.posicionDeTiro) ||
-                    !Juego.Juego.Instancia().Ambiente.ExisteCasillaEnPosicion(this.posicionDeImpacto) || posicionCalculada)
+            //sabemos que la posicion en la que esta es un pasillo y puede dejar la bomba alli
+            this.posicionDeImpacto = this.posicionDeTiro.Clonar();
+            //voy hasta el alcance del lanzamiento o hasta un obstaculo o fin de mapa
+            int i = this.Alcance;
+            Punto posAux = this.posicionDeTiro.PosicionIzquierda();
+            while (i > 0 && Juego.Juego.Instancia().Ambiente.PermitidoLanzarExplosivoAPos(posAux))
             {
-                this.alcanceDelUltimoLanzamiento--;
-                this.posicionDeImpacto = this.posicionDeTiro.MoverPosicionesEnSentidoHorizontal(this.alcanceDelUltimoLanzamiento * -1);
-                if (Juego.Juego.Instancia().Ambiente.ExisteCasillaEnPosicion(this.posicionDeImpacto) &&
-                    Juego.Juego.Instancia().Ambiente.ObtenerCasilla(this.posicionDeImpacto).PermiteExplosivos())
-
-                    posicionCalculada = true;
+                this.posicionDeImpacto = posAux;
+                posAux = this.posicionDeImpacto.PosicionIzquierda();
+                i--;
             }
         }
 
         public void CalcularPosicionDeImpactoHaciaLaDerecha()
         {
-            this.posicionDeImpacto = this.posicionDeTiro.MoverPosicionesEnSentidoHorizontal(this.alcanceDelUltimoLanzamiento);
-            bool posicionCalculada = false;
-            while (!this.posicionDeImpacto.Equals(this.posicionDeTiro) ||
-                    !Juego.Juego.Instancia().Ambiente.ExisteCasillaEnPosicion(this.posicionDeImpacto) || posicionCalculada)
+            //sabemos que la posicion en la que esta es un pasillo y puede dejar la bomba alli
+            this.posicionDeImpacto = this.posicionDeTiro.Clonar();
+            //voy hasta el alcance del lanzamiento o hasta un obstaculo o fin de mapa
+            int i = this.Alcance;
+            Punto posAux = this.posicionDeTiro.PosicionDerecha();
+            while (i > 0 && Juego.Juego.Instancia().Ambiente.PermitidoLanzarExplosivoAPos(posAux))
             {
-                this.alcanceDelUltimoLanzamiento--;
-                this.posicionDeImpacto = this.posicionDeTiro.MoverPosicionesEnSentidoHorizontal(this.alcanceDelUltimoLanzamiento);
-                if (Juego.Juego.Instancia().Ambiente.ExisteCasillaEnPosicion(this.posicionDeImpacto) &&
-                    Juego.Juego.Instancia().Ambiente.ObtenerCasilla(this.posicionDeImpacto).PermiteExplosivos())
-
-                    posicionCalculada = true;
+                this.posicionDeImpacto = posAux;
+                posAux = this.posicionDeImpacto.PosicionDerecha();
+                i--;
             }
         }
 
         public void CalcularPosicionDeImpacto()
         {
-            //el lanzamiento puede hacerse por sobre obstaculos
-            //pero el artefacto explosivo debe caer en un pasillo
-            this.alcanceDelUltimoLanzamiento = this.Alcance;
+            //el lanzamiento no puede hacerse por sobre obstaculos
+            //el artefacto explosivo debe caer en un pasillo
             switch (this.Sentido.Direccion)
             {
                 case Mapa.Mapa.ARRIBA:

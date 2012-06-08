@@ -84,7 +84,11 @@ namespace Bomberman.Personaje
 
         public void Disparar()
         {
-
+            //Impedimos que los que atraviesan obstaculos pongan bombas sobre el
+            if (Juego.Juego.Instancia().Ambiente.ObtenerCasilla(this.Posicion).PermiteExplosivos())
+            {
+                //ahora uso el lanzador para disparar
+            }
         }
         
         private int CalcularUnidadesRestantes(int unidadesDestruidas)

@@ -428,10 +428,15 @@ namespace Bomberman.Mapa
             (this.cantidadPersonajesVivos) = this.cantidadPersonajesVivos - 1;
         }
 
-        internal void FinalizarNivel()
+        public void FinalizarNivel()
         {
             this.NivelTerminado = true;
             this.NivelGanado = true;
+        }
+
+        public bool PermitidoLanzarExplosivoAPos(Punto pos)
+        {
+            return (ExisteCasillaEnPosicion(pos) && ObtenerCasilla(pos).PermiteExplosivos());
         }
     }
 }

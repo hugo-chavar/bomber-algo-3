@@ -1025,8 +1025,6 @@ namespace TestBomberman.TestMapa
         [Test]
         public void CuandoGeneroUnMapaNuevoAgrego2PersonajesYElimino1ConToleTole()
         {
-
-
             this.unjuego = Juego.Instancia();
             unjuego.Ambiente = unMapa;
             
@@ -1045,16 +1043,11 @@ namespace TestBomberman.TestMapa
             unCecilio.DaniarConBombaToleTole();
             Assert.IsTrue(unCecilio.Destruido());
             Assert.AreEqual(unMapa.CantidadPersonajesVivos, 1);
-
-
-
         }
 
         [Test]
         public void CuandoGeneroUnMapaNuevoAgrego2PersonajesYEliminoLos2ConMolotov()
         {
-
-
             this.unjuego = Juego.Instancia();
             unjuego.Ambiente = unMapa;
 
@@ -1074,12 +1067,28 @@ namespace TestBomberman.TestMapa
             unBombita.DaniarConBombaMolotov(5);
             Assert.IsTrue(unCecilio.Destruido());
             Assert.AreEqual(unMapa.CantidadPersonajesVivos, 0);
-
-
-
         }
 
-        
+        [Test]
+        public void PermitidoLanzarExplosivoAPosDevuelveTrueSiLaPosEsUnPasillo()
+        {
+            Punto posDestino = new Punto(2, 2);
+            Assert.IsTrue(unMapa.PermitidoLanzarExplosivoAPos(posDestino));
+        }
 
+        [Test]
+        public void PermitidoLanzarExplosivoAPosDevuelveFalseSiLaPosEsUnObstaculo()
+        {
+            Punto pos = new Punto(3, 2);
+            unMapa.ObtenerCasilla(pos).Estado = new BloqueAcero();
+            Assert.IsFalse(unMapa.PermitidoLanzarExplosivoAPos(pos));
+        }
+
+        [Test]
+        public void PermitidoLanzarExplosivoAPosDevuelveFalseSiLaPosNoExisteEnElMapa()
+        {
+            Punto pos = new Punto(5, 6);
+            Assert.IsFalse(unMapa.PermitidoLanzarExplosivoAPos(pos));
+        }
     }
 }
