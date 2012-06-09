@@ -311,7 +311,7 @@ namespace Bomberman.Mapa
                     if (casillaAux.Estado.Destruido())
                         casillaAux.Estado = new Pasillo();
                     for (int j = 0; j < casillaAux.TransitandoEnCasilla.Count; j++)
-                        explosivo.Daniar(casillaAux.TransitandoEnCasilla[j]);
+                        explosivo.Daniar(casillaAux.TransitandoEnCasilla[j].ObtenerDaniable());
                 }
             }
             catch (NoExisteCasillaException)
