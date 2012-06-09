@@ -8,7 +8,7 @@ using Bomberman.Arma;
 
 namespace Bomberman.Personaje
 {
-    public abstract class Personaje : IMovible , IComedor , IDaniable
+    public abstract class Personaje : IMovible , IDaniable
     {
         protected Movimiento movimiento;
         protected Punto posicion;
@@ -95,7 +95,7 @@ namespace Bomberman.Personaje
 
         public void Disparar()
         {
-
+            //Martin: Por que quedo vacio esto?
         }
         
         private int CalcularUnidadesRestantes(int unidadesDestruidas)
@@ -134,8 +134,6 @@ namespace Bomberman.Personaje
             }
         }
         
-        public abstract void Comer(Articulo.IComible comible);
-
         public void DuplicarVelocidad()
         {
             this.movimiento.MultiplicarVelocidadPor(2);
@@ -154,12 +152,8 @@ namespace Bomberman.Personaje
         public abstract void PartidaGanada();
 
 
-        public void ReaccionarConArticulo(Articulo.Articulo articulo)
-        {
-            this.Comer(articulo);
-        }
-
-
+        public abstract void ReaccionarConArticulo(Articulo.Articulo articulo);
+        
         public IDaniable ObtenerDaniable()
         {
             return this;
