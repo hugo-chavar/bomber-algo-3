@@ -3,6 +3,7 @@ using Bomberman.Juego;
 using Bomberman.Mapa;
 using Bomberman.Mapa.Casilla;
 using Bomberman.Personaje;
+using Bomberman.Articulo;
 using Bomberman.Arma;
 using Bomberman;
 namespace TestBomberman.TestIntegracion
@@ -10,20 +11,20 @@ namespace TestBomberman.TestIntegracion
     class TestIntegracionExplosivoYPersonaje
     {
         private Juego unJuego;
-        private const int ANCHOMAPA = 5;
-        private const int ALTOMAPA = 5;
+        private const int ANCHOMAPA = 6;
+        private const int ALTOMAPA = 6;
         private Mapa unMapa;
 
 
         [SetUp]
         public void TestSetup()
         {
-            //creo un mapa 5x5 con esta distribucion (P = Pasillo, * = BloqueAcero):
-            //      P P P P P
-            //      P * P * P
-            //      P P P P P
-            //      P * P * P
-            //      P P P P P
+            //creo un mapa 6x6 con esta distribucion (P = Pasillo, * = BloqueLadrillos):
+            //      P P P P P P
+            //      P * P * P *
+            //      P P P P P P
+            //      P * P * P *
+            //      P P P P P P
 
             Punto unaPosicion;
             Casilla unaCasilla;
@@ -37,7 +38,7 @@ namespace TestBomberman.TestIntegracion
                     if ((i & 1) == 1 && (j & 1) == 1)
                     {
                         //ambos son numeros impares
-                        unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueAcero(unaPosicion);
+                        unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(unaPosicion);
                     }
                     else
                     {
@@ -92,23 +93,67 @@ namespace TestBomberman.TestIntegracion
             Assert.IsFalse(bombita.Destruido());
         }
 
-        /*
         [Test]
-        public void TestLopezReggaeLanzaUnProyectilSinObtaculosEnFrenteYElProyectilDebeExplotarAlpasar3Tiempos()
+        public void TestBombitaPlantaUnaMolotovSeMueveFueraDeSuAlcanceAgarraArticuloYLuegoDeQueLaBombaExplotaVuelveYPlantaUnaToleTole()
         {
-            Punto PosicionDePartida= new Punto(0, 0);
-            Punto PosicionDeLlegada= new Punto(3, 0);
-            LosLopezReggae personaje = new LosLopezReggae(PosicionDePartida);
-            Juego.Instancia().Ambiente.ObtenerCasilla(PosicionDePartida).Transitar(personaje);
-            personaje.Movimiento.CambiarADerecha();
-            personaje.LanzarExplosivo();
+            Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(1, 1)).agregarArticulo(new ArticuloBombaToleTole());
+            Punto PosicionDePlantado = new Punto(1, 0);
+            Bombita bombita = new Bombita(PosicionDePlantado);
+            Juego.Instancia().Ambiente.ObtenerCasilla(PosicionDePlantado).Transitar(bombita);
+            bombita.LanzarExplosivo();
+            bombita.Movimiento.CambiarADerecha();
+            bombita.Mover();
+            bombita.Movimiento.CambiarAArriba();
+            bombita.Mover();
             Juego.Instancia().Ambiente.CuandoPasaElTiempo();
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
-            Assert.AreEqual(typeof(Proyectil), Juego.Instancia().Ambiente.ObtenerCasilla(PosicionDeLlegada).explosivo);
-        
+            bombita.Movimiento.CambiarAIzquierda();
+            bombita.Mover();
+            bombita.Movimiento.CambiarAAbajo();
+            bombita.Mover();
+            bombita.LanzarExplosivo();
+            Assert.IsInstanceOf(typeof(BombaToleTole), Juego.Instancia().Ambiente.ObtenerCasilla(PosicionDePlantado).Explosivo);
+            Assert.IsFalse(bombita.Destruido());
         }
-         */
+
+        [Test]
+        public void TestLopezReggaeAladoPlantaUnaMolotovSeMueveFueraDeSuAlcanceYLuegoDeQueLaBombaExplotaVuelveYPlantaOtra()
+        {
+            Punto PosicionDePlantado = new Punto(0, 1);
+            LosLopezReggaeAlado personaje = new LosLopezReggaeAlado(PosicionDePlantado);
+            Juego.Instancia().Ambiente.ObtenerCasilla(PosicionDePlantado).Transitar(personaje);
+            personaje.LanzarExplosivo();
+            personaje.Movimiento.CambiarADerecha();
+            personaje.Mover();
+            personaje.Mover();
+            personaje.Mover();
+            personaje.Mover();
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            personaje.Movimiento.CambiarAIzquierda();
+            personaje.Mover();
+            personaje.Mover();
+            personaje.Mover();
+            personaje.Mover();
+            personaje.LanzarExplosivo();
+            Assert.IsInstanceOf(typeof(BombaMolotov), Juego.Instancia().Ambiente.ObtenerCasilla(PosicionDePlantado).Explosivo);
+            Assert.IsFalse(personaje.Destruido());
+        }
+
+       [Test]
+       public void TestLopezReggaeLanzaUnProyectilSinObtaculosEnFrenteYElProyectilDebeExplotarAlpasar3TiemposYDaniarElObstaculoDeArriba()
+       {
+           Punto PosicionDePartida= new Punto(0,0);
+           LosLopezReggae personaje = new LosLopezReggae(PosicionDePartida);
+           Juego.Instancia().Ambiente.ObtenerCasilla(PosicionDePartida).Transitar(personaje);
+           personaje.Movimiento.CambiarADerecha();
+           personaje.LanzarExplosivo();
+           Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+           Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+           Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+           Assert.AreEqual(4, Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(3,1)).Estado.UnidadesDeResistencia);
+       }
+        
+
+
 
 
     }
