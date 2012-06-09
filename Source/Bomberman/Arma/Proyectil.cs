@@ -12,6 +12,8 @@ namespace Bomberman.Arma
         private const int ONDAEXPANSIVA = 3;
 
         private Punto posicionFinal;
+        //private Punto posicionActual;
+        private List<Punto> trayectoria;
         private int alcance = ALCANCEPROYECTIL;
         private int tiempoRestante;
         private ManejadorProyectil unManejador;
@@ -29,14 +31,13 @@ namespace Bomberman.Arma
             set { this.posicionFinal = value; }
         }
                 
-        public Proyectil(Punto posicionInicial)
+        public Proyectil(Punto posicionDestino)
 
         {
             this.poderDeDestruccion = PODERDEDESTRUCCIONPROYECTIL;
             this.ondaExpansiva = ONDAEXPANSIVA;
             Punto PosicionFinal = new Punto(0, 0);
             posicionFinal = PosicionFinal;
-            posicion = posicionInicial;
             tiempoRestante = 3;
         }
           
@@ -78,6 +79,12 @@ namespace Bomberman.Arma
         public void DisminuirTiempo()
         {
             this.tiempoRestante = this.tiempoRestante - 1;
+        }
+
+        public List<Punto> Trayectoria 
+        {
+            //get ; 
+            set {this.trayectoria = value;}
         }
     }
 }

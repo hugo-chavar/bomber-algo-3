@@ -40,7 +40,15 @@ namespace Bomberman.Arma
             set { this.sentido = value; }
         }
 
-        public void CalcularPosicionDeImpactoHaciaArriba()
+
+        public virtual void Apuntar(IMovible movil)
+        {
+            this.Sentido.Direccion = movil.Movimiento.Direccion;
+            this.PosicionDeTiro = movil.Posicion.Clonar();
+            this.CalcularPosicionDeImpacto();
+        }
+
+        public virtual void CalcularPosicionDeImpactoHaciaArriba()
         {
             //sabemos que la posicion en la que esta es un pasillo y puede dejar la bomba alli
             this.posicionDeImpacto = this.posicionDeTiro.Clonar();
@@ -55,7 +63,7 @@ namespace Bomberman.Arma
             }
         }
 
-        public void CalcularPosicionDeImpactoHaciaAbajo()
+        public virtual void CalcularPosicionDeImpactoHaciaAbajo()
         {
             //sabemos que la posicion en la que esta es un pasillo y puede dejar la bomba alli
             this.posicionDeImpacto = this.posicionDeTiro.Clonar();
@@ -70,7 +78,7 @@ namespace Bomberman.Arma
             }
         }
 
-        public void CalcularPosicionDeImpactoHaciaLaIzquierda()
+        public virtual void CalcularPosicionDeImpactoHaciaLaIzquierda()
         {
             //sabemos que la posicion en la que esta es un pasillo y puede dejar la bomba alli
             this.posicionDeImpacto = this.posicionDeTiro.Clonar();
@@ -85,7 +93,7 @@ namespace Bomberman.Arma
             }
         }
 
-        public void CalcularPosicionDeImpactoHaciaLaDerecha()
+        public virtual void CalcularPosicionDeImpactoHaciaLaDerecha()
         {
             //sabemos que la posicion en la que esta es un pasillo y puede dejar la bomba alli
             this.posicionDeImpacto = this.posicionDeTiro.Clonar();
