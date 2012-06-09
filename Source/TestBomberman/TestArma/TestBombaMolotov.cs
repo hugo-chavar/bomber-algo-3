@@ -12,7 +12,7 @@ namespace TestBomberman.TestArma
     [TestFixture]
     class TestBombaMolotov
     {
-        private Punto posicion;
+       // private Punto posicion;
         private Juego juego;
         private Mapa unMapa;
         private const int ANCHOMAPA = 5;
@@ -22,9 +22,9 @@ namespace TestBomberman.TestArma
         public void TestSetup()
         {
             juego = new Juego();
-            posicion = new Punto(3, 4);
-            Casilla unaCasilla = FabricaDeCasillas.FabricarPasillo(posicion);
-            juego.Ambiente.AgregarCasilla(unaCasilla);
+            //posicion = new Punto(3, 4);
+            //Casilla unaCasilla = FabricaDeCasillas.FabricarPasillo(posicion);
+            //juego.Ambiente.AgregarCasilla(unaCasilla);
 
             //creo un mapa 5x5 con esta distribucion (P = Pasillo, * = BloqueAcero):
             //      P P P P P
@@ -54,28 +54,32 @@ namespace TestBomberman.TestArma
                     }
                     this.unMapa.AgregarCasilla(unaCasilla2);
                   }
+            juego.Ambiente = this.unMapa;
         }
 
         [Test]
         public void TestBombaMolotovEstaExplotadaAlSerPlantadaDebeDevolverFalse()
         {
-            Bomba bomba = new BombaMolotov(posicion, 0);
-            Assert.AreEqual(bomba.EstaExplotado(), false);
+            Punto unPto = new Punto(3, 4);
+            Bomba bomba = new BombaMolotov(unPto, 0);
+            Assert.IsFalse(bomba.EstaExplotado());
         }
 
         [Test]
         public void EstaExplotadaAlPasarUnTiempoDevuelveTrue()
         {
-            Bomba bomba = new BombaMolotov(posicion, 0);
-            juego.Ambiente.ObtenerCasilla(posicion).PlantarExplosivo(bomba);
+            Punto unPto = new Punto(3, 4);
+            Bomba bomba = new BombaMolotov(unPto, 0);
+            unMapa.ObtenerCasilla(unPto).PlantarExplosivo(bomba);
             bomba.CuandoPasaElTiempo();
-            Assert.AreEqual(bomba.EstaExplotado(), true);
+            Assert.IsTrue(bomba.EstaExplotado());
         }
 
         [Test]
         public void DaniarBloqueDeCementoConBombaMolotovDisminuyeUnidadesDeResistenciaEn5Unidades() //corregir la X aca!!!!!!
         {
-            Bomba bomba = new BombaMolotov(posicion, 0);
+            Punto unPto = new Punto(3, 4);
+            Bomba bomba = new BombaMolotov(unPto, 0);
             Obstaculo obstaculo = BloqueComun.CrearBloqueCemento();
             bomba.Daniar(obstaculo);
             Assert.AreEqual(obstaculo.UnidadesDeResistencia, 5);

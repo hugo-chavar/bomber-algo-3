@@ -113,9 +113,9 @@ namespace Bomberman.Mapa.Casilla
             this.explosivo=unExplosivo;
         }
 
-        public void QuitarExplosivo(Explosivo unExplosivo) //Hugo dice: metodo raro, voy ver para que se usa cuando pueda
+        public void QuitarExplosivo() // Explosivo unExplosivo probar si funciona sin parametros
         {
-            if(this.explosivo==unExplosivo)
+            //if(this.explosivo==unExplosivo)
                 this.explosivo = null;
         }
     }
