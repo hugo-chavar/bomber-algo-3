@@ -8,7 +8,7 @@ using Bomberman.Arma;
 
 namespace Bomberman.Personaje
 {
-    public abstract class Personaje : IMovible
+    public abstract class Personaje : IMovible , IComedor
     {
         protected Movimiento movimiento;
         protected Punto posicion;
@@ -152,5 +152,11 @@ namespace Bomberman.Personaje
         }
 
         public abstract void PartidaGanada();
+
+
+        public void ReaccionarConArticulo(Articulo.Articulo articulo)
+        {
+            this.Comer(articulo);
+        }
     }
 }

@@ -57,7 +57,7 @@ namespace Bomberman.Mapa.Casilla
             movil.Posicion = this.Posicion;
             if ((this.ArticuloContenido != null) && (!this.ArticuloContenido.EstaOculto))
             {
-                movil.Comer(this.ArticuloContenido);
+                movil.ReaccionarConArticulo(this.ArticuloContenido);
             }
         }
 
