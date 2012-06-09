@@ -64,7 +64,7 @@ namespace TestBomberman.TestArma
         }
 
         [Test]
-        public void TestBombaMolotovEstaExplotadaAlPasarUnTiempoDebeDevolverTrue()
+        public void EstaExplotadaAlPasarUnTiempoDevuelveTrue()
         {
             Bomba bomba = new BombaMolotov(posicion, 0);
             juego.Ambiente.ObtenerCasilla(posicion).PlantarExplosivo(bomba);
@@ -73,7 +73,7 @@ namespace TestBomberman.TestArma
         }
 
         [Test]
-        public void TestDaniarObstaculoConBombaMolotov()
+        public void DaniarObstaculoConBombaMolotovDisminuyeUnidadesDeResistenciaDelBloqueDeCementoEnXUnidades() //corregir la X aca!!!!!!
         {
             Bomba bomba = new BombaMolotov(posicion, 0);
             Obstaculo obstaculo = BloqueComun.CrearBloqueCemento();
@@ -82,7 +82,7 @@ namespace TestBomberman.TestArma
         }
 
         [Test]
-        public void TestCuandoExplotaUnaBombaMolotovYTieneUnCasilleroASuIzquierdaConBloqueLadrilloYLoDestruye()
+        public void ExplotaUnaBombaMolotovYTieneUnCasilleroASuIzquierdaConBloqueLadrilloYLoDestruyeLuegoLaCasillaEsUnPasillo()
         {
             Punto posicion = new Punto(4,1);
             Punto puntoCasillaDaniada = new Punto(3,1);
@@ -99,7 +99,7 @@ namespace TestBomberman.TestArma
         }
 
         [Test]
-        public void TestCuandoExplotaUnaBombaMolotovYTieneUnCasilleroASuDerechaConBloqueLadrilloYLoDestruye()
+        public void ExplotaUnaBombaMolotovYTieneUnCasilleroASuDerechaConBloqueLadrilloYLoDestruyeLuegoLaCasillaEsUnPasillo()
         {
             Punto posicion = new Punto(0, 1);
             Punto puntoCasillaDaniada = new Punto(1, 1);
@@ -116,7 +116,7 @@ namespace TestBomberman.TestArma
         }
 
         [Test]
-        public void TestCuandoExplotaUnaBombaMolotovYTieneUnCasilleroArribaConBloqueLadrilloYLoDestruye()
+        public void ExplotaUnaBombaMolotovYTieneUnCasilleroArribaConBloqueLadrilloYLoDestruyeLuegoLaCasillaEsUnPasillo()
         {
             Punto posicion = new Punto(1, 2);
             Punto puntoCasillaDaniada = new Punto(1, 3);
@@ -133,7 +133,7 @@ namespace TestBomberman.TestArma
         }
         
         [Test]
-        public void TestCuandoExplotaUnaBombaMolotovYTieneUnCasilleroAbajoConBloqueLadrilloYLoDestruye()
+        public void ExplotaUnaBombaMolotovYTieneUnCasilleroAbajoConBloqueLadrilloYLoDestruyeLuegoLaCasillaEsUnPasillo()
         {
             Punto posicion = new Punto(3, 4);
             Punto puntoCasillaDaniada = new Punto(3, 3);

@@ -11,7 +11,7 @@ namespace Bomberman.Arma
     {
 
         private const int ALCANCELANZAMIENTO = 3;
-        private List<Punto> recorridoProyectil;
+        private Queue<Punto> recorridoProyectil;
 
         public LanzadorProyectil()
         {
@@ -32,13 +32,13 @@ namespace Bomberman.Arma
 
         public override void Apuntar(IMovible movil)
         {
-            this.recorridoProyectil = new List<Punto>();
+            this.recorridoProyectil = new Queue<Punto>();
             base.Apuntar(movil);
         }
 
         public override void Disparar()
         {
-            Proyectil unProyectil = new Proyectil(this.posicionDeImpacto);
+            Proyectil unProyectil = new Proyectil(this.posicionDeImpacto); //this.posicionDeImpacto
             unProyectil.Trayectoria = this.recorridoProyectil;
             //Juego.Juego.Instancia().Ambiente.ObtenerCasilla(this.posicionDeImpacto).Transitar(unProyectil); habilitar esto cuando martin termine con las interfaces
             //Juego.Juego.Instancia().Ambiente.ObtenerCasilla(this.posicionDeImpacto).PlantarExplosivo(); esto no va
@@ -55,7 +55,7 @@ namespace Bomberman.Arma
             {
                 //la posAux es el destino o esta en el recorrido del proyectil
                 this.posicionDeImpacto = posAux;
-                this.recorridoProyectil.Add(posAux);
+                this.recorridoProyectil.Enqueue(posAux);
                 posAux = this.posicionDeImpacto.PosicionSuperior();
                 i--;
             }
@@ -72,7 +72,7 @@ namespace Bomberman.Arma
             {
                 //la posAux es el destino o esta en el recorrido del proyectil
                 this.posicionDeImpacto = posAux;
-                this.recorridoProyectil.Add(posAux);
+                this.recorridoProyectil.Enqueue(posAux);
                 posAux = this.posicionDeImpacto.PosicionInferior();
                 i--;
             }
@@ -89,7 +89,7 @@ namespace Bomberman.Arma
             {
                 //la posAux es el destino o esta en el recorrido del proyectil
                 this.posicionDeImpacto = posAux;
-                this.recorridoProyectil.Add(posAux);
+                this.recorridoProyectil.Enqueue(posAux);
                 posAux = this.posicionDeImpacto.PosicionIzquierda();
                 i--;
             }
@@ -106,7 +106,7 @@ namespace Bomberman.Arma
             {
                 //la posAux es el destino o esta en el recorrido del proyectil
                 this.posicionDeImpacto = posAux;
-                this.recorridoProyectil.Add(posAux);
+                this.recorridoProyectil.Enqueue(posAux);
                 posAux = this.posicionDeImpacto.PosicionDerecha();
                 i--;
             }
