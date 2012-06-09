@@ -17,16 +17,22 @@ namespace Bomberman.Personaje
             this.unidadesDeResistencia = VIDABOMBITA;
         }
         
-        public override void Comer(IComible comible)
+        public void Comer(IComible comible)
         {
             comible.ModificarComedor(this);
             comible.Ocultar();
         }
 
+        public override void ReaccionarConArticulo(Articulo.Articulo articulo)
+        {
+            this.Comer(articulo);
+        }
 
         public override void PartidaGanada()
         {
             Juego.Juego.Instancia().Ambiente.FinalizarNivel(); // Revisar esto!
         }
+
+
     }
 }
