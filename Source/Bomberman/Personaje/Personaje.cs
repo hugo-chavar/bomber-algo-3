@@ -53,13 +53,6 @@ namespace Bomberman.Personaje
             set { this.posicion = value; }
         }
 
-        public void Apuntar()
-        {
-            this.Lanzador.Sentido.Direccion = this.Movimiento.Direccion;
-            this.Lanzador.PosicionDeTiro = this.Posicion.Clonar();
-            this.Lanzador.CalcularPosicionDeImpacto();
-        }
-
         public bool LanzarExplosivo()
         {
             //return (this.lanzador.Lanzar(this.Posicion, this.reduccionRetardoBombas)); nuevo lanzador dejo esto por un tiempo
@@ -72,7 +65,7 @@ namespace Bomberman.Personaje
             if (Juego.Juego.Instancia().Ambiente.ObtenerCasilla(this.Posicion).PermiteExplosivos())
             {
                 //ahora uso el lanzador para disparar
-                Apuntar();
+                this.Lanzador.Apuntar(this);
                 this.Lanzador.Disparar();
                 //el explosivo fue lanzado
                 return true;
