@@ -26,7 +26,7 @@ namespace Bomberman.Personaje
 
         public override void PartidaGanada()
         {
-            Juego.Juego.Instancia().Ambiente.FinalizarNivel();
+            Juego.Juego.Instancia().Ambiente.FinalizarNivel(); // Revisar esto!
         }
     }
 }
