@@ -311,7 +311,7 @@ namespace TestBomberman.TestJuego
         }
 
         [Test]
-        public void TestCuandoExplotaUnaBombaMolotovYTieneUnCasilleroAbajoLopezReggaeLoDania()
+        public void TestCuandoExplotaUnaBombaMolotovYTieneUnCasilleroAbajoConLopezReggaeLoDania5Unidades()
         {
             Punto posicionBomba = new Punto(2, 3);
             Punto posicionLopezReggae = new Punto(2, 2);
@@ -328,7 +328,7 @@ namespace TestBomberman.TestJuego
         }
 
         [Test]
-        public void TestCuandoExplotaUnaBombaMolotovYTieneUnCasilleroAbajoLopezReggaeAladoLoDania()
+        public void TestCuandoExplotaUnaBombaMolotovYTieneUnCasilleroAbajoConLopezReggaeAladoLoDestruye()
         {
             Punto posicionBomba = new Punto(2, 3);
             Punto posicionAlado = new Punto(2, 2);
@@ -345,7 +345,7 @@ namespace TestBomberman.TestJuego
         }
 
         [Test]
-        public void TestCuandoHagoExplotar2BombasAlMismoTiempoATravesDeJuego()
+        public void TestCuandoHagoExplotar2BombasAlMismoTiempoATravesDeJuegoDebenExplotar()
         {
             Punto posicionBomba1 = new Punto(0, 0);
             Punto posicionBomba2 = new Punto(0, 1);
@@ -414,7 +414,7 @@ namespace TestBomberman.TestJuego
         }
 
         [Test]
-        public void TestAgregadoEnLista()
+        public void TestAlLanzarUnaBombaLaDebeAgregarEnListaDeLosQueEsperanParaExplotar()
         {
             Punto posicionBombita1 = new Punto(0, 0);
             Punto posicionBombita2 = new Punto(2, 0);

@@ -102,7 +102,7 @@ namespace TestBomberman.TestSalida
         }
 
         [Test]
-        public void TestNoPuedoAgregarSalidaEnUnPasilloPuesEstaPermitido2()
+        public void TestNoPuedoAgregarSalidaEnUnPasilloPuesNoEstaPermitido2()
         {
             // agrego articulo
 
