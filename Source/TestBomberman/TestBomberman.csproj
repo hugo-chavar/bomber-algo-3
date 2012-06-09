@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestArma\TestProyectil.cs" />
     <Compile Include="TestArticulo\TestArticuloSalida.cs" />
     <Compile Include="TestJuego\TestLanzador.cs" />
     <Compile Include="TestMapa\TestCasillaVacia.cs" />
