@@ -300,9 +300,10 @@ namespace Bomberman.Mapa
         public void ManejarExplosion(Explosivo explosivo)
         {
             List<Punto> puntosAfectados = CalcularCasillerosExplotados(explosivo);
+            this.ObtenerCasilla(explosivo.Posicion).QuitarExplosivo();
             try
             {
-                this.ObtenerCasilla(explosivo.Posicion).QuitarExplosivo(explosivo);
+                
                 for (int i = 0; i < (puntosAfectados.Count); i++)
                 {
                     Casilla.Casilla casillaAux = this.ObtenerCasilla(puntosAfectados[i]);
