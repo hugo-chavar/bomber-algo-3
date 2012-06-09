@@ -53,24 +53,29 @@ namespace Bomberman
             //bombita.Movimiento.CambiarADerecha();
             ////Bombita tiene un Lanzador de Molotov por defecto
             //bombita.LanzarExplosivo();
-            Punto pBombita = new Punto(1, 0);
-            Punto pCecil = new Punto(0, 0);
+            //Punto pBombita = new Punto(1, 0);
+            //Punto pCecil = new Punto(0, 0);
 
-            Bombita bombita = new Bombita(pBombita);
-            Cecilio unCecil = new Cecilio(pCecil);
-            unJuego.Ambiente.AgregarPersonaje(bombita);
-            unJuego.Ambiente.AgregarPersonaje(unCecil);
+            //Bombita bombita = new Bombita(pBombita);
+            //Cecilio unCecil = new Cecilio(pCecil);
+            //unJuego.Ambiente.AgregarPersonaje(bombita);
+            //unJuego.Ambiente.AgregarPersonaje(unCecil);
 
-            Punto pBloqueAcero = new Punto(1, 1);
-            bombita.CambiarLanzadorAToleTole(); // harcodeo el lanzador para ver internamente lo que ocurre al cambiar el lanzador
-            bombita.LanzarExplosivo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
+            //Punto pBloqueAcero = new Punto(1, 1);
+            //bombita.CambiarLanzadorAToleTole(); // harcodeo el lanzador para ver internamente lo que ocurre al cambiar el lanzador
+            //bombita.LanzarExplosivo();
+            //unJuego.Ambiente.CuandoPasaElTiempo();
+            //unJuego.Ambiente.CuandoPasaElTiempo();
+            //unJuego.Ambiente.CuandoPasaElTiempo();
+            //unJuego.Ambiente.CuandoPasaElTiempo();
+            //unJuego.Ambiente.CuandoPasaElTiempo();
 
-            if (unCecil.Destruido())
+            Punto unPto = new Punto(3, 4);
+            Arma.Bomba bomba = new Arma.BombaMolotov(unPto, 0);
+            unJuego.Ambiente.ObtenerCasilla(unPto).PlantarExplosivo(bomba);
+            bomba.CuandoPasaElTiempo();
+
+            if (bomba.EstaExplotado())
             {
                 Console.WriteLine("Destruido");
             }

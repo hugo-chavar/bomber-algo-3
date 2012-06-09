@@ -65,8 +65,6 @@ namespace Bomberman.Arma
         public override void Daniar(IDaniable daniable)
         {
             daniable.DaniarConProyectil(this.PoderDeDestruccion);
-
-            // cuando explota genera el mismo danio que la Molotov //
         }
 
         //public void LanzarMisil(int direccionPersonaje)
