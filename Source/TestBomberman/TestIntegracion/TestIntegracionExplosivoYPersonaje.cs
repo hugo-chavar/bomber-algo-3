@@ -91,5 +91,25 @@ namespace TestBomberman.TestIntegracion
             Assert.IsInstanceOf( typeof(BombaMolotov),Juego.Instancia().Ambiente.ObtenerCasilla(PosicionDePlantado).Explosivo);
             Assert.IsFalse(bombita.Destruido());
         }
+
+        /*
+        [Test]
+        public void TestLopezReggaeLanzaUnProyectilSinObtaculosEnFrenteYElProyectilDebeExplotarAlpasar3Tiempos()
+        {
+            Punto PosicionDePartida= new Punto(0, 0);
+            Punto PosicionDeLlegada= new Punto(3, 0);
+            LosLopezReggae personaje = new LosLopezReggae(PosicionDePartida);
+            Juego.Instancia().Ambiente.ObtenerCasilla(PosicionDePartida).Transitar(personaje);
+            personaje.Movimiento.CambiarADerecha();
+            personaje.LanzarExplosivo();
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Assert.AreEqual(typeof(Proyectil), Juego.Instancia().Ambiente.ObtenerCasilla(PosicionDeLlegada).explosivo);
+        
+        }
+         */
+
+
     }
 }
