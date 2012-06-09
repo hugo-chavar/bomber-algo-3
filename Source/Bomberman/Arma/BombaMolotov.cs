@@ -14,7 +14,7 @@ namespace Bomberman.Arma
         public BombaMolotov(Punto posicion, int porcentajeRetardo)
             :base(posicion)
         {
-            this.TiempoRestante = (TIEMPOEXPLOSION * (100 - porcentajeRetardo) / 100);
+            this.TiempoRestante = (TIEMPOEXPLOSION * (100 - porcentajeRetardo) / 100); //Hugo: llamada para acordarme de arreglar el tiempo de retardo..
             this.PoderDeDestruccion = PODERDEDESTRUCCIONMOLOTOV;
             this.OndaExpansiva = ONDAEXPANSIVAMOLOTOV;
         }
