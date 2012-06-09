@@ -333,7 +333,7 @@ namespace Bomberman.Mapa
         private void AgregarCasillerosAIzquierda(List<Punto> Lista,int expansion, Punto punto)
         { 
             int i=1;
-            Punto unPuntoAux=new Punto(punto.X-1,punto.Y);
+            Punto unPuntoAux=new Punto(punto.X-1,punto.Y); //Hugo: voy a midificar levemente esto, dejo el comentario para acordarme
             while (this.PosicionDentroRango(unPuntoAux) && i <= expansion)
             {
                 
@@ -347,7 +347,7 @@ namespace Bomberman.Mapa
         private void AgregarCasillerosADerecha(List<Punto> Lista, int expansion, Punto punto)
         {
             int i = 1;
-            Punto unPuntoAux = new Punto(punto.X + 1, punto.Y);
+            Punto unPuntoAux = new Punto(punto.X + 1, punto.Y);//Hugo: voy a midificar levemente esto, dejo el comentario para acordarme
             while ((this.PosicionDentroRango(unPuntoAux)) && (i <= expansion))
             {
                
@@ -361,7 +361,7 @@ namespace Bomberman.Mapa
         private void AgregarCasillerosArriba(List<Punto> Lista, int expansion, Punto punto)
         {
             int i = 1;
-            Punto unPuntoAux = new Punto(punto.X, punto.Y+1);
+            Punto unPuntoAux = new Punto(punto.X, punto.Y + 1);//Hugo: voy a midificar levemente esto, dejo el comentario para acordarme
             while ((this.PosicionDentroRango(unPuntoAux)) && (i <= expansion))
             {
                 
@@ -374,7 +374,7 @@ namespace Bomberman.Mapa
         private void AgregarCasillerosAbajo(List<Punto> Lista, int expansion, Punto punto)
         {
             int i = 1;
-            Punto unPuntoAux = new Punto(punto.X, punto.Y - 1);
+            Punto unPuntoAux = new Punto(punto.X, punto.Y - 1);//Hugo: voy a midificar levemente esto, dejo el comentario para acordarme
             while (this.PosicionDentroRango(unPuntoAux) && (i <= expansion)) 
             {
                 Lista.Add(unPuntoAux);

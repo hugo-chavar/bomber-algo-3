@@ -91,7 +91,7 @@ namespace TestBomberman.TestJuego
         {
             this.movil = new Bombita(new Punto(0, 0));
             Punto posOriginal = this.movil.Posicion.Clonar();
-            this.unMapa.AgregarPersonaje(this.movil); // testear todos los exceptions
+            this.unMapa.AgregarPersonaje(this.movil);
             this.movil.Movimiento.CambiarADerecha();
             this.movil.Mover();
             Punto pos = new Punto(1, 0);
@@ -103,7 +103,7 @@ namespace TestBomberman.TestJuego
         {
             IMovible otroMovil = new Bombita(new Punto(0, 0));
             Punto posOriginal = otroMovil.Posicion.Clonar();
-            this.unMapa.AgregarPersonaje(otroMovil); // testear todos los exceptions
+            this.unMapa.AgregarPersonaje(otroMovil);
             otroMovil.Movimiento.CambiarADerecha();
             otroMovil.Mover();
             Assert.IsFalse(posOriginal.Equals(otroMovil.Posicion));
@@ -114,7 +114,7 @@ namespace TestBomberman.TestJuego
         {
             IMovible otroMovil = new Bombita(new Punto(1, 0));
             Punto posOriginal = otroMovil.Posicion.Clonar();
-            this.unMapa.AgregarPersonaje(otroMovil); // testear todos los exceptions
+            this.unMapa.AgregarPersonaje(otroMovil); 
             otroMovil.Movimiento.CambiarAArriba();
             otroMovil.Mover();
             Assert.IsTrue(posOriginal.Equals(otroMovil.Posicion));
@@ -124,7 +124,7 @@ namespace TestBomberman.TestJuego
         public void BombitaChocaConObstaculoMoverNoCambiaSuPosicion()
         {
             IMovible otroMovil = new Bombita(new Punto(0, 0));
-            this.unMapa.AgregarPersonaje(otroMovil); // testear todos los exceptions
+            this.unMapa.AgregarPersonaje(otroMovil);
             otroMovil.Movimiento.CambiarADerecha();
             otroMovil.Mover();
             otroMovil.Movimiento.CambiarAArriba();
