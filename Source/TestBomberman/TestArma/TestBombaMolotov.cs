@@ -5,28 +5,19 @@ using NUnit.Framework;
 using Bomberman.Mapa.Casilla;
 using Bomberman;
 
-
-
 namespace TestBomberman.TestArma
 {
     [TestFixture]
     class TestBombaMolotov
     {
-       // private Punto posicion;
-        private Juego juego;
-        private Mapa unMapa;
+        private Juego unJuego;
         private const int ANCHOMAPA = 5;
-        private Casilla unaCasilla;
+        private Mapa unMapa;
         
         [SetUp]
         public void TestSetup()
         {
-            juego = new Juego();
-            //posicion = new Punto(3, 4);
-            //Casilla unaCasilla = FabricaDeCasillas.FabricarPasillo(posicion);
-            //juego.Ambiente.AgregarCasilla(unaCasilla);
-
-            //creo un mapa 5x5 con esta distribucion (P = Pasillo, * = BloqueAcero):
+            //creo un mapa 5x5 con esta distribucion (P = Pasillo, * = BloqueLadrillo):
             //      P P P P P
             //      P * P * P
             //      P P P P P
@@ -34,7 +25,7 @@ namespace TestBomberman.TestArma
             //      P P P P P
 
             Punto unaPosicion;
-            
+            Casilla unaCasilla;
             this.unMapa = new Mapa(ANCHOMAPA, ANCHOMAPA);
 
             int i, j;
@@ -45,7 +36,7 @@ namespace TestBomberman.TestArma
                     if ((i & 1) == 1 && (j & 1) == 1)
                     {
                         //ambos son numeros impares
-                        unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(unaPosicion);//.FabricarCasillaConBloqueAcero(unaPosicion);
+                        unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(unaPosicion);
                     }
                     else
                     {
@@ -53,8 +44,11 @@ namespace TestBomberman.TestArma
                         unaCasilla = FabricaDeCasillas.FabricarPasillo(unaPosicion);
                     }
                     this.unMapa.AgregarCasilla(unaCasilla);
-                  }
-            this.juego.Ambiente = this.unMapa;
+                }
+
+            this.unJuego = Juego.Instancia();
+            this.unJuego.Ambiente = this.unMapa;
+
         }
 
         //[TearDown]
@@ -78,9 +72,7 @@ namespace TestBomberman.TestArma
         {
             Punto unPto = new Punto(2, 2);
             Bomba bomba = new BombaMolotov(unPto, 0);
-            Casilla unaCasilla = unMapa.ObtenerCasilla(unPto);
-
-            unaCasilla.PlantarExplosivo(bomba);
+            Juego.Instancia().Ambiente.ObtenerCasilla(unPto).PlantarExplosivo(bomba);
             bomba.CuandoPasaElTiempo();
             Assert.IsTrue(bomba.EstaExplotado());
         }
