@@ -431,5 +431,74 @@ namespace TestBomberman.TestJuego
         }
 
 
+        //Agrego esto
+
+        [Test] //esto ahora lo cuento en la clase juego
+        public void CuandoGeneroUnMapaNuevoLaCantidadDeEnemigosEs0()
+        {
+            Mapa unMapa = new Mapa(5, 5); // harcodeo aca pues el tamaño del mapa para este metodo no es relevante
+            Assert.AreEqual(Juego.Instancia().CantidadEnemigosVivos(), 0);
+        }
+
+        [Test] 
+        public void CuandoGeneroUnMapaNuevoYAgregoABombitaYAUnEnemigoLaCantidadDeEnemigosAumentaEn1()
+        {
+            Punto pBombita = new Punto(0,0);
+            Punto pCecilio = new Punto(0, 1);
+
+            Cecilio unCecilio = new Cecilio(pCecilio);
+            Bombita unBombita = new Bombita(pBombita);
+
+            unMapa.AgregarPersonaje(unCecilio);
+            unMapa.AgregarPersonaje(unBombita);
+
+            Assert.AreEqual(Juego.Instancia().CantidadEnemigosVivos(), 1);
+
+        }
+
+        [Test] 
+        public void CuandoGeneroUnMapaNuevoAgrego2PersonajesYElimino1ConToleTole()
+        {
+            Punto pBombita = new Punto(0, 0);
+            Punto pCecilio = new Punto(0, 1);
+
+            Cecilio unCecilio = new Cecilio(pCecilio);
+            Bombita unBombita = new Bombita(pBombita);
+
+            Juego.Instancia().Ambiente.AgregarPersonaje(unCecilio);
+            Juego.Instancia().Ambiente.AgregarPersonaje(unBombita);
+
+            Assert.AreEqual(Juego.Instancia().CantidadEnemigosVivos(), 1);
+
+            unCecilio.DaniarConBombaToleTole();
+            Assert.IsTrue(unCecilio.Destruido());
+            Assert.AreEqual(Juego.Instancia().CantidadEnemigosVivos(), 0);
+        }
+
+        //[Test]  los personajes se van a contar en la clase juego
+        //public void CuandoGeneroUnMapaNuevoAgrego2PersonajesYEliminoLos2ConMolotov()
+        //{
+        //    this.unjuego = Juego.Instancia();
+        //    unjuego.Ambiente = unMapa;
+
+        //    Assert.AreEqual(unMapa.CantidadPersonajesVivos, 0);
+        //    Punto pBombita = new Punto(0, 0);
+        //    Punto pCecilio = new Punto(0, 1);
+
+        //    Cecilio unCecilio = new Cecilio(pCecilio);
+        //    Bombita unBombita = new Bombita(pBombita);
+
+        //    unMapa.AgregarPersonaje(unCecilio);
+        //    unMapa.AgregarPersonaje(unBombita);
+
+        //    Assert.AreEqual(unMapa.CantidadPersonajesVivos, 2);
+
+        //    unCecilio.DaniarConBombaMolotov(5);
+        //    unBombita.DaniarConBombaMolotov(5);
+        //    Assert.IsTrue(unCecilio.Destruido());
+        //    Assert.AreEqual(unMapa.CantidadPersonajesVivos, 0);
+        //}
+
+
     }
 }
