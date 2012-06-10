@@ -22,7 +22,7 @@ namespace TestBomberman.TestArticulo
         }
     
         [Test]
-        public void TestComerChalaDuplicaVelocidadDelComedor()
+        public void ComerChalaDuplicaVelocidadDelComedor()
         {
             int velocidad = unBombita.Movimiento.Velocidad;
             Articulo unArticulo = new Chala();

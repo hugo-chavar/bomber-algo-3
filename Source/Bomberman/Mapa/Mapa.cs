@@ -299,10 +299,8 @@ namespace Bomberman.Mapa
         public void ManejarExplosion(Explosivo explosivo)
         {
             List<Punto> puntosAfectados = CalcularCasillerosExplotados(explosivo);
-            
-            try
-            {
                 this.ObtenerCasilla(explosivo.Posicion).QuitarExplosivo();
+
                 for (int i = 0; i < (puntosAfectados.Count); i++)
                 {
                     Casilla.Casilla casillaAux = this.ObtenerCasilla(puntosAfectados[i]);
@@ -315,13 +313,6 @@ namespace Bomberman.Mapa
                             explosivo.Daniar((IDaniable)casillaAux.TransitandoEnCasilla[j]);
                     }
                 }
-
-            }
-            catch (NoExisteCasillaException)
-                {
-                    //simplemente se ignora donde no hay casillas
-                }
-
 
         }
  

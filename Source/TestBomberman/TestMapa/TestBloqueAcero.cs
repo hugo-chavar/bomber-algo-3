@@ -18,14 +18,14 @@ namespace TestBomberman
         }
         
         [Test]
-        public void TestDaniarConBombaMolotovBloqueDeAceroNoModificaSuEstado()
+        public void DaniarConBombaMolotovBloqueDeAceroNoModificaSuEstado()
             {
                 unObstaculo.DaniarConBombaMolotov(5);
                 Assert.AreEqual(unObstaculo.UnidadesDeResistencia,10); 
             }
 
         [Test]
-        public void TestDaniarConBombaToleToleBloqueDeAcero()
+        public void DaniarConBombaToleToleBloqueDeAcero()
         {
 
             unObstaculo.DaniarConBombaToleTole();

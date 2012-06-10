@@ -81,7 +81,7 @@ namespace TestBomberman.TestJuego
         //}
 
         [Test]
-        public void TestCuandoBombitaPlantaUnaMolotovDestruyendoACecilio()
+        public void CuandoBombitaPlantaUnaMolotovDestruyendoACecilio()
         {
             Punto pBombita = new Punto(1, 0);
             Punto pCecil = new Punto(0, 0);
@@ -99,7 +99,7 @@ namespace TestBomberman.TestJuego
         }
 
         [Test]
-        public void TestCuandoBombitaPlanta2MolotovDestruyendoALosLopezRaggae()
+        public void CuandoBombitaPlanta2MolotovDestruyendoALosLopezReggae()
         {
             Punto pBombita = new Punto(1, 0);
             Punto pLopezRaggae = new Punto(0, 0);
@@ -129,7 +129,7 @@ namespace TestBomberman.TestJuego
         }
 
         [Test]
-        public void TestCuandoBombitaPlantaUnaMolotovDestruyendoAUnLosLopezRaggaeAlado()
+        public void CuandoBombitaPlantaUnaMolotovDestruyendoAUnLosLopezRaggaeAlado()
         {
             Punto pBombita = new Punto(1, 0);
             Punto pLopezRaggaeAlado = new Punto(0, 0);
@@ -151,7 +151,7 @@ namespace TestBomberman.TestJuego
         }
 
         [Test]
-        public void TestCuandoCecilioPlantaUnaMolotovDestruyendoABombitaYASiMismo()
+        public void CuandoCecilioPlantaUnaMolotovDestruyendoABombitaYASiMismo()
         {
             Punto pBombita = new Punto(1, 0);
             Punto pCecil = new Punto(0, 0);
@@ -169,7 +169,7 @@ namespace TestBomberman.TestJuego
         }
 
         [Test]
-        public void TestCuandoCecilioPlantaUnaMolotovDestruyendoABombitaYSafa()
+        public void CuandoCecilioPlantaUnaMolotovDestruyendoABombitaYSafa()
         {
             Punto pBombita = new Punto(1, 0);
             Punto pCecil = new Punto(0, 0);
@@ -194,7 +194,7 @@ namespace TestBomberman.TestJuego
         }
         
         [Test]
-        public void TestCuandoLopezReggaePlantaUnaMolotovDestruyendoABombitaYSafa()
+        public void CuandoLopezReggaePlantaUnaMolotovDestruyendoABombitaYSafa()
         {
             Punto pBombita = new Punto(1, 0);
             Punto pReggaeAlado = new Punto(0, 0);
@@ -221,7 +221,7 @@ namespace TestBomberman.TestJuego
         }       // falta pruebas de LopezReggae haciendo lio con el proytectil
 
         [Test]
-        public void TestCuandoBombmitaPlantaUnaToleToleDestruyendoACecilioYAlBloqueDeAcero()
+        public void CuandoBombmitaPlantaUnaToleToleDestruyendoACecilioYAlBloqueDeAcero()
         {
             Punto pBombita = new Punto(1, 0);
             Punto pCecil = new Punto(0, 0);
@@ -245,7 +245,7 @@ namespace TestBomberman.TestJuego
         }
 
         [Test]
-        public void TestCuandoBombmitaPlantaUnaToleToleDestruyendoACecilioUbicadoDetrasDeUnBloqueDeAcero()
+        public void CuandoBombmitaPlantaUnaToleToleDestruyendoACecilioUbicadoDetrasDeUnBloqueDeAcero()
         {
             Punto pBombita = new Punto(1, 0);
             Punto pCecil = new Punto(1, 2);         //Cecil ubicado detras del bloque
@@ -269,7 +269,7 @@ namespace TestBomberman.TestJuego
         }
 
         [Test]
-        public void TestCuandoBombmitaPlantaUnaToleToleDestruyendoATodosLosPersonajesYObstaculosDentroDeSuAlcance()
+        public void CuandoBombmitaPlantaUnaToleToleDestruyendoATodosLosPersonajesYObstaculosDentroDeSuAlcance()
         {
             Punto pBombita = new Punto(1, 0);
             Punto pLopezReggae = new Punto(1, 2);
