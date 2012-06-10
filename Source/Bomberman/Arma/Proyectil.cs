@@ -2,54 +2,41 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Bomberman.Excepciones;
 
 namespace Bomberman.Arma
 {
     public class Proyectil : Explosivo
     {
-        //private const int ALCANCEPROYECTIL = 3;
         private const int PODERDEDESTRUCCIONPROYECTIL = 1;
         private const int ONDAEXPANSIVA = 1;
 
         private Punto posicionFinal;
-        private Punto posicionActual;
+       // private Punto posicion;
         private Queue<Punto> trayectoria;
-        //private int alcance = ALCANCEPROYECTIL;
-        //private int tiempoRestante;
-        //private ManejadorProyectil unManejador;
 
-
-        //public int Alcance
+        //public Punto Posicion
         //{
-        //    get { return this.alcance; }
-        //    set { this.alcance = value; }
+        //    get { return this.posicion; }
+        //    set { this.posicion = value; }
         //}
-        
-        //public Punto PosicionFinal
-        //{
-        //    get { return this.posicionFinal; }
-        //    set { this.posicionFinal = value; }
-        //}
-
-        public Punto PosicionActual
-        {
-            get { return this.posicionActual; }
-            //set { this.posicionFinal = value; } esto no va!!
-        }
 
         public void Avanzar()
         {
             try
             {
                 //me muevo a la siguiente posision programada por el lanzador
-                this.posicionActual = this.trayectoria.Dequeue();
+                this.posicion = this.trayectoria.Dequeue();
+                if (this.posicion.Equals(this.posicionFinal))
+                {
+                    //llegue al punto de impacto
+                    Juego.Juego.Instancia().Ambiente.ObtenerCasilla(this.posicion).PlantarExplosivo(this);
+                    this.Explotar();
+                }
             }
             catch (InvalidOperationException)
             {
-                //si la trayectoria esta vacia, llegue al punto de impacto
-                Juego.Juego.Instancia().Ambiente.ObtenerCasilla(this.posicionActual).PlantarExplosivo(this);
-
-                this.Explotar();
+                throw new AvanzarProyectilNoValidoException();
             }
         }
                 
@@ -59,7 +46,6 @@ namespace Bomberman.Arma
             this.poderDeDestruccion = PODERDEDESTRUCCIONPROYECTIL;
             this.ondaExpansiva = ONDAEXPANSIVA;
             posicionFinal = posicionDestino;
-            ///tiempoRestante = 3;
         }
           
         public override void Daniar(IDaniable daniable)
@@ -67,43 +53,13 @@ namespace Bomberman.Arma
             daniable.DaniarConProyectil(this.PoderDeDestruccion);
         }
 
-        //public void LanzarMisil(int direccionPersonaje)
-        //{
-        //    if (unManejador == null)
-        //    {
-        //        unManejador = new ManejadorProyectil(this, direccionPersonaje);
-        //        unManejador.LanzarMisil();
-        //    }
-        //}
-
-        //public int TiempoRestante()
-        //{
-        //    return this.tiempoRestante;
-        //}
-
-        public override void  CuandoPasaElTiempo()
+        public override void CuandoPasaElTiempo()
         {
             this.Avanzar();
-            
-            //if (tiempoRestante > 0)
-            //{
-            //    this.DisminuirTiempo();
-            //    unManejador.AvanzarHacia(this);
-            //}
-            //if ((tiempoRestante == 0) && (unManejador.EstaLanzado()))
-            //{
-            //    base.Explotar();
-            //}
         }
-
-        //public void DisminuirTiempo()
-        //{
-        //    this.tiempoRestante = this.tiempoRestante - 1;
-        //}
-
+            
         public Queue<Punto> Trayectoria 
         {
-            //get ; 
             set {this.trayectoria = value;}
         }
     }

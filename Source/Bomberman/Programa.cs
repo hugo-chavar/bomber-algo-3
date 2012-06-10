@@ -6,6 +6,7 @@ using Bomberman.Juego;
 using Bomberman.Mapa;
 using Bomberman.Mapa.Casilla;
 using Bomberman.Personaje;
+using Bomberman.Arma;
 
 namespace Bomberman
 {
@@ -70,12 +71,28 @@ namespace Bomberman
             //unJuego.Ambiente.CuandoPasaElTiempo();
             //unJuego.Ambiente.CuandoPasaElTiempo();
 
-            Punto unPto = new Punto(3, 4);
-            Arma.Bomba bomba = new Arma.BombaMolotov(unPto, 0);
-            unJuego.Ambiente.ObtenerCasilla(unPto).PlantarExplosivo(bomba);
-            bomba.CuandoPasaElTiempo();
+            //Punto unPto = new Punto(3, 4);
+            //Arma.Bomba bomba = new Arma.BombaMolotov(unPto, 0);
+            //unJuego.Ambiente.ObtenerCasilla(unPto).PlantarExplosivo(bomba);
+            //bomba.CuandoPasaElTiempo();
 
-            if (bomba.EstaExplotado())
+            //Queue<Punto> recorridoProyectil = new Queue<Punto>();
+            //recorridoProyectil.Enqueue(new Punto(0, 1));
+            //recorridoProyectil.Enqueue(new Punto(0, 2));
+            //recorridoProyectil.Enqueue(new Punto(0, 3));
+            //Proyectil unProyectil = new Proyectil(new Punto(0, 3)); //ElProyectil deberia Guardar en la posicion actual la inicial
+            //unProyectil.Trayectoria = recorridoProyectil;
+
+            //unProyectil.CuandoPasaElTiempo();
+            //unProyectil.CuandoPasaElTiempo();
+            //unProyectil.CuandoPasaElTiempo();
+            Proyectil unProyectil = new Proyectil(new Punto(0, 3));//ElProyectil se crea con la posicion destino
+            unProyectil.Posicion = new Punto(0, 0);
+            Queue<Punto> recorridoProyectil = new Queue<Punto>();
+            recorridoProyectil.Enqueue(new Punto(0, 1));
+            unProyectil.CuandoPasaElTiempo();
+
+            if (unProyectil.Posicion.Equals(new Punto(0, 1)))
             {
                 Console.WriteLine("Destruido");
             }

@@ -334,13 +334,13 @@ namespace Bomberman.Mapa
         private void AgregarCasillerosAIzquierda(List<Punto> Lista,int expansion, Punto punto)
         { 
             int i=1;
-            Punto unPuntoAux=new Punto(punto.X-1,punto.Y); //Hugo: voy a midificar levemente esto, dejo el comentario para acordarme
+            Punto unPuntoAux = punto.PosicionIzquierda(); 
             while (this.PosicionDentroRango(unPuntoAux) && i <= expansion)
             {
                 
                 Lista.Add(unPuntoAux);
                 i++;
-                unPuntoAux = new Punto(punto.X - i, punto.Y);
+                unPuntoAux = unPuntoAux.PosicionIzquierda();
                 
             }
         }
@@ -348,13 +348,13 @@ namespace Bomberman.Mapa
         private void AgregarCasillerosADerecha(List<Punto> Lista, int expansion, Punto punto)
         {
             int i = 1;
-            Punto unPuntoAux = new Punto(punto.X + 1, punto.Y);//Hugo: voy a midificar levemente esto, dejo el comentario para acordarme
+            Punto unPuntoAux = punto.PosicionDerecha();
             while ((this.PosicionDentroRango(unPuntoAux)) && (i <= expansion))
             {
                
                 Lista.Add(unPuntoAux);
                 i++;
-                unPuntoAux = new Punto(punto.X + i, punto.Y);
+                unPuntoAux = unPuntoAux.PosicionDerecha();
                 
             }
         }
@@ -362,25 +362,25 @@ namespace Bomberman.Mapa
         private void AgregarCasillerosArriba(List<Punto> Lista, int expansion, Punto punto)
         {
             int i = 1;
-            Punto unPuntoAux = new Punto(punto.X, punto.Y + 1);//Hugo: voy a midificar levemente esto, dejo el comentario para acordarme
+            Punto unPuntoAux = punto.PosicionSuperior();
             while ((this.PosicionDentroRango(unPuntoAux)) && (i <= expansion))
             {
                 
                 Lista.Add(unPuntoAux);
                 i++;
-                unPuntoAux = new Punto(punto.X, punto.Y + i);
+                unPuntoAux = unPuntoAux.PosicionSuperior();
             }
         }
 
         private void AgregarCasillerosAbajo(List<Punto> Lista, int expansion, Punto punto)
         {
             int i = 1;
-            Punto unPuntoAux = new Punto(punto.X, punto.Y - 1);//Hugo: voy a midificar levemente esto, dejo el comentario para acordarme
+            Punto unPuntoAux = punto.PosicionInferior();
             while (this.PosicionDentroRango(unPuntoAux) && (i <= expansion)) 
             {
                 Lista.Add(unPuntoAux);
                 i++;
-                unPuntoAux = new Punto(punto.X, punto.Y - i);
+                unPuntoAux = unPuntoAux.PosicionInferior();
             }
         }
         
