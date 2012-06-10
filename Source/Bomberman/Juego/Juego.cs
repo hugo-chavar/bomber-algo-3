@@ -279,6 +279,55 @@ namespace Bomberman.Juego
                 }
 
         }
+
+        public void CargarArticulos()
+        {
+            // cargo ArticulosBombaToleTole
+            List<Punto> obs = new List<Punto>();
+            Casilla unaCasilla;
+            obs.Add(new Punto(7, 2));
+            obs.Add(new Punto(9, 4));
+            obs.Add(new Punto(6, 5));
+            obs.Add(new Punto(14, 8));
+            obs.Add(new Punto(4, 10));
+           // Articulo.Articulo art = new Articulo.ArticuloBombaToleTole();
+            foreach (Punto p in obs)
+            {
+                unaCasilla = this.ambiente.ObtenerCasilla(p);
+                unaCasilla.agregarArticulo(new Articulo.ArticuloBombaToleTole());
+            }
+            obs.Clear();
+
+            // cargo Timer
+            obs.Add(new Punto(2, 8));
+            obs.Add(new Punto(5, 9));
+            obs.Add(new Punto(11, 3));
+            obs.Add(new Punto(11, 6));
+            obs.Add(new Punto(11, 11));
+            foreach (Punto p in obs)
+            {
+                unaCasilla = this.ambiente.ObtenerCasilla(p);
+                unaCasilla.agregarArticulo(new Articulo.Timer());
+            }
+            obs.Clear();
+
+            // cargo Chala
+            obs.Add(new Punto(3, 3));
+            obs.Add(new Punto(7, 7));
+            obs.Add(new Punto(8, 12));
+            obs.Add(new Punto(9, 10));
+            obs.Add(new Punto(13, 9));
+            foreach (Punto p in obs)
+            {
+                unaCasilla = this.ambiente.ObtenerCasilla(p);
+                unaCasilla.agregarArticulo(new Articulo.Chala());
+            }
+            obs.Clear();
+
+            // cargo Salida
+           // unaCasilla = this.ambiente.ObtenerCasilla(new Punto(14, 2));
+            //unaCasilla.agregarSalida();
+        }
                 
         //    for (i = 0; i < (dependientesDelTiempo.Count); i++)
         //        {

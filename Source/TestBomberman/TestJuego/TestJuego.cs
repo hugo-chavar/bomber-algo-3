@@ -429,13 +429,9 @@ namespace TestBomberman.TestJuego
             Assert.AreEqual((cantDependeTiempo+1), Juego.Instancia().DependientesDelTiempo.Count);
         }
 
-
-        //Agrego esto
-
-        [Test] //esto ahora lo cuento en la clase juego
+        [Test] 
         public void CuandoGeneroUnMapaNuevoLaCantidadDeEnemigosEs7()
         {
-            Mapa unMapa = new Mapa(5, 5); // harcodeo aca pues el tamaño del mapa para este metodo no es relevante
             Assert.AreEqual(Juego.Instancia().CantidadEnemigosVivos(), 7);
         }
 
@@ -456,14 +452,19 @@ namespace TestBomberman.TestJuego
         [Test] 
         public void CuandoGeneroUnMapaNuevoYElimino1EnemigoConToleToleDebenQuedar6()
         {
-            Personaje bombita = Juego.Instancia().Protagonista;
+            Punto p = new Punto(7, 0);
+            Personaje bombita = new Bombita(p);
+            Casilla casillaBomba1 = Juego.Instancia().Ambiente.ObtenerCasilla(p);
+            casillaBomba1.Transitar(bombita);
             bombita.CambiarLanzadorAToleTole();
             bombita.Movimiento.CambiarADerecha();
-            bombita.Mover();
             bombita.LanzarExplosivo();
             bombita.Movimiento.CambiarAIzquierda();
             bombita.Mover();
+            bombita.Mover();
+            bombita.Mover();
             bombita.Movimiento.CambiarAArriba();
+            bombita.Mover();
             Juego.Instancia().AvanzarElTiempo();
             Juego.Instancia().AvanzarElTiempo();
             Juego.Instancia().AvanzarElTiempo();
