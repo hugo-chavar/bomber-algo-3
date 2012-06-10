@@ -660,7 +660,9 @@ namespace TestBomberman.TestJuego
 
             Punto posSalida = new Punto(1, 1);
             Casilla casillaConSalida = this.unJuego.Ambiente.ObtenerCasilla(posSalida);
-            casillaConSalida.agregarSalida();
+
+            Salida salida = new Salida();
+            casillaConSalida.agregarSalida(salida);
             
             unJuego.Ambiente.AgregarPersonaje(unBombita);
             unJuego.Ambiente.AgregarPersonaje(unEnemigo);
@@ -710,7 +712,9 @@ namespace TestBomberman.TestJuego
 
             Punto posSalida = new Punto(1, 1);
             Casilla casillaConSalida = this.unJuego.Ambiente.ObtenerCasilla(posSalida);
-            casillaConSalida.agregarSalida();
+            Salida salida = new Salida();
+            casillaConSalida.agregarSalida(salida);
+            
 
             unJuego.Ambiente.AgregarPersonaje(unBombita);
             unJuego.Ambiente.AgregarPersonaje(unEnemigo);

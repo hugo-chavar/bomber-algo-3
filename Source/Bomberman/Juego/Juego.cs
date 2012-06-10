@@ -20,8 +20,7 @@ namespace Bomberman.Juego
         private List<IMovible> enemigosVivos;
         private List<IDependienteDelTiempo> dependientesDelTiempo;
         private Salida salida;
-
-
+        
         //declaracion del Singleton
         private static Juego instanciaDeJuego;
         
@@ -75,6 +74,7 @@ namespace Bomberman.Juego
             this.dependientesDelTiempo = new List<IDependienteDelTiempo>();
             this.salida = new Salida();
             CargarMapa();
+            CargarArticulos();
             this.Ambiente.AgregarPersonaje(this.protagonista);
 
             generarEnemigos();
@@ -194,6 +194,7 @@ namespace Bomberman.Juego
             obs.Add(new Punto(0, 5));
             obs.Add(new Punto(0, 7));
             obs.Add(new Punto(0, 9));
+            obs.Add(new Punto(1, 6));
             obs.Add(new Punto(2, 0));
             obs.Add(new Punto(2, 3));
             obs.Add(new Punto(2, 8));
@@ -242,11 +243,11 @@ namespace Bomberman.Juego
             obs.Add(new Punto(0, 10));
             obs.Add(new Punto(2, 6));
             obs.Add(new Punto(4, 3));
-            obs.Add(new Punto(6, 9));
+            obs.Add(new Punto(6, 8));
             obs.Add(new Punto(8, 12));
             obs.Add(new Punto(9, 4));
-            obs.Add(new Punto(10, 5));
-            obs.Add(new Punto(10, 9));
+            obs.Add(new Punto(10, 4));
+            obs.Add(new Punto(10, 8));
             foreach (Punto p in obs)
             {
                 unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueCemento(p);
@@ -325,8 +326,9 @@ namespace Bomberman.Juego
             obs.Clear();
 
             // cargo Salida
-           // unaCasilla = this.ambiente.ObtenerCasilla(new Punto(14, 2));
-            //unaCasilla.agregarSalida();
+            unaCasilla = this.ambiente.ObtenerCasilla(new Punto(14, 2));
+            this.Salida = new Articulo.Salida();
+            unaCasilla.agregarSalida(this.Salida);
         }
                 
         //    for (i = 0; i < (dependientesDelTiempo.Count); i++)
@@ -338,6 +340,12 @@ namespace Bomberman.Juego
         //            if (((Explosivo)dependientesDelTiempo[i]).EstaExplotado())
         //                this.dependientesDelTiempo.RemoveAt(i);
         //        }
-     }
+
+        public Salida Salida 
+        {
+            get { return this.salida; }
+            set { this.salida = value; }
+        }
+    }
 
 }

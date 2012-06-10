@@ -93,12 +93,11 @@ namespace Bomberman.Mapa.Casilla
 
         }
 
-        public void agregarSalida()
+        public void agregarSalida(Articulo.Salida salida)
         {
-            if ((this.Estado != null) && (this.estado.PuedeContenerSalida())) //&& (Juego.Juego.Instancia().Ambiente.PosicionSalida == null) && (this.estado.PuedeAgregarArticulo())
+            if ((this.Estado != null) && (this.estado.PuedeContenerSalida()) && (this.estado.PuedeAgregarArticulo()))
             {
-                this.ArticuloContenido = new Articulo.Salida();
-                Juego.Juego.Instancia().Ambiente.PosicionSalida = this.Posicion;
+                this.ArticuloContenido = salida;
             }
         }
 
