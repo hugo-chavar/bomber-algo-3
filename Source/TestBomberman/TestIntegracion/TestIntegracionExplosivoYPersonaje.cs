@@ -56,14 +56,13 @@ namespace TestBomberman.TestIntegracion
         [Test]
         public void BombitaPlantaUnaMolotovSeMueveFueraDeSuAlcanceYNoEsDaniadoPorLaBomba()
         {
-            Punto PosicionDePlantado = new Punto(0, 0);
+            Punto PosicionDePlantado = new Punto(1,0);
             Bombita bombita = new Bombita(PosicionDePlantado);
             this.unJuego.Ambiente.ObtenerCasilla(PosicionDePlantado).Transitar(bombita);
             bombita.LanzarExplosivo();
-            bombita.Movimiento.CambiarADerecha();
+            bombita.Movimiento.CambiarAIzquierda();
             bombita.Mover();
-            bombita.Mover();
-            bombita.Mover();
+            bombita.Movimiento.CambiarAArriba();
             bombita.Mover();
             this.unJuego.AvanzarElTiempo();
             Assert.IsFalse(bombita.Destruido());
