@@ -401,12 +401,12 @@ namespace TestBomberman.TestJuego
             casillaBomba1.PlantarExplosivo(bomba1);
             casillaBomba2.PlantarExplosivo(bomba2);
 
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
 
             Assert.IsTrue(bomba1.EstaExplotado());
             Assert.IsTrue(bomba2.EstaExplotado());

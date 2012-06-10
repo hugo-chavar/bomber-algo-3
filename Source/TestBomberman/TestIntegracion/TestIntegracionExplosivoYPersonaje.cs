@@ -54,7 +54,7 @@ namespace TestBomberman.TestIntegracion
         }
 
         [Test]
-        public void TestBombitaPlantaUnaMolotovSeMueveFueraDeSuAlcanceYNoEsDaniadoPorLaBomba()
+        public void BombitaPlantaUnaMolotovSeMueveFueraDeSuAlcanceYNoEsDaniadoPorLaBomba()
         {
             Punto PosicionDePlantado = new Punto(0, 0);
             Bombita bombita = new Bombita(PosicionDePlantado);
@@ -65,7 +65,7 @@ namespace TestBomberman.TestIntegracion
             bombita.Mover();
             bombita.Mover();
             bombita.Mover();
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
             Assert.IsFalse(bombita.Destruido());
         }
 
@@ -82,7 +82,7 @@ namespace TestBomberman.TestIntegracion
             bombita.Mover();
             bombita.Mover();
             bombita.Mover();
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
             bombita.Movimiento.CambiarAIzquierda();
             bombita.Mover();
             bombita.Mover();
@@ -105,7 +105,7 @@ namespace TestBomberman.TestIntegracion
             bombita.Mover();
             bombita.Movimiento.CambiarAArriba();
             bombita.Mover();
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
             bombita.Movimiento.CambiarAIzquierda();
             bombita.Mover();
             bombita.Movimiento.CambiarAAbajo();
@@ -127,7 +127,7 @@ namespace TestBomberman.TestIntegracion
             personaje.Mover();
             personaje.Mover();
             personaje.Mover();
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
             personaje.Movimiento.CambiarAIzquierda();
             personaje.Mover();
             personaje.Mover();
@@ -148,9 +148,9 @@ namespace TestBomberman.TestIntegracion
            Juego.Instancia().Ambiente.ObtenerCasilla(PosicionDePartida).Transitar(personaje);
            personaje.Movimiento.CambiarADerecha();
            personaje.LanzarExplosivo();
-           Juego.Instancia().Ambiente.CuandoPasaElTiempo();
-           Juego.Instancia().Ambiente.CuandoPasaElTiempo();
-           Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+           Juego.Instancia().AvanzarElTiempo();
+           Juego.Instancia().AvanzarElTiempo();
+           Juego.Instancia().AvanzarElTiempo();
            Assert.AreEqual(4, Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(3,0)).Estado.UnidadesDeResistencia);
        }
         
