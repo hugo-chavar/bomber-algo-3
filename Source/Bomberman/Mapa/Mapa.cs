@@ -20,7 +20,7 @@ namespace Bomberman.Mapa
         public const int DERECHA = 6;
         public const int CANTIDADJUGADORES = 1;
       //  private List<IDependienteDelTiempo> dependientesDelTiempo;
-        private int cantidadPersonajesVivos;
+       // private int cantidadPersonajesVivos;
         private bool nivelTerminado;
         private bool nivelGanado;
         private Punto posicionSalida;
@@ -81,7 +81,7 @@ namespace Bomberman.Mapa
             this.dimensionVertical = tamanioVertical;
             this.tablero = new Dictionary<Punto, Casilla.Casilla>();
             //this.dependientesDelTiempo = new List<IDependienteDelTiempo>(); lo manejo en el juego
-            this.cantidadPersonajesVivos = 0;
+           // this.cantidadPersonajesVivos = 0;
             this.NivelGanado = false;
             this.NivelTerminado = false;
         }
@@ -131,7 +131,7 @@ namespace Bomberman.Mapa
             }
             Casilla.Casilla unaCasilla = ObtenerCasilla(movil.Posicion);
             unaCasilla.Transitar(movil);
-            (this.cantidadPersonajesVivos)++;
+            //(this.cantidadPersonajesVivos)++;
 
         }
 
