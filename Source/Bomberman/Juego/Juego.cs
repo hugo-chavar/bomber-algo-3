@@ -140,7 +140,7 @@ namespace Bomberman.Juego
             this.enemigosVivos.Add(enem);
         }
 
-        public int EnemigosVivos()
+        public int CantidadEnemigosVivos()
         {
             return this.enemigosVivos.Count;
         }
@@ -168,7 +168,7 @@ namespace Bomberman.Juego
                     dependientesDelTiempo.Remove(i);
             }
 
-           if (EnemigosVivos() == 0)
+           if (CantidadEnemigosVivos() == 0)
             {
                 ActivarSalida();
             }
