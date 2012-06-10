@@ -58,14 +58,14 @@ namespace TestBomberman.TestIntegracion
         {
             Punto PosicionDePlantado = new Punto(0, 0);
             Bombita bombita = new Bombita(PosicionDePlantado);
-            Juego.Instancia().Ambiente.ObtenerCasilla(PosicionDePlantado).Transitar(bombita);
+            this.unJuego.Ambiente.ObtenerCasilla(PosicionDePlantado).Transitar(bombita);
             bombita.LanzarExplosivo();
             bombita.Movimiento.CambiarADerecha();
             bombita.Mover();
             bombita.Mover();
             bombita.Mover();
             bombita.Mover();
-            Juego.Instancia().AvanzarElTiempo();
+            this.unJuego.AvanzarElTiempo();
             Assert.IsFalse(bombita.Destruido());
         }
 
@@ -75,14 +75,14 @@ namespace TestBomberman.TestIntegracion
         {
             Punto PosicionDePlantado=new Punto(0,0);
             Bombita bombita = new Bombita(PosicionDePlantado);
-            Juego.Instancia().Ambiente.ObtenerCasilla(PosicionDePlantado).Transitar(bombita);
+            this.unJuego.Ambiente.ObtenerCasilla(PosicionDePlantado).Transitar(bombita);
             bombita.LanzarExplosivo();
             bombita.Movimiento.CambiarADerecha();
             bombita.Mover();
             bombita.Mover();
             bombita.Mover();
             bombita.Mover();
-            Juego.Instancia().AvanzarElTiempo();
+            this.unJuego.AvanzarElTiempo();
             bombita.Movimiento.CambiarAIzquierda();
             bombita.Mover();
             bombita.Mover();
@@ -99,19 +99,19 @@ namespace TestBomberman.TestIntegracion
             Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(1, 1)).agregarArticulo(new ArticuloBombaToleTole());
             Punto PosicionDePlantado = new Punto(1, 0);
             Bombita bombita = new Bombita(PosicionDePlantado);
-            Juego.Instancia().Ambiente.ObtenerCasilla(PosicionDePlantado).Transitar(bombita);
+            this.unJuego.Ambiente.ObtenerCasilla(PosicionDePlantado).Transitar(bombita);
             bombita.LanzarExplosivo();
             bombita.Movimiento.CambiarADerecha();
             bombita.Mover();
             bombita.Movimiento.CambiarAArriba();
             bombita.Mover();
-            Juego.Instancia().AvanzarElTiempo();
+            this.unJuego.AvanzarElTiempo();
             bombita.Movimiento.CambiarAIzquierda();
             bombita.Mover();
             bombita.Movimiento.CambiarAAbajo();
             bombita.Mover();
             bombita.LanzarExplosivo();
-            Assert.IsInstanceOf(typeof(BombaToleTole), Juego.Instancia().Ambiente.ObtenerCasilla(PosicionDePlantado).Explosivo);
+            Assert.IsInstanceOf(typeof(BombaToleTole), this.unJuego.Ambiente.ObtenerCasilla(PosicionDePlantado).Explosivo);
             Assert.IsFalse(bombita.Destruido());
         }
 

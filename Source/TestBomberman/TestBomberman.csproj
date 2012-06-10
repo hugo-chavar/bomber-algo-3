@@ -41,10 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestArma\TestProyectil.cs" />
     <Compile Include="TestArticulo\TestArticuloSalida.cs" />
-    <Compile Include="TestIntegracion\TestIntegracionExplosivoYPersonaje.cs" />
-    <Compile Include="TestJuego\TestLanzador.cs" />
+    <Compile Include="TestJuego\TestLanzador.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="TestMapa\TestCasillaVacia.cs" />
     <Compile Include="TestMapa\TestFabricaDeCasillas.cs" />
     <Compile Include="TestMapa\TestMapa.cs" />
@@ -67,7 +67,9 @@
       <Name>Bomberman</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="TestIntegracion\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
