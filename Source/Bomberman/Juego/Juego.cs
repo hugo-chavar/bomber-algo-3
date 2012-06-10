@@ -6,6 +6,7 @@ using Bomberman;
 using Bomberman.Arma;
 using Bomberman.Personaje;
 using Bomberman.Articulo;
+using Bomberman.Mapa.Casilla;
 
 namespace Bomberman.Juego
 {
@@ -26,8 +27,8 @@ namespace Bomberman.Juego
         
         //Constantes
         private const int VIDAS = 3;
-        private const int ANCHOMAPA = 20;
-        private const int ALTOMAPA = 20;
+        private const int ANCHOMAPA = 17;
+        private const int ALTOMAPA = 13;
 
         //propiedades
         public int CantDeVidas
@@ -69,10 +70,11 @@ namespace Bomberman.Juego
             this.Ambiente = new Mapa.Mapa(ANCHOMAPA,ALTOMAPA);
             Punto posicion = new Punto(0, 0);
             this.protagonista = new Personaje.Bombita(posicion);
-            this.Ambiente.AgregarPersonaje(this.protagonista);
+
             this.objetosContundentes = new List<IMovible>();
             this.salida = new Salida();
-
+            CargarMapa();
+            this.Ambiente.AgregarPersonaje(this.protagonista);
 
             generarEnemigos();
             //aca se carga el template del mapa
@@ -111,30 +113,30 @@ namespace Bomberman.Juego
 
         public void generarEnemigos()
         {
-            Punto pto = new Punto(17, 11);
+            Punto pto = new Punto(1, 14);
             IMovible enem = new LosLopezReggae(pto);
             this.Ambiente.AgregarPersonaje(enem);
             this.enemigosVivos.Add(enem);
-            pto = new Punto(3, 11);
+            pto = new Punto(2, 12);
             enem = new LosLopezReggae(pto);
             this.Ambiente.AgregarPersonaje(enem);
             this.enemigosVivos.Add(enem);
-            pto = new Punto(9, 5);
+            pto = new Punto(2, 2);
             enem = new LosLopezReggaeAlado(pto);
             this.Ambiente.AgregarPersonaje(enem);
             this.enemigosVivos.Add(enem);
-            pto = new Punto(1, 15);
+            pto = new Punto(4, 1);
             enem = new LosLopezReggaeAlado(pto);
             this.Ambiente.AgregarPersonaje(enem);
             this.enemigosVivos.Add(enem);
             enem = new Cecilio(pto);
             this.Ambiente.AgregarPersonaje(enem);
             this.enemigosVivos.Add(enem);
-            pto = new Punto(9, 7);
+            pto = new Punto(4, 4);
             enem = new Cecilio(pto);
             this.Ambiente.AgregarPersonaje(enem);
             this.enemigosVivos.Add(enem);
-            pto = new Punto(19, 19);
+            pto = new Punto(6, 8);
             enem = new Cecilio(pto);
             this.Ambiente.AgregarPersonaje(enem);
             this.enemigosVivos.Add(enem);
@@ -178,6 +180,99 @@ namespace Bomberman.Juego
         public void ActivarSalida()
         {
             this.salida.Activar();
+        }
+
+        public void CargarMapa()
+        {
+            List<Punto> obs = new List<Punto>() ;
+            obs.Add(new Punto(0, 2));
+            obs.Add(new Punto(0, 5));
+            obs.Add(new Punto(0, 7));
+            obs.Add(new Punto(0, 9));
+            obs.Add(new Punto(2, 0));
+            obs.Add(new Punto(2, 3));
+            obs.Add(new Punto(2, 8));
+            obs.Add(new Punto(2, 11));
+            obs.Add(new Punto(2, 12));
+            obs.Add(new Punto(3, 10));
+            obs.Add(new Punto(4, 7));
+            obs.Add(new Punto(4, 10));
+            obs.Add(new Punto(4, 11));
+            obs.Add(new Punto(5, 12));
+            obs.Add(new Punto(6, 2));
+            obs.Add(new Punto(6, 4));
+            obs.Add(new Punto(6, 5));
+            obs.Add(new Punto(6, 6));
+            obs.Add(new Punto(7, 2));
+            obs.Add(new Punto(7, 4));
+            obs.Add(new Punto(7, 10));
+            obs.Add(new Punto(8, 9));
+            obs.Add(new Punto(9, 8));
+            obs.Add(new Punto(9, 10));
+            obs.Add(new Punto(10, 7));
+            obs.Add(new Punto(10, 10));
+            obs.Add(new Punto(11, 6));
+            obs.Add(new Punto(12, 7));
+            obs.Add(new Punto(12, 1));
+            obs.Add(new Punto(12, 3));
+            obs.Add(new Punto(14, 2));
+            obs.Add(new Punto(14, 5));
+            obs.Add(new Punto(14, 8));
+            obs.Add(new Punto(14, 10));
+            obs.Add(new Punto(14, 12));
+            obs.Add(new Punto(15, 8));
+            obs.Add(new Punto(16, 1));
+            obs.Add(new Punto(16, 2));
+            obs.Add(new Punto(16, 5));
+            obs.Add(new Punto(16, 9));
+            //cargo los bloques de ladrillo
+            Casilla unaCasilla;
+            foreach (Punto p in obs)
+            {
+                unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(p);
+                obs.Remove(p);
+                this.ambiente.AgregarCasilla(unaCasilla);
+            }
+            //cargo los bloques de cemento
+            obs.Add(new Punto(0, 10));
+            obs.Add(new Punto(2, 6));
+            obs.Add(new Punto(4, 3));
+            obs.Add(new Punto(6, 9));
+            obs.Add(new Punto(8, 12));
+            obs.Add(new Punto(9, 5));
+            obs.Add(new Punto(10, 5));
+            obs.Add(new Punto(10, 9));
+            foreach (Punto p in obs)
+            {
+                unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueCemento(p);
+                obs.Remove(p);
+                this.ambiente.AgregarCasilla(unaCasilla);
+            }
+            //fabrico Aceros y pasillos
+            Punto unaPosicion;
+            int i, j;
+            for (i = 0; i < ANCHOMAPA; i++)
+                for (j = 0; j < ALTOMAPA; j++)
+                {
+                    unaPosicion = new Punto(i, j);
+                    if ((i & 1) == 1 && (j & 1) == 1)
+                    {
+                        //ambos son numeros impares
+                        unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueAcero(unaPosicion);
+                        this.ambiente.AgregarCasilla(unaCasilla);
+                    }
+                    else
+                    {
+                        //uno de los dos es par, completo con pasillos donde no hay nada
+                        if (!this.ambiente.ExisteCasillaEnPosicion(unaPosicion))
+                        {
+                            unaCasilla = FabricaDeCasillas.FabricarPasillo(unaPosicion);
+                            this.ambiente.AgregarCasilla(unaCasilla);
+                        }
+                    }
+                    
+                }
+
         }
                 
         //    for (i = 0; i < (dependientesDelTiempo.Count); i++)
