@@ -170,7 +170,7 @@ namespace TestBomberman.TestSalida
             Juego.Instancia().AvanzarElTiempo();
 
 
-            Assert.IsTrue(Juego.Instancia().Ambiente.CantidadPersonajesVivos == 1);
+            Assert.IsTrue(Juego.Instancia().EnemigosVivos() == 0);
             Assert.IsTrue(Juego.Instancia().Ambiente.ObtenerCasilla(pUnaSalida).ArticuloContenido.EstaActivo );
 
         }
@@ -231,7 +231,7 @@ namespace TestBomberman.TestSalida
             Juego.Instancia().AvanzarElTiempo();
 
 
-            Assert.IsTrue(Juego.Instancia().Ambiente.CantidadPersonajesVivos == 2);
+            Assert.IsTrue(Juego.Instancia().EnemigosVivos() == 1);
             Assert.IsFalse(Juego.Instancia().Ambiente.ObtenerCasilla(pUnaSalida).ArticuloContenido.EstaActivo);
 
         }
