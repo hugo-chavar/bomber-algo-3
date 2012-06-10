@@ -47,6 +47,11 @@ namespace Bomberman.Arma
             return this.exploto;
         }
 
+        public bool DejoDeDependerDelTiempo()
+        {
+            return this.exploto;
+        }
+
         public abstract void Daniar(IDaniable daniable);
 
         public abstract void CuandoPasaElTiempo();

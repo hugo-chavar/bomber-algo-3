@@ -139,17 +139,19 @@ namespace TestBomberman.TestIntegracion
         }
 
        [Test]
-       public void TestLopezReggaeLanzaUnProyectilSinObtaculosEnFrenteYElProyectilDebeExplotarAlpasar3TiemposYDaniarElObstaculoDeArriba()
+       public void LopezReggaeHaciaUnBloqueDeLadrillosYDisminuyeSuResistenciaEnUnaUnidad()
        {
            Punto PosicionDePartida= new Punto(0,0);
            LosLopezReggae personaje = new LosLopezReggae(PosicionDePartida);
+           Casilla casillaAux = Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(3, 0));
+           casillaAux.Estado = BloqueComun.CrearBloqueLadrillos();
            Juego.Instancia().Ambiente.ObtenerCasilla(PosicionDePartida).Transitar(personaje);
            personaje.Movimiento.CambiarADerecha();
            personaje.LanzarExplosivo();
            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
-           Assert.AreEqual(4, Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(3,1)).Estado.UnidadesDeResistencia);
+           Assert.AreEqual(4, Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(3,0)).Estado.UnidadesDeResistencia);
        }
         
 

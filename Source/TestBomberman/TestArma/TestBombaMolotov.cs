@@ -16,7 +16,7 @@ namespace TestBomberman.TestArma
         private Juego juego;
         private Mapa unMapa;
         private const int ANCHOMAPA = 5;
-        private Casilla unaCasilla2;
+        private Casilla unaCasilla;
         
         [SetUp]
         public void TestSetup()
@@ -45,17 +45,25 @@ namespace TestBomberman.TestArma
                     if ((i & 1) == 1 && (j & 1) == 1)
                     {
                         //ambos son numeros impares
-                        unaCasilla2 = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(unaPosicion);//.FabricarCasillaConBloqueAcero(unaPosicion);
+                        unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(unaPosicion);//.FabricarCasillaConBloqueAcero(unaPosicion);
                     }
                     else
                     {
                         //uno de los dos es par
-                        unaCasilla2 = FabricaDeCasillas.FabricarPasillo(unaPosicion);
+                        unaCasilla = FabricaDeCasillas.FabricarPasillo(unaPosicion);
                     }
-                    this.unMapa.AgregarCasilla(unaCasilla2);
+                    this.unMapa.AgregarCasilla(unaCasilla);
                   }
             this.juego.Ambiente = this.unMapa;
         }
+
+        //[TearDown]
+        //public void Restart()
+        //{
+        //    this.juego = null;
+        //    this.unMapa = null;
+        //    this.unaCasilla = null;
+        //}
 
         [Test]
         public void TestBombaMolotovEstaExplotadaAlSerPlantadaDebeDevolverFalse()
@@ -68,13 +76,13 @@ namespace TestBomberman.TestArma
         [Test]
         public void EstaExplotadaAlPasarUnTiempoDevuelveTrue()
         {
-            Punto unPto = new Punto(3, 2);
+            Punto unPto = new Punto(2, 2);
             Bomba bomba = new BombaMolotov(unPto, 0);
             Casilla unaCasilla = unMapa.ObtenerCasilla(unPto);
 
             unaCasilla.PlantarExplosivo(bomba);
             bomba.CuandoPasaElTiempo();
-            Assert.IsTrue(true);//(bomba.EstaExplotado());
+            Assert.IsTrue(bomba.EstaExplotado());
         }
 
         [Test]
@@ -90,8 +98,8 @@ namespace TestBomberman.TestArma
         [Test]
         public void ExplotaUnaBombaMolotovYTieneUnCasilleroASuIzquierdaConBloqueLadrilloLoDestruyeLuegoLaCasillaEsUnPasillo()
         {
-            Punto posicion = new Punto(4,1);
-            Punto puntoCasillaDaniada = new Punto(3,1);
+            Punto posicion = new Punto(4, 1);
+            Punto puntoCasillaDaniada = new Punto(3, 1);
             Bomba unaBomba = new BombaMolotov(posicion, 0);
 
             Casilla unaCasillaBomba = unMapa.ObtenerCasilla(posicion);
@@ -137,7 +145,7 @@ namespace TestBomberman.TestArma
 
             Assert.IsInstanceOf(typeof(Pasillo), unaCasillaDaniada.Estado);
         }
-        
+
         [Test]
         public void ExplotaUnaBombaMolotovYTieneUnCasilleroAbajoConBloqueLadrilloLoDestruyeYLuegoLaCasillaEsUnPasillo()
         {

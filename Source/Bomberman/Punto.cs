@@ -24,7 +24,7 @@
        
         public override bool Equals(object obj)
         {
-            if (obj == null || this.GetType() != obj.GetType())
+            if (obj == null || !(obj is Punto) )  //this.GetType() != obj.GetType()
             {
                 return false;
             }
@@ -34,7 +34,7 @@
 
         public override int GetHashCode()
         {
-            int hash = 7;
+            int hash = 11;
             hash = (hash * 13) + this.x.GetHashCode();
             hash = (hash * 13) + this.y.GetHashCode();
             return hash;

@@ -50,55 +50,33 @@ namespace Bomberman
             unJuego = Juego.Juego.Instancia();
             unJuego.Ambiente = unMapa;
 
-            //Personaje.Personaje bombita = unJuego.Protagonista;
-            //bombita.Movimiento.CambiarADerecha();
-            ////Bombita tiene un Lanzador de Molotov por defecto
-            //bombita.LanzarExplosivo();
-            //Punto pBombita = new Punto(1, 0);
-            //Punto pCecil = new Punto(0, 0);
+            Punto PosicionDePartida = new Punto(0, 0);
+            LosLopezReggae personaje = new LosLopezReggae(PosicionDePartida);
+            Casilla casillaAux = unJuego.Ambiente.ObtenerCasilla(new Punto(3, 0));
+            casillaAux.Estado = BloqueComun.CrearBloqueLadrillos();
+            unJuego.Ambiente.ObtenerCasilla(PosicionDePartida).Transitar(personaje);
+            personaje.Movimiento.CambiarADerecha();
+            personaje.LanzarExplosivo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.Ambiente.CuandoPasaElTiempo();
 
-            //Bombita bombita = new Bombita(pBombita);
-            //Cecilio unCecil = new Cecilio(pCecil);
-            //unJuego.Ambiente.AgregarPersonaje(bombita);
-            //unJuego.Ambiente.AgregarPersonaje(unCecil);
+            //Punto unPto = new Punto(2, 2);
+            //Bomba bomba = new BombaMolotov(unPto, 0);
+            //Casilla otCasilla = unMapa.ObtenerCasilla(unPto);
 
-            //Punto pBloqueAcero = new Punto(1, 1);
-            //bombita.CambiarLanzadorAToleTole(); // harcodeo el lanzador para ver internamente lo que ocurre al cambiar el lanzador
-            //bombita.LanzarExplosivo();
-            //unJuego.Ambiente.CuandoPasaElTiempo();
-            //unJuego.Ambiente.CuandoPasaElTiempo();
-            //unJuego.Ambiente.CuandoPasaElTiempo();
-            //unJuego.Ambiente.CuandoPasaElTiempo();
-            //unJuego.Ambiente.CuandoPasaElTiempo();
-
-            //Punto unPto = new Punto(3, 4);
-            //Arma.Bomba bomba = new Arma.BombaMolotov(unPto, 0);
-            //unJuego.Ambiente.ObtenerCasilla(unPto).PlantarExplosivo(bomba);
+            //otCasilla.PlantarExplosivo(bomba);
             //bomba.CuandoPasaElTiempo();
+            //(bomba.EstaExplotado())//
 
-            //Queue<Punto> recorridoProyectil = new Queue<Punto>();
-            //recorridoProyectil.Enqueue(new Punto(0, 1));
-            //recorridoProyectil.Enqueue(new Punto(0, 2));
-            //recorridoProyectil.Enqueue(new Punto(0, 3));
-            //Proyectil unProyectil = new Proyectil(new Punto(0, 3)); //ElProyectil deberia Guardar en la posicion actual la inicial
-            //unProyectil.Trayectoria = recorridoProyectil;
-
-            //unProyectil.CuandoPasaElTiempo();
-            //unProyectil.CuandoPasaElTiempo();
-            //unProyectil.CuandoPasaElTiempo();
-            Proyectil unProyectil = new Proyectil(new Punto(0, 3));//ElProyectil se crea con la posicion destino
-            unProyectil.Posicion = new Punto(0, 0);
-            Queue<Punto> recorridoProyectil = new Queue<Punto>();
-            recorridoProyectil.Enqueue(new Punto(0, 1));
-            unProyectil.CuandoPasaElTiempo();
-
-            if (unProyectil.Posicion.Equals(new Punto(0, 1)))
+            if  ((unJuego.Ambiente.ObtenerCasilla(new Punto(3, 0)).Estado.UnidadesDeResistencia) == 4)
             {
-                Console.WriteLine("Destruido");
+                Console.WriteLine("Dio en el blanco");
             }
             else
             {
-                Console.WriteLine("No destruido");
+                Console.WriteLine("Erro");
             }
             Console.ReadLine();
         }

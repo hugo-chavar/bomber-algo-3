@@ -8,6 +8,7 @@ namespace Bomberman.Arma
     public interface IDependienteDelTiempo
     {
         void CuandoPasaElTiempo();
+        bool DejoDeDependerDelTiempo();
     }
 }
 

@@ -410,7 +410,7 @@ namespace TestBomberman.TestJuego
 
             Assert.IsTrue(bomba1.EstaExplotado());
             Assert.IsTrue(bomba2.EstaExplotado());
-            Assert.AreEqual(Juego.Instancia().Ambiente.EsperaParaExplotar.Count, 0);
+            Assert.AreEqual(Juego.Instancia().Ambiente.DependientesDelTiempo.Count, 0);
         }
 
         [Test]
@@ -427,7 +427,7 @@ namespace TestBomberman.TestJuego
             movil.Movimiento.CambiarAArriba();
             movil.Mover();
 
-            Assert.AreEqual(1, Juego.Instancia().Ambiente.EsperaParaExplotar.Count);
+            Assert.AreEqual(1, Juego.Instancia().Ambiente.DependientesDelTiempo.Count);
         }
 
 
