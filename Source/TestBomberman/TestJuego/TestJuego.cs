@@ -13,8 +13,8 @@ namespace TestBomberman.TestJuego
     public class TestJuego
     {
         private Juego unJuego;
-        private const int ANCHOMAPA = 5;
-        private const int ALTOMAPA = 5;
+        private const int ANCHOMAPA = 17;
+        private const int ALTOMAPA = 13;
         private Mapa unMapa;
         private IMovible movil;
 
@@ -136,22 +136,19 @@ namespace TestBomberman.TestJuego
         [Test]
         public void BombitaAvanzaPorTodoElMapaYNoCambiaDePosCuandoChocaConElLimiteDerechoDelMapa()
         {
-            IMovible otroMovil = new Bombita(new Punto(0, 0));
+            IMovible otroMovil = new Bombita(new Punto(10, 1));
             this.unMapa.AgregarPersonaje(otroMovil);
-            otroMovil.Movimiento.CambiarAArriba();
-            otroMovil.Mover();//fue a 0,1
-            otroMovil.Mover();//fue a 0,2
+            otroMovil.Movimiento.CambiarAAbajo();
+            otroMovil.Mover();//fue a 10,0
             otroMovil.Movimiento.CambiarADerecha();
-            otroMovil.Mover(); //fue a 1,2
-            otroMovil.Mover();//fue a 2,2
-            otroMovil.Movimiento.CambiarAArriba();
-            otroMovil.Mover(); //fue a 2,3
-            otroMovil.Mover();//fue a 2,4
-            otroMovil.Movimiento.CambiarADerecha();
-            otroMovil.Mover(); //fue a 3,4
-            otroMovil.Mover();//fue a 4,4, esta en el limite!
+            otroMovil.Mover();//fue a 11,0
+            otroMovil.Mover();//fue a 12,0
+            otroMovil.Mover();//fue a 13,0
+            otroMovil.Mover();//fue a 14,0
+            otroMovil.Mover();//fue a 15,0
+            otroMovil.Mover();//fue a 16,0, esta en el limite!
             otroMovil.Mover(); //choca con el limite
-            Punto posFinal = new Punto(4, 4);
+            Punto posFinal = new Punto(ANCHOMAPA -1, 0);
             Assert.IsTrue(otroMovil.Posicion.Equals(posFinal));
         }
 
@@ -180,7 +177,7 @@ namespace TestBomberman.TestJuego
         [Test]
         public void BombitaNoCambiaDePosCuandoChocaConElLimiteSuperiorDelMapa()
         {
-            IMovible otroMovil = new Bombita(new Punto(2, 4));
+            IMovible otroMovil = new Bombita(new Punto(2, ALTOMAPA-1));
             Punto posOriginal = otroMovil.Posicion.Clonar();
             this.unMapa.AgregarPersonaje(otroMovil);
             otroMovil.Movimiento.CambiarAArriba();
