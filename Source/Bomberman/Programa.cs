@@ -52,15 +52,18 @@ namespace Bomberman
             unJuego = Juego.Juego.Instancia();
             unMapa = unJuego.Ambiente;
 
-            IMovible otroMovil = new Bombita(new Punto(3, 0));
-            Punto posOriginal = otroMovil.Posicion.Clonar();
-            unMapa.AgregarPersonaje(otroMovil);
-            otroMovil.Movimiento.CambiarAAbajo();
-            otroMovil.Mover(); //choca con el limite inferior
-            //Assert.IsTrue(otroMovil.Posicion.Equals(posOriginal));
+            Punto PosicionDePlantado = new Punto(0, 0);
+            Bombita bombita = new Bombita(PosicionDePlantado);
+            unJuego.Ambiente.ObtenerCasilla(PosicionDePlantado).Transitar(bombita);
+            bombita.LanzarExplosivo();
+            bombita.Movimiento.CambiarADerecha();
+            bombita.Mover();
+            bombita.Mover();
+            bombita.Mover();
+            bombita.Mover();
+            unJuego.AvanzarElTiempo();
 
-
-            if  (otroMovil.Posicion.Equals(posOriginal))
+            if (bombita.Destruido())
             {
                 Console.WriteLine("Dio en el blanco");
             }

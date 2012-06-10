@@ -413,18 +413,22 @@ namespace TestBomberman.TestJuego
         [Test]
         public void AlLanzarUnaBombaLaDebeAgregarEnListaDeLosQueEsperanParaExplotar()
         {
-            Punto posicionBombita1 = new Punto(0, 0);
-            Punto posicionBombita2 = new Punto(2, 0);
-            BombaMolotov unaBomba = new BombaMolotov(posicionBombita1, 0);
+
+            Punto posicionBombita1 = new Punto(3, 0);
+            int cantDependeTiempo = Juego.Instancia().DependientesDelTiempo.Count;
+            //BombaMolotov unaBomba = new BombaMolotov(posicionBombita1, 0);
             Bombita movil = new Bombita(posicionBombita1);
 
             Casilla casillaBomba1 = Juego.Instancia().Ambiente.ObtenerCasilla(posicionBombita1);
-
+            casillaBomba1.Transitar(movil);
+            
             movil.LanzarExplosivo();
-            movil.Movimiento.CambiarAArriba();
-            movil.Mover();
+            movil.LanzarExplosivo();
+            movil.LanzarExplosivo();
+            movil.LanzarExplosivo();
+            movil.LanzarExplosivo();
 
-            Assert.AreEqual(1, Juego.Instancia().DependientesDelTiempo.Count);
+            Assert.AreEqual((cantDependeTiempo+1), Juego.Instancia().DependientesDelTiempo.Count);
         }
 
 

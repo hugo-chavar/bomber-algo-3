@@ -72,6 +72,7 @@ namespace Bomberman.Juego
             this.protagonista = new Personaje.Bombita(posicion);
             enemigosVivos = new List<IMovible>();
             this.objetosContundentes = new List<IMovible>();
+            this.dependientesDelTiempo = new List<IDependienteDelTiempo>();
             this.salida = new Salida();
             CargarMapa();
             this.Ambiente.AgregarPersonaje(this.protagonista);
@@ -167,9 +168,13 @@ namespace Bomberman.Juego
             foreach (IDependienteDelTiempo i in dependientesDelTiempo)
             {
                 i.CuandoPasaElTiempo();
-                if (i.DejoDeDependerDelTiempo())
-                    dependientesDelTiempo.Remove(i);
             }
+            for (int j = 0; j<dependientesDelTiempo.Count; j++)
+            {
+                if (dependientesDelTiempo[j].DejoDeDependerDelTiempo())
+                    dependientesDelTiempo.RemoveAt(j);
+            }
+            
 
            if (CantidadEnemigosVivos() == 0)
             {
