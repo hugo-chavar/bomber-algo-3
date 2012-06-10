@@ -11,7 +11,7 @@ namespace TestBomberman.TestArma
     class TestBombaMolotov
     {
         private Juego unJuego;
-        private const int ANCHOMAPA = 5;
+        //private const int ANCHOMAPA = 5;
         private Mapa unMapa;
         
         [SetUp]
@@ -24,30 +24,31 @@ namespace TestBomberman.TestArma
             //      P * P * P
             //      P P P P P
 
-            Punto unaPosicion;
-            Casilla unaCasilla;
-            this.unMapa = new Mapa(ANCHOMAPA, ANCHOMAPA);
+            //Punto unaPosicion;
+            //Casilla unaCasilla;
+            //this.unMapa = new Mapa(ANCHOMAPA, ANCHOMAPA);
 
-            int i, j;
-            for (i = 0; i < ANCHOMAPA; i++)
-                for (j = 0; j < ANCHOMAPA; j++)
-                {
-                    unaPosicion = new Punto(i, j);
-                    if ((i & 1) == 1 && (j & 1) == 1)
-                    {
-                        //ambos son numeros impares
-                        unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(unaPosicion);
-                    }
-                    else
-                    {
-                        //uno de los dos es par
-                        unaCasilla = FabricaDeCasillas.FabricarPasillo(unaPosicion);
-                    }
-                    this.unMapa.AgregarCasilla(unaCasilla);
-                }
+            //int i, j;
+            //for (i = 0; i < ANCHOMAPA; i++)
+            //    for (j = 0; j < ANCHOMAPA; j++)
+            //    {
+            //        unaPosicion = new Punto(i, j);
+            //        if ((i & 1) == 1 && (j & 1) == 1)
+            //        {
+            //            //ambos son numeros impares
+            //            unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(unaPosicion);
+            //        }
+            //        else
+            //        {
+            //            //uno de los dos es par
+            //            unaCasilla = FabricaDeCasillas.FabricarPasillo(unaPosicion);
+            //        }
+            //        this.unMapa.AgregarCasilla(unaCasilla);
+            //    }
 
             this.unJuego = Juego.Instancia();
-            this.unJuego.Ambiente = this.unMapa;
+            this.unMapa = Juego.Instancia().Ambiente;
+            //this.unJuego.Ambiente = this.unMapa;
 
         }
 

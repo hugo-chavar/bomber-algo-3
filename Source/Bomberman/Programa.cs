@@ -16,7 +16,7 @@ namespace Bomberman
         {
             Juego.Juego unJuego;
 
-            const int ANCHOMAPA = 5;
+            //const int ANCHOMAPA = 5;
 
             //creo un mapa 5x5 con esta distribucion (P = Pasillo, * = BloqueAcero):
             //      P P P P P
@@ -25,30 +25,31 @@ namespace Bomberman
             //      P * P * P
             //      P P P P P
 
-            Punto unaPosicion;
-            Casilla unaCasilla;
-            Mapa.Mapa unMapa = new Mapa.Mapa(ANCHOMAPA, ANCHOMAPA);
+            //Punto unaPosicion;
+            //Casilla unaCasilla;
+            //Mapa.Mapa unMapa = new Mapa.Mapa(ANCHOMAPA, ANCHOMAPA);
 
-            int i, j;
-            for (i = 0; i < ANCHOMAPA; i++)
-                for (j = 0; j < ANCHOMAPA; j++)
-                {
-                    unaPosicion = new Punto(i, j);
-                    if ((i & 1) == 1 && (j & 1) == 1)
-                    {
-                        //ambos son numeros impares
-                        unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueAcero(unaPosicion);
-                    }
-                    else
-                    {
-                        //uno de los dos es par
-                        unaCasilla = FabricaDeCasillas.FabricarPasillo(unaPosicion);
-                    }
-                    unMapa.AgregarCasilla(unaCasilla);
-                }
+            //int i, j;
+            //for (i = 0; i < ANCHOMAPA; i++)
+            //    for (j = 0; j < ANCHOMAPA; j++)
+            //    {
+            //        unaPosicion = new Punto(i, j);
+            //        if ((i & 1) == 1 && (j & 1) == 1)
+            //        {
+            //            //ambos son numeros impares
+            //            unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueAcero(unaPosicion);
+            //        }
+            //        else
+            //        {
+            //            //uno de los dos es par
+            //            unaCasilla = FabricaDeCasillas.FabricarPasillo(unaPosicion);
+            //        }
+            //        unMapa.AgregarCasilla(unaCasilla);
+            //    }
+            Console.WriteLine("Dio en el blanco");
 
             unJuego = Juego.Juego.Instancia();
-            unJuego.Ambiente = unMapa;
+            //unJuego.Ambiente = unMapa;
 
             //Punto PosicionDePartida = new Punto(0, 0);
             //LosLopezReggae personaje = new LosLopezReggae(PosicionDePartida);
@@ -70,14 +71,14 @@ namespace Bomberman
             //bomba.CuandoPasaElTiempo();
             //(bomba.EstaExplotado())//
 
-            if  ((unJuego.Ambiente.ObtenerCasilla(new Punto(3, 0)).Estado.UnidadesDeResistencia) == 4)
-            {
-                Console.WriteLine("Dio en el blanco");
-            }
-            else
-            {
-                Console.WriteLine("Erro");
-            }
+            //if  ((unJuego.Ambiente.ObtenerCasilla(new Punto(3, 0)).Estado.UnidadesDeResistencia) == 4)
+            //{
+            //    Console.WriteLine("Dio en el blanco");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Erro");
+            //}
             Console.ReadLine();
         }
 

@@ -70,7 +70,7 @@ namespace Bomberman.Juego
             this.Ambiente = new Mapa.Mapa(ANCHOMAPA,ALTOMAPA);
             Punto posicion = new Punto(0, 0);
             this.protagonista = new Personaje.Bombita(posicion);
-
+            enemigosVivos = new List<IMovible>();
             this.objetosContundentes = new List<IMovible>();
             this.salida = new Salida();
             CargarMapa();
@@ -113,11 +113,11 @@ namespace Bomberman.Juego
 
         public void generarEnemigos()
         {
-            Punto pto = new Punto(1, 14);
+            Punto pto = new Punto(14, 1);
             IMovible enem = new LosLopezReggae(pto);
             this.Ambiente.AgregarPersonaje(enem);
             this.enemigosVivos.Add(enem);
-            pto = new Punto(2, 12);
+            pto = new Punto(12, 2);
             enem = new LosLopezReggae(pto);
             this.Ambiente.AgregarPersonaje(enem);
             this.enemigosVivos.Add(enem);
@@ -125,7 +125,7 @@ namespace Bomberman.Juego
             enem = new LosLopezReggaeAlado(pto);
             this.Ambiente.AgregarPersonaje(enem);
             this.enemigosVivos.Add(enem);
-            pto = new Punto(4, 1);
+            pto = new Punto(1, 4);
             enem = new LosLopezReggaeAlado(pto);
             this.Ambiente.AgregarPersonaje(enem);
             this.enemigosVivos.Add(enem);
@@ -136,7 +136,7 @@ namespace Bomberman.Juego
             enem = new Cecilio(pto);
             this.Ambiente.AgregarPersonaje(enem);
             this.enemigosVivos.Add(enem);
-            pto = new Punto(6, 8);
+            pto = new Punto(8, 6);
             enem = new Cecilio(pto);
             this.Ambiente.AgregarPersonaje(enem);
             this.enemigosVivos.Add(enem);
@@ -239,7 +239,7 @@ namespace Bomberman.Juego
             obs.Add(new Punto(4, 3));
             obs.Add(new Punto(6, 9));
             obs.Add(new Punto(8, 12));
-            obs.Add(new Punto(9, 5));
+            obs.Add(new Punto(9, 4));
             obs.Add(new Punto(10, 5));
             obs.Add(new Punto(10, 9));
             foreach (Punto p in obs)
