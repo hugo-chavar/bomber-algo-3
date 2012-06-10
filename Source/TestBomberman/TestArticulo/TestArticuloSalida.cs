@@ -93,7 +93,8 @@ namespace TestBomberman.TestSalida
 
             
             // agrego articulo
-            unaCasillaDeSalida.agregarSalida();
+            Salida salida = new Salida();
+            unaCasillaDeSalida.agregarSalida(salida);
 
             
             Assert.IsInstanceOf(typeof(Salida), unaCasillaDeSalida.ArticuloContenido);
@@ -111,7 +112,8 @@ namespace TestBomberman.TestSalida
 
             Casilla unaCasillaDeSalida = unMapa.ObtenerCasilla(pUnaSalida);
 
-            unaCasillaDeSalida.agregarSalida();
+            Salida salida = new Salida();
+            unaCasillaDeSalida.agregarSalida(salida);
 
 
 
@@ -154,7 +156,11 @@ namespace TestBomberman.TestSalida
             Punto pUnCecilio = new Punto(2, 1);
             Punto pUnaBombaMolotov = new Punto(2, 0);
             Punto pBombita = new Punto(4, 4);
-            Juego.Instancia().Ambiente.ObtenerCasilla(pUnaSalida).agregarSalida();
+            
+            Casilla unaCasillaDeSalida = Juego.Instancia().Ambiente.ObtenerCasilla(pUnaSalida);
+            Salida salida = new Salida();
+            unaCasillaDeSalida.agregarSalida(salida);
+            
             Assert.IsInstanceOf(typeof(Salida), Juego.Instancia().Ambiente.ObtenerCasilla(pUnaSalida).ArticuloContenido);
 
             Cecilio unCecil = new Cecilio(pUnCecilio);
@@ -210,7 +216,10 @@ namespace TestBomberman.TestSalida
             Punto pBombita = new Punto(4, 4);
             Punto pLopez = new Punto(4, 3);
 
-            Juego.Instancia().Ambiente.ObtenerCasilla(pUnaSalida).agregarSalida();
+            Casilla unaCasillaDeSalida = Juego.Instancia().Ambiente.ObtenerCasilla(pUnaSalida);
+            Salida salida = new Salida();
+            unaCasillaDeSalida.agregarSalida(salida);
+
             Assert.IsInstanceOf(typeof(Salida), Juego.Instancia().Ambiente.ObtenerCasilla(pUnaSalida).ArticuloContenido);
 
             Cecilio unCecil = new Cecilio(pUnCecilio);
