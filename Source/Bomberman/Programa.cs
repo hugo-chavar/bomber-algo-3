@@ -15,6 +15,7 @@ namespace Bomberman
         static void Main(string[] args)
         {
             Juego.Juego unJuego;
+            Mapa.Mapa unMapa;
 
             //const int ANCHOMAPA = 5;
 
@@ -46,39 +47,27 @@ namespace Bomberman
             //        }
             //        unMapa.AgregarCasilla(unaCasilla);
             //    }
-            Console.WriteLine("Dio en el blanco");
+            //Console.WriteLine("Dio en el blanco");
 
             unJuego = Juego.Juego.Instancia();
-            //unJuego.Ambiente = unMapa;
+            unMapa = unJuego.Ambiente;
 
-            //Punto PosicionDePartida = new Punto(0, 0);
-            //LosLopezReggae personaje = new LosLopezReggae(PosicionDePartida);
-            //Casilla casillaAux = unJuego.Ambiente.ObtenerCasilla(new Punto(3, 0));
-            //casillaAux.Estado = BloqueComun.CrearBloqueLadrillos();
-            //unJuego.Ambiente.ObtenerCasilla(PosicionDePartida).Transitar(personaje);
-            //personaje.Movimiento.CambiarADerecha();
-            //personaje.LanzarExplosivo();
-            //unJuego.Ambiente.CuandoPasaElTiempo();
-            //unJuego.Ambiente.CuandoPasaElTiempo();
-            //unJuego.Ambiente.CuandoPasaElTiempo();
-            //unJuego.Ambiente.CuandoPasaElTiempo();
+            IMovible otroMovil = new Bombita(new Punto(3, 0));
+            Punto posOriginal = otroMovil.Posicion.Clonar();
+            unMapa.AgregarPersonaje(otroMovil);
+            otroMovil.Movimiento.CambiarAAbajo();
+            otroMovil.Mover(); //choca con el limite inferior
+            //Assert.IsTrue(otroMovil.Posicion.Equals(posOriginal));
 
-            //Punto unPto = new Punto(2, 2);
-            //Bomba bomba = new BombaMolotov(unPto, 0);
-            //Casilla otCasilla = unMapa.ObtenerCasilla(unPto);
 
-            //otCasilla.PlantarExplosivo(bomba);
-            //bomba.CuandoPasaElTiempo();
-            //(bomba.EstaExplotado())//
-
-            //if  ((unJuego.Ambiente.ObtenerCasilla(new Punto(3, 0)).Estado.UnidadesDeResistencia) == 4)
-            //{
-            //    Console.WriteLine("Dio en el blanco");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Erro");
-            //}
+            if  (otroMovil.Posicion.Equals(posOriginal))
+            {
+                Console.WriteLine("Dio en el blanco");
+            }
+            else
+            {
+                Console.WriteLine("Erro");
+            }
             Console.ReadLine();
         }
 

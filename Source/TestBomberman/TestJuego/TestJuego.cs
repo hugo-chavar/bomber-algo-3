@@ -51,7 +51,7 @@ namespace TestBomberman.TestJuego
             //    }
 
             this.unJuego = Juego.Instancia();
-           // this.unJuego.Ambiente = this.unMapa;
+            this.unMapa = this.unJuego.Ambiente;
 
         }
 
