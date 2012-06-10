@@ -71,7 +71,7 @@ namespace TestBomberman.TestIntegracion
 
 
         [Test]
-        public void TestBombitaPlantaUnaMolotovSeMueveFueraDeSuAlcanceYLuegoDeQueLaBombaExplotaVuelveYPlantaOtraMolotov()
+        public void BombitaPlantaUnaMolotovSeMueveFueraDeSuAlcanceYLuegoDeQueLaBombaExplotaVuelveYPlantaOtraMolotov()
         {
             Punto PosicionDePlantado=new Punto(0,0);
             Bombita bombita = new Bombita(PosicionDePlantado);
@@ -94,7 +94,7 @@ namespace TestBomberman.TestIntegracion
         }
 
         [Test]
-        public void TestBombitaPlantaUnaMolotovSeMueveFueraDeSuAlcanceAgarraArticuloYLuegoDeQueLaBombaExplotaVuelveYPlantaUnaToleTole()
+        public void BombitaPlantaUnaMolotovSeMueveFueraDeSuAlcanceAgarraArticuloYLuegoDeQueLaBombaExplotaVuelveYPlantaUnaToleTole()
         {
             Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(1, 1)).agregarArticulo(new ArticuloBombaToleTole());
             Punto PosicionDePlantado = new Punto(1, 0);
@@ -116,7 +116,7 @@ namespace TestBomberman.TestIntegracion
         }
 
         [Test]
-        public void TestLopezReggaeAladoPlantaUnaMolotovSeMueveFueraDeSuAlcanceYLuegoDeQueLaBombaExplotaVuelveYPlantaOtra()
+        public void LopezReggaeAladoPlantaUnaMolotovSeMueveFueraDeSuAlcanceYLuegoDeQueLaBombaExplotaVuelveYPlantaOtra()
         {
             Punto PosicionDePlantado = new Punto(0, 1);
             LosLopezReggaeAlado personaje = new LosLopezReggaeAlado(PosicionDePlantado);
