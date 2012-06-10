@@ -22,6 +22,7 @@ namespace Bomberman.Arma
         public override void Disparar()
         {
             //Juego.Juego.Instancia().Ambiente.ObtenerCasilla(this.posicionDeTiro).PlantarExplosivo(new BombaMolotov(this.posicionDeTiro, this.RetardoExplosion));
+            if(Juego.Juego.Instancia().Ambiente.ObtenerCasilla(this.posicionDeTiro).Explosivo == null)
             Juego.Juego.Instancia().AlojarExplosivo(new BombaMolotov(this.posicionDeTiro, this.RetardoExplosion));
         }
     }
