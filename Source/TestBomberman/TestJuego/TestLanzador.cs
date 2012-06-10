@@ -92,7 +92,7 @@ namespace TestBomberman.TestJuego
             Juego.Instancia().Ambiente.AgregarPersonaje(unCecil);
 
             bombita.LanzarExplosivo();
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
 
             Assert.IsTrue(unCecil.Destruido());
             Assert.IsTrue(bombita.Destruido());
@@ -115,15 +115,15 @@ namespace TestBomberman.TestJuego
             bombita.Movimiento.CambiarAArriba();
             bombita.Mover(); // pos Bombita = (2,1) tiene que safar de la explosion para no morir
 
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
             Assert.IsFalse(unLR.UnidadesDeResistencia == 0); //le quedan 5 puntos de vida
             Assert.IsFalse(bombita.Destruido()); //safo bombitaaa
 
             bombita.Movimiento.CambiarAAbajo();
             bombita.Mover();
             bombita.LanzarExplosivo();
-            
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+
+            Juego.Instancia().AvanzarElTiempo();
             Assert.IsTrue(unLR.UnidadesDeResistencia == 0); //le quedan 0 puntos de vida
             Assert.IsTrue(bombita.Destruido()); //esta vez no safo
         }
@@ -145,7 +145,7 @@ namespace TestBomberman.TestJuego
             bombita.Movimiento.CambiarAArriba();
             bombita.Mover(); // pos Bombita = (2,1) tiene que safar de la explosion para no morir
 
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
             Assert.IsTrue(unLRA.UnidadesDeResistencia == 0); //chau chau Adios loslopezreggae 
             Assert.IsFalse(bombita.Destruido()); //safo bombitaaa
         }
@@ -162,7 +162,7 @@ namespace TestBomberman.TestJuego
             Juego.Instancia().Ambiente.AgregarPersonaje(unCecil);
 
             unCecil.LanzarExplosivo();
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
 
             Assert.IsTrue(unCecil.Destruido());
             Assert.IsTrue(bombita.Destruido());
@@ -187,7 +187,7 @@ namespace TestBomberman.TestJuego
             unCecil.Mover(); 
             //escapa Cecilio antes de que explote 
 
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
 
             Assert.IsFalse(unCecil.Destruido()); 
             Assert.IsTrue(bombita.Destruido());
@@ -209,9 +209,9 @@ namespace TestBomberman.TestJuego
             lRA.Mover();
             lRA.Mover();
             lRA.Mover();
-            lRA.Mover(); 
- 
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            lRA.Mover();
+
+            Juego.Instancia().AvanzarElTiempo();
             //escapa el alado
 
             Assert.IsFalse(lRA.Destruido());
@@ -233,11 +233,11 @@ namespace TestBomberman.TestJuego
             Juego.Instancia().Ambiente.AgregarPersonaje(unCecil);
             bombita.CambiarLanzadorAToleTole(); // harcodeo el lanzador para ver internamente lo que ocurre al cambiar el lanzador
             bombita.LanzarExplosivo();
+            Juego.Instancia().AvanzarElTiempo();
             Juego.Instancia().Ambiente.CuandoPasaElTiempo();
             Juego.Instancia().Ambiente.CuandoPasaElTiempo();
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
             
             Assert.IsTrue(unCecil.Destruido());
             Assert.IsTrue(bombita.Destruido());
