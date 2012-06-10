@@ -66,7 +66,7 @@ namespace TestBomberman.TestArma
         //}
 
         [Test]
-        public void TestBombaMolotovEstaExplotadaAlSerPlantadaDebeDevolverFalse()
+        public void BombaMolotovEstaExplotadaAlSerPlantadaDebeDevolverFalse()
         {
             Punto unPto = new Punto(3, 4);
             Bomba bomba = new BombaMolotov(unPto, 0);

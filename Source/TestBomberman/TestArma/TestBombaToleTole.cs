@@ -18,14 +18,14 @@ namespace TestBomberman.TestArma
         }
 
         [Test]
-        public void TestBombaToleToleEstaExplotadaAlSerCreadaDebeDevolverFalse()
+        public void BombaToleToleEstaExplotadaAlSerCreadaDebeDevolverFalse()
         {
             Bomba bomba = new BombaToleTole(posicion, 0);
             Assert.AreEqual(bomba.EstaExplotado(), false);
         }
 
         [Test]
-        public void TestBombaToleToleEstaExplotadaAlPasar4SegundosDebeDevolverFalse()
+        public void BombaToleToleEstaExplotadaAlPasar4SegundosDebeDevolverFalse()
         {
             Bomba bomba = new BombaToleTole(posicion, 0);
             bomba.CuandoPasaElTiempo();
@@ -36,7 +36,7 @@ namespace TestBomberman.TestArma
         }
 
         [Test]
-        public void TestBombaToleToleEstaExplotadaAlPasar5SegundosDebeDevolverTrue()
+        public void BombaToleToleEstaExplotadaAlPasar5SegundosDebeDevolverTrue()
         {
             Bomba bomba = new BombaToleTole(posicion, 0);
             bomba.CuandoPasaElTiempo();

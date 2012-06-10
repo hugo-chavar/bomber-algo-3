@@ -20,35 +20,35 @@ namespace TestBomberman
         }
 
         [Test]
-        public void TestDaniarConBombaMolotovBloqueLadrillosModificaUnidades()
+        public void DaniarConBombaMolotovBloqueLadrillosModificaUnidades()
         {
             obstaculoLadrillo.DaniarConBombaMolotov(5);
             Assert.AreEqual(obstaculoLadrillo.UnidadesDeResistencia, 0);
         }
 
         [Test]
-        public void TestDaniarConBombaToleToleBloqueLadrillos()
+        public void DaniarConBombaToleToleBloqueLadrillos()
         {
             obstaculoLadrillo.DaniarConBombaToleTole();
             Assert.IsTrue(obstaculoLadrillo.Destruido());
         }
 
         [Test]
-        public void TestDaniarConBombaMolotovBloqueLadrillosLoDestruye()
+        public void DaniarConBombaMolotovBloqueLadrillosLoDestruye()
         {
             obstaculoLadrillo.DaniarConBombaMolotov(5);
             Assert.IsTrue(obstaculoLadrillo.Destruido());
         }
 
         [Test]
-        public void TestDaniarConBombaMolotovBloqueCementoModificaUnidades()
+        public void DaniarConBombaMolotovBloqueCementoModificaUnidades()
         {
             obstaculoCemento.DaniarConBombaMolotov(5);
             Assert.AreEqual(obstaculoCemento.UnidadesDeResistencia, 5);
         }
 
         [Test]
-        public void TestDaniarConBombaToleToleBloqueCemento()
+        public void DaniarConBombaToleToleBloqueCemento()
         {
             obstaculoCemento.DaniarConBombaToleTole();
             Assert.IsTrue(obstaculoCemento.Destruido());
