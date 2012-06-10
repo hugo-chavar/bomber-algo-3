@@ -91,8 +91,8 @@ namespace TestBomberman.TestArma
         [Test]
         public void ExplotaUnaBombaMolotovYTieneUnCasilleroASuIzquierdaConBloqueLadrilloLoDestruyeLuegoLaCasillaEsUnPasillo()
         {
-            Punto posicion = new Punto(4, 1);
-            Punto puntoCasillaDaniada = new Punto(3, 1);
+            Punto posicion = new Punto(3, 0);
+            Punto puntoCasillaDaniada = new Punto(2, 0);
             Bomba unaBomba = new BombaMolotov(posicion, 0);
 
             Casilla unaCasillaBomba = unMapa.ObtenerCasilla(posicion);
@@ -108,8 +108,8 @@ namespace TestBomberman.TestArma
         [Test]
         public void ExplotaUnaBombaMolotovYTieneUnCasilleroASuDerechaConBloqueLadrilloYLoDestruyeLuegoLaCasillaEsUnPasillo()
         {
-            Punto posicion = new Punto(0, 1);
-            Punto puntoCasillaDaniada = new Punto(1, 1);
+            Punto posicion = new Punto(1, 0);
+            Punto puntoCasillaDaniada = new Punto(2, 0);
             Bomba unaBomba = new BombaMolotov(posicion, 0);
 
             Casilla unaCasillaBomba = unMapa.ObtenerCasilla(posicion);
@@ -125,8 +125,8 @@ namespace TestBomberman.TestArma
         [Test]
         public void ExplotaUnaBombaMolotovYTieneUnCasilleroArribaConBloqueLadrilloLoDestruyeYLuegoLaCasillaEsUnPasillo()
         {
-            Punto posicion = new Punto(1, 2);
-            Punto puntoCasillaDaniada = new Punto(1, 3);
+            Punto posicion = new Punto(0, 1);
+            Punto puntoCasillaDaniada = new Punto(0, 2);
             Bomba unaBomba = new BombaMolotov(posicion, 0);
 
             Casilla unaCasillaBomba = unMapa.ObtenerCasilla(posicion);
@@ -142,8 +142,8 @@ namespace TestBomberman.TestArma
         [Test]
         public void ExplotaUnaBombaMolotovYTieneUnCasilleroAbajoConBloqueLadrilloLoDestruyeYLuegoLaCasillaEsUnPasillo()
         {
-            Punto posicion = new Punto(3, 4);
-            Punto puntoCasillaDaniada = new Punto(3, 3);
+            Punto posicion = new Punto(0, 3);
+            Punto puntoCasillaDaniada = new Punto(0, 2);
             Bomba unaBomba = new BombaMolotov(posicion, 0);
 
             Casilla unaCasillaBomba = unMapa.ObtenerCasilla(posicion);
