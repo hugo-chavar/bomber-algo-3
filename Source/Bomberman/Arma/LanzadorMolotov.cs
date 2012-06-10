@@ -19,21 +19,10 @@ namespace Bomberman.Arma
             this.sentido = new Movimiento();
         }
 
-        //public override bool Lanzar(Punto posicion, int reduccionRetardo)  //Hugo dice: dejo comentado esto a efectos didácticos lo reemplacé por Disparar()
-        //{
-        //    Casilla casilla = Juego.Juego.Instancia().Ambiente.ObtenerCasilla(posicion);
-        //    if (casilla.Explosivo==null)
-        //    {
-        //        Bomba bomba = new BombaMolotov(posicion, reduccionRetardo);
-        //        casilla.PlantarExplosivo(bomba);
-        //        return (true); //Las bombas se ponen en la posicion del personaje
-        //    }
-        //    return (false); //casilla ya ocupada Con Bomba
-        //}
-
         public override void Disparar()
         {
-            Juego.Juego.Instancia().Ambiente.ObtenerCasilla(this.posicionDeImpacto).PlantarExplosivo(new BombaMolotov(this.posicionDeImpacto, this.RetardoExplosion));
+            //Juego.Juego.Instancia().Ambiente.ObtenerCasilla(this.posicionDeTiro).PlantarExplosivo(new BombaMolotov(this.posicionDeTiro, this.RetardoExplosion));
+            Juego.Juego.Instancia().AlojarExplosivo(new BombaMolotov(this.posicionDeTiro, this.RetardoExplosion));
         }
     }
 }

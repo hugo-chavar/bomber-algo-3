@@ -93,9 +93,9 @@ namespace Bomberman.Personaje
             return ((this.unidadesDeResistencia) < 1);
         }
 
-        public void Disparar()
+        public bool EsDaniable()
         {
-            //Martin: Por que quedo vacio esto?
+            return true;
         }
         
         private int CalcularUnidadesRestantes(int unidadesDestruidas)
@@ -114,7 +114,7 @@ namespace Bomberman.Personaje
         public virtual void DaniarConBombaToleTole()
         {
             this.UnidadesDeResistencia = 0;
-            Juego.Juego.Instancia().Ambiente.DecrementarCantidadDePersonajesVivos();
+            //Juego.Juego.Instancia().Ambiente.DecrementarCantidadDePersonajesVivos();
         }
 
         public virtual void DaniarConProyectil(int UnidadesDaniadas)
@@ -127,10 +127,10 @@ namespace Bomberman.Personaje
             if (!this.Destruido())
             {
                 this.UnidadesDeResistencia = CalcularUnidadesRestantes(UnidadesDaniadas);
-                if (this.UnidadesDeResistencia == 0)
-                {
-                    Juego.Juego.Instancia().Ambiente.DecrementarCantidadDePersonajesVivos();
-                }
+                //if (this.UnidadesDeResistencia == 0) //SE MANEJA DESDE CLASE JUEGO
+                //{
+                //    Juego.Juego.Instancia().Ambiente.DecrementarCantidadDePersonajesVivos();
+                //}
             }
         }
         
@@ -149,14 +149,14 @@ namespace Bomberman.Personaje
             this.Lanzador.RetardoExplosion = retardo;
         }
 
-        public abstract void PartidaGanada();
+        //public abstract void PartidaGanada();
 
 
         public abstract void ReaccionarConArticulo(Articulo.Articulo articulo);
         
-        public IDaniable ObtenerDaniable()
-        {
-            return this;
-        }
+        //public IDaniable ObtenerDaniable()
+        //{
+        //    return this;
+        //}
     }
 }

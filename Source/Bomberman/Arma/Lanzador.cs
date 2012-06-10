@@ -11,7 +11,7 @@ namespace Bomberman.Arma
         protected Movimiento sentido;
         protected Punto posicionDeTiro;
         protected int retardoExplosion;
-        protected Punto posicionDeImpacto;
+        //protected Punto posicionDeImpacto;
         protected int alcance;
 
         public abstract void Disparar(); //Lanzar(Punto posicion, int reduccionRetardo)--- reemplazo de metodo
@@ -45,98 +45,99 @@ namespace Bomberman.Arma
         {
             this.Sentido.Direccion = movil.Movimiento.Direccion;
             this.PosicionDeTiro = movil.Posicion.Clonar();
-            this.CalcularPosicionDeImpacto();
-        }
-
-        public virtual void CalcularPosicionDeImpactoHaciaArriba()
-        {
-            //sabemos que la posicion en la que esta es un pasillo y puede dejar la bomba alli
-            this.posicionDeImpacto = this.posicionDeTiro.Clonar();
-            //voy hasta el alcance del lanzamiento o hasta un obstaculo o fin de mapa
-            int i = this.Alcance;
-            Punto posAux = this.posicionDeTiro.PosicionSuperior();
-            while (i > 0 && Juego.Juego.Instancia().Ambiente.PermitidoLanzarExplosivoAPos(posAux))
-            {
-                this.posicionDeImpacto = posAux;
-                posAux = this.posicionDeImpacto.PosicionSuperior();
-                i--;
-            }
-        }
-
-        public virtual void CalcularPosicionDeImpactoHaciaAbajo()
-        {
-            //sabemos que la posicion en la que esta es un pasillo y puede dejar la bomba alli
-            this.posicionDeImpacto = this.posicionDeTiro.Clonar();
-            //voy hasta el alcance del lanzamiento o hasta un obstaculo o fin de mapa
-            int i = this.Alcance;
-            Punto posAux = this.posicionDeTiro.PosicionInferior();
-            while (i > 0 && Juego.Juego.Instancia().Ambiente.PermitidoLanzarExplosivoAPos(posAux))
-            {
-                this.posicionDeImpacto = posAux;
-                posAux = this.posicionDeImpacto.PosicionInferior();
-                i--;
-            }
-        }
-
-        public virtual void CalcularPosicionDeImpactoHaciaLaIzquierda()
-        {
-            //sabemos que la posicion en la que esta es un pasillo y puede dejar la bomba alli
-            this.posicionDeImpacto = this.posicionDeTiro.Clonar();
-            //voy hasta el alcance del lanzamiento o hasta un obstaculo o fin de mapa
-            int i = this.Alcance;
-            Punto posAux = this.posicionDeTiro.PosicionIzquierda();
-            while (i > 0 && Juego.Juego.Instancia().Ambiente.PermitidoLanzarExplosivoAPos(posAux))
-            {
-                this.posicionDeImpacto = posAux;
-                posAux = this.posicionDeImpacto.PosicionIzquierda();
-                i--;
-            }
-        }
-
-        public virtual void CalcularPosicionDeImpactoHaciaLaDerecha()
-        {
-            //sabemos que la posicion en la que esta es un pasillo y puede dejar la bomba alli
-            this.posicionDeImpacto = this.posicionDeTiro.Clonar();
-            //voy hasta el alcance del lanzamiento o hasta un obstaculo o fin de mapa
-            int i = this.Alcance;
-            Punto posAux = this.posicionDeTiro.PosicionDerecha();
-            while (i > 0 && Juego.Juego.Instancia().Ambiente.PermitidoLanzarExplosivoAPos(posAux))
-            {
-                this.posicionDeImpacto = posAux;
-                posAux = this.posicionDeImpacto.PosicionDerecha();
-                i--;
-            }
-        }
-
-        public void CalcularPosicionDeImpacto()
-        {
-            //el lanzamiento no puede hacerse por sobre obstaculos
-            //el artefacto explosivo debe caer en un pasillo
-            switch (this.Sentido.Direccion)
-            {
-                case Mapa.Mapa.ARRIBA:
-                    {
-                        CalcularPosicionDeImpactoHaciaArriba();
-                        break;
-                    }
-                case Mapa.Mapa.ABAJO:
-                    {
-                        CalcularPosicionDeImpactoHaciaAbajo();
-                        break;
-                    }
-                case Mapa.Mapa.IZQUIERDA:
-                    {
-                        CalcularPosicionDeImpactoHaciaLaIzquierda();
-                        break;
-                    }
-                case Mapa.Mapa.DERECHA:
-                    {
-                        CalcularPosicionDeImpactoHaciaLaDerecha();
-                        break;
-                    }
-            }
+            //this.CalcularPosicionDeImpacto();
 
         }
+
+        //public virtual void CalcularPosicionDeImpactoHaciaArriba()
+        //{
+        //    //sabemos que la posicion en la que esta es un pasillo y puede dejar la bomba alli
+        //    this.posicionDeImpacto = this.posicionDeTiro.Clonar();
+        //    //voy hasta el alcance del lanzamiento o hasta un obstaculo o fin de mapa
+        //    int i = this.Alcance;
+        //    Punto posAux = this.posicionDeTiro.PosicionSuperior();
+        //    while (i > 0 && Juego.Juego.Instancia().Ambiente.PermitidoLanzarExplosivoAPos(posAux))
+        //    {
+        //        this.posicionDeImpacto = posAux;
+        //        posAux = this.posicionDeImpacto.PosicionSuperior();
+        //        i--;
+        //    }
+        //}
+
+        //public virtual void CalcularPosicionDeImpactoHaciaAbajo()
+        //{
+        //    //sabemos que la posicion en la que esta es un pasillo y puede dejar la bomba alli
+        //    this.posicionDeImpacto = this.posicionDeTiro.Clonar();
+        //    //voy hasta el alcance del lanzamiento o hasta un obstaculo o fin de mapa
+        //    int i = this.Alcance;
+        //    Punto posAux = this.posicionDeTiro.PosicionInferior();
+        //    while (i > 0 && Juego.Juego.Instancia().Ambiente.PermitidoLanzarExplosivoAPos(posAux))
+        //    {
+        //        this.posicionDeImpacto = posAux;
+        //        posAux = this.posicionDeImpacto.PosicionInferior();
+        //        i--;
+        //    }
+        //}
+
+        //public virtual void CalcularPosicionDeImpactoHaciaLaIzquierda()
+        //{
+        //    //sabemos que la posicion en la que esta es un pasillo y puede dejar la bomba alli
+        //    this.posicionDeImpacto = this.posicionDeTiro.Clonar();
+        //    //voy hasta el alcance del lanzamiento o hasta un obstaculo o fin de mapa
+        //    int i = this.Alcance;
+        //    Punto posAux = this.posicionDeTiro.PosicionIzquierda();
+        //    while (i > 0 && Juego.Juego.Instancia().Ambiente.PermitidoLanzarExplosivoAPos(posAux))
+        //    {
+        //        this.posicionDeImpacto = posAux;
+        //        posAux = this.posicionDeImpacto.PosicionIzquierda();
+        //        i--;
+        //    }
+        //}
+
+        //public virtual void CalcularPosicionDeImpactoHaciaLaDerecha()
+        //{
+        //    //sabemos que la posicion en la que esta es un pasillo y puede dejar la bomba alli
+        //    this.posicionDeImpacto = this.posicionDeTiro.Clonar();
+        //    //voy hasta el alcance del lanzamiento o hasta un obstaculo o fin de mapa
+        //    int i = this.Alcance;
+        //    Punto posAux = this.posicionDeTiro.PosicionDerecha();
+        //    while (i > 0 && Juego.Juego.Instancia().Ambiente.PermitidoLanzarExplosivoAPos(posAux))
+        //    {
+        //        this.posicionDeImpacto = posAux;
+        //        posAux = this.posicionDeImpacto.PosicionDerecha();
+        //        i--;
+        //    }
+        //}
+
+        //public void CalcularPosicionDeImpacto()
+        //{
+        //    //el lanzamiento no puede hacerse por sobre obstaculos
+        //    //el artefacto explosivo debe caer en un pasillo
+        //    switch (this.Sentido.Direccion)
+        //    {
+        //        case Mapa.Mapa.ARRIBA:
+        //            {
+        //                CalcularPosicionDeImpactoHaciaArriba();
+        //                break;
+        //            }
+        //        case Mapa.Mapa.ABAJO:
+        //            {
+        //                CalcularPosicionDeImpactoHaciaAbajo();
+        //                break;
+        //            }
+        //        case Mapa.Mapa.IZQUIERDA:
+        //            {
+        //                CalcularPosicionDeImpactoHaciaLaIzquierda();
+        //                break;
+        //            }
+        //        case Mapa.Mapa.DERECHA:
+        //            {
+        //                CalcularPosicionDeImpactoHaciaLaDerecha();
+        //                break;
+        //            }
+        //    }
+
+        //}
     }
 
 }

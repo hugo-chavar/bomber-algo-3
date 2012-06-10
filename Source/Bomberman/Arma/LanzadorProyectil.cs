@@ -40,80 +40,82 @@ namespace Bomberman.Arma
         {
             Proyectil unProyectil = new Proyectil(this.posicionDeTiro); //this.posicionDeImpacto
             unProyectil.Trayectoria = this.recorridoProyectil;
-            //Juego.Juego.Instancia().Ambiente.ObtenerCasilla(this.posicionDeImpacto).Transitar(unProyectil); habilitar esto cuando martin termine con las interfaces
+            //Juego.Juego.Instancia().Ambiente.DependientesDelTiempo.Add(unProyectil);
+            Juego.Juego.Instancia().ObjetoContundenteLanzado(unProyectil);
+            //Juego.Juego.Instancia().Ambiente.ObtenerCasilla(this.posicionDeTiro).Transitar(unProyectil); //habilitar esto cuando martin termine con las interfaces
             //Juego.Juego.Instancia().Ambiente.ObtenerCasilla(this.posicionDeImpacto).PlantarExplosivo(); esto no va
         }
 
-        public override void CalcularPosicionDeImpactoHaciaArriba()
-        {
-            //sabemos que la posicion en la que esta es un pasillo y puede dejar la bomba alli
-           // this.posicionDeImpacto = this.posicionDeTiro.Clonar();
-            //voy hasta el alcance del lanzamiento o hasta un obstaculo o fin de mapa
-            int i = this.Alcance;
-            Punto posAux = this.posicionDeTiro.PosicionSuperior();
-            while (i > 0 && Juego.Juego.Instancia().Ambiente.PermitidoLanzarExplosivoAPos(posAux))
-            {
-                //la posAux es el destino o esta en el recorrido del proyectil
-                //this.posicionDeImpacto = posAux;
-                //voy calculando la trayectoria del proyectil
-                this.recorridoProyectil.Enqueue(posAux);
-                posAux = posAux.PosicionSuperior();
-                i--;
-            }
-        }
+        //public override void CalcularPosicionDeImpactoHaciaArriba()
+        //{
+        //    //sabemos que la posicion en la que esta es un pasillo y puede dejar la bomba alli
+        //   // this.posicionDeImpacto = this.posicionDeTiro.Clonar();
+        //    //voy hasta el alcance del lanzamiento o hasta un obstaculo o fin de mapa
+        //    int i = this.Alcance;
+        //    Punto posAux = this.posicionDeTiro.PosicionSuperior();
+        //    while (i > 0 && Juego.Juego.Instancia().Ambiente.PermitidoLanzarExplosivoAPos(posAux))
+        //    {
+        //        //la posAux es el destino o esta en el recorrido del proyectil
+        //        //this.posicionDeImpacto = posAux;
+        //        //voy calculando la trayectoria del proyectil
+        //        this.recorridoProyectil.Enqueue(posAux);
+        //        posAux = posAux.PosicionSuperior();
+        //        i--;
+        //    }
+        //}
 
-        public override void CalcularPosicionDeImpactoHaciaAbajo()
-        {
-            //sabemos que la posicion en la que esta es un pasillo y puede dejar la bomba alli
-            //this.posicionDeImpacto = this.posicionDeTiro.Clonar();
-            //voy hasta el alcance del lanzamiento o hasta un obstaculo o fin de mapa
-            int i = this.Alcance;
-            Punto posAux = this.posicionDeTiro.PosicionInferior();
-            while (i > 0 && Juego.Juego.Instancia().Ambiente.PermitidoLanzarExplosivoAPos(posAux))
-            {
-                //la posAux es el destino o esta en el recorrido del proyectil
-                //this.posicionDeImpacto = posAux;
-                //voy calculando la trayectoria del proyectil
-                this.recorridoProyectil.Enqueue(posAux);
-                posAux = posAux.PosicionInferior();
-                i--;
-            }
-        }
+        //public override void CalcularPosicionDeImpactoHaciaAbajo()
+        //{
+        //    //sabemos que la posicion en la que esta es un pasillo y puede dejar la bomba alli
+        //    //this.posicionDeImpacto = this.posicionDeTiro.Clonar();
+        //    //voy hasta el alcance del lanzamiento o hasta un obstaculo o fin de mapa
+        //    int i = this.Alcance;
+        //    Punto posAux = this.posicionDeTiro.PosicionInferior();
+        //    while (i > 0 && Juego.Juego.Instancia().Ambiente.PermitidoLanzarExplosivoAPos(posAux))
+        //    {
+        //        //la posAux es el destino o esta en el recorrido del proyectil
+        //        //this.posicionDeImpacto = posAux;
+        //        //voy calculando la trayectoria del proyectil
+        //        this.recorridoProyectil.Enqueue(posAux);
+        //        posAux = posAux.PosicionInferior();
+        //        i--;
+        //    }
+        //}
 
-        public override void CalcularPosicionDeImpactoHaciaLaIzquierda()
-        {
-            //sabemos que la posicion en la que esta es un pasillo y puede dejar la bomba alli
-            //this.posicionDeImpacto = this.posicionDeTiro.Clonar();
-            //voy hasta el alcance del lanzamiento o hasta un obstaculo o fin de mapa
-            int i = this.Alcance;
-            Punto posAux = this.posicionDeTiro.PosicionIzquierda();
-            while (i > 0 && Juego.Juego.Instancia().Ambiente.PermitidoLanzarExplosivoAPos(posAux))
-            {
-                //la posAux es el destino o esta en el recorrido del proyectil
-                //this.posicionDeImpacto = posAux;
-                //voy calculando la trayectoria del proyectil
-                this.recorridoProyectil.Enqueue(posAux);
-                posAux = posAux.PosicionIzquierda();
-                i--;
-            }
-        }
+        //public override void CalcularPosicionDeImpactoHaciaLaIzquierda()
+        //{
+        //    //sabemos que la posicion en la que esta es un pasillo y puede dejar la bomba alli
+        //    //this.posicionDeImpacto = this.posicionDeTiro.Clonar();
+        //    //voy hasta el alcance del lanzamiento o hasta un obstaculo o fin de mapa
+        //    int i = this.Alcance;
+        //    Punto posAux = this.posicionDeTiro.PosicionIzquierda();
+        //    while (i > 0 && Juego.Juego.Instancia().Ambiente.PermitidoLanzarExplosivoAPos(posAux))
+        //    {
+        //        //la posAux es el destino o esta en el recorrido del proyectil
+        //        //this.posicionDeImpacto = posAux;
+        //        //voy calculando la trayectoria del proyectil
+        //        this.recorridoProyectil.Enqueue(posAux);
+        //        posAux = posAux.PosicionIzquierda();
+        //        i--;
+        //    }
+        //}
 
-        public override void CalcularPosicionDeImpactoHaciaLaDerecha()
-        {
-            //sabemos que la posicion en la que esta es un pasillo y puede dejar la bomba alli
-            //this.posicionDeImpacto = this.posicionDeTiro.Clonar();
-            //voy hasta el alcance del lanzamiento o hasta un obstaculo o fin de mapa
-            int i = this.Alcance;
-            Punto posAux = this.posicionDeTiro.PosicionDerecha();
-            while (i > 0 && Juego.Juego.Instancia().Ambiente.PermitidoLanzarExplosivoAPos(posAux))
-            {
-                //la posAux es el destino o esta en el recorrido del proyectil
-                //this.posicionDeImpacto = posAux;
-                //voy calculando la trayectoria del proyectil
-                this.recorridoProyectil.Enqueue(posAux);
-                posAux = posAux.PosicionDerecha();
-                i--;
-            }
-        }
+        //public override void CalcularPosicionDeImpactoHaciaLaDerecha()
+        //{
+        //    //sabemos que la posicion en la que esta es un pasillo y puede dejar la bomba alli
+        //    //this.posicionDeImpacto = this.posicionDeTiro.Clonar();
+        //    //voy hasta el alcance del lanzamiento o hasta un obstaculo o fin de mapa
+        //    int i = this.Alcance;
+        //    Punto posAux = this.posicionDeTiro.PosicionDerecha();
+        //    while (i > 0 && Juego.Juego.Instancia().Ambiente.PermitidoLanzarExplosivoAPos(posAux))
+        //    {
+        //        //la posAux es el destino o esta en el recorrido del proyectil
+        //        //this.posicionDeImpacto = posAux;
+        //        //voy calculando la trayectoria del proyectil
+        //        this.recorridoProyectil.Enqueue(posAux);
+        //        posAux = posAux.PosicionDerecha();
+        //        i--;
+        //    }
+        //}
     }
 }

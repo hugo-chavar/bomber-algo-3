@@ -10,11 +10,18 @@ namespace Bomberman.Personaje
     public class Bombita : Personaje, IComedor
     {
         private const int VIDABOMBITA = 1;
+        private bool ciudadLiberada;
+
+        private bool CiudadLiberada
+        {
+            get { return this.ciudadLiberada; }
+        }
 
         public Bombita(Punto unPunto) :base(unPunto) 
         {
             this.lanzador = new LanzadorMolotov();
             this.unidadesDeResistencia = VIDABOMBITA;
+            this.ciudadLiberada = false;
         }
         
         public void Comer(IComible comible)
@@ -23,14 +30,15 @@ namespace Bomberman.Personaje
             comible.Ocultar();
         }
 
-        public override void ReaccionarConArticulo(Articulo.Articulo articulo)
+        public override void ReaccionarConArticulo(Articulo.Articulo articulo) 
         {
             this.Comer(articulo);
         }
 
-        public override void PartidaGanada()
+        public void FinalizarNivel() //override
         {
-            Juego.Juego.Instancia().Ambiente.FinalizarNivel(); // Revisar esto!
+            //Juego.Juego.Instancia().Ambiente.FinalizarNivel(); // Revisar esto!
+            this.ciudadLiberada = true;
         }
 
 

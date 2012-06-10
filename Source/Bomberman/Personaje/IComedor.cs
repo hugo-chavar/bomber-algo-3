@@ -14,6 +14,6 @@ namespace Bomberman.Personaje
         void CambiarLanzadorAToleTole();
         void ReducirRetardo(int retardo);
 
-        void PartidaGanada();
+        void FinalizarNivel();
     }
 }

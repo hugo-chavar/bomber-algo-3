@@ -19,7 +19,7 @@ namespace Bomberman.Mapa
         public const int IZQUIERDA = 4;
         public const int DERECHA = 6;
         public const int CANTIDADJUGADORES = 1;
-        private List<IDependienteDelTiempo> dependientesDelTiempo;
+      //  private List<IDependienteDelTiempo> dependientesDelTiempo;
         private int cantidadPersonajesVivos;
         private bool nivelTerminado;
         private bool nivelGanado;
@@ -42,10 +42,10 @@ namespace Bomberman.Mapa
             get { return this.dimensionHorizontal; }
         }
 
-        public List<IDependienteDelTiempo> DependientesDelTiempo
-        {
-            get { return dependientesDelTiempo; }
-        }
+        //public List<IDependienteDelTiempo> DependientesDelTiempo //lo manejo desde el juego
+        //{
+        //    get { return dependientesDelTiempo; }
+        //}
 
         public int DimensionVertical
         {
@@ -54,7 +54,7 @@ namespace Bomberman.Mapa
 
         public int ObtenerCantidadPersonajes()
         {
-            return CANTIDADJUGADORES;
+            return CANTIDADJUGADORES; //Para que es esto??
         }
 
         public bool NivelTerminado
@@ -80,7 +80,7 @@ namespace Bomberman.Mapa
             this.dimensionHorizontal = tamanioHorizontal;
             this.dimensionVertical = tamanioVertical;
             this.tablero = new Dictionary<Punto, Casilla.Casilla>();
-            this.dependientesDelTiempo = new List<IDependienteDelTiempo>();
+            //this.dependientesDelTiempo = new List<IDependienteDelTiempo>(); lo manejo en el juego
             this.cantidadPersonajesVivos = 0;
             this.NivelGanado = false;
             this.NivelTerminado = false;
@@ -310,7 +310,10 @@ namespace Bomberman.Mapa
                     if (casillaAux.Estado.Destruido())
                         casillaAux.Estado = new Pasillo();
                     for (int j = 0; j < casillaAux.TransitandoEnCasilla.Count; j++)
-                        explosivo.Daniar(casillaAux.TransitandoEnCasilla[j].ObtenerDaniable());
+                    {
+                        if (casillaAux.TransitandoEnCasilla[j].EsDaniable())
+                            explosivo.Daniar((IDaniable)casillaAux.TransitandoEnCasilla[j]);
+                    }
                 }
 
             }
@@ -386,50 +389,50 @@ namespace Bomberman.Mapa
             }
         }
         
-        public void CuandoPasaElTiempo()
-        {
-            if (this.dependientesDelTiempo.Count > 0)
-            {
-                int i = 0;
+        //public void CuandoPasaElTiempo()
+        //{
+        //    if (this.dependientesDelTiempo.Count > 0)
+        //    {
+        //        int i = 0;
 
-                for (i = 0; i < (dependientesDelTiempo.Count); i++)
-                {
-                    dependientesDelTiempo[i].CuandoPasaElTiempo();
-                }
-                for (i = 0; i < (dependientesDelTiempo.Count); i++)
-                {
-                    if (((Explosivo)dependientesDelTiempo[i]).EstaExplotado())
-                        this.dependientesDelTiempo.RemoveAt(i);
-                }
+        //        for (i = 0; i < (dependientesDelTiempo.Count); i++)
+        //        {
+        //            dependientesDelTiempo[i].CuandoPasaElTiempo();
+        //        }
+        //        for (i = 0; i < (dependientesDelTiempo.Count); i++)
+        //        {
+        //            if (((Explosivo)dependientesDelTiempo[i]).EstaExplotado())
+        //                this.dependientesDelTiempo.RemoveAt(i);
+        //        }
 
-           }
-            if (ChequearCantidadPersonajesVivos())
-            {
-                ActivarSalida();
-            }
+        //   }
+        //    if (ChequearCantidadPersonajesVivos())
+        //    {
+        //        ActivarSalida();
+        //    }
 
 
-        }
+        //}
 
-        public bool ChequearCantidadPersonajesVivos()
-        {
-            return (this.CantidadPersonajesVivos == CANTIDADJUGADORES);
-        }
+        //public bool ChequearCantidadPersonajesVivos() REEMPLAZADO POR EnemigosVivos en la clase Juego
+        //{
+        //    return (this.CantidadPersonajesVivos == CANTIDADJUGADORES);
+        //}
 
-        public void ActivarSalida()
-        {
-            if (this.PosicionSalida != null)
-            {
-                Casilla.Casilla unaCasilla = new Casilla.Casilla(this.PosicionSalida);
-                unaCasilla = this.ObtenerCasilla(this.PosicionSalida);
-                unaCasilla.ArticuloContenido.Activar();
-            }
-        }
+        //public void ActivarSalida()
+        //{
+        //    if (this.PosicionSalida != null)
+        //    {
+        //        Casilla.Casilla unaCasilla = new Casilla.Casilla(this.PosicionSalida); //esto definitivamente está mal
+        //        unaCasilla = this.ObtenerCasilla(this.PosicionSalida);
+        //        unaCasilla.ArticuloContenido.Activar();
+        //    }
+        //}
 
-        public void DecrementarCantidadDePersonajesVivos()
-        {
-            (this.cantidadPersonajesVivos) = this.cantidadPersonajesVivos - 1;
-        }
+        //public void DecrementarCantidadDePersonajesVivos() REEMPLAZADO POR EnemigosVivos en la clase Juego
+        //{
+        //    (this.cantidadPersonajesVivos) = this.cantidadPersonajesVivos - 1;
+        //}
 
         public void FinalizarNivel()
         {

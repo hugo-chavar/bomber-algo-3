@@ -35,7 +35,6 @@ namespace Bomberman.Mapa.Casilla
             get { return this.explosivo; }
         }
 
-        //metodo que utiliza el patron State
         public bool PermiteTransitarUn(IMovible movil)
         {
             return this.Estado.TransitablePor(movil);
@@ -89,14 +88,14 @@ namespace Bomberman.Mapa.Casilla
         {
             if ((this.Estado != null) && (this.estado.PuedeAgregarArticulo()))   
             {
-            this.ArticuloContenido = unArticulo;
+                this.ArticuloContenido = unArticulo;
             }
 
         }
 
         public void agregarSalida()
-        { 
-            if ((this.Estado != null) && (this.estado.PuedeContenerSalida()) && (Juego.Juego.Instancia().Ambiente.PosicionSalida == null) && (this.estado.PuedeAgregarArticulo())) 
+        {
+            if ((this.Estado != null) && (this.estado.PuedeContenerSalida())) //&& (Juego.Juego.Instancia().Ambiente.PosicionSalida == null) && (this.estado.PuedeAgregarArticulo())
             {
                 this.ArticuloContenido = new Articulo.Salida();
                 Juego.Juego.Instancia().Ambiente.PosicionSalida = this.Posicion;
@@ -109,7 +108,7 @@ namespace Bomberman.Mapa.Casilla
 
         public void PlantarExplosivo(Explosivo unExplosivo)
         {
-            Juego.Juego.Instancia().Ambiente.DependientesDelTiempo.Add(unExplosivo);
+            //Juego.Juego.Instancia().Ambiente.DependientesDelTiempo.Add(unExplosivo);
             this.explosivo=unExplosivo;
         }
 

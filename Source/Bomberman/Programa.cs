@@ -50,17 +50,17 @@ namespace Bomberman
             unJuego = Juego.Juego.Instancia();
             unJuego.Ambiente = unMapa;
 
-            Punto PosicionDePartida = new Punto(0, 0);
-            LosLopezReggae personaje = new LosLopezReggae(PosicionDePartida);
-            Casilla casillaAux = unJuego.Ambiente.ObtenerCasilla(new Punto(3, 0));
-            casillaAux.Estado = BloqueComun.CrearBloqueLadrillos();
-            unJuego.Ambiente.ObtenerCasilla(PosicionDePartida).Transitar(personaje);
-            personaje.Movimiento.CambiarADerecha();
-            personaje.LanzarExplosivo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
+            //Punto PosicionDePartida = new Punto(0, 0);
+            //LosLopezReggae personaje = new LosLopezReggae(PosicionDePartida);
+            //Casilla casillaAux = unJuego.Ambiente.ObtenerCasilla(new Punto(3, 0));
+            //casillaAux.Estado = BloqueComun.CrearBloqueLadrillos();
+            //unJuego.Ambiente.ObtenerCasilla(PosicionDePartida).Transitar(personaje);
+            //personaje.Movimiento.CambiarADerecha();
+            //personaje.LanzarExplosivo();
+            //unJuego.Ambiente.CuandoPasaElTiempo();
+            //unJuego.Ambiente.CuandoPasaElTiempo();
+            //unJuego.Ambiente.CuandoPasaElTiempo();
+            //unJuego.Ambiente.CuandoPasaElTiempo();
 
             //Punto unPto = new Punto(2, 2);
             //Bomba bomba = new BombaMolotov(unPto, 0);

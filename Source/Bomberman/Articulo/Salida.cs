@@ -11,12 +11,12 @@ namespace Bomberman.Articulo
         {
             this.estaActivo = false;
         }
-        
+
         public override void ModificarComedor(Personaje.IComedor comedor)
         {
             if (this.EstaActivo)
             {
-                comedor.PartidaGanada();
+                comedor.FinalizarNivel();
             }
         }
     }

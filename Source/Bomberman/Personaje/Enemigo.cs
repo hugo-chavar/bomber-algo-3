@@ -18,9 +18,9 @@ namespace Bomberman.Personaje
             // No hace nada porque no puede comer items.
         }
 
-        public override void PartidaGanada()
-        {
-            // No hace nada, no pueden ganar el juego.
-        }
+        //public override void PartidaGanada()
+        //{
+        //    // No hace nada, no pueden ganar el juego.
+        //}
     }
 }
