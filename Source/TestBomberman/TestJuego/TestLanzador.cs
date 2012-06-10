@@ -234,8 +234,8 @@ namespace TestBomberman.TestJuego
             bombita.CambiarLanzadorAToleTole(); // harcodeo el lanzador para ver internamente lo que ocurre al cambiar el lanzador
             bombita.LanzarExplosivo();
             Juego.Instancia().AvanzarElTiempo();
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
             Juego.Instancia().AvanzarElTiempo();
             Juego.Instancia().AvanzarElTiempo();
             
@@ -257,11 +257,11 @@ namespace TestBomberman.TestJuego
             Juego.Instancia().Ambiente.AgregarPersonaje(unCecil);
             bombita.CambiarLanzadorAToleTole(); // harcodeo el lanzador para ver internamente lo que ocurre al cambiar el lanzador
             bombita.LanzarExplosivo();
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
 
             Assert.IsTrue(unCecil.Destruido());
             Assert.IsTrue(bombita.Destruido());
@@ -291,11 +291,11 @@ namespace TestBomberman.TestJuego
             bombita.CambiarLanzadorAToleTole(); // harcodeo el lanzador para ver internamente lo que ocurre al cambiar el lanzador
             bombita.LanzarExplosivo();
 
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
 
             Assert.IsTrue(unCecil.Destruido());
             Assert.IsTrue(bombita.Destruido());
@@ -373,9 +373,9 @@ namespace TestBomberman.TestJuego
             unBombita.Movimiento.CambiarADerecha();
             unBombita.Mover(); //fue a 1,2
 
-            this.unJuego.Ambiente.CuandoPasaElTiempo();
-            this.unJuego.Ambiente.CuandoPasaElTiempo();
-            this.unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
 
             unBombita.Movimiento.CambiarAAbajo();
             unBombita.Mover(); //fue a 1,1; come item.
@@ -415,9 +415,9 @@ namespace TestBomberman.TestJuego
             unBombita.Movimiento.CambiarADerecha();
             unBombita.Mover(); //fue a 1,2
 
-            this.unJuego.Ambiente.CuandoPasaElTiempo();
-            this.unJuego.Ambiente.CuandoPasaElTiempo();
-            this.unJuego.Ambiente.CuandoPasaElTiempo();
+           unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
 
             unBombita.Movimiento.CambiarAAbajo();
             unBombita.Mover(); //fue a 1,1; come item.
@@ -457,9 +457,9 @@ namespace TestBomberman.TestJuego
             unBombita.Movimiento.CambiarADerecha();
             unBombita.Mover(); //fue a 1,2
 
-            this.unJuego.Ambiente.CuandoPasaElTiempo();
-            this.unJuego.Ambiente.CuandoPasaElTiempo();
-            this.unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
 
             unBombita.Movimiento.CambiarAAbajo();
             unBombita.Mover(); //fue a 1,1; come item.
@@ -491,11 +491,11 @@ namespace TestBomberman.TestJuego
             unBombita.Movimiento.CambiarAArriba();
             unBombita.Mover(); // 2,1.
 
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo(); //explota tole tole
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo(); //explota tole tole
 
             unBombita.Movimiento.CambiarAIzquierda();
             unBombita.Mover(); // 1,1
@@ -541,11 +541,11 @@ namespace TestBomberman.TestJuego
             unEnemigo.Movimiento.CambiarAIzquierda();
             unEnemigo.Mover(); // 3,2
 
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
 
             Assert.IsTrue(unEnemigo.Destruido());
         }
@@ -586,11 +586,11 @@ namespace TestBomberman.TestJuego
             unEnemigo.Movimiento.CambiarAIzquierda();
             unEnemigo.Mover(); // 3,2
 
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
 
             Assert.IsTrue(unEnemigo.Destruido());
         }
@@ -631,11 +631,11 @@ namespace TestBomberman.TestJuego
             unEnemigo.Movimiento.CambiarAIzquierda();
             unEnemigo.Mover(); // 3,2
 
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
 
             Assert.IsTrue(unEnemigo.Destruido());
         }
@@ -678,11 +678,11 @@ namespace TestBomberman.TestJuego
 
             unEnemigo.Movimiento.CambiarAAbajo(); //4,4
 
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
 
             unBombita.Movimiento.CambiarAAbajo();
             unBombita.Mover();//1,1
@@ -731,11 +731,11 @@ namespace TestBomberman.TestJuego
             unEnemigo.Mover();//4,2
             unEnemigo.Mover();//4,1  esta al alcance de la bomba el enemigo ahora
 
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
-            unJuego.Ambiente.CuandoPasaElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
 
             unBombita.Movimiento.CambiarAAbajo();
             unBombita.Mover();//1,1

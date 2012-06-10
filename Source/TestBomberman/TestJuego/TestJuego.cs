@@ -359,7 +359,7 @@ namespace TestBomberman.TestJuego
             casillaBomba1.PlantarExplosivo(bomba1);
             casillaBomba2.PlantarExplosivo(bomba2);
 
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
 
             Assert.IsTrue(bomba1.EstaExplotado());
             Assert.IsTrue(bomba2.EstaExplotado());
@@ -380,7 +380,7 @@ namespace TestBomberman.TestJuego
             casillaBomba1.PlantarExplosivo(bomba1);
             casillaBomba2.PlantarExplosivo(bomba2);
 
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
 
             Assert.IsTrue(bomba1.EstaExplotado());
             Assert.IsFalse(bomba2.EstaExplotado());
@@ -410,7 +410,7 @@ namespace TestBomberman.TestJuego
 
             Assert.IsTrue(bomba1.EstaExplotado());
             Assert.IsTrue(bomba2.EstaExplotado());
-            Assert.AreEqual(Juego.Instancia().Ambiente.DependientesDelTiempo.Count, 0);
+            Assert.AreEqual(Juego.Instancia().DependientesDelTiempo.Count, 0);
         }
 
         [Test]
@@ -427,7 +427,7 @@ namespace TestBomberman.TestJuego
             movil.Movimiento.CambiarAArriba();
             movil.Mover();
 
-            Assert.AreEqual(1, Juego.Instancia().Ambiente.DependientesDelTiempo.Count);
+            Assert.AreEqual(1, Juego.Instancia().DependientesDelTiempo.Count);
         }
 
 

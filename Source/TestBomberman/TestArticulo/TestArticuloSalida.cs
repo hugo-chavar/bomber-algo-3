@@ -167,7 +167,7 @@ namespace TestBomberman.TestSalida
             Casilla casillaBomba = otroMapa.ObtenerCasilla(pUnaBombaMolotov);
             casillaBomba.PlantarExplosivo(unaBomba);
 
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
 
 
             Assert.IsTrue(Juego.Instancia().Ambiente.CantidadPersonajesVivos == 1);
@@ -228,7 +228,7 @@ namespace TestBomberman.TestSalida
             Casilla casillaBomba = otroMapa.ObtenerCasilla(pUnaBombaMolotov);
             casillaBomba.PlantarExplosivo(unaBomba);
 
-            Juego.Instancia().Ambiente.CuandoPasaElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
 
 
             Assert.IsTrue(Juego.Instancia().Ambiente.CantidadPersonajesVivos == 2);
