@@ -16,6 +16,8 @@ namespace Bomberman.Personaje
         //protected int reduccionRetardoBombas;
         protected int unidadesDeResistencia;
 
+        private const int VELOCIDADMAX = 4;
+
         public Personaje(Punto unPunto)
         {
             //this.reduccionRetardoBombas = 0;
@@ -136,7 +138,10 @@ namespace Bomberman.Personaje
         
         public void DuplicarVelocidad()
         {
-            this.movimiento.MultiplicarVelocidadPor(2);
+            if (this.movimiento.Velocidad <= VELOCIDADMAX)
+            {
+                this.movimiento.MultiplicarVelocidadPor(2);
+            }
         }
 
         public void CambiarLanzadorAToleTole()
