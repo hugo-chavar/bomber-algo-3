@@ -25,21 +25,21 @@ namespace TestBomberman.TestMapa
         }
 
         [Test]
-        public void TestFabricarPasilloDevuelveCasillaEnEstadoPasillo()
+        public void FabricarPasilloDevuelveCasillaEnEstadoPasillo()
         {
             unaCasilla = FabricaDeCasillas.FabricarPasillo(unPunto);
             Assert.IsInstanceOf(typeof (Pasillo) , unaCasilla.Estado);
         }
 
         [Test]
-        public void TestFabricarCasillaConBloqueDeAceroDevuelveCasillaEnEstadoBloqueAcero()
+        public void FabricarCasillaConBloqueDeAceroDevuelveCasillaEnEstadoBloqueAcero()
         {
             unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueAcero(unPunto);
             Assert.IsInstanceOf(typeof(BloqueAcero), unaCasilla.Estado);
         }
         
         [Test]
-        public void TestFabricarCasillaConBloqueDeLadrillosDevuelveCasillaEnEstadoBloqueLadrillos()
+        public void FabricarCasillaConBloqueDeLadrillosDevuelveCasillaEnEstadoBloqueLadrillos()
         {
             unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(unPunto);
             Assert.IsInstanceOf(typeof(BloqueComun), unaCasilla.Estado);
@@ -47,7 +47,7 @@ namespace TestBomberman.TestMapa
         }
         
         [Test]
-        public void TestFabricarCasillaConBloqueDeCemento()
+        public void FabricarCasillaConBloqueDeCemento()
         {
             unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueCemento(unPunto);
             Assert.IsInstanceOf(typeof(BloqueComun), unaCasilla.Estado);

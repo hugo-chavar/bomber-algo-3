@@ -22,7 +22,7 @@ namespace TestBomberman.TestArticulo
         }
         
         [Test]
-        public void TestComerArticuloBombaToleToleModificaElLanzadorDeBombita()
+        public void ComerArticuloBombaToleToleModificaElLanzadorDeBombita()
         {
             Articulo unArticulo = new ArticuloBombaToleTole();
             Lanzador unLanzador = new LanzadorToleTole();

@@ -59,7 +59,7 @@ namespace TestBomberman.TestSalida
 
 
         [Test]
-        public void TestPuedoAgregarSalidaEnUnBloqueLadrilloPuesEstaPermitido()
+        public void PuedoAgregarSalidaEnUnBloqueLadrilloPuesEstaPermitido()
         {
             Mapa otroMapa = new Mapa(5,5);
             Punto unaPosicion = new Punto(0, 0);
@@ -102,7 +102,7 @@ namespace TestBomberman.TestSalida
         }
 
         [Test]
-        public void TestNoPuedoAgregarSalidaEnUnPasilloPuesNoEstaPermitido2()
+        public void NoPuedoAgregarSalidaEnUnPasilloPuesNoEstaPermitido2()
         {
             // agrego articulo
 
@@ -122,7 +122,7 @@ namespace TestBomberman.TestSalida
 
 
         [Test]
-        public void TestCuandoEnOtroMapaAgrego2PersonajesEliminoAlUnicoEnemigoYSeActivaLaSalida()
+        public void CuandoEnOtroMapaAgrego2PersonajesEliminoAlUnicoEnemigoYSeActivaLaSalida()
         {
             // agrego articulo
             Punto unaPosicion;
@@ -176,7 +176,7 @@ namespace TestBomberman.TestSalida
         }
 
         [Test]
-        public void TestCuandoEnOtroMapaAgrego3PersonajesEliminoSoloUnEnemigoYNoSeActivaLaSalida()
+        public void CuandoEnOtroMapaAgrego3PersonajesEliminoSoloUnEnemigoYNoSeActivaLaSalida()
         {
             // agrego articulo
             Punto unaPosicion;

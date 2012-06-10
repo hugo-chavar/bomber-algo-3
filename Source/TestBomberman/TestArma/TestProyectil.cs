@@ -36,7 +36,7 @@ namespace TestBomberman.TestArma
         }
 
         [Test]
-        public void TestProyectilDebeAvanzarDosPosicionAlPasar2Tiempos()
+        public void ProyectilDebeAvanzarDosPosicionAlPasar2Tiempos()
         {
             Proyectil unProyectil = new Proyectil(new Punto(0, 3));//ElProyectil se crea con la posicion destino
             Queue<Punto> recorridoProyectil = new Queue<Punto>();
