@@ -145,10 +145,11 @@ namespace Bomberman.Juego
             return this.enemigosVivos.Count;
         }
 
-        public void ObjetoContundenteLanzado(IMovible obj)
+        public void ObjetoContundenteLanzado(IDependienteDelTiempo obj)
         {
-            this.dependientesDelTiempo.Add((IDependienteDelTiempo)obj);
-            this.Ambiente.ObtenerCasilla(obj.Posicion).Transitar(obj);
+            this.dependientesDelTiempo.Add(obj);
+            IMovible movil = (IMovible)obj;
+            this.Ambiente.ObtenerCasilla(movil.Posicion).Transitar(movil);
 
         }
 

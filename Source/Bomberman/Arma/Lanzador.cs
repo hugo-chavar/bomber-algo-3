@@ -8,13 +8,14 @@ namespace Bomberman.Arma
 {
     public abstract class Lanzador
     {
-        protected Movimiento sentido;
+        //protected Movimiento sentido;
         protected Punto posicionDeTiro;
         protected int retardoExplosion;
         //protected Punto posicionDeImpacto;
         protected int alcance;
+        protected IDependienteDelTiempo carga;
 
-        public abstract void Disparar(); //Lanzar(Punto posicion, int reduccionRetardo)--- reemplazo de metodo
+        public abstract void Disparar(); 
 
         public int Alcance
         {
@@ -34,16 +35,17 @@ namespace Bomberman.Arma
             set { this.posicionDeTiro = value; }
         }
 
-        public Movimiento Sentido
-        {
-            get { return this.sentido; }
-            set { this.sentido = value; }
-        }
+        //public Movimiento Sentido
+        //{
+        //    get { return this.sentido; }
+        //    set { this.sentido = value; }
+        //}
 
 
-        public virtual void Apuntar(IMovible movil)
+        public virtual void Cargar(IMovible movil)
         {
-            this.Sentido.Direccion = movil.Movimiento.Direccion;
+            
+            //this.Sentido.Direccion = movil.Movimiento.Direccion;
             this.PosicionDeTiro = movil.Posicion.Clonar();
             //this.CalcularPosicionDeImpacto();
 

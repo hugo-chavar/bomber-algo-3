@@ -11,12 +11,13 @@ namespace Bomberman.Arma
     {
 
         private const int ALCANCELANZAMIENTO = 3;
-        private Queue<Punto> recorridoProyectil;
+        //private Queue<Punto> recorridoProyectil;
+       // private IMovible carga;
 
         public LanzadorProyectil()
         {
             this.Alcance = ALCANCELANZAMIENTO;
-            this.sentido = new Movimiento();
+            //this.sentido = new Movimiento();
             
         }
         
@@ -30,18 +31,19 @@ namespace Bomberman.Arma
         //    return (true);//HARDCODEO PARA QUE ME FUNCIONE! ESTO ESTA MAL!
         //}
 
-        public override void Apuntar(IMovible movil)
+        public override void Cargar(IMovible movil)
         {
-            this.recorridoProyectil = new Queue<Punto>();
-            base.Apuntar(movil);
+            //this.recorridoProyectil = new Queue<Punto>();
+            base.Cargar(movil);
+            this.carga = new Proyectil(this.posicionDeTiro);
         }
 
         public override void Disparar()
         {
-            Proyectil unProyectil = new Proyectil(this.posicionDeTiro); //this.posicionDeImpacto
+            //Proyectil unProyectil = new ; //this.posicionDeImpacto
             //unProyectil.Trayectoria = this.recorridoProyectil;
             //Juego.Juego.Instancia().Ambiente.DependientesDelTiempo.Add(unProyectil);
-            Juego.Juego.Instancia().ObjetoContundenteLanzado(unProyectil);
+            Juego.Juego.Instancia().ObjetoContundenteLanzado(this.carga);
             //Juego.Juego.Instancia().Ambiente.ObtenerCasilla(this.posicionDeTiro).Transitar(unProyectil); //habilitar esto cuando martin termine con las interfaces
             //Juego.Juego.Instancia().Ambiente.ObtenerCasilla(this.posicionDeImpacto).PlantarExplosivo(); esto no va
         }

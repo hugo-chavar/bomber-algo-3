@@ -16,7 +16,7 @@ namespace Bomberman.Arma
         public LanzadorMolotov()
         {
             this.Alcance = ALCANCELANZAMIENTO;
-            this.sentido = new Movimiento();
+            //this.sentido = new Movimiento();
         }
 
         public override void Disparar()

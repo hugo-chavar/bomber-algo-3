@@ -65,7 +65,7 @@ namespace Bomberman.Personaje
             if (Juego.Juego.Instancia().Ambiente.ObtenerCasilla(this.Posicion).PermiteExplosivos())
             {
                 //ahora uso el lanzador para disparar
-                this.Lanzador.Apuntar(this);
+                this.Lanzador.Cargar(this);
                 this.Lanzador.Disparar();
                 //el explosivo fue lanzado
                 return true;
