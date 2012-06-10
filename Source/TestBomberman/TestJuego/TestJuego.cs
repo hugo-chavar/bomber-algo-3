@@ -123,13 +123,11 @@ namespace TestBomberman.TestJuego
         [Test]
         public void BombitaChocaConObstaculoMoverNoCambiaSuPosicion()
         {
-            IMovible otroMovil = new Bombita(new Punto(0, 0));
-            this.unMapa.AgregarPersonaje(otroMovil);
+            IMovible otroMovil = Juego.Instancia().Protagonista;
             otroMovil.Movimiento.CambiarADerecha();
             otroMovil.Mover();
-            otroMovil.Movimiento.CambiarAArriba();
             otroMovil.Mover();
-            Punto posObstaculo = new Punto(1, 1);
+            Punto posObstaculo = new Punto(2, 0);
             Assert.IsFalse(otroMovil.Posicion.Equals(posObstaculo));
         }
 
@@ -229,7 +227,7 @@ namespace TestBomberman.TestJuego
         [Test]
         public void UnLopezReggaeAladoNoAtraviesaElLimiteDerechoDelMapa()
         {
-            IMovible otroMovil = new LosLopezReggaeAlado(new Punto(4, 0));
+            IMovible otroMovil = new LosLopezReggaeAlado(new Punto(ANCHOMAPA-1, 0));
             this.unMapa.AgregarPersonaje(otroMovil);
             Punto posOriginal = otroMovil.Posicion.Clonar();
             otroMovil.Movimiento.CambiarADerecha();
@@ -240,7 +238,7 @@ namespace TestBomberman.TestJuego
         [Test]
         public void UnLopezReggaeAladoNoAtraviesaElLimiteSuperiorDelMapa()
         {
-            IMovible otroMovil = new LosLopezReggaeAlado(new Punto(4, 4));
+            IMovible otroMovil = new LosLopezReggaeAlado(new Punto(4, ALTOMAPA-1));
             this.unMapa.AgregarPersonaje(otroMovil);
             Punto posOriginal = otroMovil.Posicion.Clonar();
             otroMovil.Movimiento.CambiarAArriba();
@@ -431,45 +429,45 @@ namespace TestBomberman.TestJuego
         //Agrego esto
 
         [Test] //esto ahora lo cuento en la clase juego
-        public void CuandoGeneroUnMapaNuevoLaCantidadDeEnemigosEs0()
+        public void CuandoGeneroUnMapaNuevoLaCantidadDeEnemigosEs7()
         {
             Mapa unMapa = new Mapa(5, 5); // harcodeo aca pues el tamaño del mapa para este metodo no es relevante
-            Assert.AreEqual(Juego.Instancia().CantidadEnemigosVivos(), 0);
+            Assert.AreEqual(Juego.Instancia().CantidadEnemigosVivos(), 7);
         }
 
-        [Test] 
-        public void CuandoGeneroUnMapaNuevoYAgregoABombitaYAUnEnemigoLaCantidadDeEnemigosAumentaEn1()
+        /*[Test] 
+        public void CuandoGeneroUnMapaNuevoYAgregoAUnEnemigoLaCantidadDeEnemigosAumentaA8()
         {
-            Punto pBombita = new Punto(0,0);
+
             Punto pCecilio = new Punto(0, 1);
 
             Cecilio unCecilio = new Cecilio(pCecilio);
-            Bombita unBombita = new Bombita(pBombita);
 
             unMapa.AgregarPersonaje(unCecilio);
-            unMapa.AgregarPersonaje(unBombita);
 
-            Assert.AreEqual(Juego.Instancia().CantidadEnemigosVivos(), 1);
+            Assert.AreEqual(Juego.Instancia().CantidadEnemigosVivos(), 8);
 
-        }
+        }*/
 
         [Test] 
-        public void CuandoGeneroUnMapaNuevoAgrego2PersonajesYElimino1ConToleTole()
+        public void CuandoGeneroUnMapaNuevoYElimino1EnemigoConToleToleDebenQuedar6()
         {
-            Punto pBombita = new Punto(0, 0);
-            Punto pCecilio = new Punto(0, 1);
+            Personaje bombita = Juego.Instancia().Protagonista;
+            bombita.CambiarLanzadorAToleTole();
+            bombita.Movimiento.CambiarADerecha();
+            bombita.Mover();
+            bombita.LanzarExplosivo();
+            bombita.Movimiento.CambiarAIzquierda();
+            bombita.Mover();
+            bombita.Movimiento.CambiarAArriba();
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
 
-            Cecilio unCecilio = new Cecilio(pCecilio);
-            Bombita unBombita = new Bombita(pBombita);
+            Assert.AreEqual(Juego.Instancia().CantidadEnemigosVivos(), 6);
 
-            Juego.Instancia().Ambiente.AgregarPersonaje(unCecilio);
-            Juego.Instancia().Ambiente.AgregarPersonaje(unBombita);
-
-            Assert.AreEqual(Juego.Instancia().CantidadEnemigosVivos(), 1);
-
-            unCecilio.DaniarConBombaToleTole();
-            Assert.IsTrue(unCecilio.Destruido());
-            Assert.AreEqual(Juego.Instancia().CantidadEnemigosVivos(), 0);
         }
 
         //[Test]  los personajes se van a contar en la clase juego
