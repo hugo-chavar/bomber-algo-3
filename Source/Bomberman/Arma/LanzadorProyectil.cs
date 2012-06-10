@@ -39,7 +39,7 @@ namespace Bomberman.Arma
         public override void Disparar()
         {
             Proyectil unProyectil = new Proyectil(this.posicionDeTiro); //this.posicionDeImpacto
-            unProyectil.Trayectoria = this.recorridoProyectil;
+            //unProyectil.Trayectoria = this.recorridoProyectil;
             //Juego.Juego.Instancia().Ambiente.DependientesDelTiempo.Add(unProyectil);
             Juego.Juego.Instancia().ObjetoContundenteLanzado(unProyectil);
             //Juego.Juego.Instancia().Ambiente.ObtenerCasilla(this.posicionDeTiro).Transitar(unProyectil); //habilitar esto cuando martin termine con las interfaces

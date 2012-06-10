@@ -12,7 +12,7 @@ namespace Bomberman.Arma
         private const int PODERDEDESTRUCCIONPROYECTIL = 1;
         private const int ONDAEXPANSIVA = 1;
 
-        private Punto posicionFinal;
+        //private Punto posicionFinal;
        // private Punto posicion;
         private Queue<Punto> trayectoria;
         private Movimiento movimiento;
@@ -58,12 +58,12 @@ namespace Bomberman.Arma
         //    }
         //}
                 
-        public Proyectil(Punto posicionDestino)
+        public Proyectil(Punto unaPos)
 
         {
             this.poderDeDestruccion = PODERDEDESTRUCCIONPROYECTIL;
             this.ondaExpansiva = ONDAEXPANSIVA;
-            posicionFinal = posicionDestino;
+            posicion = posicion;
 
         }
           
