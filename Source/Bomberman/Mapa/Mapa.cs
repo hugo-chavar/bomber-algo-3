@@ -31,11 +31,11 @@ namespace Bomberman.Mapa
             set { this.tablero = value; }
         }
 
-        public int CantidadPersonajesVivos
-        {
-            get { return this.cantidadPersonajesVivos; }
-            set { this.cantidadPersonajesVivos = value; }
-        }
+        //public int CantidadPersonajesVivos
+        //{
+        //    get { return this.cantidadPersonajesVivos; }
+        //    set { this.cantidadPersonajesVivos = value; }
+        //}
 
         public int DimensionHorizontal
         {
@@ -52,10 +52,10 @@ namespace Bomberman.Mapa
             get { return this.dimensionVertical; }
         }
 
-        public int ObtenerCantidadPersonajes()
-        {
-            return CANTIDADJUGADORES; //Para que es esto??
-        }
+        //public int ObtenerCantidadPersonajes()
+        //{
+        //    return CANTIDADJUGADORES; //Para que es esto??
+        //}
 
         public bool NivelTerminado
         {
