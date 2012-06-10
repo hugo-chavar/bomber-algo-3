@@ -66,9 +66,6 @@ namespace Bomberman.Juego
             if (instanciaDeJuego == null)
             {
                 instanciaDeJuego = new Juego();
-                
-                //aca van las inicializaciones que van por
-                //afuera del constructor
             }
             return instanciaDeJuego;
         }

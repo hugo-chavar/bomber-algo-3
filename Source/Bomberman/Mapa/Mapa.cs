@@ -19,7 +19,7 @@ namespace Bomberman.Mapa
         public const int IZQUIERDA = 4;
         public const int DERECHA = 6;
         public const int CANTIDADJUGADORES = 1;
-        private List<IDependienteDelTiempo> esperaParaExplotar;
+        private List<IDependienteDelTiempo> dependientesDelTiempo;
         private int cantidadPersonajesVivos;
         private bool nivelTerminado;
         private bool nivelGanado;
@@ -42,9 +42,9 @@ namespace Bomberman.Mapa
             get { return this.dimensionHorizontal; }
         }
 
-        public List<IDependienteDelTiempo> EsperaParaExplotar
+        public List<IDependienteDelTiempo> DependientesDelTiempo
         {
-            get { return esperaParaExplotar; }
+            get { return dependientesDelTiempo; }
         }
 
         public int DimensionVertical
@@ -80,7 +80,7 @@ namespace Bomberman.Mapa
             this.dimensionHorizontal = tamanioHorizontal;
             this.dimensionVertical = tamanioVertical;
             this.tablero = new Dictionary<Punto, Casilla.Casilla>();
-            this.esperaParaExplotar = new List<IDependienteDelTiempo>();
+            this.dependientesDelTiempo = new List<IDependienteDelTiempo>();
             this.cantidadPersonajesVivos = 0;
             this.NivelGanado = false;
             this.NivelTerminado = false;
@@ -129,8 +129,6 @@ namespace Bomberman.Mapa
             {
                 throw new NoExisteCasillaException();
             }
-            // CHEQUEAR QUE LA CASILLA SEA TRANSITABLE!
-            //No hace falta chequear si es transitable, eso lo hace le personaje al moverse
             Casilla.Casilla unaCasilla = ObtenerCasilla(movil.Posicion);
             unaCasilla.Transitar(movil);
             (this.cantidadPersonajesVivos)++;
@@ -152,7 +150,8 @@ namespace Bomberman.Mapa
 
         public Casilla.Casilla ObtenerCasilla(Punto pos)
         {
-
+            if (pos == null)
+                throw new PosicionNulaException();
             Casilla.Casilla unaCasilla;
             if (this.ExisteCasillaEnPosicion(pos))
             {
@@ -300,24 +299,27 @@ namespace Bomberman.Mapa
         public void ManejarExplosion(Explosivo explosivo)
         {
             List<Punto> puntosAfectados = CalcularCasillerosExplotados(explosivo);
-            this.ObtenerCasilla(explosivo.Posicion).QuitarExplosivo();
+            
             try
             {
-                
+                this.ObtenerCasilla(explosivo.Posicion).QuitarExplosivo();
                 for (int i = 0; i < (puntosAfectados.Count); i++)
                 {
                     Casilla.Casilla casillaAux = this.ObtenerCasilla(puntosAfectados[i]);
-                    explosivo.Daniar(casillaAux.Estado); 
+                    explosivo.Daniar(casillaAux.Estado);
                     if (casillaAux.Estado.Destruido())
                         casillaAux.Estado = new Pasillo();
                     for (int j = 0; j < casillaAux.TransitandoEnCasilla.Count; j++)
                         explosivo.Daniar(casillaAux.TransitandoEnCasilla[j].ObtenerDaniable());
                 }
+
             }
             catch (NoExisteCasillaException)
                 {
                     //simplemente se ignora donde no hay casillas
                 }
+
+
         }
  
       public List<Punto> CalcularCasillerosExplotados(Explosivo explosivo)
@@ -386,18 +388,18 @@ namespace Bomberman.Mapa
         
         public void CuandoPasaElTiempo()
         {
-            if (this.esperaParaExplotar.Count > 0)
+            if (this.dependientesDelTiempo.Count > 0)
             {
                 int i = 0;
 
-                for (i = 0; i < (esperaParaExplotar.Count); i++)
+                for (i = 0; i < (dependientesDelTiempo.Count); i++)
                 {
-                    esperaParaExplotar[i].CuandoPasaElTiempo();
+                    dependientesDelTiempo[i].CuandoPasaElTiempo();
                 }
-                for (i = 0; i < (esperaParaExplotar.Count); i++)
+                for (i = 0; i < (dependientesDelTiempo.Count); i++)
                 {
-                    if (((Explosivo)esperaParaExplotar[i]).EstaExplotado())
-                        this.esperaParaExplotar.RemoveAt(i);
+                    if (((Explosivo)dependientesDelTiempo[i]).EstaExplotado())
+                        this.dependientesDelTiempo.RemoveAt(i);
                 }
 
            }

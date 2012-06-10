@@ -57,7 +57,11 @@ namespace Bomberman.Arma
         {
             this.Avanzar();
         }
-            
+
+        //public override void DejoDeDependerDelTiempo()
+        //{
+        //    //this.Avanzar();
+        //}           
         public Queue<Punto> Trayectoria 
         {
             set {this.trayectoria = value;}
