@@ -230,9 +230,9 @@ namespace Bomberman.Juego
             foreach (Punto p in obs)
             {
                 unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(p);
-                obs.Remove(p);
                 this.ambiente.AgregarCasilla(unaCasilla);
             }
+            obs.Clear();
             //cargo los bloques de cemento
             obs.Add(new Punto(0, 10));
             obs.Add(new Punto(2, 6));
@@ -245,9 +245,9 @@ namespace Bomberman.Juego
             foreach (Punto p in obs)
             {
                 unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueCemento(p);
-                obs.Remove(p);
                 this.ambiente.AgregarCasilla(unaCasilla);
             }
+            obs.Clear();
             //fabrico Aceros y pasillos
             Punto unaPosicion;
             int i, j;
