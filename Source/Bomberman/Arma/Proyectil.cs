@@ -12,16 +12,8 @@ namespace Bomberman.Arma
         private const int PODERDEDESTRUCCIONPROYECTIL = 1;
         private const int ONDAEXPANSIVA = 1;
 
-        //private Punto posicionFinal;
-       // private Punto posicion;
         private Queue<Punto> trayectoria;
         private Movimiento movimiento;
-
-        //public Punto Posicion
-        //{
-        //    get { return this.posicion; }
-        //    set { this.posicion = value; }
-        //}
 
         public Movimiento Movimiento
         {
@@ -38,25 +30,6 @@ namespace Bomberman.Arma
         {
             //los proyectiles no reaccionan
         }
-
-        //public void Mover()
-        //{
-        //    try
-        //    {
-        //        //me muevo a la siguiente posision programada por el lanzador
-        //        this.posicion = this.trayectoria.Dequeue();
-        //        if (this.posicion.Equals(this.posicionFinal))
-        //        {
-        //            //llegue al punto de impacto
-        //            Juego.Juego.Instancia().Ambiente.ObtenerCasilla(this.posicion).PlantarExplosivo(this);
-        //            this.Explotar();
-        //        }
-        //    }
-        //    catch (InvalidOperationException)
-        //    {
-        //        throw new AvanzarProyectilNoValidoException();
-        //    }
-        //}
                 
         public Proyectil(Punto unaPos)
 
@@ -76,11 +49,7 @@ namespace Bomberman.Arma
         {
             this.Mover();
         }
-
-        //public override void DejoDeDependerDelTiempo()
-        //{
-        //    //this.Avanzar();
-        //}           
+       
         public Queue<Punto> Trayectoria 
         {
             set {this.trayectoria = value;}
