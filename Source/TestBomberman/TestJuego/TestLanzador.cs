@@ -580,7 +580,7 @@ namespace TestBomberman.TestJuego
         
         
         [Test]
-        public void BombitaIntentaSalirDelJuegoPeroNoPuedePorqueLeQuedaUnEnemigo()
+        public void BombitaIntentaSalirDelJuegoPeroNoPuedePorqueLeQuedanEnemigos()
         {
             Punto posInicio = new Punto(0, 0);
             Punto posLRA = new Punto(4, 4);
@@ -636,8 +636,7 @@ namespace TestBomberman.TestJuego
         {
             Punto posInicio = new Punto(0, 0);
             Punto posLRA = new Punto(4, 4);
-            Personaje unBombita = new Bombita(posInicio);
-            Personaje unEnemigo = new LosLopezReggaeAlado(posLRA);
+            Bombita unBombita = new Bombita(posInicio);
 
             //IniciarMapaParaTestsIntegradores();
 
@@ -646,43 +645,134 @@ namespace TestBomberman.TestJuego
             Casilla CasillaConArticulo = this.unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt);
             Articulo unArticulo = new ArticuloBombaToleTole();
             CasillaConArticulo.ArticuloContenido = unArticulo; //Pongo un articulo en el pasillo para agarrarlo con bombita.
-
-            Punto posSalida = new Punto(1, 1);
-            Casilla casillaConSalida = this.unJuego.Ambiente.ObtenerCasilla(posSalida);
-            Salida salida = new Salida();
-            casillaConSalida.agregarSalida(salida);
             
 
             unJuego.Ambiente.AgregarPersonaje(unBombita);
-            unJuego.Ambiente.AgregarPersonaje(unEnemigo);
 
             unBombita.Movimiento.CambiarADerecha();
             unBombita.Mover(); // 1,0, como articulo.
-            unBombita.Mover(); // 2,0.
-            unBombita.Movimiento.CambiarAArriba();
-            unBombita.Mover(); // 2,1
-
             unBombita.LanzarExplosivo();
-            unBombita.Mover(); // 2,2
-            unBombita.Movimiento.CambiarAIzquierda();
-            unBombita.Mover(); // 1,2
-
-            unEnemigo.Movimiento.CambiarAAbajo();
-            unEnemigo.Mover();//4,3
-            unEnemigo.Mover();//4,2
-            unEnemigo.Mover();//4,1  esta al alcance de la bomba el enemigo ahora
-
-            unJuego.AvanzarElTiempo();
-            unJuego.AvanzarElTiempo();
-            unJuego.AvanzarElTiempo();
-            unJuego.AvanzarElTiempo();
-            unJuego.AvanzarElTiempo();
-
-            unBombita.Movimiento.CambiarAAbajo();
-            unBombita.Mover();//1,1
+            unBombita.Movimiento.CambiarAIzquierda(); // lo pongo a salvo
+            unBombita.Mover(); // 0,0
+            unBombita.Movimiento.CambiarAArriba();
+            unBombita.Mover(); // 1,0
             
-            Assert.IsTrue(unJuego.Ambiente.NivelGanado);
-            Assert.IsTrue(unJuego.Ambiente.NivelTerminado);
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo(); // explota bomba tole tole, rompo osbtaculo 1,1
+
+            unBombita.Movimiento.CambiarADerecha();
+            unBombita.Mover(); //1,1
+            unBombita.Mover(); //2,1
+            unBombita.LanzarExplosivo(); // en 2,1
+            unBombita.Movimiento.CambiarAIzquierda(); // lo pongo a salvo
+            unBombita.Mover(); //1,1
+            unBombita.Mover(); //0,1
+            unBombita.Movimiento.CambiarAAbajo();
+            unBombita.Mover(); //0,0
+
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo(); // explota bomba tole tole, mato LRA en 2,2
+
+            unBombita.Movimiento.CambiarADerecha();
+            unBombita.Mover(); //1,0
+            unBombita.Mover(); //2,0
+            unBombita.Movimiento.CambiarAArriba();
+            unBombita.Mover(); //2,1
+            unBombita.Mover(); //2,2
+            unBombita.Mover(); //2,3
+            unBombita.Mover(); //2,4
+            unBombita.LanzarExplosivo(); // en 2,4
+            unBombita.Movimiento.CambiarAAbajo();// lo pongo a salvo
+            unBombita.Mover(); //2,3
+            unBombita.Mover(); //2,2
+            unBombita.Mover(); //2,1
+            unBombita.Mover(); //2,0
+            unBombita.Movimiento.CambiarADerecha();
+            unBombita.Mover(); //3,0
+
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo(); // explota bomba tole tole, mato LRA en LRA en 1,4 y a C en 1,4 y a C en 4,4
+
+            unBombita.Mover(); //4,0
+            unBombita.Mover(); //5,0
+            unBombita.Mover(); //6,0
+            unBombita.Mover(); //7,0
+            unBombita.Mover(); //8,0
+            unBombita.Movimiento.CambiarAArriba();
+            unBombita.Mover(); //8,1
+            unBombita.Mover(); //8,2
+            unBombita.Mover(); //8,3
+            unBombita.Mover(); //8,4
+            unBombita.Mover(); //8,5
+            unBombita.LanzarExplosivo(); // en 8,5
+            unBombita.Movimiento.CambiarAAbajo(); //lo pongo a salvo
+            unBombita.Mover(); //8,4
+            unBombita.Mover(); //8,3
+            unBombita.Mover(); //8,2
+            unBombita.Movimiento.CambiarADerecha();
+            unBombita.Mover(); //9,2
+            unBombita.Mover(); //10,2
+
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo(); // explota bomba tole tole, mato C en 8,6
+
+            unBombita.LanzarExplosivo();//en 10,2
+            unBombita.Movimiento.CambiarAAbajo(); // lo pongo a salvo
+            unBombita.Mover(); //10,1
+            unBombita.Mover(); //10,0
+            unBombita.Movimiento.CambiarADerecha();
+            unBombita.Mover(); //11,0
+            unBombita.Mover(); //12,0
+            unBombita.Mover(); //13,0
+            unBombita.Mover(); //14,0
+
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo(); // explota bomba tole tole, mato LR en 12,2
+
+            unBombita.LanzarExplosivo(); // en 14,0
+
+            unBombita.Movimiento.CambiarAIzquierda();
+            unBombita.Mover(); //13,0
+            unBombita.Mover(); //12,0
+            unBombita.Mover(); //11,0
+            unBombita.Mover(); //10,0
+            unBombita.Movimiento.CambiarAArriba();
+            unBombita.Mover(); //10,1
+            unBombita.Mover(); //10,2
+            unBombita.Movimiento.CambiarADerecha();
+            unBombita.Mover(); //11,2
+            unBombita.Mover(); //12,2
+            unBombita.Mover(); //13,2
+
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo(); // explota bomba tole tole, mato LR en 14,1
+
+            unBombita.Mover(); // 14,2 agarro la salida!
+
+            Assert.AreEqual(14, unBombita.Posicion.X);
+            Assert.AreEqual(2, unBombita.Posicion.Y);
+                                  
+
+            Assert.AreEqual(0, Juego.Instancia().CantidadEnemigosVivos());
+            Assert.IsTrue(unBombita.CiudadLiberada);
 
         }
         

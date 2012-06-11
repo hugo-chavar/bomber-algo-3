@@ -12,7 +12,7 @@ namespace Bomberman.Personaje
         private const int VIDABOMBITA = 1;
         private bool ciudadLiberada;
 
-        private bool CiudadLiberada
+        public bool CiudadLiberada
         {
             get { return this.ciudadLiberada; }
         }
