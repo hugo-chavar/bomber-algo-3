@@ -52,121 +52,159 @@ namespace Bomberman
             unJuego = Juego.Juego.Instancia();
             unMapa = unJuego.Ambiente;
 
-            Punto pBombita = new Punto(1, 0);
-            Punto pCecil = new Punto(0, 0);
+            Punto pBombita = new Punto(5, 0);
+            Punto pLopezRaggae = new Punto(6, 1);
 
             Bombita bombita = new Bombita(pBombita);
-            Cecilio unCecil = new Cecilio(pCecil);
+            LosLopezReggae unLR = new LosLopezReggae(pLopezRaggae);
             unJuego.Ambiente.AgregarPersonaje(bombita);
-            unJuego.Ambiente.AgregarPersonaje(unCecil);
-
+            unJuego.AgregarEnemigo(unLR);
+            bombita.Movimiento.CambiarADerecha();
+            bombita.Mover();  // pos Bombita = (6,0)
             bombita.LanzarExplosivo();
+            bombita.Mover(); // 7,0 le hace la gran Jay Jay Ococha y lo deja encerrado con la bomba
+            bombita.Mover(); // 8,0
+            bombita.Movimiento.CambiarAArriba();
+            bombita.Mover(); // pos Bombita = (8,1) tiene que safar de la explosion para no morir
+
             unJuego.AvanzarElTiempo();
 
+            if (unLR.UnidadesDeResistencia == 5)
+            {
+                Console.WriteLine("le quedan 5 puntos de vida");
+            }
+            else
+            {
+                Console.WriteLine("Erro");
+            }
 
-            if (unCecil.Destruido())
-            {
-                Console.WriteLine("Dio en el blanco");
-            }
-            else
-            {
-                Console.WriteLine("Erro");
-            }
-            Console.ReadLine();
 
-            unJuego = Juego.Juego.Instancia();
-            unMapa = unJuego.Ambiente;
-
-            Punto p = new Punto(2, 2);
-            bombita = new Bombita(p);
-            unJuego.Ambiente.AgregarPersonaje(bombita);
-            if (unJuego.CantidadEnemigosVivos() == 7)
+            if (!bombita.Destruido())
             {
-                Console.WriteLine("hasta ahora todo ok");
+                Console.WriteLine("safo bombitaaa");
             }
             else
             {
                 Console.WriteLine("Erro");
             }
-            bombita.CambiarLanzadorAToleTole();
-            if (unJuego.CantidadEnemigosVivos() == 7)
-            {
-                Console.WriteLine("hasta ahora todo ok");
-            }
-            else
-            {
-                Console.WriteLine("Erro");
-            }
-            bombita.LanzarExplosivo();
-            if (unJuego.CantidadEnemigosVivos() == 7)
-            {
-                Console.WriteLine("hasta ahora todo ok");
-            }
-            else
-            {
-                Console.WriteLine("Erro");
-            }
-            bombita.Movimiento.CambiarADerecha();
-            bombita.Mover();
-            if (unJuego.CantidadEnemigosVivos() == 7)
-            {
-                Console.WriteLine("hasta ahora todo ok");
-            }
-            else
-            {
-                Console.WriteLine("Erro");
-            }
-            bombita.Mover();
+            // como no lo mato vuelve
             bombita.Movimiento.CambiarAAbajo();
             bombita.Mover();
+            bombita.Movimiento.CambiarAIzquierda();
+            bombita.Mover();
+            bombita.Mover();
+            bombita.LanzarExplosivo();
+            //no pudo escapar
             unJuego.AvanzarElTiempo();
-            if (unJuego.CantidadEnemigosVivos() == 7)
+            if (unLR.UnidadesDeResistencia == 0)
             {
-                Console.WriteLine("hasta ahora todo ok");
+                Console.WriteLine("le quedan 0 puntos de vida");
             }
             else
             {
                 Console.WriteLine("Erro");
             }
-            unJuego.AvanzarElTiempo();
-            if (unJuego.CantidadEnemigosVivos() == 7)
+            if (bombita.Destruido())
             {
-                Console.WriteLine("hasta ahora todo ok");
+                Console.WriteLine("muere bombita");
             }
             else
             {
                 Console.WriteLine("Erro");
             }
-            unJuego.AvanzarElTiempo();
-            if (unJuego.CantidadEnemigosVivos() == 7)
-            {
-                Console.WriteLine("hasta ahora todo ok");
-            }
-            else
-            {
-                Console.WriteLine("Erro");
-            }
-            unJuego.AvanzarElTiempo();
-            if (unJuego.CantidadEnemigosVivos() == 7)
-            {
-                Console.WriteLine("hasta ahora todo ok");
-            }
-            else
-            {
-                Console.WriteLine("Erro");
-            }
-            unJuego.AvanzarElTiempo();
 
 
-            if (unJuego.CantidadEnemigosVivos() == 6)
-            {
-                Console.WriteLine("todo ok");
-            }
-            else
-            {
-                Console.WriteLine("Erro");
-            }
-            Console.ReadLine();
+
+            //Punto p = new Punto(2, 2);
+            //Personaje.Personaje bombita = new Bombita(p);
+            //unJuego.Ambiente.AgregarPersonaje(bombita);
+            //if (unJuego.CantidadEnemigosVivos() == 7)
+            //{
+            //    Console.WriteLine("hasta ahora todo ok");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Erro");
+            //}
+            //bombita.CambiarLanzadorAToleTole();
+            //if (unJuego.CantidadEnemigosVivos() == 7)
+            //{
+            //    Console.WriteLine("hasta ahora todo ok");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Erro");
+            //}
+            //bombita.LanzarExplosivo();
+            //if (unJuego.CantidadEnemigosVivos() == 7)
+            //{
+            //    Console.WriteLine("hasta ahora todo ok");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Erro");
+            //}
+            //bombita.Movimiento.CambiarADerecha();
+            //bombita.Mover();
+            //if (unJuego.CantidadEnemigosVivos() == 7)
+            //{
+            //    Console.WriteLine("hasta ahora todo ok");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Erro");
+            //}
+            //bombita.Mover();
+            //bombita.Movimiento.CambiarAAbajo();
+            //bombita.Mover();
+            //unJuego.AvanzarElTiempo();
+            //if (unJuego.CantidadEnemigosVivos() == 7)
+            //{
+            //    Console.WriteLine("hasta ahora todo ok");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Erro");
+            //}
+            //unJuego.AvanzarElTiempo();
+            //if (unJuego.CantidadEnemigosVivos() == 7)
+            //{
+            //    Console.WriteLine("hasta ahora todo ok");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Erro");
+            //}
+            //unJuego.AvanzarElTiempo();
+            //if (unJuego.CantidadEnemigosVivos() == 7)
+            //{
+            //    Console.WriteLine("hasta ahora todo ok");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Erro");
+            //}
+            //unJuego.AvanzarElTiempo();
+            //if (unJuego.CantidadEnemigosVivos() == 7)
+            //{
+            //    Console.WriteLine("hasta ahora todo ok");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Erro");
+            //}
+            //unJuego.AvanzarElTiempo();
+
+
+            //if (unJuego.CantidadEnemigosVivos() == 6)
+            //{
+            //    Console.WriteLine("todo ok");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Erro");
+            //}
+            //Console.ReadLine();
         }
 
     }

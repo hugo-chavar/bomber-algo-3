@@ -82,7 +82,7 @@ namespace Bomberman.Juego
             CargarArticulos();
             this.Ambiente.AgregarPersonaje(this.protagonista);
 
-            generarEnemigos();
+            GenerarEnemigos();
             //aca se carga el template del mapa
         }
 
@@ -122,7 +122,14 @@ namespace Bomberman.Juego
             }
         }
 
-        public void generarEnemigos()
+        public void AgregarEnemigo(Personaje.Personaje enem)
+        {
+            this.Ambiente.AgregarPersonaje(enem);
+            this.enemigosVivos.Add(enem);
+        }
+
+
+        public void GenerarEnemigos()
         {
             Punto pto = new Punto(14, 1);
             Personaje.Personaje enem = new LosLopezReggae(pto);

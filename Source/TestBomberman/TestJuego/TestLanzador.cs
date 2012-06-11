@@ -26,6 +26,12 @@ namespace TestBomberman.TestJuego
             //unMapa = this.unJuego.Ambiente;
         }
 
+        [TearDown]
+        public void TearDown()
+        {
+            Juego.Reiniciar();
+        }
+
         [Test]
         public void BombitaPlantaUnaBombaYElJuegoDetectaQueLaCasillaTieneUnExplosivo()
         {
@@ -58,29 +64,33 @@ namespace TestBomberman.TestJuego
         [Test]
         public void CuandoBombitaPlanta2MolotovDestruyendoALosLopezReggae()
         {
-            Punto pBombita = new Punto(1, 0);
-            Punto pLopezRaggae = new Punto(0, 0);
-            
+            Punto pBombita = new Punto(5, 0);
+            Punto pLopezRaggae = new Punto(6, 1);
+
             Bombita bombita = new Bombita(pBombita);
             LosLopezReggae unLR = new LosLopezReggae(pLopezRaggae);
-            Juego.Instancia().Ambiente.AgregarPersonaje(bombita);
-            Juego.Instancia().Ambiente.AgregarPersonaje(unLR);
-
-            bombita.LanzarExplosivo();
+            unJuego.Ambiente.AgregarPersonaje(bombita);
+            unJuego.AgregarEnemigo(unLR);
             bombita.Movimiento.CambiarADerecha();
-            bombita.Mover();  // pos Bombita = (2,0)
+            bombita.Mover();  // pos Bombita = (6,0)
+            bombita.LanzarExplosivo();
+            bombita.Mover(); // 7,0 le hace la gran Jay Jay Ococha y lo deja encerrado con la bomba
+            bombita.Mover(); // 8,0
             bombita.Movimiento.CambiarAArriba();
-            bombita.Mover(); // pos Bombita = (2,1) tiene que safar de la explosion para no morir
+            bombita.Mover(); // pos Bombita = (8,1) tiene que safar de la explosion para no morir
 
-            Juego.Instancia().AvanzarElTiempo();
+            this.unJuego.AvanzarElTiempo();
             Assert.IsFalse(unLR.UnidadesDeResistencia == 0); //le quedan 5 puntos de vida
             Assert.IsFalse(bombita.Destruido()); //safo bombitaaa
-
+            // como no lo mato vuelve
             bombita.Movimiento.CambiarAAbajo();
             bombita.Mover();
+            bombita.Movimiento.CambiarAIzquierda();
+            bombita.Mover();
+            bombita.Mover();
             bombita.LanzarExplosivo();
-
-            Juego.Instancia().AvanzarElTiempo();
+            //no pudo escapar
+            this.unJuego.AvanzarElTiempo();
             Assert.IsTrue(unLR.UnidadesDeResistencia == 0); //le quedan 0 puntos de vida
             Assert.IsTrue(bombita.Destruido()); //esta vez no safo
         }
@@ -262,35 +272,35 @@ namespace TestBomberman.TestJuego
         }
 
 
-        public void IniciarMapaParaTestsIntegradores() // Metodo que voy a llamar al principio de cada test, uso un setup distinto al original.
-        {
-            int AnchoYLargo = 5;
+        //public void IniciarMapaParaTestsIntegradores() // Metodo que voy a llamar al principio de cada test, uso un setup distinto al original.
+        //{
+        //    int AnchoYLargo = 5;
 
-            Mapa unMapa = new Mapa(AnchoYLargo, AnchoYLargo);
-            Punto unaPosicion;
-            Casilla unaCasilla;
-            int i, j;
+        //    Mapa unMapa = new Mapa(AnchoYLargo, AnchoYLargo);
+        //    Punto unaPosicion;
+        //    Casilla unaCasilla;
+        //    int i, j;
 
-            // Inicializo el mapa con ladrillos!!!
-            for (i = 0; i < AnchoYLargo; i++)
-                for (j = 0; j < AnchoYLargo; j++)
-                {
-                    unaPosicion = new Punto(i, j);
-                    if ((i & 1) == 1 && (j & 1) == 1)
-                    {
-                        //ambos son numeros impares
-                        unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(unaPosicion);
-                    }
-                    else
-                    {
-                        //uno de los dos es par
-                        unaCasilla = FabricaDeCasillas.FabricarPasillo(unaPosicion);
-                    }
-                    unMapa.AgregarCasilla(unaCasilla);
-                }
+        //    // Inicializo el mapa con ladrillos!!!
+        //    for (i = 0; i < AnchoYLargo; i++)
+        //        for (j = 0; j < AnchoYLargo; j++)
+        //        {
+        //            unaPosicion = new Punto(i, j);
+        //            if ((i & 1) == 1 && (j & 1) == 1)
+        //            {
+        //                //ambos son numeros impares
+        //                unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(unaPosicion);
+        //            }
+        //            else
+        //            {
+        //                //uno de los dos es par
+        //                unaCasilla = FabricaDeCasillas.FabricarPasillo(unaPosicion);
+        //            }
+        //            unMapa.AgregarCasilla(unaCasilla);
+        //        }
 
-            this.unJuego.Ambiente = unMapa;
-        }
+        //    this.unJuego.Ambiente = unMapa;
+        //}
 
         [Test]
         public void ExplotoUnObstaculoQueContieneUnaChalaYLuegoLoComeBombita()
@@ -303,7 +313,7 @@ namespace TestBomberman.TestJuego
             Personaje unBombita = new Bombita(posInicio);
 
             //Inicio Mapa.
-            IniciarMapaParaTestsIntegradores();
+            //IniciarMapaParaTestsIntegradores();
 
             //Agrego articulo
             Punto posicionCasillaArt = new Punto(1, 1);
@@ -345,7 +355,7 @@ namespace TestBomberman.TestJuego
             Personaje unBombita = new Bombita(posInicio);
 
             //Inicio Mapa.
-            IniciarMapaParaTestsIntegradores();
+            //IniciarMapaParaTestsIntegradores();
 
             //Agrego articulo
             Punto posicionCasillaArt = new Punto(1, 1);
@@ -387,7 +397,7 @@ namespace TestBomberman.TestJuego
             Personaje unBombita = new Bombita(posInicio);
 
             //Inicio Mapa.
-            IniciarMapaParaTestsIntegradores();//Inicio con bloques de ladrillo.
+            //IniciarMapaParaTestsIntegradores();//Inicio con bloques de ladrillo.
 
             //Agrego articulo
             Punto posicionCasillaArt = new Punto(1, 1);
@@ -459,39 +469,32 @@ namespace TestBomberman.TestJuego
         [Test]
         public void BombitaAgarraUnArticuloBombaToleToleYAniquilaACecilio()
         {
-            Punto posInicio = new Punto(0, 0);
-            Punto posInicioCecilio = new Punto(4, 4);
+            Punto posInicio = new Punto(3, 0);
+            Punto posInicioCecilio = new Punto(6, 2);
             Personaje unBombita = new Bombita(posInicio);
             Personaje unEnemigo = new Cecilio(posInicioCecilio);
 
             //Agrego articulo
-            Punto posicionCasillaArt = new Punto(1, 0);
-            Casilla CasillaConArticulo = this.unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt);
+            Punto posicionCasillaArt = new Punto(4, 0);
+            Casilla CasillaConArticulo = unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt);
             Articulo unArticulo = new ArticuloBombaToleTole();
             CasillaConArticulo.ArticuloContenido = unArticulo; //Pongo un articulo en el pasillo para agarrarlo con bombita.
 
             unJuego.Ambiente.AgregarPersonaje(unBombita);
             unJuego.Ambiente.AgregarPersonaje(unEnemigo);
+            unJuego.AgregarEnemigo(unEnemigo);
 
             unBombita.Movimiento.CambiarADerecha();
-            unBombita.Mover(); // 1,0, como articulo.
-            unBombita.Mover(); // 2,0.
+            unBombita.Mover(); // 4,0, como articulo.
             unBombita.Movimiento.CambiarAArriba();
-            unBombita.Mover(); // 2,1
-            unBombita.Mover(); // 2,2
-
+            unBombita.Mover(); // 4,1
+            unBombita.Mover(); // 4,2
             unBombita.LanzarExplosivo();
-            unBombita.Mover(); // 2,3
-            unBombita.Mover(); // 2,4
             unBombita.Movimiento.CambiarAIzquierda();
-            unBombita.Mover(); // 1,4
-
-            unEnemigo.Movimiento.CambiarAAbajo(); //4,4
-            unEnemigo.Mover(); // 4,3
-            unEnemigo.Mover(); // 4,2
-            unEnemigo.Movimiento.CambiarAIzquierda();
-            unEnemigo.Mover(); // 3,2
-
+            unBombita.Mover(); // 3,2
+            unBombita.Mover(); // 2,2
+            unEnemigo.Movimiento.CambiarAAbajo();
+            unBombita.Mover(); // 2,1 bombita se oculta
             unJuego.AvanzarElTiempo();
             unJuego.AvanzarElTiempo();
             unJuego.AvanzarElTiempo();
@@ -601,7 +604,7 @@ namespace TestBomberman.TestJuego
             Personaje unBombita = new Bombita(posInicio);
             Personaje unEnemigo = new LosLopezReggaeAlado(posLRA);
 
-            IniciarMapaParaTestsIntegradores();
+            //IniciarMapaParaTestsIntegradores();
 
             //Agrego articulo
             Punto posicionCasillaArt = new Punto(1, 0);
@@ -653,7 +656,7 @@ namespace TestBomberman.TestJuego
             Personaje unBombita = new Bombita(posInicio);
             Personaje unEnemigo = new LosLopezReggaeAlado(posLRA);
 
-            IniciarMapaParaTestsIntegradores();
+            //IniciarMapaParaTestsIntegradores();
 
             //Agrego articulo
             Punto posicionCasillaArt = new Punto(1, 0);
