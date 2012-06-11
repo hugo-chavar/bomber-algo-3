@@ -1,7 +1,7 @@
 ﻿using Bomberman.Personaje;
 namespace Bomberman
 {
-    public interface IDaniable// : IMovible
+    public interface IDaniable
     {
         void DaniarConBombaToleTole();
         void DaniarConBombaMolotov(int UnidadesDaniadas);
