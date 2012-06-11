@@ -347,41 +347,35 @@ namespace TestBomberman.TestJuego
         [Test]
         public void ExplotoUnObstaculoQueContieneUnArticuloBombaToleToleYLuegoLoComeBombita()
         {
-            int AnchoYLargo = 5;
 
-            Mapa unMapa = new Mapa(AnchoYLargo, AnchoYLargo);
-            Punto posInicio = new Punto(0, 0);
-            Punto posFinal = new Punto(1, 1);
+            Punto posInicio = new Punto(14,7);
+            //Posision del articulo Bomba ToleTole (14,8)
             Personaje unBombita = new Bombita(posInicio);
 
-            //Inicio Mapa.
-            //IniciarMapaParaTestsIntegradores();
 
             //Agrego articulo
-            Punto posicionCasillaArt = new Punto(1, 1);
-            Casilla CasillaConArticulo = this.unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt);
-            Articulo unArticulo = new ArticuloBombaToleTole();
-            CasillaConArticulo.agregarArticulo(unArticulo);
+            //Punto posicionCasillaArt = new Punto(1, 1);
+            //Casilla CasillaConArticulo = this.unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt);
+            //Articulo unArticulo = new ArticuloBombaToleTole();
+            //CasillaConArticulo.agregarArticulo(unArticulo);
 
             //Muevo a bombita para dejarlo cerca de un Bloque y explotarlo.
             this.unJuego.Ambiente.AgregarPersonaje(unBombita);
-            int velocidad = unBombita.Movimiento.Velocidad;
 
-            unBombita.Movimiento.CambiarAArriba();
-            unBombita.Mover();//fue a 0,1
             unBombita.LanzarExplosivo();
-
             //Pongo a bombita lejos de la explosion
-            unBombita.Mover();//fue a 0,2
-            unBombita.Movimiento.CambiarADerecha();
-            unBombita.Mover(); //fue a 1,2
-
-           unJuego.AvanzarElTiempo();
-            unJuego.AvanzarElTiempo();
-            unJuego.AvanzarElTiempo();
-
             unBombita.Movimiento.CambiarAAbajo();
-            unBombita.Mover(); //fue a 1,1; come item.
+            unBombita.Mover();//fue a 14,6
+            unBombita.Movimiento.CambiarADerecha();
+            unBombita.Mover();//fue a 15,6
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unBombita.Movimiento.CambiarAIzquierda();
+            unBombita.Mover(); //fue a 14,6
+            unBombita.Movimiento.CambiarAArriba();
+            unBombita.Mover(); //fue a 14,7
+            unBombita.Mover(); //fue a 14,8 come el item
 
             Assert.IsInstanceOf(typeof(LanzadorToleTole), unBombita.Lanzador);
         }
