@@ -445,7 +445,6 @@ namespace TestBomberman.TestJuego
             Punto p = new Punto(2, 2);
             Personaje bombita = new Bombita(p);
             Juego.Instancia().Ambiente.AgregarPersonaje(bombita);
-            Assert.AreEqual(Juego.Instancia().CantidadEnemigosVivos(), 7);
             bombita.CambiarLanzadorAToleTole();
             bombita.LanzarExplosivo();
             bombita.Movimiento.CambiarADerecha();
@@ -458,7 +457,7 @@ namespace TestBomberman.TestJuego
             Juego.Instancia().AvanzarElTiempo();
             Juego.Instancia().AvanzarElTiempo();
             Juego.Instancia().AvanzarElTiempo();
-            Assert.AreEqual(Juego.Instancia().CantidadEnemigosVivos(), 6);
+            Assert.AreEqual(Juego.Instancia().CantidadEnemigosVivos(),6);
 
         }
 

@@ -162,7 +162,7 @@ namespace Bomberman.Juego
 
         public int CantidadEnemigosVivos()
         {
-            return this.enemigosVivos.Count;
+            return this.enemigosVivos.Count();
         }
 
         public void ObjetoContundenteLanzado(IDependienteDelTiempo obj)
