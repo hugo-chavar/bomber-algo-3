@@ -28,7 +28,6 @@ namespace Bomberman.Mapa.Casilla
 
         public virtual void DaniarConBombaToleTole() 
         {
-            //Deberia daniar a los personajes alli presentes
             this.UnidadesDeResistencia = 0;
         }
 
