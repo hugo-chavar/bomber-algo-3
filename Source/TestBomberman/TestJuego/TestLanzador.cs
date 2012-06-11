@@ -315,10 +315,16 @@ namespace TestBomberman.TestJuego
             //Inicio Mapa.
             //IniciarMapaParaTestsIntegradores();
 
+            //Pongo un BombaToleTole en el pasillo para agarrarlo con bombita y poder romper el bloque de acero donde esta la Chala
+            Punto posicionCasillaArt = new Punto(0, 1);
+            Casilla CasillaConArticulo = Juego.Instancia().Ambiente.ObtenerCasilla(posicionCasillaArt);
+            Articulo unArticulo = new ArticuloBombaToleTole();
+            CasillaConArticulo.ArticuloContenido = unArticulo;
+
             //Agrego articulo
-            Punto posicionCasillaArt = new Punto(1, 1);
-            Casilla CasillaConArticulo = this.unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt);
-            Articulo unArticulo = new Chala();
+            posicionCasillaArt = new Punto(1, 1);
+            CasillaConArticulo = this.unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt);
+            unArticulo = new Chala();
             CasillaConArticulo.agregarArticulo(unArticulo);
 
             //Muevo a bombita para dejarlo cerca de un Bloque y explotarlo.
@@ -330,15 +336,18 @@ namespace TestBomberman.TestJuego
             unBombita.LanzarExplosivo();
 
             //Pongo a bombita lejos de la explosion
-            unBombita.Mover();//fue a 0,2
-            unBombita.Movimiento.CambiarADerecha();
-            unBombita.Mover(); //fue a 1,2
-
-            unJuego.AvanzarElTiempo();
-            unJuego.AvanzarElTiempo();
-            unJuego.AvanzarElTiempo();
-
             unBombita.Movimiento.CambiarAAbajo();
+            unBombita.Mover();//fue a 0,0
+            unBombita.Movimiento.CambiarADerecha();
+            unBombita.Mover(); //fue a 0,1
+
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+
+            unBombita.Movimiento.CambiarAArriba();
             unBombita.Mover(); //fue a 1,1; come item.
 
             Assert.AreEqual(2 * velocidad, unBombita.Movimiento.Velocidad);
