@@ -54,11 +54,16 @@ namespace Bomberman.Juego
             set { this.ambiente = value; }
         }
 
-
         public List<IDependienteDelTiempo> DependientesDelTiempo
         {
             get { return this.dependientesDelTiempo; }
             set { this.dependientesDelTiempo = value; }
+        }
+
+        public List<Personaje.Personaje> EnemigosVivos
+        { 
+            get { return this.enemigosVivos; }
+            set { this.enemigosVivos = value; }
         }
 
         //constructor
