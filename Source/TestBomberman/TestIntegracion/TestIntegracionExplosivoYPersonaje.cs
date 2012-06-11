@@ -11,46 +11,21 @@ namespace TestBomberman.TestIntegracion
     class TestIntegracionExplosivoYPersonaje
     {
         private Juego unJuego;
-        private const int ANCHOMAPA = 6;
-        private const int ALTOMAPA = 6;
         private Mapa unMapa;
 
 
         [SetUp]
         public void TestSetup()
         {
-            //creo un mapa 6x6 con esta distribucion (P = Pasillo, * = BloqueLadrillos):
-            //      P P P P P P
-            //      P * P * P *
-            //      P P P P P P
-            //      P * P * P *
-            //      P P P P P P
-
-            //Punto unaPosicion;
-            //Casilla unaCasilla;
-            //this.unMapa = new Mapa(ANCHOMAPA, ANCHOMAPA);
-
-            //int i, j;
-            //for (i = 0; i < ANCHOMAPA; i++)
-            //    for (j = 0; j < ANCHOMAPA; j++)
-            //    {
-            //        unaPosicion = new Punto(i, j);
-            //        if ((i & 1) == 1 && (j & 1) == 1)
-            //        {
-            //            //ambos son numeros impares
-            //            unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(unaPosicion);
-            //        }
-            //        else
-            //        {
-            //            //uno de los dos es par
-            //            unaCasilla = FabricaDeCasillas.FabricarPasillo(unaPosicion);
-            //        }
-            //        this.unMapa.AgregarCasilla(unaCasilla);
-            //    }
-
             this.unJuego = Juego.Instancia();
             this.unMapa = this.unJuego.Ambiente;
 
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            Juego.Reiniciar();
         }
 
         [Test]
@@ -92,27 +67,31 @@ namespace TestBomberman.TestIntegracion
             Assert.IsFalse(bombita.Destruido());
         }
 
-        [Test]
-        public void BombitaPlantaUnaMolotovSeMueveFueraDeSuAlcanceAgarraArticuloYLuegoDeQueLaBombaExplotaVuelveYPlantaUnaToleTole()
-        {
-            Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(1, 1)).agregarArticulo(new ArticuloBombaToleTole());
-            Punto PosicionDePlantado = new Punto(1, 0);
-            Bombita bombita = new Bombita(PosicionDePlantado);
-            this.unJuego.Ambiente.ObtenerCasilla(PosicionDePlantado).Transitar(bombita);
-            bombita.LanzarExplosivo();
-            bombita.Movimiento.CambiarADerecha();
-            bombita.Mover();
-            bombita.Movimiento.CambiarAArriba();
-            bombita.Mover();
-            this.unJuego.AvanzarElTiempo();
-            bombita.Movimiento.CambiarAIzquierda();
-            bombita.Mover();
-            bombita.Movimiento.CambiarAAbajo();
-            bombita.Mover();
-            bombita.LanzarExplosivo();
-            Assert.IsInstanceOf(typeof(BombaToleTole), this.unJuego.Ambiente.ObtenerCasilla(PosicionDePlantado).Explosivo);
-            Assert.IsFalse(bombita.Destruido());
-        }
+        //[Test] a implementarse
+        //public void BombitaPlantaUnaMolotovSeMueveFueraDeSuAlcanceAgarraArticuloYLuegoDeQueLaBombaExplotaVuelveYPlantaUnaToleTole()
+        //{
+        //    Punto PosicionDePlantado = new Punto(8, 2);
+        //    Bombita bombita = new Bombita(PosicionDePlantado);
+        //    Casilla unaCasilla = this.unJuego.Ambiente.ObtenerCasilla(PosicionDePlantado);
+        //    Casilla casillaBloqueConArticulo = this.unJuego.Ambiente.ObtenerCasilla(new Punto(7, 2));
+        //    unaCasilla.Transitar(bombita);
+        //    bombita.LanzarExplosivo();
+        //    bombita.Movimiento.CambiarADerecha();
+        //    bombita.Mover();
+        //    bombita.Mover();
+        //    bombita.Movimiento.CambiarAArriba();
+        //    bombita.Mover();
+        //    unJuego.AvanzarElTiempo();
+        //    bombita.Movimiento.CambiarAAbajo();
+        //    bombita.Mover();
+        //    bombita.Movimiento.CambiarAIzquierda();
+        //    bombita.Mover();
+        //    bombita.Mover();
+        //    bombita.Mover(); //come articulo BombaToleToe
+        //    bombita.LanzarExplosivo();
+        //    Assert.IsInstanceOf(typeof(BombaToleTole), this.unJuego.Ambiente.ObtenerCasilla(new Punto(7, 2)).Explosivo);
+        //    Assert.IsFalse(bombita.Destruido());
+        //}
 
         [Test]
         public void LopezReggaeAladoPlantaUnaMolotovSeMueveFueraDeSuAlcanceYLuegoDeQueLaBombaExplotaVuelveYPlantaOtra()
@@ -137,21 +116,22 @@ namespace TestBomberman.TestIntegracion
             Assert.IsFalse(personaje.Destruido());
         }
 
-       [Test]
-       public void LopezReggaeHaciaUnBloqueDeLadrillosYDisminuyeSuResistenciaEnUnaUnidad()
-       {
-           Punto PosicionDePartida= new Punto(0,0);
-           LosLopezReggae personaje = new LosLopezReggae(PosicionDePartida);
-           Casilla casillaAux = Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(3, 0));
-           casillaAux.Estado = BloqueComun.CrearBloqueLadrillos();
-           Juego.Instancia().Ambiente.ObtenerCasilla(PosicionDePartida).Transitar(personaje);
-           personaje.Movimiento.CambiarADerecha();
-           personaje.LanzarExplosivo();
-           Juego.Instancia().AvanzarElTiempo();
-           Juego.Instancia().AvanzarElTiempo();
-           Juego.Instancia().AvanzarElTiempo();
-           Assert.AreEqual(4, Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(3,0)).Estado.UnidadesDeResistencia);
-       }
+       //[Test] a implementarse
+       //public void LopezReggaeDisparaProyectilHaciaBloqueDeLadrilloAlImpactarDisminuyeSuResistenciaEnUnaUnidad()
+       //{
+       //    Punto PosicionDePartida= new Punto(5,0);
+       //    LosLopezReggae personaje = new LosLopezReggae(PosicionDePartida);
+       //    Casilla casillaConBloqueDeLadrillo = this.unJuego.Ambiente.ObtenerCasilla(new Punto(2, 0));
+       //    int resistenciaBloque = casillaConBloqueDeLadrillo.Estado.UnidadesDeResistencia;
+       //    //casillaAux.Estado = BloqueComun.CrearBloqueLadrillos();
+       //    this.unJuego.AgregarEnemigo(personaje);
+       //    personaje.Movimiento.CambiarAIzquierda();
+       //    personaje.LanzarExplosivo();
+       //    this.unJuego.AvanzarElTiempo();
+       //    this.unJuego.AvanzarElTiempo();
+       //    this.unJuego.AvanzarElTiempo();
+       //    Assert.AreEqual(resistenciaBloque - 1, casillaConBloqueDeLadrillo.Estado.UnidadesDeResistencia);
+       //}
         
 
 

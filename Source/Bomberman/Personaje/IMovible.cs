@@ -9,6 +9,7 @@ namespace Bomberman.Personaje
     {
         void Mover();
         bool AtraviesaObstaculos();
+        bool ImpactaEnObstaculos();
         Movimiento Movimiento
         {
             get;
@@ -18,5 +19,7 @@ namespace Bomberman.Personaje
         void ReaccionarConArticulo(Articulo.Articulo articulo);
 
         bool EsDaniable();
+
+        void ResolverColisiones();
     }
 }

@@ -12,8 +12,8 @@ namespace Bomberman.Arma
         private const int PODERDEDESTRUCCIONPROYECTIL = 1;
         private const int ONDAEXPANSIVA = 1;
 
-        private Queue<Punto> trayectoria;
         private Movimiento movimiento;
+        private int alcance;
 
         public Movimiento Movimiento
         {
@@ -21,9 +21,16 @@ namespace Bomberman.Arma
             set { this.movimiento = value; }
         }
 
+        public int Alcance
+        {
+            get { return this.alcance; }
+            set { this.alcance = value; }
+        }
+
         public void Mover()
         {
             Juego.Juego.Instancia().Ambiente.Mover(this);
+            this.alcance--;
         }
 
         public void ReaccionarConArticulo(Articulo.Articulo unArt)
@@ -34,9 +41,10 @@ namespace Bomberman.Arma
         public Proyectil(Punto unaPos)
 
         {
+            this.movimiento = new Movimiento();
             this.poderDeDestruccion = PODERDEDESTRUCCIONPROYECTIL;
             this.ondaExpansiva = ONDAEXPANSIVA;
-            posicion = posicion;
+            posicion = unaPos;
 
         }
           
@@ -49,11 +57,6 @@ namespace Bomberman.Arma
         {
             this.Mover();
         }
-       
-        public Queue<Punto> Trayectoria 
-        {
-            set {this.trayectoria = value;}
-        }
 
         public bool EsDaniable()
         {
@@ -63,6 +66,21 @@ namespace Bomberman.Arma
         public bool AtraviesaObstaculos()
         {
             //el proyectil puede llegar a la posicion de un obstaculo, luego choca y explota
+            return true;
+        }
+
+        public bool LlegoADestino()
+        {
+            return (this.alcance == 0);
+        }
+
+        public void ResolverColisiones()
+        {
+            //Juego.Juego.Instancia().Ambiente.ManejarExplosion(this);
+        }
+        
+        public bool ImpactaEnObstaculos()
+        {
             return true;
         }
     }

@@ -131,33 +131,39 @@ namespace Bomberman.Juego
 
         public void GenerarEnemigos()
         {
-            Punto pto = new Punto(14, 1);
-            Personaje.Personaje enem = new LosLopezReggae(pto);
-            this.Ambiente.AgregarPersonaje(enem);
-            this.enemigosVivos.Add(enem);
-            pto = new Punto(12, 2);
-            enem = new LosLopezReggae(pto);
-            this.Ambiente.AgregarPersonaje(enem);
-            this.enemigosVivos.Add(enem);
-            pto = new Punto(2, 2);
-            enem = new LosLopezReggaeAlado(pto);
-            this.Ambiente.AgregarPersonaje(enem);
-            this.enemigosVivos.Add(enem);
-            pto = new Punto(1, 4);
-            enem = new LosLopezReggaeAlado(pto);
-            this.Ambiente.AgregarPersonaje(enem);
-            this.enemigosVivos.Add(enem);
-            enem = new Cecilio(pto);
-            this.Ambiente.AgregarPersonaje(enem);
-            this.enemigosVivos.Add(enem);
-            pto = new Punto(4, 4);
-            enem = new Cecilio(pto);
-            this.Ambiente.AgregarPersonaje(enem);
-            this.enemigosVivos.Add(enem);
-            pto = new Punto(8, 6);
-            enem = new Cecilio(pto);
-            this.Ambiente.AgregarPersonaje(enem);
-            this.enemigosVivos.Add(enem);
+            AgregarEnemigo(new LosLopezReggae(new Punto(14, 1)));
+            AgregarEnemigo(new LosLopezReggae(new Punto(12, 2)));
+            AgregarEnemigo(new LosLopezReggaeAlado(new Punto(2, 2)));
+            AgregarEnemigo(new LosLopezReggaeAlado(new Punto(1, 4)));
+            AgregarEnemigo(new Cecilio(new Punto(1, 4)));
+            AgregarEnemigo(new Cecilio(new Punto(4, 4)));
+            AgregarEnemigo(new Cecilio(new Punto(8, 6)));
+            //Personaje.Personaje enem = new LosLopezReggae(pto);
+            //this.Ambiente.AgregarPersonaje(enem);
+            //this.enemigosVivos.Add(enem);
+            //Punto pto = new Punto(12, 2);
+            //Personaje.Personaje enem = new LosLopezReggae(pto);
+            //this.Ambiente.AgregarPersonaje(enem);
+            //this.enemigosVivos.Add(enem);
+            //pto = new Punto(2, 2);
+            //enem = new LosLopezReggaeAlado(pto);
+            //this.Ambiente.AgregarPersonaje(enem);
+            //this.enemigosVivos.Add(enem);
+            //pto = new Punto(1, 4);
+            //enem = new LosLopezReggaeAlado(pto);
+            //this.Ambiente.AgregarPersonaje(enem);
+            //this.enemigosVivos.Add(enem);
+            //enem = new Cecilio(pto);
+            //this.Ambiente.AgregarPersonaje(enem);
+            //this.enemigosVivos.Add(enem);
+            //pto = new Punto(4, 4);
+            //enem = new Cecilio(pto);
+            //this.Ambiente.AgregarPersonaje(enem);
+            //this.enemigosVivos.Add(enem);
+            //pto = new Punto(8, 6);
+            //enem = new Cecilio(pto);
+            //this.Ambiente.AgregarPersonaje(enem);
+            //this.enemigosVivos.Add(enem);
         }
 
         public int CantidadEnemigosVivos()
@@ -170,7 +176,7 @@ namespace Bomberman.Juego
             this.dependientesDelTiempo.Add(obj);
             IMovible movil = (IMovible)obj;
             this.Ambiente.ObtenerCasilla(movil.Posicion).Transitar(movil);
-
+            this.objetosContundentes.Add(movil);
         }
 
         public void AlojarExplosivo(Explosivo exp)
@@ -190,6 +196,11 @@ namespace Bomberman.Juego
             {
                 if (dependientesDelTiempo[j].DejoDeDependerDelTiempo())
                     dependientesDelTiempo.RemoveAt(j);
+            }
+
+            foreach (IMovible i in objetosContundentes)
+            {
+                i.ResolverColisiones();
             }
 
             for (int j = 0; j <enemigosVivos.Count; j++)

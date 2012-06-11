@@ -40,6 +40,7 @@ namespace Bomberman.Mapa.Casilla
             return this.Estado.TransitablePor(movil);
         }
 
+
         public bool PermiteExplosivos()
         {
             return this.Estado.PermiteDejarExplosivos();

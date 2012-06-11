@@ -14,13 +14,16 @@ namespace Bomberman.Arma
 
         public LanzadorProyectil()
         {
-            this.Alcance = ALCANCELANZAMIENTO;            
+            this.Alcance = ALCANCELANZAMIENTO;
         }
 
         public override void Cargar(IMovible movil)
         {
             base.Cargar(movil);
-            this.carga = new Proyectil(this.posicionDeTiro);
+            Proyectil unProyectil = new Proyectil(this.PosicionDeTiro.Clonar());
+            unProyectil.Movimiento.Direccion = movil.Movimiento.Direccion;
+            unProyectil.Alcance = ALCANCELANZAMIENTO;
+            this.carga = unProyectil;
         }
 
         public override void Disparar()

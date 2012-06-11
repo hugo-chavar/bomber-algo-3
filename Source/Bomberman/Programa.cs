@@ -52,24 +52,21 @@ namespace Bomberman
             unJuego = Juego.Juego.Instancia();
             unMapa = unJuego.Ambiente;
 
-            Punto pBombita = new Punto(5, 0);
-            Punto pLopezRaggae = new Punto(6, 1);
-
-            Bombita bombita = new Bombita(pBombita);
-            LosLopezReggae unLR = new LosLopezReggae(pLopezRaggae);
-            unJuego.Ambiente.AgregarPersonaje(bombita);
-            unJuego.AgregarEnemigo(unLR);
-            bombita.Movimiento.CambiarADerecha();
-            bombita.Mover();  // pos Bombita = (6,0)
-            bombita.LanzarExplosivo();
-            bombita.Mover(); // 7,0 le hace la gran Jay Jay Ococha y lo deja encerrado con la bomba
-            bombita.Mover(); // 8,0
-            bombita.Movimiento.CambiarAArriba();
-            bombita.Mover(); // pos Bombita = (8,1) tiene que safar de la explosion para no morir
-
+            Punto PosicionDePartida = new Punto(5, 0);
+            LosLopezReggae personaje = new LosLopezReggae(PosicionDePartida);
+            Casilla casillaConBloqueDeLadrillo = unJuego.Ambiente.ObtenerCasilla(new Punto(2, 0));
+            int resistenciaBloque = casillaConBloqueDeLadrillo.Estado.UnidadesDeResistencia;
+            //casillaAux.Estado = BloqueComun.CrearBloqueLadrillos();
+            unJuego.Ambiente.ObtenerCasilla(PosicionDePartida).Transitar(personaje);
+            personaje.Movimiento.CambiarAIzquierda();
+            personaje.LanzarExplosivo();
             unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            //Assert.AreEqual(resistenciaBloque - 1, casillaConBloqueDeLadrillo.Estado.UnidadesDeResistencia);
+           // Assert.IsInstanceOf(typeof(BombaToleTole), unJuego.Ambiente.ObtenerCasilla(PosicionDePlantado).Explosivo);
 
-            if (unLR.UnidadesDeResistencia == 5)
+            if (casillaConBloqueDeLadrillo.Estado.UnidadesDeResistencia == (resistenciaBloque - 1))
             {
                 Console.WriteLine("le quedan 5 puntos de vida");
             }
@@ -79,39 +76,39 @@ namespace Bomberman
             }
 
 
-            if (!bombita.Destruido())
-            {
-                Console.WriteLine("safo bombitaaa");
-            }
-            else
-            {
-                Console.WriteLine("Erro");
-            }
-            // como no lo mato vuelve
-            bombita.Movimiento.CambiarAAbajo();
-            bombita.Mover();
-            bombita.Movimiento.CambiarAIzquierda();
-            bombita.Mover();
-            bombita.Mover();
-            bombita.LanzarExplosivo();
-            //no pudo escapar
-            unJuego.AvanzarElTiempo();
-            if (unLR.UnidadesDeResistencia == 0)
-            {
-                Console.WriteLine("le quedan 0 puntos de vida");
-            }
-            else
-            {
-                Console.WriteLine("Erro");
-            }
-            if (bombita.Destruido())
-            {
-                Console.WriteLine("muere bombita");
-            }
-            else
-            {
-                Console.WriteLine("Erro");
-            }
+            //if (!bombita.Destruido())
+            //{
+            //    Console.WriteLine("safo bombitaaa");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Erro");
+            //}
+            //// como no lo mato vuelve
+            //bombita.Movimiento.CambiarAAbajo();
+            //bombita.Mover();
+            //bombita.Movimiento.CambiarAIzquierda();
+            //bombita.Mover();
+            //bombita.Mover();
+            //bombita.LanzarExplosivo();
+            ////no pudo escapar
+            //unJuego.AvanzarElTiempo();
+            //if (unLR.UnidadesDeResistencia == 0)
+            //{
+            //    Console.WriteLine("le quedan 0 puntos de vida");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Erro");
+            //}
+            //if (bombita.Destruido())
+            //{
+            //    Console.WriteLine("muere bombita");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Erro");
+            //}
 
 
 
