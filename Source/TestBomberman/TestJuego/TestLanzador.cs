@@ -550,13 +550,13 @@ namespace TestBomberman.TestJuego
         [Test]
         public void BombitaAgarraUnArticuloBombaToleToleYAniquilaALosLopezReggaeAlado()
         {
-            Punto posInicio = new Punto(0, 0);
+            Punto posInicio = new Punto(0, 3);
             Punto posLRA = new Punto(4, 4);
             Personaje unBombita = new Bombita(posInicio);
             Personaje unEnemigo = new LosLopezReggaeAlado(posLRA);
 
             //Agrego articulo
-            Punto posicionCasillaArt = new Punto(1, 0);
+            Punto posicionCasillaArt = new Punto(0, 4);
             Casilla CasillaConArticulo = this.unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt);
             Articulo unArticulo = new ArticuloBombaToleTole();
             CasillaConArticulo.ArticuloContenido = unArticulo; //Pongo un articulo en el pasillo para agarrarlo con bombita.
@@ -564,24 +564,15 @@ namespace TestBomberman.TestJuego
             unJuego.Ambiente.AgregarPersonaje(unBombita);
             unJuego.Ambiente.AgregarPersonaje(unEnemigo);
 
-            unBombita.Movimiento.CambiarADerecha();
-            unBombita.Mover(); // 1,0, como articulo.
-            unBombita.Mover(); // 2,0.
             unBombita.Movimiento.CambiarAArriba();
-            unBombita.Mover(); // 2,1
-            unBombita.Mover(); // 2,2
-
+            unBombita.Mover(); // 0,4, como articulo.
+            unBombita.Movimiento.CambiarADerecha();
+            unBombita.Mover(); // 1,4.
             unBombita.LanzarExplosivo();
-            unBombita.Mover(); // 2,3
-            unBombita.Mover(); // 2,4
             unBombita.Movimiento.CambiarAIzquierda();
-            unBombita.Mover(); // 1,4
-
-            unEnemigo.Movimiento.CambiarAAbajo(); //4,4
-            unEnemigo.Mover(); // 4,3
-            unEnemigo.Mover(); // 4,2
-            unEnemigo.Movimiento.CambiarAIzquierda();
-            unEnemigo.Mover(); // 3,2
+            unBombita.Mover(); // 0,4
+            unBombita.Movimiento.CambiarAAbajo();
+            unBombita.Mover(); // 0,3
 
             unJuego.AvanzarElTiempo();
             unJuego.AvanzarElTiempo();
