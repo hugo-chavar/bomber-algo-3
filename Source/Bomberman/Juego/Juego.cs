@@ -17,7 +17,7 @@ namespace Bomberman.Juego
         private Personaje.Personaje protagonista;
         private Mapa.Mapa ambiente;
         private List<IMovible> objetosContundentes;
-        private List<IMovible> enemigosVivos;
+        private List<Personaje.Personaje> enemigosVivos;
         private List<IDependienteDelTiempo> dependientesDelTiempo;
         private Salida salida;
         
@@ -69,7 +69,7 @@ namespace Bomberman.Juego
             this.Ambiente = new Mapa.Mapa(ANCHOMAPA,ALTOMAPA);
             Punto posicion = new Punto(0, 0);
             this.protagonista = new Personaje.Bombita(posicion);
-            enemigosVivos = new List<IMovible>();
+            enemigosVivos = new List<Personaje.Personaje>();
             this.objetosContundentes = new List<IMovible>();
             this.dependientesDelTiempo = new List<IDependienteDelTiempo>();
             this.salida = new Salida();
@@ -115,7 +115,7 @@ namespace Bomberman.Juego
         public void generarEnemigos()
         {
             Punto pto = new Punto(14, 1);
-            IMovible enem = new LosLopezReggae(pto);
+            Personaje.Personaje enem = new LosLopezReggae(pto);
             this.Ambiente.AgregarPersonaje(enem);
             this.enemigosVivos.Add(enem);
             pto = new Punto(12, 2);
@@ -174,7 +174,12 @@ namespace Bomberman.Juego
                 if (dependientesDelTiempo[j].DejoDeDependerDelTiempo())
                     dependientesDelTiempo.RemoveAt(j);
             }
-            
+
+            for (int j = 0; j <enemigosVivos.Count; j++)
+            {
+                if (enemigosVivos[j].Destruido())
+                    enemigosVivos.RemoveAt(j);
+            }
 
            if (CantidadEnemigosVivos() == 0)
             {
