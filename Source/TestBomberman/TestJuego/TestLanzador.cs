@@ -138,8 +138,8 @@ namespace TestBomberman.TestJuego
         [Test]
         public void CuandoCecilioPlantaUnaMolotovDestruyendoABombitaYSafa()
         {
-            Punto pBombita = new Punto(1, 0);
-            Punto pCecil = new Punto(0, 0);
+            Punto pBombita = new Punto(0, 0);
+            Punto pCecil = new Punto(0, 1);
 
             Bombita bombita = new Bombita(pBombita);
             Cecilio unCecil = new Cecilio(pCecil);
@@ -147,11 +147,11 @@ namespace TestBomberman.TestJuego
             Juego.Instancia().Ambiente.AgregarPersonaje(unCecil);
 
             unCecil.LanzarExplosivo();
-            unCecil.Movimiento.CambiarAArriba();
+            unCecil.Movimiento.CambiarAAbajo();
             unCecil.Mover();
+            unCecil.Movimiento.CambiarADerecha();
             unCecil.Mover();
-            unCecil.Mover();
-            unCecil.Mover(); 
+ 
             //escapa Cecilio antes de que explote 
 
             Juego.Instancia().AvanzarElTiempo();
