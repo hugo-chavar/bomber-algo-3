@@ -389,45 +389,38 @@ namespace TestBomberman.TestJuego
         [Test]
         public void ExplotoUnObstaculoQueContieneUnTimerYLuegoLoComeBombita()
         {
-            int AnchoYLargo = 5;
 
-            Mapa unMapa = new Mapa(AnchoYLargo, AnchoYLargo);
-            Punto posInicio = new Punto(0, 0);
-            Punto posFinal = new Punto(1, 1);
+            Punto posInicio = new Punto(12, 6);
             Personaje unBombita = new Bombita(posInicio);
-
-            //Inicio Mapa.
-            //IniciarMapaParaTestsIntegradores();//Inicio con bloques de ladrillo.
-
-            //Agrego articulo
-            Punto posicionCasillaArt = new Punto(1, 1);
-            Casilla CasillaConArticulo = this.unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt);
-            Articulo unArticulo = new Timer();
-            CasillaConArticulo.agregarArticulo(unArticulo);
 
             //Muevo a bombita para dejarlo cerca de un Bloque y explotarlo.
             this.unJuego.Ambiente.AgregarPersonaje(unBombita);
             int velocidad = unBombita.Movimiento.Velocidad;
 
-            unBombita.Movimiento.CambiarAArriba();
-            unBombita.Mover();//fue a 0,1
+            unBombita.Movimiento.CambiarAIzquierda();
+            
             unBombita.LanzarExplosivo();
 
             //Pongo a bombita lejos de la explosion
-            unBombita.Mover();//fue a 0,2
+
             unBombita.Movimiento.CambiarADerecha();
-            unBombita.Mover(); //fue a 1,2
+            unBombita.Mover(); //fue a 13,6
+            unBombita.Mover();//fue a 14,6
+            unBombita.Movimiento.CambiarAArriba();
+            unBombita.Mover();//fue a 14,7
 
             unJuego.AvanzarElTiempo();
             unJuego.AvanzarElTiempo();
             unJuego.AvanzarElTiempo();
 
             unBombita.Movimiento.CambiarAAbajo();
-            unBombita.Mover(); //fue a 1,1; come item.
+            unBombita.Mover(); //fue a 14,6
+            unBombita.Movimiento.CambiarAIzquierda();
+            unBombita.Mover(); //fue a 13,6
+            unBombita.Mover();//fue a 12,6
+            unBombita.Mover();// come timer en 11,6.
 
-            int retardo = 15;
-
-            Assert.AreEqual(retardo, unBombita.Lanzador.RetardoExplosion);
+            Assert.AreEqual(15, unBombita.Lanzador.RetardoExplosion);
         }
 
         [Test]
