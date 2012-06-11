@@ -29,7 +29,7 @@ namespace TestBomberman.TestJuego
         [TearDown]
         public void TearDown()
         {
-            //Juego.Reiniciar();
+            Juego.Reiniciar();
         }
         //[TearDown]
         //public void TearDown()
