@@ -98,8 +98,8 @@ namespace TestBomberman.TestJuego
         [Test]
         public void CuandoBombitaPlantaUnaMolotovDestruyendoAUnLosLopezRaggaeAlado()
         {
-            Punto pBombita = new Punto(1, 0);
-            Punto pLopezRaggaeAlado = new Punto(0, 0);
+            Punto pBombita = new Punto(0,3);
+            Punto pLopezRaggaeAlado = new Punto(0, 4);
             
             Bombita bombita = new Bombita(pBombita);
             LosLopezReggaeAlado unLRA = new LosLopezReggaeAlado(pLopezRaggaeAlado);
@@ -107,10 +107,10 @@ namespace TestBomberman.TestJuego
             Juego.Instancia().Ambiente.AgregarPersonaje(unLRA);
 
             bombita.LanzarExplosivo();
-            bombita.Movimiento.CambiarADerecha();
-            bombita.Mover();  // pos Bombita = (2,0)
             bombita.Movimiento.CambiarAArriba();
-            bombita.Mover(); // pos Bombita = (2,1) tiene que safar de la explosion para no morir
+            bombita.Mover(); 
+            bombita.Movimiento.CambiarADerecha();
+            bombita.Mover(); 
 
             Juego.Instancia().AvanzarElTiempo();
             Assert.IsTrue(unLRA.UnidadesDeResistencia == 0); //chau chau Adios loslopezreggae 

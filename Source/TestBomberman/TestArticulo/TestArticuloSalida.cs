@@ -171,7 +171,7 @@ namespace TestBomberman.TestSalida
             Juego.Instancia().AvanzarElTiempo();
 
 
-            Assert.IsTrue(Juego.Instancia().CantidadEnemigosVivos() == 1);
+            Assert.AreEqual(Juego.Instancia().CantidadEnemigosVivos(),1);
             Assert.IsFalse(Juego.Instancia().Ambiente.ObtenerCasilla(pUnaSalida).ArticuloContenido.EstaActivo);
 
         }
