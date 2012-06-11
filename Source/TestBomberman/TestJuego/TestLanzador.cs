@@ -448,9 +448,10 @@ namespace TestBomberman.TestJuego
             unBombita.Movimiento.CambiarADerecha();
             unBombita.Mover(); // 1,0, como articulo.
             unBombita.LanzarExplosivo(); // lanzo tole tole
-            unBombita.Mover(); // 2,0.
+            unBombita.Movimiento.CambiarAIzquierda();
+            unBombita.Mover(); // 0,0
             unBombita.Movimiento.CambiarAArriba();
-            unBombita.Mover(); // 2,1.
+            unBombita.Mover(); // 0,1.
 
             unJuego.AvanzarElTiempo();
             unJuego.AvanzarElTiempo();
@@ -458,12 +459,13 @@ namespace TestBomberman.TestJuego
             unJuego.AvanzarElTiempo();
             unJuego.AvanzarElTiempo(); //explota tole tole
 
-            unBombita.Movimiento.CambiarAIzquierda();
+            unBombita.Movimiento.CambiarADerecha();
             unBombita.Mover(); // 1,1
 
             Punto puntoFinal = new Punto(1, 1);
 
-            Assert.AreEqual(puntoFinal, unBombita.Posicion);
+            Assert.AreEqual(puntoFinal.X, unBombita.Posicion.X);
+            Assert.AreEqual(puntoFinal.Y, unBombita.Posicion.Y);
         }
 
         [Test]
