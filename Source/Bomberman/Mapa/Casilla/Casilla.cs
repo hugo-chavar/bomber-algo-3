@@ -101,10 +101,6 @@ namespace Bomberman.Mapa.Casilla
             }
         }
 
-        //public abstract void DaniarConBombaToleTole();
-        //public abstract void DaniarConBombaMolotov();
-        //public abstract void DaniarConProyectil();
-
         public void PlantarExplosivo(Explosivo unExplosivo)
         {
             //Juego.Juego.Instancia().Ambiente.DependientesDelTiempo.Add(unExplosivo);
