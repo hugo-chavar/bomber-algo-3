@@ -312,11 +312,9 @@ namespace Bomberman.Mapa
             Punto unPuntoAux = punto.PosicionIzquierda(); 
             while (this.PosicionDentroRango(unPuntoAux) && i <= expansion)
             {
-                
                 Lista.Add(unPuntoAux);
                 i++;
                 unPuntoAux = unPuntoAux.PosicionIzquierda();
-                
             }
         }
 
@@ -326,11 +324,9 @@ namespace Bomberman.Mapa
             Punto unPuntoAux = punto.PosicionDerecha();
             while ((this.PosicionDentroRango(unPuntoAux)) && (i <= expansion))
             {
-               
                 Lista.Add(unPuntoAux);
                 i++;
                 unPuntoAux = unPuntoAux.PosicionDerecha();
-                
             }
         }
 
@@ -340,7 +336,6 @@ namespace Bomberman.Mapa
             Punto unPuntoAux = punto.PosicionSuperior();
             while ((this.PosicionDentroRango(unPuntoAux)) && (i <= expansion))
             {
-                
                 Lista.Add(unPuntoAux);
                 i++;
                 unPuntoAux = unPuntoAux.PosicionSuperior();
@@ -370,9 +365,12 @@ namespace Bomberman.Mapa
             return (ExisteCasillaEnPosicion(pos) && ObtenerCasilla(pos).PermiteExplosivos() && !ObtenerCasilla(pos).TieneUnExplosivo());
         }
 
-        //public bool HayColisionDeObstaculoCon(Personaje.IMovible movil)
-        //{
-        //    //a implementar
-        //}
+        public void ResolverColisionesCon(Personaje.IMovible movil)
+        {
+            if (movil.ImpactaEnObstaculos() && ExisteCasillaEnPosicion(movil.Posicion) && !ObtenerCasilla(movil.Posicion).PermiteExplosivos())
+            {
+                movil.Colisionar();
+            }
+        }
     }
 }

@@ -29,8 +29,16 @@ namespace Bomberman.Arma
 
         public void Mover()
         {
+            Punto posicionPrevia = this.Posicion.Clonar();
             Juego.Juego.Instancia().Ambiente.Mover(this);
             this.alcance--;
+            //llego a casilla donde impacta o choco contra los limites del mapa
+            //estos son 2 de los 3 motivos por los cuales explota un proyectil
+            //el otro motivo es el choque contra obstaculos y se maneja como una colision
+            if (LlegoADestino() || posicionPrevia.Equals(this.Posicion)) 
+            {
+                this.Explotar();
+            }
         }
 
         public void ReaccionarConArticulo(Articulo.Articulo unArt)
@@ -74,14 +82,14 @@ namespace Bomberman.Arma
             return (this.alcance == 0);
         }
 
-        public void ResolverColisiones()
-        {
-            //Juego.Juego.Instancia().Ambiente.ManejarExplosion(this);
-        }
-        
         public bool ImpactaEnObstaculos()
         {
             return true;
+        }
+
+        public void Colisionar()
+        {
+            this.Explotar();
         }
     }
 }

@@ -20,6 +20,6 @@ namespace Bomberman.Personaje
 
         bool EsDaniable();
 
-        void ResolverColisiones();
+        void Colisionar();
     }
 }

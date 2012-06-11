@@ -200,7 +200,7 @@ namespace Bomberman.Juego
 
             foreach (IMovible i in objetosContundentes)
             {
-                i.ResolverColisiones();
+                this.Ambiente.ResolverColisionesCon(i);
             }
 
             for (int j = 0; j <enemigosVivos.Count; j++)

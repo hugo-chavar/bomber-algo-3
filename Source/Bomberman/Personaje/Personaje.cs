@@ -142,12 +142,11 @@ namespace Bomberman.Personaje
             this.Lanzador.RetardoExplosion = retardo;
         }
 
-
-        public void ResolverColisiones()
+        public void Colisionar()
         {
-            //por default no pasa nada cuando choca, se resuelve en cada personaje
+
         }
-        
+
         public abstract void ReaccionarConArticulo(Articulo.Articulo articulo);
         
     }
