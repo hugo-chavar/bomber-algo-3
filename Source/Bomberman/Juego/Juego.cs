@@ -335,16 +335,6 @@ namespace Bomberman.Juego
             this.Salida = new Articulo.Salida();
             unaCasilla.agregarSalida(this.Salida);
         }
-                
-        //    for (i = 0; i < (dependientesDelTiempo.Count); i++)
-        //        {
-        //            dependientesDelTiempo[i]
-        //        }
-        //        for (i = 0; i < (dependientesDelTiempo.Count); i++)
-        //        {
-        //            if (((Explosivo)dependientesDelTiempo[i]).EstaExplotado())
-        //                this.dependientesDelTiempo.RemoveAt(i);
-        //        }
 
         public Salida Salida 
         {

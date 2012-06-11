@@ -19,8 +19,6 @@ namespace Bomberman.Mapa
         public const int IZQUIERDA = 4;
         public const int DERECHA = 6;
         public const int CANTIDADJUGADORES = 1;
-      //  private List<IDependienteDelTiempo> dependientesDelTiempo;
-       // private int cantidadPersonajesVivos;
         private bool nivelTerminado;
         private bool nivelGanado;
         private Punto posicionSalida;
@@ -31,31 +29,16 @@ namespace Bomberman.Mapa
             set { this.tablero = value; }
         }
 
-        //public int CantidadPersonajesVivos
-        //{
-        //    get { return this.cantidadPersonajesVivos; }
-        //    set { this.cantidadPersonajesVivos = value; }
-        //}
-
         public int DimensionHorizontal
         {
             get { return this.dimensionHorizontal; }
         }
-
-        //public List<IDependienteDelTiempo> DependientesDelTiempo //lo manejo desde el juego
-        //{
-        //    get { return dependientesDelTiempo; }
-        //}
 
         public int DimensionVertical
         {
             get { return this.dimensionVertical; }
         }
 
-        //public int ObtenerCantidadPersonajes()
-        //{
-        //    return CANTIDADJUGADORES; //Para que es esto??
-        //}
 
         public bool NivelTerminado
         {
@@ -80,8 +63,6 @@ namespace Bomberman.Mapa
             this.dimensionHorizontal = tamanioHorizontal;
             this.dimensionVertical = tamanioVertical;
             this.tablero = new Dictionary<Punto, Casilla.Casilla>();
-            //this.dependientesDelTiempo = new List<IDependienteDelTiempo>(); lo manejo en el juego
-           // this.cantidadPersonajesVivos = 0;
             this.NivelGanado = false;
             this.NivelTerminado = false;
         }
@@ -131,8 +112,6 @@ namespace Bomberman.Mapa
             }
             Casilla.Casilla unaCasilla = ObtenerCasilla(movil.Posicion);
             unaCasilla.Transitar(movil);
-            //(this.cantidadPersonajesVivos)++;
-
         }
 
         public bool PosicionDentroRango(Punto punto)
@@ -380,51 +359,6 @@ namespace Bomberman.Mapa
             }
         }
         
-        //public void CuandoPasaElTiempo()
-        //{
-        //    if (this.dependientesDelTiempo.Count > 0)
-        //    {
-        //        int i = 0;
-
-        //        for (i = 0; i < (dependientesDelTiempo.Count); i++)
-        //        {
-        //            dependientesDelTiempo[i].CuandoPasaElTiempo();
-        //        }
-        //        for (i = 0; i < (dependientesDelTiempo.Count); i++)
-        //        {
-        //            if (((Explosivo)dependientesDelTiempo[i]).EstaExplotado())
-        //                this.dependientesDelTiempo.RemoveAt(i);
-        //        }
-
-        //   }
-        //    if (ChequearCantidadPersonajesVivos())
-        //    {
-        //        ActivarSalida();
-        //    }
-
-
-        //}
-
-        //public bool ChequearCantidadPersonajesVivos() REEMPLAZADO POR EnemigosVivos en la clase Juego
-        //{
-        //    return (this.CantidadPersonajesVivos == CANTIDADJUGADORES);
-        //}
-
-        //public void ActivarSalida()
-        //{
-        //    if (this.PosicionSalida != null)
-        //    {
-        //        Casilla.Casilla unaCasilla = new Casilla.Casilla(this.PosicionSalida); //esto definitivamente está mal
-        //        unaCasilla = this.ObtenerCasilla(this.PosicionSalida);
-        //        unaCasilla.ArticuloContenido.Activar();
-        //    }
-        //}
-
-        //public void DecrementarCantidadDePersonajesVivos() REEMPLAZADO POR EnemigosVivos en la clase Juego
-        //{
-        //    (this.cantidadPersonajesVivos) = this.cantidadPersonajesVivos - 1;
-        //}
-
         public void FinalizarNivel()
         {
             this.NivelTerminado = true;
