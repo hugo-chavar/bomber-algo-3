@@ -22,7 +22,6 @@ namespace TestBomberman.TestJuego
         [SetUp]
         public void TestSetup()
         {
-
             this.unJuego = Juego.Instancia();
             //unMapa = this.unJuego.Ambiente;
         }

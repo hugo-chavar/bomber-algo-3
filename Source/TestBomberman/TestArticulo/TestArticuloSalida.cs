@@ -8,6 +8,7 @@ using Bomberman.Personaje;
 using Bomberman.Arma;
 using Bomberman.Articulo;
 using Bomberman.Juego;
+using System.Collections.Generic;
 
 namespace TestBomberman.TestSalida
 {
@@ -30,7 +31,7 @@ namespace TestBomberman.TestSalida
             //      P P P P P
             //      P * P * P
             //      P P P P P
-
+            Juego.Reiniciar();
             Punto unaPosicion;
             Casilla unaCasilla;
             this.unMapa = new Mapa(ANCHOMAPA, ANCHOMAPA);
@@ -52,40 +53,17 @@ namespace TestBomberman.TestSalida
                     }
                     this.unMapa.AgregarCasilla(unaCasilla);
                 }
-
-
+            Juego.Instancia().Ambiente = unMapa;
+            Juego.Instancia().EnemigosVivos = new List<Personaje>();
         }
-
-
 
         [Test]
         public void PuedoAgregarSalidaEnUnBloqueLadrilloPuesEstaPermitido()
         {
-            Mapa otroMapa = new Mapa(5,5);
             Punto unaPosicion = new Punto(0, 0);
             Casilla unaCasilla = new Casilla(unaPosicion);
+            Mapa otroMapa = Juego.Instancia().Ambiente;
 
-            // Inicializo otra vez el mapa porque falla el SetUp.
-            int i, j;
-            for (i = 0; i < ANCHOMAPA; i++)
-                for (j = 0; j < ANCHOMAPA; j++)
-                {
-                    Punto otraPosicion = new Punto(i, j);
-                    if ((i & 1) == 1 && (j & 1) == 1)
-                    {
-                        //ambos son numeros impares
-                        unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(otraPosicion);//.FabricarCasillaConBloqueAcero(unaPosicion);
-                    }
-                    else
-                    {
-                        //uno de los dos es par
-                        unaCasilla = FabricaDeCasillas.FabricarPasillo(otraPosicion);
-                    }
-
-                    otroMapa.AgregarCasilla(unaCasilla);
-                }
-
-            Juego.Instancia().Ambiente = otroMapa;
             Punto pUnaSalida = new Punto (1,1);
 
             Casilla unaCasillaDeSalida = unMapa.ObtenerCasilla(pUnaSalida);
@@ -127,41 +105,14 @@ namespace TestBomberman.TestSalida
         public void CuandoEnOtroMapaAgrego2PersonajesEliminoAlUnicoEnemigoYSeActivaLaSalida()
         {
             // agrego articulo
-            Punto unaPosicion;
-            Casilla unaCasilla;
-            Mapa otroMapa = new Mapa(ANCHOMAPA, ANCHOMAPA);
-
-            int i, j;
-            for (i = 0; i < ANCHOMAPA; i++)
-                for (j = 0; j < ANCHOMAPA; j++)
-                {
-                    unaPosicion = new Punto(i, j);
-                    if ((i & 1) == 1 && (j & 1) == 1)
-                    {
-                        //ambos son numeros impares
-                        unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(unaPosicion);//.FabricarCasillaConBloqueAcero(unaPosicion);
-                    }
-                    else
-                    {
-                        //uno de los dos es par
-                        unaCasilla = FabricaDeCasillas.FabricarPasillo(unaPosicion);
-                    }
-
-                    otroMapa.AgregarCasilla(unaCasilla);
-                }
-
-            Juego.Instancia().Ambiente = otroMapa;
-
+            Mapa otroMapa = Juego.Instancia().Ambiente;
             Punto pUnaSalida = new Punto(3, 3);
             Punto pUnCecilio = new Punto(2, 1);
             Punto pUnaBombaMolotov = new Punto(2, 0);
             Punto pBombita = new Punto(4, 4);
             
             Casilla unaCasillaDeSalida = Juego.Instancia().Ambiente.ObtenerCasilla(pUnaSalida);
-            Salida salida = new Salida();
-            unaCasillaDeSalida.agregarSalida(salida);
-            
-            Assert.IsInstanceOf(typeof(Salida), Juego.Instancia().Ambiente.ObtenerCasilla(pUnaSalida).ArticuloContenido);
+            unaCasillaDeSalida.agregarSalida(Juego.Instancia().Salida);
 
             Cecilio unCecil = new Cecilio(pUnCecilio);
             Bombita unBombita = new Bombita(pBombita);
@@ -169,14 +120,16 @@ namespace TestBomberman.TestSalida
 
             otroMapa.AgregarPersonaje(unBombita);
             otroMapa.AgregarPersonaje(unCecil);
+            Juego.Instancia().EnemigosVivos.Add(unCecil);
 
             Casilla casillaBomba = otroMapa.ObtenerCasilla(pUnaBombaMolotov);
-            casillaBomba.PlantarExplosivo(unaBomba);
+            Juego.Instancia().AlojarExplosivo(unaBomba);
 
             Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
 
-
-            Assert.IsTrue(Juego.Instancia().CantidadEnemigosVivos() == 0);
+            Assert.AreEqual(0, Juego.Instancia().CantidadEnemigosVivos());
             Assert.IsTrue(Juego.Instancia().Ambiente.ObtenerCasilla(pUnaSalida).ArticuloContenido.EstaActivo );
 
         }
@@ -185,31 +138,7 @@ namespace TestBomberman.TestSalida
         public void CuandoEnOtroMapaAgrego3PersonajesEliminoSoloUnEnemigoYNoSeActivaLaSalida()
         {
             // agrego articulo
-            Punto unaPosicion;
-            Casilla unaCasilla;
-            Mapa otroMapa = new Mapa(ANCHOMAPA, ANCHOMAPA);
-
-            int i, j;
-            for (i = 0; i < ANCHOMAPA; i++)
-                for (j = 0; j < ANCHOMAPA; j++)
-                {
-                    unaPosicion = new Punto(i, j);
-                    if ((i & 1) == 1 && (j & 1) == 1)
-                    {
-                        //ambos son numeros impares
-                        unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(unaPosicion);//.FabricarCasillaConBloqueAcero(unaPosicion);
-                    }
-                    else
-                    {
-                        //uno de los dos es par
-                        unaCasilla = FabricaDeCasillas.FabricarPasillo(unaPosicion);
-                    }
-
-                    otroMapa.AgregarCasilla(unaCasilla);
-                }
-
-            Juego.Instancia().Ambiente = otroMapa;
-
+            Mapa otroMapa = Juego.Instancia().Ambiente;
             Punto pUnaSalida = new Punto(3, 3);
             Punto pUnCecilio = new Punto(2, 1);
             Punto pUnaBombaMolotov = new Punto(2, 0);
@@ -231,12 +160,14 @@ namespace TestBomberman.TestSalida
 
             otroMapa.AgregarPersonaje(unBombita);
             otroMapa.AgregarPersonaje(unCecil);
+            Juego.Instancia().EnemigosVivos.Add(unCecil);
             otroMapa.AgregarPersonaje(lopez);
+            Juego.Instancia().EnemigosVivos.Add(lopez);
 
+            Juego.Instancia().AlojarExplosivo(unaBomba);
 
-            Casilla casillaBomba = otroMapa.ObtenerCasilla(pUnaBombaMolotov);
-            casillaBomba.PlantarExplosivo(unaBomba);
-
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
             Juego.Instancia().AvanzarElTiempo();
 
 
