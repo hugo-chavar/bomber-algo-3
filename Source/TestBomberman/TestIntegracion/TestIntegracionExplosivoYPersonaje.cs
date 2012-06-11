@@ -47,51 +47,48 @@ namespace TestBomberman.TestIntegracion
         [Test]
         public void BombitaPlantaUnaMolotovSeMueveFueraDeSuAlcanceYLuegoDeQueLaBombaExplotaVuelveYPlantaOtraMolotov()
         {
-            Punto PosicionDePlantado=new Punto(0,0);
+            Punto PosicionDePlantado=new Punto(7,0);
             Bombita bombita = new Bombita(PosicionDePlantado);
             this.unJuego.Ambiente.ObtenerCasilla(PosicionDePlantado).Transitar(bombita);
             bombita.LanzarExplosivo();
             bombita.Movimiento.CambiarADerecha();
             bombita.Mover();
-            bombita.Mover();
-            bombita.Mover();
+            bombita.Movimiento.CambiarAArriba();
             bombita.Mover();
             this.unJuego.AvanzarElTiempo();
+            bombita.Movimiento.CambiarAAbajo();
+            bombita.Mover();
             bombita.Movimiento.CambiarAIzquierda();
-            bombita.Mover();
-            bombita.Mover();
-            bombita.Mover();
             bombita.Mover();
             bombita.LanzarExplosivo();
             Assert.IsInstanceOf( typeof(BombaMolotov),Juego.Instancia().Ambiente.ObtenerCasilla(PosicionDePlantado).Explosivo);
-            Assert.IsFalse(bombita.Destruido());
         }
 
-        //[Test] a implementarse
-        //public void BombitaPlantaUnaMolotovSeMueveFueraDeSuAlcanceAgarraArticuloYLuegoDeQueLaBombaExplotaVuelveYPlantaUnaToleTole()
-        //{
-        //    Punto PosicionDePlantado = new Punto(8, 2);
-        //    Bombita bombita = new Bombita(PosicionDePlantado);
-        //    Casilla unaCasilla = this.unJuego.Ambiente.ObtenerCasilla(PosicionDePlantado);
-        //    Casilla casillaBloqueConArticulo = this.unJuego.Ambiente.ObtenerCasilla(new Punto(7, 2));
-        //    unaCasilla.Transitar(bombita);
-        //    bombita.LanzarExplosivo();
-        //    bombita.Movimiento.CambiarADerecha();
-        //    bombita.Mover();
-        //    bombita.Mover();
-        //    bombita.Movimiento.CambiarAArriba();
-        //    bombita.Mover();
-        //    unJuego.AvanzarElTiempo();
-        //    bombita.Movimiento.CambiarAAbajo();
-        //    bombita.Mover();
-        //    bombita.Movimiento.CambiarAIzquierda();
-        //    bombita.Mover();
-        //    bombita.Mover();
-        //    bombita.Mover(); //come articulo BombaToleToe
-        //    bombita.LanzarExplosivo();
-        //    Assert.IsInstanceOf(typeof(BombaToleTole), this.unJuego.Ambiente.ObtenerCasilla(new Punto(7, 2)).Explosivo);
-        //    Assert.IsFalse(bombita.Destruido());
-        //}
+        [Test]
+        public void BombitaPlantaUnaMolotovSeMueveFueraDeSuAlcanceAgarraArticuloYLuegoDeQueLaBombaExplotaVuelveYPlantaUnaToleTole()
+        {
+            Punto PosicionDePlantado = new Punto(8, 2);
+            Bombita bombita = new Bombita(PosicionDePlantado);
+            Casilla unaCasilla = this.unJuego.Ambiente.ObtenerCasilla(PosicionDePlantado);
+            Casilla casillaBloqueConArticulo = this.unJuego.Ambiente.ObtenerCasilla(new Punto(7, 2));
+            unaCasilla.Transitar(bombita);
+            bombita.LanzarExplosivo();
+            bombita.Movimiento.CambiarADerecha();
+            bombita.Mover();
+            bombita.Mover();
+            bombita.Movimiento.CambiarAArriba();
+            bombita.Mover();
+            unJuego.AvanzarElTiempo();
+            bombita.Movimiento.CambiarAAbajo();
+            bombita.Mover();
+            bombita.Movimiento.CambiarAIzquierda();
+            bombita.Mover();
+            bombita.Mover();
+            bombita.Mover(); //come articulo BombaToleToe
+            bombita.LanzarExplosivo();
+            Assert.IsInstanceOf(typeof(BombaToleTole), this.unJuego.Ambiente.ObtenerCasilla(new Punto(7, 2)).Explosivo);
+            Assert.IsFalse(bombita.Destruido());
+        }
 
         [Test]
         public void LopezReggaeAladoPlantaUnaMolotovSeMueveFueraDeSuAlcanceYLuegoDeQueLaBombaExplotaVuelveYPlantaOtra()
