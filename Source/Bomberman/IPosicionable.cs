@@ -7,7 +7,6 @@ namespace Bomberman
 {
     public interface IPosicionable
     {
-        //declaro la propiedad posicion
         Punto Posicion
         {
             get;

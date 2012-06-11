@@ -24,7 +24,7 @@
        
         public override bool Equals(object obj)
         {
-            if (obj == null || !(obj is Punto) )  //this.GetType() != obj.GetType()
+            if (obj == null || !(obj is Punto) )  
             {
                 return false;
             }
