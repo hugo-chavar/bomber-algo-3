@@ -511,8 +511,10 @@ namespace TestBomberman.TestJuego
         [Test]
         public void BombitaAgarraUnArticuloBombaToleToleYAniquilaALosLopezReggae()
         {
+
             Punto posInicio = new Punto(0, 0);
-            Punto posLR = new Punto(4, 4);
+            Punto posLR = new Punto(0, 1);
+            
             Personaje unBombita = new Bombita(posInicio);
             Personaje unEnemigo = new LosLopezReggae(posLR);
 
@@ -520,29 +522,21 @@ namespace TestBomberman.TestJuego
             Punto posicionCasillaArt = new Punto(1, 0);
             Casilla CasillaConArticulo = this.unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt);
             Articulo unArticulo = new ArticuloBombaToleTole();
-            CasillaConArticulo.ArticuloContenido = unArticulo; //Pongo un articulo en el pasillo para agarrarlo con bombita.
-
+            CasillaConArticulo.ArticuloContenido = unArticulo; ; //Pongo un articulo en el pasillo para agarrarlo con bombita.
+            
             unJuego.Ambiente.AgregarPersonaje(unBombita);
             unJuego.Ambiente.AgregarPersonaje(unEnemigo);
 
             unBombita.Movimiento.CambiarADerecha();
             unBombita.Mover(); // 1,0, como articulo.
-            unBombita.Mover(); // 2,0.
-            unBombita.Movimiento.CambiarAArriba();
-            unBombita.Mover(); // 2,1
-            unBombita.Mover(); // 2,2
+            Assert.IsInstanceOf(typeof(Bombita), Juego.Instancia().Ambiente.ObtenerCasilla(posicionCasillaArt).TransitandoEnCasilla[0]);
+            Assert.IsInstanceOf(typeof(LanzadorToleTole), unBombita.Lanzador);
 
-            unBombita.LanzarExplosivo();
-            unBombita.Mover(); // 2,3
-            unBombita.Mover(); // 2,4
             unBombita.Movimiento.CambiarAIzquierda();
-            unBombita.Mover(); // 1,4
-
-            unEnemigo.Movimiento.CambiarAAbajo(); //4,4
-            unEnemigo.Mover(); // 4,3
-            unEnemigo.Mover(); // 4,2
-            unEnemigo.Movimiento.CambiarAIzquierda();
-            unEnemigo.Mover(); // 3,2
+            unBombita.Mover(); // 0,0
+  
+            unBombita.LanzarExplosivo();
+           
 
             unJuego.AvanzarElTiempo();
             unJuego.AvanzarElTiempo();
