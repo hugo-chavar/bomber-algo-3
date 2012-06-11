@@ -25,6 +25,12 @@ namespace TestBomberman.TestJuego
             this.unMapa = this.unJuego.Ambiente;
         }
 
+
+        [TearDown]
+        public void TearDown()
+        {
+            //Juego.Reiniciar();
+        }
         //[TearDown]
         //public void TearDown()
         //{
@@ -64,7 +70,7 @@ namespace TestBomberman.TestJuego
         [Test]
         public void PerderVidaDescuentaUnaVidaAlJuegoActual()
         {
-            Juego unJuego = new Juego();
+            Juego.Reiniciar();
             unJuego.PerderVida();
             Assert.AreEqual(2, unJuego.CantDeVidas);
         }

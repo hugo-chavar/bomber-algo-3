@@ -62,7 +62,7 @@ namespace Bomberman.Juego
         }
 
         //constructor
-        public Juego()
+        private Juego()
         {
             this.JuegoPausado = false;
             this.CantDeVidas = VIDAS;
@@ -79,7 +79,12 @@ namespace Bomberman.Juego
 
             generarEnemigos();
             //aca se carga el template del mapa
+        }
 
+        public static void Reiniciar()
+        {
+            instanciaDeJuego = null;
+            Juego.Instancia();
         }
         
         //instanciacion del Singleton
