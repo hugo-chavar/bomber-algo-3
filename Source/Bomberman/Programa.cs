@@ -52,21 +52,90 @@ namespace Bomberman
             unJuego = Juego.Juego.Instancia();
             unMapa = unJuego.Ambiente;
 
-            Punto pBombita = new Punto(1, 0);
-            Punto pCecil = new Punto(0, 0);
-
-            Bombita bombita = new Bombita(pBombita);
-            Cecilio unCecil = new Cecilio(pCecil);
+            Punto p = new Punto(2, 2);
+            Personaje.Personaje bombita = new Bombita(p);
             unJuego.Ambiente.AgregarPersonaje(bombita);
-            unJuego.Ambiente.AgregarPersonaje(unCecil);
-
+            if (unJuego.CantidadEnemigosVivos() == 7)
+            {
+                Console.WriteLine("hasta ahora todo ok");
+            }
+            else
+            {
+                Console.WriteLine("Erro");
+            }
+            bombita.CambiarLanzadorAToleTole();
+            if (unJuego.CantidadEnemigosVivos() == 7)
+            {
+                Console.WriteLine("hasta ahora todo ok");
+            }
+            else
+            {
+                Console.WriteLine("Erro");
+            }
             bombita.LanzarExplosivo();
+            if (unJuego.CantidadEnemigosVivos() == 7)
+            {
+                Console.WriteLine("hasta ahora todo ok");
+            }
+            else
+            {
+                Console.WriteLine("Erro");
+            }
+            bombita.Movimiento.CambiarADerecha();
+            bombita.Mover();
+            if (unJuego.CantidadEnemigosVivos() == 7)
+            {
+                Console.WriteLine("hasta ahora todo ok");
+            }
+            else
+            {
+                Console.WriteLine("Erro");
+            }
+            bombita.Mover();
+            bombita.Movimiento.CambiarAAbajo();
+            bombita.Mover();
+            unJuego.AvanzarElTiempo();
+            if (unJuego.CantidadEnemigosVivos() == 7)
+            {
+                Console.WriteLine("hasta ahora todo ok");
+            }
+            else
+            {
+                Console.WriteLine("Erro");
+            }
+            unJuego.AvanzarElTiempo();
+            if (unJuego.CantidadEnemigosVivos() == 7)
+            {
+                Console.WriteLine("hasta ahora todo ok");
+            }
+            else
+            {
+                Console.WriteLine("Erro");
+            }
+            unJuego.AvanzarElTiempo();
+            if (unJuego.CantidadEnemigosVivos() == 7)
+            {
+                Console.WriteLine("hasta ahora todo ok");
+            }
+            else
+            {
+                Console.WriteLine("Erro");
+            }
+            unJuego.AvanzarElTiempo();
+            if (unJuego.CantidadEnemigosVivos() == 7)
+            {
+                Console.WriteLine("hasta ahora todo ok");
+            }
+            else
+            {
+                Console.WriteLine("Erro");
+            }
             unJuego.AvanzarElTiempo();
 
 
-            if (unCecil.Destruido())
+            if (unJuego.CantidadEnemigosVivos() == 6)
             {
-                Console.WriteLine("Dio en el blanco");
+                Console.WriteLine("todo ok");
             }
             else
             {
