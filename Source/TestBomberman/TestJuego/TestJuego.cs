@@ -350,7 +350,6 @@ namespace TestBomberman.TestJuego
 
             Casilla casillaBomba1 = Juego.Instancia().Ambiente.ObtenerCasilla(posicionBomba1);
             Casilla casillaBomba2 = Juego.Instancia().Ambiente.ObtenerCasilla(posicionBomba2);
-
             casillaBomba1.PlantarExplosivo(bomba1);
             casillaBomba2.PlantarExplosivo(bomba2);
 
@@ -452,25 +451,22 @@ namespace TestBomberman.TestJuego
         [Test] 
         public void CuandoGeneroUnMapaNuevoYElimino1EnemigoConToleToleDebenQuedar6()
         {
-            Punto p = new Punto(7, 0);
+            Punto p = new Punto(2, 2);
             Personaje bombita = new Bombita(p);
-            Casilla casillaBomba1 = Juego.Instancia().Ambiente.ObtenerCasilla(p);
-            casillaBomba1.Transitar(bombita);
+            Juego.Instancia().Ambiente.AgregarPersonaje(bombita);
+            Assert.AreEqual(Juego.Instancia().CantidadEnemigosVivos(), 7);
             bombita.CambiarLanzadorAToleTole();
-            bombita.Movimiento.CambiarADerecha();
             bombita.LanzarExplosivo();
-            bombita.Movimiento.CambiarAIzquierda();
+            bombita.Movimiento.CambiarADerecha();
             bombita.Mover();
             bombita.Mover();
+            bombita.Movimiento.CambiarAAbajo();
             bombita.Mover();
-            bombita.Movimiento.CambiarAArriba();
-            bombita.Mover();
             Juego.Instancia().AvanzarElTiempo();
             Juego.Instancia().AvanzarElTiempo();
             Juego.Instancia().AvanzarElTiempo();
             Juego.Instancia().AvanzarElTiempo();
             Juego.Instancia().AvanzarElTiempo();
-
             Assert.AreEqual(Juego.Instancia().CantidadEnemigosVivos(), 6);
 
         }
