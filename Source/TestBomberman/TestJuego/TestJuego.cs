@@ -339,8 +339,8 @@ namespace TestBomberman.TestJuego
 
             Casilla casillaBomba1 = Juego.Instancia().Ambiente.ObtenerCasilla(posicionBomba1);
             Casilla casillaBomba2 = Juego.Instancia().Ambiente.ObtenerCasilla(posicionBomba2);
-            casillaBomba1.PlantarExplosivo(bomba1);
-            casillaBomba2.PlantarExplosivo(bomba2);
+            Juego.Instancia().AlojarExplosivo(bomba1);
+            Juego.Instancia().AlojarExplosivo(bomba2);
 
             Juego.Instancia().AvanzarElTiempo();
 
@@ -381,8 +381,8 @@ namespace TestBomberman.TestJuego
             Casilla casillaBomba1 = Juego.Instancia().Ambiente.ObtenerCasilla(posicionBomba1);
             Casilla casillaBomba2 = Juego.Instancia().Ambiente.ObtenerCasilla(posicionBomba2);
 
-            casillaBomba1.PlantarExplosivo(bomba1);
-            casillaBomba2.PlantarExplosivo(bomba2);
+            Juego.Instancia().AlojarExplosivo(bomba1);
+            Juego.Instancia().AlojarExplosivo(bomba2);
 
             Juego.Instancia().AvanzarElTiempo();
             Juego.Instancia().AvanzarElTiempo();
