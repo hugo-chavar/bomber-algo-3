@@ -111,9 +111,8 @@ namespace Bomberman.Mapa.Casilla
             this.explosivo=unExplosivo;
         }
 
-        public void QuitarExplosivo() // Explosivo unExplosivo probar si funciona sin parametros
+        public void QuitarExplosivo()
         {
-            //if(this.explosivo==unExplosivo)
                 this.explosivo = null;
         }
     }
