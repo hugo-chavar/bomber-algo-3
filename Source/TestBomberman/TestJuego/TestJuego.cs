@@ -440,6 +440,8 @@ namespace TestBomberman.TestJuego
         [Test] 
         public void CuandoGeneroUnMapaNuevoYElimino1EnemigoConToleToleDebenQuedar6()
         {
+            Juego.Reiniciar();
+
             Punto p = new Punto(2, 2);
             Personaje bombita = new Bombita(p);
             Juego.Instancia().Ambiente.AgregarPersonaje(bombita);
