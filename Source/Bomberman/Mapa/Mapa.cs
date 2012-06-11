@@ -369,5 +369,10 @@ namespace Bomberman.Mapa
         {
             return (ExisteCasillaEnPosicion(pos) && ObtenerCasilla(pos).PermiteExplosivos() && !ObtenerCasilla(pos).TieneUnExplosivo());
         }
+
+        //public bool HayColisionDeObstaculoCon(Personaje.IMovible movil)
+        //{
+        //    //a implementar
+        //}
     }
 }

@@ -77,6 +77,11 @@ namespace Bomberman.Personaje
             return false;
         }
 
+        public bool ImpactaEnObstaculos()
+        {
+            return false;
+        }
+
         public bool Destruido()
         {
             return ((this.unidadesDeResistencia) < 1);
@@ -137,6 +142,12 @@ namespace Bomberman.Personaje
             this.Lanzador.RetardoExplosion = retardo;
         }
 
+
+        public void ResolverColisiones()
+        {
+            //por default no pasa nada cuando choca, se resuelve en cada personaje
+        }
+        
         public abstract void ReaccionarConArticulo(Articulo.Articulo articulo);
         
     }
