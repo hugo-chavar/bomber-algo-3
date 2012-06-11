@@ -17,8 +17,6 @@ namespace Bomberman.Personaje
 
         void ReaccionarConArticulo(Articulo.Articulo articulo);
 
-        //IDaniable ObtenerDaniable();
-
         bool EsDaniable();
     }
 }
