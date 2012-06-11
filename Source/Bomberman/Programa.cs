@@ -52,63 +52,67 @@ namespace Bomberman
             unJuego = Juego.Juego.Instancia();
             unMapa = unJuego.Ambiente;
 
-            Punto posInicio = new Punto(0, 0);
-            Punto posInicioCecilio = new Punto(4, 4);
-            Personaje.Personaje unBombita = new Bombita(posInicio);
-            Personaje.Personaje unEnemigo = new Cecilio(posInicioCecilio);
+            Punto pBombita = new Punto(5, 0);
+            Punto pLopezRaggae = new Punto(6, 1);
 
-            //Agrego articulo
-            Punto posicionCasillaArt = new Punto(1, 0);
-            Casilla CasillaConArticulo = this.unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt);
-            Articulo.Articulo unArticulo = new Articulo.ArticuloBombaToleTole();
-            CasillaConArticulo.ArticuloContenido = unArticulo; //Pongo un articulo en el pasillo para agarrarlo con bombita.
-
-            unJuego.Ambiente.AgregarPersonaje(unBombita);
-            unJuego.Ambiente.AgregarPersonaje(unEnemigo);
-
-            unBombita.Movimiento.CambiarADerecha();
-            unBombita.Mover(); // 1,0, como articulo.
-            unBombita.Mover(); // 2,0.
-            unBombita.Movimiento.CambiarAArriba();
-            unBombita.Mover(); // 2,1
-            unBombita.Mover(); // 2,2
-
-            unBombita.LanzarExplosivo();
-            unBombita.Mover(); // 2,3
-            unBombita.Mover(); // 2,4
-            unBombita.Movimiento.CambiarAIzquierda();
-            unBombita.Mover(); // 1,4
-
-            unEnemigo.Movimiento.CambiarAAbajo(); //4,4
-            unEnemigo.Mover(); // 4,3
-            unEnemigo.Mover(); // 4,2
-            unEnemigo.Movimiento.CambiarAIzquierda();
-            unEnemigo.Mover(); // 3,2
+            Bombita bombita = new Bombita(pBombita);
+            LosLopezReggae unLR = new LosLopezReggae(pLopezRaggae);
+            unJuego.Ambiente.AgregarPersonaje(bombita);
+            unJuego.AgregarEnemigo(unLR);
+            bombita.Movimiento.CambiarADerecha();
+            bombita.Mover();  // pos Bombita = (6,0)
+            bombita.LanzarExplosivo();
+            bombita.Mover(); // 7,0 le hace la gran Jay Jay Ococha y lo deja encerrado con la bomba
+            bombita.Mover(); // 8,0
+            bombita.Movimiento.CambiarAArriba();
+            bombita.Mover(); // pos Bombita = (8,1) tiene que safar de la explosion para no morir
 
             unJuego.AvanzarElTiempo();
-            unJuego.AvanzarElTiempo();
-            unJuego.AvanzarElTiempo();
-            unJuego.AvanzarElTiempo();
-            unJuego.AvanzarElTiempo();
 
-            Assert.IsTrue(unEnemigo.Destruido());
-
-            if (bomba1.EstaExplotado())
+            if (unLR.UnidadesDeResistencia == 5)
             {
-                Console.WriteLine("bomba1.EstaExplotado()");
+                Console.WriteLine("le quedan 5 puntos de vida");
             }
             else
             {
                 Console.WriteLine("Erro");
             }
-            if (bomba2.EstaExplotado())
+
+
+            if (!bombita.Destruido())
             {
-                Console.WriteLine("bomba2.EstaExplotado()");
+                Console.WriteLine("safo bombitaaa");
             }
             else
             {
                 Console.WriteLine("Erro");
             }
+            // como no lo mato vuelve
+            bombita.Movimiento.CambiarAAbajo();
+            bombita.Mover();
+            bombita.Movimiento.CambiarAIzquierda();
+            bombita.Mover();
+            bombita.Mover();
+            bombita.LanzarExplosivo();
+            //no pudo escapar
+            unJuego.AvanzarElTiempo();
+            if (unLR.UnidadesDeResistencia == 0)
+            {
+                Console.WriteLine("le quedan 0 puntos de vida");
+            }
+            else
+            {
+                Console.WriteLine("Erro");
+            }
+            if (bombita.Destruido())
+            {
+                Console.WriteLine("muere bombita");
+            }
+            else
+            {
+                Console.WriteLine("Erro");
+            }
+
 
 
             //Punto p = new Punto(2, 2);
