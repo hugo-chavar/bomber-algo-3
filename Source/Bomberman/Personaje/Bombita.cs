@@ -35,9 +35,8 @@ namespace Bomberman.Personaje
             this.Comer(articulo);
         }
 
-        public void FinalizarNivel() //override
+        public void FinalizarNivel()
         {
-            //Juego.Juego.Instancia().Ambiente.FinalizarNivel(); // Revisar esto!
             this.ciudadLiberada = true;
         }
 

@@ -13,14 +13,12 @@ namespace Bomberman.Personaje
         protected Movimiento movimiento;
         protected Punto posicion;
         protected Lanzador lanzador;
-        //protected int reduccionRetardoBombas;
         protected int unidadesDeResistencia;
 
         private const int VELOCIDADMAX = 4;
 
         public Personaje(Punto unPunto)
         {
-            //this.reduccionRetardoBombas = 0;
             this.movimiento = new Movimiento();
             this.Posicion = unPunto;
         }
@@ -37,12 +35,6 @@ namespace Bomberman.Personaje
             set { this.lanzador = value; }
         }
 
-        //public int ReduccionRetardoBombas
-        //{ 
-        //    get { return this.reduccionRetardoBombas;}
-        //    set { this.reduccionRetardoBombas = value; }
-        //}
-
         public int UnidadesDeResistencia
         {
             get { return this.unidadesDeResistencia; }
@@ -57,11 +49,6 @@ namespace Bomberman.Personaje
 
         public bool LanzarExplosivo()
         {
-            //return (this.lanzador.Lanzar(this.Posicion, this.reduccionRetardoBombas)); nuevo lanzador dejo esto por un tiempo
-            //Apuntar();
-            //this.Lanzador.Disparar();
-            //el explosivo fue lanzado
-           // return true;
 
             //Impedimos que los que atraviesan obstaculos pongan bombas sobre el
             if (Juego.Juego.Instancia().Ambiente.ObtenerCasilla(this.Posicion).PermiteExplosivos())
@@ -81,7 +68,7 @@ namespace Bomberman.Personaje
 
         public void Mover()
         {
-            if (!(this.Destruido()))                //Resolucion para que los personajes no sean zombies ! 
+            if (!(this.Destruido()))
                 Juego.Juego.Instancia().Ambiente.Mover(this);
         }
 
@@ -129,10 +116,6 @@ namespace Bomberman.Personaje
             if (!this.Destruido())
             {
                 this.UnidadesDeResistencia = CalcularUnidadesRestantes(UnidadesDaniadas);
-                //if (this.UnidadesDeResistencia == 0) //SE MANEJA DESDE CLASE JUEGO
-                //{
-                //    Juego.Juego.Instancia().Ambiente.DecrementarCantidadDePersonajesVivos();
-                //}
             }
         }
         
@@ -154,14 +137,7 @@ namespace Bomberman.Personaje
             this.Lanzador.RetardoExplosion = retardo;
         }
 
-        //public abstract void PartidaGanada();
-
-
         public abstract void ReaccionarConArticulo(Articulo.Articulo articulo);
         
-        //public IDaniable ObtenerDaniable()
-        //{
-        //    return this;
-        //}
     }
 }

@@ -21,39 +21,22 @@ namespace TestBomberman.TestJuego
         [SetUp]
         public void TestSetup()
         {
-            //creo un mapa 5x5 con esta distribucion (P = Pasillo, * = BloqueAcero):
-            //      P P P P P
-            //      P * P * P
-            //      P P P P P
-            //      P * P * P
-            //      P P P P P
-
-            //Punto unaPosicion;
-            //Casilla unaCasilla;
-            //this.unMapa = new Mapa(ANCHOMAPA, ANCHOMAPA);
-
-            //int i, j;
-            //for (i = 0; i < ANCHOMAPA; i++)
-            //    for (j = 0; j < ANCHOMAPA; j++)
-            //    {
-            //        unaPosicion = new Punto(i, j);
-            //        if ((i & 1) == 1 && (j & 1) == 1)
-            //        {
-            //            //ambos son numeros impares
-            //            unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueAcero(unaPosicion);
-            //        }
-            //        else
-            //        {
-            //            //uno de los dos es par
-            //            unaCasilla = FabricaDeCasillas.FabricarPasillo(unaPosicion);
-            //        }
-            //        this.unMapa.AgregarCasilla(unaCasilla);
-            //    }
-
             this.unJuego = Juego.Instancia();
             this.unMapa = this.unJuego.Ambiente;
-
         }
+
+        //[TearDown]
+        //public void TearDown()
+        //{
+        //    System.Reflection.FieldInfo fi =
+        //        typeof(Juego).GetField("m_Instance",
+        //        System.Reflection.BindingFlags.Static |
+        //        System.Reflection.BindingFlags.NonPublic);
+
+        //    Assert.IsNotNull(fi);
+
+        //    fi.SetValue(null, null);
+        //}
 
         [Test]
         public void DosReferenciasAJuegoDebenSerElMismoObjeto()

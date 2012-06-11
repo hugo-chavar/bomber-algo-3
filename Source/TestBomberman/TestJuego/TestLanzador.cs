@@ -22,34 +22,6 @@ namespace TestBomberman.TestJuego
         [SetUp]
         public void TestSetup()
         {
-            //creo un mapa 5x5 con esta distribucion (P = Pasillo, * = BloqueAcero):
-            //      P P P P P
-            //      P * P * P
-            //      P P P P P
-            //      P * P * P
-            //      P P P P P
-
-            //Punto unaPosicion;
-            //Casilla unaCasilla;
-            //Mapa unMapa = new Mapa(ANCHOMAPA, ANCHOMAPA);
-
-            //int i, j;
-            //for (i = 0; i < ANCHOMAPA; i++)
-            //    for (j = 0; j < ANCHOMAPA; j++)
-            //    {
-            //        unaPosicion = new Punto(i, j);
-            //        if ((i & 1) == 1 && (j & 1) == 1)
-            //        {
-            //            //ambos son numeros impares
-            //            unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueAcero(unaPosicion);
-            //        }
-            //        else
-            //        {
-            //            //uno de los dos es par
-            //            unaCasilla = FabricaDeCasillas.FabricarPasillo(unaPosicion);
-            //        }
-            //        unMapa.AgregarCasilla(unaCasilla);
-            //    }
 
             this.unJuego = Juego.Instancia();
             //unMapa = this.unJuego.Ambiente;
@@ -65,20 +37,6 @@ namespace TestBomberman.TestJuego
             //Assert.IsFalse(bombita.LanzarExplosivo());
             Assert.IsTrue(this.unJuego.Ambiente.ObtenerCasilla(new Punto(0,0)).TieneUnExplosivo());
         }
-
-
-        //[Test]
-        //Hugo dice: el LanzarExlosivo ya no devuelve boolean, ahora se puede modificar esto para que chequee q si a Bombita tenía una bomba limitada
-        //le queda una bomba menos de las que tenia
-        //para eso se debe guardar en algun lado (en el Lanzador!!) las cantidades restantes
-        //public void TestBombitaPlantaUnaBombaMolotovYNoPuedePlantarOtraEnElMismoLugar()
-        //{
-        //    Personaje bombita = this.unJuego.Protagonista;
-        //    bombita.LanzarExplosivo();
-
-        //    Assert.IsFalse(bombita.LanzarExplosivo());
-
-        //}
 
         [Test]
         public void CuandoBombitaPlantaUnaMolotovDestruyendoACecilio()
@@ -218,7 +176,7 @@ namespace TestBomberman.TestJuego
             Assert.IsTrue(bombita.Destruido());
 
 
-        }       // falta pruebas de LopezReggae haciendo lio con el proytectil
+        }
 
         [Test]
         public void CuandoBombmitaPlantaUnaToleToleDestruyendoACecilioYAlBloqueDeAcero()
@@ -231,7 +189,7 @@ namespace TestBomberman.TestJuego
             Cecilio unCecil = new Cecilio(pCecil);
             Juego.Instancia().Ambiente.AgregarPersonaje(bombita);
             Juego.Instancia().Ambiente.AgregarPersonaje(unCecil);
-            bombita.CambiarLanzadorAToleTole(); // harcodeo el lanzador para ver internamente lo que ocurre al cambiar el lanzador
+            bombita.CambiarLanzadorAToleTole(); 
             bombita.LanzarExplosivo();
             Juego.Instancia().AvanzarElTiempo();
             unJuego.AvanzarElTiempo();
@@ -255,7 +213,7 @@ namespace TestBomberman.TestJuego
             Cecilio unCecil = new Cecilio(pCecil);
             Juego.Instancia().Ambiente.AgregarPersonaje(bombita);
             Juego.Instancia().Ambiente.AgregarPersonaje(unCecil);
-            bombita.CambiarLanzadorAToleTole(); // harcodeo el lanzador para ver internamente lo que ocurre al cambiar el lanzador
+            bombita.CambiarLanzadorAToleTole(); 
             bombita.LanzarExplosivo();
             unJuego.AvanzarElTiempo();
             unJuego.AvanzarElTiempo();
@@ -288,7 +246,7 @@ namespace TestBomberman.TestJuego
             Juego.Instancia().Ambiente.AgregarPersonaje(lRGA);
             Juego.Instancia().Ambiente.AgregarPersonaje(unCecil);
 
-            bombita.CambiarLanzadorAToleTole(); // harcodeo el lanzador para ver internamente lo que ocurre al cambiar el lanzador
+            bombita.CambiarLanzadorAToleTole(); 
             bombita.LanzarExplosivo();
 
             unJuego.AvanzarElTiempo();
@@ -304,12 +262,6 @@ namespace TestBomberman.TestJuego
             Assert.IsInstanceOf(typeof(Pasillo), Juego.Instancia().Ambiente.ObtenerCasilla(pBloqueAcero).Estado);
         }
 
-
-        // faltaria agregar con proyectil y toletoleee //
-
-
-
-        /*Empiezo a probar explosiones con articulos!*/
 
         public void IniciarMapaParaTestsIntegradores() // Metodo que voy a llamar al principio de cada test, uso un setup distinto al original.
         {
@@ -480,7 +432,7 @@ namespace TestBomberman.TestJuego
             Punto posicionCasillaArt = new Punto(1, 0);
             Casilla CasillaConArticulo = this.unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt);
             Articulo unArticulo = new ArticuloBombaToleTole();
-            CasillaConArticulo.ArticuloContenido = unArticulo; //Hardcodeo un articulo en el pasillo para agarrarlo con bombita.
+            CasillaConArticulo.ArticuloContenido = unArticulo; //Pongo un articulo en el pasillo para agarrarlo con bombita.
 
             unJuego.Ambiente.AgregarPersonaje(unBombita);
 
@@ -517,7 +469,7 @@ namespace TestBomberman.TestJuego
             Punto posicionCasillaArt = new Punto(1, 0);
             Casilla CasillaConArticulo = this.unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt);
             Articulo unArticulo = new ArticuloBombaToleTole();
-            CasillaConArticulo.ArticuloContenido = unArticulo; //Hardcodeo un articulo en el pasillo para agarrarlo con bombita.
+            CasillaConArticulo.ArticuloContenido = unArticulo; //Pongo un articulo en el pasillo para agarrarlo con bombita.
 
             unJuego.Ambiente.AgregarPersonaje(unBombita);
             unJuego.Ambiente.AgregarPersonaje(unEnemigo);
@@ -562,7 +514,7 @@ namespace TestBomberman.TestJuego
             Punto posicionCasillaArt = new Punto(1, 0);
             Casilla CasillaConArticulo = this.unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt);
             Articulo unArticulo = new ArticuloBombaToleTole();
-            CasillaConArticulo.ArticuloContenido = unArticulo; //Hardcodeo un articulo en el pasillo para agarrarlo con bombita.
+            CasillaConArticulo.ArticuloContenido = unArticulo; //Pongo un articulo en el pasillo para agarrarlo con bombita.
 
             unJuego.Ambiente.AgregarPersonaje(unBombita);
             unJuego.Ambiente.AgregarPersonaje(unEnemigo);
@@ -607,7 +559,7 @@ namespace TestBomberman.TestJuego
             Punto posicionCasillaArt = new Punto(1, 0);
             Casilla CasillaConArticulo = this.unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt);
             Articulo unArticulo = new ArticuloBombaToleTole();
-            CasillaConArticulo.ArticuloContenido = unArticulo; //Hardcodeo un articulo en el pasillo para agarrarlo con bombita.
+            CasillaConArticulo.ArticuloContenido = unArticulo; //Pongo un articulo en el pasillo para agarrarlo con bombita.
 
             unJuego.Ambiente.AgregarPersonaje(unBombita);
             unJuego.Ambiente.AgregarPersonaje(unEnemigo);
@@ -656,7 +608,7 @@ namespace TestBomberman.TestJuego
             Punto posicionCasillaArt = new Punto(1, 0);
             Casilla CasillaConArticulo = this.unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt);
             Articulo unArticulo = new ArticuloBombaToleTole();
-            CasillaConArticulo.ArticuloContenido = unArticulo; //Hardcodeo un articulo en el pasillo para agarrarlo con bombita.
+            CasillaConArticulo.ArticuloContenido = unArticulo; //Pongo un articulo en el pasillo para agarrarlo con bombita.
 
             Punto posSalida = new Punto(1, 1);
             Casilla casillaConSalida = this.unJuego.Ambiente.ObtenerCasilla(posSalida);
@@ -708,7 +660,7 @@ namespace TestBomberman.TestJuego
             Punto posicionCasillaArt = new Punto(1, 0);
             Casilla CasillaConArticulo = this.unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt);
             Articulo unArticulo = new ArticuloBombaToleTole();
-            CasillaConArticulo.ArticuloContenido = unArticulo; //Hardcodeo un articulo en el pasillo para agarrarlo con bombita.
+            CasillaConArticulo.ArticuloContenido = unArticulo; //Pongo un articulo en el pasillo para agarrarlo con bombita.
 
             Punto posSalida = new Punto(1, 1);
             Casilla casillaConSalida = this.unJuego.Ambiente.ObtenerCasilla(posSalida);
