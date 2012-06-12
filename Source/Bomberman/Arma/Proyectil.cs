@@ -37,7 +37,7 @@ namespace Bomberman.Arma
             //el otro motivo es el choque contra obstaculos y se maneja como una colision
             if (LlegoADestino() || posicionPrevia.Equals(this.Posicion)) 
             {
-                this.Explotar();
+                this.Colisionar();
             }
         }
 
@@ -90,6 +90,7 @@ namespace Bomberman.Arma
         public void Colisionar()
         {
             this.Explotar();
+            Juego.Juego.Instancia().ObjetoContundenteDestruido(this);
         }
     }
 }

@@ -52,29 +52,23 @@ namespace Bomberman
             unJuego = Juego.Juego.Instancia();
             unMapa = unJuego.Ambiente;
 
-            Punto PosicionDePlantado = new Punto(8, 2);
-            Bombita bombita = new Bombita(PosicionDePlantado);
-            Casilla unaCasilla = unJuego.Ambiente.ObtenerCasilla(PosicionDePlantado);
-            Casilla casillaBloqueConArticulo = unJuego.Ambiente.ObtenerCasilla(new Punto(7, 2));
-            unaCasilla.Transitar(bombita);
-            bombita.LanzarExplosivo();
-            bombita.Movimiento.CambiarADerecha();
-            bombita.Mover();
-            bombita.Mover();
-            bombita.Movimiento.CambiarAArriba();
-            bombita.Mover();
+            Punto PosicionDePartida = new Punto(5, 0);
+            LosLopezReggae personaje = new LosLopezReggae(PosicionDePartida);
+            Casilla casillaConBloqueDeLadrillo = unJuego.Ambiente.ObtenerCasilla(new Punto(2, 0));
+            int resistenciaBloque = casillaConBloqueDeLadrillo.Estado.UnidadesDeResistencia;
+            Obstaculo bl = casillaConBloqueDeLadrillo.Estado;
+            //casillaAux.Estado = BloqueComun.CrearBloqueLadrillos();
+            unJuego.AgregarEnemigo(personaje);
+            personaje.Movimiento.CambiarAIzquierda();
+            personaje.LanzarExplosivo();
             unJuego.AvanzarElTiempo();
-            bombita.Movimiento.CambiarAAbajo();
-            bombita.Mover();
-            bombita.Movimiento.CambiarAIzquierda();
-            bombita.Mover();
-            bombita.Mover();
-            bombita.Mover(); //come articulo BombaToleToe
-            bombita.LanzarExplosivo();
+            unJuego.AvanzarElTiempo();
+            unJuego.AvanzarElTiempo();
+            //    Assert.AreEqual(resistenciaBloque - 1, casillaConBloqueDeLadrillo.Estado.UnidadesDeResistencia);
             //Assert.IsInstanceOf(typeof(BombaToleTole), unJuego.Ambiente.ObtenerCasilla(new Punto(7, 2)).Explosivo);
             //Assert.IsFalse(bombita.Destruido());
 
-            if (bombita.Destruido())
+            if (casillaConBloqueDeLadrillo.Estado.UnidadesDeResistencia == resistenciaBloque - 1)
             {
                 Console.WriteLine("le quedan 5 puntos de vida");
             }

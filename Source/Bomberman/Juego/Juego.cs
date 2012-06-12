@@ -171,6 +171,11 @@ namespace Bomberman.Juego
             return this.enemigosVivos.Count();
         }
 
+        public void ObjetoContundenteDestruido(IMovible obj)
+        {
+            this.objetosContundentes.Remove(obj);
+        }
+
         public void ObjetoContundenteLanzado(IDependienteDelTiempo obj)
         {
             this.dependientesDelTiempo.Add(obj);
