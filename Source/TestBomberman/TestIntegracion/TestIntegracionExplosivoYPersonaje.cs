@@ -113,22 +113,22 @@ namespace TestBomberman.TestIntegracion
             Assert.IsFalse(personaje.Destruido());
         }
 
-       //[Test] a implementarse
-       //public void LopezReggaeDisparaProyectilHaciaBloqueDeLadrilloAlImpactarDisminuyeSuResistenciaEnUnaUnidad()
-       //{
-       //    Punto PosicionDePartida= new Punto(5,0);
-       //    LosLopezReggae personaje = new LosLopezReggae(PosicionDePartida);
-       //    Casilla casillaConBloqueDeLadrillo = this.unJuego.Ambiente.ObtenerCasilla(new Punto(2, 0));
-       //    int resistenciaBloque = casillaConBloqueDeLadrillo.Estado.UnidadesDeResistencia;
-       //    //casillaAux.Estado = BloqueComun.CrearBloqueLadrillos();
-       //    this.unJuego.AgregarEnemigo(personaje);
-       //    personaje.Movimiento.CambiarAIzquierda();
-       //    personaje.LanzarExplosivo();
-       //    this.unJuego.AvanzarElTiempo();
-       //    this.unJuego.AvanzarElTiempo();
-       //    this.unJuego.AvanzarElTiempo();
-       //    Assert.AreEqual(resistenciaBloque - 1, casillaConBloqueDeLadrillo.Estado.UnidadesDeResistencia);
-       //}
+        [Test]
+        public void LopezReggaeDisparaProyectilHaciaBloqueDeLadrilloAlImpactarDisminuyeSuResistenciaEnUnaUnidad()
+        {
+            Punto PosicionDePartida = new Punto(5, 0);
+            LosLopezReggae personaje = new LosLopezReggae(PosicionDePartida);
+            Casilla casillaConBloqueDeLadrillo = this.unJuego.Ambiente.ObtenerCasilla(new Punto(2, 0));
+            int resistenciaBloque = casillaConBloqueDeLadrillo.Estado.UnidadesDeResistencia;
+            //casillaAux.Estado = BloqueComun.CrearBloqueLadrillos();
+            this.unJuego.AgregarEnemigo(personaje);
+            personaje.Movimiento.CambiarAIzquierda();
+            personaje.LanzarExplosivo();
+            this.unJuego.AvanzarElTiempo();
+            this.unJuego.AvanzarElTiempo();
+            this.unJuego.AvanzarElTiempo();
+            Assert.AreEqual(resistenciaBloque - 1, casillaConBloqueDeLadrillo.Estado.UnidadesDeResistencia);
+        }
         
 
 
