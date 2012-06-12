@@ -268,6 +268,7 @@ namespace Bomberman.Juego
             obs.Add(new Punto(16, 1));
             obs.Add(new Punto(16, 2));
             obs.Add(new Punto(16, 5));
+            obs.Add(new Punto(16, 7));
             obs.Add(new Punto(16, 9));
             //cargo los bloques de ladrillo
             Casilla unaCasilla;
