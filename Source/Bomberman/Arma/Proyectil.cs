@@ -39,6 +39,8 @@ namespace Bomberman.Arma
             {
                 this.Colisionar();
             }
+            if (this.exploto)
+                Juego.Juego.Instancia().Ambiente.ObtenerCasilla(this.posicion).Dejar(this);
         }
 
         public void ReaccionarConArticulo(Articulo.Articulo unArt)
