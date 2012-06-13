@@ -139,6 +139,7 @@ namespace TestBomberman.TestIntegracion
         {
             Personaje unTipoQueTiraProyectiles = new LosLopezReggae(new Punto(15, 6));
 
+            Juego.Instancia().Ambiente.AgregarPersonaje(unTipoQueTiraProyectiles);
             unTipoQueTiraProyectiles.Movimiento.CambiarADerecha();
             int vida = unTipoQueTiraProyectiles.UnidadesDeResistencia;
             unTipoQueTiraProyectiles.LanzarExplosivo();
@@ -147,7 +148,7 @@ namespace TestBomberman.TestIntegracion
             Juego.Instancia().AvanzarElTiempo();
             Juego.Instancia().AvanzarElTiempo();
             Juego.Instancia().AvanzarElTiempo();
-                        
+            
             Assert.AreEqual(vida-1, unTipoQueTiraProyectiles.UnidadesDeResistencia);
         }
     }

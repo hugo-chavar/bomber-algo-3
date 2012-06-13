@@ -52,158 +52,24 @@ namespace Bomberman
             unJuego = Juego.Juego.Instancia();
             unMapa = unJuego.Ambiente;
 
-            Punto PosicionDePartida = new Punto(5, 0);
-            LosLopezReggae personaje = new LosLopezReggae(PosicionDePartida);
-            Casilla casillaConBloqueDeLadrillo = unJuego.Ambiente.ObtenerCasilla(new Punto(2, 0));
-            int resistenciaBloque = casillaConBloqueDeLadrillo.Estado.UnidadesDeResistencia;
-            Obstaculo bl = casillaConBloqueDeLadrillo.Estado;
-            //casillaAux.Estado = BloqueComun.CrearBloqueLadrillos();
-            unJuego.AgregarEnemigo(personaje);
-            personaje.Movimiento.CambiarAIzquierda();
-            personaje.LanzarExplosivo();
-            unJuego.AvanzarElTiempo();
-            unJuego.AvanzarElTiempo();
-            unJuego.AvanzarElTiempo();
-            //    Assert.AreEqual(resistenciaBloque - 1, casillaConBloqueDeLadrillo.Estado.UnidadesDeResistencia);
-            //Assert.IsInstanceOf(typeof(BombaToleTole), unJuego.Ambiente.ObtenerCasilla(new Punto(7, 2)).Explosivo);
-            //Assert.IsFalse(bombita.Destruido());
+            Personaje.Personaje unTipoQueTiraProyectiles = new LosLopezReggae(new Punto(15, 6));
 
-            if (casillaConBloqueDeLadrillo.Estado.UnidadesDeResistencia == resistenciaBloque - 1)
+            unTipoQueTiraProyectiles.Movimiento.CambiarADerecha();
+            int vida = unTipoQueTiraProyectiles.UnidadesDeResistencia;
+            unTipoQueTiraProyectiles.LanzarExplosivo();
+
+            Juego.Juego.Instancia().AvanzarElTiempo();
+            Juego.Juego.Instancia().AvanzarElTiempo();
+            Juego.Juego.Instancia().AvanzarElTiempo();
+            Juego.Juego.Instancia().AvanzarElTiempo();
+
+            if (vida - 1 == unTipoQueTiraProyectiles.UnidadesDeResistencia)
             {
-                Console.WriteLine("le quedan 5 puntos de vida");
+                Console.WriteLine("La vida bajo");
             }
-            else
-            {
-                Console.WriteLine("Erro");
-            }
+            else { Console.WriteLine("No esta bajando la vida"); }
 
-
-            //if (!bombita.Destruido())
-            //{
-            //    Console.WriteLine("safo bombitaaa");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Erro");
-            //}
-            //// como no lo mato vuelve
-            //bombita.Movimiento.CambiarAAbajo();
-            //bombita.Mover();
-            //bombita.Movimiento.CambiarAIzquierda();
-            //bombita.Mover();
-            //bombita.Mover();
-            //bombita.LanzarExplosivo();
-            ////no pudo escapar
-            //unJuego.AvanzarElTiempo();
-            //if (unLR.UnidadesDeResistencia == 0)
-            //{
-            //    Console.WriteLine("le quedan 0 puntos de vida");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Erro");
-            //}
-            //if (bombita.Destruido())
-            //{
-            //    Console.WriteLine("muere bombita");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Erro");
-            //}
-
-
-
-            //Punto p = new Punto(2, 2);
-            //Personaje.Personaje bombita = new Bombita(p);
-            //unJuego.Ambiente.AgregarPersonaje(bombita);
-            //if (unJuego.CantidadEnemigosVivos() == 7)
-            //{
-            //    Console.WriteLine("hasta ahora todo ok");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Erro");
-            //}
-            //bombita.CambiarLanzadorAToleTole();
-            //if (unJuego.CantidadEnemigosVivos() == 7)
-            //{
-            //    Console.WriteLine("hasta ahora todo ok");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Erro");
-            //}
-            //bombita.LanzarExplosivo();
-            //if (unJuego.CantidadEnemigosVivos() == 7)
-            //{
-            //    Console.WriteLine("hasta ahora todo ok");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Erro");
-            //}
-            //bombita.Movimiento.CambiarADerecha();
-            //bombita.Mover();
-            //if (unJuego.CantidadEnemigosVivos() == 7)
-            //{
-            //    Console.WriteLine("hasta ahora todo ok");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Erro");
-            //}
-            //bombita.Mover();
-            //bombita.Movimiento.CambiarAAbajo();
-            //bombita.Mover();
-            //unJuego.AvanzarElTiempo();
-            //if (unJuego.CantidadEnemigosVivos() == 7)
-            //{
-            //    Console.WriteLine("hasta ahora todo ok");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Erro");
-            //}
-            //unJuego.AvanzarElTiempo();
-            //if (unJuego.CantidadEnemigosVivos() == 7)
-            //{
-            //    Console.WriteLine("hasta ahora todo ok");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Erro");
-            //}
-            //unJuego.AvanzarElTiempo();
-            //if (unJuego.CantidadEnemigosVivos() == 7)
-            //{
-            //    Console.WriteLine("hasta ahora todo ok");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Erro");
-            //}
-            //unJuego.AvanzarElTiempo();
-            //if (unJuego.CantidadEnemigosVivos() == 7)
-            //{
-            //    Console.WriteLine("hasta ahora todo ok");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Erro");
-            //}
-            //unJuego.AvanzarElTiempo();
-
-
-            //if (unJuego.CantidadEnemigosVivos() == 6)
-            //{
-            //    Console.WriteLine("todo ok");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Erro");
-            //}
-            //Console.ReadLine();
+            Console.ReadKey();
         }
 
     }
