@@ -139,7 +139,7 @@ namespace Bomberman.Personaje
 
         public void ReducirRetardo(int retardo)
         {
-            this.Lanzador.RetardoExplosion = retardo;
+            this.Lanzador.RetardoExplosion = (this.Lanzador.RetardoExplosion + retardo);
         }
 
         public void Colisionar()

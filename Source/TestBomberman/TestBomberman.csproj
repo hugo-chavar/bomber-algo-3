@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TestArticulo\TestArticuloSalida.cs" />
+    <Compile Include="TestIntegracion\TestIntegracionArticuloPersonaje.cs" />
     <Compile Include="TestIntegracion\TestIntegracionProyectilPersonaje.cs" />
     <Compile Include="TestIntegracion\TestIntegracionExplosivoYPersonaje.cs" />
     <Compile Include="TestJuego\TestLanzador.cs">
