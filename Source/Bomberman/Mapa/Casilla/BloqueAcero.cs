@@ -10,8 +10,14 @@ namespace Bomberman.Mapa.Casilla
 
         public override void DaniarConBombaMolotov(int UnidadesDaniadas)
         {           
+            // NO SE DANIA CON MOLOTOV!
         }
 
+        public override void DaniarConProyectil(int UnidadesDaniadas)
+        {
+            // NO SE DANIA CON PROYECTIL!
+        }
+        
         public override bool PuedeContenerSalida()
         {
             return false;
