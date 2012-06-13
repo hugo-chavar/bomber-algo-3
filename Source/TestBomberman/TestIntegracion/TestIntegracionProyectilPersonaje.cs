@@ -156,14 +156,12 @@ namespace TestBomberman.TestIntegracion
         [Test]
         public void ProyectilNoDebeAtravesarBloqueDeCemento()
         {
-            Juego.Reiniciar();
             Personaje personaje = new LosLopezReggae(new Punto(7, 12));
             Juego.Instancia().Ambiente.AgregarPersonaje(personaje);
             personaje.Movimiento.CambiarADerecha();
             personaje.LanzarExplosivo();
             Juego.Instancia().AvanzarElTiempo();
             Juego.Instancia().AvanzarElTiempo();
-            Assert.IsInstanceOf(typeof(Proyectil), Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(9, 12)).TransitandoEnCasilla[0]);
             Assert.AreEqual(Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(9, 12)).TransitandoEnCasilla.Count, 0);
         }
 
@@ -217,5 +215,21 @@ namespace TestBomberman.TestIntegracion
             Juego.Instancia().AvanzarElTiempo();
             Assert.AreEqual(cecilio.UnidadesDeResistencia, vida);
         }
+
+        [Test]
+        public void ProyectilNoImpactaACecilioYAlPasarTresTiemposExplotaYLoDania()
+        {
+            Personaje personaje = new LosLopezReggae(new Punto(6, 0));
+            Personaje cecilio = new Cecilio(new Punto(4, 0));
+            Juego.Instancia().Ambiente.AgregarPersonaje(personaje);
+            Juego.Instancia().Ambiente.AgregarPersonaje(cecilio);
+            int vida = cecilio.UnidadesDeResistencia;
+            personaje.Movimiento.CambiarAIzquierda();
+            personaje.LanzarExplosivo();
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
+            Assert.AreEqual(cecilio.UnidadesDeResistencia, vida - 1);
+        }  
     }
 }
