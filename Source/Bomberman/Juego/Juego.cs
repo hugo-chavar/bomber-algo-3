@@ -203,7 +203,18 @@ namespace Bomberman.Juego
                     dependientesDelTiempo.RemoveAt(j);
             }
 
+            //foreach (IMovible i in objetosContundentes)
+            //{
+            //    this.Ambiente.ResolverColisionesCon(i);
+            //}
+
+            //Habia problemas porq se recorria la lista y se iba modificando. Lo soluciono haciendo una copia
+            //Buscar en lo posible otra solucion
+            List<IMovible> listaAux = new List<IMovible>();
             foreach (IMovible i in objetosContundentes)
+                listaAux.Add(i);
+
+            foreach (IMovible i in listaAux)
             {
                 this.Ambiente.ResolverColisionesCon(i);
             }

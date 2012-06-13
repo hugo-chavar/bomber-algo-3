@@ -8,6 +8,7 @@ using NUnit.Framework;
 using Bomberman.Personaje;
 using Bomberman;
 using Bomberman.Mapa.Casilla;
+using Bomberman.Arma;
 
 namespace TestBomberman.TestIntegracion
 {
@@ -150,6 +151,71 @@ namespace TestBomberman.TestIntegracion
             Juego.Instancia().AvanzarElTiempo();
             
             Assert.AreEqual(vida-1, unTipoQueTiraProyectiles.UnidadesDeResistencia);
+        }
+
+        [Test]
+        public void ProyectilNoDebeAtravesarBloqueDeCemento()
+        {
+            Juego.Reiniciar();
+            Personaje personaje = new LosLopezReggae(new Punto(7, 12));
+            Juego.Instancia().Ambiente.AgregarPersonaje(personaje);
+            personaje.Movimiento.CambiarADerecha();
+            personaje.LanzarExplosivo();
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
+            Assert.IsInstanceOf(typeof(Proyectil), Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(9, 12)).TransitandoEnCasilla[0]);
+            Assert.AreEqual(Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(9, 12)).TransitandoEnCasilla.Count, 0);
+        }
+
+        [Test]
+        public void ProyectilChocaConBloqueLadrillosYAlPasarUnTiempoDaniaEn1ABloqueDeLadrillosYDeCemento()
+        {
+            Personaje personaje = new LosLopezReggae(new Punto(8, 8));
+            Juego.Instancia().Ambiente.AgregarPersonaje(personaje);
+            personaje.Movimiento.CambiarADerecha();
+            personaje.LanzarExplosivo();
+            Juego.Instancia().AvanzarElTiempo();
+            Assert.AreEqual(Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(9, 8)).Estado.UnidadesDeResistencia, 4);
+            Assert.AreEqual(Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(10, 8)).Estado.UnidadesDeResistencia, 9);
+        }
+
+        [Test]
+        public void ProyectilChocaConBloqueDeAceroYAlPasarUnTiempoExplotaYNoDaniaBloquesAcero()
+        {
+            Juego.Reiniciar();
+            Personaje personaje = new LosLopezReggae(new Punto(2, 7));
+            Juego.Instancia().Ambiente.AgregarPersonaje(personaje);
+            personaje.Movimiento.CambiarADerecha();
+            personaje.LanzarExplosivo();
+            Juego.Instancia().AvanzarElTiempo();
+            Assert.AreEqual(Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(1, 7)).Estado.UnidadesDeResistencia, 10);
+            Assert.AreEqual(Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(3, 7)).Estado.UnidadesDeResistencia, 10);
+        }
+
+        [Test]
+        public void ProyectilChocaConBloqueDeAceroYAlPasarUnTiempoExplotaYDaniaPersonaje()
+        {
+            Personaje personaje = new LosLopezReggae(new Punto(2, 7));
+            Juego.Instancia().Ambiente.AgregarPersonaje(personaje);
+            personaje.Movimiento.CambiarADerecha();
+            personaje.LanzarExplosivo();
+            Juego.Instancia().AvanzarElTiempo();
+            Assert.AreEqual(personaje.UnidadesDeResistencia, 9);
+        }
+
+        [Test]
+        public void ProyectilNoImpactaACecilioAlPasarDosTiemposPorLoQueNoExplotaYNoLoDania()
+        {
+            Personaje personaje = new LosLopezReggae(new Punto(10, 6));
+            Personaje cecilio = new Cecilio(new Punto(9, 6));
+            Juego.Instancia().Ambiente.AgregarPersonaje(personaje);
+            Juego.Instancia().Ambiente.AgregarPersonaje(cecilio);
+            int vida = cecilio.UnidadesDeResistencia;
+            personaje.Movimiento.CambiarAIzquierda();
+            personaje.LanzarExplosivo();
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
+            Assert.AreEqual(cecilio.UnidadesDeResistencia, vida);
         }
     }
 }
