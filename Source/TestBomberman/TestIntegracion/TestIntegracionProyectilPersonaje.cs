@@ -78,7 +78,7 @@ namespace TestBomberman.TestIntegracion
 
             Juego.Instancia().AvanzarElTiempo();
             Juego.Instancia().AvanzarElTiempo();
-            
+
             Assert.AreEqual(resistenciaLadrillo1 - 1, Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(16, 5)).Estado.UnidadesDeResistencia);
             Assert.AreEqual(resistenciaLadrillo2 - 1, Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(16, 7)).Estado.UnidadesDeResistencia);
         }
@@ -100,6 +100,55 @@ namespace TestBomberman.TestIntegracion
             Juego.Instancia().AvanzarElTiempo();
 
             Assert.IsInstanceOf(typeof(Pasillo), Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(14, 12)).Estado);
+        }
+
+        [Test]
+        public void TiroUnProyectilPorUnCaminoVacioYComoTieneAlcanceTresNoDaniaAlLanzador()
+        {
+            Personaje unTipoQueTiraProyectiles = new LosLopezReggae(new Punto(13, 6));
+
+            unTipoQueTiraProyectiles.Movimiento.CambiarADerecha();
+            int vida = unTipoQueTiraProyectiles.UnidadesDeResistencia;
+            unTipoQueTiraProyectiles.LanzarExplosivo();
+            
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
+
+            Assert.AreEqual(vida, unTipoQueTiraProyectiles.UnidadesDeResistencia);
+        }
+
+        [Test]
+        public void TiroUnProyectilADosPosicionesDeDistanciaDelBordeDelMapaYElLanzadorNoRecibeDanios()
+        {
+            Personaje unTipoQueTiraProyectiles = new LosLopezReggae(new Punto(14, 6));
+
+            unTipoQueTiraProyectiles.Movimiento.CambiarADerecha();
+            int vida = unTipoQueTiraProyectiles.UnidadesDeResistencia;
+            unTipoQueTiraProyectiles.LanzarExplosivo();
+
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
+
+            Assert.AreEqual(vida, unTipoQueTiraProyectiles.UnidadesDeResistencia);
+        }
+
+        [Test]
+        public void TiroUnProyectilAUnaPosicionDeDistanciaDelBordeDelMapaYElLanzadorRecibeDanios()
+        {
+            Personaje unTipoQueTiraProyectiles = new LosLopezReggae(new Punto(15, 6));
+
+            unTipoQueTiraProyectiles.Movimiento.CambiarADerecha();
+            int vida = unTipoQueTiraProyectiles.UnidadesDeResistencia;
+            unTipoQueTiraProyectiles.LanzarExplosivo();
+
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
+                        
+            Assert.AreEqual(vida-1, unTipoQueTiraProyectiles.UnidadesDeResistencia);
         }
     }
 }
