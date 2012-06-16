@@ -32,3 +32,4 @@ Source/TestBomberman/obj/**
 Source/Bomberman/Personaje/ManejadorDeMovimiento.cs
 Source/Bomberman/Arma/ManejadorExplosiones.cs
 model/~$formeTp2.doc
+Source/Bomberman.userprefs

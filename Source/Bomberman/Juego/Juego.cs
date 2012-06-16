@@ -81,9 +81,7 @@ namespace Bomberman.Juego
             CargarMapa();
             CargarArticulos();
             this.Ambiente.AgregarPersonaje(this.protagonista);
-
             GenerarEnemigos();
-            //aca se carga el template del mapa
         }
 
         public static void Reiniciar()
@@ -138,32 +136,6 @@ namespace Bomberman.Juego
             AgregarEnemigo(new Cecilio(new Punto(1, 4)));
             AgregarEnemigo(new Cecilio(new Punto(4, 4)));
             AgregarEnemigo(new Cecilio(new Punto(8, 6)));
-            //Personaje.Personaje enem = new LosLopezReggae(pto);
-            //this.Ambiente.AgregarPersonaje(enem);
-            //this.enemigosVivos.Add(enem);
-            //Punto pto = new Punto(12, 2);
-            //Personaje.Personaje enem = new LosLopezReggae(pto);
-            //this.Ambiente.AgregarPersonaje(enem);
-            //this.enemigosVivos.Add(enem);
-            //pto = new Punto(2, 2);
-            //enem = new LosLopezReggaeAlado(pto);
-            //this.Ambiente.AgregarPersonaje(enem);
-            //this.enemigosVivos.Add(enem);
-            //pto = new Punto(1, 4);
-            //enem = new LosLopezReggaeAlado(pto);
-            //this.Ambiente.AgregarPersonaje(enem);
-            //this.enemigosVivos.Add(enem);
-            //enem = new Cecilio(pto);
-            //this.Ambiente.AgregarPersonaje(enem);
-            //this.enemigosVivos.Add(enem);
-            //pto = new Punto(4, 4);
-            //enem = new Cecilio(pto);
-            //this.Ambiente.AgregarPersonaje(enem);
-            //this.enemigosVivos.Add(enem);
-            //pto = new Punto(8, 6);
-            //enem = new Cecilio(pto);
-            //this.Ambiente.AgregarPersonaje(enem);
-            //this.enemigosVivos.Add(enem);
         }
 
         public int CantidadEnemigosVivos()
