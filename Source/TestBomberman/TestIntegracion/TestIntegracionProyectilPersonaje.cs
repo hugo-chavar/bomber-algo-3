@@ -34,7 +34,7 @@ namespace TestBomberman.TestIntegracion
         [Test]
         public void TiroUnProyectilATresCasillasDeDistanciaYLosObjetosGolpeadosBajanSuResistenciaEnUnaUnidad()
         {
-            Personaje unTipoQueTiraProyectiles = new LosLopezReggae(new Punto(13,6));
+            Personaje unTipoQueTiraProyectiles = new LosLopezReggae(new Punto(13, 6));
 
             unTipoQueTiraProyectiles.Movimiento.CambiarADerecha();
             unTipoQueTiraProyectiles.LanzarExplosivo();
@@ -45,8 +45,8 @@ namespace TestBomberman.TestIntegracion
             Juego.Instancia().AvanzarElTiempo();
             Juego.Instancia().AvanzarElTiempo();
 
-            Assert.AreEqual(resistenciaLadrillo1-1,Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(16, 5)).Estado.UnidadesDeResistencia);
-            Assert.AreEqual(resistenciaLadrillo2-1,Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(16, 7)).Estado.UnidadesDeResistencia);
+            Assert.AreEqual(resistenciaLadrillo1 - 1, Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(16, 5)).Estado.UnidadesDeResistencia);
+            Assert.AreEqual(resistenciaLadrillo2 - 1, Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(16, 7)).Estado.UnidadesDeResistencia);
         }
 
         [Test]
@@ -62,7 +62,7 @@ namespace TestBomberman.TestIntegracion
             Juego.Instancia().AvanzarElTiempo();
             Juego.Instancia().AvanzarElTiempo();
             Juego.Instancia().AvanzarElTiempo();
-            
+
             Assert.AreEqual(resistenciaLadrillo1 - 1, Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(16, 5)).Estado.UnidadesDeResistencia);
             Assert.AreEqual(resistenciaLadrillo2 - 1, Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(16, 7)).Estado.UnidadesDeResistencia);
         }
@@ -111,7 +111,7 @@ namespace TestBomberman.TestIntegracion
             unTipoQueTiraProyectiles.Movimiento.CambiarADerecha();
             int vida = unTipoQueTiraProyectiles.UnidadesDeResistencia;
             unTipoQueTiraProyectiles.LanzarExplosivo();
-            
+
             Juego.Instancia().AvanzarElTiempo();
             Juego.Instancia().AvanzarElTiempo();
             Juego.Instancia().AvanzarElTiempo();
@@ -149,8 +149,8 @@ namespace TestBomberman.TestIntegracion
             Juego.Instancia().AvanzarElTiempo();
             Juego.Instancia().AvanzarElTiempo();
             Juego.Instancia().AvanzarElTiempo();
-            
-            Assert.AreEqual(vida-1, unTipoQueTiraProyectiles.UnidadesDeResistencia);
+
+            Assert.AreEqual(vida - 1, unTipoQueTiraProyectiles.UnidadesDeResistencia);
         }
 
         [Test]
@@ -230,6 +230,25 @@ namespace TestBomberman.TestIntegracion
             Juego.Instancia().AvanzarElTiempo();
             Juego.Instancia().AvanzarElTiempo();
             Assert.AreEqual(cecilio.UnidadesDeResistencia, vida - 1);
-        }  
+        }
+
+        [Test]
+        public void LanzadorDisparaProyectilHaciaUnBloqueDeAceroVariasVecesHastaQueMuereYElBloqueNoSeDania()
+        {
+            Personaje personaje = new LosLopezReggae(new Punto(10, 11));
+            Juego.Instancia().Ambiente.AgregarPersonaje(personaje);
+            int iteracion;
+            int vida = personaje.UnidadesDeResistencia;
+            personaje.Movimiento.CambiarAIzquierda();
+            int vidaBloque = Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(9, 11)).Estado.UnidadesDeResistencia;
+            for (iteracion = 0; iteracion < 10; iteracion++)
+            {
+                personaje.LanzarExplosivo();
+                Juego.Instancia().AvanzarElTiempo();
+            }
+            Assert.AreEqual(personaje.UnidadesDeResistencia, 0);
+            Assert.AreEqual(vidaBloque, Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(9, 11)).Estado.UnidadesDeResistencia);
+        }
     }
 }
+
