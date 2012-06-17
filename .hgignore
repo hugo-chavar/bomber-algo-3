@@ -1,21 +1,4 @@
 syntax: glob
-testDotNet/testDotNet.suo
-testDotNet/testDotNet/bin/Debug/ConsoleApplication1.vshost.exe
-testDotNet/testDotNet/bin/Debug/ConsoleApplication1.vshost.exe.manifest
-testDotNet/testDotNet/bin/Debug/testDotNet.exe
-testDotNet/testDotNet/bin/Debug/testDotNet.pdb
-testDotNet/testDotNet/bin/Debug/testDotNet.vshost.exe
-testDotNet/testDotNet/bin/Debug/testDotNet.vshost.exe.manifest
-testDotNet/testDotNet/bin/Release/testDotNet.exe
-testDotNet/testDotNet/bin/Release/testDotNet.pdb
-testDotNet/testDotNet/obj/x86/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-testDotNet/testDotNet/obj/x86/Debug/testDotNet.csproj.FileListAbsolute.txt
-testDotNet/testDotNet/obj/x86/Debug/testDotNet.exe
-testDotNet/testDotNet/obj/x86/Debug/testDotNet.pdb
-testDotNet/testDotNet/obj/x86/Release/DesignTimeResolveAssemblyReferencesInput.cache
-testDotNet/testDotNet/obj/x86/Release/testDotNet.csproj.FileListAbsolute.txt
-testDotNet/testDotNet/obj/x86/Release/testDotNet.pdb
-testDotNet/testDotNet/obj/x86/Release/testDotNet.exe
 *.bak
 *.orig
 *.cache
@@ -27,9 +10,11 @@ testDotNet/testDotNet/obj/x86/Release/testDotNet.exe
 *.dll
 Source/Bomberman/bin/**
 Source/TestBomberman/bin/**
+TestXNA/Personaje/Personaje/Personaje/bin/**
+TestXNA/Personaje/Personaje/Personaje/obj/**
+TestXNA/Personaje/Personaje/PersonajeContent/bin/**
+TestXNA/Personaje/Personaje/PersonajeContent/obj/**
 Source/Bomberman/obj/**
 Source/TestBomberman/obj/**
-Source/Bomberman/Personaje/ManejadorDeMovimiento.cs
-Source/Bomberman/Arma/ManejadorExplosiones.cs
 model/~$formeTp2.doc
 Source/Bomberman.userprefs
