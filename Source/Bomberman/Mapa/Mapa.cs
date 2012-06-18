@@ -274,25 +274,34 @@ namespace Bomberman.Mapa
             movil.Posicion = posicionSuperior;
             unaCasilla.Transitar(movil);
         }
-        
+
         public void ManejarExplosion(Explosivo explosivo)
         {
             List<Punto> puntosAfectados = CalcularCasillerosExplotados(explosivo);
-                this.ObtenerCasilla(explosivo.Posicion).QuitarExplosivo();
+            this.ObtenerCasilla(explosivo.Posicion).QuitarExplosivo();
 
-                for (int i = 0; i < (puntosAfectados.Count); i++)
+            for (int i = 0; i < (puntosAfectados.Count); i++)
+            {
+                Casilla.Casilla casillaAux = this.ObtenerCasilla(puntosAfectados[i]);
+                explosivo.Daniar(casillaAux.Estado);
+                if (casillaAux.Estado.Destruido())
+                    casillaAux.Estado = new Pasillo();
+                for (int j = 0; j < casillaAux.TransitandoEnCasilla.Count; j++)
                 {
-                    Casilla.Casilla casillaAux = this.ObtenerCasilla(puntosAfectados[i]);
-                    explosivo.Daniar(casillaAux.Estado);
-                    if (casillaAux.Estado.Destruido())
-                        casillaAux.Estado = new Pasillo();
-                    for (int j = 0; j < casillaAux.TransitandoEnCasilla.Count; j++)
+                    if (casillaAux.TransitandoEnCasilla[j].EsDaniable())
+                        explosivo.Daniar((IDaniable)casillaAux.TransitandoEnCasilla[j]);
+                }
+                for (int y = 0; y < casillaAux.TransitandoEnCasilla.Count; y++)
+                {
+                    if ((casillaAux.TransitandoEnCasilla[y].EsDaniable()))
                     {
-                        if (casillaAux.TransitandoEnCasilla[j].EsDaniable())
-                            explosivo.Daniar((IDaniable)casillaAux.TransitandoEnCasilla[j]);
+                        if (((IDaniable)casillaAux.TransitandoEnCasilla[y]).Destruido())
+                            casillaAux.Dejar(casillaAux.TransitandoEnCasilla[y]);
                     }
+
                 }
 
+            }
         }
  
       public List<Punto> CalcularCasillerosExplotados(Explosivo explosivo)
