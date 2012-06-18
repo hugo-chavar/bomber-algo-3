@@ -157,20 +157,17 @@ namespace TestBomberman.TestIntegracion
             unCecilio.LanzarExplosivo();
             
             Assert.IsInstanceOf(typeof(BombaMolotov), casillaTransitada.Explosivo);
+            Juego.Instancia().AvanzarElTiempo();
 
-            Juego.Instancia().AvanzarElTiempo();
-            Juego.Instancia().AvanzarElTiempo();
-            Juego.Instancia().AvanzarElTiempo();
-            Juego.Instancia().AvanzarElTiempo();
-            Juego.Instancia().AvanzarElTiempo();
-            Juego.Instancia().AvanzarElTiempo();
+
 
             Assert.IsTrue(unCecilio.Destruido());
-            Assert.IsTrue(Cecilio.Destruido());
+            Assert.IsTrue(LRA.Destruido());
             Assert.IsTrue(otroCecilio.Destruido());
+            Assert.IsTrue(Cecilio.Destruido());
             Assert.IsTrue(unLRA.Destruido());
             Assert.IsTrue(otroLRA.Destruido());
-            Assert.IsTrue(LRA.Destruido());
+
             Assert.AreEqual(casillaTransitada.TransitandoEnCasilla.Count, 0);
 
         }
