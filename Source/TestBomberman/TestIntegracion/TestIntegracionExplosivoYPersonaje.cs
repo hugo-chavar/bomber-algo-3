@@ -129,7 +129,55 @@ namespace TestBomberman.TestIntegracion
             this.unJuego.AvanzarElTiempo();
             Assert.AreEqual(resistenciaBloque - 1, casillaConBloqueDeLadrillo.Estado.UnidadesDeResistencia);
         }
-        
+
+        [Test]
+        public void CecilioPlantaUnaBombaEnUnaCasillaTransitadaPorVariosEnemigosYEstosMuerenTodosPorElloNoHayNadieTransitandoDespues()
+        {
+            
+
+            Punto puntoTransito = new Punto(5,0);
+            Cecilio unCecilio = new Cecilio(puntoTransito);
+            Cecilio otroCecilio = new Cecilio(puntoTransito);
+            Cecilio Cecilio = new Cecilio(puntoTransito);
+            LosLopezReggaeAlado unLRA = new LosLopezReggaeAlado(puntoTransito);
+            LosLopezReggaeAlado otroLRA = new LosLopezReggaeAlado(puntoTransito);
+            LosLopezReggaeAlado LRA = new LosLopezReggaeAlado(puntoTransito);
+            Casilla casillaTransitada = Juego.Instancia().Ambiente.ObtenerCasilla(puntoTransito);
+
+            casillaTransitada.Transitar(unCecilio);
+            casillaTransitada.Transitar(Cecilio);
+            casillaTransitada.Transitar(otroCecilio);
+            casillaTransitada.Transitar(unLRA);
+            casillaTransitada.Transitar(LRA);
+            casillaTransitada.Transitar(otroLRA);
+
+                       
+            Assert.AreEqual(casillaTransitada.TransitandoEnCasilla.Count, 6);
+
+            unCecilio.LanzarExplosivo();
+            
+            Assert.IsInstanceOf(typeof(BombaMolotov), casillaTransitada.Explosivo);
+
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
+
+            Assert.IsTrue(unCecilio.Destruido());
+            Assert.IsTrue(Cecilio.Destruido());
+            Assert.IsTrue(otroCecilio.Destruido());
+            Assert.IsTrue(unLRA.Destruido());
+            Assert.IsTrue(otroLRA.Destruido());
+            Assert.IsTrue(LRA.Destruido());
+            Assert.AreEqual(casillaTransitada.TransitandoEnCasilla.Count, 0);
+
+        }
+            
+
+
+
 
 
 
