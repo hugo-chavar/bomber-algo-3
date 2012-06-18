@@ -291,14 +291,16 @@ namespace Bomberman.Mapa
                     if (casillaAux.TransitandoEnCasilla[j].EsDaniable())
                         explosivo.Daniar((IDaniable)casillaAux.TransitandoEnCasilla[j]);
                 }
-                for (int y = 0; y < casillaAux.TransitandoEnCasilla.Count; y++)
-                {
-                    if ((casillaAux.TransitandoEnCasilla[y].EsDaniable()))
-                    {
-                        if (((IDaniable)casillaAux.TransitandoEnCasilla[y]).Destruido())
-                            casillaAux.Dejar(casillaAux.TransitandoEnCasilla[y]);
-                    }
 
+                // El proximo while es una solucion importada de internet para resolver problema de indexado en la lista
+                int iterador = casillaAux.TransitandoEnCasilla.Count;
+                while (--iterador >= 0)
+                {
+                    if ((casillaAux.TransitandoEnCasilla[iterador].EsDaniable()))
+                    {
+                        if (((IDaniable)casillaAux.TransitandoEnCasilla[iterador]).Destruido())
+                            casillaAux.TransitandoEnCasilla.RemoveAt(iterador);
+                    }
                 }
 
             }
