@@ -39,6 +39,7 @@ namespace TestBombermanModel.TestIntegracion
             bombita.Mover();
             bombita.Movimiento.CambiarAArriba();
             bombita.Mover();
+            System.Threading.Thread.Sleep(1000);
             this.unJuego.AvanzarElTiempo();
             Assert.IsFalse(bombita.Destruido());
         }
@@ -55,6 +56,7 @@ namespace TestBombermanModel.TestIntegracion
             bombita.Mover();
             bombita.Movimiento.CambiarAArriba();
             bombita.Mover();
+            System.Threading.Thread.Sleep(1000);//Pasa 1 segundo
             this.unJuego.AvanzarElTiempo();
             bombita.Movimiento.CambiarAAbajo();
             bombita.Mover();
@@ -78,6 +80,7 @@ namespace TestBombermanModel.TestIntegracion
             bombita.Mover();
             bombita.Movimiento.CambiarAArriba();
             bombita.Mover();
+            System.Threading.Thread.Sleep(1000);//Pasa 1 segundo
             unJuego.AvanzarElTiempo();
             bombita.Movimiento.CambiarAAbajo();
             bombita.Mover();
@@ -157,6 +160,7 @@ namespace TestBombermanModel.TestIntegracion
             unCecilio.LanzarExplosivo();
             
             Assert.IsInstanceOf(typeof(BombaMolotov), casillaTransitada.Explosivo);
+            System.Threading.Thread.Sleep(1000);//Pasa 1 segundo
             Juego.Instancia().AvanzarElTiempo();
 
 

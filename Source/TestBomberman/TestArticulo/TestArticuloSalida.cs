@@ -125,8 +125,7 @@ namespace TestBombermanModel.TestSalida
             Casilla casillaBomba = otroMapa.ObtenerCasilla(pUnaBombaMolotov);
             Juego.Instancia().AlojarExplosivo(unaBomba);
 
-            Juego.Instancia().AvanzarElTiempo();
-            Juego.Instancia().AvanzarElTiempo();
+            System.Threading.Thread.Sleep(1000);//Pasa 1 segundo
             Juego.Instancia().AvanzarElTiempo();
 
             Assert.AreEqual(0, Juego.Instancia().CantidadEnemigosVivos());
@@ -166,8 +165,7 @@ namespace TestBombermanModel.TestSalida
 
             Juego.Instancia().AlojarExplosivo(unaBomba);
 
-            Juego.Instancia().AvanzarElTiempo();
-            Juego.Instancia().AvanzarElTiempo();
+            System.Threading.Thread.Sleep(1000);//Pasa 1 segundo
             Juego.Instancia().AvanzarElTiempo();
 
 
