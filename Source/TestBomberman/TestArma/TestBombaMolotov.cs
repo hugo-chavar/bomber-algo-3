@@ -74,6 +74,7 @@ namespace TestBomberman.TestArma
             Punto unPto = new Punto(2, 2);
             Bomba bomba = new BombaMolotov(unPto, 0);
             Juego.Instancia().Ambiente.ObtenerCasilla(unPto).PlantarExplosivo(bomba);
+            System.Threading.Thread.Sleep(1000);//Dejo Pasar un segundo y explota
             bomba.CuandoPasaElTiempo();
             Assert.IsTrue(bomba.EstaExplotado());
         }
