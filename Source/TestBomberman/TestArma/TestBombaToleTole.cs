@@ -28,9 +28,7 @@ namespace TestBomberman.TestArma
         public void BombaToleToleEstaExplotadaAlPasar4SegundosDebeDevolverFalse()
         {
             Bomba bomba = new BombaToleTole(posicion, 0);
-            bomba.CuandoPasaElTiempo();
-            bomba.CuandoPasaElTiempo();
-            bomba.CuandoPasaElTiempo();
+            System.Threading.Thread.Sleep(4000);//Pasan 4 segundos
             bomba.CuandoPasaElTiempo();
             Assert.AreEqual(bomba.EstaExplotado(), false);
         }
@@ -39,10 +37,7 @@ namespace TestBomberman.TestArma
         public void BombaToleToleEstaExplotadaAlPasar5SegundosDebeDevolverTrue()
         {
             Bomba bomba = new BombaToleTole(posicion, 0);
-            bomba.CuandoPasaElTiempo();
-            bomba.CuandoPasaElTiempo();
-            bomba.CuandoPasaElTiempo();
-            bomba.CuandoPasaElTiempo();
+            System.Threading.Thread.Sleep(5000);//Pasan 5 segundos
             bomba.CuandoPasaElTiempo();
             Assert.AreEqual(bomba.EstaExplotado(), true);
         }
