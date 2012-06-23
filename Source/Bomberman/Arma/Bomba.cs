@@ -5,36 +5,39 @@ using System.Text;
 
 namespace BombermanModel.Arma
 {
-    public abstract class Bomba: Explosivo
+    public abstract class Bomba : Explosivo
     {
-        protected float tiempoRestante;
+        protected DateTime horaDePlantado;
+        protected float tiempoExplosion;
 
-        public float TiempoRestante
+        public DateTime HoraDePlantado
         {
-            get { return this.tiempoRestante; }
-            set { this.tiempoRestante = value; }
-        }   
-        
+            get { return this.horaDePlantado; }
+            set { this.horaDePlantado = value; }
+        }
+
         public Bomba(Punto unaPosicion)
-            :base()
+            : base()
         {
             posicion = unaPosicion;
+            horaDePlantado = DateTime.Now;
         }
 
         public abstract override void Daniar(IDaniable daniable);
-        
+
         public override void CuandoPasaElTiempo()
         {
-            this.DisminuirTiempo();
+            /*this.DisminuirTiempo();
             if (0 >= this.TiempoRestante)
             {
-                base.Explotar();     
-            }      
-        }
+                base.Explotar();
+            } */
 
-        private void DisminuirTiempo()
-        {
-            this.TiempoRestante = (this.TiempoRestante - 1);
+            DateTime horaActual = DateTime.Now;
+            if (horaActual.Subtract(horaDePlantado).Seconds >= tiempoExplosion)
+            {
+                base.Explotar();
+            }
         }
     }
 

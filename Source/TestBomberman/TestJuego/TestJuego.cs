@@ -341,6 +341,7 @@ namespace TestBombermanModel.TestJuego
             Casilla casillaBomba2 = Juego.Instancia().Ambiente.ObtenerCasilla(posicionBomba2);
             Juego.Instancia().AlojarExplosivo(bomba1);
             Juego.Instancia().AlojarExplosivo(bomba2);
+            System.Threading.Thread.Sleep(1000);//Pasa 1 segundo
 
             Juego.Instancia().AvanzarElTiempo();
 
@@ -362,6 +363,7 @@ namespace TestBombermanModel.TestJuego
 
             Juego.Instancia().AlojarExplosivo(bomba1);
             Juego.Instancia().AlojarExplosivo(bomba2);
+            System.Threading.Thread.Sleep(1000);//Pasa 1 segundo
 
             Juego.Instancia().AvanzarElTiempo();
 
@@ -384,11 +386,7 @@ namespace TestBombermanModel.TestJuego
             Juego.Instancia().AlojarExplosivo(bomba1);
             Juego.Instancia().AlojarExplosivo(bomba2);
 
-            Juego.Instancia().AvanzarElTiempo();
-            Juego.Instancia().AvanzarElTiempo();
-            Juego.Instancia().AvanzarElTiempo();
-            Juego.Instancia().AvanzarElTiempo();
-            Juego.Instancia().AvanzarElTiempo();
+            System.Threading.Thread.Sleep(5000);//Pasan 5 segundos
             Juego.Instancia().AvanzarElTiempo();
 
             Assert.IsTrue(bomba1.EstaExplotado());
@@ -452,10 +450,7 @@ namespace TestBombermanModel.TestJuego
             bombita.Mover();
             bombita.Movimiento.CambiarAAbajo();
             bombita.Mover();
-            Juego.Instancia().AvanzarElTiempo();
-            Juego.Instancia().AvanzarElTiempo();
-            Juego.Instancia().AvanzarElTiempo();
-            Juego.Instancia().AvanzarElTiempo();
+            System.Threading.Thread.Sleep(5000);//Pasan 5 segundos
             Juego.Instancia().AvanzarElTiempo();
             Assert.AreEqual(Juego.Instancia().CantidadEnemigosVivos(),6);
 
