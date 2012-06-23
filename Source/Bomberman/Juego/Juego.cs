@@ -169,12 +169,17 @@ namespace Bomberman.Juego
             {
                 i.CuandoPasaElTiempo();
             }
-            for (int j = 0; j<dependientesDelTiempo.Count; j++)
+           /* for (int j = 0; j<dependientesDelTiempo.Count; j++)
             {
                 if (dependientesDelTiempo[j].DejoDeDependerDelTiempo())
                     dependientesDelTiempo.RemoveAt(j);
+            }*/
+            int iterador = this.dependientesDelTiempo.Count;
+            while (--iterador >= 0)
+            {
+                if (dependientesDelTiempo[iterador].DejoDeDependerDelTiempo())
+                    dependientesDelTiempo.RemoveAt(iterador);
             }
-
             //foreach (IMovible i in objetosContundentes)
             //{
             //    this.Ambiente.ResolverColisionesCon(i);
@@ -191,10 +196,12 @@ namespace Bomberman.Juego
                 this.Ambiente.ResolverColisionesCon(i);
             }
 
-            for (int j = 0; j <enemigosVivos.Count; j++)
+            iterador = enemigosVivos.Count;
+            while (--iterador >= 0)
             {
-                if (enemigosVivos[j].Destruido())
-                    enemigosVivos.RemoveAt(j);
+            
+                if (enemigosVivos[iterador].Destruido())
+                    enemigosVivos.RemoveAt(iterador);
             }
 
            if (CantidadEnemigosVivos() == 0)
