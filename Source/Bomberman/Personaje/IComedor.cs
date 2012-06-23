@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Bomberman.Articulo;
+using BombermanModel.Articulo;
 
-namespace Bomberman.Personaje
+namespace BombermanModel.Personaje
 {
     public interface IComedor
     {

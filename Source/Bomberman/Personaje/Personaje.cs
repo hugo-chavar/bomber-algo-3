@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Bomberman;
-using Bomberman.Juego;
-using Bomberman.Arma;
+using BombermanModel;
+using BombermanModel.Juego;
+using BombermanModel.Arma;
 
-namespace Bomberman.Personaje
+namespace BombermanModel.Personaje
 {
     public abstract class Personaje : IMovible , IDaniable
     {

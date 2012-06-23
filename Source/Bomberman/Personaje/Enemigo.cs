@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Bomberman.Personaje
+namespace BombermanModel.Personaje
 {
     public abstract class Enemigo : Personaje
     {

@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Bomberman;
-using Bomberman.Arma;
-using Bomberman.Personaje;
-using Bomberman.Articulo;
-using Bomberman.Mapa.Casilla;
+using BombermanModel;
+using BombermanModel.Arma;
+using BombermanModel.Personaje;
+using BombermanModel.Articulo;
+using BombermanModel.Mapa.Casilla;
 
-namespace Bomberman.Juego
+namespace BombermanModel.Juego
 {
     public class Juego
     {

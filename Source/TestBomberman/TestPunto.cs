@@ -1,6 +1,6 @@
 ﻿using NUnit;
 using NUnit.Framework;
-using Bomberman;
+using BombermanModel;
 
 namespace TestBomberman
 {

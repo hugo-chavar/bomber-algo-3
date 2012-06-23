@@ -1,12 +1,12 @@
 ﻿using NUnit.Framework;
-using Bomberman.Juego;
-using Bomberman.Mapa;
-using Bomberman.Mapa.Casilla;
-using Bomberman.Personaje;
-using Bomberman.Articulo;
-using Bomberman.Arma;
-using Bomberman;
-namespace TestBomberman.TestIntegracion
+using BombermanModel.Juego;
+using BombermanModel.Mapa;
+using BombermanModel.Mapa.Casilla;
+using BombermanModel.Personaje;
+using BombermanModel.Articulo;
+using BombermanModel.Arma;
+using BombermanModel;
+namespace TestBombermanModel.TestIntegracion
 {
     class TestIntegracionExplosivoYPersonaje
     {

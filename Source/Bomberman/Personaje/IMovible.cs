@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Bomberman.Personaje
+using BombermanCommon;
+
+namespace BombermanModel.Personaje
 {
-    public interface IMovible : IPosicionable
+    public interface IMovible : IPosicionable //, IUpdateableObject
     {
         void Mover();
         bool AtraviesaObstaculos();

@@ -5,9 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Bomberman.Excepciones;
+using BombermanModel.Excepciones;
 
-namespace Bomberman.Mapa.Casilla
+namespace BombermanModel.Mapa.Casilla
 {
     public class FabricaDeCasillas
     {

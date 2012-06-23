@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Bomberman.Personaje;
-using Bomberman.Arma;
-using Bomberman;
+using BombermanModel.Personaje;
+using BombermanModel.Arma;
+using BombermanModel;
 
-namespace Bomberman.Mapa.Casilla
+namespace BombermanModel.Mapa.Casilla
 {
     public class Casilla
     {

@@ -65,9 +65,9 @@
     <Compile Include="TestPunto.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Bomberman\Bomberman.csproj">
+    <ProjectReference Include="..\Bomberman\BombermanModel.csproj">
       <Project>{F0A3EDDB-4DCE-4E03-B7E4-B50FC421A8CC}</Project>
-      <Name>Bomberman</Name>
+      <Name>BombermanModel</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

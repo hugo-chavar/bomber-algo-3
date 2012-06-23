@@ -1,4 +1,4 @@
-﻿namespace Bomberman
+﻿namespace BombermanModel
 {
     public class Punto
     {   private int x;

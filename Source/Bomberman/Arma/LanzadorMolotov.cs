@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Bomberman.Juego;
-using Bomberman.Mapa.Casilla;
-using Bomberman.Personaje;
+using BombermanModel.Juego;
+using BombermanModel.Mapa.Casilla;
+using BombermanModel.Personaje;
 
-namespace Bomberman.Arma
+namespace BombermanModel.Arma
 {
     public class LanzadorMolotov:Lanzador
     {

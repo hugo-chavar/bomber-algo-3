@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Bomberman.Arma;
-using Bomberman.Mapa.Casilla;
-using Bomberman.Excepciones;
+using BombermanModel.Arma;
+using BombermanModel.Mapa.Casilla;
+using BombermanModel.Excepciones;
 
-namespace Bomberman.Mapa
+namespace BombermanModel.Mapa
 {
     public class Mapa : ITransitable
     {

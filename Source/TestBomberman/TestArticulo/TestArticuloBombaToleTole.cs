@@ -1,11 +1,11 @@
-﻿using Bomberman;
-using Bomberman.Arma;
-using Bomberman.Articulo;
-using Bomberman.Mapa.Casilla;
-using Bomberman.Personaje;
+﻿using BombermanModel;
+using BombermanModel.Arma;
+using BombermanModel.Articulo;
+using BombermanModel.Mapa.Casilla;
+using BombermanModel.Personaje;
 using NUnit.Framework;
 
-namespace TestBomberman.TestArticulo
+namespace TestBombermanModel.TestArticulo
 {
     class TestArticuloBombaToleTole
     {

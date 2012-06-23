@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Bomberman.Personaje;
+using BombermanModel.Personaje;
 
-namespace Bomberman.Articulo
+namespace BombermanModel.Articulo
 {
     public class Chala : Articulo
     {

@@ -1,10 +1,10 @@
-﻿using Bomberman.Arma;
-using Bomberman.Mapa;
+﻿using BombermanModel.Arma;
+using BombermanModel.Mapa;
 using NUnit.Framework;
-using Bomberman.Mapa.Casilla;
-using Bomberman;
+using BombermanModel.Mapa.Casilla;
+using BombermanModel;
 
-namespace TestBomberman.TestArma
+namespace TestBombermanModel.TestArma
 {
     [TestFixture]
     class TestBombaToleTole

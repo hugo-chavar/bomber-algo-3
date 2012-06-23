@@ -1,16 +1,16 @@
 ﻿using NUnit;
 using NUnit.Framework;
-using Bomberman;
-using Bomberman.Mapa;
-using Bomberman.Mapa.Casilla;
-using Bomberman.Excepciones;
-using Bomberman.Personaje;
-using Bomberman.Arma;
-using Bomberman.Articulo;
-using Bomberman.Juego;
+using BombermanModel;
+using BombermanModel.Mapa;
+using BombermanModel.Mapa.Casilla;
+using BombermanModel.Excepciones;
+using BombermanModel.Personaje;
+using BombermanModel.Arma;
+using BombermanModel.Articulo;
+using BombermanModel.Juego;
 using System.Collections.Generic;
 
-namespace TestBomberman.TestSalida
+namespace TestBombermanModel.TestSalida
 {
     [TestFixture]
     class TestSalida

@@ -1,11 +1,11 @@
 ﻿using NUnit;
 using NUnit.Framework;
-using Bomberman.Mapa.Casilla;
-using Bomberman;
-using Bomberman.Personaje;
+using BombermanModel.Mapa.Casilla;
+using BombermanModel;
+using BombermanModel.Personaje;
 using System.Collections.Generic;
 
-namespace TestBomberman.TestPersonaje
+namespace TestBombermanModel.TestPersonaje
 {
     [TestFixture]
     class TestPersonaje

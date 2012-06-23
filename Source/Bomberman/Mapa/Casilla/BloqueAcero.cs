@@ -1,5 +1,5 @@
-﻿using Bomberman;
-namespace Bomberman.Mapa.Casilla
+﻿using BombermanModel;
+namespace BombermanModel.Mapa.Casilla
 {
     public class BloqueAcero : Obstaculo
     {

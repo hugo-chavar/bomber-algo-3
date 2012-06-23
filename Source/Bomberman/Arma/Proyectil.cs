@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Bomberman.Excepciones;
-using Bomberman.Personaje;
+using BombermanModel.Excepciones;
+using BombermanModel.Personaje;
 
-namespace Bomberman.Arma
+namespace BombermanModel.Arma
 {
     public class Proyectil : Explosivo , IMovible
     {

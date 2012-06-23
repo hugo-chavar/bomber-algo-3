@@ -1,10 +1,10 @@
-﻿using Bomberman.Articulo;
-using Bomberman.Personaje;
+﻿using BombermanModel.Articulo;
+using BombermanModel.Personaje;
 using NUnit.Framework;
-using Bomberman.Mapa.Casilla;
-using Bomberman;
+using BombermanModel.Mapa.Casilla;
+using BombermanModel;
 
-namespace TestBomberman.TestArticulo
+namespace TestBombermanModel.TestArticulo
 {
     [TestFixture]
     class TestTimer

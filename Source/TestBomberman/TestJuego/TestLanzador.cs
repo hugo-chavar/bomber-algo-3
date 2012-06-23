@@ -1,14 +1,14 @@
 ﻿using NUnit.Framework;
-using Bomberman.Juego;
-using Bomberman.Mapa;
-using Bomberman.Mapa.Casilla;
-using Bomberman.Personaje;
-using Bomberman.Arma;
-using Bomberman;
-using Bomberman.Articulo;
+using BombermanModel.Juego;
+using BombermanModel.Mapa;
+using BombermanModel.Mapa.Casilla;
+using BombermanModel.Personaje;
+using BombermanModel.Arma;
+using BombermanModel;
+using BombermanModel.Articulo;
 
 
-namespace TestBomberman.TestJuego
+namespace TestBombermanModel.TestJuego
 {
     [TestFixture]
     class TestLanzador

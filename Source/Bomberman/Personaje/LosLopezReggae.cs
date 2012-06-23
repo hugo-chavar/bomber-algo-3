@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Bomberman.Arma;
+using BombermanModel.Arma;
 
-namespace Bomberman.Personaje
+namespace BombermanModel.Personaje
 {
     public class LosLopezReggae : Enemigo
     {

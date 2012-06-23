@@ -1,5 +1,5 @@
-﻿using Bomberman.Personaje;
-namespace Bomberman
+﻿using BombermanModel.Personaje;
+namespace BombermanModel
 {
     public interface IDaniable
     {

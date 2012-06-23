@@ -1,6 +1,6 @@
-﻿using Bomberman.Personaje;
+﻿using BombermanModel.Personaje;
 
-namespace Bomberman.Articulo
+namespace BombermanModel.Articulo
 {
     public class Timer : Articulo
     {

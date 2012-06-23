@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Bomberman.Personaje;
+using BombermanModel.Personaje;
 
-namespace Bomberman.Mapa.Casilla
+namespace BombermanModel.Mapa.Casilla
 {
     public abstract class Obstaculo:IDaniable
     {

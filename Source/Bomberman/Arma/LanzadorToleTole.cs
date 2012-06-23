@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Bomberman.Personaje;
-using Bomberman.Mapa.Casilla;
+using BombermanModel.Personaje;
+using BombermanModel.Mapa.Casilla;
 
-namespace Bomberman.Arma
+namespace BombermanModel.Arma
 {
     public class LanzadorToleTole : Lanzador
     {

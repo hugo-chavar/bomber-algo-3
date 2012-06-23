@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using Bomberman.Mapa.Casilla;
-using Bomberman;
+using BombermanModel.Mapa.Casilla;
+using BombermanModel;
 
-namespace TestBomberman.TestMapa
+namespace TestBombermanModel.TestMapa
 {
     [TestFixture]
     class TestFabricaDeCasillas

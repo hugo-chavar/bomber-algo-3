@@ -1,6 +1,6 @@
-﻿using Bomberman.Personaje;
+﻿using BombermanModel.Personaje;
 
-namespace Bomberman.Mapa.Casilla
+namespace BombermanModel.Mapa.Casilla
 {
     public class BloqueComun:Obstaculo
     {

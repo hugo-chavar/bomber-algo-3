@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Bomberman.Excepciones
+namespace BombermanModel.Excepciones
 {
     public class NoExisteCasillaException : Exception
     {

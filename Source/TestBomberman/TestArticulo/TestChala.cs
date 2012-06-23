@@ -1,11 +1,11 @@
-using Bomberman.Articulo;
-using Bomberman.Personaje;
+using BombermanModel.Articulo;
+using BombermanModel.Personaje;
 using NUnit.Framework;
-using Bomberman;
-using Bomberman.Mapa.Casilla;
+using BombermanModel;
+using BombermanModel.Mapa.Casilla;
 
 
-namespace TestBomberman.TestArticulo
+namespace TestBombermanModel.TestArticulo
 {   [TestFixture]
     class TestChala
     {

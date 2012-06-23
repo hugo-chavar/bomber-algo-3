@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Bomberman.Juego;
-using Bomberman.Mapa;
+using BombermanModel.Juego;
+using BombermanModel.Mapa;
 using NUnit.Framework;
-using Bomberman.Personaje;
-using Bomberman.Articulo;
-using Bomberman;
-using Bomberman.Arma;
+using BombermanModel.Personaje;
+using BombermanModel.Articulo;
+using BombermanModel;
+using BombermanModel.Arma;
 
-namespace TestBomberman.TestIntegracion
+namespace TestBombermanModel.TestIntegracion
 {
     class TestIntegracionArticuloPersonaje
     {
