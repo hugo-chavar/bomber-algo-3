@@ -19,6 +19,8 @@ namespace BombermanGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        Persona Man = new Persona(new Vector2(200, 200));
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -46,6 +48,7 @@ namespace BombermanGame
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            Man.LoadContent(this.Content);
 
             // TODO: use this.Content to load your game content here
         }
@@ -71,6 +74,7 @@ namespace BombermanGame
                 this.Exit();
 
             // TODO: Add your update logic here
+            Man.Update();
 
             base.Update(gameTime);
         }
@@ -84,6 +88,10 @@ namespace BombermanGame
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            spriteBatch.Begin();
+            Man.Draw(spriteBatch);
+            spriteBatch.End();
+
 
             base.Draw(gameTime);
         }
