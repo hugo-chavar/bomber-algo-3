@@ -78,9 +78,9 @@ namespace BombermanModel.Juego
             this.objetosContundentes = new List<IMovible>();
             this.dependientesDelTiempo = new List<IDependienteDelTiempo>();
             this.salida = new Salida();
-            CargarMapa();
+            //CargarMapa();
             //CargarArticulos();
-            this.Ambiente.AgregarPersonaje(this.protagonista);
+            //this.Ambiente.AgregarPersonaje(this.protagonista);
             //GenerarEnemigos();
         }
 
@@ -96,6 +96,7 @@ namespace BombermanModel.Juego
             if (instanciaDeJuego == null)
             {
                 instanciaDeJuego = new Juego();
+                instanciaDeJuego.CargarMapa();
             }
             return instanciaDeJuego;
         }
@@ -219,7 +220,7 @@ namespace BombermanModel.Juego
         {
             CargadorDeMapa cargador = new CargadorDeMapa();
             cargador.LeerMapa("mapaActualizado.xml");
-
+            
             /*List<Punto> obs = new List<Punto>() ;
             obs.Add(new Punto(0, 2));
             obs.Add(new Punto(0, 5));
@@ -310,6 +311,7 @@ namespace BombermanModel.Juego
                     }
                     
                 }*/
+            
 
         }
 

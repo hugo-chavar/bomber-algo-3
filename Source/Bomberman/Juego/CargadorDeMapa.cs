@@ -13,7 +13,7 @@ namespace BombermanModel.Juego
     {
         public bool LeerMapa(string pathName)
         {
-            try
+            //try
             {
                 StreamReader lector = new StreamReader(pathName);
 
@@ -28,10 +28,10 @@ namespace BombermanModel.Juego
 
                 return true;
             }
-            catch (Exception)
-            {
-               return false;
-            }
+            //catch (Exception)
+            //{
+              // return false;
+            //}
 
         }
         public void CrearLosObjetos(string[] arrayString)
@@ -60,11 +60,11 @@ namespace BombermanModel.Juego
                     Juego.Instancia().Ambiente.AgregarCasilla(cemento);
                     break;
                 case "Pasillo":
-                    Casilla pasillo = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(new Punto(x, y));
+                    Casilla pasillo = FabricaDeCasillas.FabricarPasillo(new Punto(x, y));
                     Juego.Instancia().Ambiente.AgregarCasilla(pasillo);
                     break;
                 case "BloqueAcero":
-                    Casilla acero = FabricaDeCasillas.FabricarCasillaConBloqueCemento(new Punto(x, y));
+                    Casilla acero = FabricaDeCasillas.FabricarCasillaConBloqueAcero(new Punto(x, y));
                     Juego.Instancia().Ambiente.AgregarCasilla(acero);
                     break;
                 case "Cecilio":
