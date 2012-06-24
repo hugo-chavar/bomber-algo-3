@@ -43,6 +43,11 @@ namespace BombermanGame
                 {
                     if (!colision(0, -speed))
                         Advance();
+                    else
+                    {
+                        position -= direccion * speed;
+                        movido -= direccion * speed;
+                    }
                 }
                 else
                 {
@@ -54,8 +59,14 @@ namespace BombermanGame
             {
                 if (direccion == Vector2.UnitX * -1)
                 {
-                    if (!colision(-speed,0))
+                    if (!colision(-speed, 0))
                         Advance();
+                    else
+                    {
+                        position -= direccion * speed;
+                        movido -= direccion * speed;
+                    }
+
                 }
                 else
                 {
@@ -69,6 +80,11 @@ namespace BombermanGame
                 {
                     if (!colision(speed, 0))
                         Advance();
+                    else
+                    {
+                        position -= direccion * speed;
+                        movido -= direccion * speed;
+                    }
                 }
                 else
                 {
@@ -82,6 +98,11 @@ namespace BombermanGame
                 {
                     if (!colision(-speed, 0))
                         Advance();
+                    else
+                    {
+                        position -= direccion * speed;
+                        movido -= direccion * speed;
+                    }
                 }
                 else
                 {
@@ -100,16 +121,12 @@ namespace BombermanGame
            
             position += direccion * speed;
             movido += direccion * speed;
+
             if (movido.X > 32 || movido.X < -32)
                 movido.X = 0;
             if (movido.Y > 32 || movido.Y < -32)
                 movido.Y = 0;
         }
-
-        //private bool PuedeAvanzar()
-        //{
-        //    if 
-        //}
 
         public float point_direction(float y, float x)
         {
@@ -131,7 +148,6 @@ namespace BombermanGame
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            //Rectangle size;
             Vector2 center = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
   
             spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), center, scale, SpriteEffects.None, 0);
