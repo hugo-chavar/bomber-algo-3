@@ -29,7 +29,6 @@ namespace BombermanGame
         public Persona(Vector2 pos)
             : base(pos)
         {
-
             speed = bombita.Movimiento.Velocidad;
             spriteName = "Cecilio";
         }
@@ -103,10 +102,10 @@ namespace BombermanGame
                 movido.Y = 0;
         }
 
-        private bool PuedeAvanzar()
-        {
-
-        }
+        //private bool PuedeAvanzar()
+        //{
+        //    if 
+        //}
 
         public float point_direction(float y, float x)
         {
