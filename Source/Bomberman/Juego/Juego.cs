@@ -23,6 +23,10 @@ namespace BombermanModel.Juego
         
         //declaracion del Singleton
         private static Juego instanciaDeJuego;
+        public static Punto Izquierda = new Punto(-1, 0);
+        public static Punto Derecha = new Punto(1, 0);
+        public static Punto Arriba = new Punto(0, 1);
+        public static Punto Abajo = new Punto(0, -1);
         
         //Constantes
         private const int VIDAS = 3;

@@ -103,10 +103,10 @@ namespace BombermanGame
                 movido.Y = 0;
         }
 
-        //private bool PuedeAvanzar()
-        //{
+        private bool PuedeAvanzar()
+        {
 
-        //}
+        }
 
         public float point_direction(float y, float x)
         {
