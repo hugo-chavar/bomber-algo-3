@@ -120,6 +120,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ListaVivos.cs" />
     <Compile Include="ObjetoVivo.cs" />
     <Compile Include="Pared.cs" />
     <Compile Include="Persona.cs" />

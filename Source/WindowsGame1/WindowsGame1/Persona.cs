@@ -41,7 +41,8 @@ namespace BombermanGame
             {
                 if (direccion == Vector2.UnitY*-1)
                 {
-                    Advance();
+                    if (!colision(0, -speed))
+                        Advance();
                 }
                 else
                 {
@@ -53,7 +54,8 @@ namespace BombermanGame
             {
                 if (direccion == Vector2.UnitX * -1)
                 {
-                    Advance();
+                    if (!colision(-speed,0))
+                        Advance();
                 }
                 else
                 {
@@ -65,7 +67,8 @@ namespace BombermanGame
             {
                 if (direccion == Vector2.UnitX )
                 {
-                    Advance();
+                    if (!colision(speed, 0))
+                        Advance();
                 }
                 else
                 {
@@ -77,7 +80,8 @@ namespace BombermanGame
             {
                 if (direccion == Vector2.UnitY)
                 {
-                    Advance();
+                    if (!colision(-speed, 0))
+                        Advance();
                 }
                 else
                 {
@@ -93,7 +97,7 @@ namespace BombermanGame
 
         private void Advance()
         {
-           //if puedeavanzar
+           
             position += direccion * speed;
             movido += direccion * speed;
             if (movido.X > 32 || movido.X < -32)
@@ -122,6 +126,7 @@ namespace BombermanGame
             position.X = bombita.Posicion.X + Game1.mapa.Location.X;
             position.Y = bombita.Posicion.Y + Game1.mapa.Location.Y;
             spriteIndex = content.Load<Texture2D>("Sprites\\" + spriteName);
+            area = new Rectangle(0, 0, spriteIndex.Width, spriteIndex.Height);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
