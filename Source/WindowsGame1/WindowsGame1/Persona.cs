@@ -45,6 +45,7 @@ namespace BombermanGame
                         Advance();
                     else
                     {
+                        //si hay colision lo hago rebotar un paso
                         position -= direccion * speed;
                         movido -= direccion * speed;
                     }
@@ -63,6 +64,7 @@ namespace BombermanGame
                         Advance();
                     else
                     {
+                        //si hay colision lo hago rebotar un paso
                         position -= direccion * speed;
                         movido -= direccion * speed;
                     }
@@ -82,6 +84,7 @@ namespace BombermanGame
                         Advance();
                     else
                     {
+                        //si hay colision lo hago rebotar un paso
                         position -= direccion * speed;
                         movido -= direccion * speed;
                     }
@@ -100,6 +103,9 @@ namespace BombermanGame
                         Advance();
                     else
                     {
+                        //si hay colision lo hago rebotar un paso
+                        //habria que arreglarlo, tiene rebotar en direccion contraria a la colision
+                        //pero no siempre pasa.. no se porque
                         position -= direccion * speed;
                         movido -= direccion * speed;
                     }
