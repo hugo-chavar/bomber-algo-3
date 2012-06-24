@@ -20,6 +20,10 @@ namespace BombermanGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Juego elJuego = Juego.Instancia();
+
+        public static SpriteFont fuente;
+        public static Rectangle mapa;
+
         Persona Man = new Persona(new Vector2(200, 200));
         Pared muro = new Pared(new Vector2(100, 100));
 
@@ -38,7 +42,7 @@ namespace BombermanGame
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            mapa = new Rectangle(50, 100,80,40);// 32 * elJuego.Ambiente.DimensionHorizontal, 32 * elJuego.Ambiente.DimensionVertical);
             base.Initialize();
         }
 
@@ -50,6 +54,7 @@ namespace BombermanGame
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            fuente = Content.Load<SpriteFont>("Fonts\\Segoe14");
             Man.LoadContent(this.Content);
             muro.LoadContent(this.Content);
 
