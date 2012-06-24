@@ -15,6 +15,11 @@ namespace BombermanModel.Arma
         private Movimiento movimiento;
         private int alcance;
 
+        //xna
+        public void Initialize()
+        {
+        }
+
         public Movimiento Movimiento
         {
             get { return this.movimiento; }

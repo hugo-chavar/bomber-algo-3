@@ -132,7 +132,7 @@ namespace BombermanModel.Juego
             while (pos != -1)
             {
                 int inicio = pos;
-                int fin = xmlTexto.IndexOf("/>");
+                int fin = xmlTexto.IndexOf("/>", pos + 1);
                 int len = fin + 1 - inicio;
                 listaString.Add(xmlTexto.Substring(inicio, len));
 
