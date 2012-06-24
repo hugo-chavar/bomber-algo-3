@@ -217,6 +217,32 @@
 	<obj class="Pasillo" x="13" y="12"/>
 	<obj class="Pasillo" x="15" y="12"/>
 	<obj class="Pasillo" x="16" y="12"/>
+	<obj class="Timer" x="11" y="3"/>
+	<obj class="Timer" x="11" y="6"/>
+	<obj class="Timer" x="2" y="8"/>
+	<obj class="Timer" x="5" y="9"/>
+	<obj class="Timer" x="11" y="11"/>
+	<obj class="Chala" x="3" y="1"/>
+	<obj class="Chala" x="7" y="7"/>
+	<obj class="Chala" x="13" y="9"/>
+	<obj class="Chala" x="9" y="10"/>
+	<obj class="ArticuloBombaToleTole" x="7" y="2"/>
+	<obj class="ArticuloBombaToleTole" x="9" y="4"/>
+	<obj class="ArticuloBombaToleTole" x="6" y="5"/>
+	<obj class="ArticuloBombaToleTole" x="14" y="8"/>
+	<obj class="ArticuloBombaToleTole" x="4" y="10"/>
+	<obj class="Salida" x="14" y="2"/>
+	<obj class="Cecilio" x="4" y="4"/>
+	<obj class="Cecilio" x="1" y="4"/>
+	<obj class="Cecilio" x="8" y="6"/>
+	<obj class="LosLopezReggae" x="14" y="1"/>
+	<obj class="LosLopezReggae" x="12" y="2"/>
+	<obj class="LosLopezReggaeAlado" x="2" y="2"/>
+	<obj class="LosLopezReggaeAlado" x="1" y="4"/>
+	
+	
+	
+	
 	
 	
 	
