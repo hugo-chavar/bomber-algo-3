@@ -23,10 +23,10 @@ namespace BombermanGame
         public Pared(Vector2 pos)
             : base(pos)
         {
-            position.X = 64+ Game1.mapa.Location.X;
-            position.Y = 0 + Game1.mapa.Location.Y;
-            speed = 2;
+            //position.X = 64+ Game1.mapa.Location.X;
+            //position.Y = 0 + Game1.mapa.Location.Y;
             spriteName = "ObsLadrillo";
+            solido = true;
         }
 
         public override void LoadContent(ContentManager content)
@@ -34,6 +34,9 @@ namespace BombermanGame
             position.X = 64 + Game1.mapa.Location.X;
             position.Y = Game1.mapa.Location.Y;
             spriteIndex = content.Load<Texture2D>("Sprites\\" + spriteName);
+            area = new Rectangle(0, 0, spriteIndex.Width, spriteIndex.Height);
+            //area.X = (int)position.X - (spriteIndex.Width / 2);
+            //area.Y = (int)position.Y - (spriteIndex.Height / 2);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
