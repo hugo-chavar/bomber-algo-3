@@ -17,6 +17,11 @@ namespace BombermanModel.Personaje
 
         private const int VELOCIDADMAX = 4;
 
+        //xna
+        public void Initialize()
+        {
+        }
+
         public Personaje(Punto unPunto)
         {
             this.movimiento = new Movimiento();
