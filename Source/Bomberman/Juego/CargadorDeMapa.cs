@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using BombermanModel.Mapa.Casilla;
+using BombermanModel.Articulo;
 using BombermanModel.Personaje;
 
 namespace BombermanModel.Juego
@@ -48,29 +49,52 @@ namespace BombermanModel.Juego
             int x = Convert.ToInt32(ObtenerAtributo(s, "x")); 
             int y = Convert.ToInt32(ObtenerAtributo(s, "y"));
 
-            Casilla unaCasilla;
             switch (clase)
             {
                 case "BloqueLadrillo":
-                    unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(new Punto(x,y));
-                    Juego.Instancia().Ambiente.AgregarCasilla(unaCasilla);
+                    Casilla ladrillo = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(new Punto(x, y));
+                    Juego.Instancia().Ambiente.AgregarCasilla(ladrillo);
                     break;
                 case "BloqueCemento":
-                    unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueCemento(new Punto(x, y));
-                    Juego.Instancia().Ambiente.AgregarCasilla(unaCasilla);
+                    Casilla cemento = FabricaDeCasillas.FabricarCasillaConBloqueCemento(new Punto(x, y));
+                    Juego.Instancia().Ambiente.AgregarCasilla(cemento);
                     break;
                 case "Pasillo":
-                    unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(new Punto(x, y));
-                    Juego.Instancia().Ambiente.AgregarCasilla(unaCasilla);
+                    Casilla pasillo = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(new Punto(x, y));
+                    Juego.Instancia().Ambiente.AgregarCasilla(pasillo);
                     break;
                 case "BloqueAcero":
-                    unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueCemento(new Punto(x, y));
-                    Juego.Instancia().Ambiente.AgregarCasilla(unaCasilla);
+                    Casilla acero = FabricaDeCasillas.FabricarCasillaConBloqueCemento(new Punto(x, y));
+                    Juego.Instancia().Ambiente.AgregarCasilla(acero);
+                    break;
+                case "Cecilio":
+                    Personaje.Personaje cecilio = new Personaje.Cecilio(new Punto(x, y));
+                    Juego.Instancia().Ambiente.AgregarPersonaje(cecilio);
+                    break;
+                case "LosLopezReggaeAlado":
+                    Personaje.Personaje alado = new Personaje.LosLopezReggaeAlado(new Punto(x, y));
+                    Juego.Instancia().Ambiente.AgregarPersonaje(alado);
                     break;
                 case "LosLopezReggae":
-                    Juego.Instancia().AgregarEnemigo(new LosLopezReggae(new Punto(14, 1)));
+                    Personaje.Personaje lopez = new Personaje.LosLopezReggae(new Punto(x, y));
+                    Juego.Instancia().Ambiente.AgregarPersonaje(lopez);
                     break;
-
+                case "Chala":
+                    Articulo.Articulo chala = new Articulo.Chala();
+                    Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(x, y)).agregarArticulo(chala);
+                    break;
+                case "ArticuloBombaToleTole":
+                    Articulo.Articulo toleTole = new Articulo.ArticuloBombaToleTole();
+                    Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(x, y)).agregarArticulo(toleTole);
+                    break;
+                case "Timer":
+                    Articulo.Articulo timer = new Articulo.Timer();
+                    Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(x, y)).agregarArticulo(timer);
+                    break;
+                case "Salida":
+                    Articulo.Articulo salida = new Articulo.Salida();
+                    Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(x, y)).agregarArticulo(salida);
+                    break;
             }
 
         }

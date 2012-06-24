@@ -79,9 +79,9 @@ namespace BombermanModel.Juego
             this.dependientesDelTiempo = new List<IDependienteDelTiempo>();
             this.salida = new Salida();
             CargarMapa();
-            CargarArticulos();
+            //CargarArticulos();
             this.Ambiente.AgregarPersonaje(this.protagonista);
-            GenerarEnemigos();
+            //GenerarEnemigos();
         }
 
         public static void Reiniciar()
@@ -127,7 +127,7 @@ namespace BombermanModel.Juego
         }
 
 
-        public void GenerarEnemigos()
+        /*public void GenerarEnemigos()
         {
             AgregarEnemigo(new LosLopezReggae(new Punto(14, 1)));
             AgregarEnemigo(new LosLopezReggae(new Punto(12, 2)));
@@ -136,7 +136,7 @@ namespace BombermanModel.Juego
             AgregarEnemigo(new Cecilio(new Punto(1, 4)));
             AgregarEnemigo(new Cecilio(new Punto(4, 4)));
             AgregarEnemigo(new Cecilio(new Punto(8, 6)));
-        }
+        }*/
 
         public int CantidadEnemigosVivos()
         {
@@ -217,7 +217,13 @@ namespace BombermanModel.Juego
 
         public void CargarMapa()
         {
-            List<Punto> obs = new List<Punto>() ;
+            CargadorDeMapa cargador = new CargadorDeMapa();
+            cargador.LeerMapa("Mapa1.xml");
+
+
+
+
+            /*List<Punto> obs = new List<Punto>() ;
             obs.Add(new Punto(0, 2));
             obs.Add(new Punto(0, 5));
             obs.Add(new Punto(0, 7));
@@ -306,11 +312,11 @@ namespace BombermanModel.Juego
                         }
                     }
                     
-                }
+                }*/
 
         }
 
-        public void CargarArticulos()
+        /*public void CargarArticulos()
         {
             // cargo ArticulosBombaToleTole
             List<Punto> obs = new List<Punto>();
@@ -358,7 +364,7 @@ namespace BombermanModel.Juego
             unaCasilla = this.ambiente.ObtenerCasilla(new Punto(14, 2));
             this.Salida = new Articulo.Salida();
             unaCasilla.agregarSalida(this.Salida);
-        }
+        }*/
 
         public Salida Salida 
         {
