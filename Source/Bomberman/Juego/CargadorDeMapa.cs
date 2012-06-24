@@ -79,9 +79,9 @@ namespace BombermanModel.Juego
             int pos = stringObjeto.IndexOf(stringAtributo+"\"");
             if (pos != -1)
             {
-                int inicio = pos;
+                int inicio = pos + (stringAtributo + "\"").Length;
                 int fin = stringObjeto.IndexOf("\"", pos + 1);
-                int len = fin + 1 - inicio;
+                int len = fin - inicio; //+ 1
                 return stringObjeto.Substring(inicio, len);
             }
             else
