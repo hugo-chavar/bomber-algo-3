@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using BombermanModel.Mapa.Casilla;
+using BombermanModel.Personaje;
 
 namespace BombermanModel.Juego
 {
@@ -66,6 +67,10 @@ namespace BombermanModel.Juego
                     unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueCemento(new Punto(x, y));
                     Juego.Instancia().Ambiente.AgregarCasilla(unaCasilla);
                     break;
+                case "LosLopezReggae":
+                    Juego.Instancia().AgregarEnemigo(new LosLopezReggae(new Punto(14, 1)));
+                    break;
+
             }
 
         }
