@@ -83,15 +83,6 @@
       <Time>2012-06-23T15:44:35.1794-03:00</Time>
     </Item>
     <Item>
-      <Source>Fonts\Segoe14.spritefont</Source>
-      <Name>Fonts\Segoe14</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Casa\Desktop\algo3-bomber\Source\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Fonts\Segoe14.xnb</Output>
-      <Time>2012-06-23T17:30:26.2818-03:00</Time>
-    </Item>
-    <Item>
       <Source>Sprites\Cecilio.png</Source>
       <Name>Sprites\Cecilio</Name>
       <Importer>TextureImporter</Importer>
@@ -144,6 +135,15 @@
       <Options>None</Options>
       <Output>C:\Users\Casa\Desktop\algo3-bomber\Source\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Sprites\LRAlado.xnb</Output>
       <Time>2012-06-23T18:15:17.496-03:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\Segoe14.spritefont</Source>
+      <Name>Fonts\Segoe14</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Casa\Desktop\algo3-bomber\Source\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Fonts\Segoe14.xnb</Output>
+      <Time>2012-06-23T17:30:26.2818-03:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
