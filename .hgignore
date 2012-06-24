@@ -8,6 +8,7 @@ syntax: glob
 *.txt
 *.suo
 *.dll
+*.pfx
 Source/Bomberman/bin/**
 Source/TestBomberman/bin/**
 TestXNA/Personaje/Personaje/Personaje/bin/**
@@ -18,5 +19,7 @@ Source/Bomberman/obj/**
 Source/TestBomberman/obj/**
 Source\WindowsGame1\WindowsGame1Content/obj/**
 Source\WindowsGame1\WindowsGame1Content/bin/**
+Source\WindowsGame1\WindowsGame1/bin/**
+Source\WindowsGame1\WindowsGame1/obj/**
 model/~$formeTp2.doc
 Source/Bomberman.userprefs

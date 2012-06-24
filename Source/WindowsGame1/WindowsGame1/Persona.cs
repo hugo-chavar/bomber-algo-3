@@ -104,7 +104,7 @@ namespace BombermanGame
         }
 
         //private bool PuedeAvanzar()
-        //{ 
+        //{
 
         //}
 
