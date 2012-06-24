@@ -13,8 +13,8 @@ namespace BombermanModel.Juego
     {
         public bool LeerMapa(string pathName)
         {
-            //try
-            //{
+            try
+            {
                 StreamReader lector = new StreamReader(pathName);
 
                 //asigno el texto xml a una variable
@@ -27,11 +27,11 @@ namespace BombermanModel.Juego
                 CrearLosObjetos(todosLosObjetos);
 
                 return true;
-            //}
-            //catch (Exception)
-            //{
-             //   return false;
-            //}
+            }
+            catch (Exception)
+            {
+               return false;
+            }
 
         }
         public void CrearLosObjetos(string[] arrayString)
@@ -69,15 +69,15 @@ namespace BombermanModel.Juego
                     break;
                 case "Cecilio":
                     Personaje.Personaje cecilio = new Personaje.Cecilio(new Punto(x, y));
-                    Juego.Instancia().Ambiente.AgregarPersonaje(cecilio);
+                    Juego.Instancia().AgregarEnemigo(cecilio);
                     break;
                 case "LosLopezReggaeAlado":
                     Personaje.Personaje alado = new Personaje.LosLopezReggaeAlado(new Punto(x, y));
-                    Juego.Instancia().Ambiente.AgregarPersonaje(alado);
+                    Juego.Instancia().AgregarEnemigo(alado);
                     break;
                 case "LosLopezReggae":
                     Personaje.Personaje lopez = new Personaje.LosLopezReggae(new Punto(x, y));
-                    Juego.Instancia().Ambiente.AgregarPersonaje(lopez);
+                    Juego.Instancia().AgregarEnemigo(lopez);
                     break;
                 case "Chala":
                     Articulo.Articulo chala = new Articulo.Chala();
@@ -92,7 +92,8 @@ namespace BombermanModel.Juego
                     Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(x, y)).agregarArticulo(timer);
                     break;
                 case "Salida":
-                    Articulo.Articulo salida = new Articulo.Salida();
+                    Articulo.Salida salida = new Articulo.Salida();
+                    Juego.Instancia().Salida = salida;
                     Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(x, y)).agregarArticulo(salida);
                     break;
             }
