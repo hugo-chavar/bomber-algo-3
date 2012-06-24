@@ -1,0 +1,20 @@
+syntax: glob
+*.bak
+*.orig
+*.cache
+*.exe
+*.manifest
+*.pdb
+*.txt
+*.suo
+*.dll
+Source/Bomberman/bin/**
+Source/TestBomberman/bin/**
+TestXNA/Personaje/Personaje/Personaje/bin/**
+TestXNA/Personaje/Personaje/Personaje/obj/**
+TestXNA/Personaje/Personaje/PersonajeContent/bin/**
+TestXNA/Personaje/Personaje/PersonajeContent/obj/**
+Source/Bomberman/obj/**
+Source/TestBomberman/obj/**
+model/~$formeTp2.doc
+Source/Bomberman.userprefs
