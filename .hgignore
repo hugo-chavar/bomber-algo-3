@@ -16,5 +16,7 @@ TestXNA/Personaje/Personaje/PersonajeContent/bin/**
 TestXNA/Personaje/Personaje/PersonajeContent/obj/**
 Source/Bomberman/obj/**
 Source/TestBomberman/obj/**
+Source\WindowsGame1\WindowsGame1Content/obj/**
+Source\WindowsGame1\WindowsGame1Content/bin/**
 model/~$formeTp2.doc
 Source/Bomberman.userprefs
