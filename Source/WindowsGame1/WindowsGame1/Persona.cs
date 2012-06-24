@@ -9,6 +9,9 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using BombermanModel.Personaje;
+using BombermanModel;
+using BombermanModel.Juego;
 
 namespace BombermanGame
 {
@@ -16,13 +19,14 @@ namespace BombermanGame
     {
         KeyboardState keyboard;
         private Vector2 direccion;
+        private Personaje persona = Juego.Instancia().Protagonista;
         
 
         public Persona(Vector2 pos)
             : base(pos)
         {
             position = pos;
-            speed = 4;
+            speed = 2;
             spriteName = "Cecilio";
         }
 
@@ -32,29 +36,57 @@ namespace BombermanGame
 
             if (keyboard.IsKeyDown(Keys.W))
             {
-                direccion.X = 0;
-                direccion.Y = -1;
+                if (direccion == Vector2.UnitY*-1)
+                {
+                    Advance();
+                }
+                else
+                {
+                    direccion = Vector2.UnitY*-1;
+                }
             }
             if (keyboard.IsKeyDown(Keys.A))
             {
-                direccion.Y = 0;
-                direccion.X = -1;
+                if (direccion == Vector2.UnitX * -1)
+                {
+                    Advance();
+                }
+                else
+                {
+                    direccion = Vector2.UnitX * -1;
+                }
             }
             if (keyboard.IsKeyDown(Keys.D))
             {
-                direccion.Y = 0;
-                direccion.X = 1;
+                if (direccion == Vector2.UnitX )
+                {
+                    Advance();
+                }
+                else
+                {
+                    direccion = Vector2.UnitX;
+                }
             }
             if (keyboard.IsKeyDown(Keys.S))
             {
-                direccion.X = 0;
-                direccion.Y = 1;
+                if (direccion == Vector2.UnitY)
+                {
+                    Advance();
+                }
+                else
+                {
+                    direccion = Vector2.UnitY;
+                }
             }
+         
             rotation = point_direction(-direccion.Y, -direccion.X);
-            if (keyboard.IsKeyDown(Keys.F))
-                position += direccion * speed;
 
             base.Update();
+        }
+
+        private void Advance()
+        {
+            position += direccion * speed;
         }
 
         public float point_direction(float y, float x)

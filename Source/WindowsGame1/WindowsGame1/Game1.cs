@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using BombermanModel.Juego;
 
 namespace BombermanGame
 {
@@ -18,8 +19,9 @@ namespace BombermanGame
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
+        Juego elJuego = Juego.Instancia();
         Persona Man = new Persona(new Vector2(200, 200));
+        Pared muro = new Pared(new Vector2(100, 100));
 
         public Game1()
         {
@@ -49,6 +51,7 @@ namespace BombermanGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             Man.LoadContent(this.Content);
+            muro.LoadContent(this.Content);
 
             // TODO: use this.Content to load your game content here
         }
@@ -89,7 +92,9 @@ namespace BombermanGame
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
+            muro.Draw(spriteBatch);
             Man.Draw(spriteBatch);
+            
             spriteBatch.End();
 
 
