@@ -218,10 +218,7 @@ namespace BombermanModel.Juego
         public void CargarMapa()
         {
             CargadorDeMapa cargador = new CargadorDeMapa();
-            cargador.LeerMapa("Mapa1.xml");
-
-
-
+            cargador.LeerMapa("mapaActualizado.xml");
 
             /*List<Punto> obs = new List<Punto>() ;
             obs.Add(new Punto(0, 2));

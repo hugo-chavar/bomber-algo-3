@@ -13,8 +13,8 @@ namespace BombermanModel.Juego
     {
         public bool LeerMapa(string pathName)
         {
-            try
-            {
+            //try
+            //{
                 StreamReader lector = new StreamReader(pathName);
 
                 //asigno el texto xml a una variable
@@ -27,11 +27,11 @@ namespace BombermanModel.Juego
                 CrearLosObjetos(todosLosObjetos);
 
                 return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            //}
+            //catch (Exception)
+            //{
+             //   return false;
+            //}
 
         }
         public void CrearLosObjetos(string[] arrayString)
@@ -100,11 +100,11 @@ namespace BombermanModel.Juego
         }
         public string ObtenerAtributo(string stringObjeto, string stringAtributo)
         {
-            int pos = stringObjeto.IndexOf(stringAtributo+"\"");
+            int pos = stringObjeto.IndexOf(stringAtributo);
             if (pos != -1)
             {
-                int inicio = pos + (stringAtributo + "\"").Length;
-                int fin = stringObjeto.IndexOf("\"", pos + 1);
+                int inicio = stringObjeto.IndexOf("\"", pos + (stringAtributo).Length) + 1;
+                int fin = stringObjeto.IndexOf("\"", inicio + 1);
                 int len = fin - inicio; //+ 1
                 return stringObjeto.Substring(inicio, len);
             }
@@ -113,6 +113,7 @@ namespace BombermanModel.Juego
                 return "";
             }
         }
+
         public string[] SepararObjetos(string xmlTexto)
         {
             List<string> listaString = new List<string>();
