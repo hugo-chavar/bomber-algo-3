@@ -15,6 +15,7 @@ namespace BombermanGame
     class ObjetoVivo
     {
         protected Vector2 position;
+        protected Vector2 movido;
         protected float rotation;
         protected Texture2D spriteIndex;
         protected float speed = 0.0f;
@@ -26,6 +27,7 @@ namespace BombermanGame
         public ObjetoVivo(Vector2 pos)
         {
             position = pos;
+            movido = Vector2.Zero;
         }
 
         public ObjetoVivo()
@@ -47,6 +49,7 @@ namespace BombermanGame
             //Rectangle size;
             Vector2 center = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
             spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), center, scale, SpriteEffects.None, 0);
+
 
         }
     }
