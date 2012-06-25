@@ -38,7 +38,7 @@ namespace BombermanGame
 
         }
 
-        public void DibujarMapa(SpriteBatch sprite)
+        public void Draw(SpriteBatch sprite)
         {
             foreach (ObjetoVivo s in objetosDibujables)
             {
@@ -98,7 +98,7 @@ namespace BombermanGame
             return unVector;
         }
 
-        public void CargarContenido(ContentManager content)
+        public void LoadContent(ContentManager content)
         {
             foreach (ObjetoVivo s in objetosDibujables)
             {
@@ -106,7 +106,7 @@ namespace BombermanGame
             }
 
         }
-        public void Actualizar()
+        public void Update()
         {
             foreach (ObjetoVivo s in objetosDibujables)
             {
