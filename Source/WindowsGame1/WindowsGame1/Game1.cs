@@ -106,15 +106,14 @@ namespace BombermanGame
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
             spriteBatch.Begin();
-            //muro.Draw(spriteBatch);
-            //Man.Draw(spriteBatch);
+
+            unMapaVista.Draw(spriteBatch);
             foreach (ObjetoVivo o in ListaVivos.objList)
             {
                 o.Draw(spriteBatch);
             }
-            // unMapaVista.Draw(spriteBatch);    EZE: DESCOMENTAR CUANDO QUIERAN PROBARLO
+             
 
             spriteBatch.End();
 
