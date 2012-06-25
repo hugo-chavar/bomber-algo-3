@@ -138,7 +138,7 @@ namespace BombermanGame
             //if (margen.)
             //margen.Normalize(); //&& (margen = Vector2.UnitX )
             if (((movido.X <= speed * direccion.X*-1) && (movido.X >= Vector2.Zero.X) && (direccion == Vector2.UnitX * -1)) || ((movido.X <= spriteIndex.Width) && (movido.X >= (spriteIndex.Width - speed * direccion.X)) && (direccion == Vector2.UnitX))
-                || ((movido.Y <= speed * direccion.Y) && (movido.Y >= Vector2.Zero.Y) && (direccion == Vector2.UnitY * -1)) || ((movido.Y <= spriteIndex.Height) && (movido.Y >= (spriteIndex.Height - speed * direccion.Y)) && (direccion == Vector2.UnitY)))
+                || ((movido.Y <= speed * direccion.Y*-1) && (movido.Y >= Vector2.Zero.Y) && (direccion == Vector2.UnitY * -1)) || ((movido.Y <= spriteIndex.Height) && (movido.Y >= (spriteIndex.Height - speed * direccion.Y)) && (direccion == Vector2.UnitY)))
                 if (!Juego.Instancia().Ambiente.PermitidoAvanzar(bombita))
                     return;
 
@@ -149,7 +149,7 @@ namespace BombermanGame
             //considero que el personaje transita la casilla cuando ingreso un tercio de su cuerpo
             //cuando pasa 2/3 de su cuerpo pasa a la posicion siguiente (hablando en terminos del modelo)
             if (((Math.Abs(deltaPrevio.X) < (spriteIndex.Width / 3)) && (Math.Abs(movido.X) >= (spriteIndex.Width / 3)))
-                || ((Math.Abs(deltaPrevio.Y) < (spriteIndex.Height / 3)) && (Math.Abs(movido.X) >= (spriteIndex.Height / 3))))
+                || ((Math.Abs(deltaPrevio.Y) < (spriteIndex.Height / 3)) && (Math.Abs(movido.Y) >= (spriteIndex.Height / 3))))
             { 
                 Punto unPto = new Punto(bombita.Posicion.X+(int)direccion.X,bombita.Posicion.Y + (int)direccion.Y);
                 Juego.Instancia().Ambiente.ObtenerCasilla(unPto).Transitar(bombita);
