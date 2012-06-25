@@ -22,7 +22,7 @@ namespace BombermanGame
         KeyboardState keyboard;
         private Vector2 direccion;
         private Personaje bombita = Juego.Instancia().Protagonista;
-        public const int ARRIBA = 8; //<--quedo harcodeado nomas..jaja
+        public const int ARRIBA = 8; 
         public const int ABAJO = 2;
         public const int IZQUIERDA = 4;
         public const int DERECHA = 6;
@@ -33,6 +33,7 @@ namespace BombermanGame
         {
             speed = bombita.Movimiento.Velocidad;
             spriteName = "Cecilio";
+            bombita.Posicion.X = 3;
         }
 
         public override void Update()
@@ -70,7 +71,6 @@ namespace BombermanGame
                         position -= direccion * speed;
                         movido -= direccion * speed;
                     }
-
                 }
                 else
                 {
@@ -155,9 +155,6 @@ namespace BombermanGame
                         return;
                 }
             }
-
-            //if (( ( ) ) // || ((movido.X <= spriteIndex.Width) && (movido.X >= (spriteIndex.Width - direccion.X/2)) && (direccion == Vector2.UnitX))
-            //    ||  && (direccion == Vector2.UnitY)) || ((movido.Y <= spriteIndex.Height) && (movido.Y >= (spriteIndex.Height - direccion.Y/2)) && (direccion == Vector2.UnitY)))
 
             corregirPosicion();
             position += direccion * speed;
@@ -244,12 +241,12 @@ namespace BombermanGame
                     movido.X = Vector2.Zero.X;
                 }
             }
-            if (movido.X < 0 && movido.X > -(spriteIndex.Width - 1) / 2)
+            if (movido.X < spriteIndex.Width && movido.X > (spriteIndex.Width - 1) / 2)
             {
                 bombita.Movimiento.Direccion = IZQUIERDA;
                 if (!Juego.Instancia().Ambiente.PermitidoAvanzar(bombita))
                 {
-                    position.X -= movido.X;
+                    position.X += (spriteIndex.Width- movido.X);
                     movido.X = Vector2.Zero.X;
                 }
             }
@@ -284,8 +281,8 @@ namespace BombermanGame
         }
         public override void LoadContent(ContentManager content)
         {
-            position.X = bombita.Posicion.X + Game1.mapa.Location.X;
-            position.Y = bombita.Posicion.Y + Game1.mapa.Location.Y;
+            position.X = 32*bombita.Posicion.X + Game1.mapa.Location.X;
+            position.Y = 32*bombita.Posicion.Y + Game1.mapa.Location.Y;
             spriteIndex = content.Load<Texture2D>("Sprites\\" + spriteName);
             area = new Rectangle(0, 0, spriteIndex.Width, spriteIndex.Height);
         }
