@@ -38,7 +38,7 @@ namespace BombermanGame
         public override void Update()
         {
             keyboard = Keyboard.GetState();
-
+            speed = bombita.Movimiento.Velocidad;
             if (keyboard.IsKeyDown(Keys.W))
             {
                 if (direccion == Vector2.UnitY*-1) //pregunto si ya esta mirando en el sentido que aprete la tecla
@@ -134,33 +134,74 @@ namespace BombermanGame
 
         private void Advance()
         {
-           
+            //Vector2 margen = new Vector2(movido.X, movido.Y);
+            //if (margen.)
+            //margen.Normalize(); //&& (margen = Vector2.UnitX )
+            if (((movido.X <= speed * direccion.X*-1) && (movido.X >= Vector2.Zero.X) && (direccion == Vector2.UnitX * -1)) || ((movido.X <= spriteIndex.Width) && (movido.X >= (spriteIndex.Width - speed * direccion.X)) && (direccion == Vector2.UnitX))
+                || ((movido.Y <= speed * direccion.Y) && (movido.Y >= Vector2.Zero.Y) && (direccion == Vector2.UnitY * -1)) || ((movido.Y <= spriteIndex.Height) && (movido.Y >= (spriteIndex.Height - speed * direccion.Y)) && (direccion == Vector2.UnitY)))
+                if (!Juego.Instancia().Ambiente.PermitidoAvanzar(bombita))
+                    return;
+
             position += direccion * speed;
             Vector2 deltaPrevio = new Vector2(movido.X,movido.Y);
             movido += direccion * speed;
 
             //considero que el personaje transita la casilla cuando ingreso un tercio de su cuerpo
             //cuando pasa 2/3 de su cuerpo pasa a la posicion siguiente (hablando en terminos del modelo)
-            if ((deltaPrevio.X < (spriteIndex.Width / 3)) && (movido.X >= (spriteIndex.Width / 3)))//& (movido.X < 2 * (spriteIndex.Width / 3))
+            if (((Math.Abs(deltaPrevio.X) < (spriteIndex.Width / 3)) && (Math.Abs(movido.X) >= (spriteIndex.Width / 3)))
+                || ((Math.Abs(deltaPrevio.Y) < (spriteIndex.Height / 3)) && (Math.Abs(movido.X) >= (spriteIndex.Height / 3))))
             { 
                 Punto unPto = new Punto(bombita.Posicion.X+(int)direccion.X,bombita.Posicion.Y + (int)direccion.Y);
                 Juego.Instancia().Ambiente.ObtenerCasilla(unPto).Transitar(bombita);
                 
             }
-            if ((deltaPrevio.X >= (spriteIndex.Width / 3)) && (movido.X < (spriteIndex.Width / 3))) // & (movido.X < 2 * (spriteIndex.Width / 3))
+
+            if ((Math.Abs(deltaPrevio.X) >= (spriteIndex.Width / 2)) && (Math.Abs(movido.X) < (spriteIndex.Width / 2)))
             {
-                Punto unPto = new Punto(bombita.Posicion.X - (int)direccion.X, bombita.Posicion.Y - (int)direccion.Y);
-                Juego.Instancia().Ambiente.ObtenerCasilla(unPto).Dejar(bombita);
+                Punto unPto = new Punto(bombita.Posicion.X + (int)direccion.X, bombita.Posicion.Y + (int)direccion.Y);
+
                 Juego.Instancia().Ambiente.Avanzar(bombita);
             }
 
-            if (movido.X > spriteIndex.Width || movido.X < -spriteIndex.Width)
+
+            if ((Math.Abs(deltaPrevio.Y) >= (spriteIndex.Height / 2)) && (Math.Abs(movido.Y) < (spriteIndex.Height / 2)))
+            {
+                Punto unPto = new Punto(bombita.Posicion.X, bombita.Posicion.Y + (int)direccion.Y);
+
+                Juego.Instancia().Ambiente.Avanzar(bombita);
+            }
+
+            if ((Math.Abs(deltaPrevio.X) >= (spriteIndex.Width / 3)) && (Math.Abs(deltaPrevio.X) < (spriteIndex.Width / 2)) && (Math.Abs(movido.X) >= (spriteIndex.Width / 2)))
+            {
+                Punto unPto = new Punto(bombita.Posicion.X + (int)direccion.X, bombita.Posicion.Y + (int)direccion.Y);
+                
+                Juego.Instancia().Ambiente.Avanzar(bombita);
+            }
+
+            if ((Math.Abs(deltaPrevio.Y) >= (spriteIndex.Height / 3)) && (Math.Abs(deltaPrevio.Y) < (spriteIndex.Height / 2)) && (Math.Abs(movido.Y) >= (spriteIndex.Height / 2)))
+            {
+                Punto unPto = new Punto(bombita.Posicion.X, bombita.Posicion.Y + (int)direccion.Y);
+
+                Juego.Instancia().Ambiente.Avanzar(bombita);
+            }
+
+            if ((Math.Abs(deltaPrevio.X) >= (spriteIndex.Width / 3)) && (Math.Abs(movido.X) < (spriteIndex.Width / 3))) 
+            {
+                Punto unPto = new Punto(bombita.Posicion.X - (int)direccion.X, bombita.Posicion.Y);
+                Juego.Instancia().Ambiente.ObtenerCasilla(unPto).Dejar(bombita);
+            }
+
+            if ((Math.Abs(deltaPrevio.Y) >= (spriteIndex.Height / 3)) && (Math.Abs(movido.Y) < (spriteIndex.Height / 3)))
+            {
+                Punto unPto = new Punto(bombita.Posicion.X, bombita.Posicion.Y - (int)direccion.Y);
+                Juego.Instancia().Ambiente.ObtenerCasilla(unPto).Dejar(bombita);
+            }
+
+            if (Math.Abs(movido.X) > spriteIndex.Width )
             {
                 movido.X = 0;
-
-
             }
-            if (movido.Y > spriteIndex.Height || movido.Y < -spriteIndex.Height)
+            if (Math.Abs(movido.Y) > spriteIndex.Height )
                 movido.Y = 0;
         }
 
