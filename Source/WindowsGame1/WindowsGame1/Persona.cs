@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using BombermanModel.Personaje;
+using BombermanModel.Arma;
 using BombermanModel;
 using BombermanModel.Juego;
 using BombermanModel.Mapa.Casilla;
@@ -114,6 +115,16 @@ namespace BombermanGame
                     direccion = Vector2.UnitY;
                     bombita.Movimiento.Direccion = ARRIBA;
                 }
+            }
+
+            if (keyboard.IsKeyDown(Keys.Space))
+            {
+                if (bombita.LanzarExplosivo())
+                {
+                    Explosivo bomba=Juego.Instancia().Ambiente.ObtenerCasilla(bombita.Posicion).Explosivo;
+                    ListaVivos.objList.Add(new Bomb(position,bomba));
+                }
+
             }
          
             rotation = point_direction(-direccion.Y, -direccion.X);

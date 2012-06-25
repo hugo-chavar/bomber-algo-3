@@ -90,15 +90,16 @@ namespace BombermanGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            elJuego.AvanzarElTiempo();
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
             // TODO: Add your update logic here
            // Man.Update();
-            foreach (ObjetoVivo o in ListaVivos.objList)
+            for (int i = 0; i < ListaVivos.objList.Count;i++)
             {
-                o.Update();
+                ListaVivos.objList[i].Update();
             }
             // unMapaVista.Update();                  EZE: DESCOMENTAR CUANDO QUIERAN PROBARLO
             base.Update(gameTime);

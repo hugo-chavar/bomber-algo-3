@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using BombermanModel;
 
 namespace BombermanGame
 {
@@ -18,7 +19,7 @@ namespace BombermanGame
         public static void Initialize()
         {
             objList.Add(new Pared(new Vector2(100, 100)));
-            objList.Add(new Persona(new Vector2(200, 200)));
+            objList.Add(new Persona(new Vector2(200, 200)));    
         }
     }
 }
