@@ -136,12 +136,12 @@ namespace BombermanGame
         {
             if (direccion.Y == Vector2.Zero.Y)
             {
-                if ((movido.X <= (direccion.X) / 2) && (movido.X >= Vector2.Zero.X) && (direccion == Vector2.UnitX))
-                {
-                    if (!Juego.Instancia().Ambiente.PermitidoAvanzar(bombita))
-                        return;
-                }
-                if ((movido.X == Vector2.Zero.X) && (direccion == Vector2.UnitX*-1))
+                //if ((movido.X <= (direccion.X) / 2) && (movido.X >= Vector2.Zero.X) && (direccion == Vector2.UnitX))
+                //{
+                //    if (!Juego.Instancia().Ambiente.PermitidoAvanzar(bombita))
+                //        return;
+                //}
+                if ((movido.X == Vector2.Zero.X) ) //&& (direccion == Vector2.UnitX*-1)
                 {
                     if (!Juego.Instancia().Ambiente.PermitidoAvanzar(bombita))
                         return;
@@ -149,11 +149,12 @@ namespace BombermanGame
             }
             else if (direccion.X == Vector2.Zero.X)
             {
-                if ((movido.Y == Vector2.Zero.Y) && (direccion == Vector2.UnitY * -1)) //(movido.Y >= (direccion.Y) / 2) &&
+                if ((movido.Y == Vector2.Zero.Y)) //&& (direccion == Vector2.UnitY * -1)
                 {
                     if (!Juego.Instancia().Ambiente.PermitidoAvanzar(bombita))
                         return;
                 }
+
             }
 
             corregirPosicion();
@@ -230,9 +231,8 @@ namespace BombermanGame
 
         public void corregirPosicion()
         {
-            //Punto unPto = new Punto(bombita.Posicion.X, bombita.Posicion.Y + (int)direccion.Y);
             int dirPrev = bombita.Movimiento.Direccion;
-            if ((movido.X > 0 && movido.X <= (spriteIndex.Width - 1) / 2) )
+            if ((movido.X > 0) && movido.X <= (spriteIndex.Width - 1) / 2) 
             {
                 bombita.Movimiento.Direccion = DERECHA;
                 if (!Juego.Instancia().Ambiente.PermitidoAvanzar(bombita))
@@ -241,7 +241,7 @@ namespace BombermanGame
                     movido.X = Vector2.Zero.X;
                 }
             }
-            if (movido.X < spriteIndex.Width && movido.X > (spriteIndex.Width - 1) / 2)
+            if ((movido.X < spriteIndex.Width) && (movido.X > (spriteIndex.Width - 1) / 2))
             {
                 bombita.Movimiento.Direccion = IZQUIERDA;
                 if (!Juego.Instancia().Ambiente.PermitidoAvanzar(bombita))
@@ -259,12 +259,12 @@ namespace BombermanGame
                     movido.Y = Vector2.Zero.Y;
                 }
             }
-            if ((movido.Y < 0) && (movido.Y > -(spriteIndex.Height - 1)/2))
+            if ((movido.Y < spriteIndex.Height) && (movido.Y > (spriteIndex.Height - 1) / 2))
             {
                 bombita.Movimiento.Direccion = ABAJO;
                 if (!Juego.Instancia().Ambiente.PermitidoAvanzar(bombita))
                 {
-                    position.Y -= movido.Y;
+                    position.Y +=( spriteIndex.Height- movido.Y);
                     movido.Y = Vector2.Zero.Y;
                 }
             }
