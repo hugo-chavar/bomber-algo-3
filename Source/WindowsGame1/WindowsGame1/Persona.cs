@@ -141,17 +141,25 @@ namespace BombermanGame
 
             //considero que el personaje transita la casilla cuando ingreso un tercio de su cuerpo
             //cuando pasa 2/3 de su cuerpo pasa a la posicion siguiente (hablando en terminos del modelo)
-            if ((deltaPrevio.X < (spriteIndex.Width / 3)) && (movido.X >= (spriteIndex.Width / 3)) & (movido.X < 2 * (spriteIndex.Width / 3)))
+            if ((deltaPrevio.X < (spriteIndex.Width / 3)) && (movido.X >= (spriteIndex.Width / 3)))//& (movido.X < 2 * (spriteIndex.Width / 3))
             { 
                 Punto unPto = new Punto(bombita.Posicion.X+(int)direccion.X,bombita.Posicion.Y + (int)direccion.Y);
-                //Casilla
                 Juego.Instancia().Ambiente.ObtenerCasilla(unPto).Transitar(bombita);
                 
             }
-
+            if ((deltaPrevio.X >= (spriteIndex.Width / 3)) && (movido.X < (spriteIndex.Width / 3))) // & (movido.X < 2 * (spriteIndex.Width / 3))
+            {
+                Punto unPto = new Punto(bombita.Posicion.X - (int)direccion.X, bombita.Posicion.Y - (int)direccion.Y);
+                Juego.Instancia().Ambiente.ObtenerCasilla(unPto).Dejar(bombita);
+                Juego.Instancia().Ambiente.Avanzar(bombita);
+            }
 
             if (movido.X > spriteIndex.Width || movido.X < -spriteIndex.Width)
+            {
                 movido.X = 0;
+
+
+            }
             if (movido.Y > spriteIndex.Height || movido.Y < -spriteIndex.Height)
                 movido.Y = 0;
         }
@@ -163,8 +171,6 @@ namespace BombermanGame
             if (res < 0)
                 res += 360;
             return res;
-
-
         }
         public override void LoadContent(ContentManager content)
         {
@@ -181,8 +187,6 @@ namespace BombermanGame
             spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), center, scale, SpriteEffects.None, 0);
             spriteBatch.DrawString(Game1.fuente, "En modelo ->Pos X: " + bombita.Posicion.X + " Pos Y: " + bombita.Posicion.Y, new Vector2(10, 10), Color.Yellow);
             spriteBatch.DrawString(Game1.fuente, "Mvido ->Pos X: " + movido.X + " Pos Y: " + movido.Y, new Vector2(10, Game1.fuente.LineSpacing), Color.Yellow); 
-
-
         }
     }
 }

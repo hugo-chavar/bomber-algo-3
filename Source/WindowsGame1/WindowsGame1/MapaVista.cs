@@ -83,7 +83,7 @@ namespace BombermanGame
                 if (unObstaculo.GetType() == bloqueAux.GetType())
                 {
                     Vector2 unVector = this.TransformarPuntoEnVector2(unCasillero.Posicion);
-                    Pared unaPared = new Pared(unVector);
+                    BloqueAceroView unaPared = new BloqueAceroView(unVector);
                     this.AgregarDibujable(unaPared);
 
                 }
@@ -119,8 +119,8 @@ namespace BombermanGame
         private Vector2 TransformarPuntoEnVector2(Punto unPunto)
         {
             Vector2 unVector;
-            unVector.X = 32 * (unPunto.X);
-            unVector.Y = 32 * (unPunto.Y);
+            unVector.X = 32 * (unPunto.X) + Game1.mapa.Location.X;
+            unVector.Y = 32 * (unPunto.Y) + Game1.mapa.Location.Y;
             return unVector;
         }
 
