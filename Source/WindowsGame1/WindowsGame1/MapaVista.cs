@@ -95,6 +95,24 @@ namespace BombermanGame
                     this.AgregarDibujable(unaPared);
 
                 }
+
+                Obstaculo unBloqueCemento = BloqueComun.CrearBloqueCemento();
+                if ((unObstaculo.GetType() == unBloqueCemento.GetType()) && (((BloqueComun)unObstaculo).EsBloqueCemento()))
+                {
+                    Vector2 unVector = this.TransformarPuntoEnVector2(unCasillero.Posicion);
+                    BloqueCementoView unBloqueCementoView = new BloqueCementoView(unVector);
+                    this.AgregarDibujable(unBloqueCementoView);
+
+                }
+
+                Obstaculo unBloqueLadrillo = BloqueComun.CrearBloqueLadrillos();
+                if ((unObstaculo.GetType() == unBloqueLadrillo.GetType()) && (!((BloqueComun)unObstaculo).EsBloqueCemento()))
+                {
+                    Vector2 unVector = this.TransformarPuntoEnVector2(unCasillero.Posicion);
+                    BloqueLadrilloView unBloqueLadrilloView = new BloqueLadrilloView(unVector);
+                    this.AgregarDibujable(unBloqueLadrilloView);
+
+                }
             }
         }
 
