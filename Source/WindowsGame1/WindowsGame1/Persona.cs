@@ -126,11 +126,14 @@ namespace BombermanGame
         {
            
             position += direccion * speed;
+            Vector2 deltaPrevio = new Vector2(movido.X,movido.Y);
             movido += direccion * speed;
 
-            if (movido.X > 32 || movido.X < -32)
+         //   if ()
+
+            if (movido.X > spriteIndex.Width || movido.X < -spriteIndex.Width)
                 movido.X = 0;
-            if (movido.Y > 32 || movido.Y < -32)
+            if (movido.Y > spriteIndex.Height || movido.Y < -spriteIndex.Height)
                 movido.Y = 0;
         }
 
