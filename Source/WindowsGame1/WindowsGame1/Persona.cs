@@ -20,7 +20,7 @@ namespace BombermanGame
         KeyboardState keyboard;
         private Vector2 direccion;
         private Personaje bombita = Juego.Instancia().Protagonista;
-        public const int ARRIBA = 8;
+        public const int ARRIBA = 8; //<--quedo harcodeado nomas..jaja
         public const int ABAJO = 2;
         public const int IZQUIERDA = 4;
         public const int DERECHA = 6;
@@ -39,9 +39,9 @@ namespace BombermanGame
 
             if (keyboard.IsKeyDown(Keys.W))
             {
-                if (direccion == Vector2.UnitY*-1)
+                if (direccion == Vector2.UnitY*-1) //pregunto si ya esta mirando en el sentido que aprete la tecla
                 {
-                    if (!colision(0, -speed))
+                    if (!colision(0, -speed)) //si no choca avanza normalmente
                         Advance();
                     else
                     {
@@ -99,13 +99,11 @@ namespace BombermanGame
             {
                 if (direccion == Vector2.UnitY)
                 {
-                    if (!colision(-speed, 0))
+                    if (!colision(0, speed))
                         Advance();
                     else
                     {
                         //si hay colision lo hago rebotar un paso
-                        //habria que arreglarlo, tiene rebotar en direccion contraria a la colision
-                        //pero no siempre pasa.. no se porque
                         position -= direccion * speed;
                         movido -= direccion * speed;
                     }
