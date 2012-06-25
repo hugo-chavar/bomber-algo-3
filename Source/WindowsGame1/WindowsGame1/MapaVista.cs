@@ -87,6 +87,14 @@ namespace BombermanGame
                     this.AgregarDibujable(unaPared);
 
                 }
+                Pasillo pasilloAux = new Pasillo();
+                if (unObstaculo.GetType() == pasilloAux.GetType())
+                {
+                    Vector2 unVector = this.TransformarPuntoEnVector2(unCasillero.Posicion);
+                    PasilloView unaPared = new PasilloView(unVector);
+                    this.AgregarDibujable(unaPared);
+
+                }
             }
         }
 
