@@ -121,6 +121,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BloqueAceroView.cs" />
+    <Compile Include="BloqueCementoView.cs" />
+    <Compile Include="BloqueLadrilloView.cs" />
     <Compile Include="MapaVista.cs" />
     <Compile Include="ListaVivos.cs" />
     <Compile Include="ObjetoVivo.cs" />

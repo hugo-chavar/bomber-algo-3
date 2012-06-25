@@ -27,5 +27,11 @@ namespace BombermanModel.Mapa.Casilla
         {
             return true;
         }
+
+        public bool EsBloqueCemento()
+        {
+            return (UnidadesDeResistencia == RESISTENCIACEMENTO);
+        }
+
     }
 }
