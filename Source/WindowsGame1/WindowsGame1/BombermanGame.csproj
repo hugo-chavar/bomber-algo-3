@@ -125,6 +125,7 @@
     <Compile Include="ListaVivos.cs" />
     <Compile Include="ObjetoVivo.cs" />
     <Compile Include="Pared.cs" />
+    <Compile Include="PasilloView.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
