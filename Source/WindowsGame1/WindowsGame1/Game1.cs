@@ -23,6 +23,7 @@ namespace BombermanGame
 
         public static SpriteFont fuente;
         public static Rectangle mapa;
+      //   public MapaVista unMapaVista;       EZE: DESCOMENTAR CUANDO QUIERAN PROBARLO
 
         //Persona Man = new Persona(new Vector2(200, 200));
         //Pared muro = new Pared(new Vector2(100, 100));
@@ -45,6 +46,8 @@ namespace BombermanGame
 
             mapa = new Rectangle(50, 100, 32 * elJuego.Ambiente.DimensionHorizontal, 32 * elJuego.Ambiente.DimensionVertical);
             ListaVivos.Initialize();
+            //unMapaVista = new MapaVista(elJuego.Ambiente);   EZE: DESCOMENTAR CUANDO QUIERAN PROBARLO
+            //unMapaVista.CargarMapa();                        EZE: DESCOMENTAR CUANDO QUIERAN PROBARLO
             base.Initialize();
         }
 
@@ -61,6 +64,10 @@ namespace BombermanGame
             {
                 o.LoadContent(this.Content);
             }
+
+
+            // unMapaVista.LoadContent(this.Content);   EZE: DESCOMENTAR CUANDO QUIERAN PROBARLO
+
             //Man.LoadContent(this.Content);
             //muro.LoadContent(this.Content);
 
@@ -93,6 +100,7 @@ namespace BombermanGame
             {
                 o.Update();
             }
+            // unMapaVista.Update();                  EZE: DESCOMENTAR CUANDO QUIERAN PROBARLO
             base.Update(gameTime);
         }
 
@@ -112,6 +120,8 @@ namespace BombermanGame
             {
                 o.Draw(spriteBatch);
             }
+            // unMapaVista.Draw(spriteBatch);    EZE: DESCOMENTAR CUANDO QUIERAN PROBARLO
+
             spriteBatch.End();
 
 
