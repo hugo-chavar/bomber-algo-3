@@ -94,7 +94,7 @@ namespace BombermanGame
             {
                 ListaVivos.objList[i].Update();
             }
-            unMapaVista.Update();                  //EZE: DESCOMENTAR CUANDO QUIERAN PROBARLO
+            unMapaVista.Update();
             base.Update(gameTime);
         }
 

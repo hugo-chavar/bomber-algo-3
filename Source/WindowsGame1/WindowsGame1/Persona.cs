@@ -88,7 +88,7 @@ namespace BombermanGame
                     {
                         //si hay colision lo hago rebotar un paso
                         position -= direccion * speed;
-                        movido -= direccion * speed;
+                        movido.X = spriteIndex.Width - 1;//direccion * speed;
                     }
                 }
                 else
@@ -107,7 +107,7 @@ namespace BombermanGame
                     {
                         //si hay colision lo hago rebotar un paso
                         position -= direccion * speed;
-                        movido -= direccion * speed;
+                        movido.Y = spriteIndex.Width - 1;//direccion * speed;
                     }
                 }
                 else
@@ -128,20 +128,38 @@ namespace BombermanGame
             }
          
             rotation = point_direction(-direccion.Y, -direccion.X);
-
+            
             base.Update();
         }
 
         private void Advance()
         {
-            //Vector2 margen = new Vector2(movido.X, movido.Y);
-            //if (margen.)
-            //margen.Normalize(); //&& (margen = Vector2.UnitX )
-            if (((movido.X <= speed * direccion.X*-1) && (movido.X >= Vector2.Zero.X) && (direccion == Vector2.UnitX * -1)) || ((movido.X <= spriteIndex.Width) && (movido.X >= (spriteIndex.Width - speed * direccion.X)) && (direccion == Vector2.UnitX))
-                || ((movido.Y <= speed * direccion.Y*-1) && (movido.Y >= Vector2.Zero.Y) && (direccion == Vector2.UnitY * -1)) || ((movido.Y <= spriteIndex.Height) && (movido.Y >= (spriteIndex.Height - speed * direccion.Y)) && (direccion == Vector2.UnitY)))
-                if (!Juego.Instancia().Ambiente.PermitidoAvanzar(bombita))
-                    return;
+            if (direccion.Y == Vector2.Zero.Y)
+            {
+                if ((movido.X <= (direccion.X) / 2) && (movido.X >= Vector2.Zero.X) && (direccion == Vector2.UnitX))
+                {
+                    if (!Juego.Instancia().Ambiente.PermitidoAvanzar(bombita))
+                        return;
+                }
+                if ((movido.X == Vector2.Zero.X) && (direccion == Vector2.UnitX*-1))
+                {
+                    if (!Juego.Instancia().Ambiente.PermitidoAvanzar(bombita))
+                        return;
+                }
+            }
+            else if (direccion.X == Vector2.Zero.X)
+            {
+                if ((movido.Y == Vector2.Zero.Y) && (direccion == Vector2.UnitY * -1)) //(movido.Y >= (direccion.Y) / 2) &&
+                {
+                    if (!Juego.Instancia().Ambiente.PermitidoAvanzar(bombita))
+                        return;
+                }
+            }
 
+            //if (( ( ) ) // || ((movido.X <= spriteIndex.Width) && (movido.X >= (spriteIndex.Width - direccion.X/2)) && (direccion == Vector2.UnitX))
+            //    ||  && (direccion == Vector2.UnitY)) || ((movido.Y <= spriteIndex.Height) && (movido.Y >= (spriteIndex.Height - direccion.Y/2)) && (direccion == Vector2.UnitY)))
+
+            corregirPosicion();
             position += direccion * speed;
             Vector2 deltaPrevio = new Vector2(movido.X,movido.Y);
             movido += direccion * speed;
@@ -197,12 +215,63 @@ namespace BombermanGame
                 Juego.Instancia().Ambiente.ObtenerCasilla(unPto).Dejar(bombita);
             }
 
-            if (Math.Abs(movido.X) > spriteIndex.Width )
+            if (movido.X >= spriteIndex.Width)
             {
                 movido.X = 0;
             }
-            if (Math.Abs(movido.Y) > spriteIndex.Height )
+            if (movido.X < 0)
+            {
+                movido.X = spriteIndex.Width -1;
+            }
+            if (movido.Y >= spriteIndex.Height )
                 movido.Y = 0;
+            if (movido.Y < 0)
+            {
+                movido.Y = spriteIndex.Height - 1;
+            }
+        }
+
+        public void corregirPosicion()
+        {
+            //Punto unPto = new Punto(bombita.Posicion.X, bombita.Posicion.Y + (int)direccion.Y);
+            int dirPrev = bombita.Movimiento.Direccion;
+            if ((movido.X > 0 && movido.X <= (spriteIndex.Width - 1) / 2) )
+            {
+                bombita.Movimiento.Direccion = DERECHA;
+                if (!Juego.Instancia().Ambiente.PermitidoAvanzar(bombita))
+                {
+                    position.X -= movido.X;
+                    movido.X = Vector2.Zero.X;
+                }
+            }
+            if (movido.X < 0 && movido.X > -(spriteIndex.Width - 1) / 2)
+            {
+                bombita.Movimiento.Direccion = IZQUIERDA;
+                if (!Juego.Instancia().Ambiente.PermitidoAvanzar(bombita))
+                {
+                    position.X -= movido.X;
+                    movido.X = Vector2.Zero.X;
+                }
+            }
+            if (movido.Y > 0 && movido.Y <= (spriteIndex.Height - 1) / 2)
+            {
+                bombita.Movimiento.Direccion = ARRIBA;
+                if (!Juego.Instancia().Ambiente.PermitidoAvanzar(bombita))
+                {
+                    position.Y -= movido.Y;
+                    movido.Y = Vector2.Zero.Y;
+                }
+            }
+            if ((movido.Y < 0) && (movido.Y > -(spriteIndex.Height - 1)/2))
+            {
+                bombita.Movimiento.Direccion = ABAJO;
+                if (!Juego.Instancia().Ambiente.PermitidoAvanzar(bombita))
+                {
+                    position.Y -= movido.Y;
+                    movido.Y = Vector2.Zero.Y;
+                }
+            }
+            bombita.Movimiento.Direccion = dirPrev;
         }
 
         public float point_direction(float y, float x)
@@ -227,7 +296,7 @@ namespace BombermanGame
   
             spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), center, scale, SpriteEffects.None, 0);
             spriteBatch.DrawString(Game1.fuente, "En modelo ->Pos X: " + bombita.Posicion.X + " Pos Y: " + bombita.Posicion.Y, new Vector2(10, 10), Color.Yellow);
-            spriteBatch.DrawString(Game1.fuente, "Mvido ->Pos X: " + movido.X + " Pos Y: " + movido.Y, new Vector2(10, Game1.fuente.LineSpacing), Color.Yellow); 
+            spriteBatch.DrawString(Game1.fuente, "Mvido ->Pos X: " + movido.X + " Pos Y: " + movido.Y + " RealPos X: " + position.X + " Pos Y: " + position.Y, new Vector2(10, Game1.fuente.LineSpacing), Color.Yellow); 
         }
     }
 }
