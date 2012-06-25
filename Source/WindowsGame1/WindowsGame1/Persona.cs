@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework.Media;
 using BombermanModel.Personaje;
 using BombermanModel;
 using BombermanModel.Juego;
+using BombermanModel.Mapa.Casilla;
 
 namespace BombermanGame
 {
@@ -127,7 +128,16 @@ namespace BombermanGame
             Vector2 deltaPrevio = new Vector2(movido.X,movido.Y);
             movido += direccion * speed;
 
-         //   if ()
+            //considero que el personaje transita la casilla cuando ingreso un tercio de su cuerpo
+            //cuando pasa 2/3 de su cuerpo pasa a la posicion siguiente (hablando en terminos del modelo)
+            if ((deltaPrevio.X < (spriteIndex.Width / 3)) && (movido.X >= (spriteIndex.Width / 3)) & (movido.X < 2 * (spriteIndex.Width / 3)))
+            { 
+                Punto unPto = new Punto(bombita.Posicion.X+(int)direccion.X,bombita.Posicion.Y + (int)direccion.Y);
+                //Casilla
+                Juego.Instancia().Ambiente.ObtenerCasilla(unPto).Transitar(bombita);
+                
+            }
+
 
             if (movido.X > spriteIndex.Width || movido.X < -spriteIndex.Width)
                 movido.X = 0;

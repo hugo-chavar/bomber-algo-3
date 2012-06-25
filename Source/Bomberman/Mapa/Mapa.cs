@@ -239,6 +239,33 @@ namespace BombermanModel.Mapa
             }
         }
 
+        public bool PermitidoMover(Personaje.IMovible movil)
+        {
+            switch (movil.Movimiento.Direccion)
+            {
+                case ARRIBA:
+                    {
+                        return (PermitidoMoverHaciaArribaA(movil));                        
+                    }
+                case ABAJO:
+                    {
+                        return (PermitidoMoverHaciaAbajoA(movil));
+
+                    }
+                case IZQUIERDA:
+                    {
+                        return (PermitidoMoverHaciaIzquierdaA(movil));
+                    }
+                case DERECHA:
+                    {
+                        return  (PermitidoMoverHaciaDerechaA(movil));
+                    }
+                default:
+                    return false;
+            }
+        }
+
+
         private void MoverHaciaDerechaA(Personaje.IMovible movil)
         {
             Punto posicionDerecha = movil.Posicion.PosicionDerecha();

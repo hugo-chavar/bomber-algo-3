@@ -54,7 +54,7 @@ namespace BombermanModel.Mapa.Casilla
         public void Transitar(IMovible movil)
         {
             this.transitandoEnCasilla.Add(movil);
-            movil.Posicion = this.Posicion;
+            //movil.Posicion = this.Posicion; lo saco.. demasiada responsabilidad para la casilla
             if ((this.ArticuloContenido != null) && (!this.ArticuloContenido.EstaOculto))
             {
                 movil.ReaccionarConArticulo(this.ArticuloContenido);
