@@ -120,6 +120,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BloqueAceroView.cs" />
+    <Compile Include="MapaVista.cs" />
     <Compile Include="ListaVivos.cs" />
     <Compile Include="ObjetoVivo.cs" />
     <Compile Include="Pared.cs" />

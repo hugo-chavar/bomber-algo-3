@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace BombermanGame
 {
-    class ObjetoVivo
+    public class ObjetoVivo
     {
         protected Vector2 position;
         protected Vector2 movido;
