@@ -17,31 +17,24 @@ using BombermanModel.Mapa.Casilla;
 
 namespace BombermanGame
 {
-    class LopezReggaeAladoView : ObjetoVivo
+    class LopezReggaeAladoView : EnemigoView
     {
 
-        private Personaje unLRA = new LosLopezReggaeAlado(new Punto(10,10));
+        //private Personaje LRA = new LosLopezReggaeAlado(new Punto(10,10));
         private Vector2 puntoCentro;
-        private int destinoActual =  0;
-        private List<Point> destinosObjetivo = new List<Point>();
+        //private int destinoActual =  0;
+        //private List<Point> destinosObjetivo = new List<Point>();
 
         public LopezReggaeAladoView(Vector2 pos)
             : base(pos)
         {
-            speed = 4.3f;// unLRA.Movimiento.Velocidad;
+            speed = 4f;// unLRA.Movimiento.Velocidad;
             spriteName = "LRA";
-            
+            unPersonaje = new LosLopezReggaeAlado(new Punto(10, 10));
         }
 
 
-        //public float point_direction(float y, float x)
-        //{
-        //    float res = MathHelper.ToDegrees((float)Math.Atan2(y, x));
-        //    res = (res - 180) % 360;
-        //    if (res < 0)
-        //        res += 360;
-        //    return res;
-        //}
+        /*
         private void CargarObjetivos()
         {
             Random direccionRandom = new Random();
@@ -60,12 +53,12 @@ namespace BombermanGame
             if (destinoActual == destinosObjetivo.Count - 1) destinoActual = 0;
             else destinoActual++;
         }
-
+        */
 
         public override void LoadContent(ContentManager content)
         {
-            position.X = 32*unLRA.Posicion.X + Game1.mapa.Location.X;
-            position.Y = 32*unLRA.Posicion.Y + Game1.mapa.Location.Y;
+            position.X = 32*unPersonaje.Posicion.X + Game1.mapa.Location.X;
+            position.Y = 32*unPersonaje.Posicion.Y + Game1.mapa.Location.Y;
             spriteIndex = content.Load<Texture2D>("Sprites\\" + spriteName);
             area = new Rectangle(0, 0, spriteIndex.Width, spriteIndex.Height);
             puntoCentro = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
@@ -87,21 +80,22 @@ namespace BombermanGame
             if (!vivo) return;
             PushTo(speed, rotation);
             ActualizarPosicion();
-            base.Update();
-        }
 
-        public void ActualizarPosicion()
+            //base.Update();//ACA ESTA TIRANDO QUILOMBO!
+        }
+        /*
+        public override void ActualizarPosicion()
         {
            
             int x = (int)Math.Round((position.X - Game1.mapa.Location.X) / 32,0);
             int y = (int)Math.Round((position.Y - Game1.mapa.Location.Y) / 32, 0);
-            Juego.Instancia().Ambiente.ObtenerCasilla(unLRA.Posicion).Dejar(unLRA);
-            unLRA.Posicion = new Punto(x, y);
-            Juego.Instancia().Ambiente.ObtenerCasilla(unLRA.Posicion).Transitar(unLRA);
+            Juego.Instancia().Ambiente.ObtenerCasilla(unPersonaje.Posicion).Dejar(unPersonaje);
+            unPersonaje.Posicion = new Punto(x, y);
+            Juego.Instancia().Ambiente.ObtenerCasilla(unPersonaje.Posicion).Transitar(unPersonaje);
             if ((destinosObjetivo[destinoActual].X == x) && (destinosObjetivo[destinoActual].Y == y))
                 ProximoDestino();
         }
-
+        */
         public float point_direction(float x, float y, float x2, float y2)
         {
             float diffx = x - x2;
