@@ -22,11 +22,9 @@ namespace BombermanGame
         Juego elJuego = Juego.Instancia();
 
         public static SpriteFont fuente;
+        public static SpriteFont fuente2;
         public static Rectangle mapa;
-        public MapaVista unMapaVista;       //EZE: DESCOMENTAR CUANDO QUIERAN PROBARLO
-
-        //Persona Man = new Persona(new Vector2(200, 200));
-        //Pared muro = new Pared(new Vector2(100, 100));
+        public MapaVista unMapaVista;
 
         public Game1()
         {
@@ -42,12 +40,11 @@ namespace BombermanGame
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
 
             mapa = new Rectangle(100, 75, 32 * elJuego.Ambiente.DimensionHorizontal, 32 * elJuego.Ambiente.DimensionVertical);
             ListaVivos.Initialize();
-            unMapaVista = new MapaVista(elJuego.Ambiente);   //EZE: DESCOMENTAR CUANDO QUIERAN PROBARLO
-            unMapaVista.CargarMapa();                        //EZE: DESCOMENTAR CUANDO QUIERAN PROBARLO
+            unMapaVista = new MapaVista(elJuego.Ambiente);
+            unMapaVista.CargarMapa();
             base.Initialize();
         }
 
@@ -60,13 +57,14 @@ namespace BombermanGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             fuente = Content.Load<SpriteFont>("Fonts\\Segoe14");
+            fuente2 = Content.Load<SpriteFont>("Fonts\\Pericles12");
             foreach (ObjetoVivo o in ListaVivos.objList)
             {
                 o.LoadContent(this.Content);
             }
 
 
-             unMapaVista.LoadContent(this.Content);   //EZE: DESCOMENTAR CUANDO QUIERAN PROBARLO
+             unMapaVista.LoadContent(this.Content);
         }
 
         /// <summary>
