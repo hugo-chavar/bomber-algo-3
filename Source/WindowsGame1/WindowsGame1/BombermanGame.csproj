@@ -124,6 +124,7 @@
     <Compile Include="BloqueAceroView.cs" />
     <Compile Include="BloqueCementoView.cs" />
     <Compile Include="BloqueLadrilloView.cs" />
+    <Compile Include="CecilioView.cs" />
     <Compile Include="LopezReggaeAladoView.cs" />
     <Compile Include="MapaVista.cs" />
     <Compile Include="ListaVivos.cs" />
