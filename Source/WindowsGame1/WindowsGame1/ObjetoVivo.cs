@@ -38,9 +38,11 @@ namespace BombermanGame
 
         public virtual void Update()
         {
+            /*
             if (!vivo) return;
             area.X = (int)position.X - (spriteIndex.Width / 2);
             area.Y = (int)position.Y - (spriteIndex.Height / 2);
+            */
         }
 
         public virtual void LoadContent(ContentManager content)
@@ -50,28 +52,13 @@ namespace BombermanGame
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            if (!vivo) return;
-            //Rectangle size;
-            Vector2 center = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
-            spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), center, scale, SpriteEffects.None, 0);
+            //if (!vivo) return;
+            ////Rectangle size;
+            //Vector2 center = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
+            //spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), center, scale, SpriteEffects.None, 0);
 
 
         }
-
-        //public bool colision(float x, float y)//, ObjetoVivo obj
-        //{
-            
-        //    Rectangle offsetArea = new Rectangle(area.X, area.Y,area.Width,area.Height);
-        //    offsetArea.X += (int)x;
-        //    offsetArea.Y += (int)y;
-        //    foreach (ObjetoVivo o in ListaVivos.objList)
-        //    {
-        //        if (o.solido) //o.GetType() == obj.GetType()&&
-        //            if (o.area.Intersects(offsetArea))
-        //                return true;
-        //    }
-        //    return false;
-        //}
 
     }
 }
