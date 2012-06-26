@@ -704,7 +704,7 @@ namespace TestBombermanModel.TestMapa
             Articulo unArticulo = new Chala();
             destino.ArticuloContenido = unArticulo;
             Personaje unBombita = new Bombita(posOrigen);
-            int velocidad = unBombita.Movimiento.Velocidad;
+            float velocidad = unBombita.Movimiento.Velocidad;
 
             destino.Transitar(unBombita);
 
@@ -754,7 +754,7 @@ namespace TestBombermanModel.TestMapa
             Articulo unArticulo = new Chala();
             destino.ArticuloContenido = unArticulo;
             Personaje unBombita = new Bombita(posOrigen);
-            int velocidad = unBombita.Movimiento.Velocidad;
+            float velocidad = unBombita.Movimiento.Velocidad;
 
             destino.Transitar(unBombita);
 
@@ -804,7 +804,7 @@ namespace TestBombermanModel.TestMapa
             unArticulo.EstaOculto = true;
             destino.ArticuloContenido = unArticulo;
             Personaje unBombita = new Bombita(posOrigen);
-            int velocidad = unBombita.Movimiento.Velocidad;
+            float velocidad = unBombita.Movimiento.Velocidad;
 
             destino.Transitar(unBombita);
 
@@ -856,7 +856,7 @@ namespace TestBombermanModel.TestMapa
             Articulo unArticulo = new Chala();
             destino.ArticuloContenido = unArticulo;
             Personaje unEnemigo = new Cecilio(posOrigen);
-            int velocidad = unEnemigo.Movimiento.Velocidad;
+            float velocidad = unEnemigo.Movimiento.Velocidad;
 
             destino.Transitar(unEnemigo);
 
@@ -906,7 +906,7 @@ namespace TestBombermanModel.TestMapa
             Articulo unArticulo = new Chala();
             destino.ArticuloContenido = unArticulo;
             Personaje unEnemigo = new LosLopezReggae(posOrigen);
-            int velocidad = unEnemigo.Movimiento.Velocidad;
+            float velocidad = unEnemigo.Movimiento.Velocidad;
 
             destino.Transitar(unEnemigo);
 
@@ -956,7 +956,7 @@ namespace TestBombermanModel.TestMapa
             Articulo unArticulo = new Chala();
             destino.ArticuloContenido = unArticulo;
             Personaje unEnemigo = new LosLopezReggaeAlado(posOrigen);
-            int velocidad = unEnemigo.Movimiento.Velocidad;
+            float velocidad = unEnemigo.Movimiento.Velocidad;
 
             destino.Transitar(unEnemigo);
 

@@ -323,7 +323,7 @@ namespace TestBombermanModel.TestJuego
 
             //Muevo a bombita para dejarlo cerca de un Bloque y explotarlo.
             this.unJuego.Ambiente.AgregarPersonaje(unBombita);
-            int velocidad = unBombita.Movimiento.Velocidad;
+            float velocidad = unBombita.Movimiento.Velocidad;
 
             unBombita.Movimiento.CambiarAArriba();
             unBombita.Mover();//fue a 0,1
@@ -388,7 +388,7 @@ namespace TestBombermanModel.TestJuego
 
             //Muevo a bombita para dejarlo cerca de un Bloque y explotarlo.
             this.unJuego.Ambiente.AgregarPersonaje(unBombita);
-            int velocidad = unBombita.Movimiento.Velocidad;
+            float velocidad = unBombita.Movimiento.Velocidad;
 
             unBombita.Movimiento.CambiarAIzquierda();
             

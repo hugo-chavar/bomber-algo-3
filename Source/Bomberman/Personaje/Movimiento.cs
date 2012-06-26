@@ -8,8 +8,8 @@ namespace BombermanModel.Personaje
     public class Movimiento
     {
         private int direccion;
-        private int velocidad;
-        private const int VELOCIDADINICIAL = 1;
+        private float velocidad;
+        private const float VELOCIDADINICIAL = 1;
 
         public Movimiento()
         {
@@ -20,7 +20,7 @@ namespace BombermanModel.Personaje
             this.Velocidad = VELOCIDADINICIAL;
         }
 
-        public int Velocidad
+        public float Velocidad
         {
             set { this.velocidad = value; }
             get { return this.velocidad; }

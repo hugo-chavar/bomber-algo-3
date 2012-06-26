@@ -138,7 +138,7 @@ namespace BombermanModel.Mapa
             }
             else
             {
-                throw new NoExisteCasillaException();
+               throw new NoExisteCasillaException();
             }
             return unaCasilla;
         }
