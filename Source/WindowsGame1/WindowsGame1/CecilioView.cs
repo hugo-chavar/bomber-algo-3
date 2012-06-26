@@ -280,14 +280,18 @@ namespace BombermanGame
                 res += 360;
             return res;
         }
-
+        
         public void ActualizarPosicion()
         {
             int x = ((int)Math.Round(position.X, 0) - Game1.mapa.Location.X) / 32;
             int y = ((int)Math.Round(position.Y, 0) - Game1.mapa.Location.Y) / 32;
+            
+            /*
             Juego.Instancia().Ambiente.ObtenerCasilla(unCecilio.Posicion).Dejar(unCecilio);
             unCecilio.Posicion = new Punto(x, y);
             Juego.Instancia().Ambiente.ObtenerCasilla(unCecilio.Posicion).Transitar(unCecilio);
+             */
+
             if ((destinosObjetivo[destinoActual].X == x) && (destinosObjetivo[destinoActual].Y == y))
                 ProximoDestino();
         }
