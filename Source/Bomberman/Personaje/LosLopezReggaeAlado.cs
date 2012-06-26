@@ -15,6 +15,7 @@ namespace BombermanModel.Personaje
         {
             this.Lanzador = new LanzadorMolotov();
             this.UnidadesDeResistencia = VIDALOSLOPEZREGGAEALADO;
+            this.Movimiento.Velocidad = 1;
         }
 
         public override bool AtraviesaObstaculos()

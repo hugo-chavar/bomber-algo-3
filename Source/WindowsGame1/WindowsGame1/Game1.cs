@@ -44,7 +44,7 @@ namespace BombermanGame
         {
             // TODO: Add your initialization logic here
 
-            mapa = new Rectangle(50, 100, 32 * elJuego.Ambiente.DimensionHorizontal, 32 * elJuego.Ambiente.DimensionVertical);
+            mapa = new Rectangle(100, 75, 32 * elJuego.Ambiente.DimensionHorizontal, 32 * elJuego.Ambiente.DimensionVertical);
             ListaVivos.Initialize();
             unMapaVista = new MapaVista(elJuego.Ambiente);   //EZE: DESCOMENTAR CUANDO QUIERAN PROBARLO
             unMapaVista.CargarMapa();                        //EZE: DESCOMENTAR CUANDO QUIERAN PROBARLO
