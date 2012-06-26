@@ -33,7 +33,7 @@ namespace BombermanGame
         public CecilioView(Vector2 pos)
             : base(pos)
         {
-            speed = unCecilio.Movimiento.Velocidad;
+            speed = 1;//unCecilio.Movimiento.Velocidad; 0.3f
             spriteName = "Cecilio";
             versores.Add(new Vector2(0, -1));
             versores.Add(new Vector2(-1, 0));
@@ -89,48 +89,118 @@ namespace BombermanGame
 
 
             spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), puntoCentro, scale, SpriteEffects.None, 0);
-            //spriteBatch.DrawString(Game1.fuente, "En modelo ->Pos X: " + unLRA.Posicion.X + " Pos Y: " + unLRA.Posicion.Y, new Vector2(10, 10), Color.Yellow);
+            spriteBatch.DrawString(Game1.fuente, "En modelo ->Pos X: " + unCecilio.Posicion.X + " Pos Y: " + unCecilio.Posicion.Y, new Vector2(10, 10), Color.Yellow);
+            spriteBatch.DrawString(Game1.fuente, "Mvido ->Pos X: " + movido.X + " Pos Y: " + movido.Y + " RealPos X: " + position.X + " Pos Y: " + position.Y, new Vector2(10, Game1.fuente.LineSpacing), Color.Yellow); 
         }
 
         public override void Update()
         {
-            rotation = point_direction(-direccion.Y, -direccion.X);
-            if (Juego.Instancia().Ambiente.PermitidoAvanzar(unCecilio))
+            //si el chabon no esta vivo.. no hago nada
+            if (!vivo) return;
+            int validas;
+            //si tengo mas de 2 opciones como direcciones posibles recalculo al azar
+            //if (validas > 2)
+              //  recalcularDireccion();
+            //si estoy parado en el centro de alguna casilla y no puedo avanzar busco una direccion aleatoria
+            //else 
+            if (((movido.X == Vector2.Zero.X) || (movido.X == spriteIndex.Width - 1)) && ((movido.Y == Vector2.Zero.Y) || (movido.Y == spriteIndex.Height - 1)))
             {
-                Advance();
-            }
-            else
-            {
-                while (!Juego.Instancia().Ambiente.PermitidoAvanzar(unCecilio))
+                if (!Juego.Instancia().Ambiente.PermitidoAvanzar(unCecilio))
+                    recalcularDireccion();
+                else
                 {
-                    Random random = new Random();
-                    int calculadorDirecciones = random.Next(0, 4);
-                    direccion = versores.ElementAt(calculadorDirecciones);
-                    switch ((calculadorDirecciones + 1) * 2)
-                    {
-                        case ABAJO: unCecilio.Movimiento.CambiarAAbajo();
-                                    break;
-
-                        case IZQUIERDA: unCecilio.Movimiento.CambiarAIzquierda();
-                                        break;
-
-                        case DERECHA: unCecilio.Movimiento.CambiarADerecha();
-                                      break;
-
-                        case ARRIBA: unCecilio.Movimiento.CambiarAArriba();
-                                     break;
-                    }
+                    validas  = TestDireccionesValidas();
+                    if (validas == 4)
+                        recalcularDireccion();
                 }
-                Advance();
             }
+            rotation = point_direction(-direccion.Y, -direccion.X);
+            Advance();
+
+            //if (Juego.Instancia().Ambiente.PermitidoAvanzar(unCecilio))
+            //{
+            //    Advance();
+            //}
+            //else
+            //{
+            //    while (!Juego.Instancia().Ambiente.PermitidoAvanzar(unCecilio))
+            //    {
+            //        Random random = new Random();
+            //        int calculadorDirecciones = random.Next(0, 4);
+            //        direccion = versores.ElementAt(calculadorDirecciones);
+            //        switch ((calculadorDirecciones + 1) * 2)
+            //        {
+            //            case ABAJO: unCecilio.Movimiento.CambiarAAbajo();
+            //                        break;
+
+            //            case IZQUIERDA: unCecilio.Movimiento.CambiarAIzquierda();
+            //                            break;
+
+            //            case DERECHA: unCecilio.Movimiento.CambiarADerecha();
+            //                          break;
+
+            //            case ARRIBA: unCecilio.Movimiento.CambiarAArriba();
+            //                         break;
+            //        }
+            //    }
+            //    Advance();
+            //}
             
 
-            if (!vivo) return;
 
             //Advance();
 
-            ActualizarPosicion();
+            //ActualizarPosicion();
             base.Update();
+        }
+
+        public int TestDireccionesValidas()
+        {
+            int dirPrev = unCecilio.Movimiento.Direccion;
+            int cant = 0;
+            unCecilio.Movimiento.Direccion = ARRIBA;
+            if (Juego.Instancia().Ambiente.PermitidoAvanzar(unCecilio))
+            {
+                cant++;
+            }
+            unCecilio.Movimiento.Direccion = ABAJO;
+            if (Juego.Instancia().Ambiente.PermitidoAvanzar(unCecilio))
+            {
+                cant++;
+            }
+            unCecilio.Movimiento.Direccion = IZQUIERDA;
+            if (Juego.Instancia().Ambiente.PermitidoAvanzar(unCecilio))
+            {
+                cant++;
+            }
+            unCecilio.Movimiento.Direccion = DERECHA;
+            if (Juego.Instancia().Ambiente.PermitidoAvanzar(unCecilio))
+            {
+                cant++;
+            }
+            unCecilio.Movimiento.Direccion = dirPrev;
+            return cant;
+        }
+
+        public void recalcularDireccion()
+        {
+            Random random = new Random();
+            int calculadorDirecciones = random.Next(0, 4);
+            direccion = versores.ElementAt(calculadorDirecciones);
+            switch ((calculadorDirecciones + 1) * 2)
+            {
+                case ABAJO: unCecilio.Movimiento.CambiarAAbajo();
+                    break;
+
+                case IZQUIERDA: unCecilio.Movimiento.CambiarAIzquierda();
+                    break;
+
+                case DERECHA: unCecilio.Movimiento.CambiarADerecha();
+                    break;
+
+                case ARRIBA: unCecilio.Movimiento.CambiarAArriba();
+                    break;
+            }
         }
 
         private void Advance()
@@ -151,8 +221,9 @@ namespace BombermanGame
                         return;
                 }
             }
-
+            System.Threading.Thread.Sleep(5); //TODO: solo para debbug
             corregirPosicion();
+            System.Threading.Thread.Sleep(5);//TODO: solo para debbug
             position += direccion * speed;
             Vector2 deltaPrevio = new Vector2(movido.X, movido.Y);
             movido += direccion * speed;

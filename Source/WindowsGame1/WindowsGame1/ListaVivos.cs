@@ -20,7 +20,7 @@ namespace BombermanGame
         {
             //objList.Add(new Pared(new Vector2(100, 100)));
             objList.Add(new Persona(new Vector2(200, 200)));
-            objList.Add(new LopezReggaeAladoView(new Vector2(200, 200)));
+            //objList.Add(new LopezReggaeAladoView(new Vector2(200, 200)));
             objList.Add(new CecilioView(new Vector2(356, 300)));
         }
     }
