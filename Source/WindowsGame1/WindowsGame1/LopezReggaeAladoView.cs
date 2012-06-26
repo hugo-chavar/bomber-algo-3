@@ -28,7 +28,7 @@ namespace BombermanGame
         public LopezReggaeAladoView(Vector2 pos)
             : base(pos)
         {
-            speed = 0.3f;// unLRA.Movimiento.Velocidad;
+            speed = 4.3f;// unLRA.Movimiento.Velocidad;
             spriteName = "LRA";
             
         }
@@ -92,8 +92,9 @@ namespace BombermanGame
 
         public void ActualizarPosicion()
         {
-            int x = ((int)Math.Round(position.X,0) - Game1.mapa.Location.X) / 32;
-            int y = ((int)Math.Round(position.Y, 0) - Game1.mapa.Location.Y) / 32;
+           
+            int x = (int)Math.Round((position.X - Game1.mapa.Location.X) / 32,0);
+            int y = (int)Math.Round((position.Y - Game1.mapa.Location.Y) / 32, 0);
             Juego.Instancia().Ambiente.ObtenerCasilla(unLRA.Posicion).Dejar(unLRA);
             unLRA.Posicion = new Punto(x, y);
             Juego.Instancia().Ambiente.ObtenerCasilla(unLRA.Posicion).Transitar(unLRA);
