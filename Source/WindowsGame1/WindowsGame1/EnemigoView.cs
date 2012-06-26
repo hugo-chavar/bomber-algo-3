@@ -131,8 +131,8 @@ namespace BombermanGame
         // En Enemigo!
         public virtual void ActualizarPosicion()
         {
-            int x = ((int)Math.Round(position.X, 0) - Game1.mapa.Location.X) / 32;
-            int y = ((int)Math.Round(position.Y, 0) - Game1.mapa.Location.Y) / 32;
+            int x = (int)Math.Round((position.X - Game1.mapa.Location.X) / 32,0);
+            int y = (int)Math.Round((position.Y - Game1.mapa.Location.Y) / 32, 0);
 
             if ((destinosObjetivo[destinoActual].X == x) && (destinosObjetivo[destinoActual].Y == y))
                 ProximoDestino();
