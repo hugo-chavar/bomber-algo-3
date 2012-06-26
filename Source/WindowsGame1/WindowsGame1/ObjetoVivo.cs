@@ -58,20 +58,20 @@ namespace BombermanGame
 
         }
 
-        public bool colision(float x, float y)//, ObjetoVivo obj
-        {
+        //public bool colision(float x, float y)//, ObjetoVivo obj
+        //{
             
-            Rectangle offsetArea = new Rectangle(area.X, area.Y,area.Width,area.Height);
-            offsetArea.X += (int)x;
-            offsetArea.Y += (int)y;
-            foreach (ObjetoVivo o in ListaVivos.objList)
-            {
-                if (o.solido) //o.GetType() == obj.GetType()&&
-                    if (o.area.Intersects(offsetArea))
-                        return true;
-            }
-            return false;
-        }
+        //    Rectangle offsetArea = new Rectangle(area.X, area.Y,area.Width,area.Height);
+        //    offsetArea.X += (int)x;
+        //    offsetArea.Y += (int)y;
+        //    foreach (ObjetoVivo o in ListaVivos.objList)
+        //    {
+        //        if (o.solido) //o.GetType() == obj.GetType()&&
+        //            if (o.area.Intersects(offsetArea))
+        //                return true;
+        //    }
+        //    return false;
+        //}
 
     }
 }
