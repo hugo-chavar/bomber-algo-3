@@ -15,12 +15,7 @@ namespace BombermanModel.Personaje
         protected Lanzador lanzador;
         protected int unidadesDeResistencia;
 
-        private const int VELOCIDADMAX = 4;
-
-        //xna
-        public void Initialize()
-        {
-        }
+        private const float VELOCIDADMAX = 4;
 
         public Personaje(Punto unPunto)
         {
