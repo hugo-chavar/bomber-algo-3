@@ -39,7 +39,7 @@ namespace BombermanGame
         public override void Update()
         {
             keyboard = Keyboard.GetState();
-            speed = protagonista.Movimiento.Velocidad;
+            speed = protagonista.Movimiento.Velocidad + 0.8f;
             if (keyboard.IsKeyDown(Keys.W))
             {
                 if (direccion == Vector2.UnitY*-1) //pregunto si ya esta mirando en el sentido que aprete la tecla
@@ -136,12 +136,7 @@ namespace BombermanGame
         {
             if (direccion.Y == Vector2.Zero.Y)
             {
-                //if ((movido.X <= (direccion.X) / 2) && (movido.X >= Vector2.Zero.X) && (direccion == Vector2.UnitX))
-                //{
-                //    if (!Juego.Instancia().Ambiente.PermitidoAvanzar(protagonista))
-                //        return;
-                //}
-                if ((movido.X == Vector2.Zero.X) ) //&& (direccion == Vector2.UnitX*-1)
+                if ((movido.X == Vector2.Zero.X) || (movido.X == spriteIndex.Width - 1))
                 {
                     if (!Juego.Instancia().Ambiente.PermitidoAvanzar(protagonista))
                         return;
@@ -149,18 +144,18 @@ namespace BombermanGame
             }
             else if (direccion.X == Vector2.Zero.X)
             {
-                if ((movido.Y == Vector2.Zero.Y)) //&& (direccion == Vector2.UnitY * -1)
+                if ((movido.Y == Vector2.Zero.Y)|| (movido.Y == spriteIndex.Height - 1)) //&& (direccion == Vector2.UnitY * -1)
                 {
                     if (!Juego.Instancia().Ambiente.PermitidoAvanzar(protagonista))
                         return;
                 }
-
             }
 
             corregirPosicion();
             position += direccion * speed;
             Vector2 deltaPrevio = new Vector2(movido.X,movido.Y);
             movido += direccion * speed;
+            
 
             //considero que el personaje transita la casilla cuando ingreso un tercio de su cuerpo
             //cuando pasa 2/3 de su cuerpo pasa a la posicion siguiente (hablando en terminos del modelo)
@@ -237,7 +232,7 @@ namespace BombermanGame
         public void corregirPosicion()
         {
             int dirPrev = protagonista.Movimiento.Direccion;
-            if ((movido.X > 0) && movido.X <= (spriteIndex.Width - 1) / 2) 
+            if ((movido.X > 0) && movido.X <= (spriteIndex.Width - speed) / 2) 
             {
                 protagonista.Movimiento.Direccion = DERECHA;
                 if (!Juego.Instancia().Ambiente.PermitidoAvanzar(protagonista))
@@ -246,7 +241,7 @@ namespace BombermanGame
                     movido.X = Vector2.Zero.X;
                 }
             }
-            if ((movido.X < spriteIndex.Width) && (movido.X > (spriteIndex.Width - 1) / 2))
+            if ((movido.X < spriteIndex.Width) && (movido.X > (spriteIndex.Width - speed) / 2))
             {
                 protagonista.Movimiento.Direccion = IZQUIERDA;
                 if (!Juego.Instancia().Ambiente.PermitidoAvanzar(protagonista))
@@ -255,7 +250,7 @@ namespace BombermanGame
                     movido.X = Vector2.Zero.X;
                 }
             }
-            if (movido.Y > 0 && movido.Y <= (spriteIndex.Height - 1) / 2)
+            if (movido.Y > 0 && movido.Y <= (spriteIndex.Height - speed) / 2)
             {
                 protagonista.Movimiento.Direccion = ARRIBA;
                 if (!Juego.Instancia().Ambiente.PermitidoAvanzar(protagonista))
@@ -264,7 +259,7 @@ namespace BombermanGame
                     movido.Y = Vector2.Zero.Y;
                 }
             }
-            if ((movido.Y < spriteIndex.Height) && (movido.Y > (spriteIndex.Height - 1) / 2))
+            if ((movido.Y < spriteIndex.Height) && (movido.Y > (spriteIndex.Height - speed) / 2))
             {
                 protagonista.Movimiento.Direccion = ABAJO;
                 if (!Juego.Instancia().Ambiente.PermitidoAvanzar(protagonista))
