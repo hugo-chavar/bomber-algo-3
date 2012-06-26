@@ -131,7 +131,7 @@
     <Compile Include="ObjetoVivo.cs" />
     <Compile Include="Pared.cs" />
     <Compile Include="PasilloView.cs" />
-    <Compile Include="Persona.cs" />
+    <Compile Include="BombitaView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />

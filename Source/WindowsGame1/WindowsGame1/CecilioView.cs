@@ -110,7 +110,7 @@ namespace BombermanGame
                 else
                 {
                     validas  = TestDireccionesValidas();
-                    if (validas == 4)
+                    if (validas > 2) // Si tiene 3 o 4 opciones de movimiento, recalcula su direccion.
                         recalcularDireccion();
                 }
             }
