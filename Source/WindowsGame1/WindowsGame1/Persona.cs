@@ -44,14 +44,14 @@ namespace BombermanGame
             {
                 if (direccion == Vector2.UnitY*-1) //pregunto si ya esta mirando en el sentido que aprete la tecla
                 {
-                    if (!colision(0, -speed)) //si no choca avanza normalmente
+                    //if (!colision(0, -speed)) //si no choca avanza normalmente
                         Advance();
-                    else
-                    {
-                        //si hay colision lo hago rebotar un paso
-                        position -= direccion * speed;
-                        movido -= direccion * speed;
-                    }
+                    //else
+                    //{
+                    //    //si hay colision lo hago rebotar un paso
+                    //    position -= direccion * speed;
+                    //    movido -= direccion * speed;
+                    //}
                 }
                 else
                 {
@@ -63,14 +63,14 @@ namespace BombermanGame
             {
                 if (direccion == Vector2.UnitX * -1)
                 {
-                    if (!colision(-speed, 0))
+                    //if (!colision(-speed, 0))
                         Advance();
-                    else
-                    {
-                        //si hay colision lo hago rebotar un paso
-                        position -= direccion * speed;
-                        movido -= direccion * speed;
-                    }
+                    //else
+                    //{
+                    //    //si hay colision lo hago rebotar un paso
+                    //    position -= direccion * speed;
+                    //    movido -= direccion * speed;
+                    //}
                 }
                 else
                 {
@@ -82,14 +82,14 @@ namespace BombermanGame
             {
                 if (direccion == Vector2.UnitX )
                 {
-                    if (!colision(speed, 0))
+                    //if (!colision(speed, 0))
                         Advance();
-                    else
-                    {
-                        //si hay colision lo hago rebotar un paso
-                        position -= direccion * speed;
-                        movido.X = spriteIndex.Width - 1;//direccion * speed;
-                    }
+                    //else
+                    //{
+                    //    //si hay colision lo hago rebotar un paso
+                    //    position -= direccion * speed;
+                    //    movido.X = spriteIndex.Width - 1;//direccion * speed;
+                    //}
                 }
                 else
                 {
@@ -101,14 +101,14 @@ namespace BombermanGame
             {
                 if (direccion == Vector2.UnitY)
                 {
-                    if (!colision(0, speed))
+                    //if (!colision(0, speed))
                         Advance();
-                    else
-                    {
-                        //si hay colision lo hago rebotar un paso
-                        position -= direccion * speed;
-                        movido.Y = spriteIndex.Width - 1;//direccion * speed;
-                    }
+                    //else
+                    //{
+                    //    //si hay colision lo hago rebotar un paso
+                    //    position -= direccion * speed;
+                    //    movido.Y = spriteIndex.Width - 1;//direccion * speed;
+                    //}
                 }
                 else
                 {

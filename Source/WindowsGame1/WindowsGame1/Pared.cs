@@ -45,7 +45,7 @@ namespace BombermanGame
             Vector2 center = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
 
             spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), center, scale, SpriteEffects.None, 0);
-            spriteBatch.DrawString(Game1.fuente, "Unid Resistencia bloque : " + ladri.UnidadesDeResistencia, new Vector2(10, 300), Color.Silver);
+           // spriteBatch.DrawString(Game1.fuente, "Unid Resistencia bloque : " + ladri.UnidadesDeResistencia, new Vector2(10, 300), Color.Silver);
 
         }
     }
