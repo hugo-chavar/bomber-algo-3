@@ -17,7 +17,7 @@ using BombermanModel.Mapa.Casilla;
 
 namespace BombermanGame
 {
-    class Persona : ObjetoVivo
+    class BombitaView : ObjetoVivo
     {
         KeyboardState keyboard;
         private Vector2 direccion;
@@ -28,7 +28,7 @@ namespace BombermanGame
         public const int DERECHA = 6;
         
 
-        public Persona(Vector2 pos)
+        public BombitaView(Vector2 pos)
             : base(pos)
         {
             speed = protagonista.Movimiento.Velocidad;
