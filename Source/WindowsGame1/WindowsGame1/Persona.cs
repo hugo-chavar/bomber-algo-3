@@ -32,7 +32,7 @@ namespace BombermanGame
             : base(pos)
         {
             speed = protagonista.Movimiento.Velocidad;
-            spriteName = "Cecilio";
+            spriteName = "Bombita";
             protagonista.Posicion.X = 3;
         }
 
