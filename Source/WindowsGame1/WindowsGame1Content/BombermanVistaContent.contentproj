@@ -163,13 +163,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sprites\LopezReggae.PNG">
-      <Name>LopezReggae</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Sprites\ObsPasillo.png">
       <Name>ObsPasillo</Name>
       <Importer>TextureImporter</Importer>
@@ -184,15 +177,22 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sprites\LRAlado.png">
-      <Name>LRAlado</Name>
+    <Compile Include="Sprites\empty.png">
+      <Name>empty</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sprites\empty.png">
-      <Name>empty</Name>
+    <Compile Include="Sprites\LopezReggae.png">
+      <Name>LopezReggae</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sprites\LRA.png">
+      <Name>LRA</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
