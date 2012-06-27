@@ -10,6 +10,7 @@ syntax: glob
 *.dll
 *.pfx
 Source/Bomberman/bin/**
+Build/**
 Source/TestBomberman/bin/**
 TestXNA/Personaje/Personaje/Personaje/bin/**
 TestXNA/Personaje/Personaje/Personaje/obj/**
