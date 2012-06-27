@@ -33,7 +33,7 @@ namespace BombermanGame
             {
                 position.X = 96 + Game1.mapa.Location.X;
                 position.Y = Game1.mapa.Location.Y;
-                //spriteIndex = content.Load<Texture2D>("Sprites\\" + spriteName);
+                spriteIndex = content.Load<Texture2D>("Sprites\\" + spriteName);
                 area = new Rectangle(0, 0, spriteIndex.Width, spriteIndex.Height);
                 //area.X = (int)position.X - (spriteIndex.Width / 2);
                 //area.Y = (int)position.Y - (spriteIndex.Height / 2);
@@ -52,13 +52,7 @@ namespace BombermanGame
                 if (explosivo.EstaExplotado())
                 {
                     vivo = false;
-
-
-                    //PasilloView unPasillo = new PasilloView(position);
-                    MapaVista.EliminarDibujable(this);
-                    //MapaVista.AgregarDibujable(unPasillo);
                 }
-            
             }
         }
 }

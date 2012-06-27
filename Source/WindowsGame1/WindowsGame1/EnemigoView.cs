@@ -22,7 +22,7 @@ namespace BombermanGame
         protected int destinoActual = 0;
         protected List<Point> destinosObjetivo = new List<Point>();
         protected List<Vector2> versores = new List<Vector2>();
-        
+
 
         public EnemigoView(Vector2 pos)
             : base(pos) 
@@ -73,17 +73,7 @@ namespace BombermanGame
             }
             rotation = point_direction(-direccion.Y, -direccion.X);
             Advance();
-            /*
-            Random rand = new Random();
-            int lanzar = rand.Next(0,5);
 
-            if ((lanzar==0) && (UnPersonaje.GetType() == typeof(LosLopezReggae)))
-            {
-                UnPersonaje.LanzarExplosivo();
-                Explosivo bomba = (Explosivo)Juego.Instancia().UltimoObjContundenteLanzado();
-                MapaVista.AgregarDibujable(new ProyectilView(position, bomba));
-            }
-            */
             base.Update();
         }
 

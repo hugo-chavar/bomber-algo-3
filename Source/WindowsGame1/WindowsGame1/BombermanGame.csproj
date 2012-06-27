@@ -127,7 +127,6 @@
     <Compile Include="CecilioView.cs" />
     <Compile Include="EnemigoView.cs" />
     <Compile Include="LopezReggaeAladoView.cs" />
-    <Compile Include="LopezReggaeView.cs" />
     <Compile Include="MapaVista.cs" />
     <Compile Include="ListaVivos.cs" />
     <Compile Include="ObjetoVivo.cs" />
@@ -138,7 +137,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="ProyectilView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
