@@ -18,5 +18,9 @@ namespace BombermanModel
         bLadrillo,
         bCemento,
         pasillo,
+        lopezReggae,
+        lopezReggaeAlado,
+        cecilio,
+        bombita,
     }
 }

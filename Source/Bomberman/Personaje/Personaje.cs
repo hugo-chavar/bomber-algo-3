@@ -14,6 +14,7 @@ namespace BombermanModel.Personaje
         protected Punto posicion;
         protected Lanzador lanzador;
         protected int unidadesDeResistencia;
+        private Nombres nombre;
 
         private const float VELOCIDADMAX = 4;
 
@@ -47,6 +48,11 @@ namespace BombermanModel.Personaje
             set { this.posicion = value; }
         }
 
+        public Nombres Nombre
+        {
+            get { return this.nombre;}
+            set { this.nombre = value;}
+        }
         public Explosivo LanzarExplosivo()
         {
             Explosivo bomba = null;
