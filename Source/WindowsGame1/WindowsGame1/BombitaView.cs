@@ -41,7 +41,7 @@ namespace BombermanGame
         public override void Update()
         {
             keyboard = Keyboard.GetState();
-            speed = unPersonaje.Movimiento.Velocidad + 0.8f;
+            speed = 2; //TODO: unPersonaje.Movimiento.Velocidad -
             if (keyboard.IsKeyDown(Keys.W))
             {
                 if (direccion == Vector2.UnitY*-1) //pregunto si ya esta mirando en el sentido que aprete la tecla
@@ -296,7 +296,7 @@ namespace BombermanGame
   
             spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), center, scale, SpriteEffects.None, 0);
             spriteBatch.DrawString(Game1.fuente, "En modelo ->Pos X: " + unPersonaje.Posicion.X + " Pos Y: " + unPersonaje.Posicion.Y, new Vector2(10, 10), Color.Yellow);
-            spriteBatch.DrawString(Game1.fuente, "Mvido ->Pos X: " + movido.X + " Pos Y: " + movido.Y + " RealPos X: " + position.X + " Pos Y: " + position.Y, new Vector2(10, Game1.fuente.LineSpacing), Color.Yellow); 
+            spriteBatch.DrawString(Game1.fuente, "Mvido ->Pos X: " + Math.Round(movido.X, 1) + " Pos Y: " + Math.Round(movido.Y, 1) + " RealPos X: " + Math.Round(position.X,1) + " Pos Y: " + Math.Round(position.Y,1), new Vector2(10, Game1.fuente.LineSpacing), Color.Yellow); 
         }
     }
 }
