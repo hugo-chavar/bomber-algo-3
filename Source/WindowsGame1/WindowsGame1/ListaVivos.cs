@@ -22,6 +22,7 @@ namespace BombermanGame
             objList.Add(new BombitaView(new Vector2(200, 200)));
            // objList.Add(new LopezReggaeAladoView(new Vector2(200, 200)));
            // objList.Add(new CecilioView(new Vector2(356, 300)));
+            objList.Add(new LopezReggaeView(new Vector2(356, 300)));
         }
     }
 }
