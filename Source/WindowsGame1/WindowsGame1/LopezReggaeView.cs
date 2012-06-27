@@ -43,7 +43,7 @@ namespace BombermanGame
             //spriteBatch.DrawString(Game1.fuente, "Mvido ->Pos X: " + movido.X + " Pos Y: " + movido.Y + " RealPos X: " + position.X + " Pos Y: " + position.Y, new Vector2(10, Game1.fuente.LineSpacing), Color.Yellow);
         }
 
-        public void Disparar()
+        public override void Disparar()
         {
             Proyectil bomba = (Proyectil)unPersonaje.LanzarExplosivo();
             //if (bomba != null)
@@ -53,7 +53,7 @@ namespace BombermanGame
                 //ProyectilView p = new ProyectilView();
                 foreach (ObjetoVivo o in ListaVivos.objList)
                 {
-                    if ((o.GetType() == typeof (ProyectilView) && (!o.Vivo)))
+                    if ((o.GetType() == typeof (ProyectilView)) && (!o.Vivo))
                     {
                         o.Rotacion = rotation;
                         o.Posicion = position;

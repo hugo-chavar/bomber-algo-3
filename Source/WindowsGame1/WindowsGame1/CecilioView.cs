@@ -44,6 +44,17 @@ namespace BombermanGame
             //spriteBatch.DrawString(Game1.fuente, "Mvido ->Pos X: " + movido.X + " Pos Y: " + movido.Y + " RealPos X: " + position.X + " Pos Y: " + position.Y, new Vector2(10, Game1.fuente.LineSpacing), Color.Yellow); 
         }
 
+        public override void Update()
+        {
+            //si el chabon no esta vivo.. no hago nada
+            if (!vivo) return;
+            Random random = new Random();
+            int vaADisparar = random.Next(0, 1000); // tiene un 2% de posibilidades de disparar
+            if ((vaADisparar == 0))
+                Disparar();
 
+            base.Update();
+        }
+      
     }
 }

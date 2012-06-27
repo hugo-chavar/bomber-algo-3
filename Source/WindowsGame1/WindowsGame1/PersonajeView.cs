@@ -37,8 +37,15 @@ namespace BombermanGame
 
         public Vector2 Direccion { get { return this.direccion; } set { this.direccion = value; } }
 
-        public Personaje UnPersonaje { set { this.unPersonaje = value;} } 
-        
+        public Personaje UnPersonaje { set { this.unPersonaje = value;} }
+
+        public virtual void Disparar()
+        {
+            Explosivo bomba = unPersonaje.LanzarExplosivo();
+            if (bomba != null)
+                MapaVista.AgregarDibujable(new Bomb(position, bomba));
+        }
+
         protected virtual void Advance()
         {
             if (direccion.Y == Vector2.Zero.Y)

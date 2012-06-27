@@ -88,8 +88,7 @@ namespace BombermanGame
             {
                 if (unPersonaje.LanzarExplosivo() != null)
                 {
-                    Explosivo bomba = Juego.Instancia().Ambiente.ObtenerCasilla(unPersonaje.Posicion).Explosivo;
-                    MapaVista.AgregarDibujable(new Bomb(position, bomba));
+                    this.Disparar();
                 }
 
             }
@@ -110,5 +109,6 @@ namespace BombermanGame
             spriteBatch.DrawString(Game1.fuente, "En modelo ->Pos X: " + unPersonaje.Posicion.X + " Pos Y: " + unPersonaje.Posicion.Y, new Vector2(10, 10), Color.Yellow);
             spriteBatch.DrawString(Game1.fuente, "Mvido ->Pos X: " + Math.Round(movido.X, 1) + " Pos Y: " + Math.Round(movido.Y, 1) + " RealPos X: " + Math.Round(position.X,1) + " Pos Y: " + Math.Round(position.Y,1), new Vector2(10, Game1.fuente.LineSpacing), Color.Yellow); 
         }
+
     }
 }
