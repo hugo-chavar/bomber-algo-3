@@ -26,9 +26,10 @@ namespace BombermanModel.Arma
             this.carga = unProyectil;
         }
 
-        public override void Disparar()
+        public override Explosivo Disparar()
         {
             Juego.Juego.Instancia().ObjetoContundenteLanzado(this.carga);
+            return (Proyectil)this.carga;
         }
     }
 }

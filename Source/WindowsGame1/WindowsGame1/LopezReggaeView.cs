@@ -45,11 +45,11 @@ namespace BombermanGame
 
         public void Disparar()
         {
-
-            if (unPersonaje.LanzarExplosivo())
+            Proyectil bomba = (Proyectil)unPersonaje.LanzarExplosivo();
+            //if (bomba != null)
             {
 
-                Proyectil proyectil = (Proyectil)Juego.Instancia().Ambiente.ObtenerCasilla(unPersonaje.Posicion).Explosivo;
+                //Proyectil proyectil = (Proyectil)Juego.Instancia().Ambiente.ObtenerCasilla(unPersonaje.Posicion).Explosivo;
                 ProyectilView p = new ProyectilView();
                 foreach (ObjetoVivo o in ListaVivos.objList)
                 {
@@ -57,7 +57,7 @@ namespace BombermanGame
                     {
                         o.Rotacion = rotation;
                         o.Posicion = position;
-                        ((ProyectilView)o).Explosivo = proyectil;
+                        ((ProyectilView)o).Explosivo = bomba;
                         o.Vivo = true;
                         return;
                     }
@@ -81,8 +81,10 @@ namespace BombermanGame
         {
             //si el chabon no esta vivo.. no hago nada
             if (!vivo) return;
-            //if (TieneEspacioParaDisparar())
-            //    Disparar();
+            Random random = new Random();
+            int vaADisparar = random.Next(0,50); // tiene un 2% de posibilidades de disparar
+            if (TieneEspacioParaDisparar() && (vaADisparar == 0 ))
+                Disparar();
 
             base.Update();
         }

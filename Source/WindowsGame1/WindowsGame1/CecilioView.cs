@@ -27,8 +27,7 @@ namespace BombermanGame
             spriteName = "Cecilio";
         }
 
-        public Vector2 Direccion { get { return this.direccion; } set { this.direccion = value;} }
-                
+                       
         public override void LoadContent(ContentManager content)
         {
             position.X = 32 * unPersonaje.Posicion.X + Game1.mapa.Location.X;

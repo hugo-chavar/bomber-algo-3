@@ -13,7 +13,7 @@ namespace BombermanModel.Arma
         protected int alcance;
         protected IDependienteDelTiempo carga;
 
-        public abstract void Disparar(); 
+        public abstract Explosivo Disparar(); 
 
         public int Alcance
         {
