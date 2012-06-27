@@ -47,22 +47,22 @@ namespace BombermanModel.Personaje
             set { this.posicion = value; }
         }
 
-        public bool LanzarExplosivo()
+        public Explosivo LanzarExplosivo()
         {
-
+            Explosivo bomba = null;
             //Impedimos que los que atraviesan obstaculos pongan bombas sobre el
             if (Juego.Juego.Instancia().Ambiente.ObtenerCasilla(this.Posicion).PermiteExplosivos())
             {
                 //ahora uso el lanzador para disparar
                 this.Lanzador.Cargar(this);
-                this.Lanzador.Disparar();
+                bomba = this.Lanzador.Disparar();
                 //el explosivo fue lanzado
-                return true;
+                return bomba;
             }
             else
             {
                 //el explosivo no fue lanzado
-                return false;
+                return null;
             }
         }
 

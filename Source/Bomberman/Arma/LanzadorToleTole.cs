@@ -17,10 +17,15 @@ namespace BombermanModel.Arma
             this.Alcance = ALCANCELANZAMIENTO;
         }
         
-        public override void Disparar()
+        public override Explosivo Disparar()
         {
+            BombaToleTole bomba = null;
             if (Juego.Juego.Instancia().Ambiente.ObtenerCasilla(this.posicionDeTiro).Explosivo == null)
-            Juego.Juego.Instancia().AlojarExplosivo(new BombaToleTole(this.posicionDeTiro, this.RetardoExplosion));
+            {
+                bomba = new BombaToleTole(this.posicionDeTiro, this.RetardoExplosion);
+                Juego.Juego.Instancia().AlojarExplosivo(bomba);
+            }
+            return bomba;
         }
     }
 }
