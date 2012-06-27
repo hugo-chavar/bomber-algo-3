@@ -36,7 +36,7 @@ namespace BombermanGame
         {
             if (direccion.Y == Vector2.Zero.Y)
             {
-                if ((movido.X == Vector2.Zero.X) || (movido.X == spriteIndex.Width - 1))
+                if ((Math.Round(movido.X, 1) == Vector2.Zero.X) || (Math.Round(movido.X, 1) == spriteIndex.Width)) //TODO: -1
                 {
                     if (!Juego.Instancia().Ambiente.PermitidoAvanzar(unPersonaje))
                         return;
@@ -44,7 +44,7 @@ namespace BombermanGame
             }
             else if (direccion.X == Vector2.Zero.X)
             {
-                if ((movido.Y == Vector2.Zero.Y) || (movido.Y == spriteIndex.Height - 1)) //&& (direccion == Vector2.UnitY * -1)
+                if ((Math.Round(movido.Y, 1) == Vector2.Zero.Y) || ((Math.Round(movido.Y, 1) == spriteIndex.Height))) //TODO: -1
                 {
                     if (!Juego.Instancia().Ambiente.PermitidoAvanzar(unPersonaje))
                         return;
@@ -108,24 +108,32 @@ namespace BombermanGame
                 Juego.Instancia().Ambiente.ObtenerCasilla(unPto).Dejar(unPersonaje);
             }
 
-            if (movido.X >= spriteIndex.Width)
+            if (Math.Round(movido.X,1) >= spriteIndex.Width)
             {
+                //position.X += (movido.X - spriteIndex.Width);
                 movido.X = 0;
+                //position.X -= movido.X;
+                //movido.X = Vector2.Zero.X;
             }
 
-            if (movido.X < 0)
+            if (Math.Round(movido.X, 1) < 0)
             {
-                movido.X = spriteIndex.Width - 1;
+               // float delta = 0 - movido.X;
+               // position.X += delta;
+                movido.X = spriteIndex.Width - speed; //TODO: spriteIndex.Width -1
             }
 
-            if (movido.Y >= spriteIndex.Height)
+            if (Math.Round(movido.Y, 1) >= spriteIndex.Height)
             {
+               // position.Y += (movido.Y - spriteIndex.Height);
                 movido.Y = 0;
+                //position.Y -= movido.Y;
+                //movido.Y = Vector2.Zero.Y;
             }
 
-            if (movido.Y < 0)
+            if (Math.Round(movido.Y, 1) < 0)
             {
-                movido.Y = spriteIndex.Height - 1;
+                movido.Y = spriteIndex.Height-speed; //TODO: -1
             }
         }
 
@@ -133,7 +141,7 @@ namespace BombermanGame
         {
 
             int dirPrev = unPersonaje.Movimiento.Direccion;
-            if ((movido.X > 0) && movido.X <= (spriteIndex.Width - speed) / 2)
+            if ((Math.Round(movido.X, 1) > 0) && movido.X < (spriteIndex.Width) / 2)//TODO:  - speed
             {
                 unPersonaje.Movimiento.Direccion = DERECHA;
                 if (!Juego.Instancia().Ambiente.PermitidoAvanzar(unPersonaje))
@@ -142,7 +150,7 @@ namespace BombermanGame
                     movido.X = Vector2.Zero.X;
                 }
             }
-            if ((movido.X < spriteIndex.Width) && (movido.X > (spriteIndex.Width - speed) / 2))
+            if ((Math.Round(movido.X, 1) < spriteIndex.Width) && (Math.Round(movido.X, 1) > (spriteIndex.Width / 2))) //TODO:  - speed
             {
                 unPersonaje.Movimiento.Direccion = IZQUIERDA;
                 if (!Juego.Instancia().Ambiente.PermitidoAvanzar(unPersonaje))
@@ -151,7 +159,7 @@ namespace BombermanGame
                     movido.X = Vector2.Zero.X;
                 }
             }
-            if (movido.Y > 0 && movido.Y <= (spriteIndex.Height - speed) / 2)
+            if (Math.Round(movido.Y, 1) > 0 && Math.Round(movido.Y, 1) <= (spriteIndex.Height - speed) / 2)
             {
                 unPersonaje.Movimiento.Direccion = ARRIBA;
                 if (!Juego.Instancia().Ambiente.PermitidoAvanzar(unPersonaje))
@@ -160,7 +168,7 @@ namespace BombermanGame
                     movido.Y = Vector2.Zero.Y;
                 }
             }
-            if ((movido.Y < spriteIndex.Height) && (movido.Y > (spriteIndex.Height - speed) / 2))
+            if ((Math.Round(movido.Y, 1) < spriteIndex.Height) && (Math.Round(movido.Y, 1) > (spriteIndex.Height - speed) / 2))
             {
                 unPersonaje.Movimiento.Direccion = ABAJO;
                 if (!Juego.Instancia().Ambiente.PermitidoAvanzar(unPersonaje))
