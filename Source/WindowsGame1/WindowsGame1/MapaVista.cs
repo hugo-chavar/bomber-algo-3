@@ -79,9 +79,39 @@ namespace BombermanGame
 
                 }
             }
+            foreach (Personaje p in Juego.Instancia().EnemigosVivos)
+            {
+                AgregarEnemigo(p);
+            }
         }
 
-        private static void AgregarCasillero(Casilla unCasillero)
+        private static void AgregarEnemigo(Personaje p)
+        {
+            Vector2 unVector = TransformarPuntoEnVector2(p.Posicion);
+            EnemigoView unEnemigo;
+            switch (p.Nombre)
+            { 
+                case Nombres.cecilio:
+                    //Vector2 unVector = TransformarPuntoEnVector2(p.Posicion);
+                    unEnemigo = new CecilioView(p);
+                    AgregarDibujable(unEnemigo); 
+                    break;
+                case Nombres.lopezReggae:
+                    //Vector2 unVector = TransformarPuntoEnVector2(p.Posicion);
+                    unEnemigo = new LopezReggaeView(p);
+                    AgregarDibujable(unEnemigo); 
+                    break;
+                case Nombres.lopezReggaeAlado:
+                    //Vector2 unVector = TransformarPuntoEnVector2(p.Posicion);
+                    unEnemigo = new LopezReggaeAladoView(p);
+                    AgregarDibujable(unEnemigo); 
+                    break;
+            }
+                       
+           
+        }
+
+        private static void AgregarCasillero(Casilla unCasillero) // No estaria mejor un case?
         {
              /*Articulo unArticulo = unCasillero.ArticuloContenido;
              if (unArticulo != null)
@@ -111,7 +141,7 @@ namespace BombermanGame
                     Vector2 unVector = TransformarPuntoEnVector2(unCasillero.Posicion);
                     PasilloView unaPared = new PasilloView(unVector);
                     AgregarDibujable(unaPared);
-
+                    
                 }
 
                 if (unObstaculo.Nombre == Nombres.bCemento)

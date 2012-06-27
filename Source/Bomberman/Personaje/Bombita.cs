@@ -23,6 +23,7 @@ namespace BombermanModel.Personaje
             this.unidadesDeResistencia = VIDABOMBITA;
             this.ciudadLiberada = false;
             //this.Movimiento.Velocidad = 2;
+            this.Nombre = Nombres.bombita;
         }
         
         public void Comer(IComible comible)
