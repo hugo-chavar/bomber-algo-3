@@ -24,7 +24,7 @@ namespace BombermanGame
         public static SpriteFont fuente;
         public static SpriteFont fuente2;
         public static Rectangle mapa;
-        //public MapaVista unMapaVista;
+        public MapaVista unMapaVista;
 
         public Game1()
         {
@@ -43,8 +43,8 @@ namespace BombermanGame
 
             mapa = new Rectangle(100, 75, 32 * elJuego.Ambiente.DimensionHorizontal, 32 * elJuego.Ambiente.DimensionVertical);
             ListaVivos.Initialize();
-            MapaVista.inicialize(elJuego.Ambiente);
-            MapaVista.CargarMapa();
+            unMapaVista = new MapaVista(elJuego.Ambiente);
+            unMapaVista.CargarMapa();
             base.Initialize();
         }
 
@@ -64,7 +64,7 @@ namespace BombermanGame
             }
 
 
-             MapaVista.LoadContent(this.Content);
+             unMapaVista.LoadContent(this.Content);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace BombermanGame
             {
                 ListaVivos.objList[i].Update();
             }
-            MapaVista.Update();
+            unMapaVista.Update();
             base.Update(gameTime);
         }
 
@@ -106,7 +106,7 @@ namespace BombermanGame
 
             spriteBatch.Begin();
 
-            MapaVista.Draw(spriteBatch);
+            unMapaVista.Draw(spriteBatch);
             foreach (ObjetoVivo o in ListaVivos.objList)
             {
                 o.Draw(spriteBatch);

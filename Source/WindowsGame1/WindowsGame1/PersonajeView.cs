@@ -30,7 +30,7 @@ namespace BombermanGame
         public PersonajeView(Vector2 pos)
             : base(pos){}
 
-        public Personaje UnPersonaje { get { return this.unPersonaje;} set { this.unPersonaje = value; } }
+        public Personaje UnPersonaje { set { this.unPersonaje = value;} }
         
         protected virtual void Advance()
         {
