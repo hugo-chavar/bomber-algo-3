@@ -18,15 +18,19 @@ namespace BombermanGame
 {
     class Pared : ObjetoVivo
     {
-        private Obstaculo ladri = Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(2, 0)).Estado;
+        private Obstaculo ladri;// = Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(2, 0)).Estado;
         
         public Pared(Vector2 pos)
             : base(pos)
         {
-            //position.X = 64+ Game1.mapa.Location.X;
-            //position.Y = 0 + Game1.mapa.Location.Y;
             spriteName = "ObsLadrillo";
-            solido = true;
+        }
+
+        public Pared(Vector2 pos, Obstaculo o)
+            : base(pos)
+        {
+            ladri = o;
+            spriteName = "ObsLadrillo";
         }
 
         public override void LoadContent(ContentManager content)
@@ -34,19 +38,26 @@ namespace BombermanGame
             position.X = 64 + Game1.mapa.Location.X;
             position.Y = Game1.mapa.Location.Y;
             spriteIndex = content.Load<Texture2D>("Sprites\\" + spriteName);
-            area = new Rectangle(0, 0, spriteIndex.Width, spriteIndex.Height);
-            //area.X = (int)position.X - (spriteIndex.Width / 2);
-            //area.Y = (int)position.Y - (spriteIndex.Height / 2);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            //Rectangle size;
+            if (!vivo) return;
             Vector2 center = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
 
             spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), center, scale, SpriteEffects.None, 0);
            // spriteBatch.DrawString(Game1.fuente, "Unid Resistencia bloque : " + ladri.UnidadesDeResistencia, new Vector2(10, 300), Color.Silver);
 
+        }
+
+        public override void Update()
+        {
+            if (!vivo) return;
+            Obstaculo unBloqueLadrillo = BloqueComun.CrearBloqueLadrillos();
+            if (ladri.Destruido() || ladri == null || (ladri.GetType() != unBloqueLadrillo.GetType()))
+                vivo = false;
+
+            base.Update();
         }
     }
 }

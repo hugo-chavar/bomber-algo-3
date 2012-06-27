@@ -21,22 +21,28 @@ namespace BombermanGame
     {
         protected KeyboardState keyboard;
         protected Vector2 direccion;
-        protected Personaje unPersonaje = Juego.Instancia().Protagonista;
+        protected Personaje unPersonaje;
         public const int ARRIBA = 8;
         public const int ABAJO = 2;
         public const int IZQUIERDA = 4;
         public const int DERECHA = 6;
 
-        public PersonajeView(Vector2 pos)
-            : base(pos){}
+        public PersonajeView(Personaje pers)
+        {
+            unPersonaje = pers;
+            speed = unPersonaje.Movimiento.Velocidad;
+            movido = Vector2.Zero;
+        }
 
-        public Personaje UnPersonaje { set { this.unPersonaje = value;} }
+        public Vector2 Direccion { get { return this.direccion; } set { this.direccion = value; } }
+
+        public Personaje UnPersonaje { set { this.unPersonaje = value;} } 
         
         protected virtual void Advance()
         {
             if (direccion.Y == Vector2.Zero.Y)
             {
-                if ((Math.Round(movido.X, 1) == Vector2.Zero.X) || (Math.Round(movido.X, 1) == spriteIndex.Width)) //TODO: -1
+                if ((Math.Round(movido.X, 1) == Vector2.Zero.X) || (Math.Round(movido.X, 1) == spriteIndex.Width)) 
                 {
                     if (!Juego.Instancia().Ambiente.PermitidoAvanzar(unPersonaje))
                         return;
@@ -44,7 +50,7 @@ namespace BombermanGame
             }
             else if (direccion.X == Vector2.Zero.X)
             {
-                if ((Math.Round(movido.Y, 1) == Vector2.Zero.Y) || ((Math.Round(movido.Y, 1) == spriteIndex.Height))) //TODO: -1
+                if ((Math.Round(movido.Y, 1) == Vector2.Zero.Y) || ((Math.Round(movido.Y, 1) == spriteIndex.Height))) 
                 {
                     if (!Juego.Instancia().Ambiente.PermitidoAvanzar(unPersonaje))
                         return;
@@ -120,20 +126,17 @@ namespace BombermanGame
             {
                // float delta = 0 - movido.X;
                // position.X += delta;
-                movido.X = spriteIndex.Width - speed; //TODO: spriteIndex.Width -1
+                movido.X = spriteIndex.Width - speed; 
             }
 
             if (Math.Round(movido.Y, 1) >= spriteIndex.Height)
             {
-               // position.Y += (movido.Y - spriteIndex.Height);
                 movido.Y = 0;
-                //position.Y -= movido.Y;
-                //movido.Y = Vector2.Zero.Y;
             }
 
             if (Math.Round(movido.Y, 1) < 0)
             {
-                movido.Y = spriteIndex.Height-speed; //TODO: -1
+                movido.Y = spriteIndex.Height-speed; 
             }
         }
 
@@ -141,7 +144,7 @@ namespace BombermanGame
         {
 
             int dirPrev = unPersonaje.Movimiento.Direccion;
-            if ((Math.Round(movido.X, 1) > 0) && movido.X < (spriteIndex.Width) / 2)//TODO:  - speed
+            if ((Math.Round(movido.X, 1) > 0) && movido.X < (spriteIndex.Width) / 2)
             {
                 unPersonaje.Movimiento.Direccion = DERECHA;
                 if (!Juego.Instancia().Ambiente.PermitidoAvanzar(unPersonaje))
@@ -150,7 +153,7 @@ namespace BombermanGame
                     movido.X = Vector2.Zero.X;
                 }
             }
-            if ((Math.Round(movido.X, 1) < spriteIndex.Width) && (Math.Round(movido.X, 1) >= (spriteIndex.Width / 2))) //TODO:  - speed
+            if ((Math.Round(movido.X, 1) < spriteIndex.Width) && (Math.Round(movido.X, 1) >= (spriteIndex.Width / 2))) 
             {
                 unPersonaje.Movimiento.Direccion = IZQUIERDA;
                 if (!Juego.Instancia().Ambiente.PermitidoAvanzar(unPersonaje))
@@ -194,7 +197,6 @@ namespace BombermanGame
             position.X = 32 * unPersonaje.Posicion.X + Game1.mapa.Location.X;
             position.Y = 32 * unPersonaje.Posicion.Y + Game1.mapa.Location.Y;
             spriteIndex = content.Load<Texture2D>("Sprites\\" + spriteName);
-            area = new Rectangle(0, 0, spriteIndex.Width, spriteIndex.Height);
         }
 
         public override void Draw(SpriteBatch spriteBatch)

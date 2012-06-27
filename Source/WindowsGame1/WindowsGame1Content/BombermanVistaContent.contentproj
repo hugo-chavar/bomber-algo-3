@@ -128,13 +128,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sprites\Proyectil.png">
-      <Name>Proyectil</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Sprites\ObsCemento.png">
       <Name>ObsCemento</Name>
       <Importer>TextureImporter</Importer>
@@ -207,6 +200,13 @@
   <ItemGroup>
     <Compile Include="Sprites\LopezReggae.png">
       <Name>LopezReggae</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sprites\Proyectil.png">
+      <Name>Proyectil</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

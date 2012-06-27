@@ -21,16 +21,10 @@ namespace BombermanGame
     {
         private Vector2 puntoCentro;
         
-        public CecilioView(Vector2 pos)
-            : base(pos)
+        public CecilioView(Personaje pers)
+            : base(pers)
         {
-            this.UnPersonaje = new Cecilio(new Punto(10, 5));
-            speed = 2;//unCecilio.Movimiento.Velocidad; 0.3f
             spriteName = "Cecilio";
-            Random random = new Random();
-            int calculadorDirecciones = random.Next(0, 4);
-            this.direccion = versores.ElementAt(calculadorDirecciones);
-            unPersonaje.Movimiento.Direccion = ((calculadorDirecciones+1)*2);
         }
 
         public Vector2 Direccion { get { return this.direccion; } set { this.direccion = value;} }
@@ -40,7 +34,6 @@ namespace BombermanGame
             position.X = 32 * unPersonaje.Posicion.X + Game1.mapa.Location.X;
             position.Y = 32 * unPersonaje.Posicion.Y + Game1.mapa.Location.Y;
             spriteIndex = content.Load<Texture2D>("Sprites\\" + spriteName);
-            area = new Rectangle(0, 0, spriteIndex.Width, spriteIndex.Height);
             puntoCentro = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
             CargarObjetivos();
         }

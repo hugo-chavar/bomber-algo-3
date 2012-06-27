@@ -42,7 +42,8 @@ namespace BombermanGame
         {
             foreach (ObjetoVivo s in objetosDibujables)
             {
-                s.Draw(sprite);
+                if (s.Vivo)
+                    s.Draw(sprite);
             }
 
         }
@@ -51,7 +52,7 @@ namespace BombermanGame
         {
             //try
             {
-                this.objetosDibujables.Remove(unDibujable);
+                this.objetosDibujables.Remove(unDibujable); ///Esto esta mal!!!!!
             }//catch()
 
         }
@@ -128,7 +129,8 @@ namespace BombermanGame
         {
             foreach (ObjetoVivo s in objetosDibujables)
             {
-                s.LoadContent(content);
+                if (s.Vivo)
+                  s.LoadContent(content);
             }
 
         }
@@ -136,7 +138,8 @@ namespace BombermanGame
         {
             foreach (ObjetoVivo s in objetosDibujables)
             {
-                s.Update();
+                if (s.Vivo)
+                  s.Update();
             }
         }
 

@@ -24,16 +24,18 @@ namespace BombermanGame
         protected List<Vector2> versores = new List<Vector2>();
 
 
-        public EnemigoView(Vector2 pos)
-            : base(pos) 
+        public EnemigoView(Personaje pers)
+            : base(pers) 
         {
-            versores.Add(new Vector2(0, -1));
-            versores.Add(new Vector2(-1, 0));
-            versores.Add(new Vector2(1, 0));
-            versores.Add(new Vector2(0, 1));
+            versores.Add(Vector2.UnitY*-1);
+            versores.Add(Vector2.UnitX*-1);
+            versores.Add(Vector2.UnitX);
+            versores.Add(Vector2.UnitY);
+            this.direccion = versores.ElementAt(0);
+            unPersonaje.Movimiento.Direccion = 2;
+
         }
         
-        // Esto deberia estar en una clase intermedia, que sea de enemigos!
         protected void CargarObjetivos()
         {
             Random direccionRandom = new Random();
@@ -46,7 +48,6 @@ namespace BombermanGame
             }
         }
 
-        // Esto deberia estar en una clase intermedia, que sea de enemigos!
         protected void ProximoDestino()
         {
             //si fue a todos los destinos empieza de nuevo
@@ -54,7 +55,7 @@ namespace BombermanGame
             else destinoActual++;
         }
 
-        // En Enemigo!
+
         public override void Update()
         {
             //si el chabon no esta vivo.. no hago nada
@@ -77,7 +78,7 @@ namespace BombermanGame
             base.Update();
         }
 
-        // En Enemigo!
+
         public int TestDireccionesValidas()
         {
             int dirPrev = unPersonaje.Movimiento.Direccion;
@@ -106,7 +107,6 @@ namespace BombermanGame
             return cant;
         }
 
-        // En Enemigo!
         public void recalcularDireccion()
         {
             Random random = new Random();
@@ -128,7 +128,7 @@ namespace BombermanGame
             }
         }
 
-        // En Enemigo!
+
         public virtual void ActualizarPosicion()
         {
             int x = (int)Math.Round((position.X - Game1.mapa.Location.X) / 32,0);
