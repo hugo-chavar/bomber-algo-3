@@ -374,6 +374,11 @@ namespace BombermanModel.Juego
             get { return this.salida; }
             set { this.salida = value; }
         }
+
+        public IMovible UltimoObjContundenteLanzado()
+        {
+            return this.objetosContundentes.Last();
+        }
     }
 
 }

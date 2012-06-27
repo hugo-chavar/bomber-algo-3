@@ -16,29 +16,29 @@ using BombermanModel.Mapa;
 using BombermanModel.Mapa.Casilla;
 namespace BombermanGame
 {
-    public class MapaVista
+    public static class MapaVista
     {
-        Mapa mapaInterno;
-        List<ObjetoVivo> objetosDibujables;
-
-
-        public MapaVista(Mapa unMapa)
+        static Mapa mapaInterno;
+        static List<ObjetoVivo> objetosDibujables;
+        public static Texture2D molotovSprite;
+        public static Texture2D toleToleSprite;
+        public static Texture2D proyectilSprite;
+        
+        public static void inicialize(Mapa unMapa)
         {
-            this.mapaInterno = unMapa;
+            mapaInterno = unMapa;
             objetosDibujables = new List<ObjetoVivo>();
 
-
         }
 
-
-        public void AgregarDibujable(ObjetoVivo unDibujable)
+        public static void AgregarDibujable(ObjetoVivo unDibujable)
         {
 
-            this.objetosDibujables.Add(unDibujable);
+            objetosDibujables.Add(unDibujable);
 
         }
 
-        public void Draw(SpriteBatch sprite)
+        public static void Draw(SpriteBatch sprite)
         {
             foreach (ObjetoVivo s in objetosDibujables)
             {
@@ -47,16 +47,17 @@ namespace BombermanGame
 
         }
 
-        public void EliminarDibujable(ObjetoVivo unDibujable)
+        public static void EliminarDibujable(ObjetoVivo unDibujable)
         {
             //try
             {
-                this.objetosDibujables.Remove(unDibujable);
+                objetosDibujables.Remove(unDibujable);
+                ListaVivos.objList.Remove(unDibujable);
             }//catch()
 
         }
 
-        public void CargarMapa()
+        public static void CargarMapa()
         {
             // recorro el tablero entero
 
@@ -66,13 +67,13 @@ namespace BombermanGame
                 for (int horizontal = 0; horizontal < mapaInterno.DimensionHorizontal; horizontal++)
                 {
                     Casilla unaCasilla = mapaInterno.ObtenerCasilla(new Punto(horizontal, vertical));
-                    this.AgregarCasillero(unaCasilla);
+                    AgregarCasillero(unaCasilla);
 
                 }
             }
         }
 
-        private void AgregarCasillero(Casilla unCasillero)
+        private static void AgregarCasillero(Casilla unCasillero)
         {
             Obstaculo unObstaculo = unCasillero.Estado;
 
@@ -82,41 +83,41 @@ namespace BombermanGame
                 BloqueAcero bloqueAux = new BloqueAcero();
                 if (unObstaculo.GetType() == bloqueAux.GetType())
                 {
-                    Vector2 unVector = this.TransformarPuntoEnVector2(unCasillero.Posicion);
+                    Vector2 unVector = TransformarPuntoEnVector2(unCasillero.Posicion);
                     BloqueAceroView unaPared = new BloqueAceroView(unVector);
-                    this.AgregarDibujable(unaPared);
+                    AgregarDibujable(unaPared);
 
                 }
                 Pasillo pasilloAux = new Pasillo();
                 if (unObstaculo.GetType() == pasilloAux.GetType())
                 {
-                    Vector2 unVector = this.TransformarPuntoEnVector2(unCasillero.Posicion);
+                    Vector2 unVector = TransformarPuntoEnVector2(unCasillero.Posicion);
                     PasilloView unaPared = new PasilloView(unVector);
-                    this.AgregarDibujable(unaPared);
+                    AgregarDibujable(unaPared);
 
                 }
 
                 Obstaculo unBloqueCemento = BloqueComun.CrearBloqueCemento();
                 if ((unObstaculo.GetType() == unBloqueCemento.GetType()) && (((BloqueComun)unObstaculo).EsBloqueCemento()))
                 {
-                    Vector2 unVector = this.TransformarPuntoEnVector2(unCasillero.Posicion);
+                    Vector2 unVector = TransformarPuntoEnVector2(unCasillero.Posicion);
                     BloqueCementoView unBloqueCementoView = new BloqueCementoView(unVector);
-                    this.AgregarDibujable(unBloqueCementoView);
+                    AgregarDibujable(unBloqueCementoView);
 
                 }
 
                 Obstaculo unBloqueLadrillo = BloqueComun.CrearBloqueLadrillos();
                 if ((unObstaculo.GetType() == unBloqueLadrillo.GetType()) && (!((BloqueComun)unObstaculo).EsBloqueCemento()))
                 {
-                    Vector2 unVector = this.TransformarPuntoEnVector2(unCasillero.Posicion);
+                    Vector2 unVector = TransformarPuntoEnVector2(unCasillero.Posicion);
                     BloqueLadrilloView unBloqueLadrilloView = new BloqueLadrilloView(unVector);
-                    this.AgregarDibujable(unBloqueLadrilloView);
+                    AgregarDibujable(unBloqueLadrilloView);
 
                 }
             }
         }
 
-        private Vector2 TransformarPuntoEnVector2(Punto unPunto)
+        private static Vector2 TransformarPuntoEnVector2(Punto unPunto)
         {
             Vector2 unVector;
             unVector.X = 32 * (unPunto.X) + Game1.mapa.Location.X;
@@ -124,7 +125,7 @@ namespace BombermanGame
             return unVector;
         }
 
-        public void LoadContent(ContentManager content)
+        public static void LoadContent(ContentManager content)
         {
             foreach (ObjetoVivo s in objetosDibujables)
             {
@@ -132,7 +133,7 @@ namespace BombermanGame
             }
 
         }
-        public void Update()
+        public static void Update()
         {
             foreach (ObjetoVivo s in objetosDibujables)
             {
