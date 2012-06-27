@@ -50,6 +50,11 @@ namespace BombermanGame
             if (!vivo) return;
             rotation = point_direction(position.X, position.Y, destinosObjetivo[destinoActual].X * 32 + Game1.mapa.Location.X, destinosObjetivo[destinoActual].Y * 32 + Game1.mapa.Location.Y);
             
+            Random random = new Random();
+            int vaADisparar = random.Next(0, 1000); 
+            if ((vaADisparar == 0))
+                Disparar();
+
             PushTo(speed, rotation);
             ActualizarPosicion();
 

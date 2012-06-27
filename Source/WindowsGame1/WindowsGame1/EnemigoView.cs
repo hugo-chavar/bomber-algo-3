@@ -137,5 +137,6 @@ namespace BombermanGame
             if ((destinosObjetivo[destinoActual].X == x) && (destinosObjetivo[destinoActual].Y == y))
                 ProximoDestino();
         }
+
     }
 }
