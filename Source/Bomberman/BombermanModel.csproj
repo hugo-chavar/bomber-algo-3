@@ -91,12 +91,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Punto.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BombermanCommon\BombermanCommon.csproj">
-      <Project>{50F91BCB-15BE-436C-8FF8-62C205C9C32F}</Project>
-      <Name>BombermanCommon</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

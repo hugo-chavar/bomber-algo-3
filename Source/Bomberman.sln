@@ -9,12 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BombermanGame", "WindowsGam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BombermanVistaContent", "WindowsGame1\WindowsGame1Content\BombermanVistaContent.contentproj", "{9EF0A884-E58D-45B8-9E2F-9A95E66CA50B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BombermanCommon", "BombermanCommon\BombermanCommon.csproj", "{50F91BCB-15BE-436C-8FF8-62C205C9C32F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BombermanView", "BombermanView\BombermanView.csproj", "{EA39C370-5D32-48E5-9112-81AB467DC1D6}"
-	ProjectSection(ProjectDependencies) = postProject
-		{50F91BCB-15BE-436C-8FF8-62C205C9C32F} = {50F91BCB-15BE-436C-8FF8-62C205C9C32F}
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,16 +57,6 @@ Global
 		{9EF0A884-E58D-45B8-9E2F-9A95E66CA50B}.Release|Any CPU.ActiveCfg = Release|x86
 		{9EF0A884-E58D-45B8-9E2F-9A95E66CA50B}.Release|Mixed Platforms.ActiveCfg = Release|x86
 		{9EF0A884-E58D-45B8-9E2F-9A95E66CA50B}.Release|x86.ActiveCfg = Release|x86
-		{50F91BCB-15BE-436C-8FF8-62C205C9C32F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{50F91BCB-15BE-436C-8FF8-62C205C9C32F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{50F91BCB-15BE-436C-8FF8-62C205C9C32F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{50F91BCB-15BE-436C-8FF8-62C205C9C32F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{50F91BCB-15BE-436C-8FF8-62C205C9C32F}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{50F91BCB-15BE-436C-8FF8-62C205C9C32F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{50F91BCB-15BE-436C-8FF8-62C205C9C32F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{50F91BCB-15BE-436C-8FF8-62C205C9C32F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{50F91BCB-15BE-436C-8FF8-62C205C9C32F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{50F91BCB-15BE-436C-8FF8-62C205C9C32F}.Release|x86.ActiveCfg = Release|Any CPU
 		{EA39C370-5D32-48E5-9112-81AB467DC1D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EA39C370-5D32-48E5-9112-81AB467DC1D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA39C370-5D32-48E5-9112-81AB467DC1D6}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU

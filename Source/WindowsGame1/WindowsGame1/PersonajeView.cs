@@ -150,7 +150,7 @@ namespace BombermanGame
                     movido.X = Vector2.Zero.X;
                 }
             }
-            if ((Math.Round(movido.X, 1) < spriteIndex.Width) && (Math.Round(movido.X, 1) > (spriteIndex.Width / 2))) //TODO:  - speed
+            if ((Math.Round(movido.X, 1) < spriteIndex.Width) && (Math.Round(movido.X, 1) >= (spriteIndex.Width / 2))) //TODO:  - speed
             {
                 unPersonaje.Movimiento.Direccion = IZQUIERDA;
                 if (!Juego.Instancia().Ambiente.PermitidoAvanzar(unPersonaje))
