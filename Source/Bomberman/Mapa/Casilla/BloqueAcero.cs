@@ -6,7 +6,7 @@ namespace BombermanModel.Mapa.Casilla
         private const int RESISTENCIAACERO = 10;
         public BloqueAcero()
             : base(RESISTENCIAACERO)
-        { }
+        { nombre = Nombres.bAcero; }
 
         public override void DaniarConBombaMolotov(int UnidadesDaniadas)
         {           

@@ -70,6 +70,7 @@
     <Compile Include="Mapa\Casilla\FabricaDeCasillas.cs" />
     <Compile Include="Mapa\ITransitable.cs" />
     <Compile Include="Mapa\Mapa.cs" />
+    <Compile Include="Nombres.cs" />
     <Compile Include="Personaje\Bombita.cs" />
     <Compile Include="Personaje\Cecilio.cs" />
     <Compile Include="Personaje\Enemigo.cs" />

@@ -50,10 +50,10 @@ namespace BombermanGame
             {
 
                 //Proyectil proyectil = (Proyectil)Juego.Instancia().Ambiente.ObtenerCasilla(unPersonaje.Posicion).Explosivo;
-                ProyectilView p = new ProyectilView();
+                //ProyectilView p = new ProyectilView();
                 foreach (ObjetoVivo o in ListaVivos.objList)
                 {
-                    if (o.GetType() == p.GetType() && (!o.Vivo))
+                    if ((o.GetType() == typeof (ProyectilView) && (!o.Vivo)))
                     {
                         o.Rotacion = rotation;
                         o.Posicion = position;

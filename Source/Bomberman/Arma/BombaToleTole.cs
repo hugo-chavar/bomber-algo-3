@@ -14,9 +14,10 @@ namespace BombermanModel.Arma
         public BombaToleTole(Punto posicion, int porcentajeRetardo)
             : base(posicion)
         {
-            this.tiempoExplosion = TIEMPOEXPLOSION * ((100 - porcentajeRetardo) / 100);
+            this.tiempoExplosion = TIEMPOEXPLOSION * ((100 - porcentajeRetardo) / 100F);
             this.PoderDeDestruccion = INFINITO;
             this.OndaExpansiva = ONDAEXPANSIVATOLETOLE;
+            nombre = Nombres.toleTole;
         }
 
         public override void Daniar(IDaniable daniable)

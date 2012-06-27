@@ -16,7 +16,7 @@ using BombermanModel.Mapa.Casilla;
 
 namespace BombermanGame
 {
-    class BloqueCementoView : ObjetoVivo
+    class BloqueCementoView : BloqueView
     {
         private Obstaculo ladri = Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(2, 0)).Estado;
 

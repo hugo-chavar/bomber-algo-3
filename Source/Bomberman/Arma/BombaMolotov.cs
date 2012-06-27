@@ -14,9 +14,10 @@ namespace BombermanModel.Arma
         public BombaMolotov(Punto posicion, int porcentajeRetardo)
             : base(posicion)
         {
-            this.tiempoExplosion = (TIEMPOEXPLOSION * (100 - porcentajeRetardo) / 100);
+            this.tiempoExplosion = (TIEMPOEXPLOSION * (100 - porcentajeRetardo) / 100F);
             this.PoderDeDestruccion = PODERDEDESTRUCCIONMOLOTOV;
             this.OndaExpansiva = ONDAEXPANSIVAMOLOTOV;
+            nombre = Nombres.molotov;
         }
 
         public override void Daniar(IDaniable daniable)

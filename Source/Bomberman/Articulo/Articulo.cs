@@ -10,6 +10,10 @@ namespace BombermanModel.Articulo
     {
         protected bool estaOculto;
         protected bool estaActivo;
+        protected Nombres nombre;
+
+        public Nombres Nombre
+        { get { return this.nombre; } }
 
         public abstract void ModificarComedor(IComedor comedor);
 

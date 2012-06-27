@@ -13,13 +13,15 @@ namespace BombermanModel.Mapa.Casilla
 
         public static BloqueComun CrearBloqueCemento()
         { 
-            BloqueComun BloqueCemento = new BloqueComun(RESISTENCIACEMENTO); 
+            BloqueComun BloqueCemento = new BloqueComun(RESISTENCIACEMENTO);
+            BloqueCemento.nombre = Nombres.bCemento;
             return (BloqueCemento);
         }
 
         public static BloqueComun CrearBloqueLadrillos()
         {
-            BloqueComun BloqueLadrillos = new BloqueComun(RESISTENCIALADRILLO); 
+            BloqueComun BloqueLadrillos = new BloqueComun(RESISTENCIALADRILLO);
+            BloqueLadrillos.nombre = Nombres.bLadrillo;
             return (BloqueLadrillos);
         }
 

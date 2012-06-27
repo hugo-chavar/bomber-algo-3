@@ -9,6 +9,7 @@ namespace BombermanModel.Articulo
         public Timer()
         {
             this.Activar();
+            nombre = Nombres.timer;
         }
 
         public override void ModificarComedor(IComedor comedor)

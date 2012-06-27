@@ -16,7 +16,7 @@ using BombermanModel.Mapa.Casilla;
 
 namespace BombermanGame
 {
-    class BloqueAceroView : ObjetoVivo
+    class BloqueAceroView : BloqueView
     {
         private Obstaculo ladri = Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(2, 0)).Estado;
 
@@ -25,7 +25,7 @@ namespace BombermanGame
         {
             spriteName = "ObsAcero";
         }
-
+        /*
         public override void LoadContent(ContentManager content)
         {
 
@@ -39,6 +39,6 @@ namespace BombermanGame
             spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), center, scale, SpriteEffects.None, 0);
 
 
-        }
+        }*/
     }
 }
