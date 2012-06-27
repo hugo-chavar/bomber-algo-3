@@ -9,6 +9,14 @@ namespace BombermanModel.Mapa.Casilla
     public abstract class Obstaculo:IDaniable
     {
         protected int unidadesDeResistencia;
+        protected Nombres nombre;
+
+        public Nombres Nombre
+        {
+            get { return this.nombre; }
+            set { nombre = value; }
+        }
+
 
         public Obstaculo()
         {

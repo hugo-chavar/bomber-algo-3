@@ -18,46 +18,49 @@ namespace BombermanGame
 {
     class Pared : ObjetoVivo
     {
-        private Obstaculo ladri;// = Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(2, 0)).Estado;
-        
+        //private Obstaculo aceroModel;
+
         public Pared(Vector2 pos)
             : base(pos)
         {
-            spriteName = "ObsLadrillo";
+            //position.X = 64+ Game1.mapa.Location.X;
+            //position.Y = 0 + Game1.mapa.Location.Y;
+            spriteName = "ObsAcero";
+            /*solido = true;
+            Punto unPunto = new Punto(0, 0);
+            unPunto.X = ((int)(pos.X) - Game1.mapa.Location.X) / 32;
+            unPunto.Y = ((int)(pos.Y) - Game1.mapa.Location.Y) / 32;
+            aceroModel = Juego.Instancia().Ambiente.ObtenerCasilla(unPunto).Estado;*/
         }
-
-        public Pared(Vector2 pos, Obstaculo o)
-            : base(pos)
-        {
-            ladri = o;
-            spriteName = "ObsLadrillo";
-        }
-
+        /*
         public override void LoadContent(ContentManager content)
         {
-            position.X = 64 + Game1.mapa.Location.X;
-            position.Y = Game1.mapa.Location.Y;
+
             spriteIndex = content.Load<Texture2D>("Sprites\\" + spriteName);
+            area = new Rectangle(0, 0, spriteIndex.Width, spriteIndex.Height);
+            //area.X = (int)position.X - (spriteIndex.Width / 2);
+            //area.Y = (int)position.Y - (spriteIndex.Height / 2);
+        }
+        
+        public override void Update()
+        {
+            if (aceroModel.Destruido())
+            {
+                PasilloView unPasillo = new PasilloView(position);
+                MapaVista.EliminarDibujable(this);
+                MapaVista.AgregarDibujable(unPasillo);
+            }
+
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if (!vivo) return;
+            //Rectangle size;
             Vector2 center = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
 
             spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), center, scale, SpriteEffects.None, 0);
-           // spriteBatch.DrawString(Game1.fuente, "Unid Resistencia bloque : " + ladri.UnidadesDeResistencia, new Vector2(10, 300), Color.Silver);
 
-        }
 
-        public override void Update()
-        {
-            if (!vivo) return;
-            Obstaculo unBloqueLadrillo = BloqueComun.CrearBloqueLadrillos();
-            if (ladri.Destruido() || ladri == null || (ladri.GetType() != unBloqueLadrillo.GetType()))
-                vivo = false;
-
-            base.Update();
-        }
+        }*/
     }
 }

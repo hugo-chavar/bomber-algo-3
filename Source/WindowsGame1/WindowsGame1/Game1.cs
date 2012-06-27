@@ -21,11 +21,15 @@ namespace BombermanGame
         SpriteBatch spriteBatch;
         Juego elJuego = Juego.Instancia();
 
+        //Vector2 posInicial = new Vector2();
+        //public static SpriteFont fuente;
+        //public static Rectangle mapa;
+        BombitaView unaPersona = new BombitaView();
+
         public static SpriteFont fuente;
         public static SpriteFont fuente2;
         public static Rectangle mapa;
-        public MapaVista unMapaVista;
-
+        
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -43,8 +47,9 @@ namespace BombermanGame
 
             mapa = new Rectangle(100, 75, 32 * elJuego.Ambiente.DimensionHorizontal, 32 * elJuego.Ambiente.DimensionVertical);
             ListaVivos.Initialize();
-            unMapaVista = new MapaVista(elJuego.Ambiente);
-            unMapaVista.CargarMapa();
+            MapaVista.inicialize(elJuego.Ambiente);
+            MapaVista.CargarMapa();
+            unaPersona.UnPersonaje = elJuego.Protagonista;
             base.Initialize();
         }
 
@@ -58,13 +63,14 @@ namespace BombermanGame
             spriteBatch = new SpriteBatch(GraphicsDevice);
             fuente = Content.Load<SpriteFont>("Fonts\\Segoe14");
             fuente2 = Content.Load<SpriteFont>("Fonts\\Pericles12");
-            foreach (ObjetoVivo o in ListaVivos.objList)
+            unaPersona.LoadContent(Content);
+            /*foreach (ObjetoVivo o in ListaVivos.objList)
             {
                 o.LoadContent(this.Content);
-            }
+            }*/
 
 
-             unMapaVista.LoadContent(this.Content);
+             MapaVista.CargarContenido(this.Content);
         }
 
         /// <summary>
@@ -83,16 +89,18 @@ namespace BombermanGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            elJuego.AvanzarElTiempo();
+            
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            for (int i = 0; i < ListaVivos.objList.Count;i++)
+            /*for (int i = 0; i < ListaVivos.objList.Count;i++)
             {
                 ListaVivos.objList[i].Update();
-            }
-            unMapaVista.Update();
+            }*/
+            elJuego.AvanzarElTiempo();
+            MapaVista.Actualizar();
+            unaPersona.Update();
             base.Update(gameTime);
         }
 
@@ -106,11 +114,12 @@ namespace BombermanGame
 
             spriteBatch.Begin();
 
-            unMapaVista.Draw(spriteBatch);
-            foreach (ObjetoVivo o in ListaVivos.objList)
+            MapaVista.DibujarMapa(spriteBatch);
+            /*foreach (ObjetoVivo o in ListaVivos.objList)
             {
                 o.Draw(spriteBatch);
-            }
+            }*/
+            unaPersona.Draw(spriteBatch);
              
 
             spriteBatch.End();

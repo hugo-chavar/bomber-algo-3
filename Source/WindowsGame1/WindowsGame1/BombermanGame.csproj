@@ -120,6 +120,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArticuloVista.cs" />
+    <Compile Include="BloqueView.cs" />
     <Compile Include="Bomb.cs" />
     <Compile Include="BloqueAceroView.cs" />
     <Compile Include="BloqueCementoView.cs" />

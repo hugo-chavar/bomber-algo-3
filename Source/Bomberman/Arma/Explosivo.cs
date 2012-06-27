@@ -12,6 +12,13 @@ namespace BombermanModel.Arma
         protected Punto posicion;
         protected bool exploto;
         protected int poderDeDestruccion;
+        protected Nombres nombre;
+
+        public Nombres Nombre
+        {
+            get { return this.nombre; }
+            set { nombre = value; }
+        }
 
         public Explosivo()
         {

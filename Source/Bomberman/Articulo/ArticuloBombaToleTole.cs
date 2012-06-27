@@ -11,6 +11,7 @@ namespace BombermanModel.Articulo
         public ArticuloBombaToleTole()
         {
             this.Activar();
+            nombre = Nombres.arToleTole;
         }
         
         public override void ModificarComedor(IComedor comedor)

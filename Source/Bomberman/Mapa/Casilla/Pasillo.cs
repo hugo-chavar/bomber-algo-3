@@ -9,7 +9,7 @@ namespace BombermanModel.Mapa.Casilla
     public class Pasillo : Obstaculo
     {
         public Pasillo()
-        { }
+        { nombre = Nombres.pasillo; }
 
         public override bool TransitablePor(IMovible movil)
         {

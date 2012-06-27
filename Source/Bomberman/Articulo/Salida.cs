@@ -10,6 +10,7 @@ namespace BombermanModel.Articulo
         public Salida()
         {
             this.estaActivo = false;
+            nombre = Nombres.salida;
         }
 
         public override void ModificarComedor(Personaje.IComedor comedor)

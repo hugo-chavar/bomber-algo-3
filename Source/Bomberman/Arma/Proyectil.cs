@@ -59,6 +59,7 @@ namespace BombermanModel.Arma
             this.movimiento = new Movimiento();
             this.poderDeDestruccion = PODERDEDESTRUCCIONPROYECTIL;
             this.ondaExpansiva = ONDAEXPANSIVA;
+            nombre = Nombres.proyectil;
             posicion = unaPos;
 
         }

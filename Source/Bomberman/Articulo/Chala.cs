@@ -11,6 +11,7 @@ namespace BombermanModel.Articulo
         public Chala()
         {
             this.Activar();
+            nombre = Nombres.chala;
         }
 
         public override void  ModificarComedor(IComedor comedor)

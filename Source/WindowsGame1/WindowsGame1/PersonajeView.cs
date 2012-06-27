@@ -28,6 +28,7 @@ namespace BombermanGame
         public const int DERECHA = 6;
 
         public PersonajeView(Personaje pers)
+            :base(MapaVista.TransformarPuntoEnVector2(pers.Posicion))
         {
             unPersonaje = pers;
             speed = unPersonaje.Movimiento.Velocidad;
