@@ -41,7 +41,7 @@ namespace BombermanGame
         public override void Update()
         {
             keyboard = Keyboard.GetState();
-            speed = unPersonaje.Movimiento.Velocidad + 1f;
+            speed = unPersonaje.Movimiento.Velocidad + 0.8f;
             if (keyboard.IsKeyDown(Keys.W))
             {
                 if (direccion == Vector2.UnitY*-1) //pregunto si ya esta mirando en el sentido que aprete la tecla
