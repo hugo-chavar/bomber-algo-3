@@ -136,9 +136,11 @@ namespace TestBombermanModel.TestIntegracion
             this.unJuego.AgregarEnemigo(personaje);
             personaje.Movimiento.CambiarAIzquierda();
             personaje.LanzarExplosivo();
-            System.Threading.Thread.Sleep(3000);
+            System.Threading.Thread.Sleep(300);
             this.unJuego.AvanzarElTiempo();
-            this.unJuego.AvanzarElTiempo();
+            System.Threading.Thread.Sleep(300);
+            this.unJuego.AvanzarElTiempo(); 
+            System.Threading.Thread.Sleep(300);
             this.unJuego.AvanzarElTiempo();
             Assert.AreEqual(resistenciaBloque - 1, casillaConBloqueDeLadrillo.Estado.UnidadesDeResistencia);
         }
