@@ -45,14 +45,11 @@ namespace BombermanGame
         {
 
             spriteIndex = content.Load<Texture2D>("Sprites\\" + spriteName);
-            area = new Rectangle(0, 0, spriteIndex.Width, spriteIndex.Height);
-            //area.X = (int)position.X - (spriteIndex.Width / 2);
-            //area.Y = (int)position.Y - (spriteIndex.Height / 2);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            //Rectangle size;
+            if (!vivo) return;
             Vector2 center = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
 
             spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), center, scale, SpriteEffects.None, 0);
@@ -62,6 +59,7 @@ namespace BombermanGame
 
         public override void Update()
         {
+            if (!vivo) return;
             if (obst.Destruido())
             {
                 if (Juego.Instancia().Ambiente.ObtenerCasilla(punto).ArticuloContenido == null)

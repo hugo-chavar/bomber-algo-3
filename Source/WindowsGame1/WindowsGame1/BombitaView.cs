@@ -32,12 +32,14 @@ namespace BombermanGame
 
         public override void Update()
         {
+
+            if (!this.Vivo) return;
             IDaniable p = this.unPersonaje;
             if (p.Destruido())
             {
                 this.Vivo = false;
             }
-            if (!this.Vivo) return;
+            
             keyboard = Keyboard.GetState();
             speed = unPersonaje.Movimiento.Velocidad;
             if (keyboard.IsKeyDown(Keys.W))
@@ -108,7 +110,7 @@ namespace BombermanGame
      
         public override void Draw(SpriteBatch spriteBatch)
         {
-            
+            if (!this.Vivo) return;
             Vector2 center = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
   
             spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), center, scale, SpriteEffects.None, 0);

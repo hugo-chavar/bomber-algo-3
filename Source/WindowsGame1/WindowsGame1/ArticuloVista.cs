@@ -24,7 +24,7 @@ namespace BombermanGame
         {
             articulo = unArticulo;
             CargarSprite();
-            vivo = false;
+            vivo = true;
          
         }
 
@@ -53,13 +53,11 @@ namespace BombermanGame
               //  spriteIndex = content.Load<Texture2D>("Sprites\\" + "ArtToleTole");
             /* else if(articulo.GetType() == typeof(Salida))
                 spriteIndex = content.Load<Texture2D>("Sprites\\" + "Salida"); */
-            
-            area = new Rectangle(0, 0, spriteIndex.Width, spriteIndex.Height); // Martin: Esto no se si sirve, lo pongo igual...
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            //Rectangle size;
+            if (!vivo) return;
             Vector2 center = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
             //if (this.vivo)
             spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), center, scale, SpriteEffects.None, 0);
@@ -67,6 +65,7 @@ namespace BombermanGame
 
         public override void Update()
         {
+            if (!vivo) return;
             if ((articulo.EstaActivo) && (articulo.EstaOculto))
             {
                 MapaVista.EliminarDibujable(this);

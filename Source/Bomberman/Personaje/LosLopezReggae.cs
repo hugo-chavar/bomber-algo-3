@@ -14,7 +14,7 @@ namespace BombermanModel.Personaje
         public LosLopezReggae(Punto unPunto)
             : base(unPunto)
         {
-            this.movimiento.MultiplicarVelocidadPor(MULTIPLICADORVELOCIDADLOSLOPEZREGGAE);
+            //this.movimiento.MultiplicarVelocidadPor(MULTIPLICADORVELOCIDADLOSLOPEZREGGAE);
             this.Lanzador = new LanzadorProyectil();
             this.UnidadesDeResistencia = VIDALOSLOPEZREGGAE;
             this.Nombre = Nombres.lopezReggae;
