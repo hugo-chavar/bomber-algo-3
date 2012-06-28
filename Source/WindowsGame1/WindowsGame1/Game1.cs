@@ -49,6 +49,7 @@ namespace BombermanGame
             ListaVivos.Initialize();
             MapaVista.inicialize(elJuego.Ambiente);
             MapaVista.CargarMapa();
+            MapaVista.CargarProyectiles();
             unaPersona.UnPersonaje = elJuego.Protagonista;
             base.Initialize();
         }

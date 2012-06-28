@@ -51,7 +51,7 @@ namespace BombermanGame
 
                 //Proyectil proyectil = (Proyectil)Juego.Instancia().Ambiente.ObtenerCasilla(unPersonaje.Posicion).Explosivo;
                 //ProyectilView p = new ProyectilView();
-                foreach (ObjetoVivo o in ListaVivos.objList)
+                foreach (ObjetoVivo o in MapaVista.ObjetosDibujables)
                 {
                     if ((o.GetType() == typeof (ProyectilView)) && (!o.Vivo))
                     {
