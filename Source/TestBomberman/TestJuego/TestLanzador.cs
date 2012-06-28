@@ -226,7 +226,7 @@ namespace TestBombermanModel.TestJuego
         }
 
         [Test]
-        public void CuandoBombmitaPlantaUnaToleToleDestruyendoACecilioUbicadoDetrasDeUnBloqueDeAcero()
+        public void CuandoBombmitaPlantaUnaToleToleYNoDestruyeACecilioUbicadoDetrasDeUnBloqueDeAcero()
         {
             Punto pBombita = new Punto(1, 0);
             Punto pCecil = new Punto(1, 2);         //Cecil ubicado detras del bloque
@@ -241,13 +241,13 @@ namespace TestBombermanModel.TestJuego
             System.Threading.Thread.Sleep(5000);//Pasan 5 segundos
             unJuego.AvanzarElTiempo();
 
-            Assert.IsTrue(unCecil.Destruido());
+            Assert.IsFalse(unCecil.Destruido());
             Assert.IsTrue(bombita.Destruido());
             Assert.IsInstanceOf(typeof(Pasillo), Juego.Instancia().Ambiente.ObtenerCasilla(pBloqueAcero).Estado);
         }
 
         [Test]
-        public void CuandoBombmitaPlantaUnaToleToleDestruyendoATodosLosPersonajesYObstaculosDentroDeSuAlcance()
+        public void CuandoBombmitaPlantaUnaToleToleDestruyendoATodosLosPersonajesYObstaculosDentroDeSuAlcancePeroNoLosQueEstanAtrasDeUnBloque()
         {
             Punto pBombita = new Punto(1, 0);
             Punto pLopezReggae = new Punto(1, 2);
@@ -272,10 +272,10 @@ namespace TestBombermanModel.TestJuego
             System.Threading.Thread.Sleep(5000);//Pasan 5 segundos
             unJuego.AvanzarElTiempo();
 
-            Assert.IsTrue(unCecil.Destruido());
+            Assert.IsFalse(unCecil.Destruido());
             Assert.IsTrue(bombita.Destruido());
             Assert.IsTrue(lRGA.Destruido());
-            Assert.IsTrue(lRG.Destruido());
+            Assert.IsFalse(lRG.Destruido());
             Assert.IsInstanceOf(typeof(Pasillo), Juego.Instancia().Ambiente.ObtenerCasilla(pBloqueAcero).Estado);
         }
 

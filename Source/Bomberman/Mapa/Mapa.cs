@@ -372,53 +372,68 @@ namespace BombermanModel.Mapa
             return listaDevolucion;
         }
 
-        private void AgregarCasillerosAIzquierda(List<Punto> Lista,int expansion, Punto punto)
-        { 
-            int i=1;
-            Punto unPuntoAux = punto.PosicionIzquierda(); 
-            while (this.PosicionDentroRango(unPuntoAux) && i <= expansion)
-            {
-                Lista.Add(unPuntoAux);
-                i++;
-                unPuntoAux = unPuntoAux.PosicionIzquierda();
-            }
-        }
+      private void AgregarCasillerosAIzquierda(List<Punto> Lista, int expansion, Punto punto)
+      {
+          int i = 1;
+          Punto unPuntoAux = punto.PosicionIzquierda();
+          Casilla.Casilla unaCasillaAnteriorAux = new Casilla.Casilla(unPuntoAux);
+          unaCasillaAnteriorAux = FabricaDeCasillas.FabricarPasillo(unPuntoAux);
 
-        private void AgregarCasillerosADerecha(List<Punto> Lista, int expansion, Punto punto)
-        {
-            int i = 1;
-            Punto unPuntoAux = punto.PosicionDerecha();
-            while ((this.PosicionDentroRango(unPuntoAux)) && (i <= expansion))
-            {
-                Lista.Add(unPuntoAux);
-                i++;
-                unPuntoAux = unPuntoAux.PosicionDerecha();
-            }
-        }
 
-        private void AgregarCasillerosArriba(List<Punto> Lista, int expansion, Punto punto)
-        {
-            int i = 1;
-            Punto unPuntoAux = punto.PosicionSuperior();
-            while ((this.PosicionDentroRango(unPuntoAux)) && (i <= expansion))
-            {
-                Lista.Add(unPuntoAux);
-                i++;
-                unPuntoAux = unPuntoAux.PosicionSuperior();
-            }
-        }
 
-        private void AgregarCasillerosAbajo(List<Punto> Lista, int expansion, Punto punto)
-        {
-            int i = 1;
-            Punto unPuntoAux = punto.PosicionInferior();
-            while (this.PosicionDentroRango(unPuntoAux) && (i <= expansion)) 
-            {
-                Lista.Add(unPuntoAux);
-                i++;
-                unPuntoAux = unPuntoAux.PosicionInferior();
-            }
-        }
+          while (this.PosicionDentroRango(unPuntoAux) && i <= expansion && unaCasillaAnteriorAux.Estado.GetType() == typeof(Pasillo))
+          {
+              unaCasillaAnteriorAux = Juego.Juego.Instancia().Ambiente.ObtenerCasilla(unPuntoAux);
+              Lista.Add(unPuntoAux);
+              i++;
+              unPuntoAux = unPuntoAux.PosicionIzquierda();
+          }
+      }
+
+      private void AgregarCasillerosADerecha(List<Punto> Lista, int expansion, Punto punto)
+      {
+          int i = 1;
+          Punto unPuntoAux = punto.PosicionDerecha();
+          Casilla.Casilla unaCasillaAnteriorAux = new Casilla.Casilla(unPuntoAux);
+          unaCasillaAnteriorAux = FabricaDeCasillas.FabricarPasillo(unPuntoAux);
+          while (this.PosicionDentroRango(unPuntoAux) && i <= expansion && unaCasillaAnteriorAux.Estado.GetType() == typeof(Pasillo))
+          {
+              unaCasillaAnteriorAux = Juego.Juego.Instancia().Ambiente.ObtenerCasilla(unPuntoAux);
+              Lista.Add(unPuntoAux);
+              i++;
+              unPuntoAux = unPuntoAux.PosicionDerecha();
+          }
+      }
+
+      private void AgregarCasillerosArriba(List<Punto> Lista, int expansion, Punto punto)
+      {
+          int i = 1;
+          Punto unPuntoAux = punto.PosicionSuperior();
+          Casilla.Casilla unaCasillaAnteriorAux = new Casilla.Casilla(unPuntoAux);
+          unaCasillaAnteriorAux = FabricaDeCasillas.FabricarPasillo(unPuntoAux);
+          while (this.PosicionDentroRango(unPuntoAux) && i <= expansion && unaCasillaAnteriorAux.Estado.GetType() == typeof(Pasillo))
+          {
+              unaCasillaAnteriorAux = Juego.Juego.Instancia().Ambiente.ObtenerCasilla(unPuntoAux);
+              Lista.Add(unPuntoAux);
+              i++;
+              unPuntoAux = unPuntoAux.PosicionSuperior();
+          }
+      }
+
+      private void AgregarCasillerosAbajo(List<Punto> Lista, int expansion, Punto punto)
+      {
+          int i = 1;
+          Punto unPuntoAux = punto.PosicionInferior();
+          Casilla.Casilla unaCasillaAnteriorAux = new Casilla.Casilla(unPuntoAux);
+          unaCasillaAnteriorAux = FabricaDeCasillas.FabricarPasillo(unPuntoAux);
+          while (this.PosicionDentroRango(unPuntoAux) && i <= expansion && unaCasillaAnteriorAux.Estado.GetType() == typeof(Pasillo))
+          {
+              unaCasillaAnteriorAux = Juego.Juego.Instancia().Ambiente.ObtenerCasilla(unPuntoAux);
+              Lista.Add(unPuntoAux);
+              i++;
+              unPuntoAux = unPuntoAux.PosicionInferior();
+          }
+      }
         
         public void FinalizarNivel()
         {
