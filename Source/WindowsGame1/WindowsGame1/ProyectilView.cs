@@ -23,7 +23,7 @@ namespace BombermanGame
             : base(pos)
         {
             explosivo = (Proyectil)bomba;
-            spriteName = "Proyectil";
+            spriteIndex = MapaVista.proyectilSprite;
             rotation = rot;
             speed = 1f;
             vivo = true;
@@ -33,7 +33,7 @@ namespace BombermanGame
         public ProyectilView()
             :base(new Vector2(0,1))
         {
-            spriteName = "Proyectil";
+            spriteIndex = MapaVista.proyectilSprite;
             speed = 1f;
             vivo = false;
         }
@@ -42,7 +42,7 @@ namespace BombermanGame
 
         public override void LoadContent(ContentManager content)
         {
-            spriteIndex = content.Load<Texture2D>("Sprites\\" + spriteName);
+            spriteIndex = content.Load<Texture2D>("Sprites\\" + "Proyectil");
         }
 
         public override void Draw(SpriteBatch spriteBatch)

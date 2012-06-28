@@ -25,6 +25,7 @@ namespace BombermanGame
 
         public static Texture2D molotovSprite;//ANDY: NOSE SI ES ACA DONDE LO TENGO QUE ALMACENAR
         public static Texture2D toleToleSprite;
+        public static Texture2D proyectilSprite;
         public static Texture2D pasilloView;
         public static Texture2D artTimerView;
         public static Texture2D artToleTole;
@@ -37,9 +38,20 @@ namespace BombermanGame
             mapaInterno = unMapa;
             objetosDibujables = new List<ObjetoVivo>();
             enemigosDibujables = new List<ObjetoVivo>();
-
         }
 
+        public static List<ObjetoVivo> ObjetosDibujables
+        {
+            get { return objetosDibujables;}
+        }
+
+        public static void CargarProyectiles()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                AgregarDibujable(new ProyectilView());
+            }
+        }
 
         public static void AgregarDibujable(ObjetoVivo unDibujable)
         {
@@ -188,6 +200,7 @@ namespace BombermanGame
             // Carga de contenidos de objetos que se dibujan en ejecucion
             molotovSprite = content.Load<Texture2D>("Sprites\\" + "BmbMolotov");
             toleToleSprite = content.Load<Texture2D>("Sprites\\" + "BmbTole");
+            proyectilSprite = content.Load<Texture2D>("Sprites\\" + "Proyectil");
             pasilloView = content.Load<Texture2D>("Sprites\\" + "ObsPasillo");
             artTimerView = content.Load<Texture2D>("Sprites\\" + "ArtTimer");
             artToleTole = content.Load<Texture2D>("Sprites\\" + "ArtToleTole");

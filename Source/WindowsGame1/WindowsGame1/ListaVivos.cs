@@ -21,9 +21,9 @@ namespace BombermanGame
         {
             ///objList.Add(new Pared(new Vector2(100, 100)));
             //objList.Add(new BombitaView());
-            objList.Add(new LopezReggaeAladoView(new LosLopezReggaeAlado(new Punto(10, 10))));
-            objList.Add(new CecilioView(new Cecilio(new Punto(10, 5))));
-            objList.Add(new LopezReggaeView(new LosLopezReggae(new Punto(13, 6))));
+            //objList.Add(new LopezReggaeAladoView(new LosLopezReggaeAlado(new Punto(10, 10))));
+            //objList.Add(new CecilioView(new Cecilio(new Punto(10, 5))));
+            //objList.Add(new LopezReggaeView(new LosLopezReggae(new Punto(13, 6))));
             //objList.Add(new ProyectilView(new Vector2(356, 300)));
 
             for (int i = 0; i < 10; i++)
