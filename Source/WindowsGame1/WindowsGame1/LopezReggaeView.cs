@@ -79,6 +79,7 @@ namespace BombermanGame
 
         public override void Update()
         {
+            if (!vivo) return;
             IDaniable p = this.unPersonaje;
             if (p.Destruido())
             {
