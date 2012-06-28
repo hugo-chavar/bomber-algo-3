@@ -11,7 +11,9 @@ namespace BombermanModel.Arma
     {
         private const int PODERDEDESTRUCCIONPROYECTIL = 1;
         private const int ONDAEXPANSIVA = 1;
+        private const float VELOCIDADMOV = 250F;
 
+        private DateTime ultimoMovimiento;
         private Movimiento movimiento;
         private int alcance;
 
@@ -34,6 +36,7 @@ namespace BombermanModel.Arma
 
         public void Mover()
         {
+            ultimoMovimiento = DateTime.Now;
             Punto posicionPrevia = this.Posicion.Clonar();
             Juego.Juego.Instancia().Ambiente.Mover(this);
             this.alcance--;
@@ -56,6 +59,7 @@ namespace BombermanModel.Arma
         public Proyectil(Punto unaPos)
 
         {
+            ultimoMovimiento = DateTime.Now;
             this.movimiento = new Movimiento();
             this.poderDeDestruccion = PODERDEDESTRUCCIONPROYECTIL;
             this.ondaExpansiva = ONDAEXPANSIVA;
@@ -71,6 +75,8 @@ namespace BombermanModel.Arma
 
         public override void CuandoPasaElTiempo()
         {
+            DateTime horaActual = DateTime.Now;
+            if (horaActual.Subtract(ultimoMovimiento).Milliseconds >= VELOCIDADMOV)
             this.Mover();
         }
 
