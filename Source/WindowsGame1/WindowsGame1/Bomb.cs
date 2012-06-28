@@ -52,13 +52,14 @@ namespace BombermanGame
 
         public override void Update()
         {
+            if (!vivo) return;
             if (explosivo.EstaExplotado())
             {
                 vivo = false;
 
 
                 //PasilloView unPasillo = new PasilloView(position);
-                MapaVista.EliminarDibujable(this);
+               // MapaVista.EliminarDibujable(this);
                 //MapaVista.AgregarDibujable(unPasillo);
             }
 
