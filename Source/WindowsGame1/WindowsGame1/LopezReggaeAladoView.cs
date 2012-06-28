@@ -47,6 +47,11 @@ namespace BombermanGame
 
         public override void Update()
         {
+            IDaniable p = this.unPersonaje;
+            if (p.Destruido())
+            {
+                this.Vivo = false;
+            }
             if (!vivo) return;
             rotation = point_direction(position.X, position.Y, destinosObjetivo[destinoActual].X * 32 + Game1.mapa.Location.X, destinosObjetivo[destinoActual].Y * 32 + Game1.mapa.Location.Y);
             

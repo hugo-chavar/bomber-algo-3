@@ -79,6 +79,11 @@ namespace BombermanGame
 
         public override void Update()
         {
+            IDaniable p = this.unPersonaje;
+            if (p.Destruido())
+            {
+                this.Vivo = false;
+            }
             //si el chabon no esta vivo.. no hago nada
             if (!vivo) return;
             Random random = new Random();
