@@ -32,6 +32,7 @@ namespace BombermanModel.Articulo
         public void Ocultar()
         {
             this.EstaOculto = true;
+            this.estaActivo = false;
         }
 
         public void Activar()
