@@ -20,7 +20,6 @@ namespace BombermanGame
         protected float speed = 0.0f;
         protected string spriteName = "empty";
         protected float scale = 1.0f;
-        protected bool solido = false;
         protected bool vivo = true;
 
         public bool Vivo { get { return this.vivo; } set { this.vivo = value; } }
@@ -44,6 +43,8 @@ namespace BombermanGame
         public virtual void LoadContent(ContentManager content)
         {
         }
+
+
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
