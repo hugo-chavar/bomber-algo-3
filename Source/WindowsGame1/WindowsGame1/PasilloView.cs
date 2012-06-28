@@ -16,29 +16,51 @@ using BombermanModel.Mapa.Casilla;
 
 namespace BombermanGame
 {
-    class PasilloView : ObjetoVivo
+    class PasilloView : ObjetoVivo //BloqueView
     {
-        private Obstaculo pasilloModel;
 
         public PasilloView(Vector2 pos)
             : base(pos)
         {
             spriteName = "ObsPasillo";
-            solido = true;
-            spriteIndex = MapaVista.pasilloView;
-            Punto unPunto = new Punto(0, 0);
-            unPunto.X = ((int)(pos.X) - Game1.mapa.Location.X) / 32;
-            unPunto.Y = ((int)(pos.Y) - Game1.mapa.Location.Y) / 32;
-            pasilloModel = Juego.Instancia().Ambiente.ObtenerCasilla(unPunto).Estado;
+            vivo = false;
         }
 
         public override void LoadContent(ContentManager content)
         {
+
             spriteIndex = content.Load<Texture2D>("Sprites\\" + spriteName);
+            vivo = true;
         }
+
+        public override void Update()
+        {
+
+            //if (!vivo) return;
+            //if (obst.Destruido())
+            //{
+            //    if (Juego.Instancia().Ambiente.ObtenerCasilla(punto).ArticuloContenido == null)
+            //    {
+            //        //PasilloView unPasillo = new PasilloView(position);
+            //        //MapaVista.AgregarDibujable(unPasillo);
+            //    }
+            //    else
+            //    {
+                    //ArticuloVista unArticuloVista = new ArticuloVista(position, Juego.Instancia().Ambiente.ObtenerCasilla(punto).ArticuloContenido);
+                    //if (!Juego.Instancia().Ambiente.ObtenerCasilla(punto).ArticuloContenido.EstaActivo)
+                    //    MapaVista.AgregarDibujable(new PasilloView(position));
+            //        //MapaVista.AgregarDibujable(unArticuloVista);
+            //    }
+            //    //MapaVista.EliminarDibujable(this);
+            //    //vivo = false;
+            //}
+        }
+
+
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+
             if (!vivo) return;
             Vector2 center = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
 
@@ -46,5 +68,6 @@ namespace BombermanGame
 
 
         }
+
     }
 }
