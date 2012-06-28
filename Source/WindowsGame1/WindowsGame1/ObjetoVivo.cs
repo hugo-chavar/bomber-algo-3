@@ -71,5 +71,8 @@ namespace BombermanGame
             return false;
         }
 
+        //public virtual bool EsUnDibujableMovible();
+        
+
     }
 }
