@@ -26,22 +26,30 @@ namespace BombermanGame
             //position.Y = 0 + Game1.mapa.Location.Y;
 
             explosivo = bomba;
-            if (explosivo.Nombre == Nombres.molotov)
-                spriteIndex = MapaVista.molotovSprite;
-            else if (explosivo.Nombre == Nombres.toleTole)
-                spriteIndex = MapaVista.toleToleSprite;
+            setSpriteName();
+            vivo = true;
         }
 
         public Bomb()
         {
-
+            vivo = false;
         }
+
+        public Explosivo Explosivo { get { return this.explosivo; } set { this.explosivo = value; } }
 
         public override void LoadContent(ContentManager content)
         {
             //position.X = 96 + Game1.mapa.Location.X;
            // position.Y = Game1.mapa.Location.Y;
             // spriteIndex = content.Load<Texture2D>("Sprites\\" + spriteName);
+        }
+
+        public void setSpriteName()
+        {
+            if (explosivo.Nombre == Nombres.molotov)
+                spriteIndex = MapaVista.molotovSprite;
+            else if (explosivo.Nombre == Nombres.toleTole)
+                spriteIndex = MapaVista.toleToleSprite;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
