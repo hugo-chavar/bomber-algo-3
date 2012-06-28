@@ -53,6 +53,14 @@ namespace BombermanGame
             }
         }
 
+        public static void CargarBombas()
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                AgregarDibujable(new Bomb());
+            }
+        }
+
         public static void AgregarDibujable(ObjetoVivo unDibujable)
         {
          
@@ -60,7 +68,17 @@ namespace BombermanGame
 
         }
 
-        
+        public static ObjetoVivo ObtenerObjetoContundente(ObjetoVivo v)
+        {
+            foreach (ObjetoVivo o in objetosDibujables)
+            {
+                if ((o.GetType() == v.GetType()) && (!o.Vivo))
+                {
+                    return o;
+                }
+            }
+            return null;
+        }
 
         public static void DibujarMapa(SpriteBatch sprite)
         {

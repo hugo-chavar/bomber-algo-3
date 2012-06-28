@@ -43,7 +43,15 @@ namespace BombermanGame
         {
             Explosivo bomba = unPersonaje.LanzarExplosivo();
             if (bomba != null)
-                MapaVista.AgregarDibujable(new Bomb(MapaVista.TransformarPuntoEnVector2(unPersonaje.Posicion), bomba));
+            {
+                Bomb unaBmb = (Bomb)MapaVista.ObtenerObjetoContundente(new Bomb());
+                unaBmb.Explosivo = bomba;
+                unaBmb.setSpriteName();
+                unaBmb.Posicion = position;
+                unaBmb.Vivo = true;
+            }
+                
+                // MapaVista.AgregarDibujable(new Bomb(MapaVista.TransformarPuntoEnVector2(unPersonaje.Posicion), bomba));
         }
 
         protected virtual void Advance()
@@ -216,6 +224,7 @@ namespace BombermanGame
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            if (!vivo) return;
             Vector2 center = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
 
             spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), center, scale, SpriteEffects.None, 0);

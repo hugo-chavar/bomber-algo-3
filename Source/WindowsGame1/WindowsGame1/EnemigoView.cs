@@ -58,7 +58,6 @@ namespace BombermanGame
 
         public override void Update()
         {
-            //si el chabon no esta vivo.. no hago nada
             if (!vivo) return;
             int validas;
             if (((movido.X == Vector2.Zero.X) || (movido.X == spriteIndex.Width - 1)) && ((movido.Y == Vector2.Zero.Y) || (movido.Y == spriteIndex.Height - 1)))

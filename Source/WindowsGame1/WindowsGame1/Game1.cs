@@ -21,9 +21,6 @@ namespace BombermanGame
         SpriteBatch spriteBatch;
         Juego elJuego = Juego.Instancia();
 
-        //Vector2 posInicial = new Vector2();
-        //public static SpriteFont fuente;
-        //public static Rectangle mapa;
         BombitaView unaPersona = new BombitaView();
 
         public static SpriteFont fuente;
@@ -46,10 +43,11 @@ namespace BombermanGame
         {
 
             mapa = new Rectangle(100, 75, 32 * elJuego.Ambiente.DimensionHorizontal, 32 * elJuego.Ambiente.DimensionVertical);
-            ListaVivos.Initialize();
             MapaVista.inicialize(elJuego.Ambiente);
             MapaVista.CargarMapa();
             MapaVista.CargarProyectiles();
+            MapaVista.CargarBombas();
+
             unaPersona.UnPersonaje = elJuego.Protagonista;
             base.Initialize();
         }
@@ -74,20 +72,13 @@ namespace BombermanGame
              MapaVista.CargarContenido(this.Content);
         }
 
-        /// <summary>
-        /// UnloadContent will be called once per game and is the place to unload
-        /// all content.
-        /// </summary>
+
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
+
         }
 
-        /// <summary>
-        /// Allows the game to run logic such as updating the world,
-        /// checking for collisions, gathering input, and playing audio.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+
         protected override void Update(GameTime gameTime)
         {
             

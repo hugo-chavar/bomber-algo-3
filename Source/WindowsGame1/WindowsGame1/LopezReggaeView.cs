@@ -43,25 +43,30 @@ namespace BombermanGame
             //spriteBatch.DrawString(Game1.fuente, "Mvido ->Pos X: " + movido.X + " Pos Y: " + movido.Y + " RealPos X: " + position.X + " Pos Y: " + position.Y, new Vector2(10, Game1.fuente.LineSpacing), Color.Yellow);
         }
 
+
+
         public override void Disparar()
         {
             Proyectil bomba = (Proyectil)unPersonaje.LanzarExplosivo();
             if (bomba != null)
             {
+                ProyectilView unProy = (ProyectilView)MapaVista.ObtenerObjetoContundente(new ProyectilView());
 
-                //Proyectil proyectil = (Proyectil)Juego.Instancia().Ambiente.ObtenerCasilla(unPersonaje.Posicion).Explosivo;
-                //ProyectilView p = new ProyectilView();
-                foreach (ObjetoVivo o in MapaVista.ObjetosDibujables)
-                {
-                    if ((o.GetType() == typeof (ProyectilView)) && (!o.Vivo))
-                    {
-                        o.Rotacion = rotation;
-                        o.Posicion = position;
-                        ((ProyectilView)o).Explosivo = bomba;
-                        o.Vivo = true;
-                        return;
-                    }
-                }
+                unProy.Explosivo = bomba;
+                unProy.Rotacion = rotation;
+                unProy.Posicion = position;
+                unProy.Vivo = true;
+                //foreach (ObjetoVivo o in MapaVista.ObjetosDibujables)
+                //{
+                //    if ((o.GetType() == typeof (ProyectilView)) && (!o.Vivo))
+                //    {
+                //        o.Rotacion = rotation;
+                //        o.Posicion = position;
+                //        ((ProyectilView)o).Explosivo = bomba;
+                //        o.Vivo = true;
+                //        return;
+                //    }
+                //}
            }
         }
 
@@ -79,6 +84,7 @@ namespace BombermanGame
 
         public override void Update()
         {
+            if (!vivo) return;
             IDaniable p = this.unPersonaje;
             if (p.Destruido())
             {

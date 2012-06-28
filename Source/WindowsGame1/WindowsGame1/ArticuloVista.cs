@@ -17,15 +17,22 @@ namespace BombermanGame
 {
     class ArticuloVista : ObjetoVivo
     {
-         private Articulo articulo;
+        private Articulo articulo;
+        private Punto posEnMapa;
 
         public ArticuloVista(Vector2 pos, Articulo unArticulo)
             : base(pos)
         {
             articulo = unArticulo;
             CargarSprite();
-            vivo = false;
+            vivo = true;
          
+        }
+
+        public ArticuloVista(Punto posMapa)
+        {
+            vivo = false ;
+            posEnMapa = posMapa;
         }
 
         public void CargarSprite()
@@ -45,40 +52,33 @@ namespace BombermanGame
 
         public override void LoadContent(ContentManager content)
         {
-        //   if (articulo.GetType() == typeof(Timer))
-          //  spriteIndex = content.Load<Texture2D>("Sprites\\" + "ArtTimer" );
-           /*else if(articulo.GetType() == typeof(Chala))
-                spriteIndex = content.Load<Texture2D>("Sprites\\" + "ArtChala"); */
-            //else if(articulo.GetType() == typeof(ArticuloBombaToleTole)) 
-              //  spriteIndex = content.Load<Texture2D>("Sprites\\" + "ArtToleTole");
-            /* else if(articulo.GetType() == typeof(Salida))
-                spriteIndex = content.Load<Texture2D>("Sprites\\" + "Salida"); */
-            
-            area = new Rectangle(0, 0, spriteIndex.Width, spriteIndex.Height); // Martin: Esto no se si sirve, lo pongo igual...
+
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            //Rectangle size;
+            if (!vivo) return;
             Vector2 center = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
-            //if (this.vivo)
             spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), center, scale, SpriteEffects.None, 0);
         }
 
         public override void Update()
         {
-            if ((articulo.EstaActivo) && (articulo.EstaOculto))
-            {
-                MapaVista.EliminarDibujable(this);
-                PasilloView unPasillo = new PasilloView(position);
-                MapaVista.AgregarDibujable(unPasillo);
+            //if (!vivo) return;
+            //if ((articulo.EstaActivo) && (articulo.EstaOculto))
+            //{
+            //    MapaVista.EliminarDibujable(this);
+            //    PasilloView unPasillo = new PasilloView(position);
+            //    MapaVista.AgregarDibujable(unPasillo);
 
-            }
+            //}
 
-            if (articulo.EstaActivo)
+            if ((articulo.EstaActivo) && (!articulo.EstaOculto))
             {
                 vivo = true;
             }
+            else
+                vivo = false;
             
         }
 
