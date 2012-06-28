@@ -18,19 +18,18 @@ namespace BombermanGame
 {
     class BloqueView : ObjetoVivo
     {
-        
-        private Obstaculo obst ;
-        Punto punto;
 
-        public BloqueView(Vector2 pos)
+        protected Obstaculo obst;
+        protected Punto posEnMapa;
+
+        public BloqueView(Vector2 pos,Punto posMapa, Obstaculo unObstaculo)
             : base(pos)
         {
             //position.X = 64+ Game1.mapa.Location.X;
             //position.Y = 0 + Game1.mapa.Location.Y;
             //spriteName = "ObsLadrillo";
-            solido = true;
-            punto = this.TransformarAPunto(pos);
-            obst = Juego.Instancia().Ambiente.ObtenerCasilla(punto).Estado;
+            posEnMapa = posMapa;// this.TransformarAPunto(pos);
+            obst = unObstaculo;//Juego.Instancia().Ambiente.ObtenerCasilla(punto).Estado;
         }
 
         private Punto TransformarAPunto(Vector2 unVector2)
@@ -59,31 +58,15 @@ namespace BombermanGame
 
         public override void Update()
         {
+
             if (!vivo) return;
-            if (obst.Destruido())
+            Pasillo unpasillo = new Pasillo();
+            if (Juego.Instancia().Ambiente.ObtenerCasilla(posEnMapa).Estado.GetType() == unpasillo.GetType())
             {
-                if (Juego.Instancia().Ambiente.ObtenerCasilla(punto).ArticuloContenido == null)
-                {
-                    PasilloView unPasillo = new PasilloView(position);
-                    MapaVista.AgregarDibujable(unPasillo);
-                }
-                else
-                {
-                    ArticuloVista unArticuloVista = new ArticuloVista(position, Juego.Instancia().Ambiente.ObtenerCasilla(punto).ArticuloContenido);
-                    if (!Juego.Instancia().Ambiente.ObtenerCasilla(punto).ArticuloContenido.EstaActivo)
-                        MapaVista.AgregarDibujable(new PasilloView(position));
-                    MapaVista.AgregarDibujable(unArticuloVista);
-                }
-                MapaVista.EliminarDibujable(this);
-                //vivo = false;
+                vivo = false;
+
             }
+
         }
-
-        
-
-
-
-
-
     }
 }

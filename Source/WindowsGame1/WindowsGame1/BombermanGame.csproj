@@ -133,7 +133,6 @@
     <Compile Include="LopezReggaeView.cs" />
     <Compile Include="MapaVista.cs" />
     <Compile Include="ObjetoVivo.cs" />
-    <Compile Include="Pared.cs" />
     <Compile Include="PasilloView.cs" />
     <Compile Include="BombitaView.cs" />
     <Compile Include="PersonajeView.cs" />

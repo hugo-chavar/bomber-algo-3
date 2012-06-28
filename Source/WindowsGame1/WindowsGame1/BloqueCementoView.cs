@@ -18,26 +18,27 @@ namespace BombermanGame
 {
     class BloqueCementoView : BloqueView
     {
-        private Obstaculo ladri = Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(2, 0)).Estado;
-
-        public BloqueCementoView(Vector2 pos)
-            : base(pos)
+        public BloqueCementoView(Vector2 pos, Punto posMapa, Obstaculo unObstaculo)
+            : base(pos, posMapa, unObstaculo)
         {
             spriteName = "ObsCemento";
         }
 
-        public override void LoadContent(ContentManager content)
-        {
-            spriteIndex = content.Load<Texture2D>("Sprites\\" + spriteName);
-        }
+        
+        //public override void Update()
+        //{
 
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            Vector2 center = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
+        //    if (!vivo) return;
+        //    Pasillo unpasillo = new Pasillo();
+        //    if (Juego.Instancia().Ambiente.ObtenerCasilla(posEnMapa).Estado.GetType() == unpasillo.GetType())
+        //    {
+        //        vivo = false;
+           
+        //    }
 
-            spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), center, scale, SpriteEffects.None, 0);
+        //}
 
-
-        }
     }
+
+
 }

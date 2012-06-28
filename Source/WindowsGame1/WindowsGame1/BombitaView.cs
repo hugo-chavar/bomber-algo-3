@@ -24,10 +24,8 @@ namespace BombermanGame
         public BombitaView()
             : base(Juego.Instancia().Protagonista)
         {
-            //unPersonaje = Juego.Instancia().Protagonista;
             speed = unPersonaje.Movimiento.Velocidad;
             spriteName = "Bombita";
-            unPersonaje.Posicion.X = 3; //TODO: Eliminar harcodeo usado para tests de Bombita
         }
 
         public override void Update()

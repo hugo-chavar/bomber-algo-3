@@ -20,8 +20,8 @@ namespace BombermanGame
     {
         private Obstaculo ladri = Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(2, 0)).Estado;
 
-        public BloqueLadrilloView(Vector2 pos)
-            : base(pos)
+        public BloqueLadrilloView(Vector2 pos, Punto posMapa, Obstaculo unObstaculo)
+            : base(pos,posMapa,unObstaculo)
         {
             spriteName = "ObsLadrillo";
         }
@@ -38,5 +38,6 @@ namespace BombermanGame
 
             spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), center, scale, SpriteEffects.None, 0);
         }
+
     }
 }
