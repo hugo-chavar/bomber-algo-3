@@ -21,9 +21,6 @@ namespace BombermanGame
         SpriteBatch spriteBatch;
         Juego elJuego = Juego.Instancia();
 
-        //Vector2 posInicial = new Vector2();
-        //public static SpriteFont fuente;
-        //public static Rectangle mapa;
         BombitaView unaPersona = new BombitaView();
 
         public static SpriteFont fuente;
@@ -49,6 +46,8 @@ namespace BombermanGame
             MapaVista.inicialize(elJuego.Ambiente);
             MapaVista.CargarMapa();
             MapaVista.CargarProyectiles();
+            MapaVista.CargarBombas();
+
             unaPersona.UnPersonaje = elJuego.Protagonista;
             base.Initialize();
         }
