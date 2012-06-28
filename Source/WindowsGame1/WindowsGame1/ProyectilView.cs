@@ -31,7 +31,6 @@ namespace BombermanGame
         }
 
         public ProyectilView()
-            :base(new Vector2(0,1))
         {
             spriteIndex = MapaVista.proyectilSprite;
             speed = 1f;
