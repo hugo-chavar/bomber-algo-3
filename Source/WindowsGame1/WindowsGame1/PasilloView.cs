@@ -18,7 +18,6 @@ namespace BombermanGame
 {
     class PasilloView : ObjetoVivo
     {
-        //private Obstaculo ladri = Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(2, 0)).Estado;
         private Obstaculo pasilloModel;
 
         public PasilloView(Vector2 pos)
@@ -35,10 +34,7 @@ namespace BombermanGame
 
         public override void LoadContent(ContentManager content)
         {
-
             spriteIndex = content.Load<Texture2D>("Sprites\\" + spriteName);
-            area = new Rectangle(0, 0, spriteIndex.Width, spriteIndex.Height);
-
         }
 
         public override void Draw(SpriteBatch spriteBatch)
