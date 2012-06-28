@@ -39,7 +39,9 @@ namespace TestBombermanModel.TestIntegracion
             bombita.Mover();
             bombita.Movimiento.CambiarAArriba();
             bombita.Mover();
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(3000);
+            this.unJuego.AvanzarElTiempo();
+            this.unJuego.AvanzarElTiempo();
             this.unJuego.AvanzarElTiempo();
             Assert.IsFalse(bombita.Destruido());
         }
@@ -56,7 +58,9 @@ namespace TestBombermanModel.TestIntegracion
             bombita.Mover();
             bombita.Movimiento.CambiarAArriba();
             bombita.Mover();
-            System.Threading.Thread.Sleep(1000);//Pasa 1 segundo
+            System.Threading.Thread.Sleep(3000);
+            this.unJuego.AvanzarElTiempo();
+            this.unJuego.AvanzarElTiempo();
             this.unJuego.AvanzarElTiempo();
             bombita.Movimiento.CambiarAAbajo();
             bombita.Mover();
@@ -80,8 +84,10 @@ namespace TestBombermanModel.TestIntegracion
             bombita.Mover();
             bombita.Movimiento.CambiarAArriba();
             bombita.Mover();
-            System.Threading.Thread.Sleep(1000);//Pasa 1 segundo
-            unJuego.AvanzarElTiempo();
+            System.Threading.Thread.Sleep(3000);
+            this.unJuego.AvanzarElTiempo();
+            this.unJuego.AvanzarElTiempo();
+            this.unJuego.AvanzarElTiempo();
             bombita.Movimiento.CambiarAAbajo();
             bombita.Mover();
             bombita.Movimiento.CambiarAIzquierda();
@@ -105,7 +111,10 @@ namespace TestBombermanModel.TestIntegracion
             personaje.Mover();
             personaje.Mover();
             personaje.Mover();
-            Juego.Instancia().AvanzarElTiempo();
+            System.Threading.Thread.Sleep(3000);
+            this.unJuego.AvanzarElTiempo();
+            this.unJuego.AvanzarElTiempo();
+            this.unJuego.AvanzarElTiempo();
             personaje.Movimiento.CambiarAIzquierda();
             personaje.Mover();
             personaje.Mover();
@@ -127,6 +136,7 @@ namespace TestBombermanModel.TestIntegracion
             this.unJuego.AgregarEnemigo(personaje);
             personaje.Movimiento.CambiarAIzquierda();
             personaje.LanzarExplosivo();
+            System.Threading.Thread.Sleep(3000);
             this.unJuego.AvanzarElTiempo();
             this.unJuego.AvanzarElTiempo();
             this.unJuego.AvanzarElTiempo();
@@ -160,8 +170,10 @@ namespace TestBombermanModel.TestIntegracion
             unCecilio.LanzarExplosivo();
             
             Assert.IsInstanceOf(typeof(BombaMolotov), casillaTransitada.Explosivo);
-            System.Threading.Thread.Sleep(1000);//Pasa 1 segundo
-            Juego.Instancia().AvanzarElTiempo();
+            System.Threading.Thread.Sleep(3000);
+            this.unJuego.AvanzarElTiempo();
+            this.unJuego.AvanzarElTiempo();
+            this.unJuego.AvanzarElTiempo();
 
 
 

@@ -55,7 +55,9 @@ namespace TestBombermanModel.TestJuego
             Juego.Instancia().Ambiente.AgregarPersonaje(unCecil);
 
             bombita.LanzarExplosivo();
-            System.Threading.Thread.Sleep(1000);//Pasa 1 segundo
+            System.Threading.Thread.Sleep(3000);
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
             Juego.Instancia().AvanzarElTiempo();
 
             Assert.IsTrue(unCecil.Destruido());
@@ -79,8 +81,10 @@ namespace TestBombermanModel.TestJuego
             bombita.Mover(); // 8,0
             bombita.Movimiento.CambiarAArriba();
             bombita.Mover(); // pos Bombita = (8,1) tiene que safar de la explosion para no morir
-            System.Threading.Thread.Sleep(1000);//Pasa 1 segundo
-            this.unJuego.AvanzarElTiempo();
+            System.Threading.Thread.Sleep(3000);
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
             Assert.IsFalse(unLR.UnidadesDeResistencia == 0); //le quedan 5 puntos de vida
             Assert.IsFalse(bombita.Destruido()); //safo bombitaaa
             // como no lo mato vuelve
@@ -91,8 +95,10 @@ namespace TestBombermanModel.TestJuego
             bombita.Mover();
             bombita.LanzarExplosivo();
             //no pudo escapar
-            System.Threading.Thread.Sleep(1000);//Pasa 1 segundo
-            this.unJuego.AvanzarElTiempo();
+            System.Threading.Thread.Sleep(3000);
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
             Assert.IsTrue(unLR.UnidadesDeResistencia == 0); //le quedan 0 puntos de vida
             Assert.IsTrue(bombita.Destruido()); //esta vez no safo
         }
@@ -113,7 +119,9 @@ namespace TestBombermanModel.TestJuego
             bombita.Mover(); 
             bombita.Movimiento.CambiarADerecha();
             bombita.Mover();
-            System.Threading.Thread.Sleep(1000);//Pasa 1 segundo
+            System.Threading.Thread.Sleep(3000);
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
             Juego.Instancia().AvanzarElTiempo();
             Assert.IsTrue(unLRA.UnidadesDeResistencia == 0); //chau chau Adios loslopezreggae 
             Assert.IsFalse(bombita.Destruido()); //safo bombitaaa
@@ -131,7 +139,9 @@ namespace TestBombermanModel.TestJuego
             Juego.Instancia().Ambiente.AgregarPersonaje(unCecil);
 
             unCecil.LanzarExplosivo();
-            System.Threading.Thread.Sleep(1000);//Pasa 1 segundo
+            System.Threading.Thread.Sleep(3000);
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
             Juego.Instancia().AvanzarElTiempo();
 
             Assert.IsTrue(unCecil.Destruido());
@@ -156,7 +166,9 @@ namespace TestBombermanModel.TestJuego
             unCecil.Mover();
  
             //escapa Cecilio antes de que explote 
-            System.Threading.Thread.Sleep(1000);//Pasa 1 segundo
+            System.Threading.Thread.Sleep(3000);
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
             Juego.Instancia().AvanzarElTiempo();
 
             Assert.IsFalse(unCecil.Destruido()); 
@@ -180,7 +192,9 @@ namespace TestBombermanModel.TestJuego
             lRA.Mover();
             lRA.Mover();
             lRA.Mover();
-            System.Threading.Thread.Sleep(1000);//Pasa 1 segundo
+            System.Threading.Thread.Sleep(3000);
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
             Juego.Instancia().AvanzarElTiempo();
             //escapa el alado
 
@@ -368,8 +382,10 @@ namespace TestBombermanModel.TestJuego
             unBombita.Mover();//fue a 14,6
             unBombita.Movimiento.CambiarADerecha();
             unBombita.Mover();//fue a 15,6
-            System.Threading.Thread.Sleep(1000);//Pasa 1 segundo
-            unJuego.AvanzarElTiempo();
+            System.Threading.Thread.Sleep(3000);
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
             unBombita.Movimiento.CambiarAIzquierda();
             unBombita.Mover(); //fue a 14,6
             unBombita.Movimiento.CambiarAArriba();
@@ -402,8 +418,10 @@ namespace TestBombermanModel.TestJuego
             unBombita.Movimiento.CambiarAArriba();
             unBombita.Mover();//fue a 14,7
 
-            System.Threading.Thread.Sleep(1000);//Pasa 1 segundo
-            unJuego.AvanzarElTiempo();
+            System.Threading.Thread.Sleep(3000);
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
+            Juego.Instancia().AvanzarElTiempo();
 
             unBombita.Movimiento.CambiarAAbajo();
             unBombita.Mover(); //fue a 14,6

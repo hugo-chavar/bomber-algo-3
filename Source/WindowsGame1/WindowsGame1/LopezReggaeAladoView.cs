@@ -56,9 +56,20 @@ namespace BombermanGame
                 Disparar();
 
             PushTo(speed, rotation);
+            RecalcularPosicion();
             ActualizarPosicion();
 
            //base.Update();//LRA se comporta diferente que los demas
+        }
+
+        private void RecalcularPosicion()
+        {
+            int x = (int)Math.Round((position.X - Game1.mapa.Location.X) / 32, 0);
+            int y = (int)Math.Round((position.Y - Game1.mapa.Location.Y) / 32, 0);
+
+            this.unPersonaje.Posicion.X = x;
+            this.unPersonaje.Posicion.Y = y;
+
         }
 
         public float point_direction(float x, float y, float x2, float y2)

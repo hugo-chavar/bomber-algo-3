@@ -46,7 +46,7 @@ namespace BombermanGame
         public override void Disparar()
         {
             Proyectil bomba = (Proyectil)unPersonaje.LanzarExplosivo();
-            //if (bomba != null)
+            if (bomba != null)
             {
 
                 //Proyectil proyectil = (Proyectil)Juego.Instancia().Ambiente.ObtenerCasilla(unPersonaje.Posicion).Explosivo;
@@ -83,7 +83,7 @@ namespace BombermanGame
             if (!vivo) return;
             Random random = new Random();
             int vaADisparar = random.Next(0,50); // tiene un 2% de posibilidades de disparar
-            if (TieneEspacioParaDisparar() && (vaADisparar == 0 ))
+            if (TieneEspacioParaDisparar() && (vaADisparar == random.Next(0, 1)))
                 Disparar();
 
             base.Update();

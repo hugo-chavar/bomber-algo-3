@@ -27,9 +27,9 @@ namespace TestBombermanModel.TestPersonaje
         [Test]
         public void MultiplicarVelocidadPorHaceProductoDeLaVelocidadDelMovimientoPorElNumeroPasadoPorParametro()
         {
-            this.unMovimiento.MultiplicarVelocidadPor(7);
+            this.unMovimiento.MultiplicarVelocidadPor(3);
             //la velocidad inicial es 1
-            Assert.AreEqual(unMovimiento.Velocidad, 7);
+            Assert.AreEqual(unMovimiento.Velocidad, 3f);
         }
 
         [Test]
