@@ -21,6 +21,7 @@ namespace BombermanGame
     {
         static Mapa mapaInterno;
         static List<ObjetoVivo> objetosDibujables;
+        static List<ObjetoVivo> enemigosDibujables;
 
         public static Texture2D molotovSprite;//ANDY: NOSE SI ES ACA DONDE LO TENGO QUE ALMACENAR
         public static Texture2D toleToleSprite;
@@ -35,16 +36,19 @@ namespace BombermanGame
         {
             mapaInterno = unMapa;
             objetosDibujables = new List<ObjetoVivo>();
+            enemigosDibujables = new List<ObjetoVivo>();
 
         }
 
 
         public static void AgregarDibujable(ObjetoVivo unDibujable)
         {
-
-            objetosDibujables.Add(unDibujable);
+         
+                objetosDibujables.Add(unDibujable);
 
         }
+
+        
 
         public static void DibujarMapa(SpriteBatch sprite)
         {
@@ -53,6 +57,10 @@ namespace BombermanGame
                 if (s.Vivo)
                     s.Draw(sprite);
             }
+            foreach (ObjetoVivo s in enemigosDibujables)
+                if (s.Vivo)
+                    s.Draw(sprite);
+        
 
         }
 
@@ -69,7 +77,6 @@ namespace BombermanGame
         {
             // recorro el tablero entero
 
-
             for (int vertical = 0; vertical < mapaInterno.DimensionVertical; vertical++)
             {
                 for (int horizontal = 0; horizontal < mapaInterno.DimensionHorizontal; horizontal++)
@@ -79,10 +86,12 @@ namespace BombermanGame
 
                 }
             }
+
             foreach (Personaje p in Juego.Instancia().EnemigosVivos)
             {
                 AgregarEnemigo(p);
             }
+
         }
 
         private static void AgregarEnemigo(Personaje p)
@@ -94,17 +103,20 @@ namespace BombermanGame
                 case Nombres.cecilio:
                     //Vector2 unVector = TransformarPuntoEnVector2(p.Posicion);
                     unEnemigo = new CecilioView(p);
-                    AgregarDibujable(unEnemigo); 
+                    //AgregarDibujable(unEnemigo); 
+                    enemigosDibujables.Add(unEnemigo);
                     break;
                 case Nombres.lopezReggae:
                     //Vector2 unVector = TransformarPuntoEnVector2(p.Posicion);
                     unEnemigo = new LopezReggaeView(p);
-                    AgregarDibujable(unEnemigo); 
+                    //AgregarDibujable(unEnemigo); 
+                    enemigosDibujables.Add(unEnemigo);
                     break;
                 case Nombres.lopezReggaeAlado:
                     //Vector2 unVector = TransformarPuntoEnVector2(p.Posicion);
                     unEnemigo = new LopezReggaeAladoView(p);
-                    AgregarDibujable(unEnemigo); 
+                    //AgregarDibujable(unEnemigo); 
+                    enemigosDibujables.Add(unEnemigo);
                     break;
             }
                        
@@ -187,6 +199,11 @@ namespace BombermanGame
             {
                 s.LoadContent(content);
             }
+            foreach (ObjetoVivo s in enemigosDibujables)
+            {
+                s.LoadContent(content);
+            }
+
 
         }
         public static void Actualizar()
@@ -195,6 +212,10 @@ namespace BombermanGame
             for (int i = 0; i < objetosDibujables.Count; i++)
             {
                 objetosActualizablesAux.Add(objetosDibujables[i]);
+            }
+            for (int i = 0; i < enemigosDibujables.Count; i++)
+            {
+                objetosActualizablesAux.Add(enemigosDibujables[i]);
             }
 
             foreach (ObjetoVivo s in objetosActualizablesAux)
