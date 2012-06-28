@@ -20,19 +20,19 @@ namespace BombermanGame
         private Articulo articulo;
         private Punto posEnMapa;
 
-        public ArticuloVista(Vector2 pos, Articulo unArticulo)
-            : base(pos)
-        {
-            articulo = unArticulo;
-            CargarSprite();
-            vivo = true;
-         
-        }
+
 
         public ArticuloVista(Punto posMapa)
         {
             vivo = false ;
             posEnMapa = posMapa;
+        }
+
+        public ArticuloVista(Punto p, Articulo unArt, Vector2 pos)
+        {
+            articulo = unArt;
+            position = pos;
+            vivo = true;
         }
 
         public void CargarSprite()
@@ -52,7 +52,7 @@ namespace BombermanGame
 
         public override void LoadContent(ContentManager content)
         {
-
+            CargarSprite();
         }
 
         public override void Draw(SpriteBatch spriteBatch)

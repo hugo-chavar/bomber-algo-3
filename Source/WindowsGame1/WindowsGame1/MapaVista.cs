@@ -20,6 +20,7 @@ namespace BombermanGame
     public static class MapaVista
     {
         static Mapa mapaInterno;
+        static List<ObjetoVivo> pasillosDibujables;
         static List<ObjetoVivo> objetosDibujables;
         static List<ObjetoVivo> enemigosDibujables;
 
@@ -38,6 +39,7 @@ namespace BombermanGame
             mapaInterno = unMapa;
             objetosDibujables = new List<ObjetoVivo>();
             enemigosDibujables = new List<ObjetoVivo>();
+            pasillosDibujables = new List<ObjetoVivo>();
         }
 
         public static List<ObjetoVivo> ObjetosDibujables
@@ -82,9 +84,14 @@ namespace BombermanGame
 
         public static void DibujarMapa(SpriteBatch sprite)
         {
+            foreach (ObjetoVivo s in pasillosDibujables)
+            {
+                s.Draw(sprite);
+            }
+            
             foreach (ObjetoVivo s in objetosDibujables)
             {
-                if (s.Vivo)
+                //if (s.Vivo)
                     s.Draw(sprite);
             }
             foreach (ObjetoVivo s in enemigosDibujables)
@@ -111,8 +118,17 @@ namespace BombermanGame
             {
                 for (int horizontal = 0; horizontal < mapaInterno.DimensionHorizontal; horizontal++)
                 {
-                    Casilla unaCasilla = mapaInterno.ObtenerCasilla(new Punto(horizontal, vertical));
+                    Punto p = new Punto(horizontal, vertical);
+                    Casilla unaCasilla = mapaInterno.ObtenerCasilla(p);
+                    if (unaCasilla.ArticuloContenido != null)
+                    {
+                        Articulo unArt = unaCasilla.ArticuloContenido;
+                        AgregarDibujable(new ArticuloVista(p, unArt, TransformarPuntoEnVector2(p)));
+                    }
                     AgregarCasillero(unaCasilla);
+                    pasillosDibujables.Add(new PasilloView(TransformarPuntoEnVector2(p)));
+
+
 
                 }
             }
@@ -155,17 +171,9 @@ namespace BombermanGame
 
         private static void AgregarCasillero(Casilla unCasillero) // No estaria mejor un case?
         {
-             /*Articulo unArticulo = unCasillero.ArticuloContenido;
-             if (unArticulo != null)
-             {
-                 Vector2 unVector = TransformarPuntoEnVector2(unCasillero.Posicion);
-                 ArticuloVista unArticuloVista = new ArticuloVista(unVector, unArticulo);
-                 AgregarDibujable(unArticuloVista);
-             }*/
-
-
 
             Obstaculo unObstaculo = unCasillero.Estado;
+            
 
             if (unObstaculo != null)
             {
@@ -173,23 +181,23 @@ namespace BombermanGame
                 if (unObstaculo.Nombre == Nombres.bAcero)
                 {
                     Vector2 unVector = TransformarPuntoEnVector2(unCasillero.Posicion);
-                    BloqueAceroView unBloqueDeAcero = new BloqueAceroView(unVector);
+                    BloqueAceroView unBloqueDeAcero = new BloqueAceroView(unVector, unCasillero.Posicion, unObstaculo);
                     AgregarDibujable(unBloqueDeAcero);
 
                 }
 
-                if (unObstaculo.Nombre == Nombres.pasillo)
-                {
-                    Vector2 unVector = TransformarPuntoEnVector2(unCasillero.Posicion);
-                    PasilloView unaPared = new PasilloView(unVector);
-                    AgregarDibujable(unaPared);
+                //if (unObstaculo.Nombre == Nombres.pasillo)
+                //{
+                //    Vector2 unVector = TransformarPuntoEnVector2(unCasillero.Posicion);
+                //    PasilloView unaPared = new PasilloView(unVector, unCasillero.Posicion, unObstaculo);
+                //    AgregarDibujable(unaPared);
                     
-                }
+                //}
 
                 if (unObstaculo.Nombre == Nombres.bCemento)
                 {
                     Vector2 unVector = TransformarPuntoEnVector2(unCasillero.Posicion);
-                    BloqueCementoView unBloqueCementoView = new BloqueCementoView(unVector);
+                    BloqueCementoView unBloqueCementoView = new BloqueCementoView(unVector, unCasillero.Posicion, unObstaculo);
                     AgregarDibujable(unBloqueCementoView);
 
                 }
@@ -197,7 +205,7 @@ namespace BombermanGame
                 if (unObstaculo.Nombre == Nombres.bLadrillo)
                 {
                     Vector2 unVector = TransformarPuntoEnVector2(unCasillero.Posicion);
-                    BloqueLadrilloView unBloqueLadrilloView = new BloqueLadrilloView(unVector);
+                    BloqueLadrilloView unBloqueLadrilloView = new BloqueLadrilloView(unVector, unCasillero.Posicion, unObstaculo);
                     AgregarDibujable(unBloqueLadrilloView);
 
                 }
@@ -226,6 +234,11 @@ namespace BombermanGame
             salida = content.Load<Texture2D>("Sprites\\" + "Salida");
 
             // Carga de contendios de objetos que provienen del mapa
+            foreach (ObjetoVivo s in pasillosDibujables)
+            {
+                s.LoadContent(content);
+            }
+
             foreach (ObjetoVivo s in objetosDibujables)
             {
                 s.LoadContent(content);
