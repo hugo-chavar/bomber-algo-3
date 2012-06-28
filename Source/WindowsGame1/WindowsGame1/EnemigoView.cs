@@ -67,7 +67,16 @@ namespace BombermanGame
                 else
                 {
                     validas = TestDireccionesValidas();
-                    if (validas > 2) // Si tiene 3 o 4 opciones de movimiento, recalcula su direccion.
+                    Vector2 dirPrev = new Vector2(this.Direccion.X, this.Direccion.Y);
+                    if ( (validas > 2) && (this.unPersonaje.Nombre != Nombres.lopezReggaeAlado))
+                    {
+                        while ((this.Direccion.X == dirPrev.X) && (this.Direccion.Y == dirPrev.Y) )
+                        {
+                            recalcularDireccion();
+                        }
+                    }
+                    Random random = new Random();
+                    if ((this.unPersonaje.Nombre == Nombres.lopezReggaeAlado) && (random.Next(0, 5) == 0))
                         recalcularDireccion();
                 }
             }
@@ -109,6 +118,7 @@ namespace BombermanGame
         public void recalcularDireccion()
         {
             Random random = new Random();
+            Vector2 dirPrev = new Vector2(this.Direccion.X, this.Direccion.Y);
             int calculadorDirecciones = random.Next(0, 4);
             direccion = versores.ElementAt(calculadorDirecciones);
             switch ((calculadorDirecciones + 1) * 2)

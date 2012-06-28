@@ -67,7 +67,8 @@ namespace BombermanGame
                 //        return;
                 //    }
                 //}
-           }
+            }
+            
         }
 
         public bool TieneEspacioParaDisparar()
@@ -93,10 +94,11 @@ namespace BombermanGame
             //si el chabon no esta vivo.. no hago nada
             if (!vivo) return;
             Random random = new Random();
-            int vaADisparar = random.Next(0,50); // tiene un 2% de posibilidades de disparar
-            if (TieneEspacioParaDisparar() && (vaADisparar == random.Next(0, 1)))
+            int vaADisparar = random.Next(0,100); // tiene un 1% de posibilidades de disparar
+            if (TieneEspacioParaDisparar() && (vaADisparar == 0))
+            {
                 Disparar();
-
+            }
             base.Update();
         }
     }

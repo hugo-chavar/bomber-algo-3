@@ -25,7 +25,7 @@ namespace BombermanGame
             explosivo = (Proyectil)bomba;
             spriteIndex = MapaVista.proyectilSprite;
             rotation = rot;
-            speed = 1f;
+            speed = 0.5f;
             vivo = true;
             
         }
@@ -33,7 +33,7 @@ namespace BombermanGame
         public ProyectilView()
         {
             spriteIndex = MapaVista.proyectilSprite;
-            speed = 1f;
+            speed = 0.5f;
             vivo = false;
         }
 
