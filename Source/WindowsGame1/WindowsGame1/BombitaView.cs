@@ -32,6 +32,12 @@ namespace BombermanGame
 
         public override void Update()
         {
+            IDaniable p = this.unPersonaje;
+            if (p.Destruido())
+            {
+                this.Vivo = false;
+            }
+            if (!this.Vivo) return;
             keyboard = Keyboard.GetState();
             speed = unPersonaje.Movimiento.Velocidad;
             if (keyboard.IsKeyDown(Keys.W))
