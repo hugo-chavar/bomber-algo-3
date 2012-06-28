@@ -216,6 +216,7 @@ namespace BombermanGame
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            if (!vivo) return;
             Vector2 center = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
 
             spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), center, scale, SpriteEffects.None, 0);

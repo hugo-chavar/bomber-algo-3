@@ -131,7 +131,6 @@
     <Compile Include="LopezReggaeAladoView.cs" />
     <Compile Include="LopezReggaeView.cs" />
     <Compile Include="MapaVista.cs" />
-    <Compile Include="ListaVivos.cs" />
     <Compile Include="ObjetoVivo.cs" />
     <Compile Include="Pared.cs" />
     <Compile Include="PasilloView.cs" />
@@ -147,10 +146,6 @@
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\BombermanView\BombermanView.csproj">
-      <Project>{EA39C370-5D32-48E5-9112-81AB467DC1D6}</Project>
-      <Name>BombermanView</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Bomberman\BombermanModel.csproj">
       <Project>{F0A3EDDB-4DCE-4E03-B7E4-B50FC421A8CC}</Project>
       <Name>BombermanModel</Name>

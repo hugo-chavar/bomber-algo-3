@@ -32,19 +32,21 @@ namespace BombermanGame
                 spriteIndex = MapaVista.toleToleSprite;
         }
 
+        public Bomb()
+        {
+
+        }
+
         public override void LoadContent(ContentManager content)
         {
-            position.X = 96 + Game1.mapa.Location.X;
-            position.Y = Game1.mapa.Location.Y;
+            //position.X = 96 + Game1.mapa.Location.X;
+           // position.Y = Game1.mapa.Location.Y;
             // spriteIndex = content.Load<Texture2D>("Sprites\\" + spriteName);
-            area = new Rectangle(0, 0, spriteIndex.Width, spriteIndex.Height);
-            //area.X = (int)position.X - (spriteIndex.Width / 2);
-            //area.Y = (int)position.Y - (spriteIndex.Height / 2);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            //Rectangle size;
+            if (!vivo) return;
             Vector2 center = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
 
             spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), center, scale, SpriteEffects.None, 0);
