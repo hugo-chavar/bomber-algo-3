@@ -7,7 +7,7 @@ namespace BombermanModel.Arma
 {
     public class BombaMolotov : Bomba
     {
-        private const int TIEMPOEXPLOSION = 1;
+        private const int TIEMPOEXPLOSION = 3;
         private const int PODERDEDESTRUCCIONMOLOTOV = 5;
         private const int ONDAEXPANSIVAMOLOTOV = 3;
 

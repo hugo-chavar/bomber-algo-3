@@ -9,7 +9,7 @@ namespace BombermanModel.Personaje
     {
         private int direccion;
         private float velocidad;
-        private const float VELOCIDADINICIAL = 2;
+        private const float VELOCIDADINICIAL = 1;
 
         public Movimiento()
         {

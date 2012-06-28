@@ -16,7 +16,7 @@ namespace BombermanModel.Personaje
         protected int unidadesDeResistencia;
         private Nombres nombre;
 
-        private const float VELOCIDADMAX = 4;
+        private const float VELOCIDADMAX = 4f;
 
         public Personaje(Punto unPunto)
         {
@@ -132,7 +132,7 @@ namespace BombermanModel.Personaje
         
         public void DuplicarVelocidad()
         {
-            if (this.movimiento.Velocidad <= VELOCIDADMAX)
+            if (this.Movimiento.Velocidad < VELOCIDADMAX)
             {
                 this.movimiento.MultiplicarVelocidadPor(2);
             }

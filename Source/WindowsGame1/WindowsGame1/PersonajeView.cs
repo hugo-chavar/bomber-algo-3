@@ -43,7 +43,7 @@ namespace BombermanGame
         {
             Explosivo bomba = unPersonaje.LanzarExplosivo();
             if (bomba != null)
-                MapaVista.AgregarDibujable(new Bomb(position, bomba));
+                MapaVista.AgregarDibujable(new Bomb(MapaVista.TransformarPuntoEnVector2(unPersonaje.Posicion), bomba));
         }
 
         protected virtual void Advance()

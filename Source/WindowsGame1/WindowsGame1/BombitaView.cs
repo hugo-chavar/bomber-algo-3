@@ -87,9 +87,10 @@ namespace BombermanGame
             if ((keyboard.IsKeyDown(Keys.Space)) && (!prevKey.IsKeyDown(Keys.Space)))
             {
               
+            
                     this.Disparar();
                
-
+                
             }
 
             prevKey = keyboard;

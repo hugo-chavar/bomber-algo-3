@@ -76,6 +76,10 @@ namespace TestBombermanModel.TestArma
             Juego.Instancia().Ambiente.ObtenerCasilla(unPto).PlantarExplosivo(bomba);
             System.Threading.Thread.Sleep(1000);//Dejo Pasar un segundo y explota
             bomba.CuandoPasaElTiempo();
+            System.Threading.Thread.Sleep(1000);
+            bomba.CuandoPasaElTiempo();
+            System.Threading.Thread.Sleep(1000);
+            bomba.CuandoPasaElTiempo();
             Assert.IsTrue(bomba.EstaExplotado());
         }
 
