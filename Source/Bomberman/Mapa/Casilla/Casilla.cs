@@ -21,6 +21,7 @@ namespace BombermanModel.Mapa.Casilla
         public Casilla(Punto pos)
         {
             this.posicion = pos;
+            articuloContenido = null;
             transitandoEnCasilla = new List<IMovible>();
             explosivo = null;
         }
@@ -111,6 +112,12 @@ namespace BombermanModel.Mapa.Casilla
         public void QuitarExplosivo()
         {
                 this.explosivo = null;
+        }
+
+        public bool PasilloVisible()
+        {
+            Pasillo unPasillo = new Pasillo();
+            return ((this.Estado.GetType() == unPasillo.GetType()) && (this.articuloContenido == null));
         }
     }
 }
