@@ -115,7 +115,11 @@ namespace BombermanGame
                     }
                 case "Pausa":
                     {
-
+                        unMenu.Update();
+                        break;
+                    }
+                case "Reiniciar":
+                    {
                         unMenu.Update();
                         break;
                     }
@@ -156,11 +160,10 @@ namespace BombermanGame
                         unMenu.Draw(spriteBatch);
                         break;
                     }
+
             }
 
             spriteBatch.End();
-
-
             base.Draw(gameTime);
         }
     }
