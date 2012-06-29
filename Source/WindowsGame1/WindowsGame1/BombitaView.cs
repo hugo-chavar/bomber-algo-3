@@ -28,6 +28,14 @@ namespace BombermanGame
             spriteName = "Bombita";
         }
 
+        public override void LoadContent(ContentManager content)
+        {
+            this.UnPersonaje = Juego.Instancia().Protagonista;
+            position.X = 32 * unPersonaje.Posicion.X + Game1.mapa.Location.X;
+            position.Y = 32 * unPersonaje.Posicion.Y + Game1.mapa.Location.Y;
+            spriteIndex = content.Load<Texture2D>("Sprites\\" + spriteName);
+        }
+
         public override void Update()
         {
 
