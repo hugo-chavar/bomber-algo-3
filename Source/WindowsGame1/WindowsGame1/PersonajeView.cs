@@ -22,6 +22,7 @@ namespace BombermanGame
         protected KeyboardState keyboard;
         protected Vector2 direccion;
         protected Personaje unPersonaje;
+        protected Bomb unaBmb;
         public const int ARRIBA = 8;
         public const int ABAJO = 2;
         public const int IZQUIERDA = 4;
@@ -33,6 +34,7 @@ namespace BombermanGame
             unPersonaje = pers;
             speed = unPersonaje.Movimiento.Velocidad;
             movido = Vector2.Zero;
+            unaBmb = null;
         }
 
         public Vector2 Direccion { get { return this.direccion; } set { this.direccion = value; } }
@@ -44,10 +46,10 @@ namespace BombermanGame
             Explosivo bomba = unPersonaje.LanzarExplosivo();
             if (bomba != null)
             {
-                Bomb unaBmb = (Bomb)MapaVista.ObtenerObjetoContundente(new Bomb());
+                unaBmb = (Bomb)MapaVista.ObtenerObjetoContundente(new Bomb());
                 unaBmb.Explosivo = bomba;
                 unaBmb.setSpriteName();
-                unaBmb.Posicion = position;
+                unaBmb.Posicion = MapaVista.TransformarPuntoEnVector2(unPersonaje.Posicion);
                 unaBmb.Vivo = true;
             }
                 

@@ -15,7 +15,7 @@ using BombermanModel.Juego;
 
 namespace BombermanGame
 {
-    class Bomb : ObjetoVivo
+    public class Bomb : ObjetoVivo
     {
         private Explosivo explosivo;
 
