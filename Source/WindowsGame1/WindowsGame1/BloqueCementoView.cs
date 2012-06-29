@@ -24,20 +24,6 @@ namespace BombermanGame
             spriteName = "ObsCemento";
         }
 
-        
-        //public override void Update()
-        //{
-
-        //    if (!vivo) return;
-        //    Pasillo unpasillo = new Pasillo();
-        //    if (Juego.Instancia().Ambiente.ObtenerCasilla(posEnMapa).Estado.GetType() == unpasillo.GetType())
-        //    {
-        //        vivo = false;
-           
-        //    }
-
-        //}
-
     }
 
 

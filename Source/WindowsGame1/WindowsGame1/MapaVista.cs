@@ -101,19 +101,18 @@ namespace BombermanGame
 
         }
 
-        public static void EliminarDibujable(ObjetoVivo unDibujable)
-        {
-            //try
-            {
-                objetosDibujables.Remove(unDibujable);
-            }//catch()
+        //public static void EliminarDibujable(ObjetoVivo unDibujable)
+        //{
+        //    //try
+        //    {
+        //        objetosDibujables.Remove(unDibujable);
+        //    }//catch()
 
-        }
+        //}
 
         public static void CargarMapa()
         {
             // recorro el tablero entero
-
             for (int vertical = 0; vertical < mapaInterno.DimensionVertical; vertical++)
             {
                 for (int horizontal = 0; horizontal < mapaInterno.DimensionHorizontal; horizontal++)
@@ -127,8 +126,6 @@ namespace BombermanGame
                     }
                     AgregarCasillero(unaCasilla);
                     pasillosDibujables.Add(new PasilloView(TransformarPuntoEnVector2(p)));
-
-
 
                 }
             }
@@ -186,13 +183,6 @@ namespace BombermanGame
 
                 }
 
-                //if (unObstaculo.Nombre == Nombres.pasillo)
-                //{
-                //    Vector2 unVector = TransformarPuntoEnVector2(unCasillero.Posicion);
-                //    PasilloView unaPared = new PasilloView(unVector, unCasillero.Posicion, unObstaculo);
-                //    AgregarDibujable(unaPared);
-                    
-                //}
 
                 if (unObstaculo.Nombre == Nombres.bCemento)
                 {
