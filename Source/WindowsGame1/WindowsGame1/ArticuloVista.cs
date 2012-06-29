@@ -20,8 +20,6 @@ namespace BombermanGame
         private Articulo articulo;
         private Punto posEnMapa;
 
-
-
         public ArticuloVista(Punto posMapa)
         {
             vivo = false ;
@@ -48,8 +46,6 @@ namespace BombermanGame
 
         }
 
-
-
         public override void LoadContent(ContentManager content)
         {
             CargarSprite();
@@ -64,22 +60,12 @@ namespace BombermanGame
 
         public override void Update()
         {
-            //if (!vivo) return;
-            //if ((articulo.EstaActivo) && (articulo.EstaOculto))
-            //{
-            //    MapaVista.EliminarDibujable(this);
-            //    PasilloView unPasillo = new PasilloView(position);
-            //    MapaVista.AgregarDibujable(unPasillo);
-
-            //}
-
             if ((articulo.EstaActivo) && (!articulo.EstaOculto))
             {
                 vivo = true;
             }
             else
-                vivo = false;
-            
+                vivo = false;   
         }
 
     }
