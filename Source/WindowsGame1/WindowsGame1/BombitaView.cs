@@ -40,6 +40,12 @@ namespace BombermanGame
             
             keyboard = Keyboard.GetState();
             speed = unPersonaje.Movimiento.Velocidad;
+            if (keyboard.IsKeyDown(Keys.P))
+            {
+                Game1.estadoDelJuego = "Pausa";
+                return;
+            }
+
             if (keyboard.IsKeyDown(Keys.W))
             {
                 //si esta mirando en el sentido que indica la tecla presionada avanzo

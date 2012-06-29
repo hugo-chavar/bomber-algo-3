@@ -20,12 +20,21 @@ namespace BombermanGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Juego elJuego = Juego.Instancia();
+        public GamerServicesComponent gamerServices;
 
         BombitaView unaPersona = new BombitaView();
 
         public static SpriteFont fuente;
         public static SpriteFont fuente2;
         public static Rectangle mapa;
+        public static Rectangle pausado;
+
+        bool pausa = true;
+        Texture2D pausaTexture;
+        Menu unMenu;
+
+        public static Rectangle screen;
+        public static string estadoDelJuego = "Inicio";
         
         public Game1()
         {
@@ -44,6 +53,8 @@ namespace BombermanGame
 
             mapa = new Rectangle(100, 75, 32 * elJuego.Ambiente.DimensionHorizontal, 32 * elJuego.Ambiente.DimensionVertical);
             MapaVista.inicialize(elJuego.Ambiente);
+            screen = new Rectangle(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
+            unMenu = new Menu();
             MapaVista.CargarMapa();
             MapaVista.CargarProyectiles();
             MapaVista.CargarBombas();
@@ -62,6 +73,8 @@ namespace BombermanGame
             spriteBatch = new SpriteBatch(GraphicsDevice);
             fuente = Content.Load<SpriteFont>("Fonts\\Segoe14");
             fuente2 = Content.Load<SpriteFont>("Fonts\\Pericles12");
+            //unMenu.LoadContent(
+            pausaTexture = Content.Load<Texture2D>("Sprites\\Pausa");
             unaPersona.LoadContent(Content);
             /*foreach (ObjetoVivo o in ListaVivos.objList)
             {
@@ -83,16 +96,32 @@ namespace BombermanGame
         {
             
             // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || estadoDelJuego == "Salir")
                 this.Exit();
 
-            /*for (int i = 0; i < ListaVivos.objList.Count;i++)
+            switch (estadoDelJuego)
             {
-                ListaVivos.objList[i].Update();
-            }*/
-            elJuego.AvanzarElTiempo();
-            MapaVista.Actualizar();
-            unaPersona.Update();
+                case "Jugar":
+                    {
+                        elJuego.AvanzarElTiempo();
+                        MapaVista.Actualizar();
+                        unaPersona.Update();
+                        break;
+                    }
+                case "Inicio":
+                    {
+                        unMenu.Update();
+                        break;
+                    }
+                case "Pausa":
+                    {
+
+                        unMenu.Update();
+                        break;
+                    }
+            }
+
+
             base.Update(gameTime);
         }
 
@@ -106,13 +135,28 @@ namespace BombermanGame
 
             spriteBatch.Begin();
 
-            MapaVista.DibujarMapa(spriteBatch);
-            /*foreach (ObjetoVivo o in ListaVivos.objList)
+            switch (estadoDelJuego)
             {
-                o.Draw(spriteBatch);
-            }*/
-            unaPersona.Draw(spriteBatch);
-             
+                case "Jugar":
+                    {
+                        MapaVista.DibujarMapa(spriteBatch);
+                        unaPersona.Draw(spriteBatch);
+                        break;
+                    }
+                case "Inicio":
+                    {
+                        unMenu.Draw(spriteBatch);
+                        break;
+                    }
+                case "Pausa":
+                    {
+                        MapaVista.DibujarMapa(spriteBatch);
+                        unaPersona.Draw(spriteBatch);
+                        spriteBatch.Draw(pausaTexture, screen, Color.White);
+                        unMenu.Draw(spriteBatch);
+                        break;
+                    }
+            }
 
             spriteBatch.End();
 
