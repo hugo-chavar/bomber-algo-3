@@ -96,6 +96,11 @@ namespace BombermanModel.Juego
                     Juego.Instancia().Salida = salida;
                     Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(x, y)).agregarArticulo(salida);
                     break;
+                case "Bombita":
+                    Personaje.Personaje bombita = new Personaje.Bombita(new Punto(x, y));
+                    Juego.Instancia().Ambiente.AgregarPersonaje(bombita);
+                    Juego.Instancia().Protagonista = bombita;
+                    break;
             }
 
         }
