@@ -246,8 +246,7 @@ namespace BombermanModel.Juego
         public void CargarMapa()
         {
             CargadorDeMapa cargador = new CargadorDeMapa();
-            cargador.LeerMapa("mapaActualizado.xml");
-
+            cargador.LeerMapa("mapa"+nivel+".xml");
         }
 
       public Salida Salida 
