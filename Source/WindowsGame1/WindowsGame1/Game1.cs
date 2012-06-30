@@ -97,7 +97,7 @@ namespace BombermanGame
                         }
                         else 
                         {
-                            estadoDelJuego = "Reiniciar";
+                            estadoDelJuego = "RecargarMapa";
                         }
                         break;
                     }
@@ -113,20 +113,29 @@ namespace BombermanGame
                     }
                 case "Reiniciar":
                     {   
-                        //Andy:Creo que no va el Juego.Reiniciar()
                         elJuego = Juego.Reiniciar();
-                        MapaVista.inicialize(elJuego.Ambiente);
-                        MapaVista.CargarMapa();
-                        MapaVista.CargarProyectiles();
-                        MapaVista.CargarBombas();
-                        MapaVista.CargarContenido(this.Content);
-                        unaPersona.ReiniciarPersonaje();
-                        estadoDelJuego = "Jugar";
+                        PrepararMapa();
+                        break;
+                    }
+                case "RecargarMapa":
+                    {
+                        PrepararMapa();
                         break;
                     }
             }      
 
             base.Update(gameTime);
+        }
+
+        private void PrepararMapa()
+        {
+            MapaVista.inicialize(elJuego.Ambiente);
+            MapaVista.CargarMapa();
+            MapaVista.CargarProyectiles();
+            MapaVista.CargarBombas();
+            MapaVista.CargarContenido(this.Content);
+            unaPersona.ReiniciarPersonaje();
+            estadoDelJuego = "Jugar";
         }
 
         protected override void Draw(GameTime gameTime)
