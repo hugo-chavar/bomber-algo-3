@@ -50,7 +50,14 @@ namespace BombermanGame
         /// </summary>
         protected override void Initialize()
         {
+            Inicializar();
+            base.Initialize();
 
+            
+        }
+
+        private void Inicializar()
+        {
             mapa = new Rectangle(100, 75, 32 * elJuego.Ambiente.DimensionHorizontal, 32 * elJuego.Ambiente.DimensionVertical);
             MapaVista.inicialize(elJuego.Ambiente);
             screen = new Rectangle(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
@@ -120,7 +127,15 @@ namespace BombermanGame
                     }
                 case "Reiniciar":
                     {
-                        unMenu.Update();
+                        elJuego = Juego.Reiniciar();
+                        MapaVista.inicialize(elJuego.Ambiente);
+                        MapaVista.CargarMapa();
+                        MapaVista.CargarProyectiles();
+                        MapaVista.CargarBombas();
+                        MapaVista.CargarContenido(this.Content);
+                        //this.LoadContent();
+                        
+                        estadoDelJuego = "Jugar";
                         break;
                     }
             }

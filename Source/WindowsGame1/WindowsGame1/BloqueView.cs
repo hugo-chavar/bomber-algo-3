@@ -30,6 +30,7 @@ namespace BombermanGame
             //spriteName = "ObsLadrillo";
             posEnMapa = posMapa;// this.TransformarAPunto(pos);
             obst = unObstaculo;//Juego.Instancia().Ambiente.ObtenerCasilla(punto).Estado;
+            vivo = true;
         }
 
         private Punto TransformarAPunto(Vector2 unVector2)
