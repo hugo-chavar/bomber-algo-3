@@ -20,6 +20,9 @@ namespace BombermanModel.Juego
         private List<Personaje.Personaje> enemigosVivos;
         private List<IDependienteDelTiempo> dependientesDelTiempo;
         private Salida salida;
+        private int nivel;
+        private Estado estado;
+        private bool mapaVisible;
         
         //declaracion del Singleton
         private static Juego instanciaDeJuego;
@@ -32,6 +35,7 @@ namespace BombermanModel.Juego
         private const int VIDAS = 3;
         private const int ANCHOMAPA = 17;
         private const int ALTOMAPA = 13;
+        private const int ULTIMONIVEL = 3;
 
         //propiedades
         public int CantDeVidas
@@ -40,6 +44,11 @@ namespace BombermanModel.Juego
             set { this.cantDeVidas = value; }
         }
 
+        public bool MapaVisible
+        {
+            get { return mapaVisible; }
+            set { this.mapaVisible = value; }
+        }
         public bool JuegoPausado
         {
             get { return juegoPausado; }
@@ -82,7 +91,9 @@ namespace BombermanModel.Juego
             this.objetosContundentes = new List<IMovible>();
             this.dependientesDelTiempo = new List<IDependienteDelTiempo>();
             this.salida = new Salida();
-
+            nivel = 1;
+            estado = Estado.enJuego;
+            mapaVisible = false;
         }
 
         public static Juego Reiniciar()
@@ -117,9 +128,20 @@ namespace BombermanModel.Juego
             this.CantDeVidas = (this.CantDeVidas-1);
             if (this.CantDeVidas == 0)
             {
-                this.Ambiente.NivelTerminado = true;
-                this.Ambiente.NivelGanado = false;
+                estado = Estado.perdido;
             }
+            else
+            {
+                VolverACargarMapa();
+            }
+        }
+
+        private void VolverACargarMapa()
+        {
+            ambiente = new Mapa.Mapa(ANCHOMAPA, ALTOMAPA);
+            CargarMapa();
+            protagonista = new Bombita(new Punto(0, 0));
+            mapaVisible = false;
         }
 
         public void AgregarEnemigo(Personaje.Personaje enem)
@@ -154,8 +176,30 @@ namespace BombermanModel.Juego
 
         }
 
+        private void AvanzarNivel()
+        {
+            nivel++;
+            if (nivel <= ULTIMONIVEL)
+            {
+                VolverACargarMapa();
+            }
+            else
+            {
+                estado = Estado.ganado;
+            }
+        }
+
         public void AvanzarElTiempo()
         {
+            if (Juego.Instancia().Ambiente.NivelGanado)
+            {
+                AvanzarNivel();
+            }
+            if (protagonista.UnidadesDeResistencia <= 0)
+            {
+                PerderVida();
+            }
+
             foreach (IDependienteDelTiempo i in dependientesDelTiempo)
             {
                 i.CuandoPasaElTiempo();

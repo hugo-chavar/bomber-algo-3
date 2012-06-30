@@ -85,13 +85,20 @@ namespace BombermanGame
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || estadoDelJuego == "Salir")
                 this.Exit();
 
-            switch (estadoDelJuego)
+           switch (estadoDelJuego)
             {
                 case "Jugar":
                     {
-                        elJuego.AvanzarElTiempo();
-                        MapaVista.Actualizar();
-                        unaPersona.Update();
+                        if (elJuego.MapaVisible)
+                        {
+                            elJuego.AvanzarElTiempo();
+                            MapaVista.Actualizar();
+                            unaPersona.Update();
+                        }
+                        else 
+                        {
+                            estadoDelJuego = "Reiniciar";
+                        }
                         break;
                     }
                 case "Inicio":
@@ -105,18 +112,19 @@ namespace BombermanGame
                         break;
                     }
                 case "Reiniciar":
-                    {
+                    {   
+                        //Andy:Creo que no va el Juego.Reiniciar()
                         elJuego = Juego.Reiniciar();
                         MapaVista.inicialize(elJuego.Ambiente);
                         MapaVista.CargarMapa();
                         MapaVista.CargarProyectiles();
                         MapaVista.CargarBombas();
                         MapaVista.CargarContenido(this.Content);
+                        unaPersona.ReiniciarPersonaje();
                         estadoDelJuego = "Jugar";
                         break;
                     }
-            }
-
+            }      
 
             base.Update(gameTime);
         }

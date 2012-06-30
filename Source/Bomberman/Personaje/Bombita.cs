@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using BombermanModel.Articulo;
 using BombermanModel.Arma;
+using BombermanModel.Juego;
 
 namespace BombermanModel.Personaje
 {
@@ -39,7 +40,8 @@ namespace BombermanModel.Personaje
 
         public void FinalizarNivel()
         {
-            this.ciudadLiberada = true;
+            //this.ciudadLiberada = true;
+            Juego.Juego.Instancia().Ambiente.FinalizarNivel();
         }
 
 

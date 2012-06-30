@@ -15,6 +15,7 @@ using BombermanModel.Juego;
 using BombermanModel.Mapa;
 using BombermanModel.Mapa.Casilla;
 using BombermanModel.Articulo;
+
 namespace BombermanGame
 {
     public static class MapaVista
@@ -38,8 +39,6 @@ namespace BombermanGame
         {
             mapaInterno = unMapa;
             Resetear();
-
-            
         }
 
         private static void Resetear()
@@ -141,6 +140,7 @@ namespace BombermanGame
             {
                 AgregarEnemigo(p);
             }
+            Juego.Instancia().MapaVisible = true;
 
         }
 

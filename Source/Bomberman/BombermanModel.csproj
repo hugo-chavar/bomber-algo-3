@@ -57,6 +57,7 @@
     <Compile Include="Articulo\Chala.cs" />
     <Compile Include="Articulo\Salida.cs" />
     <Compile Include="Articulo\Timer.cs" />
+    <Compile Include="Estado.cs" />
     <Compile Include="Excepciones\AvanzarProyectilNoValidoException.cs" />
     <Compile Include="Excepciones\CasillaYaIngresadaException.cs" />
     <Compile Include="Excepciones\EstadoNuloException.cs" />
