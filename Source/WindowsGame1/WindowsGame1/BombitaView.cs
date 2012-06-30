@@ -33,6 +33,7 @@ namespace BombermanGame
             this.Vivo=true;
         unPersonaje=Juego.Instancia().Protagonista;
         position = MapaVista.TransformarPuntoEnVector2(unPersonaje.Posicion);
+        movido = new Vector2(0, 0);
         }
 
         public override void LoadContent(ContentManager content)
