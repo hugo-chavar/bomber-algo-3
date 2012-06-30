@@ -195,43 +195,45 @@ namespace BombermanModel.Juego
             {
                 AvanzarNivel();
             }
-            if (protagonista.UnidadesDeResistencia <= 0)
+            else if (protagonista.UnidadesDeResistencia <= 0)
             {
                 PerderVida();
             }
-
-            foreach (IDependienteDelTiempo i in dependientesDelTiempo)
+            else
             {
-                i.CuandoPasaElTiempo();
-            }
+                foreach (IDependienteDelTiempo i in dependientesDelTiempo)
+                {
+                    i.CuandoPasaElTiempo();
+                }
 
-            int iterador = this.dependientesDelTiempo.Count;
-            while (--iterador >= 0)
-            {
-                if (dependientesDelTiempo[iterador].DejoDeDependerDelTiempo())
-                    dependientesDelTiempo.RemoveAt(iterador);
-            }
+                int iterador = this.dependientesDelTiempo.Count;
+                while (--iterador >= 0)
+                {
+                    if (dependientesDelTiempo[iterador].DejoDeDependerDelTiempo())
+                        dependientesDelTiempo.RemoveAt(iterador);
+                }
 
-            List<IMovible> listaAux = new List<IMovible>();
-            foreach (IMovible i in objetosContundentes)
-                listaAux.Add(i);
+                List<IMovible> listaAux = new List<IMovible>();
+                foreach (IMovible i in objetosContundentes)
+                    listaAux.Add(i);
 
-            foreach (IMovible i in listaAux)
-            {
-                this.Ambiente.ResolverColisionesCon(i);
-            }
+                foreach (IMovible i in listaAux)
+                {
+                    this.Ambiente.ResolverColisionesCon(i);
+                }
 
-            iterador = enemigosVivos.Count;
-            while (--iterador >= 0)
-            {
-            
-                if (enemigosVivos[iterador].Destruido())
-                    enemigosVivos.RemoveAt(iterador);
-            }
+                iterador = enemigosVivos.Count;
+                while (--iterador >= 0)
+                {
 
-           if (CantidadEnemigosVivos() == 0)
-            {
-                ActivarSalida();
+                    if (enemigosVivos[iterador].Destruido())
+                        enemigosVivos.RemoveAt(iterador);
+                }
+
+                if (CantidadEnemigosVivos() == 0)
+                {
+                    ActivarSalida();
+                }
             }
         }
 
