@@ -28,6 +28,13 @@ namespace BombermanGame
             spriteName = "Bombita";
         }
 
+        public void ReiniciarPersonaje()
+        {
+            this.Vivo=true;
+        unPersonaje=Juego.Instancia().Protagonista;
+        position = MapaVista.TransformarPuntoEnVector2(unPersonaje.Posicion);
+        }
+
         public override void LoadContent(ContentManager content)
         {
             this.UnPersonaje = Juego.Instancia().Protagonista;
