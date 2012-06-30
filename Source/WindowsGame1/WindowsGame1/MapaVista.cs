@@ -25,7 +25,7 @@ namespace BombermanGame
         static List<ObjetoVivo> objetosDibujables;
         static List<ObjetoVivo> enemigosDibujables;
 
-        public static Texture2D molotovSprite;//ANDY: NOSE SI ES ACA DONDE LO TENGO QUE ALMACENAR
+        public static Texture2D molotovSprite;
         public static Texture2D toleToleSprite;
         public static Texture2D proyectilSprite;
         public static Texture2D pasilloView;

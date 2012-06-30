@@ -139,6 +139,7 @@ namespace BombermanModel.Juego
         private void VolverACargarMapa()
         {
             ambiente = new Mapa.Mapa(ANCHOMAPA, ALTOMAPA);
+            this.enemigosVivos = new List<Personaje.Personaje>();
             CargarMapa();
             protagonista = new Bombita(new Punto(0, 0));
             mapaVisible = false;
