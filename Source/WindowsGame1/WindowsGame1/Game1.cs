@@ -12,9 +12,6 @@ using BombermanModel.Juego;
 
 namespace BombermanGame
 {
-    /// <summary>
-    /// This is the main type for your game
-    /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
@@ -42,18 +39,10 @@ namespace BombermanGame
             Content.RootDirectory = "Content";
         }
 
-        /// <summary>
-        /// Allows the game to perform any initialization it needs to before starting to run.
-        /// This is where it can query for any required services and load any non-graphic
-        /// related content.  Calling base.Initialize will enumerate through any components
-        /// and initialize them as well.
-        /// </summary>
         protected override void Initialize()
         {
             Inicializar();
             base.Initialize();
-
-            
         }
 
         private void Inicializar()
@@ -70,23 +59,13 @@ namespace BombermanGame
             base.Initialize();
         }
 
-        /// <summary>
-        /// LoadContent will be called once per game and is the place to load
-        /// all of your content.
-        /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             fuente = Content.Load<SpriteFont>("Fonts\\Segoe14");
             fuente2 = Content.Load<SpriteFont>("Fonts\\Pericles12");
-            //unMenu.LoadContent(
             pausaTexture = Content.Load<Texture2D>("Sprites\\Pausa");
             unaPersona.LoadContent(Content);
-            /*foreach (ObjetoVivo o in ListaVivos.objList)
-            {
-                o.LoadContent(this.Content);
-            }*/
 
 
              MapaVista.CargarContenido(this.Content);
@@ -133,8 +112,6 @@ namespace BombermanGame
                         MapaVista.CargarProyectiles();
                         MapaVista.CargarBombas();
                         MapaVista.CargarContenido(this.Content);
-                        //this.LoadContent();
-                        
                         estadoDelJuego = "Jugar";
                         break;
                     }
@@ -144,10 +121,6 @@ namespace BombermanGame
             base.Update(gameTime);
         }
 
-        /// <summary>
-        /// This is called when the game should draw itself.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);

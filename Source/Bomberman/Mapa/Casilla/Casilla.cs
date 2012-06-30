@@ -31,6 +31,16 @@ namespace BombermanModel.Mapa.Casilla
             get { return this.transitandoEnCasilla; }
         }
 
+        public bool TransitaEnCasillaUn(IMovible movil)
+        {
+            foreach (IMovible i in transitandoEnCasilla)
+            {
+                if (i.Nombre == movil.Nombre)
+                    return true;
+            }
+            return false;
+        }
+
         public Explosivo Explosivo
         {
             get { return this.explosivo; }

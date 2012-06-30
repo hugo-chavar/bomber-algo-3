@@ -128,7 +128,28 @@ namespace BombermanGame
             spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), center, scale, SpriteEffects.None, 0);
             spriteBatch.DrawString(Game1.fuente, "En modelo ->Pos X: " + unPersonaje.Posicion.X + " Pos Y: " + unPersonaje.Posicion.Y, new Vector2(10, 10), Color.Yellow);
             spriteBatch.DrawString(Game1.fuente, "Mvido ->Pos X: " + Math.Round(movido.X, 1) + " Pos Y: " + Math.Round(movido.Y, 1) + " RealPos X: " + Math.Round(position.X,1) + " Pos Y: " + Math.Round(position.Y,1), new Vector2(10, Game1.fuente.LineSpacing), Color.Yellow);
-            spriteBatch.DrawString(Game1.fuente, "Vida " + Juego.Instancia().Protagonista.UnidadesDeResistencia, new Vector2(10, 2 * Game1.fuente.LineSpacing), Color.Yellow); 
+            spriteBatch.DrawString(Game1.fuente, "Vida " + Juego.Instancia().Protagonista.UnidadesDeResistencia, new Vector2(10, 2 * Game1.fuente.LineSpacing), Color.Yellow);
+
+            List<Punto> l = new List<Punto>();
+            
+            for (int vertical = 0; vertical < Juego.Instancia().Ambiente.DimensionVertical; vertical++)
+            {
+                for (int horizontal = 0; horizontal < Juego.Instancia().Ambiente.DimensionHorizontal; horizontal++)
+                {
+                    Punto p = new Punto(horizontal, vertical);
+                    Casilla unaCas = Juego.Instancia().Ambiente.ObtenerCasilla(p);
+                    if (unaCas.TransitaEnCasillaUn(new Bombita(new Punto(7, 2))))
+                    {
+                        l.Add(p);
+                    }
+
+                }
+            }
+            spriteBatch.DrawString(Game1.fuente, "Bombita transitando en: ", new Vector2(580, 10), Color.Black);
+            for (int j = 0;j<l.Count;j++)
+            {
+                spriteBatch.DrawString(Game1.fuente, "X: "+l[j].X+" Y: "+l[j].Y, new Vector2(600, (25 + Game1.fuente2.LineSpacing * j)), Color.Black);
+            }
 
         }
 

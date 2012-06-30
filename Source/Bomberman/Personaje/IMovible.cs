@@ -17,6 +17,11 @@ namespace BombermanModel.Personaje
             set;
         }
 
+        Nombres Nombre
+        {
+            get;
+        }
+
         void ReaccionarConArticulo(Articulo.Articulo articulo);
 
         bool EsDaniable();
