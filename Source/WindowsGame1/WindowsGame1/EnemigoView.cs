@@ -60,6 +60,7 @@ namespace BombermanGame
         {
             if (!vivo) return;
             int validas;
+            Random random = new Random();
             if (((movido.X == Vector2.Zero.X) || (movido.X == spriteIndex.Width - 1)) && ((movido.Y == Vector2.Zero.Y) || (movido.Y == spriteIndex.Height - 1)))
             {
                 if (!Juego.Instancia().Ambiente.PermitidoAvanzar(unPersonaje))
@@ -70,13 +71,12 @@ namespace BombermanGame
                     Vector2 dirPrev = new Vector2(this.Direccion.X, this.Direccion.Y);
                     if ( (validas > 2) && (this.unPersonaje.Nombre != Nombres.lopezReggaeAlado))
                     {
-                        while ((this.Direccion.X == dirPrev.X) && (this.Direccion.Y == dirPrev.Y) )
+                        while ((this.Direccion.X == dirPrev.X) && (this.Direccion.Y == dirPrev.Y) && (random.Next(0,2) == 0) )
                         {
                             recalcularDireccion();
                         }
                     }
-                    Random random = new Random();
-                    if ((this.unPersonaje.Nombre == Nombres.lopezReggaeAlado) && (random.Next(0, 5) == 0))
+                    if ((this.unPersonaje.Nombre == Nombres.lopezReggaeAlado) && (random.Next(0, 10) == 0))
                         recalcularDireccion();
                 }
             }

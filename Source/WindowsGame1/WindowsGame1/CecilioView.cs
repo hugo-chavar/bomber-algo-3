@@ -26,7 +26,7 @@ namespace BombermanGame
             : base(pers)
         {
             huyendo = false;
-            spriteName = "Cecilio";
+            spriteName = "Ceci2";
         }
 
                        

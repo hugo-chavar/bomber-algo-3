@@ -83,15 +83,15 @@ namespace BombermanGame
 
             //considero que el personaje transita la casilla cuando ingreso un tercio de su cuerpo
             //cuando pasa 2/3 de su cuerpo pasa a la posicion siguiente (hablando en terminos del modelo)
-            if (((Math.Abs(deltaPrevio.X) < (spriteIndex.Width / 3)) && (Math.Abs(movido.X) >= (spriteIndex.Width / 3)))
-                || ((Math.Abs(deltaPrevio.Y) < (spriteIndex.Height / 3)) && (Math.Abs(movido.Y) >= (spriteIndex.Height / 3))))
-            {
-                Punto unPto = new Punto(unPersonaje.Posicion.X + (int)direccion.X, unPersonaje.Posicion.Y + (int)direccion.Y);
-                Punto puntoAnterior = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y);
-                Juego.Instancia().Ambiente.ObtenerCasilla(puntoAnterior).Dejar(unPersonaje);
-                Juego.Instancia().Ambiente.ObtenerCasilla(unPto).Transitar(unPersonaje);
+            //if (((Math.Abs(deltaPrevio.X) < (spriteIndex.Width / 3)) && (Math.Abs(movido.X) >= (spriteIndex.Width / 3)))
+            //    || ((Math.Abs(deltaPrevio.Y) < (spriteIndex.Height / 3)) && (Math.Abs(movido.Y) >= (spriteIndex.Height / 3))))
+            //{
+            //    Punto unPto = new Punto(unPersonaje.Posicion.X + (int)direccion.X, unPersonaje.Posicion.Y + (int)direccion.Y);
+            //    Punto puntoAnterior = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y);
+            //    Juego.Instancia().Ambiente.ObtenerCasilla(puntoAnterior).Dejar(unPersonaje);
+            //    Juego.Instancia().Ambiente.ObtenerCasilla(unPto).Transitar(unPersonaje);
 
-            }
+            //}
 
             if ((Math.Abs(deltaPrevio.X) >= (spriteIndex.Width / 2)) && (Math.Abs(movido.X) < (spriteIndex.Width / 2)))
             {
