@@ -225,7 +225,7 @@ namespace BombermanGame
             toleToleSprite = content.Load<Texture2D>("Sprites\\" + "BmbTole");
             proyectilSprite = content.Load<Texture2D>("Sprites\\" + "Proyectil");
             pasilloView = content.Load<Texture2D>("Sprites\\" + "ObsPasillo");
-            artTimerView = content.Load<Texture2D>("Sprites\\" + "ArtTimer");
+            artTimerView = content.Load<Texture2D>("Sprites\\" + "NewTimer");
             artToleTole = content.Load<Texture2D>("Sprites\\" + "ArtToleTole");
             artChala = content.Load<Texture2D>("Sprites\\" + "ArtChala");
             salida = content.Load<Texture2D>("Sprites\\" + "Salida");
