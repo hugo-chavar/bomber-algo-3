@@ -43,14 +43,17 @@ namespace BombermanGame
 
         public virtual void Disparar()
         {
-            Explosivo bomba = unPersonaje.LanzarExplosivo();
-            if (bomba != null)
+            unaBmb = (Bomb)MapaVista.ObtenerObjetoContundente(new Bomb());
+            if (unaBmb != null)
             {
-                unaBmb = (Bomb)MapaVista.ObtenerObjetoContundente(new Bomb());
-                unaBmb.Explosivo = bomba;
-                unaBmb.setSpriteName();
-                unaBmb.Posicion = MapaVista.TransformarPuntoEnVector2(unPersonaje.Posicion);
-                unaBmb.Vivo = true;
+                Explosivo bomba = unPersonaje.LanzarExplosivo();
+                if (bomba != null)
+                {
+                    unaBmb.Explosivo = bomba;
+                    unaBmb.setSpriteName();
+                    unaBmb.Posicion = MapaVista.TransformarPuntoEnVector2(unPersonaje.Posicion);
+                    unaBmb.Vivo = true;
+                }
             }
                 
                 // MapaVista.AgregarDibujable(new Bomb(MapaVista.TransformarPuntoEnVector2(unPersonaje.Posicion), bomba));
