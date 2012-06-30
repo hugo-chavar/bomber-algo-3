@@ -85,10 +85,10 @@ namespace BombermanModel.Juego
 
         }
 
-        public static void Reiniciar()
+        public static Juego Reiniciar()
         {
             instanciaDeJuego = null;
-            Juego.Instancia();
+            return Juego.Instancia();
         }
         
         //instanciacion del Singleton
