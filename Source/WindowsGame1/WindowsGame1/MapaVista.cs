@@ -37,11 +37,17 @@ namespace BombermanGame
         public static void inicialize(Mapa unMapa)
         {
             mapaInterno = unMapa;
+            Resetear();
+
+            
+        }
+
+        private static void Resetear()
+        {
             objetosDibujables = new List<ObjetoVivo>();
             enemigosDibujables = new List<ObjetoVivo>();
             pasillosDibujables = new List<ObjetoVivo>();
         }
-
         public static List<ObjetoVivo> ObjetosDibujables
         {
             get { return objetosDibujables;}
@@ -112,6 +118,7 @@ namespace BombermanGame
 
         public static void CargarMapa()
         {
+            
             // recorro el tablero entero
             for (int vertical = 0; vertical < mapaInterno.DimensionVertical; vertical++)
             {
