@@ -14,16 +14,11 @@ namespace TestBombermanModel.TestJuego
     class TestLanzador
     {
         private Juego unJuego;
-        //private Mapa unMapa;
-
-        //private const int ANCHOMAPA = 5;
-        //private const int ALTOMAPA = 5;
 
         [SetUp]
         public void TestSetup()
         {
             this.unJuego = Juego.Instancia();
-            //unMapa = this.unJuego.Ambiente;
         }
 
         [TearDown]
@@ -38,8 +33,6 @@ namespace TestBombermanModel.TestJuego
             Personaje bombita = this.unJuego.Protagonista;
             //Bombita tiene un Lanzador de Molotov por defecto
             bombita.LanzarExplosivo();
-
-            //Assert.IsFalse(bombita.LanzarExplosivo());
             Assert.IsTrue(this.unJuego.Ambiente.ObtenerCasilla(new Punto(0,0)).TieneUnExplosivo());
         }
 
@@ -280,35 +273,6 @@ namespace TestBombermanModel.TestJuego
         }
 
 
-        //public void IniciarMapaParaTestsIntegradores() // Metodo que voy a llamar al principio de cada test, uso un setup distinto al original.
-        //{
-        //    int AnchoYLargo = 5;
-
-        //    Mapa unMapa = new Mapa(AnchoYLargo, AnchoYLargo);
-        //    Punto unaPosicion;
-        //    Casilla unaCasilla;
-        //    int i, j;
-
-        //    // Inicializo el mapa con ladrillos!!!
-        //    for (i = 0; i < AnchoYLargo; i++)
-        //        for (j = 0; j < AnchoYLargo; j++)
-        //        {
-        //            unaPosicion = new Punto(i, j);
-        //            if ((i & 1) == 1 && (j & 1) == 1)
-        //            {
-        //                //ambos son numeros impares
-        //                unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(unaPosicion);
-        //            }
-        //            else
-        //            {
-        //                //uno de los dos es par
-        //                unaCasilla = FabricaDeCasillas.FabricarPasillo(unaPosicion);
-        //            }
-        //            unMapa.AgregarCasilla(unaCasilla);
-        //        }
-
-        //    this.unJuego.Ambiente = unMapa;
-        //}
 
         [Test]
         public void ExplotoUnObstaculoQueContieneUnaChalaYLuegoLoComeBombita()
@@ -319,9 +283,6 @@ namespace TestBombermanModel.TestJuego
             Punto posInicio = new Punto(0, 0);
             Punto posFinal = new Punto(1, 1);
             Personaje unBombita = new Bombita(posInicio);
-
-            //Inicio Mapa.
-            //IniciarMapaParaTestsIntegradores();
 
             //Pongo un BombaToleTole en el pasillo para agarrarlo con bombita y poder romper el bloque de acero donde esta la Chala
             Punto posicionCasillaArt = new Punto(0, 1);
@@ -365,13 +326,6 @@ namespace TestBombermanModel.TestJuego
             Punto posInicio = new Punto(14,7);
             //Posision del articulo Bomba ToleTole (14,8)
             Personaje unBombita = new Bombita(posInicio);
-
-
-            //Agrego articulo
-            //Punto posicionCasillaArt = new Punto(1, 1);
-            //Casilla CasillaConArticulo = this.unJuego.Ambiente.ObtenerCasilla(posicionCasillaArt);
-            //Articulo unArticulo = new ArticuloBombaToleTole();
-            //CasillaConArticulo.agregarArticulo(unArticulo);
 
             //Muevo a bombita para dejarlo cerca de un Bloque y explotarlo.
             this.unJuego.Ambiente.AgregarPersonaje(unBombita);
@@ -580,7 +534,6 @@ namespace TestBombermanModel.TestJuego
             Personaje unBombita = new Bombita(posInicio);
             Personaje unEnemigo = new LosLopezReggaeAlado(posLRA);
 
-            //IniciarMapaParaTestsIntegradores();
 
             //Agrego articulo
             Punto posicionCasillaArt = new Punto(1, 0);
@@ -627,8 +580,6 @@ namespace TestBombermanModel.TestJuego
             Punto posInicio = new Punto(0, 0);
             Punto posLRA = new Punto(4, 4);
             Bombita unBombita = new Bombita(posInicio);
-
-            //IniciarMapaParaTestsIntegradores();
 
             //Agrego articulo
             Punto posicionCasillaArt = new Punto(1, 0);
