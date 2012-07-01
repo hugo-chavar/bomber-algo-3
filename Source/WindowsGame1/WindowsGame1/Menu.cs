@@ -28,7 +28,8 @@ namespace BombermanGame
         {
             labelList.Add("Jugar");
             labelList.Add("Salir");
-            labelList.Add("Reiniciar (Aun no hace nada)");
+            labelList.Add("Reiniciar");
+            labelList.Add("Guardar Partida");
         }
 
         public void LoadContent(ContentManager content)
@@ -63,8 +64,9 @@ namespace BombermanGame
                     case 2:
                         Game1.estadoDelJuego = "Reiniciar";
                         break;
-                    //case 0:
-                    //    break;
+                    case 3:
+                        Game1.estadoDelJuego = "Guardar";
+                        break;
                 }
             }
 

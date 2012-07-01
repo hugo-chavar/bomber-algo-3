@@ -23,6 +23,7 @@ namespace BombermanModel.Juego
         private int nivel;
         private Estado estado;
         private bool mapaVisible;
+        private MapaArchivo guardador = new MapaArchivo();
         
         //declaracion del Singleton
         private static Juego instanciaDeJuego;
@@ -116,6 +117,12 @@ namespace BombermanModel.Juego
         public void PausarJuego()
         {
             this.JuegoPausado = true; 
+        }
+
+        public void GuardarPartida()
+        {
+            guardador.ImportarCasillas();
+            guardador.GuardarEstadoAArchivo();
         }
 
         public void DesPausarJuego()

@@ -129,5 +129,7 @@ namespace BombermanModel.Mapa.Casilla
             Pasillo unPasillo = new Pasillo();
             return ((this.Estado.GetType() == unPasillo.GetType()) && (this.articuloContenido == null));
         }
+
+
     }
 }

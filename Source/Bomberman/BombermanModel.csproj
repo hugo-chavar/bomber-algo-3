@@ -68,6 +68,7 @@
     <Compile Include="IPosicionable.cs" />
     <Compile Include="Juego\CargadorDeMapa.cs" />
     <Compile Include="Juego\Juego.cs" />
+    <Compile Include="Juego\MapaArchivo.cs" />
     <Compile Include="Mapa\Casilla\FabricaDeCasillas.cs" />
     <Compile Include="Mapa\ITransitable.cs" />
     <Compile Include="Mapa\Mapa.cs" />
