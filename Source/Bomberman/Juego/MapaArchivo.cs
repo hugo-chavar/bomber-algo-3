@@ -234,7 +234,8 @@ namespace BombermanModel.Juego
                                                 casillaActual = FabricaDeCasillas.FabricarPasillo(posActual);
                                                 tableroNuevo.AgregarCasilla(casillaActual);
                                             }
-                                            casillaActual.agregarArticulo(a);
+                                            //casillaActual.agregarArticulo(a); No funciona en los articulos que estan en pasillos.
+                                            casillaActual.ArticuloContenido = a;
                                         }
                                     }
                                 }
