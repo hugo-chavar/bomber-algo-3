@@ -125,6 +125,12 @@ namespace BombermanModel.Juego
             guardador.ExportarCasillas();
             guardador.GuardarEstadoAArchivo();
         }
+        
+        public void ContinuarPartidaGuardada()
+        {
+            //guardador.ExportarCasillas();
+            this.ambiente = guardador.ContinuarPartidaGuardada();
+        }
 
         public void DesPausarJuego()
         {

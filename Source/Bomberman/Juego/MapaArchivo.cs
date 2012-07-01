@@ -41,6 +41,7 @@ namespace BombermanModel.Juego
         public void GuardarEstadoAArchivo()
         {
 
+            string tipo;
             XmlWriterSettings settings = new XmlWriterSettings();
             settings.Indent = true;
             settings.IndentChars = ("    ");
@@ -67,12 +68,13 @@ namespace BombermanModel.Juego
                     writer.WriteStartAttribute("y");
                     writer.WriteValue(c.Posicion.Y);
                     writer.WriteEndAttribute();
+                    
                     if (c.Estado.GetType().Name != "Pasillo")
                     {
-                        string tipo;
+                        
                         if (c.Estado.GetType().Name =="BloqueComun")
                         {
-                            tipo = (c.Estado.Nombre == Nombres.bLadrillo) ? "BloqueLadrillo" : "BLoqueCemento";
+                            tipo = (c.Estado.Nombre == Nombres.bLadrillo) ? "BloqueLadrillo" : "BloqueCemento";
                         } 
                         else tipo = c.Estado.GetType().Name;  
                         
@@ -81,6 +83,13 @@ namespace BombermanModel.Juego
                         writer.WriteValue(c.Estado.UnidadesDeResistencia);
                         writer.WriteEndElement();
                     }
+                    if (c.ArticuloContenido != null)
+                    {
+                        tipo = c.ArticuloContenido.GetType().Name;
+                        writer.WriteStartElement(tipo);
+                        writer.WriteEndElement();
+                    }
+
                     foreach (IMovible m in c.TransitandoEnCasilla)
                     {
                         //solo se almacena el que esta con mas de medio cuerpo dentro de la casilla
@@ -112,65 +121,135 @@ namespace BombermanModel.Juego
             }
         }
 
-        public void ContinuarPartidaGuardada()
+        public Tablero ContinuarPartidaGuardada()
         {
-            StringBuilder output = new StringBuilder();
+            Casilla casillaActual =null;
+            Punto posActual = null;
+            Tablero tableroNuevo = new Tablero();
 
             StreamReader lector = new StreamReader("mapaGuardado.xml");
-
+            //Uso reflection a full
             String xmlString = lector.ReadToEnd();
-            // Create an XmlReader
+
             Type tipo;
+            int res;
+            XmlReaderSettings settings = new XmlReaderSettings();
+            settings.IgnoreWhitespace = true;
 
-
-            using (XmlReader reader = XmlReader.Create(new StringReader(xmlString)))
+            using (XmlReader reader = XmlReader.Create(new StringReader(xmlString), settings))
             {
                 //leo el inicio del mapa
-                if (reader.Read())
+                while (reader.Read())
                 {
-                    if (reader.NodeType == XmlNodeType.Element)
+                    switch (reader.NodeType)
                     {
-                        //Uso reflection a full
-                        tipo = Type.GetType(reader.Name);
-                        Tablero c = Activator.CreateInstance(tipo) as Tablero;
+                        case XmlNodeType.Element:
+                            //Es el tablero
+                            if (reader.Name == "Tablero")
+                            {
+                                tipo = Type.GetType("BombermanModel.Mapa." + reader.Name);
+                                tableroNuevo = Activator.CreateInstance(tipo) as Tablero;
+                                if (reader.HasAttributes) //deberia entrar, tiene 2 attr
+                                {
+                                    tableroNuevo.DimensionHorizontal = Convert.ToInt32(reader.GetAttribute("ancho"));
+                                    tableroNuevo.DimensionVertical = Convert.ToInt32(reader.GetAttribute("alto"));
+                                }
+                            }
+                            else
+                            {
+                                //es una casilla
+                                if (reader.Name == "Casilla")
+                                {
+                                    int x, y;
+                                    //leo coordenadas x e y
+                                    x = Convert.ToInt32(reader.GetAttribute("x"));
+                                    y = Convert.ToInt32(reader.GetAttribute("y"));
+                                    //tableroNuevo.AgregarCasilla(casillaActual);
+                                    if (reader.IsEmptyElement)
+                                    {
+                                        casillaActual = FabricaDeCasillas.FabricarPasillo(new Punto(x, y));
+                                        tableroNuevo.AgregarCasilla(casillaActual);
+                                    }
+                                    else
+                                    {
+                                        posActual = new Punto(x, y);
+                                    }
+                                }
+                                else
+                                {
+                                    
+                                    //es algun obstaculo
+                                    if ((reader.Name.Length >=6) && (reader.Name.Substring(0, 6).Equals("Bloque")))
+                                    {
+                                        res = Convert.ToInt32(reader.GetAttribute("resistencia"));
+                                        switch (reader.Name)
+                                               {
+                                                    case "BloqueLadrillo":
+                                                       casillaActual = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(posActual);
+                                                        break;
+                                                    case "BloqueCemento":
+                                                        casillaActual = FabricaDeCasillas.FabricarCasillaConBloqueCemento(posActual);
+                                                       break;
+                                                    case "BloqueAcero":
+                                                       casillaActual = FabricaDeCasillas.FabricarCasillaConBloqueAcero(posActual);
+                                                        break;
+                                                }
+                                        casillaActual.Estado.UnidadesDeResistencia = res;
+                                        
+                                        tableroNuevo.AgregarCasilla(casillaActual);
+
+                                    }
+                                    else //es un personaje o un articulo
+                                    {
+                                        if (reader.HasAttributes) //es personaje
+                                        {
+                                            int vel = Convert.ToInt32(reader.GetAttribute("velocidad"));
+                                            res = Convert.ToInt32(reader.GetAttribute("resistencia"));
+                                            Personaje.Personaje p = null;
+                                            if (reader.Name == "Bombita")
+                                            {
+                                                string lanz = reader.GetAttribute("lanzador");
+                                                p = new Bombita(posActual);
+                                            }
+                                            else //es algun enemigo
+                                            {
+                                                tipo = Type.GetType("BombermanModel.Personaje." + reader.Name);
+                                                p = Activator.CreateInstance(tipo, new object[] { posActual }) as Personaje.Personaje;
+                                            }
+                                            if (!tableroNuevo.ExisteCasillaEnPosicion(posActual))
+                                            {
+                                                casillaActual = FabricaDeCasillas.FabricarPasillo(posActual);
+                                                tableroNuevo.AgregarCasilla(casillaActual);
+                                            }
+                                            casillaActual.Transitar(p);
+                                            p.Movimiento.Velocidad = vel;
+                                            p.UnidadesDeResistencia = res;
+                                        }
+                                        else //es articulo
+                                        {
+                                            tipo = Type.GetType("BombermanModel.Articulo." + reader.Name);
+                                            Articulo.Articulo a = Activator.CreateInstance(tipo) as Articulo.Articulo;
+                                            if (!tableroNuevo.ExisteCasillaEnPosicion(posActual))
+                                            {
+                                                casillaActual = FabricaDeCasillas.FabricarPasillo(posActual);
+                                                tableroNuevo.AgregarCasilla(casillaActual);
+                                            }
+                                            casillaActual.agregarArticulo(a);
+                                        }
+                                    }
+                                }
+                            }
+                            break;
+
+                           
 
                     }
 
                 }
+
+                return tableroNuevo;
                 
-                XmlWriterSettings ws = new XmlWriterSettings();
-                ws.Indent = true;
-                using (XmlWriter writer = XmlWriter.Create(output, ws))
-                {
-
-                    // Parse the file and display each of the nodes.
-                    while (reader.Read())
-                    {
-                        switch (reader.NodeType)
-                        {
-                            case XmlNodeType.Element:
-                                writer.WriteStartElement(reader.Name);
-                                break;
-                            case XmlNodeType.Text:
-                                writer.WriteString(reader.Value);
-                                break;
-                            case XmlNodeType.XmlDeclaration:
-                            case XmlNodeType.ProcessingInstruction:
-                                writer.WriteProcessingInstruction(reader.Name, reader.Value);
-                                break;
-                            case XmlNodeType.Comment:
-                                writer.WriteComment(reader.Value);
-                                break;
-                            case XmlNodeType.EndElement:
-                                writer.WriteFullEndElement();
-                                break;
-                        }
-                    }
-
-                }
             }
-            Console.WriteLine(output);
-            Console.ReadLine();
         }
     }
 }
