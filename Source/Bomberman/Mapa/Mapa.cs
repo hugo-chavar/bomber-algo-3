@@ -9,7 +9,7 @@ using BombermanModel.Excepciones;
 
 namespace BombermanModel.Mapa
 {
-    public class Mapa : ITransitable
+    public class Tablero : ITransitable
     {
         private Dictionary<Punto, Casilla.Casilla> tablero;
         private int dimensionHorizontal;
@@ -23,7 +23,7 @@ namespace BombermanModel.Mapa
         private bool nivelGanado;
         private Punto posicionSalida;
 
-        public Dictionary<Punto, Casilla.Casilla> Tablero
+        public Dictionary<Punto, Casilla.Casilla> Ambiente
         {
             get { return this.tablero; }
             set { this.tablero = value; }
@@ -58,7 +58,7 @@ namespace BombermanModel.Mapa
             set { this.posicionSalida = value; }
         }
 
-        public Mapa(int tamanioHorizontal, int tamanioVertical)
+        public Tablero(int tamanioHorizontal, int tamanioVertical)
         {
             this.dimensionHorizontal = tamanioHorizontal;
             this.dimensionVertical = tamanioVertical;

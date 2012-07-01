@@ -7,6 +7,7 @@ using BombermanModel.Arma;
 using BombermanModel.Personaje;
 using BombermanModel.Articulo;
 using BombermanModel.Mapa.Casilla;
+using BombermanModel.Mapa;
 
 namespace BombermanModel.Juego
 {
@@ -15,7 +16,7 @@ namespace BombermanModel.Juego
         private int cantDeVidas;
         private bool juegoPausado;
         private Personaje.Personaje protagonista;
-        private Mapa.Mapa ambiente;
+        private Tablero ambiente;
         private List<IMovible> objetosContundentes;
         private List<Personaje.Personaje> enemigosVivos;
         private List<IDependienteDelTiempo> dependientesDelTiempo;
@@ -62,7 +63,7 @@ namespace BombermanModel.Juego
             set { this.protagonista = value; }
         }
 
-        public Mapa.Mapa Ambiente
+        public Tablero Ambiente
         {
             get { return ambiente; }
             set { this.ambiente = value; }
@@ -85,7 +86,7 @@ namespace BombermanModel.Juego
         {
             this.JuegoPausado = false;
             this.CantDeVidas = VIDAS;
-            this.Ambiente = new Mapa.Mapa(ANCHOMAPA,ALTOMAPA);
+            this.Ambiente = new Tablero(ANCHOMAPA,ALTOMAPA);
             Punto posicion = new Punto(0, 0);
             this.protagonista = new Personaje.Bombita(posicion);
             enemigosVivos = new List<Personaje.Personaje>();
@@ -121,7 +122,7 @@ namespace BombermanModel.Juego
 
         public void GuardarPartida()
         {
-            guardador.ImportarCasillas();
+            guardador.ExportarCasillas();
             guardador.GuardarEstadoAArchivo();
         }
 
@@ -145,7 +146,7 @@ namespace BombermanModel.Juego
 
         private void VolverACargarMapa()
         {
-            ambiente = new Mapa.Mapa(ANCHOMAPA, ALTOMAPA);
+            ambiente = new Tablero(ANCHOMAPA, ALTOMAPA);
             this.enemigosVivos = new List<Personaje.Personaje>();
             CargarMapa();
             protagonista = new Bombita(new Punto(0, 0));

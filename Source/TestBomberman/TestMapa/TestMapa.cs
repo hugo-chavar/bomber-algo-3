@@ -16,8 +16,8 @@ namespace TestBombermanModel.TestMapa
     {
         private const int ANCHOMAPA = 5;
         private const int ALTOMAPA = 5;
-        private Mapa unMapa;
-        private Mapa otroMapa;
+        private Tablero unMapa;
+        private Tablero otroMapa;
         private Casilla unaCasilla;
         private Punto pos;
         private IMovible movil;
@@ -34,8 +34,8 @@ namespace TestBombermanModel.TestMapa
 
             Punto unaPosicion;
             Casilla unaCasilla;
-            this.unMapa = new Mapa(ANCHOMAPA, ANCHOMAPA);
-            this.otroMapa = new Mapa(ANCHOMAPA, ANCHOMAPA);
+            this.unMapa = new Tablero(ANCHOMAPA, ANCHOMAPA);
+            this.otroMapa = new Tablero(ANCHOMAPA, ANCHOMAPA);
             int i, j;
             for (i = 0; i < ANCHOMAPA; i++)
                 for (j = 0; j < ANCHOMAPA; j++)

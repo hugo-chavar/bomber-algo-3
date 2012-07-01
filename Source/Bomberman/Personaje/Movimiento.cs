@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BombermanModel.Mapa;
 
 namespace BombermanModel.Personaje
 {
@@ -39,22 +40,22 @@ namespace BombermanModel.Personaje
         
         public void CambiarAIzquierda()
         {
-            this.direccion = Mapa.Mapa.IZQUIERDA;
+            this.direccion = Tablero.IZQUIERDA;
         }
 
         public void CambiarADerecha()
         {
-            this.direccion = Mapa.Mapa.DERECHA;
+            this.direccion = Tablero.DERECHA;
         }
 
         public void CambiarAArriba()
         {
-            this.direccion = Mapa.Mapa.ARRIBA;
+            this.direccion = Tablero.ARRIBA;
         }
 
         public void CambiarAAbajo()
         {
-            this.direccion = Mapa.Mapa.ABAJO;
+            this.direccion = Tablero.ABAJO;
         }
     }
 }

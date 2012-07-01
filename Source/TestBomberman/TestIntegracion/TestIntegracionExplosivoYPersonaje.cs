@@ -11,7 +11,7 @@ namespace TestBombermanModel.TestIntegracion
     class TestIntegracionExplosivoYPersonaje
     {
         private Juego unJuego;
-        private Mapa unMapa;
+        private Tablero unMapa;
 
 
         [SetUp]

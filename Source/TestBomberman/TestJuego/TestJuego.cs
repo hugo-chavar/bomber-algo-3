@@ -15,7 +15,7 @@ namespace TestBombermanModel.TestJuego
         private Juego unJuego;
         private const int ANCHOMAPA = 17;
         private const int ALTOMAPA = 13;
-        private Mapa unMapa;
+        private Tablero unMapa;
         private IMovible movil;
 
         [SetUp]
