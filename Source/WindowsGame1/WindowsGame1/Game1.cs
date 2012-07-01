@@ -122,6 +122,12 @@ namespace BombermanGame
                         PrepararMapa();
                         break;
                     }
+                case "Guardar":
+                    {
+                        elJuego.GuardarPartida();
+                        estadoDelJuego = "Jugar";
+                        break;
+                    }
             }      
 
             base.Update(gameTime);
