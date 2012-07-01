@@ -20,7 +20,7 @@ namespace TestBombermanModel.TestPersonaje
         [Test]
         public void DireccionInicialDelMovimientoEsUnaDeLasDireccionesPermitidas()
         {
-            List<int> direcciones = new List<int> { Mapa.ABAJO, Mapa.ARRIBA, Mapa.IZQUIERDA, Mapa.DERECHA };
+            List<int> direcciones = new List<int> { Tablero.ABAJO, Tablero.ARRIBA, Tablero.IZQUIERDA, Tablero.DERECHA };
             Assert.Contains(unMovimiento.Direccion,direcciones);
         }
 
@@ -37,7 +37,7 @@ namespace TestBombermanModel.TestPersonaje
         {
             this.unMovimiento.CambiarADerecha();
             this.unMovimiento.CambiarAIzquierda();
-            Assert.AreEqual(unMovimiento.Direccion, Mapa.IZQUIERDA);
+            Assert.AreEqual(unMovimiento.Direccion, Tablero.IZQUIERDA);
         }
 
         [Test]
@@ -45,7 +45,7 @@ namespace TestBombermanModel.TestPersonaje
         {
             this.unMovimiento.CambiarAIzquierda();
             this.unMovimiento.CambiarADerecha();
-            Assert.AreEqual(unMovimiento.Direccion, Mapa.DERECHA);
+            Assert.AreEqual(unMovimiento.Direccion, Tablero.DERECHA);
         }
 
         [Test]
@@ -53,7 +53,7 @@ namespace TestBombermanModel.TestPersonaje
         {
             this.unMovimiento.CambiarADerecha();
             this.unMovimiento.CambiarAArriba();
-            Assert.AreEqual(unMovimiento.Direccion, Mapa.ARRIBA);
+            Assert.AreEqual(unMovimiento.Direccion, Tablero.ARRIBA);
         }
 
         [Test]
@@ -61,7 +61,7 @@ namespace TestBombermanModel.TestPersonaje
         {
             this.unMovimiento.CambiarADerecha();
             this.unMovimiento.CambiarAAbajo();
-            Assert.AreEqual(unMovimiento.Direccion, Mapa.ABAJO);
+            Assert.AreEqual(unMovimiento.Direccion, Tablero.ABAJO);
         }
     }
 }

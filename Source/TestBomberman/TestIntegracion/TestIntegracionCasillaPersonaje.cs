@@ -16,7 +16,7 @@ namespace TestBomberman.TestIntegracion
     class TestIntegracionCasillaPersonaje
     {
         private Juego unJuego;
-        private Mapa unMapa;
+        private Tablero unMapa;
 
         [SetUp]
         public void TestSetup()

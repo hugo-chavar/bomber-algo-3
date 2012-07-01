@@ -8,6 +8,7 @@ using BombermanModel.Juego;
 using BombermanModel.Mapa;
 using BombermanModel.Mapa.Casilla;
 using BombermanModel.Personaje;
+using System.IO;
 
 namespace BombermanModel.Juego
 {
@@ -16,13 +17,14 @@ namespace BombermanModel.Juego
         private List<Casilla> casillas;
         private int dimHorizontal;
         private int dimVertical;
+        private Tablero mapaGenerado;
 
 
-        public void ImportarCasillas()
+        public void ExportarCasillas()
         {
             // recorro el tablero entero
             casillas = new List<Casilla>();
-            Mapa.Mapa miMapa = Juego.Instancia().Ambiente;
+            Tablero miMapa = Juego.Instancia().Ambiente;
             dimHorizontal = miMapa.DimensionHorizontal;
             dimVertical = miMapa.DimensionVertical;
             for (int vertical = 0; vertical < dimVertical; vertical++)
@@ -108,6 +110,64 @@ namespace BombermanModel.Juego
                 writer.WriteEndElement();
                 writer.WriteEndDocument();
             }
+        }
+
+        public void ContinuarPartidaGuardada()
+        {
+            StringBuilder output = new StringBuilder();
+
+            StreamReader lector = new StreamReader("mapaGuardado.xml");
+
+            String xmlString = lector.ReadToEnd();
+            // Create an XmlReader
+            Type tipo;
+
+
+            using (XmlReader reader = XmlReader.Create(new StringReader(xmlString)))
+            {
+                //leo el inicio del mapa
+                if (reader.Read())
+                {
+                    if (reader.NodeType == XmlNodeType.Element)
+                    { 
+                        //tipo = Type.GetType(reader.Name)
+                    }
+
+                }
+                
+                XmlWriterSettings ws = new XmlWriterSettings();
+                ws.Indent = true;
+                using (XmlWriter writer = XmlWriter.Create(output, ws))
+                {
+
+                    // Parse the file and display each of the nodes.
+                    while (reader.Read())
+                    {
+                        switch (reader.NodeType)
+                        {
+                            case XmlNodeType.Element:
+                                writer.WriteStartElement(reader.Name);
+                                break;
+                            case XmlNodeType.Text:
+                                writer.WriteString(reader.Value);
+                                break;
+                            case XmlNodeType.XmlDeclaration:
+                            case XmlNodeType.ProcessingInstruction:
+                                writer.WriteProcessingInstruction(reader.Name, reader.Value);
+                                break;
+                            case XmlNodeType.Comment:
+                                writer.WriteComment(reader.Value);
+                                break;
+                            case XmlNodeType.EndElement:
+                                writer.WriteFullEndElement();
+                                break;
+                        }
+                    }
+
+                }
+            }
+            Console.WriteLine(output);
+            Console.ReadLine();
         }
     }
 }

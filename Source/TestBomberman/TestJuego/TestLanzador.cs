@@ -315,7 +315,7 @@ namespace TestBombermanModel.TestJuego
         {
             int AnchoYLargo = 5;
 
-            Mapa unMapa = new Mapa(AnchoYLargo, AnchoYLargo);
+            Tablero unMapa = new Tablero(AnchoYLargo, AnchoYLargo);
             Punto posInicio = new Punto(0, 0);
             Punto posFinal = new Punto(1, 1);
             Personaje unBombita = new Bombita(posInicio);

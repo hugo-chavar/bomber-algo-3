@@ -20,7 +20,7 @@ namespace BombermanGame
 {
     public static class MapaVista
     {
-        static Mapa mapaInterno;
+        static Tablero mapaInterno;
         static List<ObjetoVivo> pasillosDibujables;
         static List<ObjetoVivo> objetosDibujables;
         static List<ObjetoVivo> enemigosDibujables;
@@ -35,7 +35,7 @@ namespace BombermanGame
         public static Texture2D salida;
 
 
-        public static void inicialize(Mapa unMapa)
+        public static void inicialize(Tablero unMapa)
         {
             mapaInterno = unMapa;
             Resetear();

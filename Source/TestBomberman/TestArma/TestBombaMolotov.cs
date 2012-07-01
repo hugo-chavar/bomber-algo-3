@@ -12,7 +12,7 @@ namespace TestBombermanModel.TestArma
     {
         private Juego unJuego;
         //private const int ANCHOMAPA = 5;
-        private Mapa unMapa;
+        private Tablero unMapa;
         
         [SetUp]
         public void TestSetup()

@@ -17,7 +17,7 @@ namespace TestBombermanModel.TestSalida
     {
         private const int ANCHOMAPA = 5;
         private const int ALTOMAPA = 5;
-        private Mapa unMapa;
+        private Tablero unMapa;
 
  
    
@@ -34,7 +34,7 @@ namespace TestBombermanModel.TestSalida
             Juego.Reiniciar();
             Punto unaPosicion;
             Casilla unaCasilla;
-            this.unMapa = new Mapa(ANCHOMAPA, ANCHOMAPA);
+            this.unMapa = new Tablero(ANCHOMAPA, ANCHOMAPA);
 
             int i, j;
             for (i = 0; i < ANCHOMAPA; i++)
@@ -62,7 +62,7 @@ namespace TestBombermanModel.TestSalida
         {
             Punto unaPosicion = new Punto(0, 0);
             Casilla unaCasilla = new Casilla(unaPosicion);
-            Mapa otroMapa = Juego.Instancia().Ambiente;
+            Tablero otroMapa = Juego.Instancia().Ambiente;
 
             Punto pUnaSalida = new Punto (1,1);
 
@@ -105,7 +105,7 @@ namespace TestBombermanModel.TestSalida
         public void CuandoEnOtroMapaAgrego2PersonajesEliminoAlUnicoEnemigoYSeActivaLaSalida()
         {
             // agrego articulo
-            Mapa otroMapa = Juego.Instancia().Ambiente;
+            Tablero otroMapa = Juego.Instancia().Ambiente;
             Punto pUnaSalida = new Punto(3, 3);
             Punto pUnCecilio = new Punto(2, 1);
             Punto pUnaBombaMolotov = new Punto(2, 0);
@@ -139,7 +139,7 @@ namespace TestBombermanModel.TestSalida
         public void CuandoEnOtroMapaAgrego3PersonajesEliminoSoloUnEnemigoYNoSeActivaLaSalida()
         {
             // agrego articulo
-            Mapa otroMapa = Juego.Instancia().Ambiente;
+            Tablero otroMapa = Juego.Instancia().Ambiente;
             Punto pUnaSalida = new Punto(3, 3);
             Punto pUnCecilio = new Punto(2, 1);
             Punto pUnaBombaMolotov = new Punto(2, 0);
