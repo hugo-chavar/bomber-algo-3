@@ -26,10 +26,11 @@ namespace BombermanGame
 
         public Menu()
         {
-            labelList.Add("Jugar");
+            labelList.Add("Nuevo Juego");
             labelList.Add("Salir");
             labelList.Add("Reiniciar");
             labelList.Add("Guardar Partida");
+            labelList.Add("Continuar Partida Guardada");
         }
 
         public void LoadContent(ContentManager content)
@@ -67,6 +68,10 @@ namespace BombermanGame
                     case 3:
                         Game1.estadoDelJuego = "Guardar";
                         break;
+                    case 4:
+                        Game1.estadoDelJuego = "Continuar";
+                        break;
+
                 }
             }
 

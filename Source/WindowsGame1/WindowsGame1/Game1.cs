@@ -128,6 +128,13 @@ namespace BombermanGame
                         estadoDelJuego = "Jugar";
                         break;
                     }
+                case "Continuar":
+                    {
+                        elJuego.ContinuarPartidaGuardada();
+                        PrepararMapa();
+                        estadoDelJuego = "Jugar";
+                        break;
+                    }
             }      
 
             base.Update(gameTime);
