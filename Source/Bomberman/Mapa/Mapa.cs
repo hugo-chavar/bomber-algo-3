@@ -11,7 +11,7 @@ namespace BombermanModel.Mapa
 {
     public class Tablero : ITransitable
     {
-        private Dictionary<Punto, Casilla.Casilla> tablero;
+        private Dictionary<Punto, Casilla.Casilla> tablero = new Dictionary<Punto, Casilla.Casilla>();
         private int dimensionHorizontal;
         private int dimensionVertical;
         public const int ARRIBA = 8;
@@ -19,8 +19,8 @@ namespace BombermanModel.Mapa
         public const int IZQUIERDA = 4;
         public const int DERECHA = 6;
         public const int CANTIDADJUGADORES = 1;
-        private bool nivelTerminado;
-        private bool nivelGanado;
+        private bool nivelTerminado = false;
+        private bool nivelGanado = false;
         private Punto posicionSalida;
 
         public Dictionary<Punto, Casilla.Casilla> Ambiente
@@ -32,11 +32,13 @@ namespace BombermanModel.Mapa
         public int DimensionHorizontal
         {
             get { return this.dimensionHorizontal; }
+            set { this.dimensionHorizontal = value; }
         }
 
         public int DimensionVertical
         {
             get { return this.dimensionVertical; }
+            set { this.dimensionVertical = value; }
         }
 
 
@@ -62,9 +64,10 @@ namespace BombermanModel.Mapa
         {
             this.dimensionHorizontal = tamanioHorizontal;
             this.dimensionVertical = tamanioVertical;
-            this.tablero = new Dictionary<Punto, Casilla.Casilla>();
-            this.NivelGanado = false;
-            this.NivelTerminado = false;
+        }
+
+        public Tablero()
+        {
         }
 
         public void AgregarCasilla(Casilla.Casilla unaCasilla)

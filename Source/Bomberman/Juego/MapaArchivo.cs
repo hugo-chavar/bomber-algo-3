@@ -48,7 +48,7 @@ namespace BombermanModel.Juego
             using (XmlWriter writer = XmlWriter.Create("mapaGuardado.xml", settings))
             {
                 writer.WriteStartDocument();
-                writer.WriteStartElement("Mapa");
+                writer.WriteStartElement("Tablero");
                 writer.WriteStartAttribute("ancho");
                 writer.WriteValue(dimHorizontal);
                 writer.WriteEndAttribute();
@@ -129,8 +129,11 @@ namespace BombermanModel.Juego
                 if (reader.Read())
                 {
                     if (reader.NodeType == XmlNodeType.Element)
-                    { 
-                        //tipo = Type.GetType(reader.Name)
+                    {
+                        //Uso reflection a full
+                        tipo = Type.GetType(reader.Name);
+                        Tablero c = Activator.CreateInstance(tipo) as Tablero;
+
                     }
 
                 }
