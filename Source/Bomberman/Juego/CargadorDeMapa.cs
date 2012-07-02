@@ -34,7 +34,7 @@ namespace BombermanModel.Juego
             //}
 
         }
-        public void CrearLosObjetos(string[] arrayString)
+        private void CrearLosObjetos(string[] arrayString)
         {
             foreach (string s in arrayString)
             {
@@ -43,7 +43,7 @@ namespace BombermanModel.Juego
 
         }
 
-        public void CrearObjeto(string s)
+        private void CrearObjeto(string s)
         {
             string clase = ObtenerAtributo(s,"class");
             int x = Convert.ToInt32(ObtenerAtributo(s, "x")); 
@@ -104,7 +104,7 @@ namespace BombermanModel.Juego
             }
 
         }
-        public string ObtenerAtributo(string stringObjeto, string stringAtributo)
+        private string ObtenerAtributo(string stringObjeto, string stringAtributo)
         {
             int pos = stringObjeto.IndexOf(stringAtributo);
             if (pos != -1)
@@ -120,7 +120,7 @@ namespace BombermanModel.Juego
             }
         }
 
-        public string[] SepararObjetos(string xmlTexto)
+        private string[] SepararObjetos(string xmlTexto)
         {
             List<string> listaString = new List<string>();
             //Eliminar cosas innecesarias

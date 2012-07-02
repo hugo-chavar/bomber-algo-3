@@ -22,7 +22,5 @@ namespace BombermanModel.Mapa.Casilla
         {
             return false;
         }
-
-        //public abstract void daniarConProyectil();
      }
 }

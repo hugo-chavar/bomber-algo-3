@@ -27,12 +27,6 @@ namespace BombermanModel.Arma
 
         public override void CuandoPasaElTiempo()
         {
-            /*this.DisminuirTiempo();
-            if (0 >= this.TiempoRestante)
-            {
-                base.Explotar();
-            } */
-
             DateTime horaActual = DateTime.Now;
             if (horaActual.Subtract(horaDePlantado).Seconds >= tiempoExplosion)
             {
