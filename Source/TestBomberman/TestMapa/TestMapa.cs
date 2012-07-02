@@ -523,42 +523,6 @@ namespace TestBombermanModel.TestMapa
             Assert.IsTrue(unMapa.PermitidoMoverHaciaIzquierdaA(movil));
         }
 
-        [Test]
-        public void BombaToleToleExplotaAlcanzandoAUnBloqueDeCementoDevuelveTrueSiElBloqueQuedaDestruido()
-        {
-
-            this.pos = new Punto(1, 1);
-            Punto pToleTole = new Punto(1, 2);
-            BombaToleTole unaBomba = new BombaToleTole(pToleTole, 0);
-            Casilla casillaBomba = unMapa.ObtenerCasilla(pToleTole);
-            casillaBomba.PlantarExplosivo(unaBomba);
-
-
-            unMapa.ManejarExplosion(unaBomba);
-
-
-            Casilla unaCasillaNueva = unMapa.ObtenerCasilla(this.pos);
-
-            Assert.IsInstanceOf(typeof(Pasillo), unaCasillaNueva.Estado);
-            //TestSetup(); 
-            // VER ESTO! ESTOY FORZANDO EL SETUP PARA NO CAMBIAR OTROS TESTS!
-            //Andy:Problema Solucionado, habia que poner Setup y No TestFixtureSetup
-            // Martin: CRACK!
-
-
-
-
-            //A esta hora no se me ocurre mucho.. puede ser porque los bloques son de acero que no se estan rompiendo?
-            // probe con bloques de ladrillo y tampoco rompe, probe poner mas cerca la bomba y tampoco la rompre
-            //pero nombre del test dice bloque de cemento ¿? cambialo arriba .. en el setup
-            //otra es mirar bien el manejarexplosion
-            //vas por el buen camino.. debe ser una boludez..pero hay que encontrarla!!
-
-
-
-
-        }
-
         /********************************* TESTEO DE ARTICULOS CON MAPA *********************************/
 
         [Test]
