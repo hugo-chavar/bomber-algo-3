@@ -207,6 +207,15 @@ namespace BombermanGame
             return unVector;
         }
 
+        public static Punto TransformarVector2EnPunto(Vector2 unv2)
+        {
+            int a = (int)((unv2.X - Game1.mapa.Location.X) / 32);
+            int b = (int)((unv2.Y - Game1.mapa.Location.Y) / 32);
+            Punto unPunto = new Punto(a,b);
+
+            return unPunto;
+        }
+
         public static void CargarContenido(ContentManager content)
         {
             // Carga de contenidos de objetos que se dibujan en ejecucion
