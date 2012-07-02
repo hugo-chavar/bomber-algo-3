@@ -96,8 +96,7 @@ namespace BombermanGame
             
             foreach (ObjetoVivo s in objetosDibujables)
             {
-                //if (s.Vivo)
-                    s.Draw(sprite);
+                s.Draw(sprite);
             }
             foreach (ObjetoVivo s in enemigosDibujables)
                 if (s.Vivo)
@@ -106,18 +105,8 @@ namespace BombermanGame
 
         }
 
-        //public static void EliminarDibujable(ObjetoVivo unDibujable)
-        //{
-        //    //try
-        //    {
-        //        objetosDibujables.Remove(unDibujable);
-        //    }//catch()
-
-        //}
-
         public static void CargarMapa()
         {
-            
             // recorro el tablero entero
             for (int vertical = 0; vertical < mapaInterno.DimensionVertical; vertical++)
             {

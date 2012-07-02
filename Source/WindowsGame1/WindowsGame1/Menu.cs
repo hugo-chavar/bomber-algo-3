@@ -57,7 +57,7 @@ namespace BombermanGame
                 switch (seleccionado)
                 {
                     case 0:
-                        Game1.estadoDelJuego = "Jugar";
+                        Game1.estadoDelJuego = "ChequearMapa";
                         break;
                     case 1:
                         Game1.estadoDelJuego = "Salir";

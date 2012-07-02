@@ -22,6 +22,7 @@ namespace BombermanModel.Mapa
         private bool nivelTerminado = false;
         private bool nivelGanado = false;
         private Punto posicionSalida;
+        private Punto posicionInicial;
 
         public Dictionary<Punto, Casilla.Casilla> Ambiente
         {
@@ -58,6 +59,12 @@ namespace BombermanModel.Mapa
         {
             get { return this.posicionSalida; }
             set { this.posicionSalida = value; }
+        }
+
+        public Punto PosicionInicial
+        {
+            get { return this.posicionInicial; }
+            set { this.posicionInicial = value; }
         }
 
         public Tablero(int tamanioHorizontal, int tamanioVertical)
