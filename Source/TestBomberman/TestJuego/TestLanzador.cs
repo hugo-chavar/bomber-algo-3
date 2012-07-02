@@ -639,7 +639,7 @@ namespace TestBombermanModel.TestJuego
             unBombita.Mover(); //8,5
             unBombita.Mover(); //8,6
             unBombita.Mover(); //8,7  
-            unBombita.LanzarExplosivo(); // en 4,0 para romper Ladrillo q oculta a LRA
+            unBombita.LanzarExplosivo(); // en 8,7 para romper Ladrillo q oculta a LRA
             unBombita.Movimiento.CambiarAAbajo();
             unBombita.Mover(); // 8,6
             unBombita.Movimiento.CambiarADerecha();
@@ -648,93 +648,145 @@ namespace TestBombermanModel.TestJuego
             unJuego.AvanzarElTiempo(); // explotan bombas mato a lra en 14,2 y rompo obstaculos
             //andy.. me quedé acá
             unBombita.Movimiento.CambiarAIzquierda(); 
-            unBombita.Mover(); //1,1
-            unBombita.Mover(); //0,1
+            unBombita.Mover(); //8,6
+            unBombita.Movimiento.CambiarAArriba();
+            unBombita.Mover(); //8,7
+            unBombita.Mover(); //8,8
+            unBombita.Mover(); //8,9
+            unBombita.Mover(); //8,10
+            unBombita.LanzarExplosivo(); // para destruir a LRA en 8,11 y ladrillo 7,10
             unBombita.Movimiento.CambiarAAbajo();
-            unBombita.Mover(); //0,0
-
+            unBombita.Mover(); //8,9
+            unBombita.Mover(); //8,8
+            unBombita.Mover(); //8,7
+            unBombita.Mover(); //8,6
+            unBombita.Movimiento.CambiarAIzquierda();
+            unBombita.Mover(); //7,6
+            unBombita.LanzarExplosivo(); // para destruir al bloque ladrillo en 6,6
+            unBombita.Movimiento.CambiarADerecha();//me escondo
+            unBombita.Mover(); //8,6
+            unBombita.Movimiento.CambiarAArriba();
+            unBombita.Mover(); //8,7
+            unBombita.Mover(); //8,8
+            unBombita.Movimiento.CambiarAIzquierda();
+            unBombita.Mover(); //7,8
             System.Threading.Thread.Sleep(5000);//Pasan 5 segundos
-            unJuego.AvanzarElTiempo(); // explota bomba tole tole, mato LRA en 2,2
+            unJuego.AvanzarElTiempo(); // explota bomba tole tole, mato LRA en 8,11 y bloque ladrillo 6,6 y 7,10
+//Hasta aca esta bien
+            unBombita.Movimiento.CambiarADerecha();
+            unBombita.Mover(); //8,8
+            unBombita.Movimiento.CambiarAAbajo();
+            unBombita.Mover(); //8,7
+            unBombita.Mover(); //8,6
+            unBombita.Movimiento.CambiarAIzquierda();
+            unBombita.Mover(); //7,6
+            unBombita.Mover(); //6,6
+            unBombita.Mover(); //6,6
+            Assert.AreEqual(6, unBombita.Posicion.X);
+            Assert.AreEqual(6, unBombita.Posicion.Y);
+            unBombita.Mover(); //5,6
+            unBombita.Mover(); //4,6
+            
+            unBombita.LanzarExplosivo(); // para destruir a Cecilio 4,4
 
             unBombita.Movimiento.CambiarADerecha();
-            unBombita.Mover(); //1,0
-            unBombita.Mover(); //2,0
+            unBombita.Mover(); //5,6
+            unBombita.Mover(); //6,6
+            unBombita.Mover(); //7,6
+            unBombita.Mover(); //8,6
             unBombita.Movimiento.CambiarAArriba();
-            unBombita.Mover(); //2,1
-            unBombita.Mover(); //2,2
-            unBombita.Mover(); //2,3
-            unBombita.Mover(); //2,4
-            unBombita.LanzarExplosivo(); // en 2,4
+            unBombita.Mover(); //8,7
+            unBombita.Mover(); //8,8
+            unBombita.Mover(); //8,9
+            unBombita.Mover(); //8,10
+            unBombita.Mover(); //8,11
+            unBombita.Mover(); //8,12
+            unBombita.Movimiento.CambiarADerecha();
+            unBombita.Mover(); //9,12
+            unBombita.Mover(); //10,12
+            unBombita.LanzarExplosivo(); // Para destruir bloques ladrillo 5,12 y 14,12
+            unBombita.Mover(); //11,12
+            unBombita.Mover(); //12,12
             unBombita.Movimiento.CambiarAAbajo();// lo pongo a salvo
-            unBombita.Mover(); //2,3
-            unBombita.Mover(); //2,2
-            unBombita.Mover(); //2,1
-            unBombita.Mover(); //2,0
-            unBombita.Movimiento.CambiarADerecha();
-            unBombita.Mover(); //3,0
-
+            unBombita.Mover(); //12,11
             System.Threading.Thread.Sleep(5000);//Pasan 5 segundos
-            unJuego.AvanzarElTiempo(); // explota bomba tole tole, mato LRA en LRA en 1,4 y a C en 1,4 y a C en 4,4
-
-            unBombita.Mover(); //4,0
-            unBombita.Mover(); //5,0
-            unBombita.Mover(); //6,0
-            unBombita.Mover(); //7,0
-            unBombita.Mover(); //8,0
+            unJuego.AvanzarElTiempo(); // explota bloques ladrillo 5,12 y 14,12 y Cecilio 4,4
             unBombita.Movimiento.CambiarAArriba();
-            unBombita.Mover(); //8,1
-            unBombita.Mover(); //8,2
-            unBombita.Mover(); //8,3
-            unBombita.Mover(); //8,4
-            unBombita.Mover(); //8,5
-            unBombita.LanzarExplosivo(); // en 8,5
+            unBombita.Mover(); //12,12
+            unBombita.Movimiento.CambiarADerecha();
+            unBombita.Mover(); //13,12
+            unBombita.Mover(); //14,12
+            unBombita.Mover(); //15,12
+            unBombita.Mover(); //16,12
+            unBombita.LanzarExplosivo(); // Para destruir Cecilio 15,12 y LopezReggaeAlado 16,9
+            unBombita.Movimiento.CambiarAIzquierda();
+            unBombita.Mover(); //15,12
+            unBombita.Mover(); //14,12
+            unBombita.Mover(); //13,12
+            unBombita.Mover(); //12,12
+            unBombita.Mover(); //11,12
+            unBombita.Mover(); //10,12
+            unBombita.Mover(); //9,12
+            unBombita.Mover(); //8,12
+            unBombita.Mover(); //7,12
+            unBombita.Mover(); //6,12
+            unBombita.Mover(); //5,12
+            unBombita.LanzarExplosivo();// Para destruir Bloque ladrillo 2,12
+            unBombita.Movimiento.CambiarADerecha();
+            unBombita.Mover(); //6,12
             unBombita.Movimiento.CambiarAAbajo(); //lo pongo a salvo
+            unBombita.Mover(); //6,11
+            System.Threading.Thread.Sleep(5000);//Pasan 5 segundos
+            unJuego.AvanzarElTiempo(); // explota bloques ladrillo 2,12 y  Cecilio 15,12 y LopezReggaeAlado 16,9
+           
+            unBombita.Movimiento.CambiarAArriba();
+            unBombita.Mover(); //6,12
+            unBombita.Movimiento.CambiarAIzquierda();
+            unBombita.Mover(); //5,12
+            unBombita.Mover(); //4,12
+            unBombita.LanzarExplosivo();// Para destruir Cecilio 0,12
+            unBombita.Movimiento.CambiarADerecha();
+            unBombita.Mover(); //5,12
+            unBombita.Mover(); //6,12
+            unBombita.Mover(); //7,12
+            unBombita.Mover(); //8,12
+            unBombita.Movimiento.CambiarAAbajo();
+            unBombita.Mover(); //8,11
+            unBombita.Mover(); //8,10
+            unBombita.Mover(); //8,9
+            unBombita.Mover(); //8,8
+            unBombita.Mover(); //8,7
+            unBombita.Mover(); //8,6
+            unBombita.Mover(); //8,5
             unBombita.Mover(); //8,4
             unBombita.Mover(); //8,3
             unBombita.Mover(); //8,2
+            unBombita.Mover(); //8,1
+            unBombita.Mover(); //8,0
             unBombita.Movimiento.CambiarADerecha();
-            unBombita.Mover(); //9,2
-            unBombita.Mover(); //10,2
-
-            System.Threading.Thread.Sleep(5000);//Pasan 5 segundos
-            unJuego.AvanzarElTiempo(); // explota bomba tole tole, mato C en 8,6
-
-            unBombita.LanzarExplosivo();//en 10,2
-            unBombita.Movimiento.CambiarAAbajo(); // lo pongo a salvo
-            unBombita.Mover(); //10,1
+            unBombita.Mover(); //9,0
             unBombita.Mover(); //10,0
-            unBombita.Movimiento.CambiarADerecha();
             unBombita.Mover(); //11,0
             unBombita.Mover(); //12,0
             unBombita.Mover(); //13,0
             unBombita.Mover(); //14,0
-
-            System.Threading.Thread.Sleep(5000);//Pasan 5 segundos
-            unJuego.AvanzarElTiempo(); // explota bomba tole tole, mato LR en 12,2
-
-            unBombita.LanzarExplosivo(); // en 14,0
-
-            unBombita.Movimiento.CambiarAIzquierda();
-            unBombita.Mover(); //13,0
-            unBombita.Mover(); //12,0
-            unBombita.Mover(); //11,0
-            unBombita.Mover(); //10,0
             unBombita.Movimiento.CambiarAArriba();
-            unBombita.Mover(); //10,1
-            unBombita.Mover(); //10,2
+            unBombita.Mover(); //14,1
+            unBombita.LanzarExplosivo();// Para destruir Ladrillo que oculta salida 14,2
+            unBombita.Movimiento.CambiarAAbajo();
+            unBombita.Mover(); //14,0
             unBombita.Movimiento.CambiarADerecha();
-            unBombita.Mover(); //11,2
-            unBombita.Mover(); //12,2
-            unBombita.Mover(); //13,2
-
+            unBombita.Mover(); //15,0 - Pongo a bombita a salvo
             System.Threading.Thread.Sleep(5000);//Pasan 5 segundos
-            unJuego.AvanzarElTiempo(); // explota bomba tole tole, mato LR en 14,1
-
-            unBombita.Mover(); // 14,2 agarro la salida!
+            unJuego.AvanzarElTiempo(); // explota bloques ladrillo 14,2 y  Cecilio 0,12 
+            unBombita.Movimiento.CambiarAIzquierda();
+            unBombita.Mover(); //14,0
+            unBombita.Movimiento.CambiarAArriba();
+            unBombita.Mover(); //14,1
+            unBombita.Mover(); //14,2, como la salida
 
             Assert.AreEqual(14, unBombita.Posicion.X);
-            Assert.AreEqual(2, unBombita.Posicion.Y);
-                                  
+            Assert.AreEqual(2, unBombita.Posicion.Y);                     
 
             Assert.AreEqual(0, Juego.Instancia().CantidadEnemigosVivos());
             Assert.IsTrue(unBombita.CiudadLiberada);
