@@ -21,6 +21,7 @@ namespace TestBombermanModel.TestIntegracion
         public void TestSetup()
         {
             this.unJuego = Juego.Instancia();
+            this.unJuego.CargarMapa();
             this.unMapa = this.unJuego.Ambiente;
 
         }
@@ -28,7 +29,8 @@ namespace TestBombermanModel.TestIntegracion
         [TearDown]
         public void TearDown()
         {
-            Juego.Reiniciar();
+            this.unJuego.Recomenzar();
+            this.unJuego.CargarMapa();
         }
 
         [Test]
@@ -202,7 +204,7 @@ namespace TestBombermanModel.TestIntegracion
         [Test]
         public void ProyectilChocaConBloqueDeAceroYAlPasarUnTiempoExplotaYNoDaniaBloquesAcero()
         {
-            Juego.Reiniciar();
+            //Juego.Reiniciar();
             Personaje personaje = new LosLopezReggae(new Punto(2, 7));
             Juego.Instancia().Ambiente.AgregarPersonaje(personaje);
             personaje.Movimiento.CambiarADerecha();

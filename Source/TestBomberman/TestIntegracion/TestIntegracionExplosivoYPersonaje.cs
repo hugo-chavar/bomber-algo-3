@@ -18,6 +18,7 @@ namespace TestBombermanModel.TestIntegracion
         public void TestSetup()
         {
             this.unJuego = Juego.Instancia();
+            this.unJuego.CargarMapa();
             this.unMapa = this.unJuego.Ambiente;
 
         }
