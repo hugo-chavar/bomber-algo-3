@@ -28,14 +28,6 @@ namespace BombermanGame
             spriteName = "Bombita";
         }
 
-        //public void ReiniciarPersonaje()
-        //{
-        //    this.Vivo=true;
-        //unPersonaje=Juego.Instancia().Protagonista;
-        //position = MapaVista.TransformarPuntoEnVector2(unPersonaje.Posicion);
-        //movido = new Vector2(0, 0);
-        //}
-
         public override void LoadContent(ContentManager content)
         {
             miContent = content;
@@ -139,30 +131,33 @@ namespace BombermanGame
             Vector2 center = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
   
             spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), center, scale, SpriteEffects.None, 0);
-            spriteBatch.DrawString(Game1.fuente, "En modelo ->Pos X: " + unPersonaje.Posicion.X + " Pos Y: " + unPersonaje.Posicion.Y, new Vector2(10, 10), Color.Yellow);
-            spriteBatch.DrawString(Game1.fuente, "Mvido ->Pos X: " + Math.Round(movido.X, 1) + " Pos Y: " + Math.Round(movido.Y, 1) + " RealPos X: " + Math.Round(position.X,1) + " Pos Y: " + Math.Round(position.Y,1), new Vector2(10, Game1.fuente.LineSpacing), Color.Yellow);
-            spriteBatch.DrawString(Game1.fuente, "Vida " + Juego.Instancia().Protagonista.UnidadesDeResistencia, new Vector2(10, 2 * Game1.fuente.LineSpacing), Color.Yellow);
+            //spriteBatch.DrawString(Game1.fuente, "En modelo ->Pos X: " + unPersonaje.Posicion.X + " Pos Y: " + unPersonaje.Posicion.Y, new Vector2(10, 10), Color.Yellow);
+            //spriteBatch.DrawString(Game1.fuente, "Mvido ->Pos X: " + Math.Round(movido.X, 1) + " Pos Y: " + Math.Round(movido.Y, 1) + " RealPos X: " + Math.Round(position.X,1) + " Pos Y: " + Math.Round(position.Y,1), new Vector2(10, Game1.fuente.LineSpacing), Color.Yellow);
+            spriteBatch.DrawString(Game1.fuente2, "Vidas: " + Juego.Instancia().CantDeVidas, new Vector2(10, 10), Color.Yellow);
+            spriteBatch.DrawString(Game1.fuente2, "Nivel: " + Juego.Instancia().Ambiente.NroNivel, new Vector2(250, 10), Color.Black);
+            spriteBatch.DrawString(Game1.fuente2, "Stage: " + Juego.Instancia().Ambiente.StageName, new Vector2(450, 10), Color.Black);
 
-            List<Punto> l = new List<Punto>();
+            //Para propositos de debug
+            //List<Punto> l = new List<Punto>();
             
-            for (int vertical = 0; vertical < Juego.Instancia().Ambiente.DimensionVertical; vertical++)
-            {
-                for (int horizontal = 0; horizontal < Juego.Instancia().Ambiente.DimensionHorizontal; horizontal++)
-                {
-                    Punto p = new Punto(horizontal, vertical);
-                    Casilla unaCas = Juego.Instancia().Ambiente.ObtenerCasilla(p);
-                    if (unaCas.TransitaEnCasillaUn(new Bombita(new Punto(7, 2))))
-                    {
-                        l.Add(p);
-                    }
+            //for (int vertical = 0; vertical < Juego.Instancia().Ambiente.DimensionVertical; vertical++)
+            //{
+            //    for (int horizontal = 0; horizontal < Juego.Instancia().Ambiente.DimensionHorizontal; horizontal++)
+            //    {
+            //        Punto p = new Punto(horizontal, vertical);
+            //        Casilla unaCas = Juego.Instancia().Ambiente.ObtenerCasilla(p);
+            //        if (unaCas.TransitaEnCasillaUn(new Bombita(new Punto(7, 2))))
+            //        {
+            //            l.Add(p);
+            //        }
 
-                }
-            }
-            spriteBatch.DrawString(Game1.fuente, "Bombita transitando en: ", new Vector2(580, 10), Color.Black);
-            for (int j = 0;j<l.Count;j++)
-            {
-                spriteBatch.DrawString(Game1.fuente, "X: "+l[j].X+" Y: "+l[j].Y, new Vector2(600, (25 + Game1.fuente2.LineSpacing * j)), Color.Black);
-            }
+            //    }
+            //}
+            //spriteBatch.DrawString(Game1.fuente, "Bombita transitando en: ", new Vector2(580, 10), Color.Black);
+            //for (int j = 0;j<l.Count;j++)
+            //{
+            //    spriteBatch.DrawString(Game1.fuente, "X: "+l[j].X+" Y: "+l[j].Y, new Vector2(600, (25 + Game1.fuente2.LineSpacing * j)), Color.Black);
+            //}
 
         }
 

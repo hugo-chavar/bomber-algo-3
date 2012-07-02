@@ -31,8 +31,6 @@ namespace BombermanModel.Juego
         
         //Constantes
         private const int VIDAS = 3;
-       // private const int ANCHOMAPA = 17;
-       // private const int ALTOMAPA = 13;
         private const int ULTIMONIVEL = 4;
 
         //propiedades
@@ -40,6 +38,10 @@ namespace BombermanModel.Juego
         {
             get { return cantDeVidas; }
             set { this.cantDeVidas = value; }
+        }
+        public int Nivel
+        {
+            set { this.nivel = value; }
         }
 
         public Estado EstadoGeneral
@@ -129,6 +131,7 @@ namespace BombermanModel.Juego
         {
             this.guardador =  new MapaArchivo();
             this.ambiente = guardador.ContinuarPartidaGuardada("mapaGuardado.xml");
+            this.nivel = ambiente.NroNivel;
         }
 
         public void PerderVida()

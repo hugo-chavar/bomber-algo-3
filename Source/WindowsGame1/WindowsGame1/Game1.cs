@@ -86,8 +86,7 @@ namespace BombermanGame
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || estadoDelJuego == "Salir")
                 this.Exit();
-            if (elJuego.EstadoGeneral == BombermanModel.Estado.perdido)
-                estadoDelJuego = "Perdido";
+            
 
            switch (estadoDelJuego)
             {
@@ -100,6 +99,9 @@ namespace BombermanGame
                             unaPersona.Update();
                         }
                         else estadoDelJuego = "ChequearMapa";
+
+                        if (elJuego.EstadoGeneral == BombermanModel.Estado.perdido)
+                            estadoDelJuego = "Perdido";
                         break;
                     }
                 case "Inicio":
@@ -115,18 +117,16 @@ namespace BombermanGame
                 case "Reiniciar":
                     {   
                         elJuego.Recomenzar();
+                        elJuego.Nivel = 1;
                         elJuego.CargarMapa();
                         PrepararMapa();
                         break;
                     }
                 case "ChequearMapa":
                     {
-                        //if (!elJuego.MapaVisible)
-                        //{
-                        //    elJuego.CargarMapa();
-                        //    PrepararMapa();
-                        //}
-                        estadoDelJuego = "Reiniciar";
+                        elJuego.Recomenzar();
+                        elJuego.CargarMapa();
+                        PrepararMapa();
                         break;
                     }
                 case "Guardar":
@@ -135,7 +135,7 @@ namespace BombermanGame
                         estadoDelJuego = "Jugar";
                         break;
                     }
-                case "Continuar":
+                case "ContinuarGuardado":
                     {
                         elJuego.ContinuarPartidaGuardada();
                         PrepararMapa();

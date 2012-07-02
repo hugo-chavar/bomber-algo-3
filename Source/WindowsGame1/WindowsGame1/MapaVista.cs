@@ -162,7 +162,7 @@ namespace BombermanGame
            
         }
 
-        private static void AgregarCasillero(Casilla unCasillero) // No estaria mejor un case?
+        private static void AgregarCasillero(Casilla unCasillero) 
         {
 
             Obstaculo unObstaculo = unCasillero.Estado;
@@ -170,7 +170,7 @@ namespace BombermanGame
 
             if (unObstaculo != null)
             {
-                // use reflexion: unica alternativa que se me ocurrio por ahora
+                // use reflexion
                 if (unObstaculo.Nombre == Nombres.bAcero)
                 {
                     Vector2 unVector = TransformarPuntoEnVector2(unCasillero.Posicion);

@@ -57,6 +57,12 @@ namespace BombermanModel.Juego
                 writer.WriteStartAttribute("alto");
                 writer.WriteValue(dimVertical);
                 writer.WriteEndAttribute();
+                writer.WriteStartAttribute("mapa");
+                writer.WriteValue(Juego.Instancia().Ambiente.StageName);
+                writer.WriteEndAttribute();
+                writer.WriteStartAttribute("nivel");
+                writer.WriteValue(Juego.Instancia().Ambiente.NroNivel);
+                writer.WriteEndAttribute();
 
                 foreach (Casilla c in casillas)
                 {
@@ -154,6 +160,11 @@ namespace BombermanModel.Juego
                                 {
                                     tableroNuevo.DimensionHorizontal = Convert.ToInt32(reader.GetAttribute("ancho"));
                                     tableroNuevo.DimensionVertical = Convert.ToInt32(reader.GetAttribute("alto"));
+                                    if (reader.AttributeCount > 2)
+                                    {
+                                        tableroNuevo.NroNivel = Convert.ToInt32(reader.GetAttribute("nivel"));
+                                        tableroNuevo.StageName = reader.GetAttribute("mapa");
+                                    }
                                 }
                                 elJuego.Ambiente = tableroNuevo;
                             }
@@ -216,8 +227,15 @@ namespace BombermanModel.Juego
                                             Personaje.Personaje p = null;
                                             if (reader.Name == "Bombita")
                                             {
-                                                string lanz = reader.GetAttribute("lanzador"); //TODO: falta guardar el Lanzador
+                                                
                                                 p = new Bombita(posActual);
+                                                if (reader.AttributeCount > 2) //si el lanzador se guardo en el mapa
+                                                {
+                                                    string lanz = reader.GetAttribute("lanzador");
+                                                    tipo = Type.GetType("BombermanModel.Arma." + lanz);
+                                                    Arma.Lanzador l = Activator.CreateInstance(tipo) as Arma.Lanzador;
+                                                    p.Lanzador = l;
+                                                }
                                                 casillaActual.Transitar(p);
                                                 elJuego.Protagonista = p;
                                                 tableroNuevo.PosicionInicial = posActual;
