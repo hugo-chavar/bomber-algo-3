@@ -20,8 +20,7 @@ namespace BombermanGame
     class CecilioView : EnemigoView
     {
         private Vector2 puntoCentro;
-        private bool huyendo;
-        
+
         public CecilioView(Personaje pers)
             : base(pers)
         {
@@ -47,29 +46,6 @@ namespace BombermanGame
             //spriteBatch.DrawString(Game1.fuente, "Mvido ->Pos X: " + movido.X + " Pos Y: " + movido.Y + " RealPos X: " + position.X + " Pos Y: " + position.Y, new Vector2(10, Game1.fuente.LineSpacing), Color.Yellow); 
         }
 
-        public void Huir()
-        {
-            if (unaBmb == null || unaBmb.Vivo == false)
-            {
-                huyendo = false;
-            }
-            else
-            {
-                Personaje otro = new Cecilio(new Punto(unPersonaje.Posicion.X /*+ (int)this.Direccion.X*/, unPersonaje.Posicion.Y /*+ (int)this.Direccion.Y)*/));
-                if (Juego.Instancia().Ambiente.PermitidoAvanzar(otro))
-                {
-                    this.Advance();
-                }
-                else
-                {
-                    recalcularDireccion();
-                    rotation = point_direction(direccion.Y, direccion.X);
-                    this.Advance();
-                ActualizarPosicion();
-                }
-            }
-        }
-
         public override void Update()
         {
             if (!vivo) return;
@@ -78,22 +54,15 @@ namespace BombermanGame
             {
                 this.Vivo = false;
             }
-            if (!huyendo)
-            {
-                if (!vivo) return;
-                Random random = new Random();
-                int vaADisparar = random.Next(0, 1000); // tiene un 2% de posibilidades de disparar
-                if ((vaADisparar == 0))
+            if (!vivo) return;
+            Random random = new Random();
+            int vaADisparar = random.Next(0, 1000); // tiene un 2% de posibilidades de disparar
+            if ((vaADisparar == 0))
                 {
                     Disparar();
-                    //huyendo = true;
                 }
-                base.Update();
-            }
-            else
-            {
-                //Huir();
-            }
+            base.Update();
+            
         }
       
     }
