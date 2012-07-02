@@ -28,6 +28,7 @@ namespace BombermanGame
 
         Texture2D pausaTexture;
         Texture2D gameOverTexture;
+        Texture2D juegoGanadoTexture;
         Menu unMenu;
 
         public static Rectangle screen;
@@ -66,7 +67,7 @@ namespace BombermanGame
             fuente2 = Content.Load<SpriteFont>("Fonts\\Pericles12");
             pausaTexture = Content.Load<Texture2D>("Sprites\\Pausa");
             gameOverTexture = Content.Load<Texture2D>("Sprites\\GameOver");
-
+            juegoGanadoTexture = Content.Load<Texture2D>("Sprites\\JuegoGanado");
             //unaPersona.LoadContent(Content);
 
 
@@ -102,18 +103,11 @@ namespace BombermanGame
 
                         if (elJuego.EstadoGeneral == BombermanModel.Estado.perdido)
                             estadoDelJuego = "Perdido";
+                        if (elJuego.EstadoGeneral == BombermanModel.Estado.ganado)
+                            estadoDelJuego = "Ganado";
                         break;
                     }
-                case "Inicio":
-                    {
-                        unMenu.Update();
-                        break;
-                    }
-                case "Pausa":
-                    {
-                        unMenu.Update();
-                        break;
-                    }
+
                 case "Reiniciar":
                     {   
                         elJuego.Recomenzar();
@@ -141,11 +135,31 @@ namespace BombermanGame
                         PrepararMapa();
                         break;
                     }
-                case "Perdido":
+                default:
                     {
                         unMenu.Update();
                         break;
                     }
+                //case "Perdido":
+                //    {
+                //        unMenu.Update();
+                //        break;
+                //    }
+                //case "Ganado":
+                //    {
+                //        unMenu.Update();
+                //        break;
+                //    }
+                //case "Inicio":
+                //    {
+                //        unMenu.Update();
+                //        break;
+                //    }
+                //case "Pausa":
+                //    {
+                //        unMenu.Update();
+                //        break;
+                //    }
             }      
 
             base.Update(gameTime);
@@ -197,6 +211,14 @@ namespace BombermanGame
                         MapaVista.DibujarMapa(spriteBatch);
                         //unaPersona.Draw(spriteBatch);
                         spriteBatch.Draw(gameOverTexture, screen, Color.White);
+                        unMenu.Draw(spriteBatch);
+                        break;
+                    }
+                case "Ganado":
+                    {
+                        MapaVista.DibujarMapa(spriteBatch);
+                        //unaPersona.Draw(spriteBatch);
+                        spriteBatch.Draw(juegoGanadoTexture, screen, Color.White);
                         unMenu.Draw(spriteBatch);
                         break;
                     }
