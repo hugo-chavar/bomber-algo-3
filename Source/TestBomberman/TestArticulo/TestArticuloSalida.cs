@@ -54,6 +54,7 @@ namespace TestBombermanModel.TestSalida
                     this.unMapa.AgregarCasilla(unaCasilla);
                 }
             Juego.Instancia().Ambiente = unMapa;
+            Juego.Instancia().Protagonista = new Bombita(new Punto(0, 0));
             Juego.Instancia().EnemigosVivos = new List<Personaje>();
         }
 

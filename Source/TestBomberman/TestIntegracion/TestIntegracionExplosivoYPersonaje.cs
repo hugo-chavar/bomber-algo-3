@@ -190,8 +190,24 @@ namespace TestBombermanModel.TestIntegracion
             Assert.AreEqual(casillaTransitada.TransitandoEnCasilla.Count, 0);
 
         }
-            
 
+        [Test]
+        public void BombaToleToleExplotaAlcanzandoAUnBloqueDeCementoDevuelveTrueSiElBloqueQuedaDestruido()
+        {
+            Punto pToleTole = new Punto(1, 2);
+            BombaToleTole unaBomba = new BombaToleTole(pToleTole, 0);
+            Casilla casillaBomba = unMapa.ObtenerCasilla(pToleTole);
+            casillaBomba.PlantarExplosivo(unaBomba);
+
+
+            unMapa.ManejarExplosion(unaBomba);
+
+
+            Casilla unaCasillaNueva = unMapa.ObtenerCasilla(new Punto(1, 1));
+
+            Assert.IsInstanceOf(typeof(Pasillo), unaCasillaNueva.Estado);
+
+        }
 
 
 
