@@ -28,6 +28,16 @@
           tofile="${aplication-base-dir}/bin/Debug/Mapa3.xml"/>
     <copy file="${resources-dir}/Mapa4.xml" 
           tofile="${aplication-base-dir}/bin/Debug/Mapa4.xml"/>
+    <copy file="${resources-dir}/Mapa1.xml" 
+          tofile="${aplication-base-dir}/bin/x86/Debug/Mapa1.xml"/>
+    <copy file="${resources-dir}/Mapa2.xml" 
+          tofile="${aplication-base-dir}/bin/x86/Debug/Mapa2.xml"/>
+    <copy file="${resources-dir}/Mapa3.xml" 
+          tofile="${aplication-base-dir}/bin/x86/Debug/Mapa3.xml"/>
+    <copy file="${resources-dir}/Mapa4.xml" 
+          tofile="${aplication-base-dir}/bin/x86/Debug/Mapa4.xml"/>
+    <copy file="${resources-dir}/mapaGuardado.xml" 
+          tofile="${aplication-base-dir}/bin/x86/Debug/mapaGuardado.xml"/>
     <copy file="${resources-dir}/mapaGuardado.xml" 
           tofile="${aplication-base-dir}/bin/Debug/mapaGuardado.xml"/>
     <copy file="${resources-dir}/Mapa1.xml" 
@@ -38,6 +48,7 @@
     <delete failonerror="false">
        <fileset>
 	     <include name="${project::get-name()}/bin/**"/>
+	     <include name="${aplication-base-dir}/bin/**"/>
 	     <include name="${project::get-name()}/obj/**"/>
 	     <include name="${test-base-dir}/bin/**"/>
 	     <include name="${test-base-dir}/obj/**"/>
