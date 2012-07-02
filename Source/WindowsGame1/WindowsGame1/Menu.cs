@@ -29,7 +29,6 @@ namespace BombermanGame
             
             labelList.Add("Nuevo Juego");
             labelList.Add("Salir");
-            labelList.Add("Reiniciar");
             labelList.Add("Continuar");
             labelList.Add("Guardar Partida");
             labelList.Add("Continuar Partida Guardada");
@@ -59,21 +58,18 @@ namespace BombermanGame
                 switch (seleccionado)
                 {
                     case 0:
-                        Game1.estadoDelJuego = "ChequearMapa";
+                        Game1.estadoDelJuego = "Reiniciar";
                         break;
                     case 1:
                         Game1.estadoDelJuego = "Salir";
                         break;
                     case 2:
-                        Game1.estadoDelJuego = "Reiniciar";
-                        break;
-                    case 3:
                         Game1.estadoDelJuego = "Jugar";
                         break;
-                    case 4:
+                    case 3:
                         Game1.estadoDelJuego = "Guardar";
                         break;
-                    case 5:
+                    case 4:
                         Game1.estadoDelJuego = "ContinuarGuardado";
                         break;
 

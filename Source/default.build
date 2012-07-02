@@ -10,8 +10,28 @@
   <property name="nant.settings.currentframework" value="net-4.0" />
   <target name="initialize">
     <mkdir dir="${build-dir}"/>
-    <copy file="${resources-dir}/mapaActualizado.xml" 
-          tofile="${build-dir}/mapaActualizado.xml"/>
+    <copy file="${resources-dir}/Mapa1.xml" 
+          tofile="${build-dir}/Mapa1.xml"/>
+    <copy file="${resources-dir}/Mapa2.xml" 
+          tofile="${build-dir}/Mapa2.xml"/>
+    <copy file="${resources-dir}/Mapa3.xml" 
+          tofile="${build-dir}/Mapa3.xml"/>
+    <copy file="${resources-dir}/Mapa4.xml" 
+          tofile="${build-dir}/Mapa4.xml"/>
+	<copy file="${resources-dir}/mapaGuardado.xml" 
+          tofile="${build-dir}/mapaGuardado.xml"/>
+    <copy file="${resources-dir}/Mapa1.xml" 
+          tofile="${aplication-base-dir}/bin/Debug/Mapa1.xml"/>
+    <copy file="${resources-dir}/Mapa2.xml" 
+          tofile="${aplication-base-dir}/bin/Debug/Mapa2.xml"/>
+    <copy file="${resources-dir}/Mapa3.xml" 
+          tofile="${aplication-base-dir}/bin/Debug/Mapa3.xml"/>
+    <copy file="${resources-dir}/Mapa4.xml" 
+          tofile="${aplication-base-dir}/bin/Debug/Mapa4.xml"/>
+    <copy file="${resources-dir}/mapaGuardado.xml" 
+          tofile="${aplication-base-dir}/bin/Debug/mapaGuardado.xml"/>
+    <copy file="${resources-dir}/Mapa1.xml" 
+          tofile="${test-base-dir}/bin/Debug/Mapa1.xml"/>
   </target>
   <target name="clean">
     <delete dir="${build-dir}" if="${directory::exists('${build-dir}')}" />

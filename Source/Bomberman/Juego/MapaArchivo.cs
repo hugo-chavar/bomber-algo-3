@@ -18,7 +18,7 @@ namespace BombermanModel.Juego
         private int dimHorizontal;
         private int dimVertical;
         private Juego elJuego = Juego.Instancia();
-        private Tablero mapaGenerado;
+        //private Tablero mapaGenerado;
 
 
         public void ExportarCasillas()
