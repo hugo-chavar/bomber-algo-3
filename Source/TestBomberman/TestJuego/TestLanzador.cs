@@ -680,6 +680,7 @@ namespace TestBombermanModel.TestJuego
             unBombita.Mover(); //8,6
             unBombita.Movimiento.CambiarAIzquierda();
             unBombita.Mover(); //7,6
+            //Aca esta el problema
             unBombita.Mover(); //6,6
             unBombita.Mover(); //6,6
             Assert.AreEqual(6, unBombita.Posicion.X);
