@@ -11,5 +11,7 @@ namespace BombermanModel.Articulo
         void ModificarComedor(IComedor comedor);
 
         void Ocultar();
+
+        void Activar();
     }
 }

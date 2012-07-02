@@ -364,7 +364,7 @@ namespace BombermanModel.Mapa
             }
         }
  
-      public List<Punto> CalcularCasillerosExplotados(Explosivo explosivo)
+      private List<Punto> CalcularCasillerosExplotados(Explosivo explosivo)
         {
             List<Punto> listaDevolucion = new List<Punto>();
             listaDevolucion.Add(explosivo.Posicion);
