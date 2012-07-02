@@ -85,68 +85,72 @@ namespace BombermanGame
             position += direccion * speed;
 
             puntoCentro = position + new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
+            Punto pt = MapaVista.TransformarVector2EnPunto(puntoCentro);
            // centro = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
             Vector2 deltaPrevio = new Vector2(movido.X, movido.Y);
             movido += direccion * speed;
-
+            
+            Juego.Instancia().Ambiente.ObtenerCasilla(unPersonaje.Posicion).Dejar(unPersonaje);
+            unPersonaje.Posicion = pt;
+            Juego.Instancia().Ambiente.AgregarPersonaje(unPersonaje);
 
             //considero que el personaje transita la casilla cuando ingreso un tercio de su cuerpo
             //cuando pasa 2/3 de su cuerpo pasa a la posicion siguiente (hablando en terminos del modelo)
-            if (((Math.Abs(deltaPrevio.X) < (spriteIndex.Width / 3)) && (Math.Abs(movido.X) >= (spriteIndex.Width / 3)) && (Math.Abs(movido.X) < 2*(spriteIndex.Width / 3)))
-                || ((Math.Abs(deltaPrevio.Y) < (spriteIndex.Height / 3)) && (Math.Abs(movido.Y) >= (spriteIndex.Height / 3)) && (Math.Abs(movido.Y) < 2*(spriteIndex.Height / 3))))
-            {
-                Punto unPto = new Punto(unPersonaje.Posicion.X + (int)direccion.X, unPersonaje.Posicion.Y + (int)direccion.Y);
-                Punto puntoAnterior = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y);
-                Juego.Instancia().Ambiente.ObtenerCasilla(puntoAnterior).Dejar(unPersonaje);
-                Juego.Instancia().Ambiente.ObtenerCasilla(unPto).Transitar(unPersonaje);
+            //if (((Math.Abs(deltaPrevio.X) < (spriteIndex.Width / 3)) && (Math.Abs(movido.X) >= (spriteIndex.Width / 3)) && (Math.Abs(movido.X) < 2*(spriteIndex.Width / 3)))
+            //    || ((Math.Abs(deltaPrevio.Y) < (spriteIndex.Height / 3)) && (Math.Abs(movido.Y) >= (spriteIndex.Height / 3)) && (Math.Abs(movido.Y) < 2*(spriteIndex.Height / 3))))
+            //{
+            //    Punto unPto = new Punto(unPersonaje.Posicion.X + (int)direccion.X, unPersonaje.Posicion.Y + (int)direccion.Y);
+            //    Punto puntoAnterior = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y);
+            //    Juego.Instancia().Ambiente.ObtenerCasilla(puntoAnterior).Dejar(unPersonaje);
+            //    Juego.Instancia().Ambiente.ObtenerCasilla(unPto).Transitar(unPersonaje);
 
-            }
+            //}
 
-            if ((Math.Abs(deltaPrevio.X) >= (spriteIndex.Width / 2)) && (Math.Abs(movido.X) < (spriteIndex.Width / 2)))
-            {
-                Punto unPto = new Punto(unPersonaje.Posicion.X + (int)direccion.X, unPersonaje.Posicion.Y + (int)direccion.Y);
-                Punto puntoAnterior = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y);
-                Juego.Instancia().Ambiente.ObtenerCasilla(puntoAnterior).Dejar(unPersonaje);
-                Juego.Instancia().Ambiente.Avanzar(unPersonaje);
-            }
+            //if ((Math.Abs(deltaPrevio.X) >= (spriteIndex.Width / 2)) && (Math.Abs(movido.X) < (spriteIndex.Width / 2)))
+            //{
+            //    Punto unPto = new Punto(unPersonaje.Posicion.X + (int)direccion.X, unPersonaje.Posicion.Y + (int)direccion.Y);
+            //    Punto puntoAnterior = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y);
+            //    Juego.Instancia().Ambiente.ObtenerCasilla(puntoAnterior).Dejar(unPersonaje);
+            //    Juego.Instancia().Ambiente.Avanzar(unPersonaje);
+            //}
 
 
-            if ((Math.Abs(deltaPrevio.Y) >= (spriteIndex.Height / 2)) && (Math.Abs(movido.Y) < (spriteIndex.Height / 2)))
-            {
-                Punto unPto = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y + (int)direccion.Y);
-                Punto puntoAnterior = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y);
-                Juego.Instancia().Ambiente.ObtenerCasilla(puntoAnterior).Dejar(unPersonaje);
-                Juego.Instancia().Ambiente.Avanzar(unPersonaje);
-            }
+            //if ((Math.Abs(deltaPrevio.Y) >= (spriteIndex.Height / 2)) && (Math.Abs(movido.Y) < (spriteIndex.Height / 2)))
+            //{
+            //    Punto unPto = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y + (int)direccion.Y);
+            //    Punto puntoAnterior = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y);
+            //    Juego.Instancia().Ambiente.ObtenerCasilla(puntoAnterior).Dejar(unPersonaje);
+            //    Juego.Instancia().Ambiente.Avanzar(unPersonaje);
+            //}
 
-            if ((deltaPrevio.X >= (spriteIndex.Width / 3)) && (deltaPrevio.X < (spriteIndex.Width / 2)) && (movido.X >= (spriteIndex.Width / 2)))
-            {
-                Punto unPto = new Punto(unPersonaje.Posicion.X + (int)direccion.X, unPersonaje.Posicion.Y + (int)direccion.Y);
-                Punto puntoAnterior = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y);
-                Juego.Instancia().Ambiente.ObtenerCasilla(puntoAnterior).Dejar(unPersonaje);
-                Juego.Instancia().Ambiente.Avanzar(unPersonaje);
-            }
+            //if ((deltaPrevio.X >= (spriteIndex.Width / 3)) && (deltaPrevio.X < (spriteIndex.Width / 2)) && (movido.X >= (spriteIndex.Width / 2)))
+            //{
+            //    Punto unPto = new Punto(unPersonaje.Posicion.X + (int)direccion.X, unPersonaje.Posicion.Y + (int)direccion.Y);
+            //    Punto puntoAnterior = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y);
+            //    Juego.Instancia().Ambiente.ObtenerCasilla(puntoAnterior).Dejar(unPersonaje);
+            //    Juego.Instancia().Ambiente.Avanzar(unPersonaje);
+            //}
 
-            if ((deltaPrevio.Y >= (spriteIndex.Height / 3)) && (deltaPrevio.Y < (spriteIndex.Height / 2)) && (movido.Y >= (spriteIndex.Height / 2)))
-            {
-                Punto unPto = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y + (int)direccion.Y);
-                Punto puntoAnterior = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y);
-                Juego.Instancia().Ambiente.ObtenerCasilla(puntoAnterior).Dejar(unPersonaje);
-                Juego.Instancia().Ambiente.Avanzar(unPersonaje);
-            }
+            //if ((deltaPrevio.Y >= (spriteIndex.Height / 3)) && (deltaPrevio.Y < (spriteIndex.Height / 2)) && (movido.Y >= (spriteIndex.Height / 2)))
+            //{
+            //    Punto unPto = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y + (int)direccion.Y);
+            //    Punto puntoAnterior = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y);
+            //    Juego.Instancia().Ambiente.ObtenerCasilla(puntoAnterior).Dejar(unPersonaje);
+            //    Juego.Instancia().Ambiente.Avanzar(unPersonaje);
+            //}
 
-            if ((Math.Abs(deltaPrevio.X) >= (spriteIndex.Width / 3)) && (Math.Abs(movido.X) < (spriteIndex.Width / 3)))
-            {
-                Punto unPto = new Punto(unPersonaje.Posicion.X - (int)direccion.X, unPersonaje.Posicion.Y);
+            //if ((Math.Abs(deltaPrevio.X) >= (spriteIndex.Width / 3)) && (Math.Abs(movido.X) < (spriteIndex.Width / 3)))
+            //{
+            //    Punto unPto = new Punto(unPersonaje.Posicion.X - (int)direccion.X, unPersonaje.Posicion.Y);
 
-                Juego.Instancia().Ambiente.ObtenerCasilla(unPto).Dejar(unPersonaje);
-            }
+            //    Juego.Instancia().Ambiente.ObtenerCasilla(unPto).Dejar(unPersonaje);
+            //}
 
-            if ((Math.Abs(deltaPrevio.Y) >= (spriteIndex.Height / 3)) && (Math.Abs(movido.Y) < (spriteIndex.Height / 3)))
-            {
-                Punto unPto = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y - (int)direccion.Y);
-                Juego.Instancia().Ambiente.ObtenerCasilla(unPto).Dejar(unPersonaje);
-            }
+            //if ((Math.Abs(deltaPrevio.Y) >= (spriteIndex.Height / 3)) && (Math.Abs(movido.Y) < (spriteIndex.Height / 3)))
+            //{
+            //    Punto unPto = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y - (int)direccion.Y);
+            //    Juego.Instancia().Ambiente.ObtenerCasilla(unPto).Dejar(unPersonaje);
+            //}
 
             if (Math.Round(movido.X,1) >= spriteIndex.Width)
             {
