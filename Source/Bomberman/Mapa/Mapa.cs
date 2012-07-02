@@ -23,6 +23,8 @@ namespace BombermanModel.Mapa
         private bool nivelGanado = false;
         private Punto posicionSalida;
         private Punto posicionInicial;
+        private string stageName;
+        private int nroNivel;
 
         public Dictionary<Punto, Casilla.Casilla> Ambiente
         {
@@ -34,6 +36,18 @@ namespace BombermanModel.Mapa
         {
             get { return this.dimensionHorizontal; }
             set { this.dimensionHorizontal = value; }
+        }
+
+        public int NroNivel
+        {
+            get { return this.nroNivel; }
+            set { this.nroNivel = value; }
+        }
+
+        public string StageName
+        {
+            get { return this.stageName; }
+            set { this.stageName = value; }
         }
 
         public int DimensionVertical
