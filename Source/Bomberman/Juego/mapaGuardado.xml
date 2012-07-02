@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Tablero ancho="17" alto="13" nivel="Inicial">
+<Tablero ancho="17" alto="13" mapa="Guardado" nivel="1">
     <Casilla x="0" y="0" >
-            <Bombita resistencia="1" velocidad="1"/>
+            <Bombita resistencia="1" velocidad="1" />
     </Casilla>
     <Casilla x="1" y="0" />
     <Casilla x="2" y="0">

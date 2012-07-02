@@ -28,15 +28,6 @@ namespace TestBombermanModel.TestPersonaje
             this.unPersonaje = new Bombita(posicionOrigen);
         }
 
-        //TODO: este metodo esta mal, voy a revisarlo despues. Hugo
-        //[Test] 
-        //public void MoverPersonajeloDejaEnLaCasillaDestinoSiAmbasSonTransitables()
-        //{
-        //    destino.Transitar(unPersonaje);
-
-        //    Assert.AreEqual(posicionDestino, unPersonaje.Posicion);
-        //}
-
         [Test]
         public void MoverPersonajeloSacaDeLaCasillaOrigen()
         {

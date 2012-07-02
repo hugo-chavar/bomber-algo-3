@@ -66,7 +66,6 @@
     <Compile Include="Excepciones\PosicionNulaException.cs" />
     <Compile Include="Excepciones\PuntoFueraDeRangoEnMapaException.cs" />
     <Compile Include="IPosicionable.cs" />
-    <Compile Include="Juego\CargadorDeMapa.cs" />
     <Compile Include="Juego\Juego.cs" />
     <Compile Include="Juego\MapaArchivo.cs" />
     <Compile Include="Mapa\Casilla\FabricaDeCasillas.cs" />

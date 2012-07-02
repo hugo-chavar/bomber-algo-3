@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Tablero ancho="17" alto="13"  mapa="Martin" nivel="3">
+    <Casilla x="0" y="0">
+		<BloqueCemento resistencia="10" />
+    </Casilla>
+    <Casilla x="1" y="0" >
+		<BloqueCemento resistencia="10" />
+    </Casilla>
+    <Casilla x="2" y="0" />
+    <Casilla x="3" y="0" />
+    <Casilla x="4" y="0">
+		<BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="5" y="0">
+		<BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="6" y="0">
+		<BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="7" y="0">
+		<BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="8" y="0">
+		<BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="9" y="0" />
+    <Casilla x="10" y="0">
+		<BloqueLadrillo resistencia="5" />
+		<Salida />
+    </Casilla>
+    <Casilla x="11" y="0" />
+    <Casilla x="12" y="0">
+		<BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="13" y="0">
+		<BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="14" y="0" />
+    <Casilla x="15" y="0">
+		<BloqueCemento resistencia="10" />
+    </Casilla>
+    <Casilla x="16" y="0">
+		<BloqueCemento resistencia="10" />
+    </Casilla>
+    <Casilla x="0" y="1">
+		<BloqueCemento resistencia="10" />
+		<Timer />
+    </Casilla>
+    <Casilla x="1" y="1">
+        <BloqueCemento resistencia="10" />
+    </Casilla>
+    <Casilla x="2" y="1">
+		<LosLopezReggae resistencia="10" velocidad="2" />
+    </Casilla>
+    <Casilla x="3" y="1" />
+    <Casilla x="4" y="1" />
+    <Casilla x="5" y="1" />
+    <Casilla x="6" y="1" />
+    <Casilla x="7" y="1" />
+    <Casilla x="8" y="1" />
+    <Casilla x="9" y="1" />
+    <Casilla x="10" y="1" />
+    <Casilla x="11" y="1" />
+    <Casilla x="12" y="1" />
+    <Casilla x="13" y="1" />
+    <Casilla x="14" y="1" />
+    <Casilla x="15" y="1">
+        <BloqueCemento resistencia="10" />
+    </Casilla>
+    <Casilla x="16" y="1">
+        <BloqueCemento resistencia="10" />
+    </Casilla>
+    <Casilla x="0" y="2" />
+    <Casilla x="1" y="2">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="2" y="2">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="3" y="2">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="4" y="2">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="5" y="2">
+        <BloqueLadrillo resistencia="5" />
+    </Casilla>
+    <Casilla x="6" y="2">
+        <BloqueLadrillo resistencia="5" />
+    </Casilla>
+    <Casilla x="7" y="2">
+        <BloqueLadrillo resistencia="5" />
+    </Casilla>
+    <Casilla x="8" y="2">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="9" y="2">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="10" y="2">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="11" y="2">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="12" y="2">
+        <BloqueLadrillo resistencia="5" />
+    </Casilla>
+    <Casilla x="13" y="2">
+        <BloqueLadrillo resistencia="5" />
+    </Casilla>
+    <Casilla x="14" y="2">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="15" y="2">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="16" y="2">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="0" y="3" />
+    <Casilla x="1" y="3" />
+    <Casilla x="2" y="3" />
+    <Casilla x="3" y="3" />
+    <Casilla x="4" y="3" />
+    <Casilla x="5" y="3" />
+    <Casilla x="6" y="3" />
+    <Casilla x="7" y="3" />
+    <Casilla x="8" y="3" />
+    <Casilla x="9" y="3" />
+    <Casilla x="10" y="3">
+        <BloqueLadrillo resistencia="5" />
+    </Casilla>
+    <Casilla x="11" y="3" />
+    <Casilla x="12" y="3" />
+    <Casilla x="13" y="3" />
+    <Casilla x="14" y="3" />
+    <Casilla x="15" y="3">
+        <Cecilio resistencia="5" velocidad="1" />
+    </Casilla>
+    <Casilla x="16" y="3" />
+    <Casilla x="0" y="4">
+        <BloqueLadrillo resistencia="5" />
+    </Casilla>
+    <Casilla x="1" y="4">
+        <BloqueLadrillo resistencia="5" />
+	<ArticuloBombaToleTole />
+    </Casilla>
+    <Casilla x="2" y="4">
+        <LosLopezReggae resistencia="10" velocidad="2" />
+    </Casilla>
+    <Casilla x="3" y="4">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="4" y="4">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="5" y="4">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="6" y="4">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="7" y="4">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="8" y="4">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="9" y="4" />
+    <Casilla x="10" y="4">
+        <BloqueCemento resistencia="10" />
+		<Timer />
+    </Casilla>
+    <Casilla x="11" y="4">
+        <LosLopezReggaeAlado resistencia="10" velocidad="1"/>
+    </Casilla>
+    <Casilla x="12" y="4">
+        <BloqueLadrillo resistencia="5" />
+    </Casilla>
+    <Casilla x="13" y="4">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="14" y="4">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="15" y="4">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="16" y="4">
+        <BloqueLadrillo resistencia="10" />
+		<ArticuloBombaToleTole />
+    </Casilla>
+    <Casilla x="0" y="5" />
+    <Casilla x="1" y="5" />
+    <Casilla x="2" y="5" />
+    <Casilla x="3" y="5" />
+    <Casilla x="4" y="5" />
+    <Casilla x="5" y="5" />
+    <Casilla x="6" y="5">
+        <BloqueCemento resistencia="10" />
+    </Casilla>
+    <Casilla x="7" y="5" />
+    <Casilla x="8" y="5" />
+    <Casilla x="9" y="5" />
+    <Casilla x="10" y="5" />
+    <Casilla x="11" y="5" />
+    <Casilla x="12" y="5" />
+    <Casilla x="13" y="5" />
+    <Casilla x="14" y="5" />
+    <Casilla x="15" y="5" />
+    <Casilla x="16" y="5" />
+    <Casilla x="0" y="6">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="1" y="6">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="2" y="6">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="3" y="6">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="4" y="6">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="5" y="6">
+        <BloqueLadrillo resistencia="5" />
+		<Chala />
+    </Casilla>
+    <Casilla x="6" y="6">
+        <BloqueCemento resistencia="10" />
+    </Casilla>
+    <Casilla x="7" y="6">
+        <BloqueLadrillo resistencia="5" />
+    </Casilla>
+    <Casilla x="8" y="6">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="9" y="6">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="10" y="6">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="11" y="6">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="12" y="6">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="13" y="6">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="14" y="6">
+        <BloqueLadrillo resistencia="5" />
+    </Casilla>
+    <Casilla x="15" y="6">
+        <BloqueCemento resistencia="10" />
+    </Casilla>
+    <Casilla x="16" y="6">
+        <BloqueCemento resistencia="10" />
+    </Casilla>
+    <Casilla x="0" y="7">
+        <LosLopezReggaeAlado resistencia="5" velocidad="1" />
+    </Casilla>
+    <Casilla x="1" y="7" />
+    <Casilla x="2" y="7" />
+    <Casilla x="3" y="7" />
+    <Casilla x="4" y="7" />
+    <Casilla x="5" y="7" />
+    <Casilla x="6" y="7" />
+    <Casilla x="7" y="7" />
+    <Casilla x="8" y="7">
+		<Cecilio resistencia="5" velocidad="1"/>
+    </Casilla>
+    <Casilla x="9" y="7" />
+    <Casilla x="10" y="7" />
+    <Casilla x="11" y="7" />
+    <Casilla x="12" y="7" />
+    <Casilla x="13" y="7" />
+    <Casilla x="14" y="7" />
+    <Casilla x="15" y="7">
+        <BloqueCemento resistencia="10" />
+    </Casilla>
+    <Casilla x="16" y="7">
+        <BloqueCemento resistencia="10" />
+    </Casilla>
+    <Casilla x="0" y="8">
+        <BloqueCemento resistencia="10" />
+		<Timer />
+    </Casilla>
+    <Casilla x="1" y="8">
+        <BloqueCemento resistencia="10" />
+    </Casilla>
+    <Casilla x="2" y="8">
+        <BloqueLadrillo resistencia="5" />
+    </Casilla>
+    <Casilla x="3" y="8">
+        <BloqueLadrillo resistencia="5" />
+		<Chala />
+    </Casilla>
+    <Casilla x="4" y="8">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="5" y="8">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="6" y="8">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="7" y="8">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="8" y="8">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="9" y="8">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="10" y="8">
+        <BloqueCemento resistencia="10" />
+    </Casilla>
+    <Casilla x="11" y="8">
+        <BloqueCemento resistencia="10" />
+    </Casilla>
+    <Casilla x="12" y="8">
+        <BloqueCemento resistencia="10" />
+    </Casilla>
+    <Casilla x="13" y="8">
+        <BloqueLadrillo resistencia="5" />
+    </Casilla>
+    <Casilla x="14" y="8">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="15" y="8">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="16" y="8">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="0" y="9">
+        <BloqueCemento resistencia="10" />
+    </Casilla>
+    <Casilla x="1" y="9">
+        <BloqueCemento resistencia="10" />
+    </Casilla>
+    <Casilla x="2" y="9" />
+    <Casilla x="3" y="9" />
+    <Casilla x="4" y="9" />
+    <Casilla x="5" y="9" />
+    <Casilla x="6" y="9" />
+    <Casilla x="7" y="9" />
+    <Casilla x="8" y="9" />
+    <Casilla x="9" y="9" />
+    <Casilla x="10" y="9">
+		<LosLopezReggae resistencia="10" velocidad="2"/>
+    </Casilla>
+    <Casilla x="11" y="9">
+        <BloqueCemento resistencia="10" />
+    </Casilla>
+    <Casilla x="12" y="9">
+        <BloqueCemento resistencia="10" />
+    </Casilla>
+    <Casilla x="13" y="9" />
+    <Casilla x="14" y="9" />
+    <Casilla x="15" y="9" />
+    <Casilla x="16" y="9">
+        <LosLopezReggaeAlado resistencia="5" velocidad="1" />
+    </Casilla>
+    <Casilla x="0" y="10">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="1" y="10">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="2" y="10">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="3" y="10">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="4" y="10">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="5" y="10">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="6" y="10">
+        <BloqueLadrillo resistencia="5" />
+    </Casilla>
+    <Casilla x="7" y="10">
+        <BloqueCemento resistencia="10" />
+    </Casilla>
+    <Casilla x="8" y="10">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="9" y="10" />
+    <Casilla x="10" y="10" />
+    <Casilla x="11" y="10" />
+    <Casilla x="12" y="10" />
+    <Casilla x="13" y="10" />
+    <Casilla x="14" y="10" />
+    <Casilla x="15" y="10" />
+    <Casilla x="16" y="10" />
+    <Casilla x="0" y="11" />
+    <Casilla x="1" y="11" />
+    <Casilla x="2" y="11" />
+    <Casilla x="3" y="11" />
+    <Casilla x="4" y="11">
+        <Cecilio resistencia="5" velocidad="1" />
+    </Casilla>
+    <Casilla x="5" y="11" />
+    <Casilla x="6" y="11" />
+    <Casilla x="7" y="11">
+        <BloqueCemento resistencia="10" />
+    </Casilla>
+    <Casilla x="8" y="11">
+        <BloqueCemento resistencia="10" />
+    </Casilla>
+    <Casilla x="9" y="11">
+        <BloqueLadrillo resistencia="5" />
+		<Chala />
+    </Casilla>
+    <Casilla x="10" y="11">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="11" y="11">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="12" y="11">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="13" y="11">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="14" y="11">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="15" y="11">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="16" y="11">
+        <BloqueAcero resistencia="10" />
+    </Casilla>
+    <Casilla x="0" y="12">
+        <BloqueLadrillo resistencia="5" />
+    </Casilla>
+    <Casilla x="1" y="12">
+        <BloqueLadrillo resistencia="5" />
+    </Casilla>
+    <Casilla x="2" y="12">
+        <BloqueLadrillo resistencia="5" />
+    </Casilla>
+    <Casilla x="3" y="12" />
+    <Casilla x="4" y="12" />
+    <Casilla x="5" y="12" />
+    <Casilla x="6" y="12" />
+    <Casilla x="7" y="12" />
+    <Casilla x="8" y="12" />
+    <Casilla x="9" y="12" />
+    <Casilla x="10" y="12" />
+    <Casilla x="11" y="12" />
+    <Casilla x="12" y="12" />
+    <Casilla x="13" y="12" />
+    <Casilla x="14" y="12" />
+    <Casilla x="15" y="12" />
+    <Casilla x="16" y="12">
+		<Bombita resistencia="1" velocidad="1" />
+    </Casilla>
+</Tablero>

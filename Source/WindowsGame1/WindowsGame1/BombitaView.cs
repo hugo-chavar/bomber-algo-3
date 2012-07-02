@@ -20,24 +20,25 @@ namespace BombermanGame
     class BombitaView : PersonajeView
     {
         KeyboardState prevKey;
+        ContentManager miContent;
 
         public BombitaView()
             : base(Juego.Instancia().Protagonista)
         {
-            speed = unPersonaje.Movimiento.Velocidad;
             spriteName = "Bombita";
         }
 
-        public void ReiniciarPersonaje()
-        {
-            this.Vivo=true;
-        unPersonaje=Juego.Instancia().Protagonista;
-        position = MapaVista.TransformarPuntoEnVector2(unPersonaje.Posicion);
-        movido = new Vector2(0, 0);
-        }
+        //public void ReiniciarPersonaje()
+        //{
+        //    this.Vivo=true;
+        //unPersonaje=Juego.Instancia().Protagonista;
+        //position = MapaVista.TransformarPuntoEnVector2(unPersonaje.Posicion);
+        //movido = new Vector2(0, 0);
+        //}
 
         public override void LoadContent(ContentManager content)
         {
+            miContent = content;
             this.UnPersonaje = Juego.Instancia().Protagonista;
             position.X = 32 * unPersonaje.Posicion.X + Game1.mapa.Location.X;
             position.Y = 32 * unPersonaje.Posicion.Y + Game1.mapa.Location.Y;
@@ -46,14 +47,18 @@ namespace BombermanGame
 
         public override void Update()
         {
-
-            if (!this.Vivo) return;
             IDaniable p = this.unPersonaje;
+
             if (p.Destruido())
             {
                 this.Vivo = false;
-            }
+                this.LoadContent(miContent);
+                movido = Vector2.Zero;
+                return;
+            } else this.Vivo = true;
             
+            if (!this.Vivo) return;
+
             keyboard = Keyboard.GetState();
             speed = unPersonaje.Movimiento.Velocidad;
             if (keyboard.IsKeyDown(Keys.P))

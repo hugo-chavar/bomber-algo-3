@@ -52,20 +52,20 @@ namespace TestBombermanModel.TestJuego
             Assert.AreSame(otroJuego, this.unJuego);
         }
 
-        [Test]
-        public void AlPausarJuegoSePausaCorrectamente()
-        {
-            unJuego.PausarJuego();
-            Assert.IsTrue(unJuego.JuegoPausado);
-        }
+        //[Test]
+        //public void AlPausarJuegoSePausaCorrectamente()
+        //{
+        //    unJuego.PausarJuego();
+        //    Assert.IsTrue(unJuego.JuegoPausado);
+        //}
 
-        [Test]
-        public void AlDesPausarJuegoSeDesPausaCorrectamente()
-        {
-            unJuego.PausarJuego();
-            unJuego.DesPausarJuego();
-            Assert.IsFalse(unJuego.JuegoPausado);
-        }
+        //[Test]
+        //public void AlDesPausarJuegoSeDesPausaCorrectamente()
+        //{
+        //    unJuego.PausarJuego();
+        //    unJuego.DesPausarJuego();
+        //    Assert.IsFalse(unJuego.JuegoPausado);
+        //}
 
         [Test]
         public void PerderVidaDescuentaUnaVidaAlJuegoActual()
