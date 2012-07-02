@@ -27,12 +27,15 @@ namespace BombermanGame
         public const int ABAJO = 2;
         public const int IZQUIERDA = 4;
         public const int DERECHA = 6;
+        Vector2 centro;
+        Vector2 puntoCentro;
 
         public PersonajeView(Personaje pers)
             :base(MapaVista.TransformarPuntoEnVector2(pers.Posicion))
         {
             unPersonaje = pers;
             speed = unPersonaje.Movimiento.Velocidad;
+            position = MapaVista.TransformarPuntoEnVector2(unPersonaje.Posicion);
             movido = Vector2.Zero;
             unaBmb = null;
         }
@@ -80,21 +83,24 @@ namespace BombermanGame
 
             corregirPosicion();
             position += direccion * speed;
+
+            puntoCentro = position + new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
+           // centro = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
             Vector2 deltaPrevio = new Vector2(movido.X, movido.Y);
             movido += direccion * speed;
 
 
             //considero que el personaje transita la casilla cuando ingreso un tercio de su cuerpo
             //cuando pasa 2/3 de su cuerpo pasa a la posicion siguiente (hablando en terminos del modelo)
-            //if (((Math.Abs(deltaPrevio.X) < (spriteIndex.Width / 3)) && (Math.Abs(movido.X) >= (spriteIndex.Width / 3)))
-            //    || ((Math.Abs(deltaPrevio.Y) < (spriteIndex.Height / 3)) && (Math.Abs(movido.Y) >= (spriteIndex.Height / 3))))
-            //{
-            //    Punto unPto = new Punto(unPersonaje.Posicion.X + (int)direccion.X, unPersonaje.Posicion.Y + (int)direccion.Y);
-            //    Punto puntoAnterior = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y);
-            //    Juego.Instancia().Ambiente.ObtenerCasilla(puntoAnterior).Dejar(unPersonaje);
-            //    Juego.Instancia().Ambiente.ObtenerCasilla(unPto).Transitar(unPersonaje);
+            if (((Math.Abs(deltaPrevio.X) < (spriteIndex.Width / 3)) && (Math.Abs(movido.X) >= (spriteIndex.Width / 3)) && (Math.Abs(movido.X) < 2*(spriteIndex.Width / 3)))
+                || ((Math.Abs(deltaPrevio.Y) < (spriteIndex.Height / 3)) && (Math.Abs(movido.Y) >= (spriteIndex.Height / 3)) && (Math.Abs(movido.Y) < 2*(spriteIndex.Height / 3))))
+            {
+                Punto unPto = new Punto(unPersonaje.Posicion.X + (int)direccion.X, unPersonaje.Posicion.Y + (int)direccion.Y);
+                Punto puntoAnterior = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y);
+                Juego.Instancia().Ambiente.ObtenerCasilla(puntoAnterior).Dejar(unPersonaje);
+                Juego.Instancia().Ambiente.ObtenerCasilla(unPto).Transitar(unPersonaje);
 
-            //}
+            }
 
             if ((Math.Abs(deltaPrevio.X) >= (spriteIndex.Width / 2)) && (Math.Abs(movido.X) < (spriteIndex.Width / 2)))
             {
@@ -113,7 +119,7 @@ namespace BombermanGame
                 Juego.Instancia().Ambiente.Avanzar(unPersonaje);
             }
 
-            if ((Math.Abs(deltaPrevio.X) >= (spriteIndex.Width / 3)) && (Math.Abs(deltaPrevio.X) < (spriteIndex.Width / 2)) && (Math.Abs(movido.X) >= (spriteIndex.Width / 2)))
+            if ((deltaPrevio.X >= (spriteIndex.Width / 3)) && (deltaPrevio.X < (spriteIndex.Width / 2)) && (movido.X >= (spriteIndex.Width / 2)))
             {
                 Punto unPto = new Punto(unPersonaje.Posicion.X + (int)direccion.X, unPersonaje.Posicion.Y + (int)direccion.Y);
                 Punto puntoAnterior = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y);
@@ -121,7 +127,7 @@ namespace BombermanGame
                 Juego.Instancia().Ambiente.Avanzar(unPersonaje);
             }
 
-            if ((Math.Abs(deltaPrevio.Y) >= (spriteIndex.Height / 3)) && (Math.Abs(deltaPrevio.Y) < (spriteIndex.Height / 2)) && (Math.Abs(movido.Y) >= (spriteIndex.Height / 2)))
+            if ((deltaPrevio.Y >= (spriteIndex.Height / 3)) && (deltaPrevio.Y < (spriteIndex.Height / 2)) && (movido.Y >= (spriteIndex.Height / 2)))
             {
                 Punto unPto = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y + (int)direccion.Y);
                 Punto puntoAnterior = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y);
@@ -230,9 +236,9 @@ namespace BombermanGame
         public override void Draw(SpriteBatch spriteBatch)
         {
             if (!vivo) return;
-            Vector2 center = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
+            centro = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
 
-            spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), center, scale, SpriteEffects.None, 0);
+            spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), centro, scale, SpriteEffects.None, 0);
             //spriteBatch.DrawString(Game1.fuente, "En modelo ->Pos X: " + protagonista.Posicion.X + " Pos Y: " + protagonista.Posicion.Y, new Vector2(10, 10), Color.Yellow);
             //spriteBatch.DrawString(Game1.fuente, "Mvido ->Pos X: " + movido.X + " Pos Y: " + movido.Y + " RealPos X: " + position.X + " Pos Y: " + position.Y, new Vector2(10, Game1.fuente.LineSpacing), Color.Yellow); 
         }

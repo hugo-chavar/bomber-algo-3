@@ -24,26 +24,27 @@ namespace BombermanModel.Juego
         private int nivel;
         private Estado estado;
         private bool mapaVisible;
-        private MapaArchivo guardador = new MapaArchivo();
+        private MapaArchivo guardador;
         
         //declaracion del Singleton
         private static Juego instanciaDeJuego;
-        public static Punto Izquierda = new Punto(-1, 0);
-        public static Punto Derecha = new Punto(1, 0);
-        public static Punto Arriba = new Punto(0, 1);
-        public static Punto Abajo = new Punto(0, -1);
         
         //Constantes
         private const int VIDAS = 3;
-        private const int ANCHOMAPA = 17;
-        private const int ALTOMAPA = 13;
-        private const int ULTIMONIVEL = 3;
+       // private const int ANCHOMAPA = 17;
+       // private const int ALTOMAPA = 13;
+        private const int ULTIMONIVEL = 4;
 
         //propiedades
         public int CantDeVidas
         {
             get { return cantDeVidas; }
             set { this.cantDeVidas = value; }
+        }
+
+        public Estado EstadoGeneral
+        {
+            get { return estado; }
         }
 
         public bool MapaVisible
@@ -84,18 +85,8 @@ namespace BombermanModel.Juego
         //constructor
         private Juego()
         {
-            this.JuegoPausado = false;
-            this.CantDeVidas = VIDAS;
-            this.Ambiente = new Tablero(ANCHOMAPA,ALTOMAPA);
-            Punto posicion = new Punto(0, 0);
-            this.protagonista = new Personaje.Bombita(posicion);
-            enemigosVivos = new List<Personaje.Personaje>();
-            this.objetosContundentes = new List<IMovible>();
-            this.dependientesDelTiempo = new List<IDependienteDelTiempo>();
-            this.salida = new Salida();
+            Recomenzar();
             nivel = 1;
-            estado = Estado.enJuego;
-            mapaVisible = false;
         }
 
         public static Juego Reiniciar()
@@ -110,15 +101,23 @@ namespace BombermanModel.Juego
             if (instanciaDeJuego == null)
             {
                 instanciaDeJuego = new Juego();
-                instanciaDeJuego.CargarMapa();
             }
             return instanciaDeJuego;
         }
 
-        public void PausarJuego()
+
+        public void Recomenzar()
         {
-            this.JuegoPausado = true; 
+            this.CantDeVidas = VIDAS;
+            enemigosVivos = new List<Personaje.Personaje>();
+            this.objetosContundentes = new List<IMovible>();
+            this.dependientesDelTiempo = new List<IDependienteDelTiempo>();
+            this.salida = new Salida();
+            
+            estado = Estado.enJuego;
+            mapaVisible = false;
         }
+
 
         public void GuardarPartida()
         {
@@ -128,35 +127,28 @@ namespace BombermanModel.Juego
         
         public void ContinuarPartidaGuardada()
         {
-            //guardador.ExportarCasillas();
-            this.ambiente = guardador.ContinuarPartidaGuardada();
-        }
-
-        public void DesPausarJuego()
-        {
-            this.JuegoPausado = false;
+            this.guardador =  new MapaArchivo();
+            this.ambiente = guardador.ContinuarPartidaGuardada("mapaGuardado.xml");
         }
 
         public void PerderVida()
         {
             this.CantDeVidas = (this.CantDeVidas-1);
-            if (this.CantDeVidas == 0)
+            if (this.CantDeVidas < 1)
             {
                 estado = Estado.perdido;
             }
             else
             {
-                VolverACargarMapa();
+                UsarSiguienteVida();
             }
         }
 
-        private void VolverACargarMapa()
+        private void UsarSiguienteVida()
         {
-            ambiente = new Tablero(ANCHOMAPA, ALTOMAPA);
-            this.enemigosVivos = new List<Personaje.Personaje>();
-            CargarMapa();
-            protagonista = new Bombita(new Punto(0, 0));
-            mapaVisible = false;
+            protagonista = new Bombita(ambiente.PosicionInicial);
+            ambiente.AgregarPersonaje(protagonista);
+           // mapaVisible = false;
         }
 
         public void AgregarEnemigo(Personaje.Personaje enem)
@@ -194,9 +186,10 @@ namespace BombermanModel.Juego
         private void AvanzarNivel()
         {
             nivel++;
+            mapaVisible = false;
             if (nivel <= ULTIMONIVEL)
             {
-                VolverACargarMapa();
+                CargarMapa();
             }
             else
             {
@@ -259,8 +252,10 @@ namespace BombermanModel.Juego
 
         public void CargarMapa()
         {
-            CargadorDeMapa cargador = new CargadorDeMapa();
-            cargador.LeerMapa("mapa"+nivel+".xml");
+            //CargadorDeMapa cargador = new CargadorDeMapa();
+            //cargador.LeerMapa("mapa"+nivel+".xml");
+            this.guardador = new MapaArchivo();
+            this.ambiente = guardador.ContinuarPartidaGuardada("Mapa" + nivel + ".xml");
         }
 
       public Salida Salida 
