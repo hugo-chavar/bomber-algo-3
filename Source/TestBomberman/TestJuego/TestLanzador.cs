@@ -26,6 +26,8 @@ namespace TestBombermanModel.TestJuego
         public void TearDown()
         {
             Juego.Reiniciar();
+            this.unJuego.Recomenzar();
+            this.unJuego.CargarMapa();
         }
 
         [Test]
@@ -578,9 +580,9 @@ namespace TestBombermanModel.TestJuego
         [Test]
         public void BombitaIntentaSalirDelJuegoYLoLograPorqueEliminaTodosLosEnemigos()
         {
-            Punto posInicio = new Punto(0, 0);
-            Punto posLRA = new Punto(4, 4);
-            Bombita unBombita = new Bombita(posInicio);
+            //Punto posInicio = new Punto(0, 0);
+            //Punto posLRA = new Punto(4, 4);
+            //Bombita unBombita = new Bombita(posInicio);
 
             //Agrego articulo
             Punto posicionCasillaArt = new Punto(1, 0);
@@ -589,7 +591,8 @@ namespace TestBombermanModel.TestJuego
             CasillaConArticulo.ArticuloContenido = unArticulo; //Pongo un articulo en el pasillo para agarrarlo con bombita.
             
 
-            unJuego.Ambiente.AgregarPersonaje(unBombita);
+            //unJuego.Ambiente.AgregarPersonaje(unBombita);
+            Bombita unBombita = (Bombita)unJuego.Protagonista;
 
             unBombita.Movimiento.CambiarADerecha();
             unBombita.Mover(); // 1,0, como articulo.
@@ -597,16 +600,54 @@ namespace TestBombermanModel.TestJuego
             unBombita.Movimiento.CambiarAIzquierda(); // lo pongo a salvo
             unBombita.Mover(); // 0,0
             unBombita.Movimiento.CambiarAArriba();
-            unBombita.Mover(); // 1,0
+            unBombita.Mover(); // 0,1
 
             System.Threading.Thread.Sleep(5000);//Pasan 5 segundos
-            unJuego.AvanzarElTiempo(); // explota bomba tole tole, rompo osbtaculo 1,1
+            unJuego.AvanzarElTiempo(); // explota bomba tole tole, rompo osbtaculo 2,0
+            unBombita.Movimiento.CambiarAAbajo();
+            unBombita.Mover(); // 0,0
 
             unBombita.Movimiento.CambiarADerecha();
-            unBombita.Mover(); //1,1
-            unBombita.Mover(); //2,1
-            unBombita.LanzarExplosivo(); // en 2,1
-            unBombita.Movimiento.CambiarAIzquierda(); // lo pongo a salvo
+            unBombita.Mover(); //1,0
+            unBombita.Mover(); //2,0
+            unBombita.Mover(); //3,0
+            unBombita.Mover(); //4,0
+            unBombita.LanzarExplosivo(); // en 4,0 para romper Cemento q oculta a cecilio
+            unBombita.Mover(); //5,0
+            unBombita.Mover(); //6,0
+            unBombita.Mover(); //7,0
+            unBombita.Mover(); //8,0
+            unBombita.Mover(); //9,0
+            unBombita.Mover(); //10,0
+            unBombita.Mover(); //11,0
+            unBombita.Mover(); //12,0
+            unBombita.Mover(); //13,0
+            unBombita.Mover(); //14,0
+            unBombita.LanzarExplosivo(); // en 14,0, para matar a LR en 14,1
+            unBombita.Movimiento.CambiarAIzquierda(); // ahora voy por LRA en 8,11
+            unBombita.Mover(); //13,0
+            unBombita.Mover(); //12,0
+            unBombita.Mover(); //11,0
+            unBombita.Mover(); //10,0
+            unBombita.Mover(); //9,0
+            unBombita.Mover(); //8,0
+            unBombita.Movimiento.CambiarAArriba();
+            unBombita.Mover(); //8,1
+            unBombita.Mover(); //8,2
+            unBombita.Mover(); //8,3
+            unBombita.Mover(); //8,4
+            unBombita.Mover(); //8,5
+            unBombita.Mover(); //8,6
+            unBombita.Mover(); //8,7  
+            unBombita.LanzarExplosivo(); // en 4,0 para romper Ladrillo q oculta a LRA
+            unBombita.Movimiento.CambiarAAbajo();
+            unBombita.Mover(); // 8,6
+            unBombita.Movimiento.CambiarADerecha();
+            unBombita.Mover(); //9,6 a salvo
+            System.Threading.Thread.Sleep(5000);//Pasan 5 segundos
+            unJuego.AvanzarElTiempo(); // explotan bombas mato a lra en 14,2 y rompo obstaculos
+            //andy.. me quedé acá
+            unBombita.Movimiento.CambiarAIzquierda(); 
             unBombita.Mover(); //1,1
             unBombita.Mover(); //0,1
             unBombita.Movimiento.CambiarAAbajo();
