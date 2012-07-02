@@ -24,7 +24,6 @@ namespace BombermanGame
         public CecilioView(Personaje pers)
             : base(pers)
         {
-            //huyendo = false;
             spriteName = "Ceci2";
         }
 
