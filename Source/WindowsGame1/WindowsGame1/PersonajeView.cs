@@ -59,7 +59,6 @@ namespace BombermanGame
                 }
             }
                 
-                // MapaVista.AgregarDibujable(new Bomb(MapaVista.TransformarPuntoEnVector2(unPersonaje.Posicion), bomba));
         }
 
         protected virtual void Advance()
@@ -85,13 +84,13 @@ namespace BombermanGame
             position += direccion * speed;
 
             puntoCentro = position + new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
-            Punto pt = MapaVista.TransformarVector2EnPunto(puntoCentro);
-           // centro = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
+            Punto ptEnMapa = MapaVista.TransformarVector2EnPunto(puntoCentro);
+           
             Vector2 deltaPrevio = new Vector2(movido.X, movido.Y);
             movido += direccion * speed;
             
             Juego.Instancia().Ambiente.ObtenerCasilla(unPersonaje.Posicion).Dejar(unPersonaje);
-            unPersonaje.Posicion = pt;
+            unPersonaje.Posicion = ptEnMapa;
             Juego.Instancia().Ambiente.AgregarPersonaje(unPersonaje);
 
             //considero que el personaje transita la casilla cuando ingreso un tercio de su cuerpo

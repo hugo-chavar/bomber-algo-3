@@ -22,6 +22,7 @@ namespace TestBombermanModel.TestJuego
         public void TestSetup()
         {
             this.unJuego = Juego.Instancia();
+            this.unJuego.CargarMapa();
             this.unMapa = this.unJuego.Ambiente;
         }
 
@@ -29,7 +30,8 @@ namespace TestBombermanModel.TestJuego
         [TearDown]
         public void TearDown()
         {
-            Juego.Reiniciar();
+            this.unJuego.Recomenzar();
+            this.unJuego.CargarMapa();
         }
         //[TearDown]
         //public void TearDown()
@@ -52,25 +54,10 @@ namespace TestBombermanModel.TestJuego
             Assert.AreSame(otroJuego, this.unJuego);
         }
 
-        //[Test]
-        //public void AlPausarJuegoSePausaCorrectamente()
-        //{
-        //    unJuego.PausarJuego();
-        //    Assert.IsTrue(unJuego.JuegoPausado);
-        //}
-
-        //[Test]
-        //public void AlDesPausarJuegoSeDesPausaCorrectamente()
-        //{
-        //    unJuego.PausarJuego();
-        //    unJuego.DesPausarJuego();
-        //    Assert.IsFalse(unJuego.JuegoPausado);
-        //}
-
         [Test]
         public void PerderVidaDescuentaUnaVidaAlJuegoActual()
         {
-            Juego.Reiniciar();
+            this.unJuego.Recomenzar();
             unJuego.PerderVida();
             Assert.AreEqual(2, unJuego.CantDeVidas);
         }
@@ -246,18 +233,6 @@ namespace TestBombermanModel.TestJuego
             Assert.IsTrue(otroMovil.Posicion.Equals(posOriginal));
         }
 
-        /*
-        public void BombitaConVelocidadNormalCambiaDePosicionEnUnaUnidadDentroDelMapaAlMoversePorPasillo()
-        {
-            this.movil = new Bombita(new Punto(0, 0));
-            Punto posOriginal = this.movil.Posicion.Clonar();
-            this.unMapa.AgregarPersonaje(this.movil); // testear todos los exceptions
-            this.movil.Movimiento.CambiarADerecha();
-            this.movil.Mover();
-            Punto pos = new Punto(1, 0);
-            Assert.IsTrue(pos.Equals(this.movil.Posicion));
-        }*/
-
         [Test]
         public void CuandoExplotaUnaBombaToleToleYTieneUnCasilleroAbajoConCecilioLoDestruye()
         {
@@ -362,8 +337,8 @@ namespace TestBombermanModel.TestJuego
             Casilla casillaBomba1 = Juego.Instancia().Ambiente.ObtenerCasilla(posicionBomba1);
             Casilla casillaBomba2 = Juego.Instancia().Ambiente.ObtenerCasilla(posicionBomba2);
 
-            Juego.Instancia().AlojarExplosivo(bomba1);
-            Juego.Instancia().AlojarExplosivo(bomba2);
+            this.unJuego.AlojarExplosivo(bomba1);
+            this.unJuego.AlojarExplosivo(bomba2);
             System.Threading.Thread.Sleep(3000);
             this.unJuego.AvanzarElTiempo();
             this.unJuego.AvanzarElTiempo();
@@ -420,34 +395,38 @@ namespace TestBombermanModel.TestJuego
             Assert.AreEqual((cantDependeTiempo+1), Juego.Instancia().DependientesDelTiempo.Count);
         }
 
+        //[Test] 
+        //public void CuandoGeneroUnMapaNuevoLaCantidadDeEnemigosEs7()
+        //{
+        //    Assert.AreEqual(Juego.Instancia().CantidadEnemigosVivos(), 7);
+        //}
+
         [Test] 
-        public void CuandoGeneroUnMapaNuevoLaCantidadDeEnemigosEs7()
-        {
-            Assert.AreEqual(Juego.Instancia().CantidadEnemigosVivos(), 7);
-        }
-
-        /*[Test] 
-        public void CuandoGeneroUnMapaNuevoYAgregoAUnEnemigoLaCantidadDeEnemigosAumentaA8()
+        public void CuandoGeneroUnMapaNuevoYAgregoAUnEnemigoLaCantidadDeEnemigosAumentaAen1()
         {
 
+            int enemigosVivos = this.unJuego.CantidadEnemigosVivos();
             Punto pCecilio = new Punto(0, 1);
 
             Cecilio unCecilio = new Cecilio(pCecilio);
 
-            unMapa.AgregarPersonaje(unCecilio);
+            //unMapa.AgregarPersonaje(unCecilio);
+            this.unJuego.AgregarEnemigo(unCecilio);
 
-            Assert.AreEqual(Juego.Instancia().CantidadEnemigosVivos(), 8);
+            Assert.AreEqual(this.unJuego.CantidadEnemigosVivos(), enemigosVivos+1);
 
-        }*/
+        }
 
         [Test] 
-        public void CuandoGeneroUnMapaNuevoYElimino1EnemigoConToleToleDebenQuedar6()
+        public void CuandoGeneroUnMapaNuevoYElimino1EnemigoConToleToleRestaUnEnemigoVivo()
         {
-            Juego.Reiniciar();
-
+            //Juego.Reiniciar();
+            int cantEnemigos = this.unJuego.CantidadEnemigosVivos();
             Punto p = new Punto(2, 2);
             Personaje bombita = new Bombita(p);
-            Juego.Instancia().Ambiente.AgregarPersonaje(bombita);
+            this.unJuego.Ambiente.AgregarPersonaje(bombita);
+            Cecilio unCeci = new Cecilio(p);
+            this.unJuego.AgregarEnemigo(unCeci);
             bombita.CambiarLanzadorAToleTole();
             bombita.LanzarExplosivo();
             bombita.Movimiento.CambiarADerecha();
@@ -456,40 +435,15 @@ namespace TestBombermanModel.TestJuego
             bombita.Movimiento.CambiarAAbajo();
             bombita.Mover();
             System.Threading.Thread.Sleep(5000);//Pasan 5 segundos
-            Juego.Instancia().AvanzarElTiempo();
-            Juego.Instancia().AvanzarElTiempo();
-            Juego.Instancia().AvanzarElTiempo();
-            Juego.Instancia().AvanzarElTiempo();
-            Juego.Instancia().AvanzarElTiempo();
+            this.unJuego.AvanzarElTiempo();
+            this.unJuego.AvanzarElTiempo();
+            this.unJuego.AvanzarElTiempo();
+            this.unJuego.AvanzarElTiempo();
+            this.unJuego.AvanzarElTiempo();
 
-            Assert.AreEqual(Juego.Instancia().CantidadEnemigosVivos(),6);
+            Assert.AreEqual(this.unJuego.CantidadEnemigosVivos(), cantEnemigos);
 
         }
-
-        //[Test]  los personajes se van a contar en la clase juego
-        //public void CuandoGeneroUnMapaNuevoAgrego2PersonajesYEliminoLos2ConMolotov()
-        //{
-        //    this.unjuego = Juego.Instancia();
-        //    unjuego.Ambiente = unMapa;
-
-        //    Assert.AreEqual(unMapa.CantidadPersonajesVivos, 0);
-        //    Punto pBombita = new Punto(0, 0);
-        //    Punto pCecilio = new Punto(0, 1);
-
-        //    Cecilio unCecilio = new Cecilio(pCecilio);
-        //    Bombita unBombita = new Bombita(pBombita);
-
-        //    unMapa.AgregarPersonaje(unCecilio);
-        //    unMapa.AgregarPersonaje(unBombita);
-
-        //    Assert.AreEqual(unMapa.CantidadPersonajesVivos, 2);
-
-        //    unCecilio.DaniarConBombaMolotov(5);
-        //    unBombita.DaniarConBombaMolotov(5);
-        //    Assert.IsTrue(unCecilio.Destruido());
-        //    Assert.AreEqual(unMapa.CantidadPersonajesVivos, 0);
-        //}
-
 
     }
 }

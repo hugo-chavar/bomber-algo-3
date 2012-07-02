@@ -19,6 +19,7 @@ namespace TestBombermanModel.TestJuego
         public void TestSetup()
         {
             this.unJuego = Juego.Instancia();
+            this.unJuego.CargarMapa();
         }
 
         [TearDown]
