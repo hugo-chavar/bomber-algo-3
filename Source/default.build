@@ -49,6 +49,7 @@
        <fileset>
 	     <include name="${project::get-name()}/bin/**"/>
 	     <include name="${aplication-base-dir}/bin/**"/>
+	     <include name="${aplication-base-dir}/obj/**"/>
 	     <include name="${project::get-name()}/obj/**"/>
 	     <include name="${test-base-dir}/bin/**"/>
 	     <include name="${test-base-dir}/obj/**"/>
