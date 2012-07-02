@@ -114,6 +114,7 @@ namespace BombermanModel.Personaje
         public virtual void DaniarConBombaToleTole()
         {
             this.UnidadesDeResistencia = 0;
+
             //Juego.Juego.Instancia().Ambiente.DecrementarCantidadDePersonajesVivos();
         }
 

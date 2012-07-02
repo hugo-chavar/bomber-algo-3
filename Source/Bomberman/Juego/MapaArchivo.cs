@@ -17,6 +17,7 @@ namespace BombermanModel.Juego
         private List<Casilla> casillas;
         private int dimHorizontal;
         private int dimVertical;
+        private Juego elJuego = Juego.Instancia();
         private Tablero mapaGenerado;
 
 
@@ -121,13 +122,13 @@ namespace BombermanModel.Juego
             }
         }
 
-        public Tablero ContinuarPartidaGuardada()
+        public Tablero ContinuarPartidaGuardada(string pathName)
         {
             Casilla casillaActual =null;
             Punto posActual = null;
             Tablero tableroNuevo = new Tablero();
 
-            StreamReader lector = new StreamReader("mapaGuardado.xml");
+            StreamReader lector = new StreamReader(pathName);
             //Uso reflection a full
             String xmlString = lector.ReadToEnd();
 
@@ -154,6 +155,7 @@ namespace BombermanModel.Juego
                                     tableroNuevo.DimensionHorizontal = Convert.ToInt32(reader.GetAttribute("ancho"));
                                     tableroNuevo.DimensionVertical = Convert.ToInt32(reader.GetAttribute("alto"));
                                 }
+                                elJuego.Ambiente = tableroNuevo;
                             }
                             else
                             {
@@ -201,6 +203,12 @@ namespace BombermanModel.Juego
                                     }
                                     else //es un personaje o un articulo
                                     {
+                                        if (!tableroNuevo.ExisteCasillaEnPosicion(posActual))
+                                        {
+                                            casillaActual = FabricaDeCasillas.FabricarPasillo(posActual);
+                                            tableroNuevo.AgregarCasilla(casillaActual);
+                                        }
+                                        
                                         if (reader.HasAttributes) //es personaje
                                         {
                                             int vel = Convert.ToInt32(reader.GetAttribute("velocidad"));
@@ -208,20 +216,20 @@ namespace BombermanModel.Juego
                                             Personaje.Personaje p = null;
                                             if (reader.Name == "Bombita")
                                             {
-                                                string lanz = reader.GetAttribute("lanzador");
+                                                string lanz = reader.GetAttribute("lanzador"); //TODO: falta guardar el Lanzador
                                                 p = new Bombita(posActual);
+                                                casillaActual.Transitar(p);
+                                                elJuego.Protagonista = p;
+                                                tableroNuevo.PosicionInicial = posActual;
                                             }
                                             else //es algun enemigo
                                             {
                                                 tipo = Type.GetType("BombermanModel.Personaje." + reader.Name);
                                                 p = Activator.CreateInstance(tipo, new object[] { posActual }) as Personaje.Personaje;
+                                                elJuego.AgregarEnemigo(p);
                                             }
-                                            if (!tableroNuevo.ExisteCasillaEnPosicion(posActual))
-                                            {
-                                                casillaActual = FabricaDeCasillas.FabricarPasillo(posActual);
-                                                tableroNuevo.AgregarCasilla(casillaActual);
-                                            }
-                                            casillaActual.Transitar(p);
+
+                                           
                                             p.Movimiento.Velocidad = vel;
                                             p.UnidadesDeResistencia = res;
                                         }
@@ -229,12 +237,9 @@ namespace BombermanModel.Juego
                                         {
                                             tipo = Type.GetType("BombermanModel.Articulo." + reader.Name);
                                             Articulo.Articulo a = Activator.CreateInstance(tipo) as Articulo.Articulo;
-                                            if (!tableroNuevo.ExisteCasillaEnPosicion(posActual))
-                                            {
-                                                casillaActual = FabricaDeCasillas.FabricarPasillo(posActual);
-                                                tableroNuevo.AgregarCasilla(casillaActual);
-                                            }
-                                            casillaActual.agregarArticulo(a);
+                                            casillaActual.ArticuloContenido = a;
+                                            if (reader.Name == "Salida")
+                                                elJuego.Salida = (Articulo.Salida)a;
                                         }
                                     }
                                 }
