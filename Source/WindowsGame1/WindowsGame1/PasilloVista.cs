@@ -16,10 +16,10 @@ using BombermanModel.Mapa.Casilla;
 
 namespace BombermanGame
 {
-    class PasilloView : ObjetoVivo //BloqueView
+    class PasilloVista : ObjetoVivo //BloqueView
     {
 
-        public PasilloView(Vector2 pos)
+        public PasilloVista(Vector2 pos)
             : base(pos)
         {
             spriteName = "ObsPasillo";

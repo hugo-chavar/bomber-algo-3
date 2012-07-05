@@ -9,7 +9,7 @@ using BombermanModel.Excepciones;
 
 namespace BombermanModel.Mapa
 {
-    public class Tablero : ITransitable
+    public class Tablero
     {
         private Dictionary<Punto, Casilla.Casilla> tablero = new Dictionary<Punto, Casilla.Casilla>();
         private int dimensionHorizontal;

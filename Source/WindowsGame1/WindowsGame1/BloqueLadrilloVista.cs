@@ -16,11 +16,11 @@ using BombermanModel.Mapa.Casilla;
 
 namespace BombermanGame
 {
-    class BloqueLadrilloView : BloqueView
+    class BloqueLadrilloVista : BloqueVista
     {
         private Obstaculo ladri = Juego.Instancia().Ambiente.ObtenerCasilla(new Punto(2, 0)).Estado;
 
-        public BloqueLadrilloView(Vector2 pos, Punto posMapa, Obstaculo unObstaculo)
+        public BloqueLadrilloVista(Vector2 pos, Punto posMapa, Obstaculo unObstaculo)
             : base(pos,posMapa,unObstaculo)
         {
             spriteName = "ObsLadrillo";

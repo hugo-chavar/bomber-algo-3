@@ -19,7 +19,7 @@ namespace BombermanGame
         Juego elJuego = Juego.Instancia();
         public GamerServicesComponent gamerServices;
 
-        BombitaView unaPersona = null;
+        BombitaVista unaPersona = null;
 
         public static SpriteFont fuente;
         public static SpriteFont fuente2;
@@ -174,7 +174,7 @@ namespace BombermanGame
             MapaVista.CargarBombas();
             
             MapaVista.CargarContenido(this.Content);
-            unaPersona = new BombitaView();
+            unaPersona = new BombitaVista();
             unaPersona.LoadContent(this.Content);
             estadoDelJuego = "Jugar";
         }

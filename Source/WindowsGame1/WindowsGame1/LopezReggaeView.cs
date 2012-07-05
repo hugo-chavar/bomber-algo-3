@@ -16,7 +16,7 @@ using System;
 
 namespace BombermanGame
 {
-    class LopezReggaeView : EnemigoView
+    class LopezReggaeView : EnemigoVista
     {
         private Vector2 puntoCentro;
 
@@ -50,7 +50,7 @@ namespace BombermanGame
             Proyectil bomba = (Proyectil)unPersonaje.LanzarExplosivo();
             if (bomba != null)
             {
-                ProyectilView unProy = (ProyectilView)MapaVista.ObtenerObjetoContundente(new ProyectilView());
+                ProyectilVista unProy = (ProyectilVista)MapaVista.ObtenerObjetoContundente(new ProyectilVista());
 
                 unProy.Explosivo = bomba;
                 unProy.Rotacion = rotation;

@@ -17,14 +17,14 @@ using BombermanModel.Mapa.Casilla;
 
 namespace BombermanGame
 {
-    class EnemigoView : PersonajeView
+    class EnemigoVista : PersonajeVista
     {
         protected int destinoActual = 0;
         protected List<Point> destinosObjetivo = new List<Point>();
         protected List<Vector2> versores = new List<Vector2>();
 
 
-        public EnemigoView(Personaje pers)
+        public EnemigoVista(Personaje pers)
             : base(pers) 
         {
             versores.Add(Vector2.UnitY*-1);
@@ -83,7 +83,6 @@ namespace BombermanGame
             rotation = point_direction(-direccion.Y, -direccion.X);
             Advance();
 
-            base.Update();
         }
 
 

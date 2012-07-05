@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace BombermanGame
 {
-    public class ObjetoVivo
+    public abstract class ObjetoVivo
     {
         protected Vector2 position;
         protected Vector2 movido;
@@ -35,23 +35,10 @@ namespace BombermanGame
         {
         }
 
-        public virtual void Update()
-        {
+        public abstract void Update();
 
-        }
+        public abstract void LoadContent(ContentManager content);
 
-        public virtual void LoadContent(ContentManager content)
-        {
-        }
-
-
-
-        public virtual void Draw(SpriteBatch spriteBatch)
-        {
-
-        }
-
-       
-
+        public abstract void Draw(SpriteBatch spriteBatch);
     }
 }
