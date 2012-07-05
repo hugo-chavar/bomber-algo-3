@@ -15,11 +15,11 @@ using BombermanModel.Juego;
 
 namespace BombermanGame
 {
-    public class Bomb : ObjetoVivo
+    public class BombaVista : ObjetoVivo
     {
         private Explosivo explosivo;
 
-        public Bomb(Vector2 pos, Explosivo bomba)
+        public BombaVista(Vector2 pos, Explosivo bomba)
             : base(pos)
         {
             //position.X = 64+ Game1.mapa.Location.X;
@@ -30,7 +30,7 @@ namespace BombermanGame
             vivo = true;
         }
 
-        public Bomb()
+        public BombaVista()
         {
             vivo = false;
         }

@@ -121,26 +121,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArticuloVista.cs" />
-    <Compile Include="BloqueView.cs" />
-    <Compile Include="Bomb.cs" />
-    <Compile Include="BloqueAceroView.cs" />
-    <Compile Include="BloqueCementoView.cs" />
-    <Compile Include="BloqueLadrilloView.cs" />
-    <Compile Include="CecilioView.cs" />
-    <Compile Include="EnemigoView.cs" />
+    <Compile Include="BloqueVista.cs" />
+    <Compile Include="BombaVista.cs" />
+    <Compile Include="BloqueAceroVista.cs" />
+    <Compile Include="BloqueCementoVista.cs" />
+    <Compile Include="BloqueLadrilloVista.cs" />
+    <Compile Include="CecilioVista.cs" />
+    <Compile Include="EnemigoVista.cs" />
     <Compile Include="LopezReggaeAladoView.cs" />
     <Compile Include="LopezReggaeAladoView2.cs" />
     <Compile Include="LopezReggaeView.cs" />
     <Compile Include="MapaVista.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="ObjetoVivo.cs" />
-    <Compile Include="PasilloView.cs" />
-    <Compile Include="BombitaView.cs" />
-    <Compile Include="PersonajeView.cs" />
+    <Compile Include="PasilloVista.cs" />
+    <Compile Include="BombitaVista.cs" />
+    <Compile Include="PersonajeVista.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="ProyectilView.cs" />
+    <Compile Include="ProyectilVista.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

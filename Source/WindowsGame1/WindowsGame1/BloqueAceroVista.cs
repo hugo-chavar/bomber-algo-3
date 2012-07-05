@@ -16,15 +16,14 @@ using BombermanModel.Mapa.Casilla;
 
 namespace BombermanGame
 {
-    class BloqueCementoView : BloqueView
+    class BloqueAceroVista : BloqueVista
     {
-        public BloqueCementoView(Vector2 pos, Punto posMapa, Obstaculo unObstaculo)
+
+        public BloqueAceroVista(Vector2 pos, Punto posMapa, Obstaculo unObstaculo)
             : base(pos, posMapa, unObstaculo)
         {
-            spriteName = "ObsCemento";
+            spriteName = "ObsAcero";
         }
 
     }
-
-
 }

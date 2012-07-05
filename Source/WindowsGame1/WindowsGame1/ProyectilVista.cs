@@ -11,7 +11,7 @@ using BombermanModel;
 
 namespace BombermanGame
 {
-    class ProyectilView : ObjetoVivo
+    class ProyectilVista : ObjetoVivo
     {
         private Proyectil explosivo;
         public const int ARRIBA = 8;
@@ -19,7 +19,7 @@ namespace BombermanGame
         public const int IZQUIERDA = 4;
         public const int DERECHA = 6;
 
-        public ProyectilView(Vector2 pos, float rot, Explosivo bomba)
+        public ProyectilVista(Vector2 pos, float rot, Explosivo bomba)
             : base(pos)
         {
             explosivo = (Proyectil)bomba;
@@ -30,7 +30,7 @@ namespace BombermanGame
             
         }
 
-        public ProyectilView()
+        public ProyectilVista()
         {
             spriteIndex = MapaVista.proyectilSprite;
             speed = 0.5f;

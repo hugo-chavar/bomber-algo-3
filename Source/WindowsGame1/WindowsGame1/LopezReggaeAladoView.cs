@@ -17,7 +17,7 @@ using BombermanModel.Mapa.Casilla;
 
 namespace BombermanGame
 {
-    class LopezReggaeAladoView : EnemigoView
+    class LopezReggaeAladoView : EnemigoVista
     {
         private Vector2 puntoCentro;
 

@@ -17,11 +17,11 @@ using BombermanModel.Mapa.Casilla;
 
 namespace BombermanGame
 {
-    class CecilioView : EnemigoView
+    class CecilioVista : EnemigoVista
     {
         private Vector2 puntoCentro;
 
-        public CecilioView(Personaje pers)
+        public CecilioVista(Personaje pers)
             : base(pers)
         {
             spriteName = "Ceci2";

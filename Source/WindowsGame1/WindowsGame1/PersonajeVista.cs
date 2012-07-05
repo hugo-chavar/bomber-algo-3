@@ -17,12 +17,12 @@ using BombermanModel.Mapa.Casilla;
 
 namespace BombermanGame
 {
-    public abstract class PersonajeView : ObjetoVivo
+    public abstract class PersonajeVista : ObjetoVivo
     {
         protected KeyboardState keyboard;
         protected Vector2 direccion;
         protected Personaje unPersonaje;
-        protected Bomb unaBmb;
+        protected BombaVista unaBmb;
         public const int ARRIBA = 8;
         public const int ABAJO = 2;
         public const int IZQUIERDA = 4;
@@ -30,7 +30,7 @@ namespace BombermanGame
         Vector2 centro;
         Vector2 puntoCentro;
 
-        public PersonajeView(Personaje pers)
+        public PersonajeVista(Personaje pers)
             :base(MapaVista.TransformarPuntoEnVector2(pers.Posicion))
         {
             unPersonaje = pers;
@@ -46,7 +46,7 @@ namespace BombermanGame
 
         public virtual void Disparar()
         {
-            unaBmb = (Bomb)MapaVista.ObtenerObjetoContundente(new Bomb());
+            unaBmb = (BombaVista)MapaVista.ObtenerObjetoContundente(new BombaVista());
             if (unaBmb != null)
             {
                 Explosivo bomba = unPersonaje.LanzarExplosivo();

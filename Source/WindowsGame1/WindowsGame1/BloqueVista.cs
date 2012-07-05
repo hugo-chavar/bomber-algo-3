@@ -16,13 +16,13 @@ using BombermanModel.Mapa.Casilla;
 
 namespace BombermanGame
 {
-    class BloqueView : ObjetoVivo
+    class BloqueVista : ObjetoVivo
     {
 
         protected Obstaculo obst;
         protected Punto posEnMapa;
 
-        public BloqueView(Vector2 pos,Punto posMapa, Obstaculo unObstaculo)
+        public BloqueVista(Vector2 pos,Punto posMapa, Obstaculo unObstaculo)
             : base(pos)
         {
             //position.X = 64+ Game1.mapa.Location.X;

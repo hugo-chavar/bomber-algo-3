@@ -17,12 +17,12 @@ using BombermanModel.Mapa.Casilla;
 
 namespace BombermanGame
 {
-    class BombitaView : PersonajeView
+    class BombitaVista : PersonajeVista
     {
         KeyboardState prevKey;
         ContentManager miContent;
 
-        public BombitaView()
+        public BombitaVista()
             : base(Juego.Instancia().Protagonista)
         {
             spriteName = "Bombita";
@@ -122,7 +122,6 @@ namespace BombermanGame
          
             rotation = point_direction(-direccion.Y, -direccion.X);
             
-            base.Update();
         }
      
         public override void Draw(SpriteBatch spriteBatch)
