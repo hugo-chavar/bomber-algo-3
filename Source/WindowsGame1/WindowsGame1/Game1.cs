@@ -19,20 +19,19 @@ namespace BombermanGame
         Juego elJuego = Juego.Instancia();
         public GamerServicesComponent gamerServices;
 
-        BombitaVista unaPersona = null;
+        private BombitaVista unaPersona = null;
 
         public static SpriteFont fuente;
         public static SpriteFont fuente2;
         public static Rectangle mapa;
         public static Rectangle pausado;
 
-        Texture2D pausaTexture;
-        Texture2D gameOverTexture;
-        Texture2D juegoGanadoTexture;
-        Menu unMenu;
+        private Texture2D pausaTexture;
+        private Texture2D gameOverTexture;
+        private Texture2D juegoGanadoTexture;
+        private Menu unMenu;
 
         public static Rectangle screen;
-        public static string estadoDelJuego = "Inicio";
         
         public Game1()
         {
@@ -48,15 +47,9 @@ namespace BombermanGame
 
         private void Inicializar()
         {
-            //mapa = new Rectangle(100, 75, 32 * elJuego.Ambiente.DimensionHorizontal, 32 * elJuego.Ambiente.DimensionVertical);
-            //MapaVista.inicialize(elJuego.Ambiente);
+
             screen = new Rectangle(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
             unMenu = new Menu();
-            //MapaVista.CargarMapa();
-            //MapaVista.CargarProyectiles();
-            //MapaVista.CargarBombas();
-
-            //unaPersona.UnPersonaje = elJuego.Protagonista;
             base.Initialize();
         }
 
@@ -68,10 +61,6 @@ namespace BombermanGame
             pausaTexture = Content.Load<Texture2D>("Sprites\\Pausa");
             gameOverTexture = Content.Load<Texture2D>("Sprites\\GameOver");
             juegoGanadoTexture = Content.Load<Texture2D>("Sprites\\JuegoGanado");
-            //unaPersona.LoadContent(Content);
-
-
-             //MapaVista.CargarContenido(this.Content);
         }
 
 
@@ -85,54 +74,41 @@ namespace BombermanGame
         {
             
             // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || estadoDelJuego == "Salir")
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || elJuego.Salir())
                 this.Exit();
-            
 
-           switch (estadoDelJuego)
+
+            switch (elJuego.EstadoGeneral)
             {
-                case "Jugar":
+                case BombermanModel.Estado.EnJuego:
                     {
-                        if (elJuego.MapaVisible)
-                        {
-                            elJuego.AvanzarElTiempo();
-                            MapaVista.Actualizar();
-                            unaPersona.Update();
-                        }
-                        else estadoDelJuego = "ChequearMapa";
-
-                        if (elJuego.EstadoGeneral == BombermanModel.Estado.perdido)
-                            estadoDelJuego = "Perdido";
-                        if (elJuego.EstadoGeneral == BombermanModel.Estado.ganado)
-                            estadoDelJuego = "Ganado";
+                        elJuego.AvanzarElTiempo();
+                        MapaVista.Actualizar();
+                        unaPersona.Update();
                         break;
                     }
 
-                case "Reiniciar":
-                    {   
-                        elJuego.Recomenzar();
-                        elJuego.Nivel = 1;
-                        elJuego.CargarMapa();
-                        PrepararMapa();
-                        break;
-                    }
-                case "ChequearMapa":
+                case BombermanModel.Estado.Reiniciar:
                     {
-                        elJuego.Recomenzar();
-                        elJuego.CargarMapa();
-                        PrepararMapa();
+                        elJuego.ComenzarDesdeElPrincipio();
+                        elJuego.SeleccionarMapa();
                         break;
                     }
-                case "Guardar":
+                case BombermanModel.Estado.RecargarMapa:
+                    {
+                        elJuego.CargarMapa();
+                        PrepararMapa();
+                        elJuego.Jugar();
+                        break;
+                    }
+                case BombermanModel.Estado.GuardarPartida:
                     {
                         elJuego.GuardarPartida();
-                        estadoDelJuego = "Jugar";
                         break;
                     }
-                case "ContinuarGuardado":
+                case BombermanModel.Estado.ContinuarPartidaGuardada:
                     {
-                        elJuego.ContinuarPartidaGuardada();
-                        PrepararMapa();
+                        elJuego.SeleccionarMapa();
                         break;
                     }
                 default:
@@ -140,26 +116,6 @@ namespace BombermanGame
                         unMenu.Update();
                         break;
                     }
-                //case "Perdido":
-                //    {
-                //        unMenu.Update();
-                //        break;
-                //    }
-                //case "Ganado":
-                //    {
-                //        unMenu.Update();
-                //        break;
-                //    }
-                //case "Inicio":
-                //    {
-                //        unMenu.Update();
-                //        break;
-                //    }
-                //case "Pausa":
-                //    {
-                //        unMenu.Update();
-                //        break;
-                //    }
             }      
 
             base.Update(gameTime);
@@ -176,7 +132,6 @@ namespace BombermanGame
             MapaVista.CargarContenido(this.Content);
             unaPersona = new BombitaVista();
             unaPersona.LoadContent(this.Content);
-            estadoDelJuego = "Jugar";
         }
 
         protected override void Draw(GameTime gameTime)
@@ -185,20 +140,20 @@ namespace BombermanGame
 
             spriteBatch.Begin();
 
-            switch (estadoDelJuego)
+            switch (elJuego.EstadoGeneral)
             {
-                case "Jugar":
+                case BombermanModel.Estado.EnJuego:
                     {
                         MapaVista.DibujarMapa(spriteBatch);
                         unaPersona.Draw(spriteBatch);
                         break;
                     }
-                case "Inicio":
+                case BombermanModel.Estado.Inicial:
                     {
                         unMenu.Draw(spriteBatch);
                         break;
                     }
-                case "Pausa":
+                case BombermanModel.Estado.Pausa:
                     {
                         MapaVista.DibujarMapa(spriteBatch);
                         unaPersona.Draw(spriteBatch);
@@ -206,25 +161,22 @@ namespace BombermanGame
                         unMenu.Draw(spriteBatch);
                         break;
                     }
-                case "Perdido":
+                case BombermanModel.Estado.Perdido:
                     {
                         MapaVista.DibujarMapa(spriteBatch);
-                        //unaPersona.Draw(spriteBatch);
                         spriteBatch.Draw(gameOverTexture, screen, Color.White);
                         unMenu.Draw(spriteBatch);
                         break;
                     }
-                case "Ganado":
+                case BombermanModel.Estado.Ganado:
                     {
                         MapaVista.DibujarMapa(spriteBatch);
-                        //unaPersona.Draw(spriteBatch);
                         spriteBatch.Draw(juegoGanadoTexture, screen, Color.White);
                         unMenu.Draw(spriteBatch);
                         break;
                     }
 
             }
-
             spriteBatch.End();
             base.Draw(gameTime);
         }

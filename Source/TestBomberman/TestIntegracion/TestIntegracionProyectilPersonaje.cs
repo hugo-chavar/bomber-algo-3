@@ -21,6 +21,8 @@ namespace TestBombermanModel.TestIntegracion
         public void TestSetup()
         {
             this.unJuego = Juego.Instancia();
+            this.unJuego.ComenzarDesdeElPrincipio();
+            this.unJuego.SeleccionarMapa();
             this.unJuego.CargarMapa();
             this.unMapa = this.unJuego.Ambiente;
 
@@ -29,7 +31,7 @@ namespace TestBombermanModel.TestIntegracion
         [TearDown]
         public void TearDown()
         {
-            this.unJuego.Recomenzar();
+            this.unJuego.ComenzarDesdeElPrincipio();
             this.unJuego.CargarMapa();
         }
 

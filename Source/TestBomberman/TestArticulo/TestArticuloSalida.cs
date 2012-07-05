@@ -32,6 +32,7 @@ namespace TestBombermanModel.TestSalida
             //      P * P * P
             //      P P P P P
             Juego.Reiniciar();
+            Juego.Instancia().ComenzarDesdeElPrincipio();
             Punto unaPosicion;
             Casilla unaCasilla;
             this.unMapa = new Tablero(ANCHOMAPA, ANCHOMAPA);
@@ -44,7 +45,7 @@ namespace TestBombermanModel.TestSalida
                     if ((i & 1) == 1 && (j & 1) == 1)
                     {
                         //ambos son numeros impares
-                        unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(unaPosicion);//.FabricarCasillaConBloqueAcero(unaPosicion);
+                        unaCasilla = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(unaPosicion);
                     }
                     else
                     {
@@ -55,7 +56,12 @@ namespace TestBombermanModel.TestSalida
                 }
             Juego.Instancia().Ambiente = unMapa;
             Juego.Instancia().Protagonista = new Bombita(new Punto(0, 0));
-            Juego.Instancia().EnemigosVivos = new List<Personaje>();
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            Juego.Reiniciar();
         }
 
         [Test]
@@ -68,16 +74,12 @@ namespace TestBombermanModel.TestSalida
             Punto pUnaSalida = new Punto (1,1);
 
             Casilla unaCasillaDeSalida = unMapa.ObtenerCasilla(pUnaSalida);
-
-
             
             // agrego articulo
             Salida salida = new Salida();
             unaCasillaDeSalida.agregarSalida(salida);
-
             
             Assert.IsInstanceOf(typeof(Salida), unaCasillaDeSalida.ArticuloContenido);
-
 
         }
 
@@ -85,20 +87,12 @@ namespace TestBombermanModel.TestSalida
         public void NoPuedoAgregarSalidaEnUnPasilloPuesNoEstaPermitido()
         {
             // agrego articulo
-
             Punto pUnaSalida = new Punto(1, 0);
-
-
             Casilla unaCasillaDeSalida = unMapa.ObtenerCasilla(pUnaSalida);
 
             Salida salida = new Salida();
             unaCasillaDeSalida.agregarSalida(salida);
-
-
-
             Assert.IsNotInstanceOf(typeof(Salida), unaCasillaDeSalida.ArticuloContenido);
-
-
         }
 
 
@@ -157,8 +151,6 @@ namespace TestBombermanModel.TestSalida
             Bombita unBombita = new Bombita(pBombita);
             BombaMolotov unaBomba = new BombaMolotov(pUnaBombaMolotov, 0);
             LosLopezReggae lopez = new LosLopezReggae(pLopez);
-
-
 
             otroMapa.AgregarPersonaje(unBombita);
             otroMapa.AgregarPersonaje(unCecil);

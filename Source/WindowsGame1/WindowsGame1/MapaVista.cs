@@ -129,7 +129,6 @@ namespace BombermanGame
             {
                 AgregarEnemigo(p);
             }
-            Juego.Instancia().MapaVisible = true;
 
         }
 
@@ -140,21 +139,15 @@ namespace BombermanGame
             switch (p.Nombre)
             { 
                 case Nombres.cecilio:
-                    //Vector2 unVector = TransformarPuntoEnVector2(p.Posicion);
                     unEnemigo = new CecilioVista(p);
-                    //AgregarDibujable(unEnemigo); 
                     enemigosDibujables.Add(unEnemigo);
                     break;
                 case Nombres.lopezReggae:
-                    //Vector2 unVector = TransformarPuntoEnVector2(p.Posicion);
                     unEnemigo = new LopezReggaeView(p);
-                    //AgregarDibujable(unEnemigo); 
                     enemigosDibujables.Add(unEnemigo);
                     break;
                 case Nombres.lopezReggaeAlado:
-                    //Vector2 unVector = TransformarPuntoEnVector2(p.Posicion);
                     unEnemigo = new LopezReggaeAladoView(p);
-                    //AgregarDibujable(unEnemigo); 
                     enemigosDibujables.Add(unEnemigo);
                     break;
             }

@@ -22,6 +22,8 @@ namespace TestBombermanModel.TestJuego
         public void TestSetup()
         {
             this.unJuego = Juego.Instancia();
+            this.unJuego.ComenzarDesdeElPrincipio();
+            this.unJuego.SeleccionarMapa();
             this.unJuego.CargarMapa();
             this.unMapa = this.unJuego.Ambiente;
         }
@@ -30,21 +32,10 @@ namespace TestBombermanModel.TestJuego
         [TearDown]
         public void TearDown()
         {
-            this.unJuego.Recomenzar();
+            this.unJuego.ComenzarDesdeElPrincipio();
+            this.unJuego.SeleccionarMapa();
             this.unJuego.CargarMapa();
         }
-        //[TearDown]
-        //public void TearDown()
-        //{
-        //    System.Reflection.FieldInfo fi =
-        //        typeof(Juego).GetField("m_Instance",
-        //        System.Reflection.BindingFlags.Static |
-        //        System.Reflection.BindingFlags.NonPublic);
-
-        //    Assert.IsNotNull(fi);
-
-        //    fi.SetValue(null, null);
-        //}
 
         [Test]
         public void DosReferenciasAJuegoDebenSerElMismoObjeto()
@@ -57,7 +48,7 @@ namespace TestBombermanModel.TestJuego
         [Test]
         public void PerderVidaDescuentaUnaVidaAlJuegoActual()
         {
-            this.unJuego.Recomenzar();
+            this.unJuego.ComenzarDesdeElPrincipio();
             unJuego.PerderVida();
             Assert.AreEqual(2, unJuego.CantDeVidas);
         }
@@ -380,7 +371,6 @@ namespace TestBombermanModel.TestJuego
 
             Punto posicionBombita1 = new Punto(3, 0);
             int cantDependeTiempo = Juego.Instancia().DependientesDelTiempo.Count;
-            //BombaMolotov unaBomba = new BombaMolotov(posicionBombita1, 0);
             Bombita movil = new Bombita(posicionBombita1);
 
             Casilla casillaBomba1 = Juego.Instancia().Ambiente.ObtenerCasilla(posicionBombita1);
@@ -395,12 +385,6 @@ namespace TestBombermanModel.TestJuego
             Assert.AreEqual((cantDependeTiempo+1), Juego.Instancia().DependientesDelTiempo.Count);
         }
 
-        //[Test] 
-        //public void CuandoGeneroUnMapaNuevoLaCantidadDeEnemigosEs7()
-        //{
-        //    Assert.AreEqual(Juego.Instancia().CantidadEnemigosVivos(), 7);
-        //}
-
         [Test] 
         public void CuandoGeneroUnMapaNuevoYAgregoAUnEnemigoLaCantidadDeEnemigosAumentaAen1()
         {
@@ -410,7 +394,6 @@ namespace TestBombermanModel.TestJuego
 
             Cecilio unCecilio = new Cecilio(pCecilio);
 
-            //unMapa.AgregarPersonaje(unCecilio);
             this.unJuego.AgregarEnemigo(unCecilio);
 
             Assert.AreEqual(this.unJuego.CantidadEnemigosVivos(), enemigosVivos+1);
@@ -420,7 +403,6 @@ namespace TestBombermanModel.TestJuego
         [Test] 
         public void CuandoGeneroUnMapaNuevoYElimino1EnemigoConToleToleRestaUnEnemigoVivo()
         {
-            //Juego.Reiniciar();
             int cantEnemigos = this.unJuego.CantidadEnemigosVivos();
             Punto p = new Punto(2, 2);
             Personaje bombita = new Bombita(p);

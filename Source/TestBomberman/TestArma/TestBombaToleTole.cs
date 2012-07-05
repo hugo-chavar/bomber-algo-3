@@ -3,6 +3,7 @@ using BombermanModel.Mapa;
 using NUnit.Framework;
 using BombermanModel.Mapa.Casilla;
 using BombermanModel;
+using BombermanModel.Juego;
 
 namespace TestBombermanModel.TestArma
 {
@@ -10,11 +11,23 @@ namespace TestBombermanModel.TestArma
     class TestBombaToleTole
     {
         private Punto posicion;
+        private Juego unJuego;
 
         [SetUp]
         public void TestSetup()
         {
+            this.unJuego = Juego.Instancia();
+            this.unJuego.ComenzarDesdeElPrincipio();
+            this.unJuego.SeleccionarMapa();
+            this.unJuego.CargarMapa();
             posicion = new Punto(3, 4);
+        }
+
+
+        [TearDown]
+        public void TearDown()
+        {
+            Juego.Reiniciar();
         }
 
         [Test]
