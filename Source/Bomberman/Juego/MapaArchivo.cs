@@ -18,7 +18,6 @@ namespace BombermanModel.Juego
         private int dimHorizontal;
         private int dimVertical;
         private Juego elJuego = Juego.Instancia();
-        //private Tablero mapaGenerado;
 
 
         public void ExportarCasillas()
@@ -177,7 +176,6 @@ namespace BombermanModel.Juego
                                     //leo coordenadas x e y
                                     x = Convert.ToInt32(reader.GetAttribute("x"));
                                     y = Convert.ToInt32(reader.GetAttribute("y"));
-                                    //tableroNuevo.AgregarCasilla(casillaActual);
                                     if (reader.IsEmptyElement)
                                     {
                                         casillaActual = FabricaDeCasillas.FabricarPasillo(new Punto(x, y));

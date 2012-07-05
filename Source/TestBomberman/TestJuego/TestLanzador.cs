@@ -19,6 +19,8 @@ namespace TestBombermanModel.TestJuego
         public void TestSetup()
         {
             this.unJuego = Juego.Instancia();
+            this.unJuego.ComenzarDesdeElPrincipio();
+            this.unJuego.SeleccionarMapa();
             this.unJuego.CargarMapa();
         }
 
@@ -26,8 +28,6 @@ namespace TestBombermanModel.TestJuego
         public void TearDown()
         {
             Juego.Reiniciar();
-            this.unJuego.Recomenzar();
-            this.unJuego.CargarMapa();
         }
 
         [Test]

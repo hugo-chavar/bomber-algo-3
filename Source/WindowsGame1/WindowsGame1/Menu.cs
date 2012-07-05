@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using BombermanModel.Juego;
 
 namespace BombermanGame
 {
@@ -58,24 +59,23 @@ namespace BombermanGame
                 switch (seleccionado)
                 {
                     case 0:
-                        Game1.estadoDelJuego = "Reiniciar";
+                        Juego.Instancia().NuevoJuego();
                         break;
                     case 1:
-                        Game1.estadoDelJuego = "Salir";
+                        Juego.Instancia().SalirDelJuego();
                         break;
                     case 2:
-                        Game1.estadoDelJuego = "Jugar";
+                        Juego.Instancia().Jugar();
                         break;
                     case 3:
-                        Game1.estadoDelJuego = "Guardar";
+                        Juego.Instancia().Guardar();
                         break;
                     case 4:
-                        Game1.estadoDelJuego = "ContinuarGuardado";
+                        Juego.Instancia().ContinuarPartidaGuardada();
                         break;
 
                 }
             }
-
 
             prevMouse = mouse;
             prevKeyboard = keyboard;

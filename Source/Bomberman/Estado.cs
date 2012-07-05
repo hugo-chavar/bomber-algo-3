@@ -7,8 +7,15 @@ namespace BombermanModel
 {
     public enum Estado
     {
-        perdido,
-        ganado,
-        enJuego
+        Inicial,
+        Perdido,
+        Ganado,
+        EnJuego,
+        Reiniciar,
+        RecargarMapa,
+        GuardarPartida,
+        ContinuarPartidaGuardada,
+        Salir,
+        Pausa
     }
 }

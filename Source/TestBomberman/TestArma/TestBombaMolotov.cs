@@ -18,19 +18,18 @@ namespace TestBombermanModel.TestArma
         {
 
             this.unJuego = Juego.Instancia();
+            this.unJuego.ComenzarDesdeElPrincipio();
+            this.unJuego.SeleccionarMapa();
             this.unJuego.CargarMapa();
             this.unMapa = Juego.Instancia().Ambiente;
-            //this.unJuego.Ambiente = this.unMapa;
 
         }
 
-        //[TearDown]
-        //public void Restart()
-        //{
-        //    this.juego = null;
-        //    this.unMapa = null;
-        //    this.unaCasilla = null;
-        //}
+        [TearDown]
+        public void TearDown()
+        {
+            Juego.Reiniciar();
+        }
 
         [Test]
         public void BombaMolotovEstaExplotadaAlSerPlantadaDebeDevolverFalse()

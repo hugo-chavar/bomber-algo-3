@@ -23,8 +23,8 @@ namespace BombermanModel.Juego
         private Salida salida;
         private int nivel;
         private Estado estado;
-        private bool mapaVisible;
         private MapaArchivo guardador;
+        private string archivoMapaActual;
         
         //declaracion del Singleton
         private static Juego instanciaDeJuego;
@@ -47,13 +47,9 @@ namespace BombermanModel.Juego
         public Estado EstadoGeneral
         {
             get { return estado; }
+            set { this.estado = value; }
         }
 
-        public bool MapaVisible
-        {
-            get { return mapaVisible; }
-            set { this.mapaVisible = value; }
-        }
         public bool JuegoPausado
         {
             get { return juegoPausado; }
@@ -87,8 +83,7 @@ namespace BombermanModel.Juego
         //constructor
         private Juego()
         {
-            Recomenzar();
-            nivel = 1;
+            estado = Estado.Inicial;
         }
 
         public static Juego Reiniciar()
@@ -108,29 +103,82 @@ namespace BombermanModel.Juego
         }
 
 
-        public void Recomenzar()
+        public void ComenzarDesdeElPrincipio()
         {
             this.CantDeVidas = VIDAS;
+            this.nivel = 1;
+            RecomenzarNivel();
+        }
+
+        public void RecomenzarNivel()
+        {
             enemigosVivos = new List<Personaje.Personaje>();
             this.objetosContundentes = new List<IMovible>();
             this.dependientesDelTiempo = new List<IDependienteDelTiempo>();
             this.salida = new Salida();
-            
-            estado = Estado.enJuego;
-            mapaVisible = false;
         }
 
+        //Estados posibles del Juego
+        public void Jugar()
+        {
+            estado = Estado.EnJuego;
+        }
+
+        public void Pausar()
+        {
+            estado = Estado.Pausa;
+        }
+
+        public void NuevoJuego()
+        {
+            estado = Estado.Reiniciar;
+        }
+
+        public void SalirDelJuego()
+        {
+            estado = Estado.Salir;
+        }
+
+        public bool Salir()
+        {
+            return (estado == Estado.Salir);
+        }
+
+        public void ContinuarPartidaGuardada()
+        {
+            estado = Estado.ContinuarPartidaGuardada;
+        }
+
+        public void Guardar()
+        {
+            estado = Estado.GuardarPartida;
+        }
+        //Fin de Estados posibles del Juego
 
         public void GuardarPartida()
         {
             guardador.ExportarCasillas();
             guardador.GuardarEstadoAArchivo();
+            Jugar();
         }
-        
-        public void ContinuarPartidaGuardada()
+
+
+        public void SeleccionarMapa()
         {
-            this.guardador =  new MapaArchivo();
-            this.ambiente = guardador.ContinuarPartidaGuardada("mapaGuardado.xml");
+            if (estado == Estado.ContinuarPartidaGuardada)
+                this.archivoMapaActual = "mapaGuardado.xml";
+            else
+            {
+                this.archivoMapaActual = "Mapa" + nivel + ".xml";
+            }
+            estado = Estado.RecargarMapa;
+        }
+
+        public void CargarMapa()
+        {
+            RecomenzarNivel();
+            this.guardador = new MapaArchivo();
+            this.ambiente = guardador.ContinuarPartidaGuardada(archivoMapaActual);//("Mapa" + nivel + ".xml");
             this.nivel = ambiente.NroNivel;
         }
 
@@ -139,7 +187,7 @@ namespace BombermanModel.Juego
             this.CantDeVidas = (this.CantDeVidas-1);
             if (this.CantDeVidas < 1)
             {
-                estado = Estado.perdido;
+                estado = Estado.Perdido;
             }
             else
             {
@@ -151,7 +199,6 @@ namespace BombermanModel.Juego
         {
             protagonista = new Bombita(ambiente.PosicionInicial);
             ambiente.AgregarPersonaje(protagonista);
-           // mapaVisible = false;
         }
 
         public void AgregarEnemigo(Personaje.Personaje enem)
@@ -189,14 +236,13 @@ namespace BombermanModel.Juego
         private void AvanzarNivel()
         {
             nivel++;
-            mapaVisible = false;
             if (nivel <= ULTIMONIVEL)
             {
-                CargarMapa();
+                SeleccionarMapa();
             }
             else
             {
-                estado = Estado.ganado;
+                estado = Estado.Ganado;
             }
         }
 
@@ -251,12 +297,6 @@ namespace BombermanModel.Juego
         public void ActivarSalida()
         {
             this.salida.Activar();
-        }
-
-        public void CargarMapa()
-        {
-            this.guardador = new MapaArchivo();
-            this.ambiente = guardador.ContinuarPartidaGuardada("Mapa" + nivel + ".xml");
         }
 
       public Salida Salida 
