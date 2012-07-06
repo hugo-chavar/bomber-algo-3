@@ -128,9 +128,8 @@
     <Compile Include="BloqueLadrilloVista.cs" />
     <Compile Include="CecilioVista.cs" />
     <Compile Include="EnemigoVista.cs" />
-    <Compile Include="LopezReggaeAladoView.cs" />
-    <Compile Include="LopezReggaeAladoView2.cs" />
-    <Compile Include="LopezReggaeView.cs" />
+    <Compile Include="LopezReggaeAladoVista.cs" />
+    <Compile Include="LopezReggaeVista.cs" />
     <Compile Include="MapaVista.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="ObjetoVivo.cs" />

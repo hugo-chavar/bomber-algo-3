@@ -16,11 +16,11 @@ using System;
 
 namespace BombermanGame
 {
-    class LopezReggaeView : EnemigoVista
+    class LopezReggaeVista : EnemigoVista
     {
         private Vector2 puntoCentro;
 
-        public LopezReggaeView(Personaje pers)
+        public LopezReggaeVista(Personaje pers)
             : base(pers)
         {
             spriteName = "LopezReggae";

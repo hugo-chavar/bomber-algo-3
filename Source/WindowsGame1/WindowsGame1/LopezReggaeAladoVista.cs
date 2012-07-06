@@ -17,11 +17,11 @@ using BombermanModel.Mapa.Casilla;
 
 namespace BombermanGame
 {
-    class LopezReggaeAladoView : EnemigoVista
+    class LopezReggaeAladoVista : EnemigoVista
     {
         private Vector2 puntoCentro;
 
-        public LopezReggaeAladoView(Personaje pers)
+        public LopezReggaeAladoVista(Personaje pers)
             : base(pers)
         {
             spriteName = "LRA";

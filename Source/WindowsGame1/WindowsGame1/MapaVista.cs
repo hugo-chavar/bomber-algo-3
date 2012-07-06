@@ -190,11 +190,11 @@ namespace BombermanGame
                     enemigosDibujables.Add(unEnemigo);
                     break;
                 case Nombres.lopezReggae:
-                    unEnemigo = new LopezReggaeView(p);
+                    unEnemigo = new LopezReggaeVista(p);
                     enemigosDibujables.Add(unEnemigo);
                     break;
                 case Nombres.lopezReggaeAlado:
-                    unEnemigo = new LopezReggaeAladoView(p);
+                    unEnemigo = new LopezReggaeAladoVista(p);
                     enemigosDibujables.Add(unEnemigo);
                     break;
             }
