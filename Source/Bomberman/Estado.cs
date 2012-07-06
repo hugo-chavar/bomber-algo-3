@@ -17,6 +17,7 @@ namespace BombermanModel
         ContinuarPartidaGuardada,
         Salir,
         Pausa,
-        ConErrores
+        ConErrores,
+        Serializar
     }
 }

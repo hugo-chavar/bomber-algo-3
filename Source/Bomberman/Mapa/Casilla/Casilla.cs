@@ -18,6 +18,12 @@ namespace BombermanModel.Mapa.Casilla
         private Obstaculo estado;
         private Explosivo explosivo;
 
+        //contructor sin paramentros para propositos de serializacion
+        public Casilla()
+        {
+            
+        }
+
         public Casilla(Punto pos)
         {
             this.posicion = pos;

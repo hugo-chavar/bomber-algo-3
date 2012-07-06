@@ -12,6 +12,12 @@ namespace BombermanModel
             this.y = Y;
         }
 
+        //constructor sin parametros para permitir serializar la clase
+        public Punto()
+        {
+            this.x = 0;
+            this.y = 0;
+        }
         public int X
         {
             get { return (this.x);}

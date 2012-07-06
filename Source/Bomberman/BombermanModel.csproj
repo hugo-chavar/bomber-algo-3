@@ -8,7 +8,7 @@
     <ProjectGuid>{F0A3EDDB-4DCE-4E03-B7E4-B50FC421A8CC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Bomberman</RootNamespace>
+    <RootNamespace>BombermanModel</RootNamespace>
     <AssemblyName>Bomberman</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -71,6 +71,7 @@
     <Compile Include="Juego\Juego.cs" />
     <Compile Include="Juego\MapaArchivo.cs" />
     <Compile Include="Mapa\Casilla\FabricaDeCasillas.cs" />
+    <Compile Include="Mapa\SerializableDictionary.cs" />
     <Compile Include="Mapa\Tablero.cs" />
     <Compile Include="Nombres.cs" />
     <Compile Include="Personaje\Bombita.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Personaje\IMovible.cs" />
     <Compile Include="Personaje\LosLopezReggae.cs" />
     <Compile Include="Personaje\LosLopezReggaeAlado.cs" />
+    <Compile Include="Personaje\Movil.cs" />
     <Compile Include="Personaje\Personaje.cs" />
     <Compile Include="Personaje\Movimiento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using BombermanModel.Juego;
+using BombermanModel;
 
 namespace BombermanGame
 {
@@ -33,6 +34,7 @@ namespace BombermanGame
             labelList.Add("Continuar");
             labelList.Add("Guardar Partida");
             labelList.Add("Continuar Partida Guardada");
+            labelList.Add("Serializar");
         }
 
         public void LoadContent(ContentManager content)
@@ -74,6 +76,9 @@ namespace BombermanGame
                         break;
                     case 4:
                         Juego.Instancia().ContinuarPartidaGuardada();
+                        break;
+                    case 5:
+                        Juego.Instancia().EstadoGeneral= Estado.Serializar;
                         break;
 
                 }

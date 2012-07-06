@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
+using System.Collections;
+using System.Xml.Serialization;
 using BombermanModel;
 using BombermanModel.Arma;
 using BombermanModel.Personaje;
@@ -11,22 +14,34 @@ using BombermanModel.Mapa;
 
 namespace BombermanModel.Juego
 {
+    [XmlRootAttribute("Juego", Namespace = "algo3",IsNullable = false)]
     public class Juego
     {
+        [XmlElementAttribute(IsNullable = false)]
         private int cantDeVidas;
+        [XmlIgnoreAttribute]
         private Personaje.Personaje protagonista;
+        [XmlIgnoreAttribute]
         private Tablero ambiente;
 
         //declaracion del Singleton
+        [XmlIgnoreAttribute]
         private static Juego instanciaDeJuego;
-
+        [XmlIgnoreAttribute]
         private List<IMovible> objetosContundentes;
+        [XmlIgnoreAttribute]
         private List<Personaje.Personaje> enemigosVivos;
+        [XmlIgnoreAttribute]
         private List<IDependienteDelTiempo> dependientesDelTiempo;
+        [XmlIgnoreAttribute]
         private Salida salida;
+       // [XmlIgnoreAttribute]
         private int nivel;
+        [XmlIgnoreAttribute]
         private Estado estado;
+        [XmlIgnoreAttribute]
         private MapaArchivo guardador;
+       // [XmlIgnoreAttribute]
         private string archivoMapaActual;
         
        
@@ -34,43 +49,54 @@ namespace BombermanModel.Juego
         private const int VIDAS = 3;
         private const int ULTIMONIVEL = 4;
 
+        public void SerializarJuego()
+        {
+            XmlSerializer xSer = new XmlSerializer(typeof(Juego));
+            TextWriter writer = new StreamWriter("serial.xml");
+
+            // Serialize the object and close the TextWriter.
+            xSer.Serialize(writer, Instancia());
+            writer.Close();
+            estado = Estado.EnJuego;
+        }
+
         //propiedades
         public int CantDeVidas
         {
             get { return cantDeVidas; }
             set { this.cantDeVidas = value; }
         }
-
+        [XmlIgnoreAttribute]
         public Estado EstadoGeneral
         {
             get { return estado; }
             set { this.estado = value; }
         }
-
+        [XmlIgnoreAttribute]
         public Personaje.Personaje Protagonista
         {
             get { return protagonista; }
             set { this.protagonista = value; }
         }
-
+        //[XmlIgnoreAttribute]
         public Tablero Ambiente
         {
             get { return ambiente; }
             set { this.ambiente = value; }
         }
-
+        [XmlIgnoreAttribute]
         public List<IDependienteDelTiempo> DependientesDelTiempo
         {
             get { return this.dependientesDelTiempo; }
             set { this.dependientesDelTiempo = value; }
         }
-
+        [XmlIgnoreAttribute]
         public List<Personaje.Personaje> EnemigosVivos
         { 
             get { return this.enemigosVivos; }
             set { this.enemigosVivos = value; }
         }
-
+        
         //constructor
         private Juego()
         {

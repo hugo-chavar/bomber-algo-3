@@ -11,7 +11,7 @@ namespace BombermanModel.Mapa
 {
     public class Tablero
     {
-        private Dictionary<Punto, Casilla.Casilla> tablero = new Dictionary<Punto, Casilla.Casilla>();
+        private SerializableDictionary<Punto, Casilla.Casilla> tablero = new SerializableDictionary<Punto, Casilla.Casilla>();
         private int dimensionHorizontal;
         private int dimensionVertical;
         public const int ARRIBA = 8;
@@ -24,6 +24,23 @@ namespace BombermanModel.Mapa
         private Punto posicionInicial;
         private string stageName;
         private int nroNivel;
+
+        public Tablero()
+        {
+        }
+
+        public Tablero(int tamanioHorizontal, int tamanioVertical)
+        {
+            this.dimensionHorizontal = tamanioHorizontal;
+            this.dimensionVertical = tamanioVertical;
+        }
+
+        public SerializableDictionary<Punto, Casilla.Casilla> Mapa
+        {
+            get { return this.tablero; }
+            //Dejo como solo lectura para poder serialiar
+            set { this.tablero = value; }
+        }
 
         public int DimensionHorizontal
         {
@@ -74,15 +91,6 @@ namespace BombermanModel.Mapa
             set { this.posicionInicial = value; }
         }
 
-        public Tablero(int tamanioHorizontal, int tamanioVertical)
-        {
-            this.dimensionHorizontal = tamanioHorizontal;
-            this.dimensionVertical = tamanioVertical;
-        }
-
-        public Tablero()
-        {
-        }
 
         public void AgregarCasilla(Casilla.Casilla unaCasilla)
         {
