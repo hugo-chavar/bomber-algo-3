@@ -47,9 +47,9 @@ namespace BombermanGame
         public void setSpriteName()
         {
             if (explosivo.Nombre == Nombres.molotov)
-                spriteIndex = MapaVista.molotovSprite;
+                spriteIndex = MapaVista.Instancia().MolotovSprite;
             else if (explosivo.Nombre == Nombres.toleTole)
-                spriteIndex = MapaVista.toleToleSprite;
+                spriteIndex = MapaVista.Instancia().ToleToleSprite;
         }
 
         public override void Draw(SpriteBatch spriteBatch)

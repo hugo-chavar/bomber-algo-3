@@ -16,6 +16,7 @@ namespace BombermanModel
         GuardarPartida,
         ContinuarPartidaGuardada,
         Salir,
-        Pausa
+        Pausa,
+        ConErrores
     }
 }

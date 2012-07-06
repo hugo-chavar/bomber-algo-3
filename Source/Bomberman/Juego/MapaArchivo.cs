@@ -129,148 +129,157 @@ namespace BombermanModel.Juego
 
         public Tablero ContinuarPartidaGuardada(string pathName)
         {
-            Casilla casillaActual =null;
+            Casilla casillaActual = null;
             Punto posActual = null;
             Tablero tableroNuevo = new Tablero();
-
-            StreamReader lector = new StreamReader(pathName);
-            //Uso reflection a full
-            String xmlString = lector.ReadToEnd();
-
-            Type tipo;
-            int res;
-            XmlReaderSettings settings = new XmlReaderSettings();
-            settings.IgnoreWhitespace = true;
-
-            using (XmlReader reader = XmlReader.Create(new StringReader(xmlString), settings))
+            try
             {
-                //leo el inicio del mapa
-                while (reader.Read())
+
+                StreamReader lector = new StreamReader(pathName);
+                //Uso reflection a full
+                String xmlString = lector.ReadToEnd();
+
+                Type tipo;
+                int res;
+                XmlReaderSettings settings = new XmlReaderSettings();
+                settings.IgnoreWhitespace = true;
+
+                using (XmlReader reader = XmlReader.Create(new StringReader(xmlString), settings))
                 {
-                    switch (reader.NodeType)
+                    //leo el inicio del mapa
+                    while (reader.Read())
                     {
-                        case XmlNodeType.Element:
-                            //Es el tablero
-                            if (reader.Name == "Tablero")
-                            {
-                                tipo = Type.GetType("BombermanModel.Mapa." + reader.Name);
-                                tableroNuevo = Activator.CreateInstance(tipo) as Tablero;
-                                if (reader.HasAttributes) //deberia entrar, tiene 2 attr
+                        switch (reader.NodeType)
+                        {
+                            case XmlNodeType.Element:
+                                //Es el tablero
+                                if (reader.Name == "Tablero")
                                 {
-                                    tableroNuevo.DimensionHorizontal = Convert.ToInt32(reader.GetAttribute("ancho"));
-                                    tableroNuevo.DimensionVertical = Convert.ToInt32(reader.GetAttribute("alto"));
-                                    if (reader.AttributeCount > 2)
+                                    tipo = Type.GetType("BombermanModel.Mapa." + reader.Name);
+                                    tableroNuevo = Activator.CreateInstance(tipo) as Tablero;
+                                    if (reader.HasAttributes) //deberia entrar, tiene 2 attr
                                     {
-                                        tableroNuevo.NroNivel = Convert.ToInt32(reader.GetAttribute("nivel"));
-                                        tableroNuevo.StageName = reader.GetAttribute("mapa");
+                                        tableroNuevo.DimensionHorizontal = Convert.ToInt32(reader.GetAttribute("ancho"));
+                                        tableroNuevo.DimensionVertical = Convert.ToInt32(reader.GetAttribute("alto"));
+                                        if (reader.AttributeCount > 2)
+                                        {
+                                            tableroNuevo.NroNivel = Convert.ToInt32(reader.GetAttribute("nivel"));
+                                            tableroNuevo.StageName = reader.GetAttribute("mapa");
+                                        }
                                     }
-                                }
-                                elJuego.Ambiente = tableroNuevo;
-                            }
-                            else
-                            {
-                                //es una casilla
-                                if (reader.Name == "Casilla")
-                                {
-                                    int x, y;
-                                    //leo coordenadas x e y
-                                    x = Convert.ToInt32(reader.GetAttribute("x"));
-                                    y = Convert.ToInt32(reader.GetAttribute("y"));
-                                    if (reader.IsEmptyElement)
-                                    {
-                                        casillaActual = FabricaDeCasillas.FabricarPasillo(new Punto(x, y));
-                                        tableroNuevo.AgregarCasilla(casillaActual);
-                                    }
-                                    else
-                                    {
-                                        posActual = new Punto(x, y);
-                                    }
+                                    elJuego.Ambiente = tableroNuevo;
                                 }
                                 else
                                 {
-                                    
-                                    //es algun obstaculo
-                                    if ((reader.Name.Length >=6) && (reader.Name.Substring(0, 6).Equals("Bloque")))
+                                    //es una casilla
+                                    if (reader.Name == "Casilla")
                                     {
-                                        res = Convert.ToInt32(reader.GetAttribute("resistencia"));
-                                        switch (reader.Name)
-                                               {
-                                                    case "BloqueLadrillo":
-                                                       casillaActual = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(posActual);
-                                                        break;
-                                                    case "BloqueCemento":
-                                                        casillaActual = FabricaDeCasillas.FabricarCasillaConBloqueCemento(posActual);
-                                                       break;
-                                                    case "BloqueAcero":
-                                                       casillaActual = FabricaDeCasillas.FabricarCasillaConBloqueAcero(posActual);
-                                                        break;
-                                                }
-                                        casillaActual.Estado.UnidadesDeResistencia = res;
-                                        
-                                        tableroNuevo.AgregarCasilla(casillaActual);
-
-                                    }
-                                    else //es un personaje o un articulo
-                                    {
-                                        if (!tableroNuevo.ExisteCasillaEnPosicion(posActual))
+                                        int x, y;
+                                        //leo coordenadas x e y
+                                        x = Convert.ToInt32(reader.GetAttribute("x"));
+                                        y = Convert.ToInt32(reader.GetAttribute("y"));
+                                        if (reader.IsEmptyElement)
                                         {
-                                            casillaActual = FabricaDeCasillas.FabricarPasillo(posActual);
+                                            casillaActual = FabricaDeCasillas.FabricarPasillo(new Punto(x, y));
                                             tableroNuevo.AgregarCasilla(casillaActual);
                                         }
-                                        
-                                        if (reader.HasAttributes) //es personaje
+                                        else
                                         {
-                                            int vel = Convert.ToInt32(reader.GetAttribute("velocidad"));
+                                            posActual = new Punto(x, y);
+                                        }
+                                    }
+                                    else
+                                    {
+
+                                        //es algun obstaculo
+                                        if ((reader.Name.Length >= 6) && (reader.Name.Substring(0, 6).Equals("Bloque")))
+                                        {
                                             res = Convert.ToInt32(reader.GetAttribute("resistencia"));
-                                            Personaje.Personaje p = null;
-                                            if (reader.Name == "Bombita")
+                                            switch (reader.Name)
                                             {
-                                                
-                                                p = new Bombita(posActual);
-                                                if (reader.AttributeCount > 2) //si el lanzador se guardo en el mapa
-                                                {
-                                                    string lanz = reader.GetAttribute("lanzador");
-                                                    tipo = Type.GetType("BombermanModel.Arma." + lanz);
-                                                    Arma.Lanzador l = Activator.CreateInstance(tipo) as Arma.Lanzador;
-                                                    p.Lanzador = l;
-                                                }
-                                                casillaActual.Transitar(p);
-                                                elJuego.Protagonista = p;
-                                                tableroNuevo.PosicionInicial = posActual;
+                                                case "BloqueLadrillo":
+                                                    casillaActual = FabricaDeCasillas.FabricarCasillaConBloqueLadrillos(posActual);
+                                                    break;
+                                                case "BloqueCemento":
+                                                    casillaActual = FabricaDeCasillas.FabricarCasillaConBloqueCemento(posActual);
+                                                    break;
+                                                case "BloqueAcero":
+                                                    casillaActual = FabricaDeCasillas.FabricarCasillaConBloqueAcero(posActual);
+                                                    break;
                                             }
-                                            else //es algun enemigo
+                                            casillaActual.Estado.UnidadesDeResistencia = res;
+
+                                            tableroNuevo.AgregarCasilla(casillaActual);
+
+                                        }
+                                        else //es un personaje o un articulo
+                                        {
+                                            if (!tableroNuevo.ExisteCasillaEnPosicion(posActual))
                                             {
-                                                tipo = Type.GetType("BombermanModel.Personaje." + reader.Name);
-                                                p = Activator.CreateInstance(tipo, new object[] { posActual }) as Personaje.Personaje;
-                                                elJuego.AgregarEnemigo(p);
+                                                casillaActual = FabricaDeCasillas.FabricarPasillo(posActual);
+                                                tableroNuevo.AgregarCasilla(casillaActual);
                                             }
 
-                                           
-                                            p.Movimiento.Velocidad = vel;
-                                            p.UnidadesDeResistencia = res;
-                                        }
-                                        else //es articulo
-                                        {
-                                            tipo = Type.GetType("BombermanModel.Articulo." + reader.Name);
-                                            Articulo.Articulo a = Activator.CreateInstance(tipo) as Articulo.Articulo;
-                                            casillaActual.ArticuloContenido = a;
-                                            if (reader.Name == "Salida")
-                                                elJuego.Salida = (Articulo.Salida)a;
+                                            if (reader.HasAttributes) //es personaje
+                                            {
+                                                int vel = Convert.ToInt32(reader.GetAttribute("velocidad"));
+                                                res = Convert.ToInt32(reader.GetAttribute("resistencia"));
+                                                Personaje.Personaje p = null;
+                                                if (reader.Name == "Bombita")
+                                                {
+
+                                                    p = new Bombita(posActual);
+                                                    if (reader.AttributeCount > 2) //si el lanzador se guardo en el mapa
+                                                    {
+                                                        string lanz = reader.GetAttribute("lanzador");
+                                                        tipo = Type.GetType("BombermanModel.Arma." + lanz);
+                                                        Arma.Lanzador l = Activator.CreateInstance(tipo) as Arma.Lanzador;
+                                                        p.Lanzador = l;
+                                                    }
+                                                    casillaActual.Transitar(p);
+                                                    elJuego.Protagonista = p;
+                                                    tableroNuevo.PosicionInicial = posActual;
+                                                }
+                                                else //es algun enemigo
+                                                {
+                                                    tipo = Type.GetType("BombermanModel.Personaje." + reader.Name);
+                                                    p = Activator.CreateInstance(tipo, new object[] { posActual }) as Personaje.Personaje;
+                                                    elJuego.AgregarEnemigo(p);
+                                                }
+
+
+                                                p.Movimiento.Velocidad = vel;
+                                                p.UnidadesDeResistencia = res;
+                                            }
+                                            else //es articulo
+                                            {
+                                                tipo = Type.GetType("BombermanModel.Articulo." + reader.Name);
+                                                Articulo.Articulo a = Activator.CreateInstance(tipo) as Articulo.Articulo;
+                                                casillaActual.ArticuloContenido = a;
+                                                if (reader.Name == "Salida")
+                                                    elJuego.Salida = (Articulo.Salida)a;
+                                            }
                                         }
                                     }
                                 }
-                            }
-                            break;
-
-                           
+                                break;
+                        }
 
                     }
 
-                }
+                    return tableroNuevo;
 
-                return tableroNuevo;
-                
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                throw new BombermanModel.Excepciones.NoExisteMapaArchivoException("No pudo abrirse el archivo " + pathName);
+            }
+            catch (Exception)
+            {
+                throw new BombermanModel.Excepciones.FormatoMapaXMLInvalidoException("Archivo de mapa " + pathName+" tiene formato invalido" );
             }
         }
+
     }
 }

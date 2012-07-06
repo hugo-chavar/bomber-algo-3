@@ -61,7 +61,9 @@
     <Compile Include="Excepciones\AvanzarProyectilNoValidoException.cs" />
     <Compile Include="Excepciones\CasillaYaIngresadaException.cs" />
     <Compile Include="Excepciones\EstadoNuloException.cs" />
+    <Compile Include="Excepciones\FormatoMapaXMLInvalidoException.cs" />
     <Compile Include="Excepciones\NoExisteCasillaException.cs" />
+    <Compile Include="Excepciones\NoExisteMapaArchivoException.cs" />
     <Compile Include="Excepciones\NoPuedeAgregarMovilNuloException.cs" />
     <Compile Include="Excepciones\PosicionNulaException.cs" />
     <Compile Include="Excepciones\PuntoFueraDeRangoEnMapaException.cs" />

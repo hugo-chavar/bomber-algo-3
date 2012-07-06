@@ -17,6 +17,7 @@ namespace BombermanGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Juego elJuego = Juego.Instancia();
+        MapaVista mapaAVista = MapaVista.Instancia();
         public GamerServicesComponent gamerServices;
 
         private BombitaVista unaPersona = null;
@@ -30,6 +31,7 @@ namespace BombermanGame
         private Texture2D gameOverTexture;
         private Texture2D juegoGanadoTexture;
         private Menu unMenu;
+        private string mensajeLog;
 
         public static Rectangle screen;
         
@@ -83,7 +85,7 @@ namespace BombermanGame
                 case BombermanModel.Estado.EnJuego:
                     {
                         elJuego.AvanzarElTiempo();
-                        MapaVista.Actualizar();
+                        mapaAVista.Actualizar();
                         unaPersona.Update();
                         break;
                     }
@@ -96,9 +98,17 @@ namespace BombermanGame
                     }
                 case BombermanModel.Estado.RecargarMapa:
                     {
-                        elJuego.CargarMapa();
-                        PrepararMapa();
-                        elJuego.Jugar();
+                        try
+                        {
+                            elJuego.CargarMapa();
+                            PrepararMapa();
+                            elJuego.Jugar();
+                        }
+                        catch (Exception e)
+                        {
+                            elJuego.ModoErrores();
+                            mensajeLog = e.Message;
+                        }
                         break;
                     }
                 case BombermanModel.Estado.GuardarPartida:
@@ -124,12 +134,12 @@ namespace BombermanGame
         private void PrepararMapa()
         {
             mapa = new Rectangle(100, 75, 32 * elJuego.Ambiente.DimensionHorizontal, 32 * elJuego.Ambiente.DimensionVertical);
-            MapaVista.inicialize(elJuego.Ambiente);
-            MapaVista.CargarMapa();
-            MapaVista.CargarProyectiles();
-            MapaVista.CargarBombas();
-            
-            MapaVista.CargarContenido(this.Content);
+            mapaAVista.inicialize(elJuego.Ambiente);
+            mapaAVista.CargarMapa();
+            mapaAVista.CargarProyectiles();
+            mapaAVista.CargarBombas();
+
+            mapaAVista.CargarContenido(this.Content);
             unaPersona = new BombitaVista();
             unaPersona.LoadContent(this.Content);
         }
@@ -144,7 +154,7 @@ namespace BombermanGame
             {
                 case BombermanModel.Estado.EnJuego:
                     {
-                        MapaVista.DibujarMapa(spriteBatch);
+                        mapaAVista.DibujarMapa(spriteBatch);
                         unaPersona.Draw(spriteBatch);
                         break;
                     }
@@ -155,7 +165,7 @@ namespace BombermanGame
                     }
                 case BombermanModel.Estado.Pausa:
                     {
-                        MapaVista.DibujarMapa(spriteBatch);
+                        mapaAVista.DibujarMapa(spriteBatch);
                         unaPersona.Draw(spriteBatch);
                         spriteBatch.Draw(pausaTexture, screen, Color.White);
                         unMenu.Draw(spriteBatch);
@@ -163,16 +173,25 @@ namespace BombermanGame
                     }
                 case BombermanModel.Estado.Perdido:
                     {
-                        MapaVista.DibujarMapa(spriteBatch);
+                        mapaAVista.DibujarMapa(spriteBatch);
                         spriteBatch.Draw(gameOverTexture, screen, Color.White);
                         unMenu.Draw(spriteBatch);
                         break;
                     }
                 case BombermanModel.Estado.Ganado:
                     {
-                        MapaVista.DibujarMapa(spriteBatch);
+                        mapaAVista.DibujarMapa(spriteBatch);
                         spriteBatch.Draw(juegoGanadoTexture, screen, Color.White);
                         unMenu.Draw(spriteBatch);
+                        break;
+                    }
+                case BombermanModel.Estado.ConErrores:
+                    {
+                        unMenu.Draw(spriteBatch);
+                        spriteBatch.DrawString(Game1.fuente2, "Se ha producido el siguiente error: ", new Vector2(((Game1.screen.Width / 2)) - (Game1.fuente2.MeasureString("Se ha producido el siguiente error: ").X / 2),
+                    ((Game1.screen.Height / 6) - ((Game1.fuente2.LineSpacing ) / 2) )), Color.Red);
+                        spriteBatch.DrawString(Game1.fuente2, mensajeLog, new Vector2(((Game1.screen.Width / 2)) - (Game1.fuente2.MeasureString(mensajeLog).X / 2),
+                    ((Game1.screen.Height / 6) - ((Game1.fuente2.LineSpacing) / 2) + Game1.fuente2.LineSpacing )), Color.Red);
                         break;
                     }
 

@@ -23,7 +23,7 @@ namespace BombermanGame
             : base(pos)
         {
             explosivo = (Proyectil)bomba;
-            spriteIndex = MapaVista.proyectilSprite;
+            spriteIndex = MapaVista.Instancia().ProyectilSprite;
             rotation = rot;
             speed = 0.5f;
             vivo = true;
@@ -32,7 +32,7 @@ namespace BombermanGame
 
         public ProyectilVista()
         {
-            spriteIndex = MapaVista.proyectilSprite;
+            spriteIndex = MapaVista.Instancia().ProyectilSprite;
             speed = 0.5f;
             vivo = false;
         }
@@ -48,10 +48,7 @@ namespace BombermanGame
         {
             if (!vivo) return;
             Vector2 center = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
-
             spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), center, scale, SpriteEffects.None, 0);
-            //spriteBatch.DrawString(Game1.fuente, "En modelo ->Pos X: " + explosivo.Posicion.X + " Pos Y: " + explosivo.Posicion.Y, new Vector2(10, 10), Color.Yellow);
-            //spriteBatch.DrawString(Game1.fuente, "Mvido ->Pos X: " + movido.X + " Pos Y: " + movido.Y + " RealPos X: " + position.X + " Pos Y: " + position.Y, new Vector2(10, Game1.fuente.LineSpacing), Color.Yellow);
         }
 
         public override void Update()
