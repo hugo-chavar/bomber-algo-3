@@ -62,6 +62,9 @@ namespace BombermanModel.Juego
                 writer.WriteStartAttribute("nivel");
                 writer.WriteValue(Juego.Instancia().Ambiente.NroNivel);
                 writer.WriteEndAttribute();
+                writer.WriteStartAttribute("vidas");
+                writer.WriteValue(Juego.Instancia().CantDeVidas);
+                writer.WriteEndAttribute();
 
                 foreach (Casilla c in casillas)
                 {
@@ -161,10 +164,11 @@ namespace BombermanModel.Juego
                                     {
                                         tableroNuevo.DimensionHorizontal = Convert.ToInt32(reader.GetAttribute("ancho"));
                                         tableroNuevo.DimensionVertical = Convert.ToInt32(reader.GetAttribute("alto"));
-                                        if (reader.AttributeCount > 2)
+                                        tableroNuevo.NroNivel = Convert.ToInt32(reader.GetAttribute("nivel"));
+                                        tableroNuevo.StageName = reader.GetAttribute("mapa");
+                                        if (reader.AttributeCount > 4)
                                         {
-                                            tableroNuevo.NroNivel = Convert.ToInt32(reader.GetAttribute("nivel"));
-                                            tableroNuevo.StageName = reader.GetAttribute("mapa");
+                                            elJuego.CantDeVidas = Convert.ToInt32(reader.GetAttribute("vidas"));
                                         }
                                     }
                                     elJuego.Ambiente = tableroNuevo;
