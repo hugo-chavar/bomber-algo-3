@@ -347,7 +347,8 @@ namespace TestBombermanModel.TestMapa
             movil = new Bombita(this.pos);
             this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
             this.unaCasilla.Transitar(movil);
-            Assert.IsTrue(unMapa.PermitidoMoverHaciaArribaA(movil));
+            movil.Movimiento.Direccion = Tablero.ARRIBA;
+            Assert.IsTrue(unMapa.PermitidoAvanzar(movil));
         }
 
         [Test]
@@ -358,7 +359,9 @@ namespace TestBombermanModel.TestMapa
             movil = new Bombita(this.pos);
             this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
             this.unaCasilla.Transitar(movil);
-            Assert.IsTrue(unMapa.PermitidoMoverHaciaArribaA(movil));
+            //Assert.IsTrue(unMapa.PermitidoMoverHaciaArribaA(movil)); TODO: eliminar codigo comentado
+            movil.Movimiento.Direccion = Tablero.DERECHA;
+            Assert.IsTrue(unMapa.PermitidoAvanzar(movil));
         }
 
         [Test]
@@ -369,7 +372,9 @@ namespace TestBombermanModel.TestMapa
             movil = new Bombita(this.pos);
             this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
             this.unaCasilla.Transitar(movil);
-            Assert.IsTrue(unMapa.PermitidoMoverHaciaAbajoA(movil));
+            //Assert.IsTrue(unMapa.PermitidoMoverHaciaAbajoA(movil));
+            movil.Movimiento.Direccion = Tablero.ABAJO;
+            Assert.IsTrue(unMapa.PermitidoAvanzar(movil));
         }
 
         [Test]
@@ -380,7 +385,9 @@ namespace TestBombermanModel.TestMapa
             movil = new Bombita(this.pos);
             this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
             this.unaCasilla.Transitar(movil);
-            Assert.IsTrue(unMapa.PermitidoMoverHaciaIzquierdaA(movil));
+           // Assert.IsTrue(unMapa.PermitidoMoverHaciaIzquierdaA(movil));
+            movil.Movimiento.Direccion = Tablero.IZQUIERDA;
+            Assert.IsTrue(unMapa.PermitidoAvanzar(movil));
         }
 
         [Test]
@@ -391,7 +398,9 @@ namespace TestBombermanModel.TestMapa
 
             this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
             this.unaCasilla.Transitar(movil);
-            Assert.IsFalse(unMapa.PermitidoMoverHaciaAbajoA(movil));
+            movil.Movimiento.Direccion = Tablero.ABAJO;
+            Assert.IsFalse(unMapa.PermitidoAvanzar(movil));
+            //Assert.IsFalse(unMapa.PermitidoMoverHaciaAbajoA(movil));
         }
 
         [Test]
@@ -402,7 +411,9 @@ namespace TestBombermanModel.TestMapa
 
             this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
             this.unaCasilla.Transitar(movil);
-            Assert.IsFalse(unMapa.PermitidoMoverHaciaArribaA(movil));
+            movil.Movimiento.Direccion = Tablero.ARRIBA;
+            Assert.IsFalse(unMapa.PermitidoAvanzar(movil));
+            //Assert.IsFalse(unMapa.PermitidoMoverHaciaArribaA(movil));
         }
 
         [Test]
@@ -413,7 +424,9 @@ namespace TestBombermanModel.TestMapa
 
             this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
             this.unaCasilla.Transitar(movil);
-            Assert.IsFalse(unMapa.PermitidoMoverHaciaDerechaA(movil));
+            movil.Movimiento.Direccion = Tablero.DERECHA;
+            Assert.IsFalse(unMapa.PermitidoAvanzar(movil));
+            //Assert.IsFalse(unMapa.PermitidoMoverHaciaDerechaA(movil));
         }
 
         [Test]
@@ -424,7 +437,9 @@ namespace TestBombermanModel.TestMapa
 
             this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
             this.unaCasilla.Transitar(movil);
-            Assert.IsFalse(unMapa.PermitidoMoverHaciaIzquierdaA(movil));
+            movil.Movimiento.Direccion = Tablero.IZQUIERDA;
+            Assert.IsFalse(unMapa.PermitidoAvanzar(movil));
+            //Assert.IsFalse(unMapa.PermitidoMoverHaciaIzquierdaA(movil));
         }
 
         [Test]
@@ -436,7 +451,9 @@ namespace TestBombermanModel.TestMapa
 
             this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
             this.unaCasilla.Transitar(movil);
-            Assert.IsFalse(unMapa.PermitidoMoverHaciaAbajoA(movil));
+            movil.Movimiento.Direccion = Tablero.ABAJO;
+            Assert.IsFalse(unMapa.PermitidoAvanzar(movil));
+            //Assert.IsFalse(unMapa.PermitidoMoverHaciaAbajoA(movil));
         }
 
         [Test]
@@ -448,7 +465,9 @@ namespace TestBombermanModel.TestMapa
 
             this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
             this.unaCasilla.Transitar(movil);
-            Assert.IsFalse(unMapa.PermitidoMoverHaciaArribaA(movil));
+            movil.Movimiento.Direccion = Tablero.ARRIBA;
+            Assert.IsFalse(unMapa.PermitidoAvanzar(movil));
+            //Assert.IsFalse(unMapa.PermitidoMoverHaciaArribaA(movil));
         }
 
         [Test]
@@ -460,7 +479,9 @@ namespace TestBombermanModel.TestMapa
 
             this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
             this.unaCasilla.Transitar(movil);
-            Assert.IsFalse(unMapa.PermitidoMoverHaciaDerechaA(movil));
+            movil.Movimiento.Direccion = Tablero.DERECHA;
+            Assert.IsFalse(unMapa.PermitidoAvanzar(movil));
+            //Assert.IsFalse(unMapa.PermitidoMoverHaciaDerechaA(movil));
         }
 
         [Test]
@@ -472,7 +493,9 @@ namespace TestBombermanModel.TestMapa
 
             this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
             this.unaCasilla.Transitar(movil);
-            Assert.IsFalse(unMapa.PermitidoMoverHaciaIzquierdaA(movil));
+            movil.Movimiento.Direccion = Tablero.IZQUIERDA;
+            Assert.IsFalse(unMapa.PermitidoAvanzar(movil));
+            //Assert.IsFalse(unMapa.PermitidoMoverHaciaIzquierdaA(movil));
         }
 
         [Test]
@@ -484,7 +507,9 @@ namespace TestBombermanModel.TestMapa
 
             this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
             this.unaCasilla.Transitar(movil);
-            Assert.IsTrue(unMapa.PermitidoMoverHaciaAbajoA(movil));
+            movil.Movimiento.Direccion = Tablero.ABAJO;
+            Assert.IsTrue(unMapa.PermitidoAvanzar(movil));
+            //Assert.IsTrue(unMapa.PermitidoMoverHaciaAbajoA(movil));
         }
 
         [Test]
@@ -496,7 +521,9 @@ namespace TestBombermanModel.TestMapa
 
             this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
             this.unaCasilla.Transitar(movil);
-            Assert.IsTrue(unMapa.PermitidoMoverHaciaArribaA(movil));
+            movil.Movimiento.Direccion = Tablero.ARRIBA;
+            Assert.IsTrue(unMapa.PermitidoAvanzar(movil));
+            //Assert.IsTrue(unMapa.PermitidoMoverHaciaArribaA(movil));
         }
 
         [Test]
@@ -508,7 +535,9 @@ namespace TestBombermanModel.TestMapa
 
             this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
             this.unaCasilla.Transitar(movil);
-            Assert.IsTrue(unMapa.PermitidoMoverHaciaDerechaA(movil));
+            movil.Movimiento.Direccion = Tablero.DERECHA;
+            Assert.IsTrue(unMapa.PermitidoAvanzar(movil));
+            //Assert.IsTrue(unMapa.PermitidoMoverHaciaDerechaA(movil));
         }
 
         [Test]
@@ -520,7 +549,9 @@ namespace TestBombermanModel.TestMapa
 
             this.unaCasilla = unMapa.ObtenerCasilla(this.pos);
             this.unaCasilla.Transitar(movil);
-            Assert.IsTrue(unMapa.PermitidoMoverHaciaIzquierdaA(movil));
+            movil.Movimiento.Direccion = Tablero.IZQUIERDA;
+            Assert.IsTrue(unMapa.PermitidoAvanzar(movil));
+            //Assert.IsTrue(unMapa.PermitidoMoverHaciaIzquierdaA(movil));
         }
 
         /********************************* TESTEO DE ARTICULOS CON MAPA *********************************/

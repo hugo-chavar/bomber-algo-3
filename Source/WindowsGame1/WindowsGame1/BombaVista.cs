@@ -22,8 +22,6 @@ namespace BombermanGame
         public BombaVista(Vector2 pos, Explosivo bomba)
             : base(pos)
         {
-            //position.X = 64+ Game1.mapa.Location.X;
-            //position.Y = 0 + Game1.mapa.Location.Y;
 
             explosivo = bomba;
             setSpriteName();
@@ -35,13 +33,15 @@ namespace BombermanGame
             vivo = false;
         }
 
-        public Explosivo Explosivo { get { return this.explosivo; } set { this.explosivo = value; } }
+        public Explosivo Explosivo 
+        {
+            get { return this.explosivo; } 
+            set { this.explosivo = value; } 
+        }
 
         public override void LoadContent(ContentManager content)
         {
-            //position.X = 96 + Game1.mapa.Location.X;
-           // position.Y = Game1.mapa.Location.Y;
-            // spriteIndex = content.Load<Texture2D>("Sprites\\" + spriteName);
+            //Load Content de las bombas se realiza en Cargar Contenido de la clase MapaVista
         }
 
         public void setSpriteName()
@@ -66,11 +66,6 @@ namespace BombermanGame
             if (explosivo.EstaExplotado())
             {
                 vivo = false;
-
-
-                //PasilloView unPasillo = new PasilloView(position);
-               // MapaVista.EliminarDibujable(this);
-                //MapaVista.AgregarDibujable(unPasillo);
             }
 
         }

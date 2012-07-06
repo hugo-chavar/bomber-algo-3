@@ -72,10 +72,15 @@ namespace BombermanModel.Personaje
             }
         }
 
+        public Punto PosicionDestino()
+        {
+            return this.Posicion.PosicionHaciaUnaDireccion(this.Movimiento.Direccion);
+        }
+
         public void Mover()
         {
-            if (!(this.Destruido()))
-                Juego.Juego.Instancia().Ambiente.Mover(this);
+            if (!(this.Destruido()) && Juego.Juego.Instancia().Ambiente.PermitidoAvanzar(this))
+                Juego.Juego.Instancia().Ambiente.Avanzar(this);
         }
 
         public virtual bool AtraviesaObstaculos()

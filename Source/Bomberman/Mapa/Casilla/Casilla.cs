@@ -65,7 +65,6 @@ namespace BombermanModel.Mapa.Casilla
         public void Transitar(IMovible movil)
         {
             this.transitandoEnCasilla.Add(movil);
-            //movil.Posicion = this.Posicion; lo saco.. demasiada responsabilidad para la casilla
             if ((this.ArticuloContenido != null) && (!this.ArticuloContenido.EstaOculto) && (this.ArticuloContenido.EstaActivo))
             {
                 movil.ReaccionarConArticulo(this.ArticuloContenido);
@@ -115,7 +114,6 @@ namespace BombermanModel.Mapa.Casilla
 
         public void PlantarExplosivo(Explosivo unExplosivo)
         {
-            //Juego.Juego.Instancia().Ambiente.DependientesDelTiempo.Add(unExplosivo);
             this.explosivo=unExplosivo;
         }
 

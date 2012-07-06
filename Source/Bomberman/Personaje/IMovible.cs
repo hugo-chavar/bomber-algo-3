@@ -17,6 +17,8 @@ namespace BombermanModel.Personaje
             set;
         }
 
+        Punto PosicionDestino();
+
         Nombres Nombre
         {
             get;

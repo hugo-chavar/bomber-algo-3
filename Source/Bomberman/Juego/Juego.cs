@@ -14,7 +14,6 @@ namespace BombermanModel.Juego
     public class Juego
     {
         private int cantDeVidas;
-        private bool juegoPausado;
         private Personaje.Personaje protagonista;
         private Tablero ambiente;
         private List<IMovible> objetosContundentes;
@@ -39,21 +38,11 @@ namespace BombermanModel.Juego
             get { return cantDeVidas; }
             set { this.cantDeVidas = value; }
         }
-        public int Nivel
-        {
-            set { this.nivel = value; }
-        }
 
         public Estado EstadoGeneral
         {
             get { return estado; }
             set { this.estado = value; }
-        }
-
-        public bool JuegoPausado
-        {
-            get { return juegoPausado; }
-            set { this.juegoPausado = value; }
         }
 
         public Personaje.Personaje Protagonista
@@ -139,11 +128,6 @@ namespace BombermanModel.Juego
             estado = Estado.Salir;
         }
 
-        public bool Salir()
-        {
-            return (estado == Estado.Salir);
-        }
-
         public void ContinuarPartidaGuardada()
         {
             estado = Estado.ContinuarPartidaGuardada;
@@ -152,6 +136,16 @@ namespace BombermanModel.Juego
         public void Guardar()
         {
             estado = Estado.GuardarPartida;
+        }
+
+        public bool Salir()
+        {
+            return (estado == Estado.Salir);
+        }
+
+        public bool JuegoPausado()
+        {
+            return (estado == Estado.Pausa);
         }
         //Fin de Estados posibles del Juego
 
@@ -178,7 +172,7 @@ namespace BombermanModel.Juego
         {
             RecomenzarNivel();
             this.guardador = new MapaArchivo();
-            this.ambiente = guardador.ContinuarPartidaGuardada(archivoMapaActual);//("Mapa" + nivel + ".xml");
+            this.ambiente = guardador.ContinuarPartidaGuardada(archivoMapaActual);
             this.nivel = ambiente.NroNivel;
         }
 

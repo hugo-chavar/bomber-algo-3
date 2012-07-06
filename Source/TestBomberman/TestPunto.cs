@@ -121,7 +121,8 @@ namespace TestBomberman
         [Test]
         public void PosicionDerechaDevuelveUnaNuevaPosicionConCoordenadaXAumentadaEn1()
         {
-            Punto posicionDerecha = this.posicion.PosicionDerecha();
+            Punto p = new Punto(3, 4);
+            Punto posicionDerecha = p.PosicionDerecha();
 
             Assert.IsTrue(posicionDerecha.Equals(new Punto(4, 4)));
         }
