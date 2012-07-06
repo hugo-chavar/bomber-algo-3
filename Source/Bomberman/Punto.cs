@@ -1,4 +1,6 @@
-﻿namespace BombermanModel
+﻿using BombermanModel.Mapa;
+
+namespace BombermanModel
 {
     public class Punto
     {   private int x;
@@ -45,39 +47,72 @@
             return new Punto(this.X, this.Y);
         }
 
-        //si el delta es positivo, devuelve posicion que esta delta lugares hacia arriba
-        //si el delta es negativo, devuelve posicion que esta delta lugares hacia abajo
-        public Punto MoverPosicionesEnSentidoVertical(int delta)
+        public Punto TransformarDireccionEnPunto(int direccion)
         {
-            return new Punto(this.X, this.Y + delta);
+            int a, b;
+            switch (direccion)
+            {
+                case Tablero.ARRIBA:
+                    {
+                        a = 0;
+                        b = 1;
+                        break;
+                    }
+                case Tablero.ABAJO:
+                    {
+                        a = 0;
+                        b = -1;
+                        break;
+                    }
+                case Tablero.DERECHA:
+                    {
+                        a = 1;
+                        b = 0;
+                        break;
+                    }
+                case Tablero.IZQUIERDA:
+                    {
+                        a = -1;
+                        b = 0;
+                        break;
+                    }
+                default:
+                    {
+                        a = 0;
+                        b = 0;
+                        break;
+                    }
+            }
+            return (new Punto(a, b));
         }
 
-        //si el delta es positivo, devuelve posicion que esta delta lugares hacia la derecha
-        //si el delta es negativo, devuelve posicion que esta delta lugares hacia la izquierda
-        public Punto MoverPosicionesEnSentidoHorizontal(int delta)
-        {
-            return new Punto(this.X + delta, this.Y);
-        }
 
         public Punto PosicionSuperior()
         {
-            return this.MoverPosicionesEnSentidoVertical(1);
+            return this.PosicionHaciaUnaDireccion(Tablero.ARRIBA);
         }
 
         public Punto PosicionInferior()
         {
-            return this.MoverPosicionesEnSentidoVertical(-1);
+            return this.PosicionHaciaUnaDireccion(Tablero.ABAJO);
         }
 
         public Punto PosicionDerecha()
         {
-            return this.MoverPosicionesEnSentidoHorizontal(1);
+            return this.PosicionHaciaUnaDireccion(Tablero.DERECHA);
         }
 
         public Punto PosicionIzquierda()
         {
-            return this.MoverPosicionesEnSentidoHorizontal(-1);
+            return this.PosicionHaciaUnaDireccion(Tablero.IZQUIERDA);
         }
+
+        public Punto PosicionHaciaUnaDireccion(int direccion)
+        { 
+            Punto dirPto = TransformarDireccionEnPunto(direccion);
+            return (new Punto(this.X + dirPto.X, this.Y + dirPto.Y));
+        }
+
     }
 
 }

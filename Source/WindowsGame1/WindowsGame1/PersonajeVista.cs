@@ -86,83 +86,21 @@ namespace BombermanGame
             puntoCentro = position + new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
             Punto ptEnMapa = MapaVista.TransformarVector2EnPunto(puntoCentro);
            
-            Vector2 deltaPrevio = new Vector2(movido.X, movido.Y);
+            //Vector2 deltaPrevio = new Vector2(movido.X, movido.Y);//TODO: borrar codigo comentado
             movido += direccion * speed;
             
-            Juego.Instancia().Ambiente.ObtenerCasilla(unPersonaje.Posicion).Dejar(unPersonaje);
-            unPersonaje.Posicion = ptEnMapa;
-            Juego.Instancia().Ambiente.AgregarPersonaje(unPersonaje);
-
-            //considero que el personaje transita la casilla cuando ingreso un tercio de su cuerpo
-            //cuando pasa 2/3 de su cuerpo pasa a la posicion siguiente (hablando en terminos del modelo)
-            //if (((Math.Abs(deltaPrevio.X) < (spriteIndex.Width / 3)) && (Math.Abs(movido.X) >= (spriteIndex.Width / 3)) && (Math.Abs(movido.X) < 2*(spriteIndex.Width / 3)))
-            //    || ((Math.Abs(deltaPrevio.Y) < (spriteIndex.Height / 3)) && (Math.Abs(movido.Y) >= (spriteIndex.Height / 3)) && (Math.Abs(movido.Y) < 2*(spriteIndex.Height / 3))))
-            //{
-            //    Punto unPto = new Punto(unPersonaje.Posicion.X + (int)direccion.X, unPersonaje.Posicion.Y + (int)direccion.Y);
-            //    Punto puntoAnterior = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y);
-            //    Juego.Instancia().Ambiente.ObtenerCasilla(puntoAnterior).Dejar(unPersonaje);
-            //    Juego.Instancia().Ambiente.ObtenerCasilla(unPto).Transitar(unPersonaje);
-
-            //}
-
-            //if ((Math.Abs(deltaPrevio.X) >= (spriteIndex.Width / 2)) && (Math.Abs(movido.X) < (spriteIndex.Width / 2)))
-            //{
-            //    Punto unPto = new Punto(unPersonaje.Posicion.X + (int)direccion.X, unPersonaje.Posicion.Y + (int)direccion.Y);
-            //    Punto puntoAnterior = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y);
-            //    Juego.Instancia().Ambiente.ObtenerCasilla(puntoAnterior).Dejar(unPersonaje);
-            //    Juego.Instancia().Ambiente.Avanzar(unPersonaje);
-            //}
-
-
-            //if ((Math.Abs(deltaPrevio.Y) >= (spriteIndex.Height / 2)) && (Math.Abs(movido.Y) < (spriteIndex.Height / 2)))
-            //{
-            //    Punto unPto = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y + (int)direccion.Y);
-            //    Punto puntoAnterior = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y);
-            //    Juego.Instancia().Ambiente.ObtenerCasilla(puntoAnterior).Dejar(unPersonaje);
-            //    Juego.Instancia().Ambiente.Avanzar(unPersonaje);
-            //}
-
-            //if ((deltaPrevio.X >= (spriteIndex.Width / 3)) && (deltaPrevio.X < (spriteIndex.Width / 2)) && (movido.X >= (spriteIndex.Width / 2)))
-            //{
-            //    Punto unPto = new Punto(unPersonaje.Posicion.X + (int)direccion.X, unPersonaje.Posicion.Y + (int)direccion.Y);
-            //    Punto puntoAnterior = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y);
-            //    Juego.Instancia().Ambiente.ObtenerCasilla(puntoAnterior).Dejar(unPersonaje);
-            //    Juego.Instancia().Ambiente.Avanzar(unPersonaje);
-            //}
-
-            //if ((deltaPrevio.Y >= (spriteIndex.Height / 3)) && (deltaPrevio.Y < (spriteIndex.Height / 2)) && (movido.Y >= (spriteIndex.Height / 2)))
-            //{
-            //    Punto unPto = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y + (int)direccion.Y);
-            //    Punto puntoAnterior = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y);
-            //    Juego.Instancia().Ambiente.ObtenerCasilla(puntoAnterior).Dejar(unPersonaje);
-            //    Juego.Instancia().Ambiente.Avanzar(unPersonaje);
-            //}
-
-            //if ((Math.Abs(deltaPrevio.X) >= (spriteIndex.Width / 3)) && (Math.Abs(movido.X) < (spriteIndex.Width / 3)))
-            //{
-            //    Punto unPto = new Punto(unPersonaje.Posicion.X - (int)direccion.X, unPersonaje.Posicion.Y);
-
-            //    Juego.Instancia().Ambiente.ObtenerCasilla(unPto).Dejar(unPersonaje);
-            //}
-
-            //if ((Math.Abs(deltaPrevio.Y) >= (spriteIndex.Height / 3)) && (Math.Abs(movido.Y) < (spriteIndex.Height / 3)))
-            //{
-            //    Punto unPto = new Punto(unPersonaje.Posicion.X, unPersonaje.Posicion.Y - (int)direccion.Y);
-            //    Juego.Instancia().Ambiente.ObtenerCasilla(unPto).Dejar(unPersonaje);
-            //}
+            //Juego.Instancia().Ambiente.ObtenerCasilla(unPersonaje.Posicion).Dejar(unPersonaje);
+            if (!unPersonaje.Posicion.Equals(ptEnMapa))
+                unPersonaje.Mover();
+            //Juego.Instancia().Ambiente.AgregarPersonaje(unPersonaje);
 
             if (Math.Round(movido.X,1) >= spriteIndex.Width)
             {
-                //position.X += (movido.X - spriteIndex.Width);
                 movido.X = 0;
-                //position.X -= movido.X;
-                //movido.X = Vector2.Zero.X;
             }
 
             if (Math.Round(movido.X, 1) < 0)
             {
-               // float delta = 0 - movido.X;
-               // position.X += delta;
                 movido.X = spriteIndex.Width - speed; 
             }
 
@@ -240,10 +178,7 @@ namespace BombermanGame
         {
             if (!vivo) return;
             centro = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
-
             spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), centro, scale, SpriteEffects.None, 0);
-            //spriteBatch.DrawString(Game1.fuente, "En modelo ->Pos X: " + protagonista.Posicion.X + " Pos Y: " + protagonista.Posicion.Y, new Vector2(10, 10), Color.Yellow);
-            //spriteBatch.DrawString(Game1.fuente, "Mvido ->Pos X: " + movido.X + " Pos Y: " + movido.Y + " RealPos X: " + position.X + " Pos Y: " + position.Y, new Vector2(10, Game1.fuente.LineSpacing), Color.Yellow); 
         }
     }
 }

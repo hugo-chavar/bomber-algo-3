@@ -65,10 +65,12 @@ namespace BombermanGame
                         Juego.Instancia().SalirDelJuego();
                         break;
                     case 2:
-                        Juego.Instancia().Jugar();
+                        if (Juego.Instancia().JuegoPausado())
+                            Juego.Instancia().Jugar();
                         break;
                     case 3:
-                        Juego.Instancia().Guardar();
+                        if (Juego.Instancia().JuegoPausado())
+                            Juego.Instancia().Guardar();
                         break;
                     case 4:
                         Juego.Instancia().ContinuarPartidaGuardada();

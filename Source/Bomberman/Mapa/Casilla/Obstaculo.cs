@@ -53,7 +53,6 @@ namespace BombermanModel.Mapa.Casilla
 
         public virtual void DaniarConProyectil(int UnidadesDaniadas)
         {
-            //Deberia daniar a los personajes alli presentes 
             this.DaniarSiNoEstaDestruido(UnidadesDaniadas);
         }
 

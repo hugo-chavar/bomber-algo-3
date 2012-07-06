@@ -25,11 +25,8 @@ namespace BombermanGame
         public BloqueVista(Vector2 pos,Punto posMapa, Obstaculo unObstaculo)
             : base(pos)
         {
-            //position.X = 64+ Game1.mapa.Location.X;
-            //position.Y = 0 + Game1.mapa.Location.Y;
-            //spriteName = "ObsLadrillo";
-            posEnMapa = posMapa;// this.TransformarAPunto(pos);
-            obst = unObstaculo;//Juego.Instancia().Ambiente.ObtenerCasilla(punto).Estado;
+            posEnMapa = posMapa;
+            obst = unObstaculo;
             vivo = true;
         }
 
@@ -53,7 +50,6 @@ namespace BombermanGame
             Vector2 center = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
 
             spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), center, scale, SpriteEffects.None, 0);
-
 
         }
 

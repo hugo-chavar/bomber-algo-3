@@ -38,7 +38,9 @@ namespace BombermanModel.Arma
         {
             ultimoMovimiento = DateTime.Now;
             Punto posicionPrevia = this.Posicion.Clonar();
-            Juego.Juego.Instancia().Ambiente.Mover(this);
+            if (Juego.Juego.Instancia().Ambiente.PermitidoAvanzar(this))
+                Juego.Juego.Instancia().Ambiente.Avanzar(this);
+                //Juego.Juego.Instancia().Ambiente.Mover(this); //TODO: Primer cambio jodido
             this.alcance--;
             //llego a casilla donde impacta o choco contra los limites del mapa
             //estos son 2 de los 3 motivos por los cuales explota un proyectil
@@ -53,7 +55,7 @@ namespace BombermanModel.Arma
 
         public void ReaccionarConArticulo(Articulo.Articulo unArt)
         {
-            //los proyectiles no reaccionan
+            //los proyectiles no reaccionan al encontrarse con articulos
         }
                 
         public Proyectil(Punto unaPos)
@@ -83,6 +85,11 @@ namespace BombermanModel.Arma
         public bool EsDaniable()
         {
             return false;
+        }
+
+        public Punto PosicionDestino()
+        {
+            return this.Posicion.PosicionHaciaUnaDireccion(this.Movimiento.Direccion);
         }
 
         public bool AtraviesaObstaculos()
