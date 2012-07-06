@@ -24,8 +24,8 @@ namespace BombermanGame
         {
             explosivo = (Proyectil)bomba;
             spriteIndex = MapaVista.Instancia().ProyectilSprite;
-            rotation = rot;
-            speed = 0.5f;
+            rotacion = rot;
+            velocidad = 0.5f;
             vivo = true;
             
         }
@@ -33,7 +33,7 @@ namespace BombermanGame
         public ProyectilVista()
         {
             spriteIndex = MapaVista.Instancia().ProyectilSprite;
-            speed = 0.5f;
+            velocidad = 0.5f;
             vivo = false;
         }
 
@@ -48,7 +48,7 @@ namespace BombermanGame
         {
             if (!vivo) return;
             Vector2 center = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
-            spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), center, scale, SpriteEffects.None, 0);
+            spriteBatch.Draw(spriteIndex, posicion, null, Color.White, MathHelper.ToRadians(rotacion), center, escala, SpriteEffects.None, 0);
         }
 
         public override void Update()
@@ -61,8 +61,8 @@ namespace BombermanGame
             }
             else
             {
-                position.X = 32 * explosivo.Posicion.X + Game1.mapa.Location.X;
-                position.Y = 32 * explosivo.Posicion.Y + Game1.mapa.Location.Y;
+                posicion.X = 32 * explosivo.Posicion.X + Game1.mapa.Location.X;
+                posicion.Y = 32 * explosivo.Posicion.Y + Game1.mapa.Location.Y;
             }
         }
 

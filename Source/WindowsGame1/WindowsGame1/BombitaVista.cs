@@ -32,8 +32,8 @@ namespace BombermanGame
         {
             miContent = content;
             this.UnPersonaje = Juego.Instancia().Protagonista;
-            position.X = 32 * unPersonaje.Posicion.X + Game1.mapa.Location.X;
-            position.Y = 32 * unPersonaje.Posicion.Y + Game1.mapa.Location.Y;
+            posicion.X = 32 * unPersonaje.Posicion.X + Game1.mapa.Location.X;
+            posicion.Y = 32 * unPersonaje.Posicion.Y + Game1.mapa.Location.Y;
             spriteIndex = content.Load<Texture2D>("Sprites\\" + spriteName);
         }
 
@@ -52,7 +52,7 @@ namespace BombermanGame
             if (!this.Vivo) return;
 
             keyboard = Keyboard.GetState();
-            speed = unPersonaje.Movimiento.Velocidad;
+            velocidad = unPersonaje.Movimiento.Velocidad;
             if (keyboard.IsKeyDown(Keys.P))
             {
                 Juego.Instancia().Pausar();
@@ -120,7 +120,7 @@ namespace BombermanGame
 
             prevKey = keyboard;
          
-            rotation = point_direction(-direccion.Y, -direccion.X);
+            rotacion = point_direction(-direccion.Y, -direccion.X);
             
         }
      
@@ -129,7 +129,7 @@ namespace BombermanGame
             if (!this.Vivo) return;
             Vector2 center = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
   
-            spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), center, scale, SpriteEffects.None, 0);
+            spriteBatch.Draw(spriteIndex, posicion, null, Color.White, MathHelper.ToRadians(rotacion), center, escala, SpriteEffects.None, 0);
             spriteBatch.DrawString(Game1.fuente2, "Vidas: " + Juego.Instancia().CantDeVidas, new Vector2(10, 10), Color.Yellow);
             spriteBatch.DrawString(Game1.fuente2, "Nivel: " + Juego.Instancia().Ambiente.NroNivel, new Vector2(250, 10), Color.Black);
             spriteBatch.DrawString(Game1.fuente2, "Stage: " + Juego.Instancia().Ambiente.StageName, new Vector2(450, 10), Color.Black);

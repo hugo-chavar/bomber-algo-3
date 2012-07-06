@@ -29,7 +29,7 @@ namespace BombermanGame
         public ArticuloVista(Punto p, Articulo unArt, Vector2 pos)
         {
             articulo = unArt;
-            position = pos;
+            posicion = pos;
             vivo = true;
         }
 
@@ -55,7 +55,7 @@ namespace BombermanGame
         {
             if (!vivo) return;
             Vector2 center = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
-            spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), center, scale, SpriteEffects.None, 0);
+            spriteBatch.Draw(spriteIndex, posicion, null, Color.White, MathHelper.ToRadians(rotacion), center, escala, SpriteEffects.None, 0);
         }
 
         public override void Update()

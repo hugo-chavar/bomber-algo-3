@@ -30,8 +30,8 @@ namespace BombermanGame
                        
         public override void LoadContent(ContentManager content)
         {
-            position.X = 32 * unPersonaje.Posicion.X + Game1.mapa.Location.X;
-            position.Y = 32 * unPersonaje.Posicion.Y + Game1.mapa.Location.Y;
+            posicion.X = 32 * unPersonaje.Posicion.X + Game1.mapa.Location.X;
+            posicion.Y = 32 * unPersonaje.Posicion.Y + Game1.mapa.Location.Y;
             spriteIndex = content.Load<Texture2D>("Sprites\\" + spriteName);
             puntoCentro = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
             CargarObjetivos();
@@ -40,7 +40,7 @@ namespace BombermanGame
         public override void Draw(SpriteBatch spriteBatch)
         {
             if (!vivo) return;
-            spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), puntoCentro, scale, SpriteEffects.None, 0);
+            spriteBatch.Draw(spriteIndex, posicion, null, Color.White, MathHelper.ToRadians(rotacion), puntoCentro, escala, SpriteEffects.None, 0);
             //spriteBatch.DrawString(Game1.fuente, "En modelo ->Pos X: " + unPersonaje.Posicion.X + " Pos Y: " + unPersonaje.Posicion.Y, new Vector2(10, 10), Color.Yellow);
             //spriteBatch.DrawString(Game1.fuente, "Mvido ->Pos X: " + movido.X + " Pos Y: " + movido.Y + " RealPos X: " + position.X + " Pos Y: " + position.Y, new Vector2(10, Game1.fuente.LineSpacing), Color.Yellow); 
         }
