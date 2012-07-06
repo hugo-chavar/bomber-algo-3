@@ -34,8 +34,8 @@ namespace BombermanGame
             :base(MapaVista.Instancia().TransformarPuntoEnVector2(pers.Posicion))
         {
             unPersonaje = pers;
-            speed = unPersonaje.Movimiento.Velocidad;
-            position = MapaVista.Instancia().TransformarPuntoEnVector2(unPersonaje.Posicion);
+            velocidad = unPersonaje.Movimiento.Velocidad;
+            posicion = MapaVista.Instancia().TransformarPuntoEnVector2(unPersonaje.Posicion);
             movido = Vector2.Zero;
             unaBmb = null;
         }
@@ -81,13 +81,13 @@ namespace BombermanGame
             }
 
             corregirPosicion();
-            position += direccion * speed;
+            posicion += direccion * velocidad;
 
-            puntoCentro = position + new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
+            puntoCentro = posicion + new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
             Punto ptEnMapa = MapaVista.Instancia().TransformarVector2EnPunto(puntoCentro);
            
             //Vector2 deltaPrevio = new Vector2(movido.X, movido.Y);//TODO: borrar codigo comentado
-            movido += direccion * speed;
+            movido += direccion * velocidad;
             
             //Juego.Instancia().Ambiente.ObtenerCasilla(unPersonaje.Posicion).Dejar(unPersonaje);
             if (!unPersonaje.Posicion.Equals(ptEnMapa))
@@ -101,7 +101,7 @@ namespace BombermanGame
 
             if (Math.Round(movido.X, 1) < 0)
             {
-                movido.X = spriteIndex.Width - speed; 
+                movido.X = spriteIndex.Width - velocidad; 
             }
 
             if (Math.Round(movido.Y, 1) >= spriteIndex.Height)
@@ -111,7 +111,7 @@ namespace BombermanGame
 
             if (Math.Round(movido.Y, 1) < 0)
             {
-                movido.Y = spriteIndex.Height-speed; 
+                movido.Y = spriteIndex.Height-velocidad; 
             }
         }
 
@@ -124,7 +124,7 @@ namespace BombermanGame
                 unPersonaje.Movimiento.Direccion = DERECHA;
                 if (!Juego.Instancia().Ambiente.PermitidoAvanzar(unPersonaje))
                 {
-                    position.X -= movido.X;
+                    posicion.X -= movido.X;
                     movido.X = Vector2.Zero.X;
                 }
             }
@@ -133,25 +133,25 @@ namespace BombermanGame
                 unPersonaje.Movimiento.Direccion = IZQUIERDA;
                 if (!Juego.Instancia().Ambiente.PermitidoAvanzar(unPersonaje))
                 {
-                    position.X += (spriteIndex.Width - movido.X);
+                    posicion.X += (spriteIndex.Width - movido.X);
                     movido.X = Vector2.Zero.X;
                 }
             }
-            if (Math.Round(movido.Y, 1) > 0 && Math.Round(movido.Y, 1) <= (spriteIndex.Height - speed) / 2)
+            if (Math.Round(movido.Y, 1) > 0 && Math.Round(movido.Y, 1) <= (spriteIndex.Height - velocidad) / 2)
             {
                 unPersonaje.Movimiento.Direccion = ARRIBA;
                 if (!Juego.Instancia().Ambiente.PermitidoAvanzar(unPersonaje))
                 {
-                    position.Y -= movido.Y;
+                    posicion.Y -= movido.Y;
                     movido.Y = Vector2.Zero.Y;
                 }
             }
-            if ((Math.Round(movido.Y, 1) < spriteIndex.Height) && (Math.Round(movido.Y, 1) > (spriteIndex.Height - speed) / 2))
+            if ((Math.Round(movido.Y, 1) < spriteIndex.Height) && (Math.Round(movido.Y, 1) > (spriteIndex.Height - velocidad) / 2))
             {
                 unPersonaje.Movimiento.Direccion = ABAJO;
                 if (!Juego.Instancia().Ambiente.PermitidoAvanzar(unPersonaje))
                 {
-                    position.Y += (spriteIndex.Height - movido.Y);
+                    posicion.Y += (spriteIndex.Height - movido.Y);
                     movido.Y = Vector2.Zero.Y;
                 }
             }
@@ -169,8 +169,8 @@ namespace BombermanGame
 
         public override void LoadContent(ContentManager content)
         {
-            position.X = 32 * unPersonaje.Posicion.X + Game1.mapa.Location.X;
-            position.Y = 32 * unPersonaje.Posicion.Y + Game1.mapa.Location.Y;
+            posicion.X = 32 * unPersonaje.Posicion.X + Game1.mapa.Location.X;
+            posicion.Y = 32 * unPersonaje.Posicion.Y + Game1.mapa.Location.Y;
             spriteIndex = content.Load<Texture2D>("Sprites\\" + spriteName);
         }
 
@@ -178,7 +178,7 @@ namespace BombermanGame
         {
             if (!vivo) return;
             centro = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
-            spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), centro, scale, SpriteEffects.None, 0);
+            spriteBatch.Draw(spriteIndex, posicion, null, Color.White, MathHelper.ToRadians(rotacion), centro, escala, SpriteEffects.None, 0);
         }
     }
 }

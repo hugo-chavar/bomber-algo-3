@@ -18,7 +18,6 @@ namespace BombermanModel.Mapa
         public const int ABAJO = 2;
         public const int IZQUIERDA = 4;
         public const int DERECHA = 6;
-        public const int CANTIDADJUGADORES = 1;
         private bool nivelTerminado = false;
         private bool nivelGanado = false;
         private Punto posicionSalida;

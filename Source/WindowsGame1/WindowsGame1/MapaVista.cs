@@ -87,7 +87,7 @@ namespace BombermanGame
         }
 
 
-        public void inicialize(Tablero unMapa)
+        public void Inicializar(Tablero unMapa)
         {
             mapaInterno = unMapa;
             objetosDibujables = new List<ObjetoVivo>();

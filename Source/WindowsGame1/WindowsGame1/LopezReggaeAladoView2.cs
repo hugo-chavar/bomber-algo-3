@@ -31,8 +31,8 @@ namespace BombermanGame
 
         public override void LoadContent(ContentManager content)
         {
-            position.X = 32*unPersonaje.Posicion.X + Game1.mapa.Location.X;
-            position.Y = 32*unPersonaje.Posicion.Y + Game1.mapa.Location.Y;
+            posicion.X = 32*unPersonaje.Posicion.X + Game1.mapa.Location.X;
+            posicion.Y = 32*unPersonaje.Posicion.Y + Game1.mapa.Location.Y;
             spriteIndex = content.Load<Texture2D>("Sprites\\" + spriteName);
             puntoCentro = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
             CargarObjetivos();
@@ -41,7 +41,7 @@ namespace BombermanGame
         public override void Draw(SpriteBatch spriteBatch)
         {
             if (!vivo) return;
-            spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), puntoCentro, scale, SpriteEffects.None, 0);
+            spriteBatch.Draw(spriteIndex, posicion, null, Color.White, MathHelper.ToRadians(rotacion), puntoCentro, escala, SpriteEffects.None, 0);
             //spriteBatch.DrawString(Game1.fuente, "En modelo ->Pos X: " + unLRA.Posicion.X + " Pos Y: " + unLRA.Posicion.Y, new Vector2(10, 10), Color.Yellow);
         }
 
@@ -53,14 +53,14 @@ namespace BombermanGame
             {
                 this.Vivo = false;
             }
-            rotation = point_direction(position.X, position.Y, destinosObjetivo[destinoActual].X * 32 + Game1.mapa.Location.X, destinosObjetivo[destinoActual].Y * 32 + Game1.mapa.Location.Y);
+            rotacion = point_direction(posicion.X, posicion.Y, destinosObjetivo[destinoActual].X * 32 + Game1.mapa.Location.X, destinosObjetivo[destinoActual].Y * 32 + Game1.mapa.Location.Y);
             
             Random random = new Random();
             int vaADisparar = random.Next(0, 1000); 
             if ((vaADisparar == 0))
                 Disparar();
 
-            PushTo(speed, rotation);
+            PushTo(velocidad, rotacion);
             RecalcularPosicion();
             ActualizarPosicion();
 
@@ -69,8 +69,8 @@ namespace BombermanGame
 
         private void RecalcularPosicion()
         {
-            int x = (int)Math.Round((position.X - Game1.mapa.Location.X) / 32, 0);
-            int y = (int)Math.Round((position.Y - Game1.mapa.Location.Y) / 32, 0);
+            int x = (int)Math.Round((posicion.X - Game1.mapa.Location.X) / 32, 0);
+            int y = (int)Math.Round((posicion.Y - Game1.mapa.Location.Y) / 32, 0);
 
             this.unPersonaje.Posicion.X = x;
             this.unPersonaje.Posicion.Y = y;
@@ -95,8 +95,8 @@ namespace BombermanGame
         {
             float newX = (float)Math.Cos(MathHelper.ToRadians(dir));
             float newY = (float)Math.Sin(MathHelper.ToRadians(dir));
-            position.X += pix * (float)newX;
-            position.Y += pix * (float)newY; 
+            posicion.X += pix * (float)newX;
+            posicion.Y += pix * (float)newY; 
         }
 
                   

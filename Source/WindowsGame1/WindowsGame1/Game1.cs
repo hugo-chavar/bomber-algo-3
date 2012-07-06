@@ -76,7 +76,7 @@ namespace BombermanGame
         {
             
             // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || elJuego.Salir())
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || elJuego.Saliendo())
                 this.Exit();
 
 
@@ -134,7 +134,7 @@ namespace BombermanGame
         private void PrepararMapa()
         {
             mapa = new Rectangle(100, 75, 32 * elJuego.Ambiente.DimensionHorizontal, 32 * elJuego.Ambiente.DimensionVertical);
-            mapaAVista.inicialize(elJuego.Ambiente);
+            mapaAVista.Inicializar(elJuego.Ambiente);
             mapaAVista.CargarMapa();
             mapaAVista.CargarProyectiles();
             mapaAVista.CargarBombas();

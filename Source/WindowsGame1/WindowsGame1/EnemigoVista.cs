@@ -80,7 +80,7 @@ namespace BombermanGame
                         recalcularDireccion();
                 }
             }
-            rotation = point_direction(-direccion.Y, -direccion.X);
+            rotacion = point_direction(-direccion.Y, -direccion.X);
             Advance();
 
         }
@@ -139,8 +139,8 @@ namespace BombermanGame
 
         public virtual void ActualizarPosicion()
         {
-            int x = (int)Math.Round((position.X - Game1.mapa.Location.X) / 32,0);
-            int y = (int)Math.Round((position.Y - Game1.mapa.Location.Y) / 32, 0);
+            int x = (int)Math.Round((posicion.X - Game1.mapa.Location.X) / 32,0);
+            int y = (int)Math.Round((posicion.Y - Game1.mapa.Location.Y) / 32, 0);
 
             if ((destinosObjetivo[destinoActual].X == x) && (destinosObjetivo[destinoActual].Y == y))
                 ProximoDestino();

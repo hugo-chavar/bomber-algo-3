@@ -16,6 +16,10 @@ namespace BombermanModel.Juego
         private int cantDeVidas;
         private Personaje.Personaje protagonista;
         private Tablero ambiente;
+
+        //declaracion del Singleton
+        private static Juego instanciaDeJuego;
+
         private List<IMovible> objetosContundentes;
         private List<Personaje.Personaje> enemigosVivos;
         private List<IDependienteDelTiempo> dependientesDelTiempo;
@@ -25,9 +29,7 @@ namespace BombermanModel.Juego
         private MapaArchivo guardador;
         private string archivoMapaActual;
         
-        //declaracion del Singleton
-        private static Juego instanciaDeJuego;
-        
+       
         //Constantes
         private const int VIDAS = 3;
         private const int ULTIMONIVEL = 4;
@@ -143,7 +145,7 @@ namespace BombermanModel.Juego
             estado = Estado.ConErrores;
         }
 
-        public bool Salir()
+        public bool Saliendo()
         {
             return (estado == Estado.Salir);
         }
