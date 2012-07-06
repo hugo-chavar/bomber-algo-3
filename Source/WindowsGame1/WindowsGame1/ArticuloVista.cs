@@ -36,13 +36,13 @@ namespace BombermanGame
         public void CargarSprite()
         {
             if (articulo.Nombre== Nombres.timer)
-                spriteIndex = MapaVista.artTimerView;
+                spriteIndex = MapaVista.Instancia().ArtTimerSprite;
             else if (articulo.Nombre == Nombres.arToleTole)
-                spriteIndex = MapaVista.artToleTole;
+                spriteIndex = MapaVista.Instancia().ArtToleToleSprite;
             else if (articulo.Nombre == Nombres.chala)
-                spriteIndex = MapaVista.artChala;
+                spriteIndex = MapaVista.Instancia().ArtChalaSprite;
             else if (articulo.Nombre == Nombres.salida)
-                spriteIndex = MapaVista.salida;
+                spriteIndex = MapaVista.Instancia().SalidaSprite;
 
         }
 

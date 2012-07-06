@@ -138,6 +138,11 @@ namespace BombermanModel.Juego
             estado = Estado.GuardarPartida;
         }
 
+        public void ModoErrores()
+        {
+            estado = Estado.ConErrores;
+        }
+
         public bool Salir()
         {
             return (estado == Estado.Salir);

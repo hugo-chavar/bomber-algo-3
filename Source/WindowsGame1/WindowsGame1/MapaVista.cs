@@ -18,41 +18,91 @@ using BombermanModel.Articulo;
 
 namespace BombermanGame
 {
-    public static class MapaVista
+    public class MapaVista 
     {
-        static Tablero mapaInterno;
-        static List<ObjetoVivo> pasillosDibujables;
-        static List<ObjetoVivo> objetosDibujables;
-        static List<ObjetoVivo> enemigosDibujables;
+        //instancia Singleton
+        private static MapaVista instanciaMapaVista;
+        
+        private Tablero mapaInterno; 
+        private List<ObjetoVivo> pasillosDibujables;
+        private List<ObjetoVivo> objetosDibujables;
+        private List<ObjetoVivo> enemigosDibujables;
 
-        public static Texture2D molotovSprite;
-        public static Texture2D toleToleSprite;
-        public static Texture2D proyectilSprite;
-        public static Texture2D pasilloView;
-        public static Texture2D artTimerView;
-        public static Texture2D artToleTole;
-        public static Texture2D artChala;
-        public static Texture2D salida;
+        private Texture2D molotovSprite; 
+        private Texture2D toleToleSprite;
+        private Texture2D proyectilSprite;
+        private Texture2D artTimerSprite;
+        private Texture2D artToleToleSprite;
+        private Texture2D artChalaSprite;
+        private Texture2D salidaSprite;
 
-
-        public static void inicialize(Tablero unMapa)
+        public Texture2D MolotovSprite
         {
-            mapaInterno = unMapa;
-            Resetear();
+            get { return this.molotovSprite; }
         }
 
-        private static void Resetear()
+        public Texture2D ToleToleSprite
         {
+            get { return this.toleToleSprite; }
+        }
+
+        public Texture2D ProyectilSprite
+        {
+            get { return this.proyectilSprite; }
+        }
+
+        public Texture2D ArtTimerSprite
+        {
+            get { return this.artTimerSprite; }
+        }
+
+        public Texture2D ArtToleToleSprite
+        {
+            get { return this.artToleToleSprite; }
+        }
+
+        public Texture2D ArtChalaSprite
+        {
+            get { return this.artChalaSprite; }
+        }
+
+        public Texture2D SalidaSprite
+        {
+            get { return this.salidaSprite; }
+        }
+
+
+        private MapaVista()
+        {
+           
+        }
+
+        public static MapaVista Instancia()
+        {
+           if (instanciaMapaVista == null)
+            {
+                instanciaMapaVista = new MapaVista();
+            }
+            return instanciaMapaVista;
+        }
+
+
+        public void inicialize(Tablero unMapa)
+        {
+            mapaInterno = unMapa;
             objetosDibujables = new List<ObjetoVivo>();
             enemigosDibujables = new List<ObjetoVivo>();
             pasillosDibujables = new List<ObjetoVivo>();
+            
         }
-        public static List<ObjetoVivo> ObjetosDibujables
+
+
+        public List<ObjetoVivo> ObjetosDibujables
         {
             get { return objetosDibujables;}
         }
 
-        public static void CargarProyectiles()
+        public void CargarProyectiles()
         {
             for (int i = 0; i < 10; i++)
             {
@@ -60,7 +110,7 @@ namespace BombermanGame
             }
         }
 
-        public static void CargarBombas()
+        public void CargarBombas() 
         {
             for (int i = 0; i < 25; i++)
             {
@@ -68,14 +118,14 @@ namespace BombermanGame
             }
         }
 
-        public static void AgregarDibujable(ObjetoVivo unDibujable)
+        public void AgregarDibujable(ObjetoVivo unDibujable) 
         {
          
                 objetosDibujables.Add(unDibujable);
 
         }
 
-        public static ObjetoVivo ObtenerObjetoContundente(ObjetoVivo v)
+        public ObjetoVivo ObtenerObjetoContundente(ObjetoVivo v) 
         {
             foreach (ObjetoVivo o in objetosDibujables)
             {
@@ -87,7 +137,7 @@ namespace BombermanGame
             return null;
         }
 
-        public static void DibujarMapa(SpriteBatch sprite)
+        public void DibujarMapa(SpriteBatch sprite)
         {
             foreach (ObjetoVivo s in pasillosDibujables)
             {
@@ -103,7 +153,7 @@ namespace BombermanGame
                     s.Draw(sprite);
         }
 
-        public static void CargarMapa()
+        public void CargarMapa()
         {
             // recorro el tablero entero
             for (int vertical = 0; vertical < mapaInterno.DimensionVertical; vertical++)
@@ -129,7 +179,7 @@ namespace BombermanGame
 
         }
 
-        private static void AgregarEnemigo(Personaje p)
+        private void AgregarEnemigo(Personaje p)
         {
             Vector2 unVector = TransformarPuntoEnVector2(p.Posicion);
             EnemigoVista unEnemigo;
@@ -152,7 +202,7 @@ namespace BombermanGame
            
         }
 
-        private static void AgregarCasillero(Casilla unCasillero) 
+        private void AgregarCasillero(Casilla unCasillero)
         {
 
             Obstaculo unObstaculo = unCasillero.Estado;
@@ -184,7 +234,7 @@ namespace BombermanGame
             }
         }
 
-        public static Vector2 TransformarPuntoEnVector2(Punto unPunto)
+        public Vector2 TransformarPuntoEnVector2(Punto unPunto)
         {
             Vector2 unVector;
             unVector.X = 32 * (unPunto.X) + Game1.mapa.Location.X;
@@ -193,7 +243,7 @@ namespace BombermanGame
             return unVector;
         }
 
-        public static Punto TransformarVector2EnPunto(Vector2 unv2)
+        public Punto TransformarVector2EnPunto(Vector2 unv2)
         {
             int a = (int)((unv2.X - Game1.mapa.Location.X) / 32);
             int b = (int)((unv2.Y - Game1.mapa.Location.Y) / 32);
@@ -202,17 +252,16 @@ namespace BombermanGame
             return unPunto;
         }
 
-        public static void CargarContenido(ContentManager content)
+        public void CargarContenido(ContentManager content)
         {
             // Carga de contenidos de objetos que se dibujan en ejecucion
             molotovSprite = content.Load<Texture2D>("Sprites\\" + "BmbMolotov");
             toleToleSprite = content.Load<Texture2D>("Sprites\\" + "BmbTole");
             proyectilSprite = content.Load<Texture2D>("Sprites\\" + "Proyectil");
-            pasilloView = content.Load<Texture2D>("Sprites\\" + "ObsPasillo");
-            artTimerView = content.Load<Texture2D>("Sprites\\" + "NewTimer");
-            artToleTole = content.Load<Texture2D>("Sprites\\" + "ArtToleTole");
-            artChala = content.Load<Texture2D>("Sprites\\" + "ArtChala");
-            salida = content.Load<Texture2D>("Sprites\\" + "Salida");
+            artTimerSprite = content.Load<Texture2D>("Sprites\\" + "NewTimer");
+            artToleToleSprite = content.Load<Texture2D>("Sprites\\" + "ArtToleTole");
+            artChalaSprite = content.Load<Texture2D>("Sprites\\" + "ArtChala");
+            salidaSprite = content.Load<Texture2D>("Sprites\\" + "Salida");
 
             // Carga de contendios de objetos que provienen del mapa
             foreach (ObjetoVivo s in pasillosDibujables)
@@ -231,7 +280,7 @@ namespace BombermanGame
 
 
         }
-        public static void Actualizar()
+        public void Actualizar()
         {
             List<ObjetoVivo> objetosActualizablesAux = new List<ObjetoVivo>();
             for (int i = 0; i < objetosDibujables.Count; i++)

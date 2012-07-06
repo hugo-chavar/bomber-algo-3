@@ -39,9 +39,7 @@ namespace BombermanGame
         {
             if (!vivo) return;
             spriteBatch.Draw(spriteIndex, position, null, Color.White, MathHelper.ToRadians(rotation), puntoCentro, scale, SpriteEffects.None, 0);
-            //spriteBatch.DrawString(Game1.fuente, "En modelo ->Pos X: " + unPersonaje.Posicion.X + " Pos Y: " + unPersonaje.Posicion.Y, new Vector2(10, 10), Color.Yellow);
-            //spriteBatch.DrawString(Game1.fuente, "Mvido ->Pos X: " + movido.X + " Pos Y: " + movido.Y + " RealPos X: " + position.X + " Pos Y: " + position.Y, new Vector2(10, Game1.fuente.LineSpacing), Color.Yellow);
-        }
+         }
 
 
 
@@ -50,23 +48,12 @@ namespace BombermanGame
             Proyectil bomba = (Proyectil)unPersonaje.LanzarExplosivo();
             if (bomba != null)
             {
-                ProyectilVista unProy = (ProyectilVista)MapaVista.ObtenerObjetoContundente(new ProyectilVista());
+                ProyectilVista unProy = (ProyectilVista)MapaVista.Instancia().ObtenerObjetoContundente(new ProyectilVista());
 
                 unProy.Explosivo = bomba;
                 unProy.Rotacion = rotation;
                 unProy.Posicion = position;
                 unProy.Vivo = true;
-                //foreach (ObjetoVivo o in MapaVista.ObjetosDibujables)
-                //{
-                //    if ((o.GetType() == typeof (ProyectilView)) && (!o.Vivo))
-                //    {
-                //        o.Rotacion = rotation;
-                //        o.Posicion = position;
-                //        ((ProyectilView)o).Explosivo = bomba;
-                //        o.Vivo = true;
-                //        return;
-                //    }
-                //}
             }
             
         }
@@ -91,8 +78,6 @@ namespace BombermanGame
             {
                 this.Vivo = false;
             }
-            //si el chabon no esta vivo.. no hago nada
-            if (!vivo) return;
             Random random = new Random();
             int vaADisparar = random.Next(0,100); // tiene un 1% de posibilidades de disparar
             if (TieneEspacioParaDisparar() && (vaADisparar == 0))

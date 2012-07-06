@@ -26,12 +26,6 @@ namespace BombermanModel.Mapa
         private string stageName;
         private int nroNivel;
 
-        //public Dictionary<Punto, Casilla.Casilla> Ambiente
-        //{
-        //    get { return this.tablero; }
-        //    set { this.tablero = value; }
-        //}
-
         public int DimensionHorizontal
         {
             get { return this.dimensionHorizontal; }

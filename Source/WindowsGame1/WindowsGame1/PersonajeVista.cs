@@ -31,11 +31,11 @@ namespace BombermanGame
         Vector2 puntoCentro;
 
         public PersonajeVista(Personaje pers)
-            :base(MapaVista.TransformarPuntoEnVector2(pers.Posicion))
+            :base(MapaVista.Instancia().TransformarPuntoEnVector2(pers.Posicion))
         {
             unPersonaje = pers;
             speed = unPersonaje.Movimiento.Velocidad;
-            position = MapaVista.TransformarPuntoEnVector2(unPersonaje.Posicion);
+            position = MapaVista.Instancia().TransformarPuntoEnVector2(unPersonaje.Posicion);
             movido = Vector2.Zero;
             unaBmb = null;
         }
@@ -46,7 +46,7 @@ namespace BombermanGame
 
         public virtual void Disparar()
         {
-            unaBmb = (BombaVista)MapaVista.ObtenerObjetoContundente(new BombaVista());
+            unaBmb = (BombaVista)MapaVista.Instancia().ObtenerObjetoContundente(new BombaVista());
             if (unaBmb != null)
             {
                 Explosivo bomba = unPersonaje.LanzarExplosivo();
@@ -54,7 +54,7 @@ namespace BombermanGame
                 {
                     unaBmb.Explosivo = bomba;
                     unaBmb.setSpriteName();
-                    unaBmb.Posicion = MapaVista.TransformarPuntoEnVector2(unPersonaje.Posicion);
+                    unaBmb.Posicion = MapaVista.Instancia().TransformarPuntoEnVector2(unPersonaje.Posicion);
                     unaBmb.Vivo = true;
                 }
             }
@@ -84,7 +84,7 @@ namespace BombermanGame
             position += direccion * speed;
 
             puntoCentro = position + new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
-            Punto ptEnMapa = MapaVista.TransformarVector2EnPunto(puntoCentro);
+            Punto ptEnMapa = MapaVista.Instancia().TransformarVector2EnPunto(puntoCentro);
            
             //Vector2 deltaPrevio = new Vector2(movido.X, movido.Y);//TODO: borrar codigo comentado
             movido += direccion * speed;
