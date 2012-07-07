@@ -27,8 +27,8 @@ namespace BombermanGame
         public const int ABAJO = 2;
         public const int IZQUIERDA = 4;
         public const int DERECHA = 6;
-        Vector2 centro;
-        Vector2 puntoCentro;
+        protected Vector2 puntoCentro;
+        Vector2 posicionCentroSprite;
 
         public PersonajeVista(Personaje pers)
             :base(MapaVista.Instancia().TransformarPuntoEnVector2(pers.Posicion))
@@ -83,16 +83,14 @@ namespace BombermanGame
             corregirPosicion();
             posicion += direccion * velocidad;
 
-            puntoCentro = posicion + new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
-            Punto ptEnMapa = MapaVista.Instancia().TransformarVector2EnPunto(puntoCentro);
+            posicionCentroSprite = posicion + new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
+            Punto ptEnMapa = MapaVista.Instancia().TransformarVector2EnPunto(posicionCentroSprite);
            
-            //Vector2 deltaPrevio = new Vector2(movido.X, movido.Y);//TODO: borrar codigo comentado
             movido += direccion * velocidad;
             
-            //Juego.Instancia().Ambiente.ObtenerCasilla(unPersonaje.Posicion).Dejar(unPersonaje);
+ 
             if (!unPersonaje.Posicion.Equals(ptEnMapa))
-                unPersonaje.Mover();
-            //Juego.Instancia().Ambiente.AgregarPersonaje(unPersonaje);
+
 
             if (Math.Round(movido.X,1) >= spriteIndex.Width)
             {
@@ -177,8 +175,8 @@ namespace BombermanGame
         public override void Draw(SpriteBatch spriteBatch)
         {
             if (!vivo) return;
-            centro = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
-            spriteBatch.Draw(spriteIndex, posicion, null, Color.White, MathHelper.ToRadians(rotacion), centro, escala, SpriteEffects.None, 0);
+            puntoCentro = new Vector2(spriteIndex.Width / 2, spriteIndex.Height / 2);
+            spriteBatch.Draw(spriteIndex, posicion, null, Color.White, MathHelper.ToRadians(rotacion), puntoCentro, escala, SpriteEffects.None, 0);
         }
     }
 }

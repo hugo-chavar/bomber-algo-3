@@ -19,7 +19,6 @@ namespace BombermanGame
 {
     class CecilioVista : EnemigoVista
     {
-        private Vector2 puntoCentro;
 
         public CecilioVista(Personaje pers)
             : base(pers)
@@ -40,9 +39,7 @@ namespace BombermanGame
         public override void Draw(SpriteBatch spriteBatch)
         {
             if (!vivo) return;
-            spriteBatch.Draw(spriteIndex, posicion, null, Color.White, MathHelper.ToRadians(rotacion), puntoCentro, escala, SpriteEffects.None, 0);
-            //spriteBatch.DrawString(Game1.fuente, "En modelo ->Pos X: " + unPersonaje.Posicion.X + " Pos Y: " + unPersonaje.Posicion.Y, new Vector2(10, 10), Color.Yellow);
-            //spriteBatch.DrawString(Game1.fuente, "Mvido ->Pos X: " + movido.X + " Pos Y: " + movido.Y + " RealPos X: " + position.X + " Pos Y: " + position.Y, new Vector2(10, Game1.fuente.LineSpacing), Color.Yellow); 
+            spriteBatch.Draw(spriteIndex, posicion, null, Color.White, MathHelper.ToRadians(rotacion), puntoCentro, escala, SpriteEffects.None, 0);    
         }
 
         public override void Update()

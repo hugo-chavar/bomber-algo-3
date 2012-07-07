@@ -15,7 +15,6 @@ namespace BombermanModel.Personaje
         {
             this.Lanzador = new LanzadorMolotov();
             this.UnidadesDeResistencia = VIDALOSLOPEZREGGAEALADO;
-            //this.Movimiento.Velocidad = 0.5f;
             this.Nombre = Nombres.lopezReggaeAlado;
         }
 

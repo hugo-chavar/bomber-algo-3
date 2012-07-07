@@ -23,7 +23,6 @@ namespace BombermanModel.Personaje
             this.lanzador = new LanzadorMolotov();
             this.unidadesDeResistencia = VIDABOMBITA;
             this.ciudadLiberada = false;
-            //this.Movimiento.Velocidad = 2;
             this.Nombre = Nombres.bombita;
         }
         
@@ -40,7 +39,6 @@ namespace BombermanModel.Personaje
 
         public void FinalizarNivel()
         {
-            //this.ciudadLiberada = true;
             Juego.Juego.Instancia().Ambiente.FinalizarNivel();
         }
 
