@@ -36,24 +36,6 @@ namespace BombermanGame
         public override void Update()
         {
 
-            //if (!vivo) return;
-            //if (obst.Destruido())
-            //{
-            //    if (Juego.Instancia().Ambiente.ObtenerCasilla(punto).ArticuloContenido == null)
-            //    {
-            //        //PasilloView unPasillo = new PasilloView(position);
-            //        //MapaVista.AgregarDibujable(unPasillo);
-            //    }
-            //    else
-            //    {
-                    //ArticuloVista unArticuloVista = new ArticuloVista(position, Juego.Instancia().Ambiente.ObtenerCasilla(punto).ArticuloContenido);
-                    //if (!Juego.Instancia().Ambiente.ObtenerCasilla(punto).ArticuloContenido.EstaActivo)
-                    //    MapaVista.AgregarDibujable(new PasilloView(position));
-            //        //MapaVista.AgregarDibujable(unArticuloVista);
-            //    }
-            //    //MapaVista.EliminarDibujable(this);
-            //    //vivo = false;
-            //}
         }
 
 

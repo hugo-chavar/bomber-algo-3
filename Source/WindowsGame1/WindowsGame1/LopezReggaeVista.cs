@@ -18,7 +18,6 @@ namespace BombermanGame
 {
     class LopezReggaeVista : EnemigoVista
     {
-        private Vector2 puntoCentro;
 
         public LopezReggaeVista(Personaje pers)
             : base(pers)

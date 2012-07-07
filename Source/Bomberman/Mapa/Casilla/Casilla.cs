@@ -32,7 +32,7 @@ namespace BombermanModel.Mapa.Casilla
             explosivo = null;
         }
 
-        public List<IMovible> TransitandoEnCasilla
+        public List<IMovible> TransitandoEnCasilla 
         {
             get { return this.transitandoEnCasilla; }
         }

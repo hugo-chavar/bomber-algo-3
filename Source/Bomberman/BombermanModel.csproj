@@ -90,7 +90,6 @@
     <Compile Include="Personaje\IMovible.cs" />
     <Compile Include="Personaje\LosLopezReggae.cs" />
     <Compile Include="Personaje\LosLopezReggaeAlado.cs" />
-    <Compile Include="Personaje\Movil.cs" />
     <Compile Include="Personaje\Personaje.cs" />
     <Compile Include="Personaje\Movimiento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

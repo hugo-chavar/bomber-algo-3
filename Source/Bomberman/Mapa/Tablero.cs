@@ -35,12 +35,13 @@ namespace BombermanModel.Mapa
             this.dimensionVertical = tamanioVertical;
         }
 
-        public SerializableDictionary<Punto, Casilla.Casilla> Mapa
-        {
-            get { return this.tablero; }
-            //Dejo como solo lectura para poder serialiar
-            set { this.tablero = value; }
-        }
+        //Agregado para la serializacion
+        //Se deja comentado este código comentado sin borrar a proposito
+        //public SerializableDictionary<Punto, Casilla.Casilla> Mapa
+        //{
+        //    get { return this.tablero; }
+        //    set { this.tablero = value; }
+        //}
 
         public int DimensionHorizontal
         {

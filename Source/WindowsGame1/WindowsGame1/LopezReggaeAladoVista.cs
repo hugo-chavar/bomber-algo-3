@@ -19,7 +19,6 @@ namespace BombermanGame
 {
     class LopezReggaeAladoVista : EnemigoVista
     {
-        private Vector2 puntoCentro;
 
         public LopezReggaeAladoVista(Personaje pers)
             : base(pers)
@@ -41,8 +40,6 @@ namespace BombermanGame
         {
             if (!vivo) return;
             spriteBatch.Draw(spriteIndex, posicion, null, Color.White, MathHelper.ToRadians(rotacion), puntoCentro, escala, SpriteEffects.None, 0);
-            //spriteBatch.DrawString(Game1.fuente, "En modelo ->Pos X: " + unPersonaje.Posicion.X + " Pos Y: " + unPersonaje.Posicion.Y, new Vector2(10, 10), Color.Yellow);
-            //spriteBatch.DrawString(Game1.fuente, "Mvido ->Pos X: " + movido.X + " Pos Y: " + movido.Y + " RealPos X: " + position.X + " Pos Y: " + position.Y, new Vector2(10, Game1.fuente.LineSpacing), Color.Yellow); 
         }
 
         public override void Update()
