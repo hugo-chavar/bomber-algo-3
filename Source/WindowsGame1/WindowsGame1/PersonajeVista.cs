@@ -90,6 +90,7 @@ namespace BombermanGame
             
  
             if (!unPersonaje.Posicion.Equals(ptEnMapa))
+                unPersonaje.Mover();
 
 
             if (Math.Round(movido.X,1) >= spriteIndex.Width)

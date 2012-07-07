@@ -121,11 +121,6 @@ namespace BombermanGame
                         elJuego.SeleccionarMapa();
                         break;
                     }
-                case BombermanModel.Estado.Serializar:
-                    {
-                        elJuego.SerializarJuego();
-                        break;
-                    }
                 default:
                     {
                         unMenu.Update();

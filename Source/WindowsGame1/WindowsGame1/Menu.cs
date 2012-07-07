@@ -34,7 +34,6 @@ namespace BombermanGame
             labelList.Add("Continuar");
             labelList.Add("Guardar Partida");
             labelList.Add("Continuar Partida Guardada");
-            labelList.Add("Serializar");
         }
 
         public void LoadContent(ContentManager content)
@@ -77,10 +76,6 @@ namespace BombermanGame
                     case 4:
                         Juego.Instancia().ContinuarPartidaGuardada();
                         break;
-                    case 5:
-                        Juego.Instancia().EstadoGeneral= Estado.Serializar;
-                        break;
-
                 }
             }
 

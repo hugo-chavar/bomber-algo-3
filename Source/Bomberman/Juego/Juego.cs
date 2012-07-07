@@ -52,9 +52,8 @@ namespace BombermanModel.Juego
         public void SerializarJuego()
         {
             XmlSerializer xSer = new XmlSerializer(typeof(Juego));
-            TextWriter writer = new StreamWriter("serial.xml");
+            TextWriter writer = new StreamWriter("serializado.xml");
 
-            // Serialize the object and close the TextWriter.
             xSer.Serialize(writer, Instancia());
             writer.Close();
             estado = Estado.EnJuego;
